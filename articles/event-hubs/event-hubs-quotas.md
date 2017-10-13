@@ -1,5 +1,5 @@
 ---
-title: "aaaMicrosoft концентраторов событий Azure квоты и лимиты | Документы Microsoft"
+title: "Квоты и ограничения концентраторов событий Microsoft Azure | Документация Майкрософт"
 description: "Ограничения и квоты для концентраторов событий Azure"
 services: event-hubs
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/25/2017
 ms.author: sethm
-ms.openlocfilehash: 3d57d813f112eacf0f4981743dec42ba99221cf9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f332fe51a9de8e83d17805e1279e69dee59ed791
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-quotas"></a>Квоты концентраторов событий
 В этом разделе перечислены основные квоты и ограничения для концентраторов событий Azure.
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-На сайте ссылкам hello, изучите более подробную концентраторов событий:
+Дополнительные сведения о концентраторах событий см. в следующих источниках:
 
 * [Обзор концентраторов событий](event-hubs-what-is-event-hubs.md)
 * [Автоматическое расширение концентраторов событий](event-hubs-auto-inflate.md)

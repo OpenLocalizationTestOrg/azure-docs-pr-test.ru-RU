@@ -1,6 +1,6 @@
 
-### <a name="update-manifest-file-tooenable-notifications"></a>Обновить файл манифеста tooenable уведомления
-Скопируйте hello ресурсов обмена сообщениями в приложении ниже в вашей Manifest.xml между hello `<application>` и `</application>` тегов.
+### <a name="update-manifest-file-to-enable-notifications"></a>Обновление файла манифеста для включения уведомлений
+Скопируйте ресурсы обмена сообщениями внутри приложения в файл Manifest.xml между тегами `<application>` и `</application>`.
 
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
               <intent-filter>
@@ -45,32 +45,32 @@
         </receiver>
 
 ### <a name="specify-an-icon-for-notifications"></a>Добавление значка для уведомлений
-Следующий фрагмент XML в вашей Manifest.xml между hello hello вставить `<application>` и `</application>` тегов.
+Вставьте следующий фрагмент XML-кода в файл Manifest.xml между тегами `<application>` и `</application>`.
 
         <meta-data android:name="engagement:reach:notification:icon" android:value="engagement_close"/>
 
-Этот параметр определяет hello значка, отображаемого в системе и уведомления в приложения. Это необязательно для уведомлений в приложении, но обязательно для системных уведомлений. Система Android отклоняет системные уведомления с недопустимыми значками.
+Так вы определите значок, используемый в системных уведомлениях и уведомлениях в приложении. Это необязательно для уведомлений в приложении, но обязательно для системных уведомлений. Система Android отклоняет системные уведомления с недопустимыми значками.
 
-Убедитесь, что вы используете значок, который существует в одном из hello **drawable** папок (например ``engagement_close.png``). **mipmap** не поддерживается.
+Убедитесь, что вы используете значок, который находится в одной из **папок с рисунками**, например ``engagement_close.png``. **mipmap** не поддерживается.
 
 > [!NOTE]
-> Не следует использовать hello **запуска** значок. Он имеет другое разрешение и обычно в папках hello MIP-карт, которые не поддерживаются.
+> Не следует использовать значок **запуска** . Он имеет другое разрешение и, как правило, находится в неподдерживаемых папках MIP-карт.
 > 
 > 
 
 В реальных приложениях следует использовать значок, который подходит для уведомлений в соответствии с [рекомендациями по разработке для Android](http://developer.android.com/design/patterns/notifications.html).
 
 > [!TIP]
-> убедиться, что toouse toobe правильное разрешение значок, можно взглянуть на [эти примеры](https://www.google.com/design/icons).
-> Прокрутите вниз toohello **уведомления** статьи, щелкните значок и выберите `PNGS` drawable набора toodownload hello значков. Вы увидите drawable папки с toouse какие разрешения для каждой версии значок hello.
+> Чтобы правильно выбрать разрешение значка, ознакомьтесь с [этими примерами](https://www.google.com/design/icons).
+> Прокрутите страницу вниз до раздела **Notification** (Уведомления), щелкните значок и выберите команду `PNGS`, чтобы скачать набор рисунков. Вы увидите, какие папки рисунков и с каким разрешением следует использовать для каждой версии значка.
 > 
 > 
 
-### <a name="enable-your-app-tooreceive-gcm-push-notifications"></a>Включить вашего приложения tooreceive GCM push-уведомления
-1. Вставьте следующие hello в вашей Manifest.xml между hello `<application>` и `</application>` тегов после замены hello **идентификатор отправителя** получить консоли с помощью Firebase проекта. Hello \n преднамеренного поэтому убедитесь, что завершения проекта hello чисел с ним.
+### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>Настройка приложения для приема push-уведомлений GCM
+1. После замены **идентификатора отправителя**, полученного из консоли проекта Firebase, вставьте следующий код в файл Manifest.xml между тегами `<application>` и `</application>`. Перенос строки (\n) указан преднамеренно, поэтому добавьте его в конец номера проекта.
    
         <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-2. Вставить ниже код hello в вашей Manifest.xml между hello `<application>` и `</application>` тегов. Замените имя пакета hello <Your package name>.
+2. Вставьте приведенный ниже код в Manifest.xml между тегами `<application>` и `</application>`. Замените имя пакета <Your package name>.
    
         <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
         android:exported="false">
@@ -86,7 +86,7 @@
                 <category android:name="<Your package name>" />
             </intent-filter>
         </receiver>
-3. Добавить hello последний набор разрешений, которые выделены перед hello `<application>` тег. Замените `<Your package name>` по имени hello сам пакет приложения.
+3. Добавьте последний выделенный набор разрешений перед тегом `<application>` . Замените `<Your package name>` фактическим именем пакета вашего приложения.
    
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />

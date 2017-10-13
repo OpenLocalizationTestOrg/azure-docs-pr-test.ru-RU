@@ -1,6 +1,6 @@
 ---
-title: "стек связи для служб WCF aaaReliable | Документы Microsoft"
-description: "встроенный стек связи WCF Hello в Service Fabric предоставляет службы клиента WCF для надежного обмена."
+title: "Стек связи WCF Reliable Services | Документация Майкрософт"
+description: "Встроенный стек связи WCF в Service Fabric обеспечивает связь со службой клиента WCF для Reliable Services."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7feebef4d46a6ae66d05129f47f9b5911e82aec9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Коммуникационный стек WCF для надежных служб
-Надежные службы Hello платформа дает авторам toochoose hello связи стека служб, они должны toouse для своей службы. Они могут подключить hello стек связи по своему выбору через hello **ICommunicationListener** возвращенные hello [CreateServiceReplicaListeners или CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) методы. Hello framework предоставляет реализацию hello стек связи, основанного на приветствия Windows Communication Foundation (WCF) для службы авторов, toouse связи на основе WCF.
+Платформа надежных служб Reliable Services позволяет разработчикам служб решать, какой стек связи следует использовать в службе. Любой стек связи можно подключить с помощью интерфейса **ICommunicationListener** , возвращаемого методом [CreateServiceReplicaListeners или CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) . Платформа предоставляет реализацию стека связи на основе Windows Communication Foundation (WCF) для разработчиков служб, которым требуется использовать связь на основе WCF.
 
 ## <a name="wcf-communication-listener"></a>Прослушиватель связи WCF
-Hello зависящие от WCF реализация **ICommunicationListener** обеспечивается hello **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** класса.
+Реализация интерфейса **ICommunicationListener**, ориентированная на WCF, обеспечивается классом **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener**.
 
 Допустим, имеется контракт службы типа `ICalculator`
 
@@ -37,7 +37,7 @@ public interface ICalculator
 }
 ```
 
-Можно создать прослушиватель связи WCF в следующие способом hello службы hello.
+Мы можем создать прослушиватель связи WCF в службе, как описано ниже.
 
 ```csharp
 
@@ -48,13 +48,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
             wcfServiceObject:this,
             serviceContext:context,
             //
-            // hello name of hello endpoint configured in hello ServiceManifest under hello Endpoints section
-            // that identifies hello endpoint that hello WCF ServiceHost should listen on.
+            // The name of the endpoint configured in the ServiceManifest under the Endpoints section
+            // that identifies the endpoint that the WCF ServiceHost should listen on.
             //
             endpointResourceName: "WcfServiceEndpoint",
 
             //
-            // Populate hello binding information that you want hello service toouse.
+            // Populate the binding information that you want the service to use.
             //
             listenerBinding: WcfUtility.CreateTcpListenerBinding()
         )
@@ -63,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-hello-wcf-communication-stack"></a>Написание клиентов для стека связи hello WCF
-Для записи клиентов, toocommunicate со службами с помощью WCF, hello framework предоставляет **WcfClientCommunicationFactory**, который является реализацией hello WCF конкретного метода [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>Написание клиентов для стека связи WCF
+Для написания клиентов для взаимодействия со службами с помощью WCF платформа предоставляет объект **WcfClientCommunicationFactory**, который является ориентированной на WCF реализацией [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
 
 ```csharp
 
@@ -76,7 +76,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-канал связи WCF Hello может осуществляться из hello **WcfCommunicationClient** созданные hello **WcfCommunicationClientFactory**.
+К каналу связи WCF можно обращаться из клиента **WcfCommunicationClient**, созданного объектом **WcfCommunicationClientFactory**.
 
 ```csharp
 
@@ -90,7 +90,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Клиентский код может использовать hello **WcfCommunicationClientFactory** вместе с hello **WcfCommunicationClient** , реализующий **ServicePartitionClient** toodetermine Здравствуйте, конечная точка службы и взаимодействовать со службой hello.
+Клиентский код может использовать **WcfCommunicationClientFactory** вместе с клиентом **WcfCommunicationClient**, который реализует **ServicePartitionClient**, для определения конечной точки службы и взаимодействия со службой.
 
 ```csharp
 // Create binding
@@ -102,7 +102,7 @@ var wcfClientFactory = new WcfCommunicationClientFactory<ICalculator>
     (clientBinding: binding, servicePartitionResolver: partitionResolver);
 
 //
-// Create a client for communicating with hello ICalculator service that has been created with the
+// Create a client for communicating with the ICalculator service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
@@ -111,14 +111,14 @@ var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
                 ServicePartitionKey.Singleton);
 
 //
-// Call hello service tooperform hello operation.
+// Call the service to perform the operation.
 //
 var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
 > [!NOTE]
-> по умолчанию Hello ServicePartitionResolver предполагается, что этот клиент hello выполняется в одном кластере hello службы. Если это не hello случае создайте объект ServicePartitionResolver и передайте конечные точки подключения кластера hello.
+> Объект ServicePartitionResolver по умолчанию предполагает, что клиент выполняется в том же кластере, что и служба. Если это не так, создайте объект ServicePartitionResolver и передайте конечные точки подключения к кластеру.
 > 
 > 
 

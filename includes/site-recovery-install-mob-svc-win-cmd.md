@@ -1,4 +1,4 @@
-1. Скопируйте hello установщика tooa локальную папку (например, C:\Temp) на сервере hello, которое следует tooprotect. Выполните следующие команды от имени администратора, в командной строке hello.
+1. Скопируйте установщик в локальную папку (например, C:\Temp) на сервере, который необходимо защитить. В командной строке выполните следующие команды от имени администратора.
 
   ```
   cd C:\Temp
@@ -6,12 +6,12 @@
   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted.
   ```
-2. tooinstall службы Mobility Service, запустите hello следующую команду:
+2. Чтобы установить службу Mobility Service, выполните следующую команду.
 
   ```
   UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
   ```
-3. Теперь агент hello должен toobe зарегистрирована hello сервера конфигурации.
+3. Теперь необходимо зарегистрировать агент на сервере конфигурации.
 
   ```
   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
@@ -28,12 +28,12 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 | Параметр|Тип|Описание|Возможные значения|
 |-|-|-|-|
 |/Role|Обязательно|Указывает службу, которую нужно установить: Mobility Service (MS) или MasterTarget (MT)|MS </br> MT|
-|/InstallLocation|Необязательно|Расположение, в котором установлена служба Mobility Service|Любой папке на компьютере hello|
-|/Platform|Обязательно|Указывает платформу hello, на какие hello начало установлена служба Mobility </br> </br>- **VMware.** Используйте это значение при установке службы Mobility Service на виртуальной машине под управлением *узлов VMware vSphere ESXi*, *узлов Hyper-V* или *физических серверов* </br> - **Azure.** Используйте это значение при установке агента на виртуальной машине Azure IaaS| VMware </br> Таблицы Azure|
-|/Silent|Необязательно|Задает установщик toorun hello в автоматическом режиме| Нет данных|
+|/InstallLocation|Необязательно|Расположение, в котором установлена служба Mobility Service|Любая папка на компьютере.|
+|/Platform|Обязательно|Указывает платформу, на которой будет установлена служба Mobility Service </br> </br>- **VMware.** Используйте это значение при установке службы Mobility Service на виртуальной машине под управлением *узлов VMware vSphere ESXi*, *узлов Hyper-V* или *физических серверов* </br> - **Azure.** Используйте это значение при установке агента на виртуальной машине Azure IaaS| VMware </br> Таблицы Azure|
+|/Silent|Необязательно|Используется для запуска установщика в автоматическом режиме| Нет данных|
 
 >[!TIP]
-> журналы установки Hello можно найти в разделе %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
+> Журналы установки находятся в папке %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>Аргументы командной строки регистрации службы Mobility Service
 
@@ -44,9 +44,9 @@ UnifiedAgentConfigurator.exe”  /CSEndPoint <CSIP> /PassphraseFilePath <Passphr
 
   | Параметр|Тип|Описание|Возможные значения|
   |-|-|-|-|
-  |/CSEndPoint |Обязательно|IP-адрес сервера конфигурации hello| Любой допустимый IP-адрес|
-  |/PassphraseFilePath|Обязательно|Расположение hello парольная фраза |Любой допустимый локальный путь к файлу или UNC|
+  |/CSEndPoint |Обязательно|IP-адрес сервера конфигурации| Любой допустимый IP-адрес|
+  |/PassphraseFilePath|Обязательно|Расположение файла с парольной фразой |Любой допустимый локальный путь к файлу или UNC|
 
 
 >[!TIP]
-> Hello AgentConfiguration журналы можно найти в разделе %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log
+> Журналы AgentConfiguration находятся в папке %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log

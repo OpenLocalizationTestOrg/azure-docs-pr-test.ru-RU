@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документации центра безопасности - учебники, справочник по API | Документы Microsoft"
-description: "Узнайте, как tooset копирование безопасности мониторинга и управления политиками для ресурсов Azure. Руководства, справочники по REST API и другая документация."
+title: "Документация по центру безопасности Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как настроить мониторинг и управление политиками системы безопасности для ресурсов Azure. Руководства, справочники по REST API и другая документация."
 services: security-center
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b2bed6a128c7c767687871389f982d6155c6161d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8a17bd97f758db843cecc53b02722344d6b9d6dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-center-documentation"></a>Документация по центру безопасности
 
-Узнайте, как toouse центра обеспечения безопасности tooget видимость и контроль над hello безопасность ресурсов Azure.  Учебники, справочник по REST API и другую документацию показывается, как tooset копирование управление мониторинг и политика безопасности, который работает с широким спектром решения по обеспечению безопасности.
+Узнайте, как использовать центр безопасности для получения данных о состоянии системы безопасности и управления защитой ресурсов Azure.  Руководства, справочник по REST API и другая документация, в которой показано, как настроить мониторинг и управление политиками системы безопасности для работы с разными средствами, входящими в экосистему решений безопасности.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Active Directory B2B код совместной работы и примеры PowerShell | Документы Microsoft"
+title: "Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B | Документация Майкрософт"
 description: "Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B."
 services: active-directory
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 8e4f66fcb50d190899304831ea7ccd2203c5468c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cae69f57627b3058bf96c3d1eea7dadc81147153
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B
 
 ## <a name="powershell-example"></a>Пример PowerShell
-Вы может bulk приглашение внешних пользователей организации tooan из адреса электронной почты, которые были сохранены в. CSV-файл.
+Можно выполнить массовое приглашение внешних пользователей в организацию, используя электронные адреса, сохраненные в CSV-файле.
 
-1. Подготовьте hello. CSV файл создайте новый файл CSV с именем invitations.csv. В этом примере hello файл сохраняется в C:\data и содержит hello следующую информацию:
+1. Подготовьте CSV-файл. Создайте CSV-файл и назовите его invitations.csv. В этом примере файл сохранен в папке C:\data. Он содержит следующие сведения:
   
   Имя                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
@@ -34,16 +34,16 @@ ms.lasthandoff: 10/06/2017
   Приглашенный B2B Outlook   | b2binvitee@outlook.com
 
 
-2. Получить последние Azure AD PowerShell toouse hello Здравствуйте новые командлеты, необходимо установить модуль Azure AD PowerShell hello обновления, который можно загрузить из [hello страницы версии модуля Powershell](https://www.powershellgallery.com/packages/AzureADPreview)
+2. Установите последнюю версию Azure AD PowerShell. Для использования новых командлетов необходимо установить обновленный модуль Azure AD PowerShell, который можно скачать на [странице выпуска модулей Powershell](https://www.powershellgallery.com/packages/AzureADPreview).
 
-3. Войдите в режим tooyour
+3. Войдите в свой клиент:
 
     ```
     $cred = Get-Credential
     Connect-AzureAD -Credential $cred
     ```
 
-4. Запустите командлет PowerShell hello
+4. Выполнение командлета PowerShell
 
   ```
   $invitations = import-csv C:\data\invitations.csv
@@ -52,13 +52,13 @@ ms.lasthandoff: 10/06/2017
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
-Этот командлет отправляет приглашение toohello адреса электронной почты в invitations.csv. Дополнительные возможности этого командлета:
-- Настраиваемый текст в сообщении электронной почты hello
-- Включая отображаемое имя для hello пригласить пользователя
-- Отправка сообщений tooCCs или полностью подавления сообщений электронной почты
+Этот командлет отправляет приглашение на электронные адреса, указанные в файле invitations.csv. Дополнительные возможности этого командлета:
+- настраиваемый текст электронного сообщения;
+- добавление отображаемого имени для приглашенного пользователя;
+- отправка копий сообщений или полное подавление электронных сообщений.
 
 ## <a name="code-sample"></a>Пример кода
-Здесь демонстрируется как API приглашения hello toocall в режиме «только для приложений», URL-адрес активации hello tooget для hello toowhich ресурсов, которые приглашаемых hello B2B пользователя. Задача Hello — toosend пользовательские приглашения. Hello электронной почты может формироваться из HTTP-клиента, чтобы вы могли ее внешний вид и отправки ее с помощью Graph API.
+Ниже показано, как вызвать API приглашения в режиме "только приложение" и получить URL-адрес активации для ресурса, в который вы приглашаете пользователя службы B2B. Цель этого действия — отправить настраиваемое сообщение с приглашением. Электронное сообщение можно составить, используя HTTP-клиент, чтобы настроить его внешний вид, и отправить его с помощью API Graph.
 
 ```
 namespace SampleInviteApp
@@ -82,34 +82,34 @@ namespace SampleInviteApp
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
  
         /// <summary>
-        ///  Authentication endpoint tooget token.
+        ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
  
         /// <summary>
-        /// This is hello tenantid of hello tenant you want tooinvite users to.
+        /// This is the tenantid of the tenant you want to invite users to.
         /// </summary>
         private static readonly string TenantID = "";
  
         /// <summary>
-        /// This is hello application id of hello application that is registered in hello above tenant.
-        /// hello required scopes are available in hello below link.
+        /// This is the application id of the application that is registered in the above tenant.
+        /// The required scopes are available in the below link.
         /// https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/invitation_post
         /// </summary>
         private static readonly string TestAppClientId = "";
  
         /// <summary>
-        /// Client secret of hello application.
+        /// Client secret of the application.
         /// </summary>
         private static readonly string TestAppClientSecret = @"
  
         /// <summary>
-        /// This is hello email address of hello user you want tooinvite.
+        /// This is the email address of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserEmailAddress = @"";
  
         /// <summary>
-        /// This is hello display name of hello user you want tooinvite.
+        /// This is the display name of the user you want to invite.
         /// </summary>
         private static readonly string InvitedUserDisplayName = @"";
  
@@ -124,12 +124,12 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Create hello invitation object.
+        /// Create the invitation object.
         /// </summary>
-        /// <returns>Returns hello invitation object.</returns>
+        /// <returns>Returns the invitation object.</returns>
         private static Invitation CreateInvitation()
         {
-            // Set hello invitation object.
+            // Set the invitation object.
             Invitation invitation = new Invitation();
             invitation.InvitedUserDisplayName = InvitedUserDisplayName;
             invitation.InvitedUserEmailAddress = InvitedUserEmailAddress;
@@ -139,7 +139,7 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Send hello guest user invite request.
+        /// Send the guest user invite request.
         /// </summary>
         /// <param name="invitation">Invitation object.</param>
         private static void SendInvitation(Invitation invitation)
@@ -148,7 +148,7 @@ namespace SampleInviteApp
  
             HttpClient httpClient = GetHttpClient(accessToken);
  
-            // Make hello invite call. 
+            // Make the invite call. 
             HttpContent content = new StringContent(JsonConvert.SerializeObject(invitation));
             content.Headers.Add("ContentType", "application/json");
             var postResponse = httpClient.PostAsync(InviteEndPoint, content).Result;
@@ -157,10 +157,10 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Get hello HTTP client.
+        /// Get the HTTP client.
         /// </summary>
         /// <param name="accessToken">Access token</param>
-        /// <returns>Returns hello Http Client.</returns>
+        /// <returns>Returns the Http Client.</returns>
         private static HttpClient GetHttpClient(string accessToken)
         {
             // setup http client.
@@ -169,20 +169,20 @@ namespace SampleInviteApp
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             httpClient.DefaultRequestHeaders.Add("client-request-id", Guid.NewGuid().ToString());
             Console.WriteLine(
-                "CorrelationID for hello request: {0}",
+                "CorrelationID for the request: {0}",
                 httpClient.DefaultRequestHeaders.GetValues("client-request-id").Single());
             return httpClient;
         }
  
         /// <summary>
-        /// Get hello access token for our application tootalk toomicrosoft graph.
+        /// Get the access token for our application to talk to microsoft graph.
         /// </summary>
-        /// <returns>Returns hello access token for our application tootalk toomicrosoft graph.</returns>
+        /// <returns>Returns the access token for our application to talk to microsoft graph.</returns>
         private static string GetAccessToken()
         {
             string accessToken = null;
  
-            // Get hello access token for our application tootalk toomicrosoft graph.
+            // Get the access token for our application to talk to microsoft graph.
             try
             {
                 AuthenticationContext testAuthContext =
@@ -194,7 +194,7 @@ namespace SampleInviteApp
             }
             catch (AdalException ex)
             {
-                Console.WriteLine("An exception was thrown while fetching hello token: {0}.", ex);
+                Console.WriteLine("An exception was thrown while fetching the token: {0}.", ex);
                 throw;
             }
  
@@ -217,7 +217,7 @@ namespace SampleInviteApp
             public string InvitedUserEmailAddress { get; set; }
  
             /// <summary>
-            /// Gets or sets a value indicating whether Invitation Manager should send hello email tooInvitedUser.
+            /// Gets or sets a value indicating whether Invitation Manager should send the email to InvitedUser.
             /// </summary>
             public bool SendInvitationMessage { get; set; }
  
@@ -237,7 +237,7 @@ namespace SampleInviteApp
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Свойства пользователя службы совместной работы Azure Active Directory B2B](active-directory-b2b-user-properties.md)
-* [Добавление роли пользователя tooa B2B совместной работы](active-directory-b2b-add-guest-to-role.md)
+* [Добавление пользователя службы совместной работы Azure Active Directory B2B в роль](active-directory-b2b-add-guest-to-role.md)
 * [Делегирование приглашений для службы совместной работы Azure Active Directory B2B](active-directory-b2b-delegate-invitations.md)
 * [Динамические группы и служба совместной работы Azure Active Directory B2B](active-directory-b2b-dynamic-groups.md)
 * [Настройка приложений SaaS для службы совместной работы B2B](active-directory-b2b-configure-saas-apps.md)

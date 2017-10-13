@@ -1,6 +1,6 @@
 ---
-title: "приложение Android v2.0 Active Directory aaaAzure | Документы Microsoft"
-description: "Как приложение Android, выполняющий вход пользователей с личной учетной записи Майкрософт и рабочих или учебных учетных записей и вызовы toobuild hello Graph API с помощью библиотек сторонних производителей."
+title: "Приложение Android версии 2.0 для Azure Active Directory | Документация Майкрософт"
+description: "Узнайте, как создать приложение Android, которое обеспечивает вход пользователей с помощью личной и рабочей или учебной учетной записи Майкрософт, а также использует вызовы API Graph на основе сторонних библиотек."
 services: active-directory
 documentationcenter: 
 author: danieldobalian
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1dd40bd3bcea28c629abce09abaed66b38774162
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c0a5a818c61f7af7ff04bf890b54e8364f3b21b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-tooan-android-app-using-a-third-party-library-with-graph-api-using-hello-v20-endpoint"></a>Добавить tooan входа в приложение Android с помощью библиотеки сторонних разработчиков с API Graph с помощью конечной точки v2.0 hello
-Hello платформы удостоверений использует открытых стандартов, такие как OAuth2 и OpenID Connect. Разработчики могут использовать любую библиотеку, они должны toointegrate с наших служб. toohelp разработчики используют нашей платформы с другими библиотеками, мы написали несколько пошаговых руководств, как это один toodemonstrate как tooconfigure сторонних библиотек tooconnect toohello платформы удостоверений. Большинство библиотек, которые реализуют [spec hello RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) могут подключаться toohello платформы удостоверений.
+# <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Добавление функции входа в приложение Android, использующее стороннюю библиотеку и API Graph, с помощью конечной точки версии 2.0
+Платформа Microsoft Identity использует открытые стандарты, такие как OAuth2 и OpenID Connect. Разработчики могут использовать любую библиотеку на свой выбор для интеграции с нашими службами. Чтобы помочь разработчикам с использованием нашей платформы с другими библиотеками, мы написали несколько подобных этому пошаговых руководств по настройке сторонних библиотеки для подключения к платформе Microsoft Identity. Большинство библиотек, в которых реализована [спецификация RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) , могут подключаться к платформе Microsoft Identity.
 
-С помощью приложения hello, создает в этом пошаговом руководстве пользователей можно войти в организации tootheir и выполните поиск сами в своей организации с помощью Graph API hello.
+Используя приложение, создаваемое в этом пошаговом руководстве, пользователи смогут войти в инфраструктуру своей организации и найти там себя с помощью API Graph.
 
-Если вы новый tooOAuth2 или OpenID Connect, большая часть конфигурации этого образца может оказаться tooyou смысле. Мы рекомендуем прочитать раздел [Протоколы версии 2.0 — поток кода авторизации OAuth 2.0](active-directory-v2-protocols-oauth-code.md), чтобы получить соответствующие сведения.
-
-> [!NOTE]
-> Некоторые возможности платформы, имеющие выражения в hello OAuth2 или OpenID Connect стандартами, например условный доступ и управление политикой Intune, требуется вы toouse нашей открытой библиотеки удостоверений Microsoft Azure.
-> 
-> 
-
-Конечная точка v2.0 Hello не поддерживает все сценарии Azure Active Directory и возможности.
+Если вы еще не работали с OAuth2 или OpenID Connect, то вы не поймете большую часть примера конфигурации. Мы рекомендуем прочитать раздел [Протоколы версии 2.0 — поток кода авторизации OAuth 2.0](active-directory-v2-protocols-oauth-code.md), чтобы получить соответствующие сведения.
 
 > [!NOTE]
-> toodetermine, если необходимо использовать конечную точку v2.0 hello, прочтите сведения о [ограничения v2.0](active-directory-v2-limitations.md).
+> Чтобы использовать функции платформы, которые описаны в этих стандартах OAuth2 или OpenID Connect, такие как управление политиками условного доступа и управление политиками Intune, требуются библиотеки Microsoft Azure Identity с открытым кодом.
 > 
 > 
 
-## <a name="download-hello-code-from-github"></a>Загрузка кода hello из GitHub
-поддерживается Hello кода для этого учебника [на GitHub](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2).  можно toofollow вдоль [загрузить приложение hello основу как .zip](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip) или основу hello клона:
+Не все сценарии и компоненты Azure Active Directory поддерживаются конечной точкой версии 2.0.
+
+> [!NOTE]
+> Чтобы определить, следует ли вам использовать конечную точку версии 2.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
+> 
+> 
+
+## <a name="download-the-code-from-github"></a>Скачивание кода с сайта GitHub
+Код в этом учебнике размещен на портале [GitHub](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2).  Для понимания процесса можно [скачать основу приложения как ZIP-файл](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip) или клонировать ее.
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
 ```
 
-Можно также просто загрузить образец hello и начать работу прямо сейчас.
+Можно также просто скачать пример и немедленно приступить к работе.
 
 ```
 git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
 ```
 
 ## <a name="register-an-app"></a>регистрация приложения;
-Создание нового приложения в hello [портала регистрации приложения](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), или выполните hello подробное описание действий по [как tooregister приложения с конечной точкой v2.0 hello](active-directory-v2-app-registration.md).  Не забудьте:
+Создайте новое приложение на [портале регистрации приложений](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) или выполните подробные инструкции по [регистрации приложения с использованием конечной точки версии 2.0](active-directory-v2-app-registration.md).  Не забудьте:
 
-* Копировать hello **идентификатор приложения** это назначенные tooyour приложения, так как он понадобится скоро.
-* Добавить hello **Mobile** платформы для приложения.
+* Скопируйте назначенный вашему приложению **идентификатор приложения**. Он вскоре вам понадобится.
+* Добавьте для приложения **мобильную** платформу.
 
-> Примечание: предоставляет портал регистрации приложения hello **URI перенаправления** значение. Однако в этом примере необходимо использовать значение по умолчанию hello `https://login.microsoftonline.com/common/oauth2/nativeclient`.
+> Примечание. Портал регистрации приложений предоставляет значение **URI перенаправления**. Однако в этом примере необходимо использовать значение по умолчанию `https://login.microsoftonline.com/common/oauth2/nativeclient`.
 > 
 > 
 
-## <a name="download-hello-nxoauth2-third-party-library-and-create-a-workspace"></a>Загрузить библиотеки стороннего NXOAuth2 hello и создание рабочей области
-В этом пошаговом руководстве будет использоваться hello OIDCAndroidLib из GitHub, который является библиотекой OAuth2 основании hello код Google OpenID Connect. Он реализует профиля собственное приложение hello и поддерживает конечную точку авторизации hello hello пользователя. Это все, что hello потребуется toointegrate с платформой удостоверений Microsoft hello.
+## <a name="download-the-nxoauth2-third-party-library-and-create-a-workspace"></a>Скачивание сторонней библиотеки NXOAuth2 и создание рабочей области
+Для этого пошагового руководства вы воспользуетесь библиотекой OIDCAndroidLib с сайта GitHub. Это библиотека OAuth2, созданная на основе кода OpenID Connect от Google. Она реализует профиль собственного приложения и поддерживает конечную точку авторизации пользователей. Это все, что вам потребуется для интеграции с платформой Microsoft Identity.
 
-Клонирование репозитория tooyour hello OIDCAndroidLib компьютера.
+Клонируйте репозиторий OIDCAndroidLib на свой компьютер.
 
 ```
 git@github.com:kalemontes/OIDCAndroidLib.git
@@ -75,69 +75,69 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 ![androidStudio](../media/active-directory-android-native-oidcandroidlib-v2/emotes-url.png)
 
 ## <a name="set-up-your-android-studio-environment"></a>Настройка среды Android Studio
-1. Создайте новый проект Android Studio и примите значения по умолчанию hello в мастере hello.
+1. Создайте новый проект Android Studio и примите значения по умолчанию в мастере.
    
     ![Создание нового проекта в Android Studio](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample1.PNG)
    
     ![Целевые устройства Android](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample2.PNG)
    
-    ![Добавить действие toomobile](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample3.PNG)
-2. tooset проекта модулей переместить расположение проекта toohello hello клонирования репозитория. Можно также создать проект hello и клонируйте его непосредственно toohello расположение проекта.
+    ![Добавление действия для мобильных устройств](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample3.PNG)
+2. Чтобы установить модули проекта, переместите клонированный репозиторий в расположение проекта. Можно также сначала создать проект, а затем клонировать его непосредственно в расположение проекта.
    
     ![Модули проекта](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample4_1.PNG)
-3. Откройте параметры модулей hello проекта с помощью контекстного меню hello, или с помощью клавиш Ctrl + Alt + Осно + S hello.
+3. Откройте параметры модулей проекта с помощью контекстного меню или нажав клавиши CTRL+ALT+SHIFT+S.
    
     ![Параметры модулей проекта](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample4.PNG)
-4. Удалите модуль приложения по умолчанию hello, так как требуется только параметры проекта hello.
+4. Удалите модуль приложения по умолчанию, так как нам нужны только параметры контейнера проекта.
    
-    ![Модуль приложения по умолчанию Hello](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
-5. Импортировать модули из hello клонированного репозитория toohello текущего проекта.
+    ![Модуль приложения по умолчанию](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
+5. Импортируйте модули из клонированного репозитория в текущий проект.
    
     ![Импорт проекта gradle](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG) ![создать новую страницу модуля](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
-6. Повторите эти шаги для hello `oidlib-sample` модуля.
-7. Проверка зависимостей oidclib hello на hello `oidlib-sample` модуля.
+6. Повторите эти действия для модуля `oidlib-sample` .
+7. Проверьте зависимости oidclib в модуле `oidlib-sample` .
    
-    ![oidclib зависимости от модуля oidlib образец hello](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8.PNG)
+    ![Зависимости oidclib в модуле oidlib-sample](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8.PNG)
 8. Нажмите кнопку **ОК** и дождитесь завершения синхронизации с Gradle.
    
     Раздел settings.gradle должен выглядеть следующим образом.
    
     ![Снимок экрана settings.gradle](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample8_1.PNG)
-9. Построение toomake пример приложения hello убедиться, что этот образец hello работает правильно.
+9. Выполните сборку примера приложения, чтобы убедиться, что он работает правильно.
    
-    Вы не будет возможности toouse это в Azure Active Directory еще. Нам нужно tooconfigure некоторые конечные точки сначала. Это tooensure Android Studio проблем нет, прежде чем начать настройку пример приложения hello.
-10. Построение и запуск `oidlib-sample` hello в качестве назначения Android Studio.
+    Вы пока не сможете использовать этот пример с Azure Active Directory. Сначала необходимо настроить некоторые конечные точки. Так еще до начала настройки примера приложения мы сможем убедиться, что с Android Studio не возникают проблемы.
+10. Выполните сборку `oidlib-sample` и запустите его в Android Studio в качестве целевого приложения.
     
     ![Ход выполнения сборки oidlib-sample](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample9.png)
-11. Удалить hello `app ` каталог, была оставлена при удалении модуля hello из проекта hello, так как Android Studio не удаляет его в целях безопасности.
+11. Удалите каталог `app ` , который остался после удаления модуля из проекта, так как в целях безопасности Android Studio не удаляет его.
     
-    ![Структура файлов, которая включает в себя каталог приложения hello](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample12.PNG)
-12. Откройте hello **изменение конфигураций** меню tooremove hello запустить конфигурацию, которая также была оставлена при удалении модуля hello из проекта hello.
+    ![Структура файлов, содержащая каталог приложения](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample12.PNG)
+12. Откройте меню **Изменить конфигурации** , чтобы удалить конфигурацию запуска, которая также осталась после удаления модуля из проекта.
     
     ![Меню "Изменить конфигурации"](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample10.PNG)
     ![Конфигурация запуска приложения](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample11.PNG)
 
-## <a name="configure-hello-endpoints-of-hello-sample"></a>Настройка конечных точек hello образца hello
-Теперь, когда имеется hello `oidlib-sample` выполняется успешно, изменим tooget некоторые конечные точки этой работы с Azure Active Directory.
+## <a name="configure-the-endpoints-of-the-sample"></a>Настройка конечных точек примера
+После успешного запуска `oidlib-sample` можно приступить к изменению некоторых конечных точек для их подключения к Azure Active Directory.
 
-### <a name="configure-your-client-by-editing-hello-oidcclientconfxml-file"></a>Настроить клиент путем редактирования файла oidc_clientconf.xml hello
-1. Поскольку используется только tooget потоки OAuth2 маркер и вызвать hello Graph API, установите hello toodo клиента OAuth2 только. В примере, который станет доступен позже, мы будем использовать OIDC.
+### <a name="configure-your-client-by-editing-the-oidcclientconfxml-file"></a>Настройка клиента посредством редактирования файла oidc_clientconf.xml
+1. Так как для получения токена и вызова API Graph используются потоки OAuth2, настроим для клиента только протокол OAuth2. В примере, который станет доступен позже, мы будем использовать OIDC.
    
     ```xml
         <bool name="oidc_oauth2only">true</bool>
     ```
-2. Настройте ИД клиента, полученный из портала регистрации hello.
+2. Настройте идентификатор клиента, полученный с портала регистрации.
    
     ```xml
         <string name="oidc_clientId">86172f9d-a1ae-4348-aafa-7b3e5d1b36f5</string>
         <string name="oidc_clientSecret"></string>
     ```
-3. Настройте на URI перенаправления с одной hello ниже.
+3. Настройте универсальный код ресурса (URI) перенаправления, указав приведенное ниже значение.
    
     ```xml
         <string name="oidc_redirectUrl">https://login.microsoftonline.com/common/oauth2/nativeclient</string>
     ```
-4. Настройка областей, вы должны в порядке tooaccess hello Graph API.
+4. Настройте области, необходимые для доступа к API Graph.
    
     ```xml
         <string-array name="oidc_scopes">
@@ -147,13 +147,13 @@ git@github.com:kalemontes/OIDCAndroidLib.git
         </string-array>
     ```
 
-Hello `User.Read` значение в `oidc_scopes` позволяет вам tooread hello базовый профиль hello вход пользователя.
-Дополнительные сведения о всех доступных областей hello в [области разрешений Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes).
+Значение `User.Read` в `oidc_scopes` позволяет считывать базовый профиль вошедшего пользователя.
+Дополнительные сведения о всех доступных областях действия см. в разделе [Microsoft Graph permission scopes](https://graph.microsoft.io/docs/authorization/permission_scopes) (Области действия разрешений Microsoft Graph).
 
 Пояснения об использовании `openid` или `offline_access` в качестве областей действия в OpenID Connect см. в разделе [Протоколы версии 2.0 — поток кода авторизации OAuth 2.0](active-directory-v2-protocols-oauth-code.md).
 
-### <a name="configure-your-client-endpoints-by-editing-hello-oidcendpointsxml-file"></a>Настройте конечные точки клиента, изменив файл oidc_endpoints.xml hello
-* Откройте hello `oidc_endpoints.xml` и создайте hello следующие изменения:
+### <a name="configure-your-client-endpoints-by-editing-the-oidcendpointsxml-file"></a>Настройка конечных точек клиента посредством редактирования файла oidc_endpoints.xml
+* Откройте файл `oidc_endpoints.xml` и внесите в него следующие изменения.
   
     ```xml
     <!-- Stores OpenID Connect provider endpoints. -->
@@ -168,12 +168,12 @@ Hello `User.Read` значение в `oidc_scopes` позволяет вам to
 Если используется протокол OAuth2, эти конечные точки никогда не должны изменяться.
 
 > [!NOTE]
-> Здравствуйте, конечные точки для `userInfoEndpoint` и `revocationEndpoint` в настоящее время не поддерживаются в Azure Active Directory. Если оставить эти значения example.com по умолчанию hello, появится напоминание, они недоступны в образце hello :-)
+> В настоящее время конечные точки для `userInfoEndpoint` и `revocationEndpoint` не поддерживаются в Azure Active Directory. Если оставить значение по умолчанию example.com, то появится напоминание о том, в примере они недоступны.
 > 
 > 
 
 ## <a name="configure-a-graph-api-call"></a>Настройка вызова API Graph
-* Откройте hello `HomeActivity.java` и создайте hello следующие изменения:
+* Откройте файл `HomeActivity.java` и внесите в него следующие изменения.
   
     ```Java
        //TODO: set your protected resource url
@@ -182,10 +182,10 @@ Hello `User.Read` значение в `oidc_scopes` позволяет вам to
 
 Здесь простой вызов API Graph возвращает нашу информацию.
 
-Это и есть все изменения hello необходимые toodo. Запустите hello `oidlib-sample` приложения и нажмите кнопку **входа**.
+Это все изменения, которые необходимо выполнить. Запустите приложение `oidlib-sample` и щелкните **Sign in**(Войти).
 
-После вы успешно прошли проверку подлинности, выберите hello **запроса защищенный ресурс** кнопку tootest вашей toohello вызова Graph API.
+После аутентификации нажмите кнопку **Request Protected Resource** (Запросить защищенный ресурс), чтобы проверить вызов к API Graph.
 
 ## <a name="get-security-updates-for-our-product"></a>Получение обновлений системы безопасности для наших продуктов
-Мы рекомендуем вам tooget уведомления об инцидентах безопасности, перейдя по адресу hello [Технический центр безопасности](https://technet.microsoft.com/security/dd252948) и подписка tooSecurity рекомендация предупреждения.
+Рекомендуем вам получать уведомления об инцидентах безопасности. Для этого посетите [Технический центр безопасности](https://technet.microsoft.com/security/dd252948) и подпишитесь на уведомления о советах безопасности.
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAlerts проверки в центр безопасности Azure | Документы Microsoft"
-description: "Этот документ поможет вам оповещений системы безопасности toovalidate hello в центр безопасности Azure."
+title: "Проверка оповещений в центре безопасности Azure | Документация Майкрософт"
+description: "В этом документе вы ознакомитесь с процедурой проверки оповещений безопасности в Центре безопасности Azure."
 services: security-center
 documentationcenter: na
 author: YuriDio
@@ -12,42 +12,45 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
-ms.openlocfilehash: 030e9e74303758192eedaf517f1cb0d2e4a7852e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Проверка оповещений в центре безопасности Azure
-Этот документ поможет узнать, как tooverify, если система настроена должным образом для оповещения центра безопасности Azure.
+Этот документ содержит информацию о том, как убедиться, что ваша система правильно настроена для оповещений центра безопасности Azure.
 
 ## <a name="what-are-security-alerts"></a>Что такое оповещения системы безопасности?
-Центр обеспечения безопасности автоматически собирает анализирует и производить сбор данных журнала из ресурсов Azure, сети hello и решения подключенных партнеров, как решения для защиты брандмауэра и конечной точки, toodetect и оповещения toothreats вы. Чтение [toosecurity управление и отвечает на запросы предупреждения в центр безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) Дополнительные сведения о оповещений системы безопасности и чтение [основные сведения об оповещениях безопасности в центр безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) toolearn Дополнительные о hello различных типов оповещений.
+Центр безопасности автоматически собирает, анализирует и объединяет данные журналов, поступающие от ресурсов Azure, сети и подключенных решений партнеров, таких как брандмауэры и решения для защиты конечных точек, для выявления и оповещения об угрозах. Дополнительные сведения об оповещениях безопасности и их типах см. в статье [Управление оповещениями безопасности в Центре безопасности Azure и реагирование на них](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) и [Основные сведения об оповещениях системы безопасности в центре безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-type).
 
 ## <a name="alert-validation"></a>Проверка оповещений
-После установки агента центра обеспечения безопасности на компьютере, выполните действия hello ниже с компьютера hello место ресурсов hello атаке toobe hello предупреждения.
+После установки агента центра безопасности на свой компьютер выполните следующие шаги на компьютере, где находится атакованный ресурс оповещения:
 
-1. Скопируйте исполняемый файл (для примера calc.exe) toohello ПК или другим каталогом удобства.
-2. Переименовать этот файл слишком**ASC_AlertTest_662jfi039N.exe**.
-3. Откройте командную строку hello и выполнить этот файл с аргументом (просто имя фиктивное аргумент), например: *ASC_AlertTest_662jfi039N.exe - foo*
-4. Подождите 5 минут too10 и откройте оповещения центра безопасности. Следует найти предупреждения toofollowing аналогично, один:
+1. Скопируйте исполняемый файл (например, calc.exe) на рабочий стол компьютера или в другой каталог.
+2. Переименуйте этот файл на **ASC_AlertTest_662jfi039N.exe**.
+3. Откройте командную строку и выполните этот файл с аргументом (фиктивное имя аргумента), таким как *ASC_AlertTest_662jfi039N.exe -foo*.
+4. Подождите 5–10 минут и откройте оповещения центра безопасности. Там можно найти оповещение, аналогичное следующему:
 
-    ![Проверка оповещений](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![Проверка оповещений](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
-При просмотре этого предупреждения, убедитесь, что поле hello, аудит включен аргументы появляется как true. Если оно указано значение false, необходимые аргументы командной строки tooenable аудита. Можно включить этот параметр, с помощью следующей командной строкой hello:
+При просмотре этого оповещения убедитесь, что в поле Arguments Auditing Enabled (Включен аудит аргументов) задано значение true. Если оно содержит значение false, необходимо включить аудит аргументов командной строки. Этот параметр можно включить с помощью командной строки:
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
 
-## <a name="see-also"></a>См. также
-В этой статье представлена процесс проверки toohello предупреждения. Теперь, когда вы знакомы с этой проверкой, попробуйте hello в следующих статьях:
+> [!NOTE]
+> См. видео с демонстрацией функции [проверки оповещений в центре безопасности Azure](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center). 
 
-* [Управление и отвечает на запросы toosecurity предупреждения в центр безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Узнайте, как toomanage предупреждений и инцидентов toosecurity ответ в центр обеспечения безопасности.
-* [Наблюдение за работоспособностью системы безопасности в Центре безопасности Azure](security-center-monitoring.md). Узнайте, как toomonitor hello работоспособности ресурсов Azure.
-* [Основные сведения об оповещениях системы безопасности в центре безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Дополнительные сведения о различных типах hello оповещений системы безопасности.
-* [Руководство по устранению неполадок в центре безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Узнайте, как tootroubleshoot распространенные проблемы в центре безопасности. 
-* [Центр безопасности Azure: часто задаваемые вопросы](security-center-faq.md). Найти часто задаваемые вопросы об использовании службы hello.
+## <a name="see-also"></a>См. также
+В этой статье представлен процесс проверки оповещений. Теперь, когда вы знакомы с проверкой, ознакомьтесь с такими статьями:
+
+* [Управление оповещениями безопасности в Центре безопасности Azure и реагирование на них](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Узнайте, как управлять оповещениями и реагировать на угрозы безопасности в центре безопасности.
+* [Наблюдение за работоспособностью системы безопасности в Центре безопасности Azure](security-center-monitoring.md). Узнайте, как отслеживать работоспособность ресурсов Azure.
+* [Основные сведения об оповещениях системы безопасности в центре безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Дополнительные сведения о различных типах оповещений безопасности.
+* [Руководство по устранению неполадок в центре безопасности Azure](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Узнайте, как устранять типичные неполадки в центре безопасности. 
+* [Центр безопасности Azure: часто задаваемые вопросы](security-center-faq.md). Часто задаваемые вопросы об использовании этой службы.
 * [Блог по безопасности Azure](http://blogs.msdn.com/b/azuresecurity/). Записи блога, посвященные безопасности и соответствию требованиям в Azure.
 

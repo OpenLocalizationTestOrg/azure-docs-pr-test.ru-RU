@@ -1,6 +1,6 @@
 ## <a name="net-sample-code-repositories"></a>Репозитории примеров кода .NET
 
-Ниже приведен список наших репозиториев образец для клиентской библиотеки хранилища Azure .NET hello.
+Ниже приведен список всех репозиториев примеров кода для клиентской библиотеки .NET службы хранилища Azure.
 
 * [Веб-приложение фотоальбома для хранилища BLOB-объектов Azure](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)
 * [Azure Blob Storage Samples for .NET](https://azure.microsoft.com/resources/samples/storage-blob-dotnet-getting-started/) (Примеры для хранилища BLOB-объектов Azure для .NET)

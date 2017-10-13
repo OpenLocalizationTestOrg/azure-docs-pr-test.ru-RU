@@ -1,6 +1,6 @@
 ---
-title: "aaaWhat произошло проекта ASP.NET toomy? | Документация Майкрософт"
-description: "Описывает, что происходит после добавления проекта ASP.NET tooa хранилища Azure, с помощью Visual Studio подключенные службы"
+title: "Что произошло с моим проектом ASP.NET? | Документация Майкрософт"
+description: "Сведения о том, что происходит после добавления службы хранилища Azure в проект ASP.NET с помощью подключенных служб Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 175e9b825c32f4930d5093b6a4ad13ffb9ab8aa7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 680960f51201a98c81db4bce3615e1602e795651
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-happened-toomy-aspnet-project-visual-studio-azure-storage-connected-service"></a>В каком проекте ASP.NET ошибка toomy (хранилища Azure для Visual Studio подключается к службе)?
+# <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Что произошло с моим проектом ASP.NET (подключенными к службе хранилища Azure службами Visual Studio)?
 ## <a name="references-added"></a>Добавлены ссылки
-пакет NuGet хранилища Azure Hello был добавлен tooyour проекта Visual Studio.  
-Этот пакет добавляет hello следующие ссылки .NET:
+Пакет NuGet хранилища Azure был добавлен в проект Visual Studio.  
+Этот пакет добавляет следующие ссылки .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/06/2017
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Добавлена строка подключения к хранилищу Azure
-В файле web.config hello проекта элемент был создан в строку подключения и ключ учетной записи хранения выбран hello.
+В файле web.config проекта был создан элемент с ключом и строкой подключения выбранной учетной записи хранилища.
 
 Дополнительные сведения см. в разделе [ASP.NET](http://www.asp.net).
 

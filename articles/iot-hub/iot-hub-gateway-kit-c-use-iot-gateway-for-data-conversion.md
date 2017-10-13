@@ -1,6 +1,6 @@
 ---
-title: "Преобразование aaaData на шлюзе IoT Azure IoT границу | Документы Microsoft"
-description: "Используйте формат hello tooconvert IoT шлюз данных датчика с помощью специализированный модуль Azure IoT края."
+title: "Преобразование данных в шлюзе Интернета вещей с помощью Edge Интернета вещей Azure | Документация Майкрософт"
+description: "Шлюз Интернета вещей можно использовать для преобразования формата данных датчиков с помощью настраиваемого модуля из Azure IoT Edge."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,88 +15,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.openlocfilehash: ae94b1f96f36dfcb4f77fadc0ece3cff3d0bba91
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d5c735a4adbc59e9526ec4fd40720c5ec136d63d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>Использование шлюза Интернета вещей для преобразования данных датчиков с помощью Edge Интернета вещей
 
 > [!NOTE]
-> Перед началом этого учебника, убедитесь, что вы уже завершенной hello в следующих занятиях:
+> Прежде чем приступить к работе с данным руководством, последовательно пройдите следующие уроки:
 > * [Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-> * [Использование облачного toohello действия tooconnect шлюза IoT - SensorTag tooAzure центра IoT](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+> * [Использование шлюза Интернета вещей для подключения объектов к облаку (подключение SensorTag к Центру Интернета вещей Azure)](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-Один шлюз Iot предназначен tooprocess собранных данных перед их отправкой toohello облака. Azure IoT Edge вводит модули, которые могут быть созданы и собранный tooform hello обработки данных, рабочий процесс. Модуль получает сообщение, выполняет некоторые действия с его и затем переместить ее для других модулей tooprocess.
+Одна из задач шлюза Интернета вещей — обработка собранных данных перед их отправкой в облако. Edge Интернета вещей Azure позволяет создавать и собирать модули для формирования рабочего процесса обработки данных. Модуль получает сообщение, выполняет с ним определенное действие, а затем передает его для обработки другими модулями.
 
 ## <a name="what-you-learn"></a>Что вы узнаете
 
-Вы узнаете, как toocreate tooconvert модуль сообщений hello SensorTag в другой формат.
+Вы узнаете, как создать модуль для преобразования сообщений из SensorTag в другой формат.
 
 ## <a name="what-you-do"></a>В рамках этого руководства мы:
 
-* Создание tooconvert модуль полученного сообщения в формате .json hello.
-* Скомпилируйте модуль hello.
-* Добавьте hello модуля toohello ЛЮЧИТЬ образец приложения Azure IoT края.
-* Запустите образец приложения hello.
+* Создадим модуль для преобразования полученного сообщения в формат JSON.
+* Скомпилируем модуль.
+* Добавим модуль в пример приложения BLE из Edge Интернета вещей Azure.
+* Запустим пример приложения.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
-* После завершения в последовательности учебники Hello:
+* Следующие учебники пройдены в указанном порядке:
   * [Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-  * [Использование облачного toohello действия tooconnect шлюза IoT - SensorTag tooAzure центра IoT](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+  * [Использование шлюза Интернета вещей для подключения объектов к облаку (подключение SensorTag к Центру Интернета вещей Azure)](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 * Клиент SSH, который выполняется на главном компьютере. В Windows рекомендуется использовать PuTTY. Клиент SSH изначально входит в состав ОС Linux и Mac OS.
-* Hello IP-адрес и hello имя пользователя и пароль tooaccess hello шлюза из клиента SSH hello.
+* IP-адрес, имя пользователя и пароль для доступа к шлюзу из клиента SSH.
 * Подключение к Интернету.
 
 ## <a name="create-a-module"></a>Создание модуля
 
-1. На главном компьютере hello запустите клиент SSH hello и шлюз IoT toohello подключения.
-1. Клонирование hello исходные файлы hello преобразования модуля из GitHub toohello шлюза IoT hello в домашнем каталоге, выполнив следующие команды hello:
+1. На главном компьютере запустите клиент SSH и установите подключение к шлюзу Интернета вещей.
+1. Создайте клоны исходных файлов модуля преобразования из GitHub в домашнем каталоге шлюза Интернета вещей, выполнив следующие команды:
 
    ```bash
    cd ~
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   Это собственный модуль Azure Edge на языке hello языка программирования. модуль Hello преобразует формат hello полученных сообщений в одном hello:
+   Это собственный модуль Edge Azure, написанный на языке программирования C. Модуль преобразует формат полученных сообщений в следующий:
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}
    ```
 
-## <a name="compile-hello-module"></a>Скомпилируйте модуль hello
+## <a name="compile-the-module"></a>Компиляция модуля
 
-hello модуль toocompile, запустите hello, следующие команды:
+Чтобы скомпилировать модуль, выполните следующие команды:
 
 ```bash
 cd iot-hub-c-intel-nuc-gateway-customized-module/my_module
-# change hello build script runnable
+# change the build script runnable
 chmod 777 build.sh
-# remove hello invalid windows character
+# remove the invalid windows character
 sed -i -e "s/\r$//" build.sh
-# run hello build shell script
+# run the build shell script
 ./build.sh
 ```
 
-Вы получаете `libmy_module.so` файла после завершения компиляции hello. Запишите hello абсолютный путь этого файла.
+После завершения компиляции вы получите файл `libmy_module.so`. Запишите абсолютный путь к этому файлу.
 
-## <a name="add-hello-module-toohello-ble-sample-application"></a>Добавить hello модуля toohello ЛЮЧИТЬ примера приложения
+## <a name="add-the-module-to-the-ble-sample-application"></a>Добавление модуля к примеру приложения BLE
 
-1. Папка образцов перейдите toohello, выполнив следующую команду hello:
+1. Перейдите в папку примеров, выполнив следующую команду:
 
    ```bash
    cd /usr/share/azureiotgatewaysdk/samples
    ```
 
-1. Откройте файл конфигурации hello, выполнив следующую команду hello:
+1. Откройте файл конфигурации, выполнив такую команду:
 
    ```bash
    vi ble_gateway.json
    ```
 
-1. Добавить модуль, вставив следующий код toohello hello `modules` раздела.
+1. Добавьте модуль, вставив в раздел `modules` следующий код:
 
    ```json
    {
@@ -111,8 +111,8 @@ sed -i -e "s/\r$//" build.sh
     },
     ```
 
-1. Замените `[Your libmy_module.so path]` в коде hello hello абсолютном пути hello libmy_module.so "файла.
-1. Замените код hello в hello `links` раздел с hello, выполнив одно:
+1. Замените в коде `[Your libmy_module.so path]` на абсолютный путь к файлу libmy_module.so`.
+1. Замените код в разделе `links` следующим:
 
    ```json
    {
@@ -125,18 +125,18 @@ sed -i -e "s/\r$//" build.sh
    }
    ```
 
-1. Нажмите клавишу `ESC`, а затем введите `:wq` toosave hello файла.
+1. Нажмите клавишу `ESC`, а затем введите `:wq`, чтобы сохранить файл.
 
-## <a name="run-hello-sample-application"></a>Запустить образец приложения hello
+## <a name="run-the-sample-application"></a>Запуск примера приложения
 
-1. Включите hello SensorTag.
-1. Задайте переменную среды SSL_CERT_FILE hello, выполнив hello следующую команду:
+1. Включите SensorTag.
+1. Задайте значение переменной среды SSL_CERT_FILE, выполнив следующую команду:
 
    ```bash
    export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
    ```
 
-1. Выполните пример приложения hello с hello добавленный модуль, выполнив следующую команду hello:
+1. Запустите пример приложения с добавленным модулем, выполнив следующую команду:
 
    ```bash
    ./ble_gateway ble_gateway.json
@@ -144,6 +144,6 @@ sed -i -e "s/\r$//" build.sh
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы успешно использовать hello IoT шлюза tooconvert приветственных сообщений из SensorTag в формат .json hello.
+Вы успешно преобразовали сообщение из SensorTag в формат JSON с помощью шлюза Интернета вещей.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

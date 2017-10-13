@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure журнала интеграции часто задаваемые вопросы | Документы Microsoft"
+title: "Часто задаваемые вопросы об интеграции журналов Azure | Документация Майкрософт"
 description: "Эта статья содержит ответы на часто задаваемые вопросы об интеграции журналов Azure."
 services: security
 documentationcenter: na
@@ -15,39 +15,39 @@ ms.workload8: na
 ms.date: 08/07/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: e886035c9a180d0cd5fcbe9cc02483782df6dbe4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bfdc7154160bb6bb7dc9c46eb2352ce74310c4de
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-log-integration-faq"></a>Часто задаваемые вопросы об интеграции журналов Azure
 В этой статье содержатся ответы на некоторые часто задаваемые вопросы о службе интеграции журналов Azure. 
 
-Интеграция Azure журнала является служба операционной системы Windows, можно использовать журналы необработанных toointegrate по вашим ресурсам Azure в вашей локальной безопасности сведения и событий (SIEM) систем управления. Такая интеграция обеспечивает единый панели мониторинга для каждого из ОС, локально или в облаке hello. Интеграция также позволяет выполнять статистическое вычисление, сопоставление и анализ, а также предупреждать о событиях безопасности, связанных с приложениями.
+Служба интеграции журналов Azure (служба ОС Windows) позволяет интегрировать необработанные журналы из ресурсов Azure с локальными системами SIEM. Такая интеграция обеспечивает единую панель мониторинга для всех локальных и облачных ресурсов. Интеграция также позволяет выполнять статистическое вычисление, сопоставление и анализ, а также предупреждать о событиях безопасности, связанных с приложениями.
 
-## <a name="is-hello-azure-log-integration-software-free"></a>— Это программное обеспечение интеграции Azure журнала hello бесплатно?
-Да. Нет бесплатно hello программным обеспечением для интеграции журналов Azure.
+## <a name="is-the-azure-log-integration-software-free"></a>Предоставляется ли служба интеграции журналов Azure бесплатно?
+Да. Плата за использование службы интеграции журналов Azure не взимается.
 
 ## <a name="where-is-azure-log-integration-available"></a>Где доступна служба интеграции журналов Azure?
 
 Сейчас служба доступна в рамках коммерческой лицензии Azure и лицензии Azure для государственных организаций и недоступна в Китае и в Германии.
 
-## <a name="how-can-i-see-hello-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Просмотр учетных записей хранения hello, из которых интеграции Azure журнала запрашивает журналы виртуальной Машине Azure?
-Выполните команду hello **azlog исходного списка**.
+## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Как увидеть учетные записи хранения, из которых служба интеграции журналов Azure извлекает журналы виртуальных машин Azure?
+Выполните команду **azlog source list**.
 
-## <a name="how-can-i-tell-which-subscription-hello-azure-log-integration-logs-are-from"></a>Как узнать, какие подписки hello Azure Integration журнала записываются из?
+## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Как определить, из каких подписок получены журналы службы интеграции журналов Azure?
 
-В случае, когда hello журналы аудита, которые помещаются в hello **AzureResourcemanagerJson** каталоги, идентификатор подписки hello — в файле журнала hello. Это справедливо для журналов в hello **AzureSecurityCenterJson** папки. Например:
+Если журналы аудита хранятся в каталогах **AzureResourcemanagerJson**, то идентификатором подписки является имя файла журнала. Это правило применяется и к журналам в папке **AzureSecurityCenterJson**. Например:
 
 20170407T070805_2768037.0000000023.**1111e5ee-1111-111b-a11e-1e111e1111dc**.json
 
-Журналы аудита Azure Active Directory включают hello идентификатор клиента как часть имени hello.
+В состав имен журналов аудита Azure Active Directory входит идентификатор клиента.
 
-Журналы диагностики, которые считываются из концентратора событий не включают идентификатор подписки hello как часть имени hello. Вместо этого они включают hello понятное имя, указанное как часть создания hello источника концентратора событий hello. 
+Журналы диагностики, которые считываются из концентратора событий, не содержат идентификатор подписки в имени. Вместо этого они содержат понятное имя, заданное при создании источника концентратора событий. 
 
-## <a name="how-can-i-update-hello-proxy-configuration"></a>Как обновить настройки прокси-сервера hello
-Если параметра прокси не позволяет непосредственно для доступа к хранилищу Azure, откройте hello **AZLOG. EXE-ФАЙЛА. КОНФИГУРАЦИИ** файла в **c:\Program Files\Microsoft Azure журнала интеграции**. Обновление hello файл tooinclude hello **defaultProxy** раздел с hello адрес прокси-сервера в вашей организации. После завершения обновления hello остановить и запустить службу hello с помощью команд hello **azlog net stop** и **команда net start azlog**.
+## <a name="how-can-i-update-the-proxy-configuration"></a>Как обновить конфигурацию прокси-сервера?
+Если параметры прокси-сервера не позволяют получать доступ к хранилищу Azure напрямую, то откройте файл **AZLOG.EXE.CONFIG** из расположения **c:\Program Files\Microsoft Azure Log Integration**. Обновите файл, включив в его раздел **defaultProxy** прокси-адрес вашей организации. После завершения обновления остановите и запустите службу с помощью команд **net stop azlog** и **net start azlog**.
 
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
@@ -65,42 +65,42 @@ ms.lasthandoff: 10/06/2017
         <performanceCounters filemappingsize="20971520" />
       </system.diagnostics>   
 
-## <a name="how-can-i-see-hello-subscription-information-in-windows-events"></a>Просмотр сведений о подписке hello в событиях Windows?
-Понятное имя идентификатора подписки toohello hello добавьте при добавлении источника hello:
+## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Как увидеть сведения о подписке в событиях Windows?
+При добавлении источника добавьте идентификатор к понятному имени:
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
-событие Hello XML имеет следующие метаданные, включая идентификатор подписки hello hello:
+XML-файл события содержит следующие метаданные, включая идентификатор подписки:
 
 ![XML-файл события][1]
 
 ## <a name="error-messages"></a>Сообщения об ошибках
-### <a name="when-i-run-hello-command-azlog-createazureid-why-do-i-get-hello-following-error"></a>При запуске команды hello **azlog createazureid**, возникает следующая ошибка hello?
+### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>Почему при выполнении команды **azlog createazureid** возникает следующая ошибка?
 Ошибка:
 
-  *Сбой toocreate AAD приложения - клиента 72f988bf-86f1-41af-91ab-2d7cd011db37 - причина = «Запрещено» — сообщение = «Недостаточно прав доступа операция toocomplete hello».*
+  *Не удалось создать приложение AAD - Клиент 72f988bf-86f1-41af-91ab-2d7cd011db37 - Причина = 'Запрещено' - Сообщение = 'Недостаточно привилегий для выполнения операции.'*
 
-Hello **azlog createazureid** toocreate участника службы на все клиенты hello Azure AD для hello подписок, которые hello Azure имя входа имеет доступ к предпринимается. Если имя входа Azure только гостя в этом клиенте Azure AD, hello команда выдает «операция hello toocomplete недостаточно прав доступа». Попросите администратора tooadd клиента hello вашу учетную запись как пользователя в клиенте hello.
+Команда **azlog createazureid** пытается создать субъект-службу на всех клиентах Azure AD для подписок, к которым имеют доступ учетные данные Azure. Если учетные данные Azure принадлежат пользователю-гостю на этом клиенте Azure AD, то команда завершается ошибкой и отображается сообщение "Недостаточно привилегий для выполнения операции". Попросите администратора клиента добавить вашу учетную запись в качестве пользователя данного клиента.
 
-### <a name="when-i-run-hello-command-azlog-authorize-why-do-i-get-hello-following-error"></a>При запуске команды hello **azlog авторизовать**, возникает следующая ошибка hello?
+### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>Почему при выполнении команды **azlog authorize** возникает следующая ошибка?
 Ошибка:
 
-  *Предупреждение назначение роли - AuthorizationFailed: hello клиента janedo@microsoft.com' с объектом «fe9e03e4-4dad-4328-910f-fd24a9660bd2» идентификатор не имеет авторизации tooperform действия «Microsoft.Authorization/roleAssignments/write» с областью "/ подписки и 70d 95299-d689-4c 97-b971-0d8ff0000000 ".*
+  *"Warning creating Role Assignment - AuthorizationFailed" (Предупреждение при создании назначения роли — AuthorizationFailed): Клиент "janedo@microsoft.com" с идентификатором объекта "fe9e03e4-4dad-4328-910f-fd24a9660bd2" не авторизован для выполнения действия "Microsoft.Authorization/roleAssignments/write" с областью "/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000".*
 
-Hello **авторизовать azlog** команда присваивает hello роль участника службы чтения toohello Azure AD (создан с **azlog createazureid**) toohello предоставленный подписок. Если hello Azure имя входа не является администратором или владельцем подписки hello, происходит сбой с сообщением об ошибке «Ошибка авторизации». Azure на основе ролей управления доступом (RBAC) совместного администратора или владельца является необходимые toocomplete это действие.
+Команда **azlog authorize** назначает роль читателя субъекту-службе Azure AD (созданному с помощью команды **azlog createazureid**) для предоставленных подписок. Если учетные данные Azure не принадлежат соадминистратору или владельцу подписки, то команда завершается ошибкой и отображается сообщение "Сбой авторизации". Для выполнения этого действия используйте управление доступом на основе ролей (RBAC) в Azure, настроив роль соадминистратора или владельца.
 
-## <a name="where-can-i-find-hello-definition-of-hello-properties-in-hello-audit-log"></a>Где можно найти hello определения свойств hello в журнал аудита hello
+## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Где найти определения свойств в журнале аудита?
 См.:
 
 * [Просмотр журналов действий для аудита действий с ресурсами](../azure-resource-manager/resource-group-audit.md);
-* [Перечисление событий управления hello в подписке в API REST Azure монитор hello](https://msdn.microsoft.com/library/azure/dn931934.aspx)
+* [Activity Logs](https://msdn.microsoft.com/library/azure/dn931934.aspx) (Журналы действий).
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Где найти подробные сведения об оповещениях центра безопасности Azure?
-В разделе [toosecurity управление и отвечает на запросы предупреждения в центр безопасности Azure](../security-center/security-center-managing-and-responding-alerts.md).
+См. статью [Управление оповещениями безопасности в Центре безопасности Azure и реагирование на них](../security-center/security-center-managing-and-responding-alerts.md).
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Как изменить, что именно должна собирать система диагностики виртуальных машин?
-Подробные сведения о как tooget, изменять и установки конфигурации диагностики Azure hello, [tooenable с помощью PowerShell диагностики Azure в виртуальной машине под управлением Windows](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Сведения о том, как получать, изменять и настраивать конфигурацию системы диагностики Azure, см. в статье [Включение системы диагностики Azure на виртуальной машине под управлением Windows с помощью PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Следующий пример Hello получает конфигурацию диагностики Azure hello:
+В следующем примере показано получение конфигурации системы диагностики Azure:
 
     -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
     $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
@@ -110,25 +110,25 @@ Hello **авторизовать azlog** команда присваивает h
 
     $xmlconfig | Out-File -Encoding utf8 -FilePath "d:\WADConfig.xml"
 
-Следующий пример Hello изменяет конфигурацию системы диагностики Azure hello. В этой конфигурации только идентификатор 4624 событие и идентификатор 4625 собираются из журнала событий безопасности hello. Microsoft Antimalware для событий Azure собираются из журнала событий системы hello. При использовании hello выражений XPath Подробнее [потребление событий](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85)).
+В следующем примере показано изменение конфигурации системы диагностики Azure. В этой конфигурации из журнала событий безопасности собираются только идентификаторы события 4624 и 4625. События антивредоносного ПО Майкрософт для Azure собираются из журнала системных событий. Дополнительные сведения об использовании выражений XPath см. в статье [Consuming Events](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85)) (Использование событий).
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
         <DataSource name="System!*[System[Provider[@Name='Microsoft Antimalware']]]"/>
     </WindowsEventLog>
 
-Hello следующий пример задает конфигурацию диагностики Azure hello:
+В следующем примере показан выбор конфигурации системы диагностики Azure:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
-После внесения изменений, проверьте tooensure учетной записи хранилища hello, исправьте события собираются hello.
+После внесения изменений проверьте учетную запись хранения, чтобы убедиться, что собираются именно необходимые события.
 
-При наличии проблем во время установки hello и конфигурации, откройте [запрос на получение поддержки](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Выберите **интеграции журнала** как служба hello, для которого запрашивается поддержка.
+При наличии проблем во время установки и настройки создайте [запрос на поддержку](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Выберите **Интеграция с журналом** в качестве службы, в которую необходимо отправить запрос поддержки.
 
-## <a name="can-i-use-azure-log-integration-toointegrate-network-watcher-logs-into-my-siem"></a>Можно использовать журналы Наблюдатель сети toointegrate журнала интеграции Azure в моей SIEM
+## <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>Можно ли интегрировать журналы службы "Наблюдатель за сетями" с системой SIEM с помощью службы интеграции журналов Azure?
 
-Служба "Наблюдатель за сетями Azure" создает множество сведений о журналах. Эти журналы не предназначены toobe отправляемых tooa SIEM. Назначение Hello поддерживается только для журналов Наблюдатель сети — учетная запись хранения. Интеграция Azure журнала не поддерживает чтение этих журналов и сделать их доступными tooa SIEM.
+Служба "Наблюдатель за сетями Azure" создает множество сведений о журналах. Эти журналы не следует отправлять в SIEM. Журналы Наблюдателя за сетями отправляются только в учетную запись хранения. Служба интеграции журналов Azure не поддерживает чтение этих журналов и не обеспечивает их доступность в системе SIEM.
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png

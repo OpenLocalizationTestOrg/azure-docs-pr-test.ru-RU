@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure базы данных PostgreSQL языке Go | Документы Microsoft"
-description: "Это краткое руководство предоставляет Go программирования языка пример можно использовать tooconnect и запроса данных из базы данных Azure для PostgreSQL."
+title: "Подключение к базе данных Azure для PostgreSQL с помощью языка Go | Документация Майкрософт"
+description: "В этом кратком руководстве представлен пример кода на языке программирования Go, который можно использовать для подключения к базе данных Azure для PostgreSQL и запроса данных из нее."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,32 +11,32 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.openlocfilehash: aa3c93da03116b8fcb54557494dccfad558e5f1d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a7555464879826c5e4f55929d23163b002664e81
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="azure-database-for-postgresql-use-go-language-tooconnect-and-query-data"></a>База данных Azure для PostgreSQL: используют команду Go языка tooconnect и запроса данных
-Краткого руководства показано, как tooan tooconnect базы данных Azure для использования PostgreSQL кода hello написаны в [Go](https://golang.org/) языка (golang). Показано, как tooquery инструкций SQL toouse, вставка, обновление и удаление данных в базе данных hello. В этой статье предполагается, что вы знакомы с разработкой, с помощью команды Go, но, чтобы новый tooworking с базой данных Azure для PostgreSQL.
+# <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>База данных Azure для PostgreSQL: подключение и запросы данных с помощью языка Go
+В этом кратком руководстве описывается, как подключиться к базе данных Azure для PostgreSQL с помощью кода на языке [Go](https://golang.org/) (golang). Здесь также показано, как использовать инструкции SQL для запроса, вставки, обновления и удаления данных в базе данных. В этой статье предполагается, что у вас уже есть опыт разработки на Go, и вы только начали работу с базой данных Azure для PostgreSQL.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Это краткое руководство использует ресурсы hello, созданные в любой из этих руководствах по в качестве отправной точки.
+В качестве отправной точки в этом кратком руководстве используются ресурсы, созданные в соответствии со следующими материалами:
 - [Создание базы данных с помощью портала](quickstart-create-server-database-portal.md)
 - [Создание базы данных с помощью Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>Установка Go и соединителя pq
-Установка [Go](https://golang.org/doc/install) и hello [драйвер чисто Postgres Go (pq)](https://github.com/lib/pq) на компьютере. В зависимости от используемой платформы выполните действия hello.
+Установите язык [Go](https://golang.org/doc/install) и [драйвер Pure Go Postgres](https://github.com/lib/pq) на своем компьютере. В зависимости от используемой платформы выполните следующие действия:
 
 ### <a name="windows"></a>Windows
-1. [Загрузить](https://golang.org/dl/) и установить Go для Microsoft Windows, в соответствии с toohello [инструкции по установке](https://golang.org/doc/install).
-2. Откройте командную строку hello из меню "Пуск" hello.
+1. [Скачайте](https://golang.org/dl/) и установите Go для Microsoft Windows [согласно инструкциям по установке](https://golang.org/doc/install).
+2. Запустите командную строку из меню "Пуск".
 3. Создайте папку для проекта, например `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
-4. Измените каталог в папке проекта hello, такие как `cd %USERPROFILE%\go\src\postgresqlgo`.
-5. Задайте переменную среды hello для каталога GOPATH toopoint toohello исходного кода. `set GOPATH=%USERPROFILE%\go`.
-6. Установка hello [драйвер чисто Postgres Go (pq)](https://github.com/lib/pq) , выполнив hello `go get github.com/lib/pq` команды.
+4. Перейдите в папку проекта, например `cd %USERPROFILE%\go\src\postgresqlgo`.
+5. В качестве значения для переменной среды GOPATH укажите путь к каталогу с исходным кодом. `set GOPATH=%USERPROFILE%\go`.
+6. Установите [драйвер Pure Go Postgres (pq)](https://github.com/lib/pq) с помощью команды `go get github.com/lib/pq`.
 
-   Таким образом установка Go, а затем выполните следующие команды в командную строку hello:
+   Установите Go, а затем выполните следующие команды в командной строке:
    ```cmd
    mkdir  %USERPROFILE%\go\src\postgresqlgo
    cd %USERPROFILE%\go\src\postgresqlgo
@@ -45,12 +45,12 @@ ms.lasthandoff: 10/06/2017
    ```
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Запустите консоль Bash hello. 
+1. Запустите оболочку Bash. 
 2. Установите Go, выполнив команду `sudo apt-get install golang-go`.
 3. Создайте папку для проекта в корневом каталоге, например `mkdir -p ~/go/src/postgresqlgo/`.
-4. Изменить каталог, в папку hello, такие как `cd ~/go/src/postgresqlgo/`.
-5. Набор hello GOPATH среды переменной toopoint tooa допустимым исходным каталогом, таким как к текущей домашней папки перейдите в каталог. В оболочке bash hello, запустите `export GOPATH=~/go` tooadd hello мере directory hello GOPATH для текущего сеанса оболочки hello.
-6. Установка hello [драйвер чисто Postgres Go (pq)](https://github.com/lib/pq) , выполнив hello `go get github.com/lib/pq` команды.
+4. Перейдите в другую папку, например `cd ~/go/src/postgresqlgo/`.
+5. В качестве значения для переменной среды GOPATH укажите путь к действительному исходному каталогу, например к текущей папке Go в корневом каталоге. В оболочке Bash выполните команду `export GOPATH=~/go`, чтобы добавить каталог Go в качестве значения переменной GOPATH для текущего сеанса оболочки.
+6. Установите [драйвер Pure Go Postgres (pq)](https://github.com/lib/pq) с помощью команды `go get github.com/lib/pq`.
 
    Выполните следующие команды Bash:
    ```bash
@@ -62,12 +62,12 @@ ms.lasthandoff: 10/06/2017
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Загрузите и установите перейдите в соответствии с toohello [инструкции по установке](https://golang.org/doc/install) сопоставления вашей платформы. 
-2. Запустите консоль Bash hello. 
+1. Скачайте и установите Go согласно [инструкциям по установке](https://golang.org/doc/install) с учетом вашей платформы. 
+2. Запустите оболочку Bash. 
 3. Создайте папку для проекта в корневом каталоге, например `mkdir -p ~/go/src/postgresqlgo/`.
-4. Изменить каталог, в папку hello, такие как `cd ~/go/src/postgresqlgo/`.
-5. Набор hello GOPATH среды переменной toopoint tooa допустимым исходным каталогом, таким как к текущей домашней папки перейдите в каталог. В оболочке bash hello, запустите `export GOPATH=~/go` tooadd hello мере directory hello GOPATH для текущего сеанса оболочки hello.
-6. Установка hello [драйвер чисто Postgres Go (pq)](https://github.com/lib/pq) , выполнив hello `go get github.com/lib/pq` команды.
+4. Перейдите в другую папку, например `cd ~/go/src/postgresqlgo/`.
+5. В качестве значения для переменной среды GOPATH укажите путь к действительному исходному каталогу, например к текущей папке Go в корневом каталоге. В оболочке Bash выполните команду `export GOPATH=~/go`, чтобы добавить каталог Go в качестве значения переменной GOPATH для текущего сеанса оболочки.
+6. Установите [драйвер Pure Go Postgres (pq)](https://github.com/lib/pq) с помощью команды `go get github.com/lib/pq`.
 
    Установите Go, а затем выполните следующие команды Bash:
    ```bash
@@ -78,31 +78,31 @@ ms.lasthandoff: 10/06/2017
    ```
 
 ## <a name="get-connection-information"></a>Получение сведений о подключении
-Получите toohello tooconnect базы данных Azure для hello подключения сведения, необходимые для PostgreSQL. Необходимо hello server полное имя и учетные данные входа.
+Получите сведения, необходимые для подключения к базе данных Azure.для PostgreSQL. Вам потребуется полное имя сервера и учетные данные для входа.
 
-1. Войдите в toohello [портал Azure](https://portal.azure.com/).
-2. Hello левого меню на портале Azure, щелкните **все ресурсы** и выполните поиск сервера hello, вы создали, таких как **mypgserver 20170401**.
-3. Щелкните имя сервера hello **mypgserver 20170401**.
-4. Выберите hello server **Обзор** страницы. Запишите hello **имя сервера** и **имя входа администратора сервера**.
+1. Войдите на [портал Azure](https://portal.azure.com/).
+2. В меню слева на портале Azure щелкните **Все ресурсы** и выполните поиск по имени созданного сервера, например **mypgserver-20170401**.
+3. Щелкните имя сервера **mypgserver-20170401**.
+4. Выберите страницу **обзора** сервера. Запишите значения **имени сервера** и **имени для входа администратора сервера**.
  ![База данных Azure для PostgreSQL. Учетные данные администратора сервера для входа](./media/connect-go/1-connection-string.png)
-5. Если вы забыли учетные данные входа сервера, перейдите toohello **Обзор** страницы и имя входа администратора сервера hello представления. При необходимости hello сброс пароля.
+5. Если вы забыли данные для входа на сервер, перейдите на страницу **Обзор**, где указано имя администратора сервера. При необходимости сбросьте пароль.
 
 ## <a name="build-and-run-go-code"></a>Сборка и выполнение кода Go 
-1. toowrite Golang кода можно использовать простой текстовый редактор, например «Блокнот» в Microsoft Windows [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) или [Nano](https://www.nano-editor.org/) в Ubuntu или TextEdit в macOS. Если вы предпочитаете использовать полнофункциональную интерактивную среду разработки (IDE), попробуйте [Gogland](https://www.jetbrains.com/go/) от JetBrains, [Visual Studio Code](https://code.visualstudio.com/) от Майкрософт или [Atom](https://atom.io/).
-2. Вставьте код Golang hello с hello разделов ниже текстовые файлы и сохранить в папке проекта с расширением файла \*.go, такие как Windows-путь `%USERPROFILE%\go\src\postgresqlgo\createtable.go` или путь Linux `~/go/src/postgresqlgo/createtable.go`.
-3. Найдите hello `HOST`, `DATABASE`, `USER`, и `PASSWORD` константы в коде hello и замена значений пример hello собственными значениями.  
-4. Запустите командную строку hello или bash оболочки. Перейдите в папку проекта. В Windows это будет команда `cd %USERPROFILE%\go\src\postgresqlgo\`, а в Linux — `cd ~/go/src/postgresqlgo/`. Некоторые из упомянутых сред IDE hello обеспечивают возможности отладки и выполнения без использования команд оболочки.
-5. Выполните код hello, введя команду hello `go run createtable.go` toocompile hello приложение и запустите его. 
-6. Кроме того, код toobuild hello в приложении машинного кода, `go build createtable.go`, запустите `createtable.exe` toorun приложения hello.
+1. Для написания кода на Golang можно использовать простой текстовый редактор, например Блокнот в Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) или [Nano](https://www.nano-editor.org/) в Ubuntu, а также TextEdit в macOS. Если вы предпочитаете использовать полнофункциональную интерактивную среду разработки (IDE), попробуйте [Gogland](https://www.jetbrains.com/go/) от JetBrains, [Visual Studio Code](https://code.visualstudio.com/) от Майкрософт или [Atom](https://atom.io/).
+2. Вставьте код Golang из приведенных ниже разделов в текстовые файлы и сохраните их с расширением \*.go в папке проекта, например `%USERPROFILE%\go\src\postgresqlgo\createtable.go` в Windows или `~/go/src/postgresqlgo/createtable.go` в Linux.
+3. Найдите константы `HOST`, `DATABASE`, `USER` и `PASSWORD` в коде и замените приведенные для примера значения своими собственными.  
+4. Запустите командную строку или оболочку Bash. Перейдите в папку проекта. В Windows это будет команда `cd %USERPROFILE%\go\src\postgresqlgo\`, а в Linux — `cd ~/go/src/postgresqlgo/`. Некоторые из упомянутых сред IDE позволяют выполнять отладку и использовать среду выполнения без применения команд оболочки.
+5. Выполните код с помощью команды `go run createtable.go`, чтобы скомпилировать и запустить приложение. 
+6. Вы также можете создать код в собственном приложении. Для этого введите `go build createtable.go`, а затем выполните `createtable.exe`, чтобы запустить приложение.
 
 ## <a name="connect-and-create-a-table"></a>Подключение и создание таблицы
-Используйте следующие hello кода tooconnect и создание таблицы с помощью **CREATE TABLE** инструкции SQL, за которым следует **INSERT INTO** строк tooadd инструкций SQL в таблицу hello.
+Используйте приведенный ниже код для подключения и создайте таблицу с помощью инструкции SQL **CREATE TABLE**. Добавьте строки в таблицу, применив инструкцию SQL **INSERT INTO**.
 
-Код Hello импортирует три пакета: hello [пакета sql](https://golang.org/pkg/database/sql/), hello [pq пакета](http://godoc.org/github.com/lib/pq) как драйвер toocommunicate с сервером Postgres hello и hello [fmt пакета](https://golang.org/pkg/fmt/) для печати Ввод и вывод в командной строке hello.
+Код импортирует три пакета: [пакет sql](https://golang.org/pkg/database/sql/), [пакет pq](http://godoc.org/github.com/lib/pq) как драйвер для обмена данными с сервером Postgres и [пакет fmt](https://golang.org/pkg/fmt/) для вывода входных и выходных данных в командной строке.
 
-Hello код вызывает метод [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure базы данных PostgreSQL и для проверки подключения hello, с помощью метода [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Объект [дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) для всех компонентов, удерживая hello пула соединений для сервера базы данных hello. hello вызовы кода Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) метода несколько раз toorun несколько команд SQL. Каждый раз toocheck checkError() пользовательский метод, если произошла ошибка и панику tooexit при возникновении ошибки.
+Код вызывает метод [sql.Open()](http://godoc.org/github.com/lib/pq#Open) для подключения к базе данных Azure для PostgreSQL, а затем проверяет подключение с помощью метода [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). [Дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) используется для всех компонентов. Он содержит пул подключений к серверу базы данных. Этот код несколько раз вызывает метод [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) для выполнения нескольких команд SQL. При каждом запуске пользовательский метод checkError() проверяет наличие ошибок и инициирует аварийный выход в случае их обнаружения.
 
-Замените hello `HOST`, `DATABASE`, `USER`, и `PASSWORD` параметры собственными значениями. 
+Замените значения параметров `HOST`, `DATABASE`, `USER` и `PASSWORD` своими значениями. 
 
 ```go
 package main
@@ -137,7 +137,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection toodatabase")
+    fmt.Println("Successfully created connection to database")
 
     // Drop previous table of same name if one exists.
     _, err = db.Exec("DROP TABLE IF EXISTS inventory;")
@@ -162,13 +162,13 @@ func main() {
 ```
 
 ## <a name="read-data"></a>Считывание данных
-Используйте следующие hello кода tooconnect и чтения данных с помощью hello **ВЫБЕРИТЕ** инструкции SQL. 
+Используйте указанный ниже код с инструкцией SQL **SELECT** для подключения и чтения данных. 
 
-Код Hello импортирует три пакета: hello [пакета sql](https://golang.org/pkg/database/sql/), hello [pq пакета](http://godoc.org/github.com/lib/pq) как драйвер toocommunicate с сервером Postgres hello и hello [fmt пакета](https://golang.org/pkg/fmt/) для печати Ввод и вывод в командной строке hello.
+Код импортирует три пакета: [пакет sql](https://golang.org/pkg/database/sql/), [пакет pq](http://godoc.org/github.com/lib/pq) как драйвер для обмена данными с сервером Postgres и [пакет fmt](https://golang.org/pkg/fmt/) для вывода входных и выходных данных в командной строке.
 
-Hello код вызывает метод [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure базы данных PostgreSQL и для проверки подключения hello, с помощью метода [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Объект [дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) для всех компонентов, удерживая hello пула соединений для сервера базы данных hello. запрос select Hello выполняется путем вызова метода [db. Query()](https://golang.org/pkg/database/sql/#DB.Query), а hello результирующие строки хранятся в переменной типа [строк](https://golang.org/pkg/database/sql/#Rows). Код Hello считывает hello значения данных столбца в текущей строке hello, с помощью метода [строк. Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) и проходит по hello строк, с помощью итератора hello [строк. Next()](https://golang.org/pkg/database/sql/#Rows.Next) пока существует больше нет строк. Значения столбцов для каждой строки являются консоли печатной toohello out. Каждый раз toocheck checkError() пользовательский метод, если произошла ошибка и панику tooexit при возникновении ошибки.
+Код вызывает метод [sql.Open()](http://godoc.org/github.com/lib/pq#Open) для подключения к базе данных Azure для PostgreSQL, а затем проверяет подключение с помощью метода [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). [Дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) используется для всех компонентов. Он содержит пул подключений к серверу базы данных. Запрос выбора выполняется с помощью метода [db.Query()](https://golang.org/pkg/database/sql/#DB.Query), а итоговые строки сохраняются в переменной типа [rows](https://golang.org/pkg/database/sql/#Rows). Код считывает из столбцов значения данных в текущей строке с помощью метода [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan), а затем запускает цикл по строкам, используя итератор [сrows.Next()](https://golang.org/pkg/database/sql/#Rows.Next), пока строк больше не останется. Значения столбцов для каждой строки выводятся на консоль. При каждом запуске пользовательский метод checkError() проверяет наличие ошибок и инициирует аварийный выход в случае их обнаружения.
 
-Замените hello `HOST`, `DATABASE`, `USER`, и `PASSWORD` параметры собственными значениями. 
+Замените значения параметров `HOST`, `DATABASE`, `USER` и `PASSWORD` своими значениями. 
 
 ```go
 package main
@@ -204,7 +204,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection toodatabase")
+    fmt.Println("Successfully created connection to database")
 
     // Read rows from table.
     var id int
@@ -229,13 +229,13 @@ func main() {
 ```
 
 ## <a name="update-data"></a>Обновление данных
-Используйте следующие hello кода tooconnect и обновления данных с помощью hello **обновление** инструкции SQL.
+Используйте указанный ниже код с инструкцией SQL **UPDATE** для подключения и обновления данных.
 
-Код Hello импортирует три пакета: hello [пакета sql](https://golang.org/pkg/database/sql/), hello [pq пакета](http://godoc.org/github.com/lib/pq) как драйвер toocommunicate с сервером Postgres hello и hello [fmt пакета](https://golang.org/pkg/fmt/) для печати Ввод и вывод в командной строке hello.
+Код импортирует три пакета: [пакет sql](https://golang.org/pkg/database/sql/), [пакет pq](http://godoc.org/github.com/lib/pq) как драйвер для обмена данными с сервером Postgres и [пакет fmt](https://golang.org/pkg/fmt/) для вывода входных и выходных данных в командной строке.
 
-Hello код вызывает метод [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure базы данных PostgreSQL и для проверки подключения hello, с помощью метода [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Объект [дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) для всех компонентов, удерживая hello пула соединений для сервера базы данных hello. hello вызовы кода Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) метод toorun hello инструкции SQL, которая обновляет таблицу hello. Toocheck checkError() пользовательский метод, если произошла ошибка и панику tooexit, если ошибка возникает.
+Код вызывает метод [sql.Open()](http://godoc.org/github.com/lib/pq#Open) для подключения к базе данных Azure для PostgreSQL, а затем проверяет подключение с помощью метода [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). [Дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) используется для всех компонентов. Он содержит пул подключений к серверу базы данных. Этот код вызывает метод [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) для выполнения инструкции SQL, которая обновляет таблицу. Пользовательский метод checkError() применяется для проверки наличия ошибок и аварийного выхода при их обнаружении.
 
-Замените hello `HOST`, `DATABASE`, `USER`, и `PASSWORD` параметры собственными значениями. 
+Замените значения параметров `HOST`, `DATABASE`, `USER` и `PASSWORD` своими значениями. 
 ```go
 package main
 
@@ -271,7 +271,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection toodatabase")
+    fmt.Println("Successfully created connection to database")
 
     // Modify some data in table.
     sql_statement := "UPDATE inventory SET quantity = $2 WHERE name = $1;"
@@ -282,13 +282,13 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>Удаление данных
-Используйте следующие hello кода tooconnect и чтения данных с помощью hello **удалить** инструкции SQL. 
+Используйте указанный ниже код с инструкцией SQL **DELETE** для подключения и чтения данных. 
 
-Код Hello импортирует три пакета: hello [пакета sql](https://golang.org/pkg/database/sql/), hello [pq пакета](http://godoc.org/github.com/lib/pq) как драйвер toocommunicate с сервером Postgres hello и hello [fmt пакета](https://golang.org/pkg/fmt/) для печати Ввод и вывод в командной строке hello.
+Код импортирует три пакета: [пакет sql](https://golang.org/pkg/database/sql/), [пакет pq](http://godoc.org/github.com/lib/pq) как драйвер для обмена данными с сервером Postgres и [пакет fmt](https://golang.org/pkg/fmt/) для вывода входных и выходных данных в командной строке.
 
-Hello код вызывает метод [sql. Open()](http://godoc.org/github.com/lib/pq#Open) tooconnect tooAzure базы данных PostgreSQL и для проверки подключения hello, с помощью метода [db. Ping()](https://golang.org/pkg/database/sql/#DB.Ping). Объект [дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) для всех компонентов, удерживая hello пула соединений для сервера базы данных hello. hello вызовы кода Hello [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) метод toorun hello инструкции SQL, которая обновляет таблицу hello. Toocheck checkError() пользовательский метод, если произошла ошибка и панику tooexit, если ошибка возникает.
+Код вызывает метод [sql.Open()](http://godoc.org/github.com/lib/pq#Open) для подключения к базе данных Azure для PostgreSQL, а затем проверяет подключение с помощью метода [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping). [Дескриптор базы данных](https://golang.org/pkg/database/sql/#DB) используется для всех компонентов. Он содержит пул подключений к серверу базы данных. Этот код вызывает метод [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) для выполнения инструкции SQL, которая обновляет таблицу. Пользовательский метод checkError() применяется для проверки наличия ошибок и аварийного выхода при их обнаружении.
 
-Замените hello `HOST`, `DATABASE`, `USER`, и `PASSWORD` параметры собственными значениями. 
+Замените значения параметров `HOST`, `DATABASE`, `USER` и `PASSWORD` своими значениями. 
 ```go
 package main
 
@@ -324,7 +324,7 @@ func main() {
 
     err = db.Ping()
     checkError(err)
-    fmt.Println("Successfully created connection toodatabase")
+    fmt.Println("Successfully created connection to database")
 
     // Delete some data from table.
     sql_statement := "DELETE FROM inventory WHERE name = $1;"

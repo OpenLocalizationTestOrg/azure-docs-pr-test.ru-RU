@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor и управление Hadoop с помощью API REST Ambari - Azure HDInsight | Документы Microsoft"
-description: "Узнайте, как toouse Ambari toomonitor кластеров Hadoop в Azure HDInsight и управления ими. В этом документе вы узнаете, как кластеры hello toouse Ambari API REST, входящий в состав HDInsight."
+title: "Мониторинг и управление Hadoop с помощью Ambari REST API в Azure HDInsight | Документация Майкрософт"
+description: "Сведения об использовании Ambari для отслеживания и администрирования кластеров Hadoop в Azure HDInsight. В этом документе рассказывается об использовании интерфейса REST API Ambari, предоставляемого с кластерами HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,51 +16,51 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1866a77c8e402231bccbcfba7174253aca41339b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7960d83bce22d4f671d61e9aaf55561bc24308f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-hdinsight-clusters-by-using-hello-ambari-rest-api"></a>Управление кластерами HDInsight с помощью API-интерфейса REST Ambari hello
+# <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Управление кластерами HDInsight с помощью REST API Ambari
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Узнайте, как toouse hello toomanage Ambari API-Интерфейс REST и наблюдения за кластерами Hadoop в Azure HDInsight.
+Узнайте, как использовать Ambari REST API для отслеживания и администрирования кластеров Hadoop в Azure HDInsight.
 
-Apache Ambari упрощает управление hello и мониторинг кластера Hadoop, предоставляя простой toouse веб-интерфейса пользователя и REST API. Ambari включается в кластерах HDInsight, использующих операционной системы Linux hello. Можно использовать Ambari toomonitor hello кластера и внести изменения в конфигурацию.
+Apache Ambari упрощает управление кластером Hadoop и его мониторинг за счет удобного пользовательского веб-интерфейса и интерфейса REST API. Ambari предоставляется с кластерами HDInsight, которые работают под управлением операционной системы Linux. Ambari можно использовать для мониторинга кластера и внесения изменений в его конфигурацию.
 
 ## <a id="whatis"></a>Что такое Ambari
 
-[Apache Ambari](http://ambari.apache.org) предоставляет веб-Интерфейс, который может быть используется tooprovision, управления и наблюдения за кластерами Hadoop. Разработчики могут интегрировать эти возможности в свои приложения с помощью hello [API-интерфейс REST Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+[Apache Ambari](http://ambari.apache.org) предоставляет веб-интерфейс, который можно использовать для подготовки и мониторинга кластеров Hadoop, а также управления их функционированием. Разработчики могут интегрировать эти возможности в своих приложениях с помощью [интерфейсов REST API Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 Ambari предоставляется по умолчанию с кластерами HDInsight на платформе Linux.
 
-## <a name="how-toouse-hello-ambari-rest-api"></a>Как toouse hello Ambari REST API
+## <a name="how-to-use-the-ambari-rest-api"></a>Как использовать интерфейс REST API Ambari
 
 > [!IMPORTANT]
-> Hello сведения и примеры в этом документе требуется кластер HDInsight, который использует операционная система Linux. Дополнительные сведения см. в статье [Руководство по Hadoop. Приступая к работе с Hadoop в HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+> Чтобы использовать сведения и примеры, описанные в этом документе, нужен кластер HDInsight с операционной системой Linux. Дополнительные сведения см. в статье [Руководство по Hadoop. Приступая к работе с Hadoop в HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-Hello в этом документе приведены примеры для как hello sh (bash) и PowerShell. Hello bash, примеры, были проверены с GNU bash 4.3.11, но должно работать с другими оболочками Unix. Примеры PowerShell Hello были протестированы в PowerShell 5.0, но должны работать вместе с PowerShell 3.0 или более поздней версии.
+Этот документ содержит примеры для оболочек Bourne (Bash) и PowerShell. Примеры Bash протестированы с помощью GNU Bash 4.3.11, но они должны работать и с другими оболочками Unix. Примеры PowerShell проверялись с помощью PowerShell 5.0, но они должны работать с PowerShell 3.0 или более поздней версии.
 
-При использовании hello __Bourne оболочки__ (Bash), необходимо иметь hello установлены следующие компоненты:
+Если вы используете __оболочку Bourne__ (Bash), установите следующие компоненты:
 
-* [cURL](http://curl.haxx.se/): перелистывание — это программа, может быть используется toowork с API REST с hello командной строки. В этом документе это используется toocommunicate с hello Ambari REST API.
+* [cURL](http://curl.haxx.se/) — это служебная программа для работы с интерфейсами REST API из командной строки. В этом документе она используется для взаимодействия с REST API Ambari.
 
-Если вы используете Bash или PowerShell, установите также [jq](https://stedolan.github.io/jq/). jq — это служебная программа для работы с документами JSON. Он используется в **все** hello примеры Bash и **один** примеров PowerShell hello.
+Если вы используете Bash или PowerShell, установите также [jq](https://stedolan.github.io/jq/). jq — это служебная программа для работы с документами JSON. Она используется во **всех** примерах Bash и в **одном** примере PowerShell.
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Базовый универсальный код ресурса для REST API Ambari
 
-Hello базовый URI для hello Ambari API-интерфейса REST на HDInsight — https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, где **CLUSTERNAME** — hello имя кластера.
+Базовый универсальный код ресурса (URI) для REST API Ambari в кластерах HDInsight выглядит следующим образом: https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, где **CLUSTERNAME** — это имя вашего кластера.
 
 > [!IMPORTANT]
-> Хотя полное доменное имя кластера hello в hello часть имени (FQDN) домена hello URI (CLUSTERNAME.azurehdinsight.net) без учета регистра, других экземпляров в hello URI чувствительны к регистру. Например, если кластер называется `MyCluster`, hello ниже приведены допустимые URI:
+> Хотя имя кластера в полном доменном имени в URI (CLUSTERNAME.azurehdinsight.net) указывается без учета регистра, другие вхождения этого URI учитывают регистр. Например, если кластер называется `MyCluster`, допустимые URI выглядят так:
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster`
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/MyCluster`
 > 
-> Hello следующие идентификаторы URI возвращает ошибку, так как hello второго вхождения имени hello не hello исправьте регистр.
+> Приведенные ниже URI возвратят ошибку, так как второе вхождение имени имеет неправильный регистр.
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster`
 >
@@ -68,22 +68,22 @@ Hello базовый URI для hello Ambari API-интерфейса REST на 
 
 ### <a name="authentication"></a>Аутентификация
 
-Подключение tooAmbari на HDInsight требуется протокол HTTPS. Имя учетной записи администратора используйте hello (по умолчанию hello — **администратора**) и пароль, указанный во время создания кластера.
+Подключение к Ambari в HDInsight выполняется по протоколу HTTPS. Используйте имя учетной записи администратора (по умолчанию — **admin**) и пароль, указанные при создании кластера.
 
 ## <a name="examples-authentication-and-parsing-json"></a>Примеры. Проверка подлинности и анализ JSON
 
-Hello следующие примеры демонстрируют, как toomake запроса GET к hello базовая Ambari REST API.
+В следующих примерах показано, как отправить запрос GET к базовому интерфейсу REST API Ambari:
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
 > [!IMPORTANT]
-> Hello Bash примеры в этом документе сделать hello следующие допущения:
+> Примеры Bash в этом документе основаны на следующих допущениях.
 >
-> * Hello имя входа для hello кластера является значением по умолчанию hello `admin`.
-> * `$PASSWORD`содержит пароль hello для hello команда входа HDInsight. Это значение можно задать с помощью команды `PASSWORD='mypassword'`.
-> * `$CLUSTERNAME`содержит имя кластера hello hello. Это значение можно задать с помощью команды `set CLUSTERNAME='clustername'`.
+> * Имя входа в кластер по умолчанию имеет значение `admin`.
+> * `$PASSWORD` содержит пароль для команды входа HDInsight. Это значение можно задать с помощью команды `PASSWORD='mypassword'`.
+> * `$CLUSTERNAME` содержит имя кластера. Это значение можно задать с помощью команды `set CLUSTERNAME='clustername'`.
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -92,12 +92,12 @@ $resp.Content
 ```
 
 > [!IMPORTANT]
-> Примеры PowerShell Hello в этом документе сделать hello следующие допущения:
+> Примеры PowerShell в этом документе основаны на следующих допущениях.
 >
-> * `$creds`представляет собой объект учетных данных, содержащий имя входа администратора hello и пароль для hello кластера. Это значение можно задать с помощью `$creds = Get-Credential -UserName "admin" -Message "Enter hello HDInsight login"` указанием hello учетных данных при появлении запроса.
-> * `$clusterName`представляет собой строку, содержащую имя кластера hello hello. Это значение можно задать с помощью команды `$clusterName="clustername"`.
+> * `$creds` — объект учетных данных, который содержит имя входа администратора и пароль для кластера. Это значение можно задать с помощью команды `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"`, а затем указать учетные данные при появлении запроса.
+> * `$clusterName` — строка, которая содержит имя кластера. Это значение можно задать с помощью команды `$clusterName="clustername"`.
 
-В обоих примерах возвращает документ JSON, который начинается с toohello аналогичные сведения, следующий пример:
+Оба примера возвращают документ JSON, который начинается со следующих сведений:
 
 ```json
 {
@@ -121,14 +121,14 @@ $resp.Content
 
 ### <a name="parsing-json-data"></a>Анализ данных JSON
 
-Hello следующий пример использует `jq` tooparse hello документ ответа JSON и отображать только hello `health_report` сведения из результатов hello.
+В следующем примере используется программа `jq` для анализа документа ответа JSON и отображения из результатов только сведений `health_report`.
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
 | jq '.Clusters.health_report'
 ```
 
-PowerShell 3.0 и более поздних версиях предоставляет hello `ConvertFrom-Json` , который преобразует hello документа JSON в объект, являющийся проще toowork с из PowerShell. Hello следующий пример использует `ConvertFrom-Json` toodisplay только hello `health_report` сведения из результатов hello.
+В PowerShell 3.0 и более поздних версий доступен командлет `ConvertFrom-Json`, преобразующий документ JSON в объект, который лучше работает с PowerShell. В следующем примере используется программа `ConvertFrom-Json` для отображения из результатов только сведений `health_report`.
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -138,13 +138,13 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]
-> Хотя большинство примеров в этом документе используется `ConvertFrom-Json` toodisplay элементов из документа ответа hello, hello [Ambari обновление конфигурации](#example-update-ambari-configuration) примере jq. В этом примере tooconstruct используется Jq шаблона из документа ответ JSON hello.
+> Хотя большинство примеров в этом документе используют `ConvertFrom-Json` для отображения элементов из документа ответа, пример [конфигурации обновления Ambari ](#example-update-ambari-configuration) использует jq. jq используется в этом примере для создания нового шаблона из документа ответа JSON.
 
-Полный перечень hello REST API см. [V1 Справочник по API Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Полный справочник по REST API см. [здесь](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-## <a name="example-get-hello-fqdn-of-cluster-nodes"></a>Пример: Получение hello полное доменное имя кластера узлов
+## <a name="example-get-the-fqdn-of-cluster-nodes"></a>Пример. Получение полного доменного имени для узлов кластера
 
-При работе с HDInsight, может возникнуть необходимость hello tooknow полное доменное имя (FQDN) узла кластера. Можно легко получить hello полное доменное имя для hello различных узлов в кластере hello, используя следующие примеры hello:
+При работе с HDInsight вам может потребоваться полное доменное имя (FQDN) узла кластера. FQDN можно легко получить для разных узлов в кластере с помощью следующих команд.
 
 * **Все узлы**
 
@@ -202,14 +202,14 @@ $respObj.Clusters.health_report
     $respObj.host_components.HostRoles.host_name
     ```
 
-## <a name="example-get-hello-internal-ip-address-of-cluster-nodes"></a>Пример: Получение hello внутренний IP-адрес кластера узлов
+## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Пример. Получение внутреннего IP-адреса узлов кластера
 
 > [!IMPORTANT]
-> Hello IP-адресов, возвращенных hello в примерах этого раздела, не напрямую Здравствуйте, доступны через Интернет. Они доступны только в пределах hello виртуальной сети Azure, содержащей hello кластера HDInsight.
+> IP-адреса, возвращенные в примерах из этого раздела, недоступны напрямую через Интернет. Они доступны только в пределах виртуальной сети Azure, содержащей кластер HDInsight.
 >
 > Дополнительные сведения о работе с виртуальными сетями и HDInsight см. в статье [Расширение возможностей HDInsight с помощью виртуальной сети Azure](hdinsight-extend-hadoop-virtual-network.md).
 
-toofind hello IP-адрес, необходимо знать hello внутренней полное доменное имя (FQDN) hello узлы кластера. Получив hello полное доменное имя, можно получить hello IP-адрес узла hello. Hello следующие примеры сначала запросить Ambari hello все узлы узла hello полное доменное имя, а затем запросить Ambari hello IP-адрес каждого узла.
+Чтобы найти IP-адрес, необходимо знать внутренние полные доменные имена (FQDN) узлов кластера. Если у вас есть полное доменное имя, вы можете получить IP-адрес узла. В следующих примерах у Ambari сначала запрашивается полное доменное имя для всех узлов, а затем — IP-адрес каждого узла.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
@@ -233,11 +233,11 @@ foreach($item in $respObj.items) {
 }
 ```
 
-## <a name="example-get-hello-default-storage"></a>Пример: Получение хранилища по умолчанию hello
+## <a name="example-get-the-default-storage"></a>Пример. Получение хранилища по умолчанию
 
-При создании кластера HDInsight, необходимо использовать учетную запись хранилища Azure или хранилища Озера данных хранения по умолчанию hello для hello кластера. Можно использовать эти сведения Ambari tooretrieve, после создания кластера hello. Например, если требуется, чтобы контейнер toohello tooread и запись данных за пределами HDInsight.
+При создании кластера HDInsight в качестве хранилища по умолчанию для кластера необходимо использовать учетную запись хранения Azure или Data Lake Store. Для получения этой информации после создания кластера можно использовать Ambari. Например, если нужно выполнить операции чтения или записи в контейнере за пределами HDInsight.
 
-Hello следующие примеры извлечь конфигурацию хранилища по умолчанию hello hello кластера:
+Следующие примеры извлекают конфигурацию хранилища, используемого в кластере по умолчанию.
 
 ```bash
 curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -252,15 +252,15 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]
-> Эти примеры возвращают hello первого применения конфигурации toohello сервера (`service_config_version=1`) которого содержит эту информацию. При извлечении значения, который был изменен после создания кластера можно требуются версии конфигурации toolist hello и получить последнюю версию hello.
+> Эти примеры возвращают первую конфигурацию, применяемую к серверу (`service_config_version=1`), который содержит эти сведения. Чтобы получить значение, которое было изменено после создания кластера, может потребоваться перечислить версии конфигурации и получить последнюю из них.
 
-Возвращаемое значение Hello — примерно tooone hello следующие примеры:
+Возвращаемое значение будет выглядеть, как один из следующих примеров:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`-Это значение указывает, что данный кластер hello с учетной записью хранилища Azure для хранилища по умолчанию. Hello `ACCOUNTNAME` значение является именем hello hello учетной записи хранения. Hello `CONTAINER` часть — имя hello hello контейнер больших двоичных объектов в учетной записи хранения hello. контейнер Hello — основной hello hello HDFS совместимый хранилища для кластера hello.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — это значение указывает, что кластер использует учетную запись хранения Azure в качестве хранилища по умолчанию. Значение `ACCOUNTNAME` — имя учетной записи хранилища. Часть `CONTAINER` — это имя контейнера больших двоичных объектов в учетной записи хранения. Контейнер является корнем совместимого хранилища HDFS для кластера.
 
-* `adl://home`-Это значение указывает, что данный кластер hello использует хранилище Озера данных Azure для хранилища по умолчанию.
+* `adl://home` — это значение указывает, что кластер использует Azure Data Lake Store в качестве хранилища по умолчанию.
 
-    hello toofind имя учетной записи хранилища Озера данных, используйте следующие примеры hello.
+    Чтобы найти имя учетной записи Data Lake Store, используйте следующие примеры:
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -274,9 +274,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Hello возвращаемое значение аналогично слишком`ACCOUNTNAME.azuredatalakestore.net`, где `ACCOUNTNAME` — имя hello hello хранилища Озера данных.
+    Возвращается похожее значение: `ACCOUNTNAME.azuredatalakestore.net`, где `ACCOUNTNAME` — имя учетной записи Data Lake Store.
 
-    каталог toofind hello в хранилище Озера данных, содержащем hello хранилища для кластера hello, hello используйте следующие примеры:
+    Чтобы найти каталог в Data Lake Store, содержащий хранилище кластера, используйте следующие примеры:
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -290,15 +290,15 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Hello возвращаемое значение аналогично слишком`/clusters/CLUSTERNAME/`. Это значение представляет собой путь в пределах hello хранилища Озера данных. Этот путь является корнем hello hello совместимые файловой системы HDFS для hello кластера. 
+    Вернется похожее значение: `/clusters/CLUSTERNAME/`. Это значение представляет путь в учетной записи Data Lake Store. Путь является корнем совместимой файловой системы HDFS для кластера. 
 
 > [!NOTE]
-> Hello `Get-AzureRmHDInsightCluster` командлета, предоставляемые [Azure PowerShell](/powershell/azure/overview) также возвращает hello данные хранилища для кластера hello.
+> Командлет `Get-AzureRmHDInsightCluster`, доступный в [Azure PowerShell](/powershell/azure/overview), также возвращает сведения о хранилище для кластера.
 
 
 ## <a name="example-get-configuration"></a>Пример. Получение конфигурации
 
-1. Возвращение конфигураций hello, доступные для кластера.
+1. Получите конфигурации, которые доступны для кластера.
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
@@ -310,7 +310,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.Content
     ```
 
-    Этот пример возвращает документ JSON, содержащий текущую конфигурацию hello (определяется hello *тега* значение) для hello компонентов, установленных на кластере hello. Hello ниже приведен фрагмент кода hello данным, возвращаемым типом кластера Spark.
+    Этот пример возвращает документ JSON с текущей конфигурацией (идентифицируется по значению *tag*) для компонентов, установленных в кластере. Ниже приведен пример фрагмента данных, возвращаемых из типа кластера Spark.
    
    ```json
    "spark-metrics-properties" : {
@@ -330,7 +330,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
    }
    ```
 
-2. Получите конфигурацию hello для hello компонента, которые вас интересуют. Следующий пример, замените в hello `INITIAL` с hello тег значение, возвращаемое из предыдущего запроса hello.
+2. Извлеките конфигурацию для интересующего вас компонента. В следующем примере замените `INITIAL` значением тега, возвращенным из предыдущего запроса.
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
@@ -342,11 +342,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content
     ```
 
-    Этот пример возвращает документ JSON, содержащий hello текущую конфигурацию для hello `core-site` компонента.
+    Этот пример возвращает документ JSON, содержащий текущую конфигурацию для компонента `core-site`.
 
 ## <a name="example-update-configuration"></a>Пример. Обновление конфигурации
 
-1. Получите текущую конфигурацию hello, где хранятся Ambari как hello» требуемой конфигурацией»:
+1. Получите текущую конфигурацию, которую Ambari хранит в виде "требуемой конфигурации":
 
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
@@ -357,7 +357,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
         -Credential $creds
     ```
 
-    Этот пример возвращает документ JSON, содержащий текущую конфигурацию hello (определяется hello *тега* значение) для hello компонентов, установленных на кластере hello. Hello ниже приведен фрагмент кода hello данным, возвращаемым типом кластера Spark.
+    Этот пример возвращает документ JSON с текущей конфигурацией (идентифицируется по значению *tag*) для компонентов, установленных в кластере. Ниже приведен пример фрагмента данных, возвращаемых из типа кластера Spark.
    
     ```json
     "spark-metrics-properties" : {
@@ -377,9 +377,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     }
     ```
    
-    Из этого списка требуется имя hello toocopy hello компонента (например, **spark\_thrift\_sparkconf** и hello **тега** значение.
+    Из этого списка нужно скопировать имя компонента (например, **spark\_thrift\_sparkconf**) и значение **tag**.
 
-2. Получить конфигурацию hello для компонента hello и тег с помощью hello, следующие команды:
+2. Извлеките конфигурацию для компонента и значение tag с помощью следующих команд:
    
     ```bash
     curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
@@ -396,21 +396,21 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     ```
 
     > [!NOTE]
-    > Замените **spark thrift-sparkconf** и **начальной** с компонентом hello и тег, который необходимо tooretrieve hello конфигурация для.
+    > Замените **spark-thrift-sparkconf** и **INITIAL** на компонент и значение tag, по которым хотите получить конфигурацию.
    
-    Jq является данных используется tooturn hello, полученного из HDInsight в новый шаблон конфигурации. В частности эти примеры выполнения hello, следующие действия:
+    jq используется для преобразования данных, извлеченных из HDInsight в новый шаблон конфигурации. В частности, эти примеры выполняют следующие действия.
    
-    * Создает уникальное значение, содержащее строку hello «версия» и hello Дата, которая хранится в `newtag`.
+    * Создает уникальное значение, содержащее строку version и дату, хранящуюся в `newtag`.
 
-    * Создает документ корневой hello новой требуемой конфигурации.
+    * Создает корневой документ для новой требуемой конфигурации.
 
-    * Возвращает hello содержимое hello `.items[]` массива и добавляет его в разделе hello **desired_config** элемента.
+    * Возвращает содержимое массива `.items[]` и добавляет его в элемент **desired_config**.
 
-    * Удаляет hello `href`, `version`, и `Config` элементы, как эти элементы не требуется toosubmit новую конфигурацию.
+    * Удаляет элементы `href`, `version` и `Config`, так как они не нужны для отправки новой конфигурации.
 
-    * Добавляет элемент `tag` со значением `version#################`. Hello числовую часть зависит hello текущую дату. Каждая конфигурация должна иметь уникальное значение tag.
+    * Добавляет элемент `tag` со значением `version#################`. Числовая часть основана на текущей дате. Каждая конфигурация должна иметь уникальное значение tag.
      
-    Наконец, данные hello сохраняются toohello `newconfig.json` документа. Структура документа Hello должен выглядеть примерно toohello следующий пример:
+    Наконец, данные сохраняются в документе `newconfig.json`. Структура документа должна выглядеть следующим образом:
      
      ```json
     {
@@ -428,14 +428,14 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     }
     ```
 
-3. Откройте hello `newconfig.json` документа и изменить или добавить значения в hello `properties` объекта. Hello следующий пример изменяет hello значение `"spark.yarn.am.memory"` из `"1g"` слишком`"3g"`. Он также добавляет `"spark.kryoserializer.buffer.max"` со значением `"256m"`.
+3. Откройте документ `newconfig.json` и измените или добавьте значения в объекте `properties`. Следующий пример изменяет значение `"spark.yarn.am.memory"` с `"1g"` на `"3g"`. Он также добавляет `"spark.kryoserializer.buffer.max"` со значением `"256m"`.
    
         "spark.yarn.am.memory": "3g",
         "spark.kyroserializer.buffer.max": "256m",
    
-    Сохраните файл hello, после завершения внесения изменений.
+    После завершения работы сохраните файл.
 
-4. Используйте следующие команды toosubmit hello обновлена конфигурация tooAmbari hello.
+4. Выполните следующие команды, чтобы отправить обновленную конфигурацию в Ambari:
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
@@ -451,13 +451,13 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content
     ```
    
-    Эти команды Отправить содержимое hello hello **newconfig.json** файл toohello кластера как hello новые требуемой конфигурации. Hello запрос возвращает документ JSON. Hello **versionTag** элемент в этом документе должна соответствовать версии hello отправки, а hello **configs** объект содержит запрошенные изменения конфигурации hello.
+    Эти команды передают содержимое файла **newconfig.json** в кластер в качестве новой требуемой конфигурации. Запрос возвращает документ JSON. Элемент **versionTag** в этом документе должен совпадать с отправленной версией, а объект **configs** содержит запрошенные изменения конфигурации.
 
 ### <a name="example-restart-a-service-component"></a>Пример. Перезапуск компонента службы
 
-На этом этапе при рассмотрении hello Ambari web пользовательского интерфейса hello службу Spark показывает, что он требует toobe перезапуска, чтобы новая конфигурация hello вступило в силу. Используйте следующие шаги toorestart hello службы hello.
+На этом этапе веб-интерфейс Ambari указывает на то, что вам необходимо перезапустить службу Spark, чтобы новая конфигурация вступила в силу. Для перезапуска службы выполните приведенные ниже действия.
 
-1. Используйте следующие tooenable в режиме обслуживания для hello службу Spark hello.
+1. Выполните следующую команду, чтобы перевести службу Spark в режим обслуживания.
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -474,7 +474,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content
     ```
    
-    Эти команды передают сервере toohello документа JSON, который включает режим обслуживания. Можно проверить, служба hello теперь находится в режиме обслуживания с помощью hello, следующий запрос:
+    Эти команды отправляют документ JSON на сервер, который включает режим обслуживания. Проверить, находится ли служба в этом режиме, можно с помощью следующего запроса.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -489,9 +489,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.ServiceInfo.maintenance_state
     ```
    
-    Hello возвращаемым значением является `ON`.
+    Возвращается значение `ON`.
 
-2. Затем выполните следующие tooturn выключение службы hello hello.
+2. Затем выполните следующую команду, чтобы отключить службу.
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -508,7 +508,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $resp.Content
     ```
     
-    Hello ответ — аналогично toohello в следующем примере:
+    Ответ будет выглядеть примерно так:
    
     ```json
     {
@@ -521,9 +521,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     ```
     
     > [!IMPORTANT]
-    > Hello `href` значения, возвращенного этот URI используется hello внутренний IP-адрес узла кластера hello. toouse его из кластера вне hello, замены части hello «10.0.0.18:8080» hello полное доменное имя кластера hello. 
+    > Значение `href` , возвращенное этим универсальным кодом ресурса (URI), использует внутренний IP-адрес узла кластера. Чтобы использовать его извне кластера, замените часть "10.0.0.18:8080" на полное доменное имя кластера. 
     
-    Привет, следующие команды получить состояние hello hello запроса:
+    Например, следующие команды получают состояние запроса:
 
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -538,9 +538,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     $respObj.Requests.request_status
     ```
 
-    Ответ `COMPLETED` указывает завершил этот запрос hello.
+    Ответ `COMPLETED` указывает, что запрос завершен.
 
-3. После завершения предыдущего запроса hello, используйте следующие службы hello toostart hello.
+3. После завершения предыдущего запроса используйте следующую команду для запуска службы.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -555,9 +555,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
     ```
-    Служба Hello теперь использует hello новую конфигурацию.
+    Теперь служба использует новую конфигурацию.
 
-4. Наконец используйте следующие tooturn отключение режима обслуживания hello.
+4. Наконец, используйте следующую команду для отключения режима обслуживания.
    
     ```bash
     curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
@@ -575,5 +575,5 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Полный перечень hello REST API см. [V1 Справочник по API Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Полный справочник по REST API см. [здесь](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

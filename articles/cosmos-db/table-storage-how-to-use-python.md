@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse хранилище таблиц Azure с Python | Документы Microsoft"
-description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
+title: "Как использовать хранилище таблиц Azure с Python | Документация Майкрософт"
+description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
 services: cosmos-db
 documentationcenter: python
 author: mimig1
@@ -14,38 +14,38 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: mimig
-ms.openlocfilehash: 3382fcd5667a93d5533b5f8fad1d3d1c27f23482
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0c46f04786ba4b62bd7ca22c5e25643123e6e136
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-table-storage-in-python"></a>Как toouse хранилища таблиц на Python
+# <a name="how-to-use-table-storage-in-python"></a>Как использовать хранилище таблиц в Python
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-В этом руководстве показано, как hello распространенных сценариев хранилища таблиц Azure tooperform в Python с помощью [пакет SDK хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python). Hello сценарии включают создание и удаление таблицы, вставка и выполнения запросов к сущностям.
+В этом руководстве объясняется, как реализовать типичные сценарии хранилища таблиц Azure в Python с помощью [пакета SDK для службы хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python). Здесь описаны такие сценарии, как создание и удаление таблицы, вставка и запрос сущностей.
 
-При одновременной ликвидации hello сценарии в этом учебнике вы можете toorefer toohello [пакет SDK хранилища Azure для Python API-ссылка](https://azure-storage.readthedocs.io/en/latest/index.html).
+Работая над сценариями в этом руководстве, вы можете использовать в качестве справки [пакет SDK для службы хранилища Microsoft Azure для Python](https://azure-storage.readthedocs.io/en/latest/index.html).
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="install-hello-azure-storage-sdk-for-python"></a>Установка hello пакет SDK хранилища Azure для Python
+## <a name="install-the-azure-storage-sdk-for-python"></a>Установка пакета SDK для службы хранилища Microsoft Azure для Python
 
-После создания учетной записи хранилища, следующим шагом является tooinstall hello [пакет SDK хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python). Для получения сведений об установке hello SDK, см. toohello [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) файл hello SDK хранилища для репозитория Python на GitHub.
+После создания учетной записи хранения установите [пакет SDK для службы хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python). Дополнительные сведения по установке пакета SDK см. в файле [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) в репозитории GitHub Storage SDK for Python (пакет SDK для службы хранилища для Python).
 
 ## <a name="create-a-table"></a>Создание таблицы
 
-toowork с hello Python службы таблиц Azure, необходимо импортировать hello [TableService] [ py_TableService] модуля. Поскольку вы будете работать с сущностями в таблице, необходимо также hello [сущности] [ py_Entity] класса. Добавьте следующий код верхней hello вашей Python файл tooimport оба.
+Для работы со службой таблиц Azure в Python необходимо импортировать модуль [TableService][py_TableService]. Так как вы будете работать с сущностями в таблице, вам также нужен класс [Entity][py_Entity]. Добавьте следующий код в начало файла Python, чтобы импортировать модуль и класс:
 
 ```python
 from azure.storage.table import TableService, Entity
 ```
 
-Создайте объект [TableService][py_TableService], передав ключ учетной записи и имя учетной записи хранения. Замените `myaccount` и `mykey` имя учетной записи и ключа и вызова [create_table] [ py_create_table] toocreate hello таблица в хранилище Azure.
+Создайте объект [TableService][py_TableService], передав ключ учетной записи и имя учетной записи хранения. Замените `myaccount` и `mykey` именем и ключом своей учетной записи и вызовите метод [create_table][py_create_table], чтобы создать таблицу в службе хранилища Azure.
 
 ```python
 table_service = TableService(account_name='myaccount', account_key='mykey')
@@ -53,48 +53,48 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 table_service.create_table('tasktable')
 ```
 
-## <a name="add-an-entity-tooa-table"></a>Добавьте таблицу tooa сущности
+## <a name="add-an-entity-to-a-table"></a>Добавление сущности в таблицу
 
-tooadd сущность сначала создать объект, представляющий сущности, затем передайте hello объекта toohello [TableService][py_TableService].[ insert_entity] [ py_insert_entity] метод. Hello объекта сущности может быть словарь или объект типа [сущности][py_Entity]и определяет вашего лица имена и значения свойств. Каждой сущности должны содержать необходимые hello [PartitionKey и RowKey](#partitionkey-and-rowkey) свойства, в добавление tooany другие свойства необходимо указать для сущности hello.
+Чтобы добавить сущность, сначала создайте объект, который представляет сущность, затем передайте объект в метод [TableService][py_TableService].[insert_entity][py_insert_entity]. Объект сущности может быть словарем или объектом типа [Entity][py_Entity]. Он определяет имена и значения свойств сущности. Каждая сущность должна включать требуемые свойства [PartitionKey и RowKey](#partitionkey-and-rowkey) помимо других свойств, определенных для сущности.
 
-В этом примере создается объект словаря представляет сущность, затем передает его toohello [insert_entity] [ py_insert_entity] tooadd метод его toohello таблицы:
+В этом примере создается объект словаря, который представляет сущность, а затем передает его в метод [insert_entity][py_insert_entity], чтобы добавить его в таблицу:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-В этом примере создается [сущности] [ py_Entity] объекта, а затем передает его toohello [insert_entity] [ py_insert_entity] tooadd метод его toohello таблицы:
+В этом примере создается объект [Entity][py_Entity], а затем передает его в метод [insert_entity][py_insert_entity], чтобы добавить его в таблицу:
 
 ```python
 task = Entity()
 task.PartitionKey = 'tasksSeattle'
 task.RowKey = '002'
-task.description = 'Wash hello car'
+task.description = 'Wash the car'
 task.priority = 100
 table_service.insert_entity('tasktable', task)
 ```
 
 ### <a name="partitionkey-and-rowkey"></a>PartitionKey и RowKey
 
-Для каждой сущности необходимо указать свойства **PartitionKey** и **RowKey**. Это hello уникальные идентификаторы объектов, как вместе они формируют hello первичного ключа сущности. С помощью этих значений можно отправлять запросы быстрее, чем к другим свойствам, так как индексируются только эти свойства.
+Для каждой сущности необходимо указать свойства **PartitionKey** и **RowKey**. Это уникальные идентификаторы сущностей, так как вместе они формируют первичный ключ сущности. С помощью этих значений можно отправлять запросы быстрее, чем к другим свойствам, так как индексируются только эти свойства.
 
-Здравствуйте, служба таблиц использует **PartitionKey** toointelligently распределения таблицы сущностей по узлам хранилища. Сущности, которые hello же **PartitionKey** хранятся на hello того же узла. **RowKey** hello уникальным идентификатором hello сущности внутри раздела hello, он принадлежит.
+Служба таблиц использует **PartitionKey** для интеллектуального распределения сущностей таблицы по узлам хранилища. Сущности с одним значением **PartitionKey** хранятся на одном узле. **RowKey** — это уникальный идентификатор сущности в разделе, которому она принадлежит.
 
 ## <a name="update-an-entity"></a>Обновление сущности
 
-tooupdate всех значений свойств сущности, вызовите hello [update_entity] [ py_update_entity] метод. В этом примере показано, как tooreplace существующую сущность с обновленной версии:
+Чтобы обновить все значения свойств сущности, вызовите метод [update_entity][py_update_entity]. Этот пример показывает, как заменить сущность обновленной версией:
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
 table_service.update_entity('tasktable', task)
 ```
 
-Если hello сущности, которая обновляется еще не существует, то hello операция обновления завершится ошибкой. Toostore сущность ли он существует, или нет, используйте [insert_or_replace_entity][py_insert_or_replace_entity]. В следующем примере hello первый вызов hello заменяет существующую сущность hello. При втором вызове Hello вставит новую сущность, так как сущность с hello указан PartitionKey и RowKey существует в таблице hello.
+Если обновляемая сущность больше не существует, операция обновления завершается ошибкой. Если вы хотите сохранить сущность независимо от того, существует она или нет, используйте метод [insert_or_replace_entity][py_insert_or_replace_entity]. В следующем примере первый вызов заменит существующую сущность. Второй вызов вставит новую сущность, так как в таблице нет сущности с указанными свойствами PartitionKey и RowKey.
 
 ```python
-# Replace hello entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello garbage again', 'priority' : 250}
+# Replace the entity created earlier
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
@@ -103,11 +103,11 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> Hello [update_entity] [ py_update_entity] метод заменяет все свойства и значения существующей сущности, который затем можно также использовать свойства tooremove из имеющейся сущности. Можно использовать hello [merge_entity] [ py_merge_entity] tooupdate метод существующей сущности со значениями новых или измененных свойств без полной замены hello сущности.
+> Метод [update_entity][py_update_entity] заменяет все свойства и значения сущности. Его также можно использовать для удаления свойства из сущности. Чтобы обновить сущность с помощью новых или измененных значений свойств без полной замены сущности используйте метод [merge_entity][py_merge_entity].
 
 ## <a name="modify-multiple-entities"></a>Изменение нескольких сущностей
 
-tooensure Здравствуйте atomic обработки запроса службой таблиц hello, вы можете отправить несколько операций вместе в одном пакете. Во-первых, используйте hello [TableBatch] [ py_TableBatch] класса tooadd один пакет нескольких операций tooa. Затем вызовите [TableService][py_TableService].[ commit_batch] [ py_commit_batch] toosubmit операции hello в атомарной операции. Все сущности toobe, изменения в пакете должны находиться в hello одной секции.
+Для атомарной обработки запроса службой таблиц можно отправить сразу несколько операций в пакете. Сначала используйте класс [TableBatch][py_TableBatch], чтобы добавить несколько операций в одном пакете. Затем вызовите метод [TableService][py_TableService].[commit_batch][py_commit_batch], чтобы отправить операции в атомарной операции. Все сущности, которые должны быть изменены в пакете, должны находиться в одном разделе.
 
 В этом примере показано добавление двух сущностей в пакете:
 
@@ -115,17 +115,17 @@ tooensure Здравствуйте atomic обработки запроса сл
 from azure.storage.table import TableBatch
 batch = TableBatch()
 task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean hello bathroom', 'priority' : 100}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
 ```
 
-Пакеты также может использоваться с синтаксисом диспетчера контекста hello:
+Для пакетов также можно использовать синтаксис диспетчера контекста:
 
 ```python
 task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean hello bathroom', 'priority' : 100}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
@@ -134,7 +134,7 @@ with table_service.batch('tasktable') as batch:
 
 ## <a name="query-for-an-entity"></a>Запрос сущности
 
-tooquery для сущности в таблице, передать его PartitionKey и RowKey toohello [TableService][py_TableService].[ get_entity] [ py_get_entity] метод.
+Чтобы запросить сущность в таблице, передайте ее свойства PartitionKey и RowKey в метод [TableService][py_TableService].[get_entity][py_get_entity].
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -144,7 +144,7 @@ print(task.priority)
 
 ## <a name="query-a-set-of-entities"></a>Запрос набора сущностей
 
-Вы можете запросить набор сущностей, указав строку фильтра с hello **фильтра** параметра. Этот пример находит все задачи в Сиэтле, используя фильтр PartitionKey:
+Можно запросить набор сущностей, указав строку фильтра с помощью параметра **filter**. Этот пример находит все задачи в Сиэтле, используя фильтр PartitionKey:
 
 ```python
 tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
@@ -155,12 +155,12 @@ for task in tasks:
 
 ## <a name="query-a-subset-of-entity-properties"></a>Запрос подмножества свойств сущности
 
-Также можно ограничить свойства, возвращаемые для каждой сущности в запросе. Этот метод, который называется *проекцией*, снижает потребление пропускной способности и может повысить производительность запросов, особенно для больших сущностей и наборов результатов. Используйте hello **выберите** имена параметра и передайте hello hello свойства, которые вы хотите вернул toohello клиента.
+Также можно ограничить свойства, возвращаемые для каждой сущности в запросе. Этот метод, который называется *проекцией*, снижает потребление пропускной способности и может повысить производительность запросов, особенно для больших сущностей и наборов результатов. Используйте параметр **select** и передайте имена свойств, которые необходимо вернуть клиенту.
 
-запрос Hello в hello, следующий код возвращает только hello описания сущности в таблице hello.
+Запрос в следующем коде возвращает только описания сущностей в таблице.
 
 > [!NOTE]
-> Здравствуйте, следующий фрагмент кода работает только с hello хранилища Azure. Не поддерживается эмулятором хранилища hello.
+> Следующий фрагмент работает только для службы хранилища Azure. Его не поддерживает эмулятор хранения.
 
 ```python
 tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
@@ -170,7 +170,7 @@ for task in tasks:
 
 ## <a name="delete-an-entity"></a>Удаление сущности
 
-Удаление сущности, передав его PartitionKey и RowKey toohello [delete_entity] [ py_delete_entity] метод.
+Чтобы удалить сущность, передайте ее свойства PartitionKey и RowKey в метод [delete_entity][py_delete_entity].
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
@@ -178,7 +178,7 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 
 ## <a name="delete-a-table"></a>Удаление таблицы
 
-Если вы больше не нужна, таблицы или любого hello сущностей внутри него, вызовите hello [delete_table] [ py_delete_table] toopermanently метод удалить таблицу hello из хранилища Azure.
+Если вам больше не нужна таблица или сущность в ней, вызовите метод [delete_table][py_delete_table], чтобы полностью удалить таблицу из службы хранилища Azure.
 
 ```python
 table_service.delete_table('tasktable')

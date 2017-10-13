@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с ArcGIS Online | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и ArcGIS Online."
+description: "Узнайте, как настроить единый вход Azure Active Directory в ArcGIS Online."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: f3dd55d798cf3256fb2758e011f33946baa405ce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: df72270ca6443b456c079b22425f1660aa522389
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Руководство по интеграции Azure Active Directory с ArcGIS Online
 
-В этом учебнике вы узнаете, как toointegrate ArcGIS Online с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать ArcGIS Online с Azure Active Directory (Azure AD).
 
-Интеграция ArcGIS Online с Azure AD предоставляет hello следующие преимущества:
+Интеграция ArcGIS Online с Azure AD обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего tooArcGIS доступ через Интернет
-- Можно включить на пользователей tooautomatically get вошедшего tooArcGIS сети (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к ArcGIS Online.
+- Вы можете включить автоматический вход пользователей в ArcGIS Online (единый вход) с учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-tooenable single sign-on with ArcGIS Online, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in ArcGIS Online.
+To enable single sign-on with ArcGIS Online, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in ArcGIS Online.
 
 >[!Note]: 
->This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с ArcGIS Online требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с ArcGIS Online, вам потребуется:
 
 - подписка Azure AD;
 - подписка ArcGIS Online с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление ArcGIS Online из галереи hello
+1. Добавление ArcGIS Online из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-arcgis-online-from-hello-gallery"></a>Добавление ArcGIS Online из галереи hello
-tooconfigure hello интеграции ArcGIS сети в Azure AD, вы должны tooadd ArcGIS сети из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-arcgis-online-from-the-gallery"></a>Добавление ArcGIS Online из коллекции
+Чтобы настроить интеграцию ArcGIS Online с Azure AD, необходимо добавить ArcGIS Online из коллекции в список управляемых приложений SaaS.
 
-**tooadd ArcGIS сети из галереи hello выполните hello следующие шаги.**
+**Чтобы добавить ArcGIS Online из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **новое приложение** кнопку сверху "hello" hello диалоговое окно tooadd новое приложение.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **ArcGIS Online**.
+4. В поле поиска введите **ArcGIS Online**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_search.png)
 
-5. В панели результатов hello выберите **ArcGIS Online**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **ArcGIS Online** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в ArcGIS Online с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в ArcGIS сети является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в ArcGIS документации должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в ArcGIS Online соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в ArcGIS Online.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** ArcGIS документации.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве **имени пользователя** в ArcGIS Online.
 
-tooconfigure и тестирования Azure AD единого входа в ArcGIS Online, необходимы следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в ArcGIS Online, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя, прошедшего ArcGIS Online](#creating-an-arcgis-online-test-user)**  -toohave аналог Саймон Britta документации ArcGIS, представление связанных toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя ArcGIS Online](#creating-an-arcgis-online-test-user)** нужно для того, чтобы в ArcGIS Online также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в ArcGIS документации приложения.
+В этом разделе описано, как на портале Azure включить единый вход Azure AD и настроить его в приложении ArcGIS Online.
 
-**tooconfigure Azure AD единого входа в ArcGIS Online выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в ArcGIS Online, выполните следующие действия.**
 
-1. В hello в hello портала Azure **ArcGIS Online** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **ArcGIS Online** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
 
-3. На hello **URL-адреса и домена ArcGIS** выполните следующий шаг hello:
+3. В разделе **Домены и URL-адреса приложения ArcGIS Online** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_url.png)
 
-    В hello **URL-адрес входа** текстовое значение hello типа, используя следующий шаблон hello:`https://<company>.maps.arcgis.com`
+    В текстовом поле **URL-адрес для входа** введите значение в следующем формате: `https://<company>.maps.arcgis.com`.
 
     > [!NOTE] 
-    > Это значение не реальными hello. Измените значение этого параметра hello фактический URL-адрес входа. Обратитесь к [группа поддержки клиента в сети ArcGIS](http://support.esri.com/) tooget это значение. 
+    > Это значение приведено только для примера. Вместо него необходимо указать фактический URL-адрес входа. Для получения этого значения обратитесь к [группе поддержки ArcGIS Online](http://support.esri.com/). 
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
 
@@ -145,61 +145,61 @@ tooconfigure и тестирования Azure AD единого входа в A
 
     ![Корпоративные имена входа](./media/active-directory-saas-arcgis-tutorial/ic784744.png "Корпоративные имена входа")
 
-10. На hello **Настройка поставщика удостоверений** конфигурации выполните следующие шаги hello:
+10. На странице **Назначение поставщика удостоверений** выполните следующие действия.
    
     ![Назначение поставщика удостоверений](./media/active-directory-saas-arcgis-tutorial/ic784745.png "Назначение поставщика удостоверений")
    
-    а. В hello **имя** текстовом поле введите имя вашей организации.
+    а. В текстовое поле **Name** (Имя) введите название своей организации.
 
-    b. Для **метаданные для hello поставщика удостоверений предприятия будут передаваться с помощью**выберите **файл**.
+    b. Для параметра **Metadata for the Enterprise Identity Provider will be supplied using** (В предоставлении метаданных для корпоративного поставщика удостоверений будет использоваться) выберите значение **Файл**.
 
-    c. tooupload скачанный файл метаданных, щелкните **выбрать файл**.
+    c. Чтобы отправить загруженный файл метаданных, нажмите кнопку **Выбрать файл**.
 
-    d. Щелкните **SET IDENTITY PROVIDER** (Задать поставщик удостоверений).
+    г) Щелкните **SET IDENTITY PROVIDER** (Задать поставщик удостоверений).
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-arcgis-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из Саймон Britta.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи Britta Simon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-arcgis-online-test-user"></a>Создание тестового пользователя ArcGIS Online
 
-В порядке tooenable toolog пользователей Azure AD в ArcGIS Online их необходимо подготовить в ArcGIS Online.  
-В случае hello документации ArcGIS Подготовка осуществляется вручную.
+Чтобы пользователи Azure AD могли выполнять вход в ArcGIS Online, они должны быть подготовлены в ArcGIS Online.  
+В случае ArcGIS Online подготовка выполняется вручную.
 
-**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
+**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
 
-1. Войдите в tooyour **ArcGIS** клиента.
+1. Войдите в клиент **ArcGIS** .
 
 2. Щелкните **INVITE MEMBERS** (Пригласить участников).
    
@@ -209,37 +209,37 @@ tooconfigure и тестирования Azure AD единого входа в A
    
     ![Автоматическое добавление участников](./media/active-directory-saas-arcgis-tutorial/ic784748.png "Автоматическое добавление участников")
 
-4. На hello **члены** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Участники** выполните следующие действия.
    
      ![Добавление и просмотр](./media/active-directory-saas-arcgis-tutorial/ic784749.png "Добавление и просмотр")
     
-     а. Введите hello **электронной почты**, **имя**, и **Фамилия** действительной учетной записи AAD, вы хотите tooprovision.
+     а. Введите в поля **Email** (Адрес электронной почты), **First name** (Имя) и **Last name** (Фамилия) соответствующие данные действующей учетной записи Azure AD, которую необходимо подготовить.
   
      b. Нажмите кнопку **ADD AND REVIEW** (Добавить и просмотреть).
-5. Просмотрите данные hello введенные данные и нажмите кнопку **добавить ЧЛЕНОВ**.
+5. Просмотрите введенные данные и нажмите кнопку **ADD MEMBERS** (Добавить участников).
    
     ![Добавление участника](./media/active-directory-saas-arcgis-tutorial/ic784750.png "Добавление участника")
         
     > [!NOTE]
-    > Hello владельцем учетной записи Azure Active Directory получит сообщение электронной почты и выполните их учетных записей tooconfirm ссылку, чтобы она стала активной.
+    > Владелец учетной записи Azure Active Directory получит по электронной почте сообщение со ссылкой для активации учетной записи.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooArcGIS доступа через Интернет.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к ArcGIS Online.
 
 ![Назначение пользователя][200] 
 
-**tooassign Britta Simon tooArcGIS через Интернет, выполнять hello следующие шаги:**
+**Чтобы назначить пользователя Britta Simon в ArcGIS Online, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **ArcGIS Online**.
+2. Из списка приложений выберите **ArcGIS Online**.
 
     ![Настройка единого входа](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -247,7 +247,7 @@ tooconfigure и тестирования Azure AD единого входа в A
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -255,14 +255,14 @@ tooconfigure и тестирования Azure AD единого входа в A
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello ArcGIS Online плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour ArcGIS интерактивных приложений.
-Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
+Щелкнув элемент "ArcGIS Online" на панели доступа, вы автоматически войдете в приложение ArcGIS Online.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

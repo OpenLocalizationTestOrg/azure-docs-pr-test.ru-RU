@@ -1,6 +1,6 @@
 ---
-title: "aaaDesign вашей первой базы данных SQL Azure — C# | Документы Microsoft"
-description: "Дополнительные сведения toodesign первой базы данных Azure SQL и подключения tooit программы на C# с помощью ADO.NET."
+title: "Проектирование первой базы данных SQL Azure на языке C# | Документация Майкрософт"
+description: "Узнайте, как спроектировать свою первую базу данных SQL Azure и подключиться к ней с помощью программы на языке C#, используя ADO.NET."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -9,27 +9,27 @@ editor: CarlRabeler
 tags: 
 ms.assetid: 
 ms.service: sql-database
-ms.custom: develop databases
+ms.custom: develop databases, mvc
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 07/31/2017
-ms.author: genemi;carlrab
-ms.openlocfilehash: 8161de24bff1ec2fa307efa93adab2bd1b761fd9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.date: 08/25/2017
+ms.author: genemi
+ms.openlocfilehash: 1deffdd05c195597f4c63e3b5570ed94566b1f7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Проектирование базы данных SQL Azure и подключение к ней с помощью C# и ADO.NET
 
-База данных SQL Azure — это реляционной базы данных как a служба (DBaaS) в hello облака Майкрософт («Azure»). В этом учебнике вы узнаете, как toouse hello портал Azure и ADO.NET с помощью Visual Studio: 
+База данных SQL Azure — это реляционная база данных как служба (DBaaS) в Microsoft Cloud (Azure). Из этого руководства вы узнаете, как с помощью портала Azure и ADO.NET с Visual Studio выполнить следующие действия: 
 
 > [!div class="checklist"]
-> * Создание базы данных в hello портал Azure
-> * Настройка правила брандмауэра уровня сервера в hello портал Azure
-> * Подключение toohello базы данных с помощью ADO.NET и Visual Studio
+> * создать базу данных на портале Azure;
+> * настроить правило брандмауэра на уровне сервера на портале Azure;
+> * подключиться к базе данных с помощью ADO.NET и Visual Studio;
 > * создать таблицы с помощью ADO.NET;
 > * вставить, обновить и удалить данные с помощью ADO.NET; 
 > * выполнить запрос данных с помощью ADO.NET.
@@ -40,14 +40,14 @@ ms.lasthandoff: 10/06/2017
 
 Убедитесь, что установлен [Visual Studio Community 2017, Visual Studio Professional 2017 или Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/).
 
-<!-- hello following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
+<!-- The following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
 And it starts with a ## H2.
 -->
 
 [!INCLUDE [sql-database-tutorial-portal-create-firewall-connection-1](../../includes/sql-database-tutorial-portal-create-firewall-connection-1.md)]
 
 
-<!-- hello following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
+<!-- The following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
 And it starts with a ## H2.
 -->
 
@@ -56,17 +56,17 @@ And it starts with a ## H2.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом учебнике вы узнали, что базовые задачи базами данных, такие как создание базы данных и таблиц, загрузить и запрашивать данные и восстановить hello базы данных tooa предыдущий момент времени. Вы научились выполнять следующие задачи:
+Из этого руководства вы узнали об основных задачах базы данных, таких как создание базы данных и таблиц, загрузка и запрос данных, а также восстановление базы данных до предшествующей точки во времени. Вы научились выполнять следующие задачи:
 > [!div class="checklist"]
 > * Создание базы данных
 > * Настройка правила брандмауэра.
-> * Соединения с базой данных, toohello [C# и Visual Studio](sql-database-connect-query-dotnet-visual-studio.md)
+> * подключаться к базе данных с помощью [Visual Studio и C#](sql-database-connect-query-dotnet-visual-studio.md);
 > * создание таблиц.
 > * вставлять, обновлять и удалять данные;
 > * Запрос данных
 
-Переместить следующий учебник toolearn toohello о миграции данных.
+Перейдите к следующему руководству, чтобы узнать о переносе данных.
 
 > [!div class="nextstepaction"]
->[Перенос вашей tooAzure базы данных SQL Server база данных SQL](sql-database-migrate-your-sql-server-database.md)
+>[Перенос базы данных SQL Server в базу данных SQL Azure](sql-database-migrate-your-sql-server-database.md)
 

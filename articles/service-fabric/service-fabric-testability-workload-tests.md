@@ -1,6 +1,6 @@
 ---
-title: "aaaSimulate сбоев в Azure микрослужбами | Документы Microsoft"
-description: "Как tooharden служб от сбоев корректное и нестандартного."
+title: "Моделирование сбоев в микрослужбах Azure | Документация Майкрософт"
+description: "Защита служб от нормальных и ненормальных сбоев."
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 05467e291dfc0f12a021955f8ea540881ec10746
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Моделирование ошибок во время рабочих нагрузок службы
-сценарии тестирования Hello в Azure Service Fabric позволяют разработчикам toonot беспокойтесь о работе с отдельных ошибок. Однако есть сценарии, в которых может потребоваться явное чередование клиентской рабочей нагрузки и сбоев. Hello чередованием рабочей нагрузки клиентов и ошибок гарантирует, что служба hello фактически выполняет какие-либо действия в случае сбоя. Имея hello уровень управления, который предоставляет возможности тестирования, это могут быть на точное этапах выполнения рабочих нагрузок hello. Этот индукционная ошибок в различных состояниях в приложение hello можно находить ошибки и улучшить качество.
+Сценарии тестирования в Azure Service Fabric позволяют разработчикам не беспокоиться об обработке отдельных ошибок. Однако есть сценарии, в которых может потребоваться явное чередование клиентской рабочей нагрузки и сбоев. Чередование клиентской рабочей нагрузки и сбоев обеспечивает выполнение службой необходимых действий в случае сбоя. Учитывая уровень управления тестированием, эти сбои могут наблюдаться именно в точках выполнения рабочей нагрузки. Вызывая таким образом ошибки при различных состояниях приложения, можно находить ошибки и улучшить качество.
 
 ## <a name="sample-custom-scenario"></a>Пример пользовательского сценария
-Этот тест показывает сценарий рабочая нагрузка бизнеса, hello чередуется свойством с [сбоев корректное и нестандартного](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). ошибки Hello следует вносимое в середине hello операции службы или вычислений для получения наилучших результатов.
+В этом тесте показан сценарий чередования рабочей нагрузки бизнеса с [нормальными и ненормальными сбоями](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Для получения оптимальных результатов сбои следует вызывать во время выполнения операций службы или вычислений.
 
-Давайте рассмотрим пример службы, которая предоставляет четыре рабочих нагрузок: A, B, C и D. Каждая соответствует tooa набор рабочих процессов и может вычислений, хранения или набора. Ради hello простоты мы будет абстрагировать hello рабочих нагрузок в нашем примере. различные ошибки Hello в этом примере являются:
+Рассмотрим пример службы, которая предоставляет четыре рабочих нагрузки (А, Б, В и Г). Каждая из них соответствует набору рабочих процессов и может представлять из себя вычисления, хранилище или их сочетание. Для простоты рабочие нагрузки в нашем примере абстрагированы. Различные сбои, выполненные в этом примере:
 
-* RestartNode: Перезапустите toosimulate нестандартного сбоя компьютера.
-* RestartDeployedCodePackage: Происходит сбой хост-процесса службы toosimulate нестандартного ошибки.
-* RemoveReplica: Удаление реплики toosimulate ошибка постепенного.
-* MovePrimary: Реплики toosimulate корректное ошибки перемещает триггеру подсистемой балансировки нагрузки Service Fabric hello.
+* RestartNode: ненормальный сбой для моделирования перезагрузки компьютера.
+* RestartDeployedCodePackage: ненормальный сбой для моделирования аварийного завершения хост-процесса службы.
+* RemoveReplica: нормальный сбой для моделирования удаления реплики.
+* MovePrimary: нормальный сбой для моделирования перемещения реплик, активированного балансировщиком нагрузки Service Fabric.
 
 ```csharp
-// Add a reference tooSystem.Fabric.Testability.dll and System.Fabric.dll.
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
 
 using System;
 using System.Fabric;
@@ -46,7 +46,7 @@ class Test
 {
     public static int Main(string[] args)
     {
-        // Replace these strings with hello actual version for your cluster and application.
+        // Replace these strings with the actual version for your cluster and application.
         string clusterConnection = "localhost:19000";
         Uri applicationName = new Uri("fabric:/samples/PersistentToDoListApp");
         Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
@@ -93,31 +93,31 @@ class Test
     {
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
-        // Maximum time toowait for a service toostabilize.
+        // Maximum time to wait for a service to stabilize.
         TimeSpan maxServiceStabilizationTime = TimeSpan.FromSeconds(120);
 
-        // How many loops of faults you want tooexecute.
+        // How many loops of faults you want to execute.
         uint testLoopCount = 20;
         Random random = new Random();
 
         for (var i = 0; i < testLoopCount; ++i)
         {
             var workload = SelectRandomValue<ServiceWorkloads>(random);
-            // Start hello workload.
+            // Start the workload.
             var workloadTask = RunWorkloadAsync(workload);
 
-            // While hello task is running, induce faults into hello service. They can be ungraceful faults like
+            // While the task is running, induce faults into the service. They can be ungraceful faults like
             // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary.
             var fault = SelectRandomValue<ServiceFabricFaults>(random);
 
-            // Create a replica selector, which will select a primary replica from hello given service tootest.
+            // Create a replica selector, which will select a primary replica from the given service to test.
             var replicaSelector = ReplicaSelector.PrimaryOf(PartitionSelector.RandomOf(serviceName));
-            // Run hello selected random fault.
+            // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
-            // Validate hello health and stability of hello service.
+            // Validate the health and stability of the service.
             await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
-            // Wait for hello workload toofinish successfully.
+            // Wait for the workload to finish successfully.
             await workloadTask;
         }
     }
@@ -145,9 +145,9 @@ class Test
     {
         throw new NotImplementedException();
         // This is where you trigger and complete your service workload.
-        // Note that hello faults induced while your service workload is running will
-        // fault hello primary service. Hence, you will need tooreconnect toocomplete or check
-        // hello status of hello workload.
+        // Note that the faults induced while your service workload is running will
+        // fault the primary service. Hence, you will need to reconnect to complete or check
+        // the status of the workload.
     }
 
     private static T SelectRandomValue<T>(Random random)

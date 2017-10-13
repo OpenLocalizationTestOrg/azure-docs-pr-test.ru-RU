@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с LCVista | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и LCVista."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и LCVista."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a4c7eb7d54b8b68c8241a97b9e516a3f6e55c50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c19f81da495eb7116b62797d1755d312a23f3805
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Руководство. Интеграция Azure Active Directory с LCVista
 
-В этом учебнике вы узнаете, как toointegrate LCVista с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать LCVista с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD LCVista предоставляет hello следующие преимущества:
+Интеграция LCVista c Azure AD обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooLCVista
-- Можно включить на пользователей tooautomatically get вошедшего tooLCVista (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- В Azure AD вы сможете контролировать, у кого есть доступ к LCVista.
+- Вы можете включить автоматический вход пользователей в LCVista (единый вход) с помощью их учетных записей Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с LCVista требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с LCVista, вам потребуются следующие компоненты:
 
 - подписка Azure AD;
 - подписка LCVista с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом руководстве, состоит из двух стандартных блоков.
 
-1. Добавление LCVista из галереи hello
+1. Добавления LCVista из коллекции.
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-lcvista-from-hello-gallery"></a>Добавление LCVista из галереи hello
-tooconfigure hello интеграции LCVista в Azure AD, вы должны tooadd LCVista из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-lcvista-from-the-gallery"></a>Добавления LCVista из коллекции.
+Чтобы настроить интеграцию LCVista в Azure AD, необходимо добавить LCVista из коллекции в список управляемых приложений SaaS.
 
-**tooadd LCVista из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить LCVista из коллекции, сделайте следующее:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **LCVista**.
+4. В поле поиска введите **LCVista**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_search.png)
 
-5. В панели результатов hello выберите **LCVista**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **LCVista**, а затем нажмите кнопку **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в LCVista с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в LCVista является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в LCVista должен установить toobe.
+Чтобы настроить единый вход Azure AD, Azure AD необходимо знать, какой пользователь в LCVista соответствует пользователю в Azure AD. Другими словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в LCVista.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в LCVista.
+Чтобы установить эту связь, следует назначить значение **имени пользователя** в Azure AD в качестве значения **имени пользователя** в LCVista.
 
-tooconfigure и теста Azure AD единого входа с LCVista, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в LCVista, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя LCVista](#creating-a-lcvista-test-user)**  -toohave аналог Саймон Britta в LCVista, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя LCVista](#creating-a-lcvista-test-user)** требуется для создания в LCVista пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении LCVista.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure, а также как настроить его в приложении LCVista.
 
-**tooconfigure Azure AD единого входа с LCVista, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в LCVista, сделайте следующее:**
 
-1. В hello в hello портала Azure **LCVista** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **LCVista** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_samlbase.png)
 
-3. На hello **URL-адреса и домена LCVista** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения LCVista** выполните следующие действия:
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.lcvista.com/rainier/login`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<subdomain>.lcvista.com/rainier/login`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.lcvista.com` 
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<subdomain>.lcvista.com` 
      
     > [!NOTE] 
-    > Эти значения не являются реальными hello. Обновить значения hello фактический идентификатор и URL-адрес входа. Обратитесь к [группа поддержки клиента LCVista](https://lcvista.com/contact) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Измените их на фактические значения идентификатора и URL-адреса единого входа. Чтобы получить их, обратитесь в [службу поддержки клиентов LCVista](https://lcvista.com/contact). 
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_certificate.png) 
 
@@ -125,88 +125,88 @@ tooconfigure и теста Azure AD единого входа с LCVista, тре
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_general_400.png)
     
-6. На hello **конфигурации LCVista** щелкните **Настройка LCVista** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML** и **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Конфигурация LCVista** щелкните **настройку LCVista**, чтобы открыть окно **настройки единого входа**. Скопируйте **идентификатор сущности SAML** и **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_configure.png) 
 
-7.  Войдите на tooyour LCVista приложения от имени администратора.
+7.  Войдите в приложение LCVista как администратор.
 
-8. В hello **конфигурации SAML** статьи, проверьте hello **входа включить SAML** и введите сведения о hello, как упоминалось в под изображением. 
+8. В разделе **SAML Config** (Конфигурация SAML) установите флажок **Enable SAML login** (Включить вход SAML), а затем введите сведения, представленные на изображении ниже. 
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_config.png)
 
-    а. Вставить hello **URL-адрес издателя** скопирован из Azure AD в hello **идентификатор сущности** раздела. 
+    а. Вставьте **URL-адрес издателя**, скопированный из Azure AD в раздел **Идентификатор сущности**. 
 
-    b. Вставить hello **единого входа URL-адрес службы** скопирован из Azure AD в hello **URL-адрес** раздела.
+    b. Вставьте **URL-адрес службы единого входа**, скопированный из Azure AD в раздел **URL-адрес**.
 
-    c. Из метаданных (XML) которого загруженный с портала Azure скопируйте значение hello **X509Certificate** и вставьте его в hello **x509 сертификатов** раздела.
+    c. Из метаданных (XML), которые вы скачали на портале Azure, скопируйте значение **X509Certificate** и вставьте его в раздел **x509 Certificate** (Сертификат x509).
 
-    d. В hello **атрибут имени** текстовое значение hello вставить `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    г) В текстовом поле **First name attribute** (Атрибут имени) вставьте значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    д. В hello **атрибут фамилии** текстовое значение hello вставить `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    д. В текстовом поле **Last name attribute** (Атрибут фамилии) вставьте значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. В hello **атрибут адреса электронной почты** текстовое значение hello вставить `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. В текстовом поле **Email attribute** (Атрибут электронной почты) вставьте значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    ж. В hello **атрибута Username** текстовое значение hello вставить `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    g. В текстовом поле **Username** (Атрибут имени пользователя) вставьте значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    д. Нажмите кнопку **Сохранить** toosave hello параметры.
+    д. Нажмите кнопку **Сохранить** , чтобы сохранить параметры.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lcvista-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-lcvista-test-user"></a>Создание тестового пользователя LCVista
 
-В этом разделе описано, как создать пользователя Britta Simon в LCVista. Требуется toocontact [группа поддержки клиента LCVista](https://lcvista.com/contact) tooadd пользователей hello в hello LCVista приложения. 
+В этом разделе описано, как создать пользователя Britta Simon в LCVista. Вам следует обратиться в [службу поддержки клиентов LCVista](https://lcvista.com/contact), чтобы добавить пользователей в приложение LCVista. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooLCVista доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure с помощью предоставления доступа к LCVista.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooLCVista Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в LCVista, сделайте следующее:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **LCVista**.
+2. В списке приложений выберите **LCVista**.
 
     ![Настройка единого входа](./media/active-directory-saas-lcvista-tutorial/tutorial_lcvista_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -214,7 +214,7 @@ tooconfigure и теста Azure AD единого входа с LCVista, тре
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -222,11 +222,11 @@ tooconfigure и теста Azure AD единого входа с LCVista, тре
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello. Щелкните плитку LCVista hello в hello панели доступа, могут быть перенаправлены на страницу входа tooOrganization. После успешного входа будет подписан на tooyour LCVista приложения. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа. Щелкните плитку LCVista на панели доступа. Вы будете перенаправлены на страницу входа организации. После успешного входа вы сможете войти в приложение LCVista. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

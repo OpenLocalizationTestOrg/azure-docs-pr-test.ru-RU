@@ -1,5 +1,5 @@
 ---
-title: "Параметры DNS в файле конфигурации службы aaaSpecifying | Документы Microsoft"
+title: "Настройка параметров DNS в файле конфигурации службы | Документация Майкрософт"
 description: "Настройка пользовательских параметров DNS с помощью файла конфигурации службы для виртуальной сети"
 services: virtual-network
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: jdial
-ms.openlocfilehash: f192e33566dd8e669da04e6378a0c8e4b0b35ecc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0fba2ea06827aff29a7a092933edb8120d668b29
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>Настройка параметров DNS в файле конфигурации службы
 ## <a name="dns-elements"></a>Элементы DNS
-Файл конфигурации службы может содержать элемент DnsServers со списком IPv4-адресов для серверов hello доменных имен (DNS), которые будет использовать служба hello. В файле конфигурации службы hello имеют приоритет над параметрами в файле конфигурации сети hello. Дополнительные сведения см. в статье, посвященной [схеме конфигурации службы Azure (файл CSCFG)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
+Файл конфигурации службы может содержать элемент DnsServers со списком IPv4-адресов для серверов доменных имен (DNS-серверов), которые будет использовать служба. Параметры файла конфигурации службы имеют приоритет над параметрами файла конфигурации сети. Дополнительные сведения см. в статье, посвященной [схеме конфигурации службы Azure (файл CSCFG)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
 
 **Элемент NetworkConfiguration**
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/06/2017
       </DnsServers>
 
 > [!WARNING]
-> Hello **имя** атрибута в hello **DnsServer** используется только в качестве имени ссылки. Он не представляет имя узла hello hello DNS-сервера. Каждый **DnsServer** значение атрибута должно быть уникальным для всей подписки Microsoft Azure hello.
+> Атрибут **name** в элементе **DnsServer** используется только в качестве ссылочного имени. Он не представляет имя узла для DNS-сервера. Каждое значение атрибута **DnsServer** должно быть уникальным во всей подписке Microsoft Azure.
 > 
 > 
 
@@ -44,5 +44,5 @@ ms.lasthandoff: 10/06/2017
 
 [Настройка виртуальной сети с помощью файлов конфигурации сети](http://go.microsoft.com/fwlink/?LinkId=248094)
 
-[Параметры виртуальной сети в hello портала управления](http://go.microsoft.com/fwlink/?LinkId=248092)
+[Параметры виртуальной сети на портале управления](http://go.microsoft.com/fwlink/?LinkId=248092)
 

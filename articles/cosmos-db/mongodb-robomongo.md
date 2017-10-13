@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Robomongo для Azure Cosmos DB | Документы Microsoft"
-description: "Узнайте, как toouse Robomongo с Azure DB Cosmos: API для MongoDB учетной записи"
+title: "Использование Robomongo с Azure Cosmos DB | Документация Майкрософт"
+description: "Узнайте, как использовать Robomongo с учетной записью API для MongoDB в Azure Cosmos DB."
 keywords: Robomongo
 services: cosmos-db
 author: AndrewHoh
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anhoh
-ms.openlocfilehash: 3018243e904015426dc69a69b26fb53421e1fe4f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8983594776a1bbe413a6d7cf2cd518f0e327648a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Использование Robomongo с учетной записью API для MongoDB в Azure Cosmos DB
-tooconnect tooan Azure Cosmos DB: API для MongoDB учетной записи, с помощью Robomongo необходимо:
+Чтобы подключиться к учетной записи API для MongoDB в Azure Cosmos DB с помощью Robomongo, необходимо:
 
 * скачать и установить [Robomongo](https://robomongo.org/);
 * Подготовить сведения о [строке подключения](connect-mongodb-account.md) для учетной записи API для MongoDB в Azure Cosmos DB.
 
 ## <a name="connect-using-robomongo"></a>Подключение с использованием Robomongo
-tooadd Cosmos базы данных Azure: API для учетной записи MongoDB toohello Robomongo MongoDB подключений, выполнения hello следующие шаги.
+Чтобы добавить к подключениям Robomongo MongoDB учетную запись API для MongoDB в Azure Cosmos DB, сделайте следующее.
 
-1. Получить Cosmos базы данных Azure: API для MongoDB сведений о соединении учетной записи с помощью инструкций hello [здесь](connect-mongodb-account.md).
+1. Извлеките сведения о подключении учетной записи API для MongoDB в Azure Cosmos DB. Ознакомьтесь с инструкциями [здесь](connect-mongodb-account.md).
 
-    ![Снимок экрана: колонка строка подключения hello](./media/mongodb-robomongo/connectionstringblade.png)
+    ![Снимок экрана, колонка строки подключения](./media/mongodb-robomongo/connectionstringblade.png)
 2. Запустите *Robomongo.exe*.
 
-3. Нажмите кнопку подключения hello под **файл** toomanage подключений. Нажмите кнопку **создать** в hello **подключений MongoDB** окна, который будет открыть hello **параметры подключения** окна.
+3. Нажмите кнопку подключения под меню **File** (Файл) для управления подключениями. Щелкните **Create** (Создать) в окне **MongoDB Connections** (Подключения MongoDB). Откроется окно **Connection Settings** (Параметры подключения).
 
-4. В hello **параметры подключения** окно, выберите имя. Найдите hello **узла** и **порт** из данные подключения в шаге 1 и введите их в **адрес** и **порт**соответственно .
+4. В окне **Connection Settings** (Параметры подключения) выберите имя. Затем найдите **узел** и **порт**, указанные в сведениях о подключении, полученных на шаге 1, и введите их в полях **Address** (Адрес) и **Port** (Порт) соответственно.
 
-    ![Снимок экрана: hello Robomongo Управление соединениями](./media/mongodb-robomongo/manageconnections.png)
-5. На hello **проверки подлинности** щелкните **выполнение проверки подлинности**. Затем введите базу данных (по умолчанию — *Admin*), **имя пользователя** и **пароль**.
+    ![Снимок экрана окна управления подключениями Robomongo](./media/mongodb-robomongo/manageconnections.png)
+5. На вкладке **Authentication** (Аутентификация) установите флажок **Perform authentication** (Выполнять аутентификацию). Затем введите базу данных (по умолчанию — *Admin*), **имя пользователя** и **пароль**.
 **Имя пользователя** и **пароль** можно найти в данных подключения, полученных на шаге 1.
 
-    ![Снимок экрана: hello вкладку Robomongo проверки подлинности](./media/mongodb-robomongo/authentication.png)
-6. На hello **SSL** установите флажок **протокол SSL используется**, затем измените hello **метод проверки подлинности** слишком**самозаверяющего сертификата**.
+    ![Снимок экрана вкладки аутентификации Robomongo](./media/mongodb-robomongo/authentication.png)
+6. На вкладке **SSL** установите флажок **Use SSL protocol** (Использовать протокол SSL), затем измените значение параметра **Authentication Method** (Метод аутентификации) на **Self-signed Certificate** (Самозаверяющий сертификат).
 
-    ![Снимок экрана: hello вкладку Robomongo SSL](./media/mongodb-robomongo/SSL.png)
-7. Наконец, нажмите кнопку **теста** tooverify, затем являются может tooconnect **Сохранить**.
+    ![Снимок экрана вкладки SSL Robomongo](./media/mongodb-robomongo/SSL.png)
+7. Наконец, нажмите кнопку **Test** (Проверить), чтобы проверить возможность подключения, затем нажмите кнопку **Save** (Сохранить).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Ознакомьтесь с [примерами](mongodb-samples.md) API для MongoDB в Azure Cosmos DB.

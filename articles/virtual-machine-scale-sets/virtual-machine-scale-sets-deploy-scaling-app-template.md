@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy приложения для набора масштабирования виртуальной машины Azure | Документы Microsoft"
-description: "Узнайте, toodeploy простой автоматического масштабирования приложения на наборе с помощью шаблона Azure Resource Manager масштабирования виртуальной машины."
+title: "Развертывание приложения в масштабируемых наборах виртуальных машин Azure | Документация Майкрософт"
+description: "Сведения о развертывании простого приложения автомасштабирования в масштабируемом наборе виртуальных машин с помощью шаблона Azure Resource Manager."
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: rwike77
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6fccc310312cabfcdddfcbcd2d154fc5cc440417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>Развертывание приложения автомасштабирования с помощью шаблона
 
-[Шаблоны Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) — toodeploy хорошим способом группы связанных ресурсов. Этот учебник построен на [развернуть набор простых масштабирования](virtual-machine-scale-sets-mvss-start.md) и описывает, как toodeploy задать с помощью шаблона Azure Resource Manager простой автоматического масштабирования приложения на шкале.  Можно также настроить автоматическое масштабирование с помощью PowerShell, CLI или портала hello. Дополнительные сведения см. в разделе [Как использовать автомасштабирование и масштабируемые наборы виртуальных машин](virtual-machine-scale-sets-autoscale-overview.md).
+[Шаблоны Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) прекрасно подходят для развертывания группы связанных ресурсов. В этом руководстве, которое составлено на основе статьи [О данном учебнике](virtual-machine-scale-sets-mvss-start.md), описывается развертывание простого приложения автомасштабирования в масштабируемом наборе с помощью шаблона Azure Resource Manager.  Можно также настроить автомасштабирование с помощью PowerShell, интерфейса командной строки или портала. Дополнительные сведения см. в разделе [Как использовать автомасштабирование и масштабируемые наборы виртуальных машин](virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="two-quickstart-templates"></a>Два шаблона быстрого запуска
-При развертывании масштабируемого набора вы можете установить новое программное обеспечение в образ платформы, используя [расширения виртуальной машины](../virtual-machines/virtual-machines-windows-extensions-features.md). Расширение виртуальной машины — это небольшое приложение, которое выполняет задачи настройки и автоматизации после развертывания виртуальных машин Azure, таких как развертывание приложения. Два разных образцах приведены в [Azure/azure-quickstart шаблоны](https://github.com/Azure/azure-quickstart-templates) которого Показать, как toodeploy автоматического масштабирования приложения на шкале задать использование расширений ВМ.
+При развертывании масштабируемого набора вы можете установить новое программное обеспечение в образ платформы, используя [расширения виртуальной машины](../virtual-machines/virtual-machines-windows-extensions-features.md). Расширение виртуальной машины — это небольшое приложение, которое выполняет задачи настройки и автоматизации после развертывания виртуальных машин Azure, таких как развертывание приложения. Два различных примера шаблонов приведены в [репозитории azure-quickstart-templates на сайте GitHub](https://github.com/Azure/azure-quickstart-templates), где показано, как развернуть приложение автомасштабирования в масштабируемом наборе с помощью расширений виртуальной машины.
 
 ### <a name="python-http-server-on-linux"></a>HTTP-сервер Python под управлением Linux
-Hello [Python HTTP-сервера в Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) образец шаблона развертывает простой автоматического масштабирования приложения, работающего в наборе масштабирования Linux.  [Фляга для](http://bottlepy.org/docs/dev/), Python веб-framework и простого сервера HTTP, развернутых на каждой виртуальной Машины в hello масштабирования, заданные с помощью пользовательского скрипта расширения виртуальной Машины. Масштаб Hello настроить шкал среднее использование ЦП для всех виртуальных машин превышает 60%, а масштабируется, если hello средняя загрузка ЦП составляет менее 30%.
+Пример шаблона [HTTP-сервера Python под управлением Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) развертывает простое приложение автомасштабирования, выполняющееся в масштабируемом наборе Linux.  Веб-платформа [Bottle](http://bottlepy.org/docs/dev/) Python и простой HTTP-сервер развертываются на каждой виртуальной машине в масштабируемом наборе с помощью расширения пользовательского скрипта виртуальной машины. Емкость масштабируемого набора увеличивается, когда средний объем использования ЦП на всех виртуальных машинах превышает 60 %. Если средний объем использования ЦП составляет менее 30 % — емкость масштабируемого набора уменьшается.
 
-В дополнение к этому toohello набора масштабирования ресурсов, hello *azuredeploy.json* образец шаблона также объявляет виртуальной сети, общедоступный IP-адрес, балансировки нагрузки и ресурсов параметров автоматического масштабирования.  Дополнительные сведения о создании ресурсов в шаблоне см. в статье [Автоматическое масштабирование машин Linux в наборе масштабирования виртуальных машин](virtual-machine-scale-sets-linux-autoscale.md).
+Помимо ресурса масштабируемого набора, пример шаблона *azuredeploy.json* также объявляет виртуальную сеть, общедоступный IP-адрес, балансировщик нагрузки и ресурсы параметров автомасшабирования.  Дополнительные сведения о создании ресурсов в шаблоне см. в статье [Автоматическое масштабирование машин Linux в наборе масштабирования виртуальных машин](virtual-machine-scale-sets-linux-autoscale.md).
 
-В hello *azuredeploy.json* шаблон, hello `extensionProfile` свойство hello `Microsoft.Compute/virtualMachineScaleSets` ресурс определяет расширение пользовательского скрипта. `fileUris`Указывает расположение пошагового hello. В этом случае двух файлов: *workserver.py*, который определяет простой HTTP-сервера, и *installserver.sh*, которая устанавливается бутылка и запускает hello HTTP-сервера. `commandToExecute`Указывает команду toorun hello после развертывания hello набора масштабирования.
+В шаблоне *azuredeploy.json* свойство `extensionProfile` ресурса `Microsoft.Compute/virtualMachineScaleSets` указывает расширение пользовательского скрипта. `fileUris` указывает расположение скрипта (скриптов). В нашем случае расположение двух файлов: *workserver.py*, который определяет простой HTTP-сервер, и *installserver.sh*, который устанавливает Bottle и запускает HTTP-сервер. `commandToExecute` указывает команду, которую необходимо выполнить после развертывания масштабируемого набора.
 
 ```json
           "extensionProfile": {
@@ -59,11 +59,11 @@ Hello [Python HTTP-сервера в Linux](https://github.com/Azure/azure-quick
 ```
 
 ### <a name="aspnet-mvc-application-on-windows"></a>Приложение ASP.NET MVC для Windows
-Hello [приложение ASP.NET MVC в Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) образец шаблона развертывает простое приложение ASP.NET MVC, работающего в IIS на набор масштабирования Windows.  Службы IIS и hello приложения MVC развертываются с помощью hello [PowerShell настройкой требуемого состояния (DSC)](virtual-machine-scale-sets-dsc.md) расширения виртуальной Машины.  Масштаб Hello Настройка шкал (на экземпляре виртуальной Машины одновременно) Если загрузка ЦП больше 50% 5 минут. 
+Пример шаблона [приложения ASP.NET MVC под управлением Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) развертывает простое приложение ASP.NET MVC, выполняющееся в IIS в масштабируемом наборе Windows.  IIS и приложение MVC развертываются с помощью расширения виртуальной машины для [настройки требуемого состояния PowerShell (DSC)](virtual-machine-scale-sets-dsc.md).  Емкость масштабируемого набора увеличивается (на одной виртуальной машине за раз), когда объем использования ЦП превышает 50 % в течение 5 минут. 
 
-В дополнение к этому toohello набора масштабирования ресурсов, hello *azuredeploy.json* образец шаблона также объявляет виртуальной сети, общедоступный IP-адрес, балансировки нагрузки и ресурсов параметров автоматического масштабирования. В этом шаблоне также показано обновление приложения.  Дополнительные сведения о создании ресурсов в шаблоне см. в статье [Автоматическое масштабирование ВМ в наборе масштабирования ВМ](virtual-machine-scale-sets-windows-autoscale.md).
+Помимо ресурса масштабируемого набора, пример шаблона *azuredeploy.json* также объявляет виртуальную сеть, общедоступный IP-адрес, балансировщик нагрузки и ресурсы параметров автомасшабирования. В этом шаблоне также показано обновление приложения.  Дополнительные сведения о создании ресурсов в шаблоне см. в статье [Автоматическое масштабирование ВМ в наборе масштабирования ВМ](virtual-machine-scale-sets-windows-autoscale.md).
 
-В hello *azuredeploy.json* шаблон, hello `extensionProfile` свойство hello `Microsoft.Compute/virtualMachineScaleSets` ресурс определяет [конфигурации требуемого состояния (DSC)](virtual-machine-scale-sets-dsc.md) расширения, которая устанавливает службы IIS и значение по умолчанию веб-приложение из пакета WebDeploy.  Hello *IISInstall.ps1* сценарий Установка служб IIS на виртуальной машине hello и находится в hello *DSC* папки.  веб-приложение MVC Hello находится в hello *WebDeploy* папки.  сценарий установки toohello пути Hello и веб-приложения hello определяются в hello `powershelldscZip` и `webDeployPackage` параметров в hello *azuredeploy.parameters.json* файла. 
+В шаблоне *azuredeploy.json* свойство `extensionProfile` ресурса `Microsoft.Compute/virtualMachineScaleSets` указывает расширение [настройки требуемого состояния](virtual-machine-scale-sets-dsc.md), которое устанавливает IIS и веб-приложение по умолчанию из пакета WebDeploy.  Скрипт *IISInstall.ps1*, расположенный в папке *DSC*, устанавливает IIS на виртуальной машине.  Веб-приложение MVC находится в папке *WebDeploy*.  Пути к установленному скрипту и веб-приложению определяются в параметрах `powershelldscZip` и `webDeployPackage` в файле *azuredeploy.parameters.json*. 
 
 ```json
           "extensionProfile": {
@@ -93,11 +93,11 @@ Hello [приложение ASP.NET MVC в Windows](https://github.com/Azure/azu
           }
 ```
 
-## <a name="deploy-hello-template"></a>Развертывание шаблона hello
-Hello простейший способ toodeploy hello [Python HTTP-сервера в Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) или [приложение ASP.NET MVC в Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) шаблона — toouse hello **развертывание tooAzure** кнопка найдена в hello в файлах readme hello в GitHub.  Также можно использовать PowerShell или Azure CLI toodeploy hello образцы шаблонов.
+## <a name="deploy-the-template"></a>Развертывание шаблона
+Самый простой способ развернуть шаблон [HTTP-сервера Python под управлением Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) или шаблон [приложения ASP.NET MVC под управлением Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) — использовать кнопку **Deploy to Azure** (Развертывание в Azure), расположенную в файлах сведений на GitHub.  Чтобы развернуть примеры шаблонов, можно также использовать PowerShell или Azure CLI.
 
 ### <a name="powershell"></a>PowerShell
-Копировать hello [Python HTTP-сервера в Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) или [приложение ASP.NET MVC в Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) файлы из папки tooa репозитория GitHub hello на локальном компьютере.  Откройте hello *azuredeploy.parameters.json* файла и обновление значения по умолчанию hello объекта hello `vmssName`, `adminUsername`, и `adminPassword` параметров. Сохраните следующий сценарий PowerShell слишком hello*deploy.ps1* в hello же папке, что hello *azuredeploy.json* шаблона. hello шаблона запустите образец hello toodeploy *deploy.ps1* сценарий в командном окне PowerShell.
+Скопируйте из репозитория GitHub файл [HTTP-сервера Python под управлением Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) или [приложения ASP.NET MVC под управлением Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) в папку на локальном компьютере.  Откройте файл *azuredeploy.parameters.json* и обновите значения по умолчанию для параметров `vmssName`, `adminUsername` и `adminPassword`. Сохраните приведенный ниже скрипт PowerShell под именем *deploy.ps1* в той же папке, что и шаблон *azuredeploy.json*. Чтобы развернуть пример шаблона, выполните скрипт *deploy.ps1* в командной строке PowerShell.
 
 ```powershell
 param(
@@ -163,7 +163,7 @@ if($resourceProviders.length) {
 $resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
 if(!$resourceGroup)
 {
-    Write-Host "Resource group '$resourceGroupName' does not exist. toocreate a new resource group, please enter a location.";
+    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
     if(!$resourceGroupLocation) {
         $resourceGroupLocation = Read-Host "resourceGroupLocation";
     }
@@ -174,7 +174,7 @@ else{
     Write-Host "Using existing resource group '$resourceGroupName'";
 }
 
-# Start hello deployment
+# Start the deployment
 Write-Host "Starting deployment...";
 if(Test-Path $parametersFilePath) {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
@@ -191,7 +191,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -238,12 +238,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below toocreate a new resource group else skip this"
+    echo "Enter a location below to create a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file toobe used
+#templateFile Path - template file to be used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -264,7 +264,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login tooazure using your credentials
+#login to azure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -272,7 +272,7 @@ then
     az login
 fi
 
-#set hello default subscription id
+#set the default subscription id
 az account set --name $subscriptionId
 
 set +e

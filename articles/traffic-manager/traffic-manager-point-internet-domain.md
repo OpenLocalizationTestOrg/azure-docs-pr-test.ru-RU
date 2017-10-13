@@ -1,6 +1,6 @@
 ---
-title: "aaaPoint корпоративного домена tooa диспетчера трафика доменном имени Интернета | Документы Microsoft"
-description: "Эта статья поможет точки домена имя tooa диспетчера трафика доменного имени вашей компании."
+title: "Направление интернет-домена компании на доменное имя диспетчера трафика | Документация Майкрософт"
+description: "В этой статье вы узнаете, как направить доменное имя вашей компании на доменное имя диспетчера трафика."
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 84c428f60a1dc70452bf957d98a68c95e0b51715
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0322b3510cfd4f94031d8c1db8f1cc032b997fa8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="point-a-company-internet-domain-tooan-azure-traffic-manager-domain"></a>Направление домена диспетчера трафика Azure tooan домена Интернета компании
+# <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Указание домена диспетчера трафика для интернет-домена компании.
 
-Когда вы создаете профиль диспетчера трафика, Azure автоматически присваивает этому профилю имя DNS. toouse имя из вашего зоны DNS создать запись CNAME DNS, которая сопоставляет toohello доменное имя вашего профиля диспетчера трафика. Имя домена диспетчера трафика hello можно найти в hello **Общие** раздел на странице конфигурации hello hello профиля диспетчера трафика.
+Когда вы создаете профиль диспетчера трафика, Azure автоматически присваивает этому профилю имя DNS. Чтобы использовать имя зоны DNS, создайте запись DNS CNAME, которая сопоставляет доменное имя вашего профиля диспетчера трафика. Доменное имя диспетчера трафика находится в разделе **Общие** на странице конфигурации в профиле диспетчера трафика.
 
-Например www.contoso.com toohello имя toopoint contoso.trafficmanager.net имя DNS диспетчера трафика, вы создадите hello следующая запись ресурса DNS:
+Например, чтобы направить доменное имя компании www.contoso.com на имя DNS диспетчера трафика contoso.trafficmanager.net, создайте следующую запись ресурса DNS:
 
     www.contoso.com IN CNAME contoso.trafficmanager.net
 
-Весь трафик запросов слишком*www.contoso.com* получить направленный слишком*contoso.trafficmanager.net*.
+Весь трафик, направленный на *www.contoso.com* перенаправляется на *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
-> Не может указывать домена второго уровня, таких как *contoso.com*, toohello домен диспетчера трафика. Стандарты протокола DNS не позволяют использовать записи CNAME для имен домена второго уровня.
+> Нельзя направить домен второго уровня, например *contoso.com*, в домен диспетчера трафика. Стандарты протокола DNS не позволяют использовать записи CNAME для имен домена второго уровня.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

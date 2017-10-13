@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d33f02822097aa7f83042606ba46fd533e85ac23
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="introduction-toohello-azure-ad-connect-synchronization-service-manager-ui"></a>Введение toohello Azure AD Connect диспетчер службы синхронизации пользовательского интерфейса
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Общие сведения о пользовательском интерфейсе Synchronization Service Manager Azure AD Connect
 
 ![Диспетчер службы синхронизации](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
-Hello **диспетчер службы синхронизации** пользовательского интерфейса — используется tooconfigure Дополнительные аспекты hello синхронизации ядра и toosee hello эксплуатационных аспектов службы hello.
+Пользовательский интерфейс **Synchronization Service Manager** используется для настройки более сложных аспектов модуля синхронизации и изучения особенностей работы службы.
 
-Запуск hello **диспетчер службы синхронизации** меню «Пуск» пользовательского интерфейса из hello. Он называется **служба синхронизации** и может быть найден в hello **Azure AD Connect** группы.  
+Пользовательский интерфейс **Synchronization Service Manager** можно запустить из меню "Пуск". Он называется **Служба синхронизации** и находится в группе **Azure AD Connect**.  
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
 
-Щелкните ссылки hello hello верхней части этого раздела toolearn Дополнительные сведения о различных вкладках hello в hello пользовательского интерфейса.
+Перейдите по ссылкам в верхней части этого раздела, чтобы узнать больше о различных вкладках в этом пользовательском интерфейсе.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о hello [синхронизации Azure AD Connect](active-directory-aadconnectsync-whatis.md) конфигурации.
+Узнайте больше о настройке [службы синхронизации Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
 
 Узнайте больше об [интеграции локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).

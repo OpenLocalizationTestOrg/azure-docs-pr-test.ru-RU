@@ -1,6 +1,6 @@
 ---
-title: "aaaConfiguring телеметрии служб мультимедиа Azure с помощью .NET | Документы Microsoft"
-description: "В этой статье показано, как toouse hello телеметрии служб мультимедиа Azure с помощью пакета SDK .NET."
+title: "Настройка телеметрии служб мультимедиа Azure с использованием .NET | Документация Майкрософт"
+description: "В этой статье показано, как использовать телеметрию служб мультимедиа Azure с помощью пакета SDK для .NET."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4019fa7d080ca3f8a8709bd1e666f7062b883954
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Настройка телеметрии служб мультимедиа Azure с использованием .NET
 
-В этом разделе описаны общие шаги, которые может потребоваться при настройке телеметрии hello служб мультимедиа Azure (AMS), с помощью пакета SDK .NET. 
+В этом разделе описываются общие действия по настройке телеметрии служб мультимедиа Azure (AMS) с помощью пакета SDK для .NET. 
 
 >[!NOTE]
->Для hello подробное объяснение того, что является AMS телеметрии и как tooconsume, разделе hello [Обзор](media-services-telemetry-overview.md) раздела.
+>Подробнее о том, что такое телеметрия AMS и как ее использовать, описывается в этом[обзоре](media-services-telemetry-overview.md).
 
-Его можно использовать данные телеметрии в одном из следующих способов hello:
+Данные телеметрии можно использовать одним из следующих способов.
 
-- Чтение данных непосредственно из табличного хранилища Azure (например, при использовании hello SDK хранилища). Описание hello телеметрии хранилища таблиц см. hello **потребляет данные телеметрии** в [это](https://msdn.microsoft.com/library/mt742089.aspx) раздела.
+- Можно считывать данные непосредственно из хранилища таблиц Azure (например, с помощью пакета SDK для хранилища). Описание таблиц хранилища телеметрии см. в подразделе **Использование данных телеметрии** [этого](https://msdn.microsoft.com/library/mt742089.aspx) раздела.
 
 Или
 
-- Поддержка использования hello в hello Media Services .NET SDK для чтения данных из хранилища. В этом разделе показано, как tooenable данные телеметрии для hello указана учетная запись AMS и как tooquery hello метрик с помощью hello Azure Media Services .NET SDK.  
+- Для чтения данных из хранилища можно использовать поддержку, реализованную в пакете SDK служб мультимедиа для .NET. В этом разделе показано, как включить телеметрию для указанной учетной записи AMS и как запросить метрики с помощью пакета SDK служб мультимедиа Azure для .NET.  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>Настройка данных телеметрии для учетной записи служб мультимедиа
 
-Hello следующие шаги, необходимые tooenable телеметрии:
+Чтобы включить телеметрию, необходимо выполнить следующие шаги:
 
-- Получите учетные данные hello toohello присоединенного учетной записи хранилища hello учетная запись служб мультимедиа. 
-- Создание конечной точки уведомления с **EndPointType** значение слишком**AzureTable** и endPointAddress, указывающим таблицу toohello хранилища.
+- Получите учетные данные учетной записи хранения, подключенной к учетной записи служб мультимедиа. 
+- Создайте конечную точку уведомления, задав для параметра **EndPointType** значение **AzureTable** и указав в качестве адреса endPointAddress таблицу хранилища.
 
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 
-- Создание параметров конфигурации мониторинга для hello служб, которые хотите toomonitor. Разрешено не более одного параметра конфигурации мониторинга. 
+- Создайте параметры конфигурации мониторинга служб, которые требуется отслеживать. Разрешено не более одного параметра конфигурации мониторинга. 
   
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
@@ -62,15 +62,15 @@ Hello следующие шаги, необходимые tooenable телеме
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-1. Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+1. Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
-2. Добавьте следующий элемент слишком hello**appSettings** определенной в файле app.config:
+2. Добавьте следующий элемент в **appSettings**, определенный в файле app.config:
 
     <add key="StorageAccountName" value="storage_name" />
  
 ## <a name="example"></a>Пример  
     
-Hello в следующем примере показано, как tooenable данные телеметрии для hello указана учетная запись AMS и как tooquery hello метрик с помощью hello Azure Media Services .NET SDK.  
+В примере ниже показано, как включить телеметрию для указанной учетной записи AMS и запросить метрики с помощью пакета SDK служб мультимедиа Azure для .NET.  
 
     using System;
     using System.Collections.Generic;
@@ -192,7 +192,7 @@ Hello в следующем примере показано, как tooenable д
 
             var channelMetrics = telemetry.GetChannelHeartbeats(timerangeStart, timerangeEnd);
 
-            // Print hello channel metrics.
+            // Print the channel metrics.
             Console.WriteLine("Channel metrics:");
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))

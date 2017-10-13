@@ -1,6 +1,6 @@
 ---
-title: "aaaAdding a сегментов с помощью средств эластичной базы данных | Документы Microsoft"
-description: "Как задать toouse API динамического масштабирования tooadd новых сегментов tooa сегментов."
+title: "Добавление сегмента с использованием средств эластичных баз данных | Документация Майкрософт"
+description: "Информация о том, как использовать интерфейсы API эластичного масштабирования для добавления новых сегментов в набор сегментов."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f44b59578376d1238b3012a3cb52339978079f0e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a91ea2251ea3b748faba5c97765bfded9c00234
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Добавление сегмента с использованием средств эластичных баз данных
-## <a name="tooadd-a-shard-for-a-new-range-or-key"></a>tooadd сегментов для нового диапазона или ключа
-Приложениям часто требуется toosimply добавить новые данные toohandle сегментов, который ожидается от новых ключей или диапазонов ключей для карты сегментов, которая уже существует. Например приложение сегментированных по ИД клиента может потребоваться tooprovision новый сегмент для нового клиента или ежемесячно сегментированных данных может потребоваться новый сегмент подготовить перед запуском hello каждого нового месяца. 
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Добавление сегмента для нового диапазона или ключа
+Часто необходимо, чтобы приложение просто добавило в существующую карту сегментов новые сегменты для обработки данных, поступление которых ожидается из новых ключей и диапазонов ключей. Например, приложение с сегментированием по идентификатору клиента должно подготовить новый сегмент для нового клиента или при обработке данных с сегментированием по месяцам требуется создание нового сегмента перед началом следующего месяца. 
 
-Если hello новый диапазон значений ключа уже не является частью существующего сопоставления, это очень простой tooadd hello новых сегментов и связывание hello новый ключ или диапазон toothat сегмент. 
+Если новый диапазон ключей не входит в существующее сопоставление, добавление сегмента и привязка к нему нового ключа или диапазона становится довольно простой задачей. 
 
-### <a name="example--adding-a-shard-and-its-range-tooan-existing-shard-map"></a>Пример: Добавление сегмент и его сопоставление диапазона tooan существующих сегментов
-В этом образце используется hello [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx) hello [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) методов и создает экземпляр hello [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) класса. В образце hello ниже базы данных с именем **sample_shard_2** и все необходимые объекты внутри объекта были созданы toohold диапазона [300, 400).  
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Пример: добавление сегмента и его диапазона в имеющееся сопоставление сегментов
+В этом примере используются методы [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx), [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) и создается экземпляр класса [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.). В примере ниже для хранения диапазона [300, 400) создается база данных с именем **sample_shard_2** и все необходимые объекты схемы внутри нее.  
 
     // sm is a RangeShardMap object.
-    // Add a new shard toohold hello range being added. 
+    // Add a new shard to hold the range being added. 
     Shard shard2 = null; 
 
     if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
@@ -39,21 +39,21 @@ ms.lasthandoff: 10/06/2017
         shard2 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_2"));  
     } 
 
-    // Create hello mapping and associate it with hello new shard 
+    // Create the mapping and associate it with the new shard 
     sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
                             (new Range<long>(300, 400), shard2, MappingStatus.Online)); 
 
 
-В качестве альтернативы можно использовать Powershell toocreate нового диспетчера карты сегментов. Пример представлен [здесь](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+В качестве альтернативы можно использовать PowerShell, чтобы создать новый диспетчер карты сегментов. Пример представлен [здесь](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-## <a name="tooadd-a-shard-for-an-empty-part-of-an-existing-range"></a>tooadd сегментов для пустую часть существующего диапазона
-В некоторых случаях уже сопоставлено с сегментом tooa диапазона и частично заполненный его данными, но теперь хотите предстоящих данных toobe направленной tooa другой сегмент. Например, вы сегментов по дням в диапазоне и выделен сегментов tooa 50 дней, но день 24 tooland будущие данные в другой сегмент. Hello эластичной базы данных [средством слияния разбиение](sql-database-elastic-scale-overview-split-and-merge.md) могут выполнять эту операцию, но если перемещение данных не является обязательной (например, данные для диапазона hello дни [25, 50), т. е., too50 включительно день 25 исчерпывающим, еще не существует) можно выполнить полностью использование hello непосредственно API-интерфейсы управления карты сегментов.
+## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Добавление сегмента для пустой части существующего диапазона
+В некоторых случаях к этому моменту диапазон может быть уже сопоставлен с сегментом и частично заполнен данными, но теперь последующие данные должны направляться в другой сегмент. Такая ситуация, например, возникает, если сегментация выполняется по диапазону с разбиением на дни и при этом для сегмента уже выделено 50 дней, однако на 24 день понадобилось, чтобы будущие данные поступали в другой сегмент. [Средство разбиения и объединения](sql-database-elastic-scale-overview-split-and-merge.md) эластичных баз данных может выполнить эту операцию. Но если перемещать данные необязательно (например, данные для диапазона дней [25, 50), т. е. с 25-го дня включительно по 50-й день не включительно, еще не существуют), эту операцию можно выполнить полностью непосредственно с помощью API управления картой сегментов.
 
-### <a name="example-splitting-a-range-and-assigning-hello-empty-portion-tooa-newly-added-shard"></a>Пример: разбиение диапазона и назначение hello пустые часть tooa новых сегментов
+### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Пример: разбиение диапазона и присвоение пустой части новому добавленному сегменту
 В рамках примера были созданы база данных с именем sample_shard_2 и все необходимые объекты схемы, содержащиеся в ней.  
 
     // sm is a RangeShardMap object.
-    // Add a new shard toohold hello range we will move 
+    // Add a new shard to hold the range we will move 
     Shard shard2 = null; 
 
     if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
@@ -62,19 +62,19 @@ ms.lasthandoff: 10/06/2017
         shard2 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_2"));  
     } 
 
-    // Split hello Range holding Key 25 
+    // Split the Range holding Key 25 
 
     sm.SplitMapping(sm.GetMappingForKey(25), 25); 
 
-    // Map new range holding [25-50) toodifferent shard: 
+    // Map new range holding [25-50) to different shard: 
     // first take existing mapping offline 
     sm.MarkMappingOffline(sm.GetMappingForKey(25)); 
-    // now map while offline tooa different shard and take online 
+    // now map while offline to a different shard and take online 
     RangeMappingUpdate upd = new RangeMappingUpdate(); 
     upd.Shard = shard2; 
     sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
 
-**Важные**: этот метод следует использовать только при наличии определенных, hello диапазона для hello обновить сопоставление является пустым.  выше методов Hello не проверять данные для перемещения диапазона hello, поэтому лучше tooinclude проверяет в коде.  Если существуют строки в диапазоне hello перемещения, распространения hello фактические данные не будут соответствовать карты обновленного сегментов hello. Используйте hello [средством слияния разбиение](sql-database-elastic-scale-overview-split-and-merge.md) tooperform hello операции вместо этого в таких случаях.  
+**Важно.** Используйте этот метод, только если вы уверены, что диапазон для обновленного сопоставления пуст.  Методы выше не позволяют проверить данные для перемещаемого диапазона, так что лучше включить проверки в код.  Если перемещаемый диапазон содержит строки, фактическое распределение данных не будет соответствовать обновленному сопоставлению сегментов. В таких случаях для выполнения операции используйте [средство разбиения и объединения](sql-database-elastic-scale-overview-split-and-merge.md) .  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

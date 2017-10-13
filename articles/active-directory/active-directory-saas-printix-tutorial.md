@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Printix | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Printix."
+description: "Узнайте, как настроить единый вход Azure Active Directory в Printix."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 654810116091eb52912b377cc97afef803ee816e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 97dbb3fa0531f2f679badb6bb9752f2e42fc9cb3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Руководство. Интеграция Azure Active Directory с Printix
 
-В этом учебнике вы узнаете, как toointegrate Printix с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать Printix с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD Printix предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением Printix обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooPrintix
-- Можно включить на пользователей tooautomatically get вошедшего tooPrintix (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к Printix.
+- Вы можете включить автоматический вход пользователей в Printix (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с Printix требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Printix, вам потребуется:
 
 - подписка Azure AD;
 - подписка Printix с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление Printix из галереи hello
+1. Добавление Printix из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-printix-from-hello-gallery"></a>Добавление Printix из галереи hello
-tooconfigure hello интеграции Printix в Azure AD, вы должны tooadd Printix из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-printix-from-the-gallery"></a>Добавление Printix из коллекции
+Чтобы настроить интеграцию Printix с Azure AD, необходимо добавить Printix из коллекции в список управляемых приложений SaaS.
 
-**tooadd Printix из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить Printix из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **Printix**.
+4. В поле поиска введите **Printix**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/tutorial_printix_search.png)
 
-5. В панели результатов hello выберите **Printix**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **Printix** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/tutorial_printix_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Printix с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Printix является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Printix должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в Printix соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем Printix.
 
-В Printix, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Printix.
 
-tooconfigure и теста Azure AD единого входа с Printix, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в Printix, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя Printix](#creating-a-printix-test-user)**  -toohave аналог Саймон Britta в Printix, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя Printix](#creating-a-printix-test-user)** требуется для того, чтобы в Printix существовал пользователь Britta Simon, связанный с представлением этого же пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Printix.
+В данном разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Printix.
 
-**tooconfigure Azure AD единого входа с Printix, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в Printix, выполните следующие действия.**
 
-1. В hello в hello портала Azure **Printix** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **Printix** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_samlbase.png)
 
-3. На hello **URL-адреса и домена Printix** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения Printix** сделайте следующее:
 
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_url.png)
 
-    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.printix.net`
+    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > значение Hello не является вещественным числом. Значение hello обновления с hello фактический URL-адрес входа. Обратитесь к [группа поддержки клиента Printix](mailto:support@printix.net) tooget значение hello. 
+    > Это значение приведено для примера. Вместо него необходимо указать фактический URL-адрес для входа. Чтобы получить это значение, обратитесь в [службу поддержки клиентов Printix](mailto:support@printix.net). 
  
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_certificate.png) 
 
@@ -123,93 +123,93 @@ tooconfigure и теста Azure AD единого входа с Printix, тре
 
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_general_400.png)
 
-6. Клиент Printix tooyour входа от имени администратора.
+6. Войдите в клиент Printix как администратор.
 
-7. В меню hello hello верхней части страницы, нажмите значок hello в правом верхнем углу hello и выберите пункт «**проверки подлинности**».
+7. В меню вверху щелкните значок в правом верхнем углу и выберите**Authentication**(Проверка подлинности).
    
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_06.png)
 
-8. На hello **установки** выберите **Azure и Office 365, включение проверки подлинности**
+8. На вкладке **Setup** (Настройка) выберите **Enable Azure/Office 365 authentication** (Включить проверку подлинности Azure/Office 365).
    
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_07.png)
 
-9. На hello **Azure** текстовое toohello URL-адрес метаданных федерации ввода из вкладки «**документа метаданных федерации**». 
+9. На вкладке **Azure** введите URL-адрес метаданных федерации в поле ввода **Federation metadata document** (Документ метаданных федерации). 
 
-    Присоединение hello метаданных XML-файл, который был загружен из Azure AD, слишком[Printix поддержки](mailto:support@printix.net). Затем они загрузить hello XML-файла и укажите URL-адрес метаданных федерации.
+    Вложите XML-файл метаданных, который вы скачали из Azure AD, в [службу поддержки Printix](mailto:support@printix.net). Служба отправит этот файл на сервер и предоставит вам URL-адрес метаданных федерации.
    
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_08.png)
    
-10. Нажмите кнопку hello»**тестирования**«и нажмите кнопку»**ОК**» кнопку при успешном выполнении теста hello.
+10. Нажмите кнопку **Test** (Тестировать). Если проверка будет выполнена успешно, нажмите кнопку **ОК**.
    
-     Страница Azure active directory будет отображаться после нажатия кнопки hello **тестирования** кнопки. «hello проверка выполнена успешно» здесь означает после ввода учетных данных Azure тестовая учетная запись, он отобразит hello отображению сообщения «параметры прошла проверку». Нажмите кнопку hello **ОК** кнопки.
+     После нажатия кнопки **тестирования** отобразится страница Azure Active Directory. Если на ней есть сообщение The test was successful (Проверка выполнена успешно), введите учетные данные для тестовой учетной записи Azure. Появится окно с сообщением Settings tested OK (Параметры успешно проверены). Нажмите кнопку **ОК**.
    
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_09.png)
 
-11. Щелкните hello **Сохранить** кнопку «**проверки подлинности**» страницы.
+11. Щелкните кнопку **Save** (Сохранить) на странице **Authentication** (Проверка подлинности).
 
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-printix-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-printix-test-user"></a>Создание тестового пользователя Printix
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в Printix. Приложение Printix поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Цель этого раздела — создать пользователя с именем Britta Simon в приложении Printix. Приложение Printix поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь создается во время попытки tooaccess Printix, если он еще не существует. 
+В этом разделе никакие действия с вашей стороны не требуются. Пользователь будет создан при попытке получить доступ к приложению Printix (если он еще не создан). 
 
 > [!NOTE]
-> Если требуется toocreate пользователя вручную, необходимо toocontact hello [Printix поддержки](mailto:support@printix.net).
+> Чтобы создать пользователя вручную, необходимо обратиться в [службу поддержки Printix](mailto:support@printix.net).
 > 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooPrintix доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к Printix.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooPrintix Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в Printix, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **Printix**.
+2. В списке приложений выберите **Printix**.
 
     ![Настройка единого входа](./media/active-directory-saas-printix-tutorial/tutorial_printix_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -217,7 +217,7 @@ tooconfigure и теста Azure AD единого входа с Printix, тре
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -225,13 +225,13 @@ tooconfigure и теста Azure AD единого входа с Printix, тре
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello Printix плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Printix приложения.
+Щелкнув плитку Printix на панели доступа, вы автоматически войдете в приложение Printix.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

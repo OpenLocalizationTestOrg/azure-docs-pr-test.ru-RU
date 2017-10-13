@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory B2C | Документы Microsoft"
-description: "Как toobuild .NET веб-приложения и вызова веб-api с помощью маркера доступа Azure Active Directory B2C и OAuth 2.0."
+title: "Azure Active Directory B2C | Документация Майкрософт"
+description: "Как создать веб-приложение .NET и обращаться к веб-API с использованием Azure Active Directory B2C и маркеров доступа OAuth 2.0."
 services: active-directory-b2c
 documentationcenter: .net
 author: parakhj
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 9b248e3bf18968e12aae73c07083fa8278befb3b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: вызов веб-API .NET из веб-приложения .NET
 
-С помощью Azure AD B2C, можно добавить мощные удостоверение управления функции tooyour веб-приложений и веб-API. В этой статье описывается, как toorequest маркеры доступа и выполнять вызовы из .NET «список дел» веб-tooa приложения .NET, веб-api.
+Azure AD B2C позволяет добавлять в веб-приложения и веб-API мощные функции для управления удостоверениями. В этой статье описывается запрос маркера доступа и вызов веб-API .NET из веб-приложения со списком дел.
 
-Данная статья не охватывает как tooimplement вход, регистрации и управления с помощью Azure AD B2C профиля. Этот раздел посвящен вызовах веб-API после hello пользователь уже прошел проверку подлинности. Если это еще не сделано, необходимо выполнить следующие действия.
+В этой статье не рассматривается реализация входа, регистрации и управления профилями с помощью Azure AD B2C. Она посвящена вызову веб-API после того, как пользователь прошел проверку подлинности. Если это еще не сделано, необходимо выполнить следующие действия.
 
 * Изучите начало работы с [веб-приложением .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
 * Изучите начало работы с [веб-API .NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 
 ## <a name="prerequisite"></a>Предварительные требования
 
-toobuild веб-приложение, которое вызывает веб-api, необходимо:
+Чтобы создать веб-приложение, которое вызывает веб-API, выполните следующие действия.
 
 1. [Создайте клиента Azure AD B2C](active-directory-b2c-get-started.md).
 2. [Зарегистрируйте веб-API](active-directory-b2c-app-registration.md#register-a-web-api).
 3. [Зарегистрируйте веб-приложение](active-directory-b2c-app-registration.md#register-a-web-app).
 4. [Настройте политики](active-directory-b2c-reference-policies.md).
-5. [Предоставление hello web app разрешения toouse hello веб-api](active-directory-b2c-access-tokens.md#publishing-permissions).
+5. [Предоставьте веб-приложению права для использования веб-API](active-directory-b2c-access-tokens.md#publishing-permissions).
 
 > [!IMPORTANT]
-> клиентское приложение Hello и веб-API необходимо использовать каталог B2C hello же Azure AD.
+> Клиентское приложение и веб-API должны использовать один и тот же каталог Azure AD B2C.
 >
 
-## <a name="download-hello-code"></a>Загрузка кода hello
+## <a name="download-the-code"></a>Загрузка кода
 
-Hello кода для этого учебника, сохраняется на [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Образец hello можно клонировать, выполнив:
+Код примеров для этого руководства размещен на портале [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Вы можете клонировать пример, выполнив такую команду:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-После загрузки кода образца hello запущен tooget файл .sln Visual Studio откройте hello. Hello файл решения содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp`— веб-приложение MVC, hello пользователь взаимодействует с. `TaskService`— приложение hello фоновая веб-API, который хранит список дел каждого пользователя. Данная статья не охватывает hello построение `TaskWebApp` веб-приложения или hello `TaskService` веб-api. toolearn toobuild hello .NET, веб-приложения с помощью Azure AD B2C разделе нашей [учебник по .NET web app](active-directory-b2c-devquickstarts-web-dotnet-susi.md). toolearn как toobuild hello .NET веб-API, защищенного с помощью Azure AD B2C см. наш [учебника веб-API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Скачав пример кода, откройте SLN-файл Visual Studio, чтобы начать работу. Теперь решение содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp` — это веб-приложение MVC, с которым взаимодействует пользователь. `TaskService` — веб-API серверной части приложения, в котором хранится список дел для каждого пользователя. В этой статье не рассматривается создание веб-приложения `TaskWebApp` или веб-API `TaskService`. Чтобы узнать, как с помощью Azure AD B2C создать веб-приложение, см. [руководство по веб-приложениям .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Чтобы узнать, как с помощью Azure AD B2C создать и защитить веб-API, см. [руководство по веб-API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-### <a name="update-hello-azure-ad-b2c-configuration"></a>Обновите конфигурацию hello Azure AD B2C
+### <a name="update-the-azure-ad-b2c-configuration"></a>Обновление конфигурации Azure AD B2C
 
-Выборка — настроенное toouse hello политик и клиент идентификатор нашей демонстрационному клиенту. Если вы хотите toouse своим собственным клиентом:
+В нашем примере настроено использование политик и идентификатора демонстрационного клиента. Если вы хотите использовать собственный клиент, выполните следующее.
 
-1. Откройте `web.config` в hello `TaskService` проекта и замените значения hello
+1. Откройте `web.config` в проекте `TaskService` и замените следующие значения:
 
     * `ida:Tenant` именем своего клиента;
     * `ida:ClientId` идентификатором клиента для приложения веб-API;
-    * `ida:SignUpSignInPolicyId` именем политики регистрации и входа в систему;
+    * `ida:SignUpSignInPolicyId` именем политики регистрации и входа в систему.
 
-2. Откройте `web.config` в hello `TaskWebApp` проекта и замените значения hello
+2. Откройте `web.config` в проекте `TaskWebApp` и замените следующие значения:
 
     * `ida:Tenant` именем своего клиента;
     * `ida:ClientId` идентификатором клиента для веб-приложения;
@@ -76,11 +76,11 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ## <a name="requesting-and-saving-an-access-token"></a>Запрос и сохранение маркера доступа
 
-### <a name="specify-hello-permissions"></a>Укажите разрешения hello
+### <a name="specify-the-permissions"></a>Установка разрешений
 
-Порядок toomake hello вызовов toohello веб-API, нужен tooauthenticate hello пользователя (с помощью политики регистрации-повышение/вход) и [получения токена доступа](active-directory-b2c-access-tokens.md) из Azure AD B2C. В порядке tooreceive маркер доступа сначала необходимо указать разрешения hello хотелось бы toogrant токена доступа hello. Hello разрешения указаны в hello `scope` параметра при выполнении запроса toohello hello `/authorize` конечной точки. Например, tooacquire токен доступа с hello «чтение» разрешение toohello ресурсов приложения hello URI идентификатора приложения `https://contoso.onmicrosoft.com/tasks`, область hello бы `https://contoso.onmicrosoft.com/tasks/read`.
+Чтобы направить вызов к веб-интерфейсу API, необходимо выполнить аутентификацию пользователя (в соответствии с политикой регистрации и входа) и [получить маркер доступа](active-directory-b2c-access-tokens.md) от Azure AD B2C. Чтобы получить маркер доступа, сначала требуется указать разрешения, которые он будет предоставлять. Разрешения указываются в параметре `scope` при выполнении запроса к конечной точке `/authorize`. Например, чтобы получить маркер доступа с разрешением на чтение для ресурсов приложения с URI идентификатора приложения `https://contoso.onmicrosoft.com/tasks`, нужно задать область `https://contoso.onmicrosoft.com/tasks/read`.
 
-область toospecify hello в наш hello образец, откройте файл `App_Start\Startup.Auth.cs` и определить hello `Scope` переменной в OpenIdConnectAuthenticationOptions.
+Чтобы изменить область в нашем примере, откройте файл `App_Start\Startup.Auth.cs` и определите переменную `Scope` в разделе OpenIdConnectAuthenticationOptions.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -90,16 +90,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
         {
             ...
 
-            // Specify hello scope by appending all of hello scopes requested into one string (seperated by a blank space)
+            // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
             Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
         }
     );
 }
 ```
 
-### <a name="exchange-hello-authorization-code-for-an-access-token"></a>Обмен кода авторизации hello маркера доступа
+### <a name="exchange-the-authorization-code-for-an-access-token"></a>Обмен кода авторизации на маркер доступа
 
-После завершения регистрации или входа в качества hello пользователя приложение получит код авторизации из Azure AD B2C. Hello OWIN OpenID Connect по промежуточного слоя будет хранить кода hello, но не обмениваются его маркера доступа. Можно использовать hello [MSAL библиотеки](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) toomake hello exchange. В нашем примере настраивался обратного вызова уведомления в по промежуточного слоя, OpenID Connect hello при получении кода авторизации. При обратном вызове hello используйте MSAL tooexchange hello код для токена и сохранить hello маркер в кэш hello.
+Когда пользователь выполнит процесс регистрации или входа в систему, приложение получит код авторизации от Azure AD B2C. ПО промежуточного слоя OWIN OpenID Connect сохраняет этот код, но не обменивает его на маркер доступа. Для этого обмена можно использовать [библиотеку MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Для нашего примера мы настроили обратный вызов уведомления, который ПО промежуточного слоя OpenID Connect выполняет при каждом получении кода авторизации. В функции обратного вызова с помощью функций MSAL код обменивается на маркер доступа, который сохраняется в кэш.
 
 ```CSharp
 /*
@@ -107,14 +107,14 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 */
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
-    // Extract hello code from hello response notification
+    // Extract the code from the response notification
     var code = notification.Code;
 
     var userObjectId = notification.AuthenticationTicket.Identity.FindFirst(ObjectIdElement).Value;
     var authority = String.Format(AadInstance, Tenant, DefaultPolicy);
     var httpContext = notification.OwinContext.Environment["System.Web.HttpContextBase"] as HttpContextBase;
 
-    // Exchange hello code for a token. Make sure toospecify hello necessary scopes
+    // Exchange the code for a token. Make sure to specify the necessary scopes
     ClientCredential cred = new ClientCredential(ClientSecret);
     ConfidentialClientApplication app = new ConfidentialClientApplication(authority, Startup.ClientId,
                                             RedirectUri, cred, new NaiveSessionCache(userObjectId, httpContext));
@@ -122,19 +122,19 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
-## <a name="calling-hello-web-api"></a>Вызов веб-API hello
+## <a name="calling-the-web-api"></a>Вызов веб-API
 
-В этом разделе рассматриваются как toouse hello маркера, полученные во время регистрации-повышение и войдите в Azure AD B2C в порядке tooaccess hello веб-API.
+В этом разделе описано, как использовать для доступа к защищенному веб-API маркер, полученный от Azure AD B2C при регистрации или входе в систему.
 
-### <a name="retrieve-hello-saved-token-in-hello-controllers"></a>Извлечь маркер сохранен hello контроллеры hello
+### <a name="retrieve-the-saved-token-in-the-controllers"></a>Использование сохраненного маркера в контроллерах
 
-Hello `TasksController` несет ответственность за связь с веб-hello API и отправки tooread toohello API запросов HTTP, создание и удаление задач. Поскольку hello API обеспечивается Azure AD B2C, вам потребуется toofirst получение hello токена, сохраненный на hello перед шагом.
+`TasksController` отвечает за взаимодействие с веб-API из отправку HTTP-запросов к API на чтение, создание и удаление задач. Так как API-интерфейс защищен с помощью Azure AD B2C, сначала нужно получить маркер, сохраненный на предыдущем этапе.
 
 ```CSharp
 // Controllers\TasksController.cs
 
 /*
-* Uses MSAL tooretrieve hello token from hello cache
+* Uses MSAL to retrieve the token from the cache
 */
 private async void acquireToken(String[] scope)
 {
@@ -143,7 +143,7 @@ private async void acquireToken(String[] scope)
 
     ClientCredential credential = new ClientCredential(Startup.ClientSecret);
 
-    // Retrieve hello token using hello provided scopes
+    // Retrieve the token using the provided scopes
     ConfidentialClientApplication app = new ConfidentialClientApplication(authority, Startup.ClientId,
                                         Startup.RedirectUri, credential,
                                         new NaiveSessionCache(userObjectID, this.HttpContext));
@@ -153,9 +153,9 @@ private async void acquireToken(String[] scope)
 }
 ```
 
-### <a name="read-tasks-from-hello-web-api"></a>Чтение задач из hello веб-API
+### <a name="read-tasks-from-the-web-api"></a>Чтение задач из веб-API
 
-При наличии токена, его можно присоединить toohello HTTP `GET` запроса в hello `Authorization` вызов toosecurely заголовок `TaskService`:
+Теперь, когда у вас есть маркер, его можно вложить в HTTP-запрос `GET` в заголовке `Authorization`, чтобы безопасно вызвать `TaskService`:
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -164,13 +164,13 @@ public async Task<ActionResult> Index()
 {
     try {
 
-        // Retrieve hello token with hello specified scopes
+        // Retrieve the token with the specified scopes
         acquireToken(new string[] { Startup.ReadTasksScope });
 
         HttpClient client = new HttpClient();
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, apiEndpoint);
 
-        // Add token toohello Authorization header and make hello request
+        // Add token to the Authorization header and make the request
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         HttpResponseMessage response = await client.SendAsync(request);
 
@@ -179,11 +179,11 @@ public async Task<ActionResult> Index()
 
 ```
 
-### <a name="create-and-delete-tasks-on-hello-web-api"></a>Создание и удаление задачи на hello веб-API
+### <a name="create-and-delete-tasks-on-the-web-api"></a>Создание и удаление задач в веб-API
 
-Выполните hello же шаблонов отправляемым `POST` и `DELETE` запрашивает toohello веб-API, с помощью маркера доступа hello tooretrieve MSAL из кэша hello.
+Используйте эту же схему при отправке запросов `POST` и `DELETE` к веб-API, получая маркера доступа из кэша с помощью MSAL.
 
-## <a name="run-hello-sample-app"></a>Запуск образца приложения hello
+## <a name="run-the-sample-app"></a>Запуск примера приложения
 
-Наконец сборку и запуск обоих приложений hello. Регистрация и вход и создавать задачи для пользователя, выполнившего вход hello. Выйдите и зарегистрируйтесь от имени другого пользователя. Создайте задачи для этого пользователя. Обратите внимание, как задачи hello хранимых пользователя на hello API, поскольку hello API извлекает hello учетные данные пользователя из маркера hello, получаемые им. Также попробуйте воспроизвести с помощью областей hello. Удалите разрешение hello слишком «запись», а затем попытайтесь добавить задачу. Просто убедитесь, что toosign out каждый раз при изменении области hello.
+Выполните сборку обоих приложений и запустите их. Зарегистрируйтесь в приложении и войдите в него, а затем создайте задачи для пользователя, выполнившего вход. Выйдите и зарегистрируйтесь от имени другого пользователя. Создайте задачи для этого пользователя. Обратите внимание, что в API хранятся задачи для каждого пользователя, так как API извлекает удостоверение пользователя из получаемого маркера. Также выполните эксперименты с областями. Удалите разрешение на запись и попробуйте добавить задачу. После каждого изменения областей обязательно выполняйте выход из системы.
 

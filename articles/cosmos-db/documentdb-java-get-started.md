@@ -1,6 +1,6 @@
 ---
 title: "Руководство по NoSQL. Пакет SDK для создания приложения Java с помощью API-интерфейса DocumentDB для Azure Cosmos DB | Документация Майкрософт"
-description: "Учебник NoSQL, создает консольное приложение Java с помощью hello DocumentDB API для Azure Cosmos DB и базы данных в сети. Azure DocumentDB — это база данных NoSQL для JSON."
+description: "Руководство по NoSQL, в котором создается оперативная база данных и консольное приложение Java с помощью API-интерфейса DocumentDB для Azure Cosmos DB. Azure DocumentDB — это база данных NoSQL для JSON."
 keywords: "руководство nosql, оперативная база данных, консольное приложение java"
 services: cosmos-db
 documentationcenter: Java
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.openlocfilehash: 1a298a15ab911d140b9df30ad52cfe0fa07c55b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ea667a889bc6eaed08619ee5e141d8e3e9add7bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>Руководство по NoSQL. Создание консольного приложения Java с помощью API-интерфейса DocumentDB
 > [!div class="op_single_selector"]
@@ -32,45 +32,48 @@ ms.lasthandoff: 10/06/2017
 >  
 > 
 
-Вас приветствует toohello NoSQL учебник по API DocumentDB для пакета SDK для Java Azure Cosmos DB hello! После изучения этого руководства у вас будет консольное приложение, которое создает ресурсы Azure Cosmos DB и отправляет запросы к ним.
+Приветствуем вас в разделе руководства по NoSQL, посвященного пакету SDK для создания консольного приложения Java с помощью API-интерфейса DocumentDB для Azure Cosmos DB. После изучения этого руководства у вас будет консольное приложение, которое создает ресурсы Azure Cosmos DB и отправляет запросы к ним.
 
 Мы рассмотрим:
 
-* Создание и подключение учетной записи Azure Cosmos DB tooan
+* создание учетной записи Azure Cosmos DB и подключение к ней;
 * настройка решения Visual Studio;
 * Создание оперативной базы данных
 * создание коллекции;
 * создание документов JSON;
-* Запрос к коллекции hello
+* выполнение запросов к коллекции;
 * создание документов JSON;
-* Запрос к коллекции hello
+* выполнение запросов к коллекции;
 * замена документа;
 * удаление документа;
-* Удаление базы данных hello
+* удаление базы данных.
 
 А теперь приступим к работе!
 
 ## <a name="prerequisites"></a>Предварительные требования
-Убедитесь, что у вас есть следующие hello:
+Вам потребуются:
 
-* Активная учетная запись Azure. Если у вас ее нет, зарегистрируйте [бесплатную учетную запись](https://azure.microsoft.com/free/). Кроме того, можно использовать hello [DB эмулятор Azure Cosmos](local-emulator.md) для этого учебника.
-* [Git.](https://git-scm.com/downloads)
+* Активная учетная запись Azure. Если у вас ее нет, зарегистрируйте [бесплатную учетную запись](https://azure.microsoft.com/free/). 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* [Git](https://git-scm.com/downloads).
 * [Комплект разработчика Java (JDK 7 +)](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * [Maven](http://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Шаг 1. Создание учетной записи Azure Cosmos DB
-Давайте создадим учетную запись Azure Cosmos DB. При наличии учетной записи требуется toouse можно сразу перейти слишком[клон hello GitHub проекта](#GitClone). При использовании hello Azure Cosmos DB эмулятор, выполните действия hello в [DB эмулятор Azure Cosmos](local-emulator.md) tooset Настройка эмулятора hello и пропускать слишком[клон hello GitHub проекта](#GitClone).
+Давайте создадим учетную запись Azure Cosmos DB. Если у вас уже есть учетная запись, которую вы собираетесь использовать, можно перейти к [клонированию проекта GitHub](#GitClone). При использовании эмулятора Azure Cosmos DB выполните действия, описанные в [этой статье](local-emulator.md), чтобы настроить эмулятор и сразу перейти к [клонированию проекта GitHub](#GitClone).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Шаг 2: Клонирование hello GitHub проекта
-Вы можете начать клонированием репозитория GitHub hello для [Приступая к работе с Azure Cosmos DB и Java](https://github.com/Azure-Samples/documentdb-java-getting-started). Например из локального каталога выполните следующие tooretrieve hello образец проекта локально hello.
+## <a id="GitClone"></a>Этап 2. Клонирование проекта GitHub
+[Чтобы приступить к работе с Azure Cosmos DB и Java](https://github.com/Azure-Samples/documentdb-java-getting-started), сначала клонируйте репозиторий GitHub. Например, чтобы получить образец проекта в локальной среде, в локальном каталоге выполните следующую команду.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-каталог Hello содержит `pom.xml` для проекта hello и `src` папку, содержащую Java исходного кода включая `Program.java` котором показывается, как выполнять простые операции с Azure DB Cosmos, таких как создание документов и запроса данных в Коллекция. Hello `pom.xml` включает зависимость от hello [DocumentDB Java SDK на Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+В этом каталоге находится файл проекта `pom.xml` и папка с исходным кодом Java, `src`. Кроме того, здесь также находится файл `Program.java` с инструкциями по выполнению простых операций с Azure Cosmos DB, таких как создание документов и запрос данных в коллекции. В файле `pom.xml` содержится зависимость от [пакета Java SDK для DocumentDB в Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -78,10 +81,10 @@ ms.lasthandoff: 10/06/2017
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Шаг 3: Учетная запись Azure Cosmos DB tooan подключения
-Далее head резервное toohello [портала Azure](https://portal.azure.com) tooretrieve конечной точки и основного главного ключа. Hello Azure Cosmos DB конечной точки и первичный ключ необходимы для вашего приложения toounderstand где tooconnect, а для Azure Cosmos DB tootrust подключения вашего приложения.
+## <a id="Connect"></a>Шаг 3. Подключение к учетной записи Azure Cosmos DB
+Далее вернитесь на [портал Azure](https://portal.azure.com), чтобы получить конечную точку и первичный главный ключ. Конечная точка и первичный ключ Azure Cosmos DB позволяют приложению предоставлять данные о расположении, в котором будет устанавливаться подключение, делая подключение вашего приложения доверенным для Azure Cosmos DB.
 
-В hello портал Azure, перейдите учетная запись Azure Cosmos DB tooyour и нажмите кнопку **ключей**. Скопируйте hello URI с портала hello и вставьте его в `https://FILLME.documents.azure.com` в файле Program.java hello. Затем копировать hello первичный ключ с портала hello и вставьте его в `FILLME`.
+На портале Azure перейдите к учетной записи Azure Cosmos DB, а затем щелкните **Ключи**. Скопируйте универсальный код ресурса (URI) с портала и вставьте его в параметр `https://FILLME.documents.azure.com` в файле Program.java. Затем скопируйте на портале значение поля "Первичный ключ" и вставьте его в параметр `FILLME`.
 
     this.client = new DocumentClient(
         "https://FILLME.documents.azure.com",
@@ -89,10 +92,10 @@ ms.lasthandoff: 10/06/2017
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Снимок экрана: hello hello NoSQL учебника toocreate консольное приложение Java портал Azure. Показывает Cosmos Azure DB учетной записи, с hello общаются выделен, hello выделенной колонке учетная запись Azure Cosmos DB hello кнопкой ключи и значения URI, первичный ключ и ВТОРИЧНЫЙ ключ hello выделены на hello колонке ключей][keys]
+![Снимок экрана портала Azure в ходе работы с руководством по NoSQL при создании консольного приложения Java. Отображается учетная запись Azure Cosmos DB со следующими выделенными элементами: активный концентратор, кнопка "Ключи" в колонке учетной записи Azure Cosmos DB, а также значение универсального кода ресурса (URI), первичный и вторичный ключи в колонке "Ключи".][keys]
 
 ## <a name="step-4-create-a-database"></a>Этап 4: создание базы данных
-Базы данных Azure Cosmos [базы данных](documentdb-resources.md#databases) могут быть созданы с помощью hello [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) метод hello **DocumentClient** класса. База данных находится hello логический контейнер для хранения документов JSON, секционированный по коллекциям.
+[Базу данных](documentdb-resources.md#databases) Azure Cosmos DB можно создать с помощью метода [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) класса **DocumentClient**. База данных представляет собой логический контейнер для хранения документов JSON, разделенных между коллекциями.
 
     Database database = new Database();
     database.setId("familydb");
@@ -104,7 +107,7 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Объект [коллекции](documentdb-resources.md#collections) могут быть созданы с помощью hello [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) метод hello **DocumentClient** класса. Коллекция представляет собой контейнер документов JSON и связанную с ними логику в виде приложения JavaScript.
+Вы можете создать [коллекцию](documentdb-resources.md#collections), используя метод [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) класса **DocumentClient**. Коллекция представляет собой контейнер документов JSON и связанную с ними логику в виде приложения JavaScript.
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -118,7 +121,7 @@ ms.lasthandoff: 10/06/2017
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>Шаг 6. Создание документов JSON
-Объект [документа](documentdb-resources.md#documents) могут быть созданы с помощью hello [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) метод hello **DocumentClient** класса. Документы относятся к пользовательскому (произвольному) содержимому JSON. Теперь мы можем добавить один или несколько документов. При наличии данных, отсылаемых toostore в базе данных можно использовать базу данных Cosmos Azure [средство переноса данных](import-data.md) tooimport hello данных в базу данных.
+[Документ](documentdb-resources.md#documents) можно создать с помощью метода [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) класса **DocumentClient**. Документы относятся к пользовательскому (произвольному) содержимому JSON. Теперь мы можем добавить один или несколько документов. Если у вас уже есть данные, которые вы хотите хранить в базе данных, вы можете использовать [средство миграции данных](import-data.md) Azure Cosmos DB, чтобы импортировать эти данные в базу данных.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -138,10 +141,10 @@ ms.lasthandoff: 10/06/2017
 
     this.client.createDocument("/dbs/familydb/colls/familycoll", family, new RequestOptions(), true);
 
-![Схема, иллюстрирующая hello иерархическую связь между hello учетной записи, hello оперативную базу данных, коллекции hello и hello документов, созданных hello NoSQL учебника toocreate консольное приложение Java](./media/documentdb-get-started/nosql-tutorial-account-database.png)
+![На схеме представлены иерархические отношения между учетной записью, оперативной базой данных, коллекцией и документами, используемыми в руководстве по NoSQL при создании консольного приложения Java.](./media/documentdb-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>Шаг 7. Запрос ресурсов Azure Cosmos DB
-Azure Cosmos DB поддерживает [полнофункциональные запросы](documentdb-sql-query.md) к документам JSON, хранящимся в каждой коллекции.  Hello, следующий пример кода показывает, как tooquery документов в базу данных Cosmos Azure с помощью синтаксиса SQL с hello [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) метод.
+Azure Cosmos DB поддерживает [полнофункциональные запросы](documentdb-sql-query.md) к документам JSON, хранящимся в каждой коллекции.  Ниже приведен образец кода, который позволяет запросить документы в Azure Cosmos DB, используя синтаксис SQL с методом [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
         "/dbs/familydb/colls/familycoll",
@@ -154,7 +157,7 @@ Azure Cosmos DB поддерживает [полнофункциональные
     }
 
 ## <a id="ReplaceDocument"></a>Шаг 8. Замена документа JSON
-Azure Cosmos DB поддерживает обновление документов JSON, с помощью hello [replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.replacedocument) метод.
+Azure Cosmos DB поддерживает обновление документов JSON с помощью метода [replaceDocument](/java/api/com.microsoft.azure.documentdb._document_client.replacedocument).
 
     // Update a property
     andersenFamily.Children[0].Grade = 6;
@@ -165,21 +168,21 @@ Azure Cosmos DB поддерживает обновление документо
         null);
 
 ## <a id="DeleteDocument"></a>Шаг 9. Удаление документа JSON
-Аналогичным образом Azure Cosmos DB поддерживает удаление документов JSON, с помощью hello [deleteDocument](/java/api/com.microsoft.azure.documentdb._document_client.deletedocument) метод.  
+Аналогичным образом Azure Cosmos DB поддерживает удаление документов JSON с помощью метода [deleteDocument](/java/api/com.microsoft.azure.documentdb._document_client.deletedocument).  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>Шаг 10: Удаление hello базы данных
-Удаление базы данных создана hello удаляет hello базы данных и все дочерние ресурсы (коллекции, документы, и т. д.).
+## <a id="DeleteDatabase"></a>Шаг 10. Удаление базы данных
+Удаление созданной базы данных влечет удаление всех ее дочерних ресурсов (коллекций, документов и т. д.).
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
 ## <a id="Run"></a>Этап 11. Запуск консольного приложения Java
-приложения hello toorun из консоли hello, перейдите в папку проекта toohello и компиляции с помощью Maven:
+Чтобы запустить приложение из консоли, перейдите в папку проекта и выполните компиляцию с помощью Maven:
     
     mvn package
 
-Под управлением `mvn package` загружает последние библиотеки Azure Cosmos DB hello из Maven и создает `GetStarted-0.0.1-SNAPSHOT.jar`. Затем запустите приложение hello, выполнив:
+Команда `mvn package` позволяет скачать последнюю версию библиотеки Azure Cosmos DB из Maven и возвращает `GetStarted-0.0.1-SNAPSHOT.jar`. Затем запустите приложение, выполнив следующую команду:
 
     mvn exec:java -D exec.mainClass=GetStarted.Program
 
@@ -187,8 +190,8 @@ Azure Cosmos DB поддерживает обновление документо
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Дополнительные сведения о создании веб-приложения Java См. сведения в статье о [создании веб-приложения Java с использованием Azure Cosmos DB](documentdb-java-application.md).
-* Узнайте, каким образом слишком[мониторинг учетной записи Azure Cosmos DB](monitor-accounts.md).
-* Выполнять запросы к нашей образец набора данных в hello [площадку запросов](https://www.documentdb.com/sql/demo).
-* Дополнительные сведения о модели программирования hello в разделе Разработка hello hello [страницы документации Azure Cosmos DB](https://azure.microsoft.com/documentation/services/documentdb/).
+* Узнайте, как выполнять [мониторинг учетной записи Azure Cosmos DB](monitor-accounts.md).
+* Отправьте запросы образцу набора данных в [Площадке для запросов](https://www.documentdb.com/sql/demo).
+* Дополнительные сведения о модели программирования см. в разделе "Разработка" [на странице документации Azure Cosmos DB](https://azure.microsoft.com/documentation/services/documentdb/).
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png

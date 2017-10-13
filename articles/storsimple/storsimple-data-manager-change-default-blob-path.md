@@ -1,6 +1,6 @@
 ---
-title: "aaaChange пути больших двоичных объектов относительно значения по умолчанию hello | Документы Microsoft"
-description: "Узнайте, как tooset копирования Azure работать toorename путь к файлу большого двоичного объекта (личной предварительной версии)"
+title: "Изменение пути к большому двоичному объекту по умолчанию | Документация Майкрософт"
+description: "Узнайте, как настроить функцию Azure для переименования пути к файлу большого двоичного объекта (закрытая предварительная версия)"
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
-ms.openlocfilehash: 2c414603514223c701ab1a3bd0b81ee18f1af666
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 057d4d7370207859617eb63238bf425bfa6d3e16
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="change-a-blob-path-from-hello-default-path-private-preview"></a>Изменение пути больших двоичных объектов из пути по умолчанию hello (личной предварительной версии)
+# <a name="change-a-blob-path-from-the-default-path-private-preview"></a>Изменение пути к большому двоичному объекту по умолчанию (закрытая предварительная версия)
 
-В этой статье описывается, как tooset копирования Azure работать toorename путь к файлу большого двоичного объекта по умолчанию. 
+В этой статье описывается настройка функции Azure для переименования пути к файлу большого двоичного объекта по умолчанию. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -30,77 +30,77 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="create-an-azure-function"></a>Создание функции Azure
 
-toocreate функцию Azure hello следующие:
+Чтобы создать функцию Azure, выполните следующие действия:
 
-1. Go toohello [портал Azure](http://portal.azure.com/).
+1. Перейдите на [портал Azure](http://portal.azure.com/).
 
-2. Hello верхней части левой панели hello, нажмите кнопку **New**. 
+2. В верхней части левой области щелкните **Создать**. 
 
-3. В hello **поиска** введите **функции приложения**, и нажмите клавишу ВВОД.
+3. В поле **поиска** введите **Приложение-функция** и нажмите клавишу ВВОД.
 
-    ![Введите «Функция приложение» в поле поиска hello](./media/storsimple-data-manager-change-default-blob-path/goto-function-app-resource.png)
+    ![Введение "Приложение-функция" поле поиска](./media/storsimple-data-manager-change-default-blob-path/goto-function-app-resource.png)
 
-4. В hello **результатов** выберите **функции приложения**.
+4. В списке **Результаты** щелкните **Приложение-функция**.
 
-    ![Выберите ресурс приложения hello функций в списке результатов hello](./media/storsimple-data-manager-change-default-blob-path/select-function-app-resource.png)
+    ![Выбор ресурса приложения-функции в списке результатов](./media/storsimple-data-manager-change-default-blob-path/select-function-app-resource.png)
 
-    Hello **функции приложения** открывается окно.
+    Откроется окно **Приложение-функция**.
 
 5. Щелкните **Создать**.
 
-    ![Кнопка «Создать» окна приложения функции Hello](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
+    ![Кнопка "Создать" в окне "Приложение-функция"](./media/storsimple-data-manager-change-default-blob-path/create-new-function-app.png)
 
-6. На hello **функции приложения** колонке конфигурации hello следующие:
+6. В колонке настройки **Приложение-функция** выполните следующие действия:
 
-    а. В hello **имя приложения** введите имя приложения hello.
+    а. В поле **Имя приложения** введите имя приложения.
     
-    b. В hello **подписки** введите имя hello hello подписки.
+    b. В поле **Подписка** введите имя подписки.
 
-    c. В разделе **группы ресурсов**, нажмите кнопку **создать новый**и затем имя типа hello hello группы ресурсов.
+    c. В разделе **Группа ресурсов** щелкните **Создать**, а затем введите имя группы ресурсов.
 
-    d. В hello **плана размещения** введите **планирование потребления**.
+    d. В поле **План размещения** укажите **План потребления**.
 
-    д. В hello **расположение** поле расположение типа hello.
+    д. В поле **Расположение** укажите расположение.
 
-    f. В разделе **Учетная запись хранения** выберите существующую учетную запись хранения или создайте новую. Учетная запись хранения используется внутренне для функции hello.
+    f. В разделе **Учетная запись хранения** выберите существующую учетную запись хранения или создайте новую. Учетная запись хранения используется внутренне для функции.
 
     ![Введение данных конфигурации нового приложения-функции](./media/storsimple-data-manager-change-default-blob-path/enter-new-funcion-app-data.png)
 
 7. Щелкните **Создать**.  
-    создается приложение функции Hello.
+    Приложение-функция создано.
 
-8. Hello левой панели щелкните **больше услуг**и затем hello следующие:
+8. В левой области щелкните **Больше служб**, а затем выполните следующие действия:
     
-    а. В hello **фильтра** введите **службы приложений**.
+    а. В поле **Фильтр** введите **Службы приложений**.
     
     b. Щелкните **Службы приложений**. 
 
-    ![Ссылка «Дополнительные службы» в левой области hello](./media/storsimple-data-manager-change-default-blob-path/more-services.png)
+    ![Ссылка "Больше служб" в левой области](./media/storsimple-data-manager-change-default-blob-path/more-services.png)
 
-9. В списке служб приложения hello щелкните имя функции приложение hello hello.  
-    Откроется страница приложения функции Hello.
+9. В списке служб приложений щелкните имя приложения-функции.  
+    Откроется страница этого приложения-функции.
 
-10. Hello левой панели щелкните **новая функция**и затем hello следующие: 
+10. В левой области щелкните **Новая функция**, а затем выполните следующие действия: 
 
-    а. В hello **язык** выберите **C#**.
+    а. В списке **Язык** выберите **C#**.
     
-    b. В массиве hello плиток шаблона, выберите **QueueTrigger CSharp**.
+    b. В массиве элементов выберите шаблон **QueueTrigger-CSharp**.
 
-    c. В hello **имя функции** введите имя функции.
+    c. В поле **Присвойте функции имя** введите имя для своей функции.
 
-    d. В hello **имя очереди** введите свое имя определения задания преобразования данных.
+    d. В поле **Имя очереди** введите имя определения задания преобразования данных.
 
-    д. В разделе **подключения к учетной записи хранилища**, нажмите кнопку **новый**и затем выберите учетную запись hello, соответствующее задание toohello преобразования данных.  
-        Запишите имя подключения hello. Далее в hello Azure функции требуется имя Hello.
+    д. В разделе **Подключение к учетной записи хранения** щелкните **создать**и выберите учетную запись, соответствующую заданию преобразования данных.  
+        Запишите это имя подключения. Оно понадобится позже в функции Azure.
 
        ![Создание функции C#](./media/storsimple-data-manager-change-default-blob-path/create-new-csharp-function.png)
 
     f. Щелкните **Создать**.  
-    Hello **функция** открывается окно.
+    Откроется окно **Функция**.
 
-11. В hello **функция** выполните _.csx_ файла, а затем hello следующие:
+11. В окне **Функция** выполните _CSX_-файл, а затем выполните следующие действия:
 
-    а. Вставьте следующий код hello:
+    а. Вставьте следующий код:
 
     ```
     using System;
@@ -146,7 +146,7 @@ toocreate функцию Azure hello следующие:
         log.Info($"Blob name: {blobName}");
         log.Info($"New blob name: {newBlobName}");
 
-        // Create hello blob client.
+        // Create the blob client.
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
         // Container reference
@@ -169,8 +169,8 @@ toocreate функцию Azure hello следующие:
         CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
         if (!blob.Exists())
         {
-            // Skip toocopy hello blob toonew container, if source blob doesn't exist
-            log.Info($"hello specified blob does not exist.");
+            // Skip to copy the blob to new container, if source blob doesn't exist
+            log.Info($"The specified blob does not exist.");
             log.Info($"Blob Uri: {blob.Uri}");
             return;
         }
@@ -179,7 +179,7 @@ toocreate функцию Azure hello следующие:
         if (!blobCopy.Exists())
         {
             blobCopy.StartCopy(blob);
-            // Delete old blob, after copy toonew container
+            // Delete old blob, after copy to new container
             blob.DeleteIfExists();
             log.Info($"Blob file path renamed completed successfully");
         }
@@ -204,21 +204,21 @@ toocreate функцию Azure hello следующие:
 
     b. Замените имя **STORAGE_CONNECTIONNAME** в строке 11 именем подключения к учетной записи хранения (см. пункт 8c).
 
-    c. Вверху hello слева, нажмите кнопку **Сохранить**.
+    c. В верхней левом углу нажмите кнопку **Сохранить**.
 
     ![Сохранение функции](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-12. toocomplete Здравствуйте, функция, добавьте один дополнительные файл, выполнив hello ниже:
+12. Чтобы завершить создание функции, добавьте еще один файл, выполнив следующие действия:
 
     а. Щелкните **Просмотреть файлы**.
 
-       ![Здравствуйте, ссылка «Просмотр файлов»](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
+       ![Ссылка "Просмотреть файлы"](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
     b. Щелкните **Добавить**.
     
     c. Введите **project.json** и нажмите клавишу ВВОД.
     
-    d. В hello **project.json** файла, вставьте hello, следующий код:
+    d. В файле **project.json** скопируйте следующий код:
 
     ```
     {
@@ -235,8 +235,8 @@ toocreate функцию Azure hello следующие:
 
     д. Щелкните **Сохранить**.
 
-Вы создали функцию Azure. Эта функция активируется каждый раз, когда новый большой двоичный объект создается заданием hello преобразования данных.
+Вы создали функцию Azure. Эта функция запускается каждый раз, когда задание преобразования данных создает большой двоичный объект.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Использовать пользовательский Интерфейс диспетчера данных StorSimple tootransform данные](storsimple-data-manager-ui.md)
+[Использование пользовательского интерфейса для службы диспетчера данных StorSimple (закрытая предварительная версия)](storsimple-data-manager-ui.md)

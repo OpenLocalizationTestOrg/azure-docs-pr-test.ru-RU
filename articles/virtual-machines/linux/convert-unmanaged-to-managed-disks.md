@@ -1,6 +1,6 @@
 ---
-title: "aaaConvert виртуальной машины Linux в Azure из неуправляемого диски toomanaged - управляемых дисков Azure | Документы Microsoft"
-description: "Как диски tooconvert из toomanaged неуправляемые дисков виртуальной Машины Linux с помощью Azure CLI 2.0 в модели развертывания диспетчера ресурсов hello"
+title: "Управляемые диски Azure. Преобразование виртуальной машины Linux с неуправляемыми дисками в Azure для использования управляемых дисков | Документация Майкрософт"
+description: "Переключение виртуальной машины Linux, развернутой в рамках модели Resource Manager, с неуправляемых дисков на управляемые диски с помощью Azure CLI 2.0."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
-ms.openlocfilehash: 1b94da11deab46f344e28ab4491cf220506b6347
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 94f8e3330fb2d6547811315fcfdb8ced338e0247
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-toomanaged-disks"></a>Преобразовать виртуальную машину Linux с неуправляемой дисков toomanaged дисков
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Переключение виртуальной машины Linux с неуправляемых дисков на управляемые диски
 
-При наличии существующих Linux виртуальных машин (ВМ), использующие неуправляемые диски можно преобразовать диски toouse управляемых виртуальных машин hello через hello [управляемых дисков Azure](../windows/managed-disks-overview.md) службы. Этот процесс преобразует диска hello операционной системы и все подключенные диски данных.
+При наличии виртуальных машин Linux, использующих неуправляемые диски, их можно преобразовать для использования управляемых дисков с помощью службы [Управляемые диски Azure](../windows/managed-disks-overview.md). При этом преобразуются диск операционной системы и все подключенные диски данных.
 
-В этой статье показано, как tooconvert виртуальных машин с помощью hello Azure CLI. Если необходима tooinstall или обновить ее, см. раздел [установить CLI Azure 2.0](/cli/azure/install-azure-cli). 
+В этой статье показано, как преобразовать виртуальные машины с помощью Azure CLI. Если вам установить или обновить Azure CLI, ознакомьтесь со статьей [Установка Azure CLI 2.0](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
@@ -33,21 +33,21 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="convert-single-instance-vms"></a>Преобразование одноэкземплярных виртуальных машин
-В этом разделе описывается, как диски toomanaged в tooconvert экземпляра ВМ Azure из неуправляемого. (Если виртуальные машины в наборе доступности, см. следующий раздел hello.) Можно использовать этот процесс tooconvert hello виртуальных машин из дисков toopremium управляемых дисков неуправляемого premium (SSD) или стандарт (HDD) неуправляемого дисков toostandard управляемых дисков.
+В этом разделе описывается, как преобразовать одноэкземплярные виртуальные машины Azure с неуправляемыми дисками, чтобы они могли использовать Управляемые диски. (Если виртуальные машины находятся в группе доступности, ознакомьтесь со следующим разделом.) Этот процесс позволяет переключить виртуальные машины с неуправляемых дисков уровня "Премиум" (SSD) на управляемые диски уровня "Премиум" или с неуправляемых дисков уровня "Стандартный" (жесткие диски) на управляемые диски уровня "Стандартный".
 
-1. Освободить hello виртуальной Машины с помощью [ВМ az deallocate](/cli/azure/vm#deallocate). Hello следующий пример отменяет выделение hello виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`:
+1. Отмените выделение виртуальной машины с помощью команды [az vm deallocate](/cli/azure/vm#deallocate). В следующем примере освобождается виртуальная машина `myVM`, входящая в группу ресурсов `myResourceGroup`.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Преобразовать диски toomanaged hello ВМ с помощью [преобразование виртуальной машины az](/cli/azure/vm#convert). После процесса преобразует Hello hello виртуальной Машины с именем `myVM`, включая диск hello ОС и дисков данных:
+2. Преобразуйте виртуальную машину для использования управляемых дисков, выполнив команду [az vm convert](/cli/azure/vm#convert). Приведенный ниже процесс преобразовывает виртуальную машину `myVM`, включая ее диск ОС и все диски данных.
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Запустите hello виртуальной Машины после hello преобразования toomanaged диски с помощью [запуска виртуальной машины az](/cli/azure/vm#start). Следующий пример запускает Hello hello виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`.
+3. После преобразования запустите виртуальную машину командой [az vm start](/cli/azure/vm#start). В следующем примере запускается виртуальная машина `myVM` в группе ресурсов `myResourceGroup`.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -55,11 +55,11 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="convert-vms-in-an-availability-set"></a>Преобразование виртуальных машин в группе доступности
 
-Если hello ВМ, которые вы хотите tooconvert toomanaged диски находятся в наборе доступности, необходимо сначала управляемый набор tooa tooconvert hello доступности группы доступности.
+Если виртуальные машины, которые вы хотите преобразовать для использования управляемых дисков, входят в группу доступности, то необходимо сначала преобразовать эту группу доступности в управляемую группу доступности.
 
-Все виртуальные машины в наборе доступности hello должна освобождаться перед преобразованием набора доступности hello. Все диски виртуальных машин toomanaged после доступности hello назначила себя tooconvert план был преобразованный tooa управляемые группы доступности. Затем запустите все виртуальные машины hello и продолжить работу в обычном режиме.
+Перед преобразованием группы доступности нужно освободить все виртуальные машины в этой группе. Запланируйте преобразование всех виртуальных машин для использования управляемых дисков после того, как содержащая их группа доступности будет преобразована в управляемую группу доступности. Затем можно будет запустить все виртуальные машины и продолжить работу в обычном режиме.
 
-1. Выведите список всех виртуальных машин в группе доступности, выполнив команду [az vm availability-set list](/cli/azure/vm/availability-set#list). Hello следующий пример отображает список всех виртуальных машин в набор доступности hello `myAvailabilitySet` в группе ресурсов hello с именем `myResourceGroup`:
+1. Выведите список всех виртуальных машин в группе доступности, выполнив команду [az vm availability-set list](/cli/azure/vm/availability-set#list). В следующем примере выводится список виртуальных машин в группе доступности `myAvailabilitySet` в группе ресурсов `myResourceGroup`.
 
     ```azurecli
     az vm availability-set show \
@@ -69,13 +69,13 @@ ms.lasthandoff: 10/06/2017
         --output table
     ```
 
-2. Освободить все hello виртуальные машины с помощью [ВМ az deallocate](/cli/azure/vm#deallocate). Hello следующий пример отменяет выделение hello виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`:
+2. Отмените выделение всех виртуальных машин командой [az vm deallocate](/cli/azure/vm#deallocate). В следующем примере освобождается виртуальная машина `myVM`, входящая в группу ресурсов `myResourceGroup`.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Преобразовать hello доступности с помощью [преобразовать группу доступности виртуальной машины az](/cli/azure/vm/availability-set#convert). Hello следующий пример преобразует набор именованных доступности hello `myAvailabilitySet` в группе ресурсов hello с именем `myResourceGroup`:
+3. Преобразуйте группу доступности с помощью команды [az vm availability-set convert](/cli/azure/vm/availability-set#convert). В следующем примере преобразовывается группа доступности `myAvailabilitySet` в группе ресурсов `myResourceGroup`.
 
     ```azurecli
     az vm availability-set convert \
@@ -83,13 +83,13 @@ ms.lasthandoff: 10/06/2017
         --name myAvailabilitySet
     ```
 
-4. Преобразовать все диски toomanaged ВМ hello, используя [преобразование виртуальной машины az](/cli/azure/vm#convert). После процесса преобразует Hello hello виртуальной Машины с именем `myVM`, включая диск hello ОС и дисков данных:
+4. Преобразуйте все виртуальные машины для использования управляемых дисков с помощью команды [az vm convert](/cli/azure/vm#convert). Приведенный ниже процесс преобразовывает виртуальную машину `myVM`, включая ее диск ОС и все диски данных.
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Запустить все виртуальные машины hello после hello преобразования toomanaged диски с помощью [запуска виртуальной машины az](/cli/azure/vm#start). Следующий пример запускает Hello hello виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`:
+5. После преобразования запустите все виртуальные машины с помощью команды [az vm start](/cli/azure/vm#start). В следующем примере запускается виртуальная машина `myVM` в группе ресурсов `myResourceGroup`:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

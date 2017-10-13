@@ -1,6 +1,6 @@
 ---
-title: "aaaUse образов клиента Windows в Azure | Документы Microsoft"
-description: "Как toouse подписки Visual Studio использует преимущества toodeploy Windows 7, Windows 8 или Windows 10 в Azure для сценариев разработки и тестирования"
+title: "Использование образов клиента Windows в Azure | Документация Майкрософт"
+description: "Узнайте, как использовать преимущества подписки Visual Studio для развертывания Windows 7, Windows 8 или Windows 10 в Azure в сценариях разработки и тестирования."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: iainfou
-ms.openlocfilehash: 4ac7c3d9872673030f4ea0f0ab38625dd9d9c1b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 207a6562965b4913416bd4dbf3eb132b42938dc9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Использование клиента Windows в Azure для сценариев разработки и тестирования
-В сценариях разработки и тестирования Azure можно использовать Windows 7, Windows 8 или Windows 10 при условии, что у вас есть соответствующая подписка Visual Studio (прежнее название — MSDN). В этой статье рассматриваются требования hello. для работы клиента Windows Azure и использование hello образов коллекции Azure.
+В сценариях разработки и тестирования Azure можно использовать Windows 7, Windows 8 или Windows 10 при условии, что у вас есть соответствующая подписка Visual Studio (прежнее название — MSDN). В этой статье описываются требования к доступности при запуске клиента Windows в Azure и использовании образов из коллекции Azure.
 
 ## <a name="subscription-eligibility"></a>Доступность в зависимости от подписки
-Активные подписчики Visual Studio (пользователи, которые приобрели лицензию на подписку Visual Studio) могут использовать клиент Windows в целях разработки и тестирования. Вы можете использовать клиент Windows на собственном оборудовании и виртуальных машинах Azure, работающих в любом типе подписки Azure. Клиент Windows не может быть развернутой tooor используемого в Azure для использования в рабочей среде обычный, или пользователи, которые не являются действующими подписками Visual Studio.
+Активные подписчики Visual Studio (пользователи, которые приобрели лицензию на подписку Visual Studio) могут использовать клиент Windows в целях разработки и тестирования. Вы можете использовать клиент Windows на собственном оборудовании и виртуальных машинах Azure, работающих в любом типе подписки Azure. Клиент Windows не может быть развернут или использоваться в Azure в обычной рабочей среде, а также недоступен для пользователей, не являющихся активными подписчиками Visual Studio.
 
-Для вашего удобства мы внесли некоторые образы Windows 10 доступен из коллекции Azure hello в [предлагает подходящие для разработки и тестирования](#eligible-offers). Visual Studio, использующих любого типа предложения можно также [адекватно подготовки и создания](prepare-for-upload-vhd-image.md) 64-разрядный образ Windows 7, Windows 8 или Windows 10 и затем [отправить tooAzure](upload-generalized-managed.md). Использование Hello остается ограниченной toodev и тестирования с действующими подписками Visual Studio.
+Для вашего удобства мы выбрали несколько образов Windows 10 из коллекции Azure, которые можно использовать для разработки и тестирования. См. раздел [Доступные предложения для разработки и тестирования](#eligible-offers). Подписчики Visual Studio с предложением любого типа также смогут [правильно подготавливать и создавать](prepare-for-upload-vhd-image.md) 64-разрядные образы Windows 7, Windows 8 или Windows 10, а затем [отправлять их в Azure](upload-generalized-managed.md). Они также могут использоваться только активными подписчиками Visual Studio и только в целях разработки и тестирования.
 
 ## <a name="eligible-offers"></a>Доступные предложения
-Следующая таблица сведений hello Hello предлагают идентификаторам подходящих toodeploy Windows 10 через hello коллекции Azure. образы Hello Windows 10 — это только видимым toohello следующие предложения. Visual Studio, использующих, требуется клиент Windows toorun в типе другое предложение требует слишком[адекватно подготовки и создания](prepare-for-upload-vhd-image.md) 64-разрядный образ Windows 7, Windows 8 или Windows 10 и [затем отправьте tooAzure](upload-generalized-managed.md).
+В следующей таблице перечислены идентификаторы предложений, которые доступны для развертывания Windows 10 с помощью коллекции Azure. Образы Windows 10 отображаются только для указанных ниже предложений. Подписчики Visual Studio, которым необходимо запустить клиент Windows с помощью другого типа предложения, должны [правильно подготовить и создать](prepare-for-upload-vhd-image.md) 64-разрядный образ Windows 7, Windows 8 или Windows 10, а затем [передать его в Azure](upload-generalized-managed.md).
 
 | Название предложения | Номер предложения | Доступные образы клиента |
 |:--- |:---:|:---:|
@@ -43,17 +43,17 @@ ms.lasthandoff: 10/06/2017
 | [Enterprise — разработка и тестирование](https://azure.microsoft.com/ofers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Проверка подписки Azure
-Если вы не знаете Идентификатором предложения, его можно получить через hello портал Azure в одном из двух следующих способов:  
+Если вы не знаете идентификатор своего предложения, его можно найти на портале Azure одним из двух способов:  
 
-- В колонке «Подписки» hello:
+- В колонке "Подписки":
 
-  ![Подробные сведения о предложении идентификатор из hello портал Azure](./media/client-images/offer-id-azure-portal.png) 
+  ![Сведения об идентификаторе предложения на портале Azure](./media/client-images/offer-id-azure-portal.png) 
 
-- Или щелкните **Выставление счетов** и выберите свой идентификатор подписки. Идентификатор предложения Hello появляется в колонке hello выставления счетов.
+- Или щелкните **Выставление счетов** и выберите свой идентификатор подписки. Идентификатор предложения отображается в колонке выставления счетов.
 
-Вы также можете просмотреть hello идентификатор предложения из hello [вкладки «Подписки»](http://account.windowsazure.com/Subscriptions) hello портала учетной записи Azure:
+На портале учетных записей Azure просмотреть идентификатор предложения можно на [вкладке "Подписки"](http://account.windowsazure.com/Subscriptions) :
 
-![Предоставляют подробные сведения о КОДЕ из портала учетной записи Azure hello](./media/client-images/offer-id-azure-account-portal.png) 
+![Сведения об идентификаторе предложения на портале учетных записей Azure](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Теперь вы можете развернуть виртуальные машины с помощью [PowerShell](quick-create-powershell.md), [шаблонов Resource Manager](ps-template.md) или [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

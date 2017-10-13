@@ -1,6 +1,6 @@
 ---
-title: "время существования маркера hello aaaHow toochange по умолчанию для приложения, разработанного | Документы Microsoft"
-description: "Как политики tooupdate время существования маркера для приложения, которое вы разрабатываете в Azure AD"
+title: "Как изменить стандартное время существования токена для специально разработанного приложения | Документы Майкрософт"
+description: "Обновление политик времени существования токена для приложения, разрабатываемого в Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 6e1aa1f2a7c33c1f55c5fb619c618ad43cd96273
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a28eacd820ed28a6470992ce86b060e886c00bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toochange-hello-token-lifetime-defaults-for-a-custom-developed-application"></a>Как время существования маркера hello toochange по умолчанию для приложения, разработанного
+# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Как изменить стандартное время существования токена для специально разработанного приложения
 
-Azure AD Premium позволяет разработчикам приложений и клиента администраторов tooconfigure hello временем существования маркеры, выпущенные для конфиденциальные клиентов. Время существования маркера политики задаются на уровне клиента или hello ресурсов, к которому выполняется доступ.
+Azure AD Premium позволяет разработчикам приложений и администраторам клиентов настраивать время существования токенов, выпущенных для клиентов, не входящих в число конфиденциальных. Политики времени существования токенов настраиваются на уровне клиента или ресурсов, к которым осуществляется доступ.
 
- * tooset политику времени существования маркера необходимо toodownload hello [модуля Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+ * Чтобы задать политику времени существования токена, нужно скачать [модуль Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
- * Запустите hello **Connect AzureAD-Подтверждение** команды.
+ * Выполните команду **Connect-AzureAD-Confirm**.
 
- * Ниже приведен пример политики, задает токен обновления дисперсионный max-age hello. Создайте политику hello.```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
+ * Ниже приведен пример политики, в котором задается токен обновления максимального возраста с одним фактором. Создайте политику: ```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```.
 
- * Извлечение hello [время существования маркера Настройка](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes) документа как toolearn toocreate другие пользовательские.
+ * Дополнительные сведения о создании пользовательских параметров см. в документе [Настройка времени существования токенов](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Настройка времени существования токенов](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>

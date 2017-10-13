@@ -1,6 +1,6 @@
 ---
-title: "aaaFix Hive ошибка нехватки памяти в Azure HDInsight | Документы Microsoft"
-description: "Устраните ошибку нехватки памяти Hive в HDInsight. сценарий Hello клиента — это запрос через много больших таблиц."
+title: "Устранение ошибки нехватки памяти Hive в Azure HDInsight | Документы Майкрософт"
+description: "Устраните ошибку нехватки памяти Hive в HDInsight. Пользовательский сценарий представляет собой запрос ко множеству больших таблиц."
 keywords: "ошибка нехватки памяти, OOM, параметры Hive"
 services: hdinsight
 documentationcenter: 
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/17/2017
 ms.author: jgao
-ms.openlocfilehash: 00a12969322c1e74434ba6593ffd098f342edd84
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: da1247070ade11f78b505524f5e970e18eb16d10
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Устранение ошибки нехватки памяти Hive в Azure HDInsight
 
-Узнайте, как toofix Hive ошибка нехватки памяти при обработки больших таблиц, настроив параметры памяти Hive.
+Узнайте, как устранить ошибку нехватки памяти Hive при обработке больших таблиц в настройках памяти Hive.
 
 ## <a name="run-hive-query-against-large-tables"></a>Выполнение запроса Hive к большим таблицам
 
@@ -48,16 +48,16 @@ ms.lasthandoff: 10/06/2017
 
 Некоторые особенности этого запроса:
 
-* T1 является tooa большая таблица псевдонимов, Таблица1, в которой имеется несколько типов столбцов строки.
+* T1 является псевдонимом для большой таблицы TABLE1, которая содержит множество столбцов типа STRING.
 * Другие таблицы не так велики, но имеют большое число столбцов.
 * Все таблицы соединяются друг с другом, в некоторых случаях с несколькими столбцами в TABLE1 и др.
 
-запрос Hive Hello заняла 26 минут toofinish в кластере A3 HDInsight 24 узла. Hello клиента, заметили-hello, следующие предупреждения:
+На выполнение запроса Hive в кластере HDInsight A3 с 24 узлами ушло 26 минут. Клиент заметил следующие предупреждения:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-С помощью подсистема выполнения Tez hello. Hello того же запроса выполнялся в течение 15 минут, а затем вызвал hello следующая ошибка:
+С механизмом выполнения Tez выполнение того же запроса заняло 15 минут, после чего появилась следующая ошибка:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -83,45 +83,45 @@ ms.lasthandoff: 10/06/2017
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-Ошибка Hello сохраняется при использовании больше виртуальной машины (например, D12).
+Ошибка не устраняется при использовании виртуальной машины большего размера (например, D12).
 
 
-## <a name="debug-hello-out-of-memory-error"></a>Отладка hello ошибка нехватки памяти
+## <a name="debug-the-out-of-memory-error"></a>Отладка ошибки нехватки памяти
 
-Получение поддержки и инженеры вместе увидели, одна из проблем hello, вызывая hello ошибка нехватки памяти [известные проблемы, описанной в hello Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306):
+Наша инженерная команда и команда поддержки обнаружили, что одна из проблем, которые приводят к ошибке нехватки памяти, представляет собой [известную проблему, описанную в Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306).
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if hello sum  of tables sizes in hello map join is less than noconditionaltask.size hello plan would generate a Map join, hello issue with this is that hello calculation doesnt take into account hello overhead introduced by different HashTable implementation as results if hello sum of input sizes is smaller than hello noconditionaltask size by a small margin queries will hit OOM.
+    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
-Hello **hive.auto.convert.join.noconditionaltask** в hello hive-site.xml файла было задано слишком**true**:
+Для свойства **hive.auto.convert.join.noconditionaltask** в файле hive-site.xml задано значение **true**:
 
     <property>
         <name>hive.auto.convert.join.noconditionaltask</name>
         <value>true</value>
         <description>
-              Whether Hive enables hello optimization about converting common join into mapjoin based on hello input file size.
-              If this parameter is on, and hello sum of size for n-1 of hello tables/partitions for a n-way join is smaller than the
-              specified size, hello join is directly converted tooa mapjoin (there is no conditional task).
+              Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
+              If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
+              specified size, the join is directly converted to a mapjoin (there is no conditional task).
         </description>
       </property>
 
-Вполне вероятно, карты соединения была hello причину hello пространства кучи Java нашей недостатке памяти. Как описано в записи блога hello [параметры памяти Hadoop Yarn в HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), когда подсистема выполнения является занятое кучи используется hello Tez фактически относится toohello Tez контейнера. См. следующие изображения описания hello Tez контейнера памяти hello.
+Вполне вероятно, что источником ошибки нехватки памяти в пространстве кучи Java был Map Join. Как описано в записи блога [Hadoop Yarn memory settings in HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Параметры памяти Hadoop Yarn в HDInsight), при использовании модуля Tez используемое пространство кучи на самом деле принадлежит контейнеру Tez. Описание памяти контейнера Tez см. на рисунке ниже.
 
 ![Схема памяти контейнера Tez: ошибка нехватки памяти Hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Как видно в блоге hello, hello, следующие два параметра памяти определить hello контейнера памяти для кучи hello: **hive.tez.container.size** и **hive.tez.java.opts**. Наш опыта hello исключения, находящегося вне не означает, что размер контейнера hello слишком мал. Это означает, что размер кучи Java (hive.tez.java.opts) hello слишком мал. Поэтому каждый раз, когда вы видите не хватает памяти, можно попробовать tooincrease **hive.tez.java.opts**. При необходимости может потребоваться tooincrease **hive.tez.container.size**. Hello **java.opts** значение параметра должно быть приблизительно 80% от **container.size**.
+Как следует из записи блога, два следующих параметра памяти определяют контейнер памяти для кучи: **hive.tez.container.size** и **hive.tez.java.opts**. Согласно нашему опыту, исключение нехватки памяти не означает, что размер контейнера слишком мал. Оно означает, что размер кучи Java (hive.tez.java.opts) слишком мал. Поэтому каждый раз, когда вы видите ошибку нехватки памяти, можно попытаться увеличить **hive.tez.java.opts**. При необходимости может потребоваться увеличение параметра **hive.tez.container.size**. Параметр **Java.opts** должен составлять около 80 % от **container.size**.
 
 > [!NOTE]
-> параметр Hello **hive.tez.java.opts** всегда должен быть меньше, чем **hive.tez.container.size**.
+> Параметр **hive.tez.java.opts** всегда должен быть меньше, чем **hive.tez.container.size**.
 > 
 > 
 
-Так как машине D12 28 ГБ памяти, мы решили toouse размер контейнера 10 ГБ (10240 МБ) и назначить toojava.opts 80%:
+Так как виртуальная машина размера D12 имеет 28 ГБ памяти, мы решили использовать контейнер размером 10 ГБ (10 240 МБ) и назначить 80 % от этого размера параметру java.opts.
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-С новыми настройками hello hello успешно выполнен запрос в разделе через 10 минут.
+С новыми настройками запрос был выполнен успешно за 10 минут.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Сообщение об ошибке нехватки памяти не обязательно означает, что размер контейнера hello слишком мал. Вместо этого вы должны настроить параметры памяти hello, увеличивается размер кучи hello, а затем — по крайней мере 80% от размера памяти контейнер hello. Дополнительные сведения см. в статье [Оптимизация запросов Hive для Hadoop в HDInsight](hdinsight-hadoop-optimize-hive-query.md).
+Ошибка нехватки памяти не обязательно означает, что размер контейнера слишком мал. Вместо этого следует настроить параметры памяти, увеличив размер кучи, так чтобы он составлял не менее 80 % от размера памяти контейнера. Дополнительные сведения см. в статье [Оптимизация запросов Hive для Hadoop в HDInsight](hdinsight-hadoop-optimize-hive-query.md).

@@ -1,6 +1,6 @@
 ---
-title: "aaaReplicate виртуальных машин Hyper-V tooa вторичный сайт VMM с помощью Azure Site Recovery | Документы Microsoft"
-description: "Обзор репликации виртуальных машин Hyper-V tooa вторичный сайт VMM с помощью портала Azure hello."
+title: "Репликация виртуальных машин Hyper-V на дополнительный сайт VMM с помощью Azure Site Recovery | Документация Майкрософт"
+description: "Обзор репликации виртуальных машин Hyper-V на вторичный сайт VMM с помощью портала Azure."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.openlocfilehash: 90e44bfc2237dfa7646fb2b7b1e533a7f6d83c50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b422dd2cf23426de2f154a553b38509082536309
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-tooa-secondary-vmm-site"></a>Реплицировать виртуальные машины Hyper-V в VMM облаков tooa вторичного сайта, VMM
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site"></a>Репликация виртуальных машин Hyper-V из облачных сред VMM в дополнительный ЦОД VMM
 
 > [!div class="op_single_selector"]
 > * [Портал Azure](site-recovery-vmm-to-vmm.md)
@@ -29,74 +29,74 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-В этой статье содержится обзор hello действия требуются tooreplicate в локальной среде Hyper-V виртуальных машин (ВМ), управляемых в облаках диспетчера виртуальных машин System Center (VMM), tooa вторичного расположения VMM, с помощью [Azure Site Recovery](site-recovery-overview.md)в hello портал Azure.
+В этой статье приведены общие сведения о действиях, необходимых для репликации локальных виртуальных машин Hyper-V, управляемых в облаках System Center Virtual Machine Manager (VMM), на дополнительный сайт VMM с помощью службы [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
 
-После считывания в этой статье, отправлять любые комментарии, внизу hello, или на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Любые комментарии, которые возникнут после прочтения этой статьи, можно добавить в конце этой страницы или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="step-1-review-hello-scenario-architecture"></a>Шаг 1: Просмотрите архитектура сценария hello
+## <a name="step-1-review-the-scenario-architecture"></a>Шаг 1. Ознакомление с архитектурой сценария
 
-Прежде чем начать развертывание, просмотрите hello архитектура сценария и убедитесь, что вы понимаете все компоненты hello необходим toodeploy.
+Перед началом развертывания ознакомьтесь с архитектурой сценария и убедитесь, что вам знакомы все компоненты, которые необходимо развернуть.
 
-Go слишком[шаг 1: обзор архитектуры hello](vmm-to-vmm-walkthrough-architecture.md).
+Перейдите к статье [Шаг 1. Обзор архитектуры для репликации Hyper-V на дополнительный сайт](vmm-to-vmm-walkthrough-architecture.md).
 
 ## <a name="step-2-review-prerequisites-and-limitations"></a>Шаг 2. Просмотр предварительных условий и ограничений
 
-Убедитесь, что вы понимаете предварительные условия для развертывания hello и ограничения.
+Убедитесь, что вы понимаете предварительные условия и ограничения для развертывания.
 
-**Необходимые компоненты Azure**: необходима подписка Microsoft Azure и служб восстановления Azure, хранилище, tooorchestrate и управление репликацией.
+**Необходимые компоненты Azure.** Для координации репликации и управления ею требуются подписка Microsoft Azure и хранилище службы восстановления Azure.
 **Локальные серверы VMM и узлы Hyper-V.** Убедитесь, что серверы VMM и узлы Hyper-V совместимы и подготовлены к развертыванию Site Recovery.
 
-Go слишком[шаг 2: Проверьте предварительные условия и ограничения](vmm-to-vmm-walkthrough-prerequisites.md).
+Перейдите к статье [Шаг 2. Проверка предварительных требований и ограничений для репликации виртуальной машины Hyper-V на дополнительный сайт VMM](vmm-to-vmm-walkthrough-prerequisites.md).
 
 ## <a name="step-3-plan-networking"></a>Шаг 3. Планирование сетей
 
-Необходимо toodo какой-либо сети, планирование tooensure, которые можно настроить сетевое сопоставление между сетями виртуальных Машин VMM при развертывании hello сценария.
+Необходимо выполнить определенное планирование сетей, чтобы обеспечить возможность настройки сопоставления сетей виртуальных машин VMM при развертывании сценария.
 
-Go слишком[Step 3: Планирование сети](vmm-to-vmm-walkthrough-network.md).
+Перейдите к статье [Шаг 3. Планирование сетей для репликации виртуальной машины Hyper-V на дополнительный сайт VMM](vmm-to-vmm-walkthrough-network.md).
 
 
 ## <a name="step-4-prepare-vmm-and-hyper-v"></a>Шаг 4. Подготовка VMM и Hyper-V
 
-Подготовка серверов VMM hello и узлов Hyper-V для развертывания службы восстановления сайтов.
+Подготовьте серверы VMM и узлы Hyper-V к развертыванию службы Site Recovery.
 
-Go слишком[шаг 4: Подготовка локальных серверов](vmm-to-vmm-walkthrough-vmm-hyper-v.md).
+Перейдите к статье [Шаг 4. Подготовка серверов VMM и узлов Hyper-V к репликации Hyper-V в Azure](vmm-to-vmm-walkthrough-vmm-hyper-v.md).
 
 ## <a name="step-5-set-up-a-vault"></a>Шаг 5. Настройка хранилища
 
-Настройте хранилище служб восстановления. хранилище Hello содержит параметры конфигурации и управляет репликации.
+Настройте хранилище служб восстановления. которое содержит параметры конфигурации и управляет репликацией.
 
 [Шаг 5. Создание хранилища для репликации Hyper-V на дополнительный сайт](vmm-to-vmm-walkthrough-create-vault.md).
 
 ## <a name="step-6-set-up-source-and-target-settings"></a>Шаг 6. Настройка исходной и целевой среды
 
-Настройка hello исходной и целевой репликации VMM местоположений. Добавьте хранилище toohello серверы VMM hello и загружать файлы установки hello для компонентов Site Recovery. Запустите программу установки поставщика Azure Site Recovery на сервере VMM hello. Программа установки устанавливает hello поставщика на сервере VMM hello и регистрирует hello сервер в хранилище hello. Установка агента служб восстановления Microsoft hello на каждом узле Hyper-V.
+Настройте исходное и целевое расположение для репликации VMM. Добавьте серверы VMM в хранилище и скачайте файлы установки для компонентов Site Recovery. Запустите поставщик Azure Site Recovery на сервере VMM. Программа установки устанавливает поставщик на сервере VMM и регистрирует сервер в хранилище. Установите агент служб восстановления Microsoft на каждом узле Hyper-V.
 
-Go слишком[шаг 6: Настройка параметров исходной и целевой hello](vmm-to-vmm-walkthrough-source-target.md).
+Перейдите к статье [Шаг 6. Настройка исходной и целевой среды](vmm-to-vmm-walkthrough-source-target.md).
 
 ## <a name="step-7-configure-network-mapping"></a>Шаг 7. Настройка сетевого сопоставления
 
-Сопоставьте сети виртуальных Машин VMM в исходном и целевом расположении hello. После отработки отказа виртуальные машины создаются в целевой сети hello, maps toohello исходной сетью виртуальной Машины в какой hello находится исходной виртуальной Машины Hyper-V.
+Сопоставьте сети виртуальных машин VMM в исходном и целевом расположении. После отработки отказа виртуальные машины создаются в целевой сети, сопоставленной с сетью исходной виртуальной машины, в котором находится исходная виртуальная машина Hyper-V.
 
-Go слишком[шаг 7: Настройка сетевого сопоставления](vmm-to-vmm-walkthrough-network-mapping.md).
+Перейдите к статье [Шаг 7. Настройка сетевого сопоставления для репликации Hyper-V (с VMM) в Azure](vmm-to-vmm-walkthrough-network-mapping.md).
 
 
 ## <a name="step-8-set-up-a-replication-policy"></a>Шаг 8. Настройка политики репликации
 
 Укажите, как виртуальные машины будут реплицироваться между расположениями VMM.
 
-Go слишком[Step 8: настроить политику репликации](vmm-to-vmm-walkthrough-replication.md).
+Перейдите к статье [Шаг 8. Настройка политики репликации](vmm-to-vmm-walkthrough-replication.md).
 
 
 ## <a name="step-9-enable-replication-for-vms"></a>Шаг 9. Включение репликации для виртуальных машин
 
-Выберите виртуальные машины hello требуется tooreplicate. Включить виртуальную Машину для репликации триггеры hello начальной репликации toohello вторичного сайта, за которым следует текущих разностной репликации.
+Выберите виртуальные машины для репликации. При включении виртуальной машины для репликации инициируется репликация на дополнительный сайт, после которой выполняется разностная репликация.
 
-Go слишком[шаг 9: включить репликацию](vmm-to-vmm-walkthrough-enable-replication.md).
+Перейдите к статье [Шаг 9. Включение репликации на дополнительный сайт для виртуальных машин Hyper-V](vmm-to-vmm-walkthrough-enable-replication.md).
 
 
 ## <a name="step-10-run-a-test-failover"></a>Шаг 10. Запуск тестовой отработки отказа
 
-Выполните тест отработки отказа toomake, убедиться, что все работает должным образом.
+Запустите тестовую отработку отказа, чтобы убедиться в надлежащей работе всех компонентов.
 
-Go слишком[шаг 10: запустите тестовую отработку отказа](vmm-to-vmm-walkthrough-test-failover.md).
+Перейдите к статье [Шаг 10. Запуск тестовой отработки отказа для репликации Hyper-V на дополнительный сайт](vmm-to-vmm-walkthrough-test-failover.md).

@@ -1,6 +1,6 @@
 ---
-title: "образцы отчетов API действий aaaAzure входа в Active Directory | Документы Microsoft"
-description: "Как tooget работу с Azure Active Directory Reporting API hello"
+title: "Примеры для API отчета о событии входа в Azure Active Directory | Документация Майкрософт"
+description: "Как начать работу с API отчетов Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d4fbbea95fe0b52828673b997681ae37481e21bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Примеры для API отчета о действиях при входе Azure Active Directory
-Этот раздел является частью коллекции разделов, посвященных hello Azure Active Directory reporting API.  
-Отчетами Azure AD предоставляет API, который позволяет tooaccess данных действия при входе, с помощью кода или связанные средства.  
-Hello в этом разделе относится с образцом кода для hello tooprovide **входа в API действия**.
+Эта статья входит в серию статей об API отчетов Azure Active Directory.  
+Инструмент создания отчетов Azure AD предоставляет API, с помощью которого можно получить доступ к данным о действиях при входе, используя код или связанные инструменты.  
+Цель этой статьи — предоставить пример кода для **API действий при входе**.
 
 См.:
 
 * Основные сведения см. в разделе [Журналы аудита](active-directory-reporting-azure-portal.md#activity-reports).
-* [Приступая к работе с Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) Дополнительные сведения о hello reporting API.
+* Дополнительные сведения об API отчетов см. в статье [Приступая к работе с API отчетов Azure Active Directory](active-directory-reporting-api-getting-started.md).
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Прежде чем использовать hello образцы в этом разделе, необходимо toocomplete hello [API отчетов hello Azure AD tooaccess необходимых компонентов](active-directory-reporting-api-prerequisites.md).  
+Перед использованием примеров в этой статье выполните [предварительные требования для доступа к API отчетов Azure AD](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>Сценарий PowerShell
-    # This script will require hello Web Application and permissions setup in Azure Active Directory
+    # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
@@ -63,7 +63,7 @@ Hello в этом разделе относится с образцом кода
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-        Write-Output "Save hello output tooa file SigninActivities$i.json"
+        Write-Output "Save the output to a file SigninActivities$i.json"
         Write-Output "---------------------------------------------"
         $myReport.Content | Out-File -FilePath SigninActivities$i.json -Force
         $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
@@ -78,13 +78,13 @@ Hello в этом разделе относится с образцом кода
 
 
 
-## <a name="executing-hello-script"></a>Выполнение скрипта hello
-После завершения редактирования скрипта hello, запустите его и убедитесь, что ожидается, hello возвращаемых данных из отчета журналов аудита hello.
+## <a name="executing-the-script"></a>Выполнение сценария
+Завершив редактирование сценария, запустите его и убедитесь, что он вернул ожидаемые данные из отчета о журналах аудита.
 
-Hello скрипт возвращает выходные данные из hello входа в отчет в формате JSON. Он также создает `SigninActivities.json` файл с hello же выходные данные. Можно поэкспериментировать, изменяя данные tooreturn hello скриптов из других отчетов и закомментируйте hello выходные форматы, которые не требуется.
+Сценарий возвращает выходные данные из отчета о входе в формате JSON. Он также создает файл `SigninActivities.json` с такими же выходными данными. Вы можете поэкспериментировать, изменив сценарий так, чтобы он возвращал данные из других отчетов, и закомментировав ненужные форматы выходных данных.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Вы хотите toocustomize hello образцы в этом разделе? Извлечение hello [Azure Active Directory действия при входе Справочник по API](active-directory-reporting-api-sign-in-activity-reference.md). 
-* Если требуется полный обзор использования toosee hello Azure Active Directory reporting API см. в разделе [Приступая к работе с API отчетов Azure Active Directory "hello"](active-directory-reporting-api-getting-started.md).
-* Если вы хотите toofind дополнительных сведений об отчетах Azure Active Directory, см. раздел hello [Azure Active Directory руководство по отчетам](active-directory-reporting-guide.md).  
+* Хотите настроить примеры в этой статье? Просмотрите [API отчета о действиях при входе Azure Active Directory](active-directory-reporting-api-sign-in-activity-reference.md). 
+* Полный обзор использования API отчетов Azure Active Directory см. в статье [Приступая к работе с API отчетов Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* Дополнительные сведения об отчетах Azure Active Directory см. в статье [Руководство по отчетам Azure Active Directory](active-directory-reporting-guide.md).  
 

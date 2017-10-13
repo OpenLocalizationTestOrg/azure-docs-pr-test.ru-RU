@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory B2B API совместной работы и настройки | Документы Microsoft"
-description: "Совместная работа Azure Active Directory B2B поддерживает связей между компаниями, позволяя корпоративным приложениям доступа tooselectively деловых партнеров"
+title: "API службы совместной работы Azure Active Directory B2B и настройка | Документация Майкрософт"
+description: "Служба совместной работы Azure Active Directory B2B поддерживает взаимодействие между компаниями, позволяя предоставлять бизнес-партнерам выборочный доступ к вашим корпоративным приложениям."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 2609971ffa5d2ebc9466c61f4e4af11f5b045ecb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c85e05b38b4a9525e13ec510a17b7ef4841198d7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>API службы совместной работы Azure Active Directory B2B и настройка
 
-Имеется большое количество клиентов Расскажите, они должны toocustomize процесса приглашения hello в способом, который лучше всего подходит для своей организации. С помощью нашего интерфейса API это можно сделать. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Очень многие клиенты высказали пожелание, чтобы процесс приглашения был более индивидуальным и соответствовал потребностям конкретной организации. С помощью нашего интерфейса API это можно сделать. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
-## <a name="capabilities-of-hello-invitation-api"></a>Возможности hello приглашения API
-Hello API предоставляет следующие возможности hello.
+## <a name="capabilities-of-the-invitation-api"></a>Возможности API приглашения
+Интерфейс API предоставляет следующие возможности:
 
 1. Пригласите внешнего пользователя, используя *любой* адрес электронной почты.
 
@@ -35,35 +35,35 @@ Hello API предоставляет следующие возможности h
     "invitedUserEmailAddress": "gsamoogle@gmail.com"
     ```
 
-2. Настройте место вашей tooland пользователей после принятия приглашения их.
+2. Настройте, куда будет перенаправляться пользователь после принятия приглашения.
 
     ```
     "inviteRedirectUrl": "https://myapps.microsoft.com/"
     ```
 
-3. Выберите toosend hello Стандартная приглашения почту через нам
+3. Выберите отправку стандартного приглашения через нас
 
     ```
     "sendInvitationMessage": true
     ```
 
-  с toohello получатель сообщения, которые можно настроить
+  с сообщением для получателя, которое можно настроить.
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
     ```
 
-4. И выберите toocc: людей, которым tookeep в hello цикла вашей приглашение этого участника совместной работы.
+4. Выберите также, кому отправить копию. Это могут быть пользователи, которых вы хотите известить о приглашении данного сотрудника.
 
-5. Или полностью настроить приглашения и рабочий процесс адаптации, выбрав не toosend уведомления через Azure AD.
+5. Или полностью настройте свой вариант приглашения и рабочего процесса регистрации сотрудников. При этом уведомления через Azure AD не будут отсылаться.
 
     ```
     "sendInvitationMessage": false
     ```
 
-  В этом случае можно получить URL-адрес активации из hello API, который можно внедрить в шаблона сообщения электронной почты, обмена мгновенными Сообщениями или другим методом по своему усмотрению.
+  В этом случае вы получите URL-адрес активации из API, который можно вставить в шаблон электронного сообщения, отправить в мгновенном сообщении или распространить другим способом на свое усмотрение.
 
-6. Наконец Если вы являетесь администратором, вы можете tooinvite hello пользователя как член.
+6. Наконец, если вы являетесь администратором, то вы можете пригласить пользователя в качестве участника.
 
     ```
     "invitedUserType": "Member"
@@ -71,32 +71,32 @@ Hello API предоставляет следующие возможности h
 
 
 ## <a name="authorization-model"></a>Модель авторизации
-Hello API может работать в hello следующие режимы авторизации:
+API можно запустить в следующих режимах авторизации:
 
 ### <a name="app--user-mode"></a>Приложение + пользователь
-В этом режиме, кто использует потребностей hello API toohave hello разрешения toobe создавать приглашения B2B.
+В этом режиме приложение или пользователь, использующий API, должен иметь разрешения на создание приглашений в службу B2B.
 
 ### <a name="app-only-mode"></a>Только приложение
-В контексте только приложения приложение hello должен hello User.ReadWrite.All или Directory.ReadWrite.All областей для toosucceed приглашения hello.
+В контексте "только приложение" для успешного выполнения приглашения приложению требуется область User.ReadWrite.All или Directory.ReadWrite.All.
 
 Дополнительные сведения: https://graph.microsoft.io/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
-Он является теперь возможно toouse PowerShell tooadd приглашение внешних пользователей tooan организацией, легко. Создание с помощью командлета hello приглашение:
+Чтобы с легкостью добавлять и приглашать в организацию внешних пользователей, теперь можно использовать PowerShell. Создайте новое приглашение, используя приведенный ниже командлет.
 
 ```
 New-AzureADMSInvitation
 ```
 
-Можно использовать следующие варианты hello.
+Можно использовать приведенные ниже параметры.
 
 * -InvitedUserDisplayName
 * -InvitedUserEmailAddress
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Также можно проверить ссылку приглашения API hello в [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+Можно также ознакомиться со справочником по API приглашения: [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
@@ -105,7 +105,7 @@ New-AzureADMSInvitation
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Как администраторы Azure Active Directory могут добавить пользователей службы совместной работы B2B?](active-directory-b2b-admin-add-users.md)
 * [Как информационные работники могут добавить пользователей службы совместной работы B2B в Azure Active Directory?](active-directory-b2b-iw-add-users.md)
-* [элементы Hello hello электронное приглашение B2B совместной работы](active-directory-b2b-invitation-email.md)
+* [Элементы сообщения с приглашением в службу совместной работы B2B](active-directory-b2b-invitation-email.md)
 * [Активация приглашения службы совместной работы B2B](active-directory-b2b-redemption-experience.md)
 * [Руководство по лицензированию службы совместной работы Azure Active Directory B2B](active-directory-b2b-licensing.md)
 * [Устранение неполадок службы совместной работы Azure Active Directory B2B](active-directory-b2b-troubleshooting.md)

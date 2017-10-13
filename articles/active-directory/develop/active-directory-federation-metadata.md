@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD метаданных федерации | Документы Microsoft"
-description: "В этой статье описываются hello документа метаданных федерации, публикуемых Azure Active Directory для служб, которые принимают токены Azure Active Directory."
+title: "Метаданные федерации Azure AD | Документация Майкрософт"
+description: "В этой статье описывается документ метаданных федерации, который Azure Active Directory публикует для каждой службы, принимающей токены Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 23535bcd5eeb3e9b2e17d89a9b0420fc98bd3895
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ecafb02a6ac13d1c3cd1fe77ef710cd8525e32b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="federation-metadata"></a>Метаданные федерации
-Azure Active Directory (Azure AD) публикует документ метаданных федерации для служб, которые будет настроить маркеры безопасности tooaccept hello, выдаваемых Azure AD. Hello формат документа метаданных федерации описан в hello [язык федерации веб-служб (WS-Federation) версии 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), который расширяет [метаданные для hello OASIS Security Assertion Markup Language (SAML) версия 2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) публикует документ метаданных федерации для служб, который настроен на прием маркеров безопасности, выдаваемых Azure AD. Формат документа метаданных федерации описан в стандарте [Web Services Federation Language (WS-Federation) Version 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) (язык федерации веб-служб (WS-Federation) версии 1.2), который является расширением стандарта [Metadata for the OASIS Security Assertion Markup Language (SAML) v2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) (метаданные для языка разметки заявлений системы безопасности (SAML) OASIS версии 2.0).
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Клиентские и общие конечные точки метаданных
 Azure AD публикует клиентские и общие конечные точки.
 
-Клиентские конечные точки предназначены только для одного конкретного клиента. метаданные федерации конкретного клиента Hello включают сведения о клиенте hello, включая издателя конкретного клиента и сведения о конечной точке. Приложения, которые ограничивают доступ tooa одного клиента используйте клиентозависимые конечные точки.
+Клиентские конечные точки предназначены только для одного конкретного клиента. Клиентские метаданные федерации содержат сведения о конкретном клиенте, в том числе данные о его издателе и конечной точке. Приложения, которые предлагают доступ только к одному клиенту, используют клиентские конечные точки.
 
-Клиентонезависимые конечные точки предоставляют сведения, общие клиентов tooall Azure AD. Эти сведения применимы, размещенного в tootenants *login.microsoftonline.com* и общими для всех клиентов. Мы рекомендуем использовать общие конечные точки для мультитенантных приложений, так как они не связаны с каким-либо определенным клиентом.
+Общие конечные точки предоставляют сведения, общие для всех клиентов Azure AD. Эти сведения относятся к клиентам, которые размещены в домене *login.microsoftonline.com* , и данные одинаковы для всех клиентов. Мы рекомендуем использовать общие конечные точки для мультитенантных приложений, так как они не связаны с каким-либо определенным клиентом.
 
 ## <a name="federation-metadata-endpoints"></a>Конечные точки метаданных федерации
 Azure AD публикует метаданные федерации по адресу `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.
 
-Для **клиентозависимые конечные точки**, hello `TenantDomainName` может принимать одно из hello следующие типы:
+Для **клиентских конечных точек** `TenantDomainName` может быть одного из следующих типов:
 
 * зарегистрированное доменное имя клиента Azure AD, например `contoso.onmicrosoft.com`;
-* неизменяемый Hello клиента идентификатор hello домена, например `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+* неизменяемый идентификатор клиента для домена, например `72f988bf-86f1-41af-91ab-2d7cd011db45`.
 
-Для **клиентонезависимые конечные точки**, hello `TenantDomainName` — `common`. В этом документе перечислены только hello метаданных федерации элементы, общие клиентов tooall Azure AD, размещаются на login.microsoftonline.com.
+Для **общих конечных точек** `TenantDomainName` является `common`. В этом документе перечислены только те элементы метаданных федерации, которые являются общими для всех клиентов Azure AD, размещенных на login.microsoftonline.com.
 
-Клиентская конечная точка может иметь такой адрес: `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. является независимой от клиента конечной точке Hello [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Документ метаданных федерации hello можно просмотреть, введя этот URL-адрес в браузере.
+Клиентская конечная точка может иметь такой адрес: `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Общая конечная точка имеет адрес [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Документ метаданных федерации можно просмотреть, введя этот URL-адрес в браузере.
 
 ## <a name="contents-of-federation-metadata"></a>Содержимое метаданных федерации
-Hello следующий раздел содержит сведения, необходимые для службы, обрабатывающие маркеры hello, выданного Azure AD.
+В следующем разделе приведены сведения, необходимые для служб, которые используют токены, выданные службой Azure AD.
 
 ### <a name="entity-id"></a>Идентификатор сущности
-Hello `EntityDescriptor` элемент содержит `EntityID` атрибута. Здравствуйте, значение hello `EntityID` атрибут представляет hello издателя, то есть hello маркеров безопасности (STS) службы маркера, выданного hello. Это важные toovalidate hello издателя при получении маркера.
+Элемент `EntityDescriptor` содержит атрибут `EntityID`. Значение атрибута `EntityID` представляет издателя, то есть службу токенов безопасности, которая выдала этот токен. Очень важно проверить издателя при получении токена.
 
-Hello следующих метаданных показан пример определенного клиента `EntityDescriptor` элемент с `EntityID` элемента.
+В следующих метаданных показан пример клиентского элемента `EntityDescriptor` с элементом `EntityID`.
 
 ```
 <EntityDescriptor
@@ -57,9 +57,9 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-Можно заменить hello ИД клиента в клиентонезависимой конечной точке hello toocreate идентификатор вашего клиента конкретного клиента `EntityID` значение. результирующее значение Hello будет иметь hello так же, как hello издателя маркера. Стратегия Hello позволяет издателя hello toovalidate многопользовательского приложения для данного клиента.
+Чтобы получить клиентское значение `EntityID` , замените в общей конечной точке стандартный идентификатор клиента своим собственным идентификатором клиента. Полученное значение будет совпадать со значением издателя токена. Такая стратегия позволяет мультитенантному приложению проверять издателя для конкретного клиента.
 
-Hello следующих метаданных показан пример независимой от клиента `EntityID` элемента. Обратите внимание, что hello `{tenant}` — это литерал, а не заполнитель.
+В следующих метаданных приведен пример общего элемента `EntityID` . Обратите внимание, что `{tenant}` здесь является литералом, а не заполнителем.
 
 ```
 <EntityDescriptor
@@ -69,11 +69,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Сертификаты подписи токенов
-Когда служба получает маркер, выданный клиентом Azure AD, hello подпись токена hello должны быть проверены с ключом подписывания, опубликованной в документе метаданных федерации hello. Hello метаданные федерации включают открытую часть hello hello сертификаты, которые hello клиенты используют для подписи токенов. необработанные байты сертификата Hello, присутствуют в hello `KeyDescriptor` элемента. сертификат для подписи маркера Hello является допустимым для только при подписи hello значение hello `use` атрибут `signing`.
+Когда служба получает токен, выданный клиентом Azure AD, подпись токена нужно проверить с помощью ключа подписывания, опубликованного в документе метаданных федерации. В метаданных федерации содержатся открытые ключи сертификатов, которые используются клиентами для подписывания токенов. Код сертификата отображается в элементе `KeyDescriptor` . Сертификат для подписи маркера можно использовать, только если атрибут `use` имеет значение `signing`.
 
-Документ метаданных федерации, опубликованный Azure AD может иметь несколько ключей подписывания, например когда Azure AD готовится hello tooupdate сертификат для подписи. Если документ метаданных федерации содержит более одного сертификата, проверяющая токены hello службы должна поддерживать все сертификаты в документе hello.
+Документ метаданных федерации, опубликованный службой Azure AD, может иметь несколько ключей подписывания, к примеру, когда Azure AD готовится к обновлению сертификата для подписывания. Если документ метаданных федерации содержит более одного сертификата, служба, проверяющая токены, должна поддерживать все сертификаты в документе.
 
-Hello следующих метаданных показан пример `KeyDescriptor` элемент с ключом подписывания.
+В следующих метаданных приведен пример элемента `KeyDescriptor` с ключом подписывания.
 
 ```
 <KeyDescriptor use="signing">
@@ -87,29 +87,29 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-Hello `KeyDescriptor` элемент отображается в двух местах в документе метаданных федерации hello; WS-Federation определенного hello и hello SAML конкретных разделов. Hello сертификаты, опубликованные в обоих разделах будет hello же.
+Элемент `KeyDescriptor` отображается в двух местах в документе метаданных федерации: в разделах WS-Federation и SAML. Сертификаты, опубликованные в обоих разделах, будут одинаковыми.
 
-В разделе hello WS-Federation определенного чтения метаданных WS-Federation читает сертификаты hello из `RoleDescriptor` элемент с hello `SecurityTokenServiceType` типа.
+В разделе WS-Federation средство чтения метаданных WS-Federation будет считывать сертификаты из элемента `RoleDescriptor` с типом `SecurityTokenServiceType`.
 
-Hello следующих метаданных показан пример `RoleDescriptor` элемента.
+В следующих метаданных приведен пример элемента `RoleDescriptor` .
 
 ```
 <RoleDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fed="http://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="http://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-В разделе hello конкретного SAML чтения метаданных WS-Federation читает сертификаты hello из `IDPSSODescriptor` элемента.
+В разделе SAML средство чтения метаданных WS-Federation будет читать сертификаты из элемента `IDPSSODescriptor` .
 
-Hello следующих метаданных показан пример `IDPSSODescriptor` элемента.
+В следующих метаданных приведен пример элемента `IDPSSODescriptor` .
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
-Изменений нет в формате hello сертификатов конкретного клиента и независимой от клиента.
+Форматы клиентских и общих сертификатов не отличаются.
 
 ### <a name="ws-federation-endpoint-url"></a>URL-адрес конечной точки WS-Federation
-Hello метаданные федерации включают hello, которое используется URL-адрес, Azure AD для единого входа и единого выхода в протоколе WS-Federation. Эта конечная точка отображается в hello `PassiveRequestorEndpoint` элемента.
+Метаданные федерации включают URL-адрес, используемый службой Azure AD для единого входа и единого выхода в протоколе WS-Federation. Эта конечная точка отображается в элементе `PassiveRequestorEndpoint` .
 
-Hello следующих метаданных показан пример `PassiveRequestorEndpoint` элемент для клиентозависимой конечной точки.
+В следующих метаданных приведен пример элемента `PassiveRequestorEndpoint` для клиентской конечной точки.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -120,7 +120,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Для клиентонезависимой конечной точке hello hello WS-Federation URL-адрес отображается в конечной точке hello WS-Federation, как показано в следующих образец hello.
+Для общей конечной точки URL-адрес WS-Federation отображается в конечной точке WS-Federation, как показано в следующем примере.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -133,11 +133,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>URL-адрес конечной точки протокола SAML
-Hello метаданные федерации включают hello URL-адрес, используемый Azure AD для единого входа и единого выхода в протоколе SAML 2.0. Эти конечные точки отображаются в hello `IDPSSODescriptor` элемента.
+Метаданные федерации содержат URL-адрес, используемый службой Azure AD для единого входа и единого выхода в протоколе SAML 2.0. Эти конечные точки отображаются в элементе `IDPSSODescriptor` .
 
-Hello входа и выхода, URL-адреса отображаются в hello `SingleSignOnService` и `SingleLogoutService` элементы.
+URL-адреса для входа и выхода содержатся в элементах `SingleSignOnService` и `SingleLogoutService`.
 
-Hello следующих метаданных показан пример `PassiveResistorEndpoint` для клиентозависимой конечной точки.
+В следующих метаданных приведен пример элемента `PassiveResistorEndpoint` для клиентской конечной точки.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -147,7 +147,7 @@ Hello следующих метаданных показан пример `Passi
   </IDPSSODescriptor>
 ```
 
-Аналогичным образом hello конечных точек для конечных точек протокола hello общих SAML 2.0 публикуются в метаданных федерации независимой от клиента hello, как показано в следующих образец hello.
+Так же конечные точки для общих конечных точек протокола SAML 2.0 публикуются в общих метаданных федерации, как показано в следующем примере.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

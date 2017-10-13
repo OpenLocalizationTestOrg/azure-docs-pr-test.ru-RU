@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure хранилище данных SQL | Документы Microsoft"
-description: "Строка как имя сервера toofind hello и подключение для вашей tooAzure хранилище данных SQL"
+title: "Подключение к хранилищу данных SQL Azure | Документация Майкрософт"
+description: "Как найти имя сервера и строку подключения к хранилищу данных SQL Azure"
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -15,30 +15,30 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: f15e098026afb7c5efbbbfaf62b681e8cd7936bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="connect-tooazure-sql-data-warehouse"></a>Подключение tooAzure хранилище данных SQL
-Эта статья поможет вам получить tooSQL подключенного хранилища данных для hello первый раз.
+# <a name="connect-to-azure-sql-data-warehouse"></a>Подключение к хранилищу данных SQL Azure
+Эта статья поможет вам установить первое подключение к хранилищу данных SQL.
 
 ## <a name="find-your-server-name"></a>Поиск имени сервера
-Здравствуйте tooconnecting tooSQL первый шаг, хранилища данных требуется знать, как toofind имя вашего сервера.  Например имя сервера hello в следующий пример hello — sample.database.windows.net. toofind hello полное имя сервера:
+Чтобы подключиться к хранилищу данных SQL, прежде всего нужно знать, как найти имя вашего сервера.  Например, имя сервера в следующем примере — sample.database.windows.net. Чтобы найти полное имя сервера, сделайте следующее.
 
-1. Go toohello [портал Azure][Azure portal].
+1. Перейдите на [портал Azure][Azure portal].
 2. Щелкните **Базы данных SQL** 
-3. Щелкните нужная tooconnect для hello база данных.
-4. Найдите hello полное имя сервера.
+3. Щелкните базу данных, к которой вы хотите подключиться.
+4. Найдите полное имя сервера.
    
     ![Полное имя сервера][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Поддерживаемые драйверы и строки подключения
-Хранилище данных SQL Azure поддерживает драйверы [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] и [JDBC][JDBC]. Выберите одну из hello перед последней версии драйверов toofind hello и документации. tooautomatically создания строки подключения hello hello драйвер, который вы используете из hello Azure портала, можно щелкнуть hello **Показать строки подключения базы данных** из предшествующих пример hello.  Ниже приведены примеры синтаксиса строк подключения для каждого драйвера.
+Хранилище данных SQL Azure поддерживает драйверы [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] и [JDBC][JDBC]. Щелкните один из указанных типов драйверов для получения информации об обновлениях и документации. Чтобы автоматически создать строку подключения используемого драйвера на портале Azure, щелкните **Показать строки подключения к базам данных** на странице из предыдущего примера.  Ниже приведены примеры синтаксиса строк подключения для каждого драйвера.
 
 > [!NOTE]
-> Рассмотрите возможность установки hello подключения время ожидания too300 секунд tooallow вашей toosurvive подключения короткие периоды недоступности.
+> Рекомендуем задать время ожидания подключения, равное 300 секундам, чтобы подключение могло выдерживать короткие периоды недоступности.
 > 
 > 
 
@@ -54,7 +54,7 @@ Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows
 
 ### <a name="php-connection-string-example"></a>Пример строки подключения PHP
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting tooSQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
 ### <a name="jdbc-connection-string-example"></a>Пример строки подключения JDBC
@@ -73,11 +73,11 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>Дальнейшие действия
-tooconnect и запросов с помощью Visual Studio. в разделе [запроса с помощью Visual Studio][Query with Visual Studio]. toolearn Дополнительные сведения о параметры проверки подлинности, в разделе [tooAzure проверки подлинности хранилища данных SQL][Authentication tooAzure SQL Data Warehouse].
+Чтобы подключиться и отправить запрос с помощью Visual Studio, см. инструкции в статье [Подключение к хранилищу данных SQL с помощью Visual Studio и SSDT][Query with Visual Studio]. Подробные сведения о способах проверки подлинности см. в статье [Проверка подлинности в хранилище данных SQL Azure][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[Authentication tooAzure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
+[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx

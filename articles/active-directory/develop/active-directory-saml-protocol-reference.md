@@ -1,6 +1,6 @@
 ---
-title: "Справочник по протоколу AD SAML aaaAzure | Документы Microsoft"
-description: "Это статье представлен обзор hello профилей единого входа и единого выхода SAML в Azure Active Directory."
+title: "Справочник по протоколу SAML в Azure AD | Документация Майкрософт"
+description: "В этой статье содержится обзор профилей SAML для единого входа и единого выхода в Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -16,25 +16,25 @@ ms.date: 07/21/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.reviewer: dastrock
-ms.openlocfilehash: d712289b16dc40a6b43a96fadef729c55cdaac47
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d5ffba5d0c409fe9de7a9e82c6faa4ca2702ab95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# Как Azure Active Directory использует протокол SAML hello
-Azure Active Directory (Azure AD) использует hello взаимодействие с пользователями tootheir tooenable приложений SAML 2.0 протокола tooprovide единым входом. Hello [Single Sign-On](active-directory-single-sign-on-protocol-reference.md) и [единого выхода](active-directory-single-sign-out-protocol-reference.md) профилей Azure AD SAML объясняется использование утверждений SAML, протоколы и привязки в службе поставщика удостоверений hello.
+# Как Azure Active Directory использует протокол SAML
+Azure Active Directory (Azure AD) использует протокол SAML 2.0, чтобы приложения могли предоставлять пользователям единый вход. Профили [единого входа](active-directory-single-sign-on-protocol-reference.md) и [единого выхода](active-directory-single-sign-out-protocol-reference.md) SAML в Azure AD содержат сведения о том, как в службе поставщика удостоверений используются утверждения SAML, протоколы и привязки.
 
-Протоколу SAML требуется hello поставщика удостоверений (Azure AD) и hello службы поставщика (приложение hello) tooexchange сведения о себе.
+Протокол SAML подразумевает, что поставщик удостоверений (Azure AD) и поставщик услуг (приложение) обмениваются информацией друг о друге.
 
-При регистрации приложения в Azure AD, разработчик приложения hello регистрирует сведения, относящиеся к федерации с Azure AD. Сюда входят hello **URI перенаправления** и **URI метаданных** приложения hello.
+При регистрации приложения в Azure AD разработчик приложения регистрирует в Azure AD сведения, относящиеся к федерации. К ним, в частности, относятся **URI перенаправления** и **URI метаданных** для приложения.
 
-Azure AD использует hello **URI метаданных** для подписывания ключа и hello универсальный код Ресурса облачной службы hello выхода tooretrieve hello hello облачной службы. Если приложение hello не поддерживает универсальный код Ресурса метаданных, hello разработчик должен обратиться в службу универсальный код Ресурса выхода hello tooprovide поддержки корпорации Майкрософт и ключ подписывания.
+Azure AD использует **URI метаданных** облачной службы, чтобы получить ключ подписывания и URI выхода облачной службы. Если приложение не поддерживает URI метаданных, разработчику следует после регистрации приложения обратиться в службу поддержки Майкрософт, чтобы с ее помощью указать URI выхода и ключ подписывания.
 
-Azure Active Directory предоставляет клиентские и общие (единые для всех клиентов) конечные точки единого входа и единого выхода. Эти URL-адреса представляют доступные расположения — они не просто идентификаторами--, поэтому можно перейти tooread hello toohello конечной точки метаданных.
+Azure Active Directory предоставляет клиентские и общие (единые для всех клиентов) конечные точки единого входа и единого выхода. Эти URL-адреса представляют собой адресуемые расположения, а не просто идентификаторы. Вы можете обратиться по ним к конечной точке для чтения метаданных.
 
-* Конечная точка Hello конкретного клиента находится в каталоге `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  Hello <TenantDomainName> заполнитель представляет зарегистрированное доменное имя или GUID TenantID клиента Azure AD. Например, расположенный hello метаданные федерации клиента contoso.com hello: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Конечная точка конкретного клиента находится по адресу `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  Заполнитель <TenantDomainName> обозначает зарегистрированное доменное имя или глобальный уникальный идентификатор клиента для клиента Azure AD. Например, метаданные федерации для клиента contoso.com будут расположены по адресу https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml.
 
-* Hello независимой от клиента конечная точка находится в каталоге `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. В адресе конечной точки **Общие** отображается вместо доменное имя клиента и идентификатор.
+* Общая для всех клиентов конечная точка находится по адресу `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. В этом адресе конечной точки вместо доменного имени или идентификатора клиента содержится ключевое слово **common**.
 
-Сведения о документах метаданных федерации hello, публикуемых Azure AD см. в разделе [метаданные федерации](active-directory-federation-metadata.md).
+Сведения о документах метаданных федерации, публикуемых в Azure AD, см. в статье [Метаданные федерации](active-directory-federation-metadata.md).

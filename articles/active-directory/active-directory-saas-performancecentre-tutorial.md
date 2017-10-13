@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с PerformanceCentre | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и PerformanceCentre."
+description: "Узнайте, как настроить единый вход Azure Active Directory в PerformanceCentre."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 19781c0087093a67c70dc90072cf1a119bb2ade0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e86adaf4bd9b4752f2aece8207a8a423ec5590a6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Руководство по интеграции Azure Active Directory с PerformanceCentre
 
-В этом учебнике вы узнаете, как toointegrate PerformanceCentre с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать PerformanceCentre с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD PerformanceCentre предоставляет hello следующие преимущества:
+Интеграция PerformanceCentre с Azure AD обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooPerformanceCentre
-- Можно включить на пользователей tooautomatically get вошедшего tooPerformanceCentre (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к PerformanceCentre.
+- Вы можете включить автоматический вход пользователей в PerformanceCentre (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с PerformanceCentre требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с PerformanceCentre, вам потребуется следующее:
 
 - подписка Azure AD;
 - подписка PerformanceCentre с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление PerformanceCentre из галереи hello
+1. Добавление PerformanceCentre из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-performancecentre-from-hello-gallery"></a>Добавление PerformanceCentre из галереи hello
-tooconfigure hello интеграции PerformanceCentre в Azure AD, вы должны tooadd PerformanceCentre из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-performancecentre-from-the-gallery"></a>Добавление PerformanceCentre из коллекции
+Чтобы настроить интеграцию PerformanceCentre с Azure AD, вам потребуется добавить PerformanceCentre из коллекции в список управляемых приложений SaaS.
 
-**tooadd PerformanceCentre из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить PerformanceCentre из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **PerformanceCentre**.
+4. В поле поиска введите **PerformanceCentre**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_search.png)
 
-5. В панели результатов hello выберите **PerformanceCentre**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **PerformanceCentre** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение PerformanceCentre с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в PerformanceCentre является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в PerformanceCentre должен установить toobe.
+Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь в PerformanceCentre соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в PerformanceCentre.
 
-В PerformanceCentre, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в PerformanceCentre.
 
-tooconfigure и теста Azure AD единого входа с PerformanceCentre, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход в Azure AD в PerformanceCentre, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя PerformanceCentre](#creating-a-performancecentre-test-user)**  -toohave аналог Саймон Britta в PerformanceCentre, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя PerformanceCentre](#creating-a-performancecentre-test-user)** требуется для того, чтобы в PerformanceCentre существовал пользователь Britta Simon, связанный с представлением этого же пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении PerformanceCentre.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении PerformanceCentre.
 
-**tooconfigure Azure AD единого входа с PerformanceCentre, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в PerformanceCentre, выполните следующие действия.**
 
-1. В hello в hello портала Azure **PerformanceCentre** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции приложений **PerformanceCentre** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_samlbase.png)
 
-3. На hello **URL-адреса и домена PerformanceCentre** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения PerformanceCentre** выполните следующие действия:
 
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`http://companyname.performancecentre.com/saml/SSO`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `http://companyname.performancecentre.com/saml/SSO`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`http://companyname.performancecentre.com`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `http://companyname.performancecentre.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента PerformanceCentre](https://www.performancecentre.com/contact-us/) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить их, обратитесь в [службу поддержки клиентов PerformanceCentre](https://www.performancecentre.com/contact-us/). 
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_certificate.png) 
 
@@ -125,109 +125,109 @@ tooconfigure и теста Azure AD единого входа с PerformanceCent
 
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации PerformanceCentre** щелкните **Настройка PerformanceCentre** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка PerformanceCentre** щелкните **Настройка PerformanceCentre**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_configure.png) 
 
-7. Tooyour входа **PerformanceCentre** сайт компании от имени администратора.
+7. Войдите на корпоративный сайт **PerformanceCentre** с правами администратора.
 
-8. На вкладке hello hello левой стороны, нажмите кнопку **Настройка**.
+8. На вкладке слева щелкните **Configure**(Настройка).
    
-    ![Единый вход в Azure AD][10]
+    ![единого входа Azure AD][10]
 
-9. На вкладке hello hello левой стороны, нажмите кнопку **Разное**, а затем нажмите кнопку **единого входа**.
+9. На вкладке слева щелкните **Miscellaneous** (Разное), а затем — **Single Sign On** (Единый вход).
    
-    ![Единый вход в Azure AD][11]
+    ![единого входа Azure AD][11]
 
 10. В поле **Protocol** (Протокол) выберите **SAML**.
    
-    ![Единый вход в Azure AD][12]
+    ![единого входа Azure AD][12]
 
-11. Откройте скачанный файл метаданных в блокноте копирования содержимого hello, вставьте его в hello **метаданные поставщика удостоверений** текстовое поле, а затем нажмите кнопку **Сохранить**.
+11. Откройте скачанный файл метаданных, скопируйте и вставьте его содержимое в текстовое поле **Identity Provider Metadata** (Метаданные поставщика удостоверений), а затем нажмите кнопку **Save** (Сохранить).
    
-    ![Единый вход в Azure AD][13]
+    ![единого входа Azure AD][13]
 
-12. Убедитесь, что hello значения для hello **сущности базовый URL-адрес** и **URL-адрес идентификатор сущности** заданы правильно.
+12. Проверьте правильность значений в полях **Entity Base URL** (Базовый URL-адрес сущности) и **Entity ID URL** (URL-адрес идентификатора сущности).
     
-     ![Единый вход в Azure AD][14]
+     ![единого входа Azure AD][14]
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-performancecentre-test-user"></a>Создание тестового пользователя PerformanceCentre
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в PerformanceCentre.
+Цель этого раздела — создать пользователя с именем Britta Simon в PerformanceCentre.
 
-**toocreate пользователя с именем Саймон Britta в PerformanceCentre, выполните следующие шаги hello.**
+**Чтобы создать пользователя с именем Britta Simon в PerformanceCentre, выполните следующие действия.**
 
-1. Войдите на tooyour PerformanceCentre сайт компании от имени администратора.
+1. Войдите на корпоративный сайт PerformanceCentre с правами администратора.
 
-2. В меню слева hello hello выберите **Interrelate**и нажмите кнопку **создать участника**.
+2. В меню слева выберите **Interrelate** (Установить взаимосвязь), а затем нажмите кнопку **Create Participant** (Создать участника).
    
-    ![Создание пользователя][400]
+    ![Создать пользователя][400]
 
-3. На hello **между — создать участника** диалоговое окно, выполните следующие шаги hello:
+3. В диалоговом окне **Interrelate — Create Participant** (Взаимосвязь — создание участника) выполните следующие действия.
    
     ![Создание пользователя][401]
     
-    а. Тип hello необходимые атрибуты для Саймон Britta в соответствующие текстовые поля.
+    а. Введите необходимые атрибуты для пользователя Britta Simon в соответствующие текстовые поля.
     
     >[!IMPORTANT]
-    >Имя пользователя Britta должен быть атрибут в PerformanceCentre hello так же, как hello имя пользователя в Azure AD.
+    >Атрибут User Name этого пользователя в PerformanceCentre должен соответствовать имени пользователя в Azure AD.
     
     b. Выберите значение **Client Administrator** (Администратор клиента) в поле **Choose Role** (Выберите роль).
     
-    c. Щелкните **Сохранить**. 
+    c. В нижней части страницы нажмите кнопку **Save**. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooPerformanceCentre доступа.
+В этом разделе описано, как предоставить пользователю Britta Simon доступ к PerformanceCentre, чтобы он мог использовать единый вход Azure.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooPerformanceCentre Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить Britta Simon в PerformanceCentre, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **PerformanceCentre**.
+2. В списке приложений выберите **PerformanceCentre**.
 
     ![Настройка единого входа](./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -235,7 +235,7 @@ tooconfigure и теста Azure AD единого входа с PerformanceCent
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -243,13 +243,13 @@ tooconfigure и теста Azure AD единого входа с PerformanceCent
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest конфигурации единого входа Azure AD с помощью панели доступа "hello".  
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.  
 
-При нажатии кнопки hello PerformanceCentre плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour PerformanceCentre приложения.
+Щелкнув элемент PerformanceCentre на панели доступа, вы автоматически войдете в приложение PerformanceCentre.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

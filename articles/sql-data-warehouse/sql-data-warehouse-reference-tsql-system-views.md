@@ -1,6 +1,6 @@
 ---
-title: "системные представления хранилища данных aaaSQL | Документы Microsoft"
-description: "Содержимое представления toosystem ссылки для хранилища данных SQL."
+title: "Системные представления хранилища данных SQL | Документация Майкрософт"
+description: "Ссылки на системные представления для хранилища данных SQL."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: bd4d7184f6c95b37fe16b897c44c46000bbb2746
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="system-views"></a>Системные представления
 ## <a name="sql-data-warehouse-catalog-views"></a>Представления каталога хранилища данных SQL
@@ -61,8 +61,8 @@ ms.lasthandoff: 10/06/2017
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
-## <a name="sql-server-dmvs-applicable-toosql-data-warehouse"></a>Применимые tooSQL динамических административных представлений SQL Server хранилища данных
-Hello следующие динамические административные представления являются применимо tooSQL хранилища данных, но необходимо выполнить, подключившись toohello **master** базы данных.
+## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>Динамические административные представления SQL Server, применимые к хранилищу данных SQL
+Приведенные ниже динамические административные представления можно применять к хранилищу данных SQL, но их необходимо выполнять, подключившись к базе данных **master** .
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -135,18 +135,18 @@ Hello следующие динамические административны
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>Динамические административные представления SQL Server, доступные в хранилище данных SQL
-Хранилище данных SQL поддерживает множество hello SQL Server динамических административных представлений (DMV). Эти представления при запросе в хранилище данных SQL, сообщаете hello состояние базы данных SQL в hello распределения.
+Хранилище данных SQL включает многие динамические административные представления (DMV) SQL Server. При обращении к таким представлениям в хранилище данных SQL сообщается состояние базы данных SQL, в которой выполняются распределения.
 
-Поскольку хранилище данных SQL основанное на технологии MPP корпорации Майкрософт, хранилище данных SQL и система платформы аналитики хранилища параллельных данных (PDW) используйте hello же системные представления.
+Поскольку хранилище данных SQL основано на технологии MPP корпорации Майкрософт, и в хранилище данных SQL, и в параллельных хранилищах данных (PDW) аналитической платформы используются одни и те же системные представления.
 
-Именно поэтому каждое динамическое административное представление включает отдельный столбец с именем pdw_node_id. Это идентификатор hello hello hello вычислительных узлов. В PDW hello вычислительный узел — это более строгое концепция для архитектуры hello. В хранилище данных SQL, архитектура hello более интенсивно использует hello распределения.
+Именно поэтому каждое динамическое административное представление включает отдельный столбец с именем pdw_node_id. Это идентификатор вычислительного узла. В PDW вычислительный узел является активным участником архитектуры. В хранилище данных SQL архитектура в основном строится на распределениях.
 
 > [!NOTE]
-> toouse их просмотреть, вставить «pdw_nodes_» в имени hello, как показано в следующей таблице hello.
+> Чтобы использовать эти представления, вставьте в имя текст ’pdw_nodes_’, как показано в приведенной ниже таблице.
 > 
 > 
 
-| Имя DMV в хранилище данных SQL | Раздел Server Transact-SQL tooSQL ссылку на MSDN |
+| Имя DMV в хранилище данных SQL | Ссылка на раздел справки по инструкциям Transact-SQL (SQL Server) в MSDN |
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 

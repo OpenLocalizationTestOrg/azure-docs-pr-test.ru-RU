@@ -1,9 +1,9 @@
 ---
-title: "подключение aaaCheck с Наблюдатель сети Azure — портал Azure | Документы Microsoft"
-description: "На этой странице объясняется, как toocheck подключения с Наблюдатель сети в hello портал Azure"
+title: "Проверка возможности подключения с помощью службы \"Наблюдатель за сетями Azure\" на портале Azure | Документация Майкрософт"
+description: "На этой странице объясняется, как проверить возможность подключения с помощью службы \"Наблюдатель за сетями\" на портале Azure."
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
-ms.author: gwallace
-ms.openlocfilehash: 8560011906fcce46d31556fc52cbfa671e8e653a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: jdial
+ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-hello-azure-portal"></a>Убедитесь в наличии подключения с Наблюдатель сети Azure с помощью портала Azure hello
+# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Проверка возможности подключения с помощью службы Azure "Наблюдатель за сетями" на портале Azure
 
 > [!div class="op_single_selector"]
 > - [Портал](network-watcher-connectivity-portal.md)
@@ -27,41 +27,41 @@ ms.lasthandoff: 10/06/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Узнайте, как можно установить toouse tooverify подключения, если прямое подключение TCP от tooa виртуальной машины, заданный конечной точки.
+Узнайте, как проверить возможность прямого подключения TCP между виртуальной машиной и определенной конечной точкой.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этой статье предполагается, что hello следующие ресурсы:
+В данной статье предполагается, что у вас есть следующие ресурсы:
 
-* Экземпляр Наблюдатель сети в регионе hello нужно toocheck подключения.
+* экземпляр службы "Наблюдатель за сетями" в регионе, в котором нужно проверить возможность подключения;
 
-* Виртуальные машины toocheck подключение.
+* виртуальные машины, возможность подключения к которым необходимо проверить.
 
-ARMclient — используется toocall hello REST API с помощью PowerShell. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
+Чтобы вызвать REST API при помощи PowerShell, потребуется ARMClient. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети.
+В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы).
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> Для проверки возможности подключения требуется расширение виртуальной машины `AzureNetworkWatcherExtension`. Установка расширения hello на виртуальной Машине Windows на сайте [расширение виртуальной машины агента Наблюдатель сети Azure для Windows](../virtual-machines/windows/extensions-nwa.md) и виртуальной Машине Linux см. по адресу [расширение виртуальной машины агента Наблюдатель сети Azure для Linux](../virtual-machines/linux/extensions-nwa.md).
+> Для проверки возможности подключения требуется расширение виртуальной машины `AzureNetworkWatcherExtension`. Информацию об установке расширения для виртуальной машины Windows см. в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Windows](../virtual-machines/windows/extensions-nwa.md), а для виртуальной машины Linux — в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-hello-preview-capability"></a>Регистрация возможностей предварительного просмотра hello
+## <a name="register-the-preview-capability"></a>Регистрация возможностей предварительной версии
 
-Проверка возможности подключения находится в общедоступной предварительной версии, toouse эту функцию, он должен toobe зарегистрирован. toodo, выполнения hello следующий пример PowerShell:
+Проверка возможности подключения в настоящее время поддерживается в общедоступной предварительной версии. Для использования этой функции ее необходимо зарегистрировать. Для этого выполните следующие командлеты PowerShell.
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-tooverify hello регистрация прошла успешно, запустите следующий пример скрипта Powershell hello:
+Чтобы проверить, была ли регистрация успешно завершена, выполните приведенный ниже командлет PowerShell.
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-Если функции hello был правильно зарегистрирован, hello выходных данных должно совпадать hello следующее:
+Если компонент был правильно зарегистрирован, выходные данные должны выглядеть следующим образом.
 
 ```
 FeatureName                             ProviderName      RegistrationState
@@ -71,7 +71,7 @@ AllowNetworkWatcherConnectivityCheck    Microsoft.Network Registered
 
 ## <a name="log-in-with-armclient"></a>Вход с помощью ARMClient
 
-Войдите в tooarmclient с учетными данными Azure.
+Войдите в ARMClient, используя учетные данные Azure.
 
 ```PowerShell
 armclient login
@@ -79,12 +79,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Получение виртуальной машины
 
-Запустите следующий сценарий tooreturn hello виртуальной машины. Эти сведения потребуются для подключения. 
+Выполните следующий сценарий, чтобы получить сведения о виртуальной машине. Эти сведения потребуются для подключения. 
 
-После кода Hello необходимые значения для hello следующие переменные:
+Выполните приведенный ниже код, указав в нем значения следующих переменных:
 
-- **subscriptionId** -hello toouse идентификатор подписки.
-- **resourceGroupName** — hello имя группы ресурсов, содержащем виртуальные машины.
+- **subscriptionId** — идентификатор используемой подписки.
+- **resourceGroupName** — имя группы ресурсов, в которой содержатся виртуальные машины.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -93,7 +93,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Из hello следующие выходные данные, идентификатор hello hello виртуальной машины используется в hello в следующем примере:
+Идентификатор виртуальной машины используется в следующем примере.
 
 ```json
 ...
@@ -108,9 +108,9 @@ armclient get https://management.azure.com/subscriptions/${subscriptionId}/Resou
 }
 ```
 
-## <a name="check-connectivity-tooa-virtual-machine"></a>Проверьте подключение tooa виртуальной машины
+## <a name="check-connectivity-to-a-virtual-machine"></a>Проверка возможности подключения к виртуальной машине
 
-В этом примере проверяется подключение tooa целевой виртуальной машине через порт 80.
+В этом примере проверяется возможность подключения к целевой виртуальной машине через порт 80.
 
 ### <a name="example"></a>Пример
 
@@ -137,11 +137,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Так как эта операция имеет большую длину под управлением hello URI для hello результат возвращается в заголовок ответа hello как показано в hello после ответа:
+Так как эта операция выполняется долго, URI результата возвращается в заголовке ответа, как показано в следующем примере.
 
 **Важные значения**
 
-* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
+* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
 
 ```
 HTTP/1.1 202 Accepted
@@ -162,7 +162,7 @@ null
 
 ### <a name="response"></a>Ответ
 
-После ответа Hello — из предыдущего примера hello.  В данном ответе hello `ConnectionStatus` — **недостижимо**. Вы увидите, что все hello Сбой отправки проб. не удалось выполнить подключение Hello hello виртуального устройства из-за tooa настроенного пользователем `NetworkSecurityRule` с именем **UserRule_Port80**, настроен tooblock входящий трафик через порт 80. Эти сведения можно использовать tooresearch проблем с подключением.
+Следующий ответ взят из предыдущего примера.  В этом ответе параметр `ConnectionStatus` имеет значение **Unreachable** (Недоступно). Как видите, все отправленные пробы завершились неудачей. Попытка подключения завершилась сбоем в виртуальном модуле из-за пользовательского правила `NetworkSecurityRule` с именем **UserRule_Port80**, настроенного на блокировку входящего трафика на порту 80. Эти сведения можно использовать для анализа проблем с подключением.
 
 ```json
 {
@@ -226,7 +226,7 @@ null
 
 ## <a name="validate-routing-issues"></a>Проверка проблем с маршрутизацией
 
-пример Hello проверяет подключение между виртуальной машиной и удаленной конечной точки.
+В этом примере проверяется возможность подключения между виртуальной машиной и удаленной конечной точкой.
 
 ### <a name="example"></a>Пример
 
@@ -253,11 +253,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Так как эта операция имеет большую длину под управлением hello URI для hello результат возвращается в заголовок ответа hello как показано в hello после ответа:
+Так как эта операция выполняется долго, URI результата возвращается в заголовке ответа, как показано в следующем примере.
 
 **Важные значения**
 
-* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
+* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
 
 ```
 HTTP/1.1 202 Accepted
@@ -278,7 +278,7 @@ null
 
 ### <a name="response"></a>Ответ
 
-В следующем примере hello, hello `connectionStatus` отображается как **недостижимо**. В hello `hops` сведения, можно увидеть в разделе `issues` трафика hello заблокирована из-за tooa `UserDefinedRoute`.
+В следующем примере состояние `connectionStatus` отображается как **Unreachable** (Недоступно). В блоке `hops` в разделе `issues` видно, что трафик заблокирован из-за `UserDefinedRoute`.
 
 ```json
 {
@@ -322,7 +322,7 @@ null
 
 ## <a name="check-website-latency"></a>Проверка задержки веб-сайта
 
-Hello следующий пример проверяет веб-сайт tooa hello подключения.
+В следующем примере проверяется возможность подключения к веб-сайту.
 
 ### <a name="example"></a>Пример
 
@@ -349,11 +349,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Так как эта операция имеет большую длину под управлением hello URI для hello результат возвращается в заголовок ответа hello как показано в hello после ответа:
+Так как эта операция выполняется долго, URI результата возвращается в заголовке ответа, как показано в следующем примере.
 
 **Важные значения**
 
-* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
+* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
 
 ```
 HTTP/1.1 202 Accepted
@@ -374,7 +374,7 @@ null
 
 ### <a name="response"></a>Ответ
 
-В следующих ответа hello, вы увидите hello `connectionStatus` показано, как **доступный**. Когда подключение будет установлено, отобразятся значения задержки.
+В следующем ответе видно, что параметр `connectionStatus` отображается со значением **Reachable** (Достижимо). Когда подключение будет установлено, отобразятся значения задержки.
 
 ```json
 {
@@ -407,9 +407,9 @@ null
 }
 ```
 
-## <a name="check-connectivity-tooa-storage-endpoint"></a>Проверьте подключение tooa конечную точку
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Проверка возможности подключения к конечной точке хранилища
 
-Hello следующий пример проверяет подключение hello из виртуальной машины учетной записи хранения tooa блога.
+В следующем примере проверяется возможность подключения с виртуальной машины к учетной записи хранилища BLOB-объектов.
 
 ### <a name="example"></a>Пример
 
@@ -436,11 +436,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Так как эта операция имеет большую длину под управлением hello URI для hello результат возвращается в заголовок ответа hello как показано в hello после ответа:
+Так как эта операция выполняется долго, URI результата возвращается в заголовке ответа, как показано в следующем примере.
 
 **Важные значения**
 
-* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
+* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
 
 ```
 HTTP/1.1 202 Accepted
@@ -461,7 +461,7 @@ null
 
 ### <a name="response"></a>Ответ
 
-Hello следующий пример — ответ hello запуск hello предыдущего вызова API. Здравствуйте, как hello проверка прошла успешно, `connectionStatus` показано, как свойство **доступный**.  Предоставляются hello детали hello число прыжков необходимые tooreach hello хранилища больших двоичных объектов и задержки.
+Ниже представлен пример ответа на выполнение предыдущего вызова API. Так как проверка выполнена успешно, свойство `connectionStatus` отображается со значением **Reachable** (Достижимо).  Также отображаются сведения о числе прыжков, необходимых для доступа к BLOB-объекту в хранилище, а также о задержке.
 
 ```json
 {
@@ -496,7 +496,7 @@ Hello следующий пример — ответ hello запуск hello п
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, как снимки tooautomate пакетов с оповещениями виртуальной машины, просмотрев [создать получения оповещений триггеру пакетов](network-watcher-alert-triggered-packet-capture.md)
+Дополнительные сведения об автоматизации записи пакетов с помощью оповещений на виртуальной машине см. в статье, посвященной [созданию записи пакетов, активируемой с использованием оповещений](network-watcher-alert-triggered-packet-capture.md).
 
 Сведения о состоянии (разрешен или запрещен) входящего и исходящего трафика виртуальной машины см. в статье, посвященной [проверке потока IP-адресов](network-watcher-check-ip-flow-verify-portal.md).
 

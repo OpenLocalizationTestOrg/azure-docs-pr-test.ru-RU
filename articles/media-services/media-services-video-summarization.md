@@ -1,6 +1,6 @@
 ---
-title: "Azure Media Video эскизы aaaUse tooCreate сводку видео | Документы Microsoft"
-description: "Видео формирования сводных данных поможет вам создать сводные видеофайлов большого размера, выбрав интересные фрагменты автоматически из источника видео hello. Это полезно при необходимости tooprovide краткий обзор какие tooexpect в длинного видео."
+title: "Использование Azure Media Video Thumbnails для формирования сводных данных видео | Документация Майкрософт"
+description: "Формирование сводных данных видео помогает создавать краткие видеоролики длинных видеозаписей путем автоматического выбора интересных фрагментов из исходного видеоматериала. Используйте эту функцию, чтобы представить краткий обзор длинной видеозаписи."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 0a8f0bba6c12a948b940114fe4937e675688a8c7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5d5afdaf22ffea8f3b77a154acb5d0a8dda74405
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-media-video-thumbnails-toocreate-a-video-summarization"></a>Использование Azure Media Video эскизы tooCreate сводку видео
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Использование Azure Media Video Thumbnail для формирования сводных данных видео
 ## <a name="overview"></a>Обзор
-Hello **Azure Media видео эскизы** обработчик мультимедиа (MP) позволяет toocreate Сводка видео, полезно toocustomers, просто нужно toopreview Сводка длинного видео. Например, клиентам может потребоваться toosee короткий «Сводка видео» Если задержать указатель мыши над эскиз. Изменив параметры hello **Azure Media Video эскизы** набора конфигурации, позволяет использовать мощные однократного обнаружения hello точки Управления и объединения tooalgorithmically технологии создания описательные subclip.  
+Обработчик мультимедиа **Azure Media Video Thumbnail** позволяет создавать сводку видео, которая предоставляет пользователям предварительный просмотр сводки длинного видео. Например, пользователи хотят просмотреть короткую "сводку видео", когда они наводят указатель мыши на эскиз. Настроив параметры **Azure Media Video Thumbnail** в предустановке конфигурации, вы можете использовать технологию обнаружения и объединения кадров обработчика мультимедиа для создания описательного миниклипа.  
 
-Hello **Azure Media Video эскиз** MP в настоящее время находится в предварительной версии.
+Сейчас обработчик мультимедиа **Azure Media Video Thumbnail** доступен в предварительной версии.
 
-В этом разделе приведены подробные сведения о **Azure Media Video эскиз** и показано, как toouse с помощью пакета SDK служб мультимедиа для .NET.
+В этой статье приводятся сведения об обработчике **Azure Media Video Thumbnail** и демонстрируется его использование с пакетом SDK служб мультимедиа для .NET.
 
 ## <a name="limitations"></a>Ограничения
 
-В некоторых случаях если видео не состоит из различных сцен hello выходных данных будет только один снимок.
+В некоторых случаях, если видео не состоит из отличающихся сцен, выходными данными будет всего один снимок.
 
 ## <a name="video-summary-example"></a>Пример сводки видео
-Ниже приведены некоторые примеры того, какой обработчик мультимедиа Azure Media Video эскизы hello можно сделать.
+Ниже приведены некоторые примеры возможностей обработчика мультимедиа Azure Media Video Thumbnails.
 
 ### <a name="original-video"></a>Исходное видео
 [Исходное видео](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
@@ -42,26 +42,26 @@ Hello **Azure Media Video эскиз** MP в настоящее время на�
 [Результат — эскиз видео](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Конфигурация задачи (предустановка)
-При создании эскиза видео с помощью **Azure Media Video Thumbnails**необходимо указать предустановку конфигурации. Hello эскиза примера выше создавался hello, следуя базовой конфигурации JSON:
+При создании эскиза видео с помощью **Azure Media Video Thumbnails**необходимо указать предустановку конфигурации. Пример эскиза, приведенный выше, создан с помощью следующей базовой конфигурации JSON:
 
     {"version":"1.0"}
 
-В настоящее время можно изменить hello следующие параметры:
+В ней можно изменить следующие параметры.
 
 | Параметр | Описание |
 | --- | --- |
-| outputAudio |Указывает, содержит ли результирующий видео hello звуковых. <br/>Допустимые значения: True или False. Значение по умолчанию — True. |
-| fadeInFadeOut |Указывает ли исчезания переходы используются для взаимодействия между hello отдельные движения эскизы.  <br/>Допустимые значения: True или False.  Значение по умолчанию — True. |
-| maxMotionThumbnailDurationInSecs |Целое число, указывающее видео целиком результирующая длительность hello должны совпадать.  По умолчанию зависит от продолжительности исходного видео. |
+| outputAudio |Указывает, есть ли в итоговом видео аудио. <br/>Допустимые значения: True или False. Значение по умолчанию — True. |
+| fadeInFadeOut |Указывает, используются ли плавные переходы при перемещении отдельных эскизов.  <br/>Допустимые значения: True или False.  Значение по умолчанию — True. |
+| maxMotionThumbnailDurationInSecs |Целое число, указывающее продолжительность видео, полученного в результате.  По умолчанию зависит от продолжительности исходного видео. |
 
-Hello следующей таблице описаны длительность по умолчанию hello, когда **maxMotionThumbnailInSecs** не используется.
+Следующая таблица содержит продолжительность по умолчанию, когда параметр **maxMotionThumbnailInSecs** не используется.
 
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | Продолжительность видео |видео < 3 мин |3 мин < видео < 15 мин |
 | Продолжительность эскиза |15 с (2–3 сцены) |30 с (3–5 сцен) |
 
-Hello следующий JSON задает доступных параметров.
+Следующий объект JSON задает доступные параметры.
 
     {
         "version": "1.0",
@@ -74,10 +74,10 @@ Hello следующий JSON задает доступных параметро
 
 ## <a name="net-sample-code"></a>Пример кода .NET
 
-Hello следующей программе показано как:
+В следующей программе показано, как выполнить следующие задачи.
 
-1. Создание актива и отправка файла мультимедиа в актив hello.
-2. Создает задание с видео эскиза задачу на основе файла конфигурации, содержащий hello, следующая Предустановка json. 
+1. Создать ресурс-контейнера и отправить в него файл мультимедиа.
+2. Создать задание с задачей создания эскиза видео на основе файла конфигурации, содержащего следующую предустановку JSON. 
    
         {                
             "version": "1.0",
@@ -87,11 +87,11 @@ Hello следующей программе показано как:
                 "fadeInFadeOut": "false"
             }
         }
-3. Загружает hello выходные файлы. 
+3. Скачивание выходных файлов. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Пример
 
@@ -107,7 +107,7 @@ Hello следующей программе показано как:
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -124,17 +124,17 @@ Hello следующей программе показано как:
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
 
-                // Run hello thumbnail job.
+                // Run the thumbnail job.
                 var asset = RunVideoThumbnailJob(@"C:\supportFiles\VideoThumbnail\BigBuckBunny.mp4",
                                             @"C:\supportFiles\VideoThumbnail\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\VideoThumbnail\Output");
             }
 
             static IAsset RunVideoThumbnailJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Video Thumbnail Input Asset",
                     AssetCreationOptions.None);
@@ -142,38 +142,38 @@ Hello следующей программе показано как:
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Video Thumbnail Job");
 
-                // Get a reference tooAzure Media Video Thumbnails.
+                // Get a reference to Azure Media Video Thumbnails.
                 string MediaProcessorName = "Azure Media Video Thumbnails";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Video Thumbnail Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Video Thumbnail Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

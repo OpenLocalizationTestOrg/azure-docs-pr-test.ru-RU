@@ -1,6 +1,6 @@
 ---
-title: "виртуальную Машину с несколькими сетевыми картами - CLI Azure 2.0 aaaCreate | Документы Microsoft"
-description: "Узнайте, как toocreate виртуальной Машины с несколькими сетевыми картами с помощью hello Azure CLI 2.0."
+title: "Создание виртуальной машины с несколькими сетевыми картами (Azure CLI 2.0) | Документация Майкрософт"
+description: "Узнайте, как создать виртуальную машину с несколькими сетевыми картами с помощью Azure CLI 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,30 +16,30 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac0291a978e2c8682c69104915196cc6c4fcf8dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 19b1757dd694e756cfd2d0d6cd67e64f43ccab7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-vm-with-multiple-nics-using-hello-azure-cli-20"></a>Создайте виртуальную Машину с несколькими сетевыми адаптерами, используя hello Azure CLI 2.0
+# <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-20"></a>Создание виртуальной машины с несколькими сетевыми картами с помощью Azure CLI 2.0
 
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
 
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md).  В этой статье описывается использование модели развертывания диспетчера ресурсов hello, который рекомендуется в большинстве случаев новый вместо hello [классической модели развертывания](virtual-network-deploy-multinic-classic-cli.md).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md).  В этой статье описывается использование модели развертывания c помощью Resource Manager. Для большинства новых развертываний мы рекомендуем использовать эту модель вместо [классической](virtual-network-deploy-multinic-classic-cli.md).
 >
 
-## <a name="create"></a>Создание виртуальной Машины hello
+## <a name="create"></a>Создание виртуальной машины
 
-Выполнить эту задачу с помощью hello Azure CLI 2.0 (Эта статья) или hello [Azure CLI 1.0](virtual-network-deploy-multinic-cli-nodejs.md). Здравствуйте, значения в «» для переменных hello в hello описанных ниже создать ресурсы с параметрами из сценария hello. Измените значения hello, в зависимости от среды.
+Эту задачу можно выполнить с помощью Azure CLI 2.0 (в этой статье) или [Azure CLI 1.0](virtual-network-deploy-multinic-cli-nodejs.md). Значения в прямых кавычках для переменных в последующих шагах позволяют создать ресурсы с параметрами из сценария. Подставьте соответствующие значения для своей среды.
 
-1. Установка hello [Azure CLI 2.0](/cli/azure/install-az-cli2) если его нет.
-2. Создание открытого и закрытого пару ключей SSH для виртуальных машин Linux, выполнив шаги hello в hello [создать открытый и закрытый пару ключей SSH для виртуальных машин Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-3. В командной оболочке входа с помощью команды hello `az login`.
-4. Создайте hello виртуальной Машины, выполнив скрипт hello на компьютере Mac или Linux. Hello скрипт создает группу ресурсов tooit присоединенного одной виртуальной сети (VNet) с двумя подсетями, двумя сетевыми адаптерами и виртуальной Машины с hello двух сетевых адаптеров. Одно из hello сетевых адаптеров — подключенных tooone подсети и присваивается статический IP-адрес открытого и закрытого. Hello другой сетевой Адаптер имеет подключенного toohello другие подсети и назначается статический частный IP-адрес, а не общедоступный IP-адрес. Здравствуйте, сетевой Адаптер, общедоступный IP-адрес, виртуальной сети и ресурсы виртуальной Машины должны существовать в hello же местоположение и подписку. Хотя ресурсы hello все еще нет tooexist в hello одну группу ресурсов, в следующий сценарий, как и hello.
+1. Установите [Azure CLI 2.0](/cli/azure/install-az-cli2), если вы еще этого не сделали.
+2. Создайте пару открытого и закрытого ключей SSH для виртуальных машин Linux, выполнив действия, описанные в [этой статье](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+3. Выполните вход из командной оболочки с помощью команды `az login`.
+4. Создайте виртуальную машину, выполнив следующий скрипт на компьютере Mac или Linux. Скрипт создает группу ресурсов, одну виртуальную сеть с двумя подсетями, две сетевые карты и виртуальную машину с двумя подключенными сетевыми картами. Одна из сетевых карт подключена к одной подсети. Этой сетевой карте назначается статический общедоступный и частный IP-адрес. Другая сетевая карта подключается к другой подсети, и ей назначается только статический частный IP-адрес. Сетевая карта, общедоступный IP-адрес, виртуальная сеть и виртуальная машина должны находиться в одном расположении и в одной подписке. Хотя эти ресурсы и не должны находиться в одной группе ресурсов, в следующем скрипте они находятся в одной группе ресурсов.
 
 ```bash
 #!/bin/sh
@@ -52,9 +52,9 @@ az group create \
 --name $RgName \
 --location $Location
 
-# hello address is assigned toohello resource from a pool of IP adresses unique tooeach Azure region. 
-# Download and view hello file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists
-# hello ranges for each region.
+# The address is assigned to the resource from a pool of IP adresses unique to each Azure region. 
+# Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists
+# the ranges for each region.
 
 PipName="PIP-WEB"
 az network public-ip create \
@@ -77,7 +77,7 @@ az network vnet create \
 --subnet-name $VnetSubnet1Name \
 --subnet-prefix $VnetSubnet1Prefix
 
-# Create a second subnet within hello VNet
+# Create a second subnet within the VNet
 
 VnetSubnet2Name="Back-end"
 VnetSubnet2Prefix="10.0.1.0/24"
@@ -87,10 +87,10 @@ az network vnet subnet create \
 --name $VnetSubnet2Name \
 --address-prefix $VnetSubnet2Prefix
 
-# Create a network interface connected tooone of hello subnets. hello NIC is assigned a single dynamic private and
+# Create a network interface connected to one of the subnets. The NIC is assigned a single dynamic private and
 # public IP address by default, but you can instead, assign static addresses, or no public IP address at all.
-# You can also assign multiple private or public IP addresses tooeach NIC. toolearn more about IP addressing
-# options for NICs, enter hello az network nic create -h command.
+# You can also assign multiple private or public IP addresses to each NIC. To learn more about IP addressing
+# options for NICs, enter the az network nic create -h command.
 
 Nic1Name="NIC-FE"
 PrivateIpAddress1="10.0.0.5"
@@ -104,8 +104,8 @@ az network nic create \
 --private-ip-address $PrivateIpAddress1 \
 --public-ip-address $PipName
 
-# Create a second network interface and connect it toohello other subnet. Though multiple NICs attached toohello same
-# VM can be connected toodifferent subnets, hello subnets must all be within hello same VNet. Add additional NICs as necessary.
+# Create a second network interface and connect it to the other subnet. Though multiple NICs attached to the same
+# VM can be connected to different subnets, the subnets must all be within the same VNet. Add additional NICs as necessary.
 
 Nic2Name="NIC-BE"
 PrivateIpAddress2="10.0.1.5"
@@ -118,33 +118,33 @@ az network nic create \
 --vnet-name $VnetName \
 --private-ip-address $PrivateIpAddress2
 
-# Create a VM and attach hello two NICs.
+# Create a VM and attach the two NICs.
 
 VmName="WEB"
 
-# Replace hello value for hello following **VmSize** variable with a value from the
+# Replace the value for the following **VmSize** variable with a value from the
 # https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article. Not all VM sizes support
-# more than one NIC, so be sure tooselect a VM size that supports hello number of NICs you want tooattach toohello VM.
-# You must create hello VM with at least two NICs if you want tooadd more after VM creation. If you create a VM with
-# only one NIC, you can't add additional NICs toohello VM after VM creation, regardless of how many NICs hello VM supports.
-# hello VM size specified in hello following variable supports two NICs.
+# more than one NIC, so be sure to select a VM size that supports the number of NICs you want to attach to the VM.
+# You must create the VM with at least two NICs if you want to add more after VM creation. If you create a VM with
+# only one NIC, you can't add additional NICs to the VM after VM creation, regardless of how many NICs the VM supports.
+# The VM size specified in the following variable supports two NICs.
 
 VmSize="Standard_DS2"
 
-# Replace hello value for hello OsImage variable value with a value for *urn* from hello output returned by entering the
+# Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
 # az vm image list command.
 
 OsImage="credativ:Debian:8:latest"
 
 Username="adminuser"
 
-# Replace hello following value with hello path tooyour public key file.
+# Replace the following value with the path to your public key file.
 
 SshKeyValue="~/.ssh/id_rsa.pub"
 
-# Before executing hello following command, add variable names of additional NICs you may have added toohello script that
-# you want tooattach toohello VM. If creating a Windows VM, remove hello **ssh-key-value** line and you'll be prompted for
-# hello password you want tooconfigure for hello VM.
+# Before executing the following command, add variable names of additional NICs you may have added to the script that
+# you want to attach to the VM. If creating a Windows VM, remove the **ssh-key-value** line and you'll be prompted for
+# the password you want to configure for the VM.
 
 az vm create \
 --name $VmName \
@@ -157,24 +157,24 @@ az vm create \
 --ssh-key-value $SshKeyValue
 ```
 
-В дополнение к этому toocreating ВМ с двумя сетевыми адаптерами hello скрипт создает:
-- Один premium управлять диска по умолчанию, но наличия других параметров для hello тип диска, которые можно создать. Чтение hello [создания ВМ Linux с помощью Azure CLI 2.0 hello](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Дополнительные сведения см.
-- Виртуальная сеть с двумя подсетями и одним общедоступным IP-адресом. Кроме того, можно использовать *имеющиеся* виртуальные сети, подсети, сетевые карты или общедоступные IP-адреса. toolearn как toouse существующие сетевые ресурсы, вместо создания дополнительных ресурсов, введите `az vm create -h`.
+Помимо виртуальной машины с двумя сетевыми картами скрипт также создает следующие ресурсы:
+- Один управляемый диск уровня "Премиум" по умолчанию. Вы можете создать диск другого типа. Дополнительные сведения см. в статье [Создание виртуальной машины Linux с помощью предварительной версии Azure CLI 2.0 (az.py)](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Виртуальная сеть с двумя подсетями и одним общедоступным IP-адресом. Кроме того, можно использовать *имеющиеся* виртуальные сети, подсети, сетевые карты или общедоступные IP-адреса. Чтобы узнать, как использовать имеющиеся сетевые ресурсы, а не создавать дополнительные, введите `az vm create -h`.
 
 ## <a name = "validate"></a>Проверка создания виртуальной машины и сетевых карт
 
-1. Введите команду hello `az resource list --resouce-group Multi-NIC-VM --output table` toosee список ресурсов hello создан с помощью сценария hello. В выходные данные возвращаются hello должно быть шесть ресурсы: два сетевых адаптера, один диск, общедоступный IP-адрес, одну виртуальную сеть и виртуальную машину.
-2. Введите команду hello `az network public-ip show --name PIP-WEB --resource-group Multi-NIC-VM --output table`. Выходные данные возвращаются hello, обратите внимание, в значение hello **IP-адрес** и что значение hello **PublicIpAllocationMethod** — *статических*.
-3. Прежде чем запускать следующую команду hello, удалите hello <>, замените *Username* с именем hello, который использовался для hello **Username** переменной в скрипт hello и заменить *IP-адрес* с hello **IP-адрес** из предыдущего шага hello. Выполнения hello следующая команда tooconnect toohello виртуальной Машины: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
-4. После подключения toohello виртуальных Машин, запустите hello `sudo ifconfig` toosee команда *eth0* и *eth1* интерфейсов. Каждый сетевой Адаптер был присвоен hello статических частных IP-адресов указывается в скрипте hello hello Azure DHCP-серверами. Hello IP- и MAC адресов, назначенных toohello сетевых адаптеров не изменяйте до hello виртуальная машина удаляется. Рекомендуется не изменять IP-адреса в операционной системе, как его можно отключить компьютер toohello подключения. Общедоступные IP-адреса не отображаются в операционной системе hello, как они являются tooand сетевой адрес преобразуется из hello частный IP-адрес с hello инфраструктуры Azure.
+1. Введите команду `az resource list --resouce-group Multi-NIC-VM --output table`, чтобы просмотреть список ресурсов, созданных с помощью скрипта. В результате должно отобразиться шесть ресурсов: две сетевые карты, один диск, общедоступный IP-адрес, одна виртуальная сеть и виртуальная машина.
+2. Введите команду `az network public-ip show --name PIP-WEB --resource-group Multi-NIC-VM --output table`. В возвращенных выходных данных обратите внимание на значение параметра **IpAddress**, а также на то, что параметр **PublicIpAllocationMethod** имеет значение *Static*.
+3. Перед выполнением следующей команды удалите <> и замените *Username* именем, использованным для переменной **Username** в скрипте, а *ipAddress* — **IP-адресом** из предыдущего шага. Выполните следующую команду для подключения к виртуальной машине: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
+4. После подключения к виртуальной машине выполните команду `sudo ifconfig`, чтобы отобразить интерфейсы *eth0* и *eth1*. Каждой сетевой карте назначен статический частный IP-адрес, указанный в скрипте DHCP-серверами Azure. IP- и MAC-адреса, назначенные сетевым картам, не изменяются, пока виртуальная машина не будет удалена. Мы рекомендуем не изменять IP-адрес в операционной системе, так как таким образом можно отключить подключение к компьютеру. Общедоступные IP-адреса не отображаются в операционной системе, так как это сетевые адреса, преобразованные в IP-адрес и из него с помощью инфраструктуры Azure.
 
-## <a name= "clean-up"></a>Удалите hello ВМ и связанные ресурсы
+## <a name= "clean-up"></a>Удаление виртуальной машины и связанных с ней ресурсов
 
-Рекомендуется удалить hello ресурсы, созданные в этом упражнении, если не использовать их в рабочей среде. За виртуальную машину, общедоступный IP-адрес и диск взимается плата, пока они подготовлены. tooremove hello ресурсы, созданные во время этого упражнения завершения hello, следующие шаги:
-1. tooview hello ресурсы в группе ресурсов hello, запустите hello `az resource list --resource-group Multi-NIC-VM` команды.
-2. Убедитесь, что нет ресурсов в группе ресурсов hello, за исключением hello ресурсов создан с помощью сценария hello в этой статье. 
-3. все ресурсы, созданные в этом упражнении запуска hello toodelete `az group delete --name Multi-NIC-VM` команды. Hello команда удаляет группу ресурсов hello и все ресурсы hello, содержащихся в нем.
+Если вы не планируете использовать в рабочей среде ресурсы, созданные во время этого упражнения, рекомендуется удалить их. За виртуальную машину, общедоступный IP-адрес и диск взимается плата, пока они подготовлены. Чтобы удалить ресурсы, созданные во время этого упражнения, выполните следующие действия.
+1. Выполните команду `az resource list --resource-group Multi-NIC-VM`, чтобы просмотреть ресурсы в группе ресурсов.
+2. Убедитесь, что в ней содержатся только ресурсы, созданные с помощью сценария в этой статье. 
+3. Чтобы удалить все ресурсы, созданные во время этого упражнения, выполните команду `az group delete --name Multi-NIC-VM`. Эта команда удаляет группу ресурсов и все содержащиеся в ней ресурсы.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Любой сетевой трафик могут передаваться tooand из hello создания виртуальной Машины в этой статье. Можно определить правила входящих и исходящих подключений в NSG, ограничить объем трафика hello, который может осуществляться tooand из каждого сетевого интерфейса и/или в каждой подсети. Дополнительные сведения о Nsg, чтение hello toolearn [NSG Обзор](virtual-networks-nsg.md) статьи.
+Виртуальная машина, созданная в этой статье, может принимать и передавать любой сетевой трафик. Вы можете определить правила, ограничивающие входящий и исходящий трафик в группе безопасности сети для каждого сетевого интерфейса, каждой подсети или для того и другого. Дополнительные сведения о группах безопасности сети см. в [этой статье](virtual-networks-nsg.md).

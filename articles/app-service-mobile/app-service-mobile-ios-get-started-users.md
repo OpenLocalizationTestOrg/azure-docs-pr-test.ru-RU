@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd проверки подлинности в iOS с помощью мобильных приложений Azure"
-description: "Узнайте, как toouse мобильных приложений Azure tooauthenticate пользователей приложения iOS с помощью различных поставщиков удостоверений, включая AAD, Google, Facebook, Twitter и Майкрософт."
+title: "Добавление проверки подлинности на iOS с помощью мобильных приложений Azure"
+description: "Узнайте, как использовать мобильные приложения для проверки подлинности пользователей приложения iOS с помощью разных поставщиков удостоверений, включая AAD, Google, Facebook, Twitter и Майкрософт."
 services: app-service\mobile
 documentationcenter: ios
 author: ggailey777
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: glenga
-ms.openlocfilehash: df129e1c7517582db0e4705e0a6e98345ac8a48c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-authentication-tooyour-ios-app"></a>Добавление приложения iOS tooyour проверки подлинности
+# <a name="add-authentication-to-your-ios-app"></a>Добавление проверки подлинности в приложение iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-В этом учебнике добавления проверки подлинности toohello [iOS быстрый запуск] проекта с помощью поставщика удостоверений, поддерживаемых. Этот учебник основывается на hello [iOS быстрый запуск] руководство, в котором необходимо выполнять первой.
+В этом учебнике описывается добавление проверки подлинности в проект учебника по [быстрому запуску iOS] с помощью поддерживаемого поставщика удостоверений. Этот учебник использует материал учебника по [быстрому запуску iOS] , который необходимо пройти в первую очередь.
 
-## <a name="register"></a>Регистрация приложения для проверки подлинности и настройка hello службы приложений
+## <a name="register"></a>Регистрация приложения для проверки подлинности и настройка службы приложений
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Добавить ваш URL-адреса внешнего перенаправления разрешено toohello для приложений
+## <a name="redirecturl"></a>Добавление приложения в список разрешенных URL-адресов внешнего перенаправления
 
-Для безопасной аутентификации требуется определить новую схему URL-адресов для своего приложения.  Это позволяет приложение hello проверки подлинности системы tooredirect задней tooyour после завершения процесса проверки подлинности hello.  В этом руководстве мы повсеместно используем схему URL-адресов _appname_.  Тем не менее можно использовать любую схему URL-адресов на свой выбор.  Он должен быть уникальным tooyour мобильного приложения.  tooenable hello перенаправления на стороне сервера th:
+Для безопасной аутентификации требуется определить новую схему URL-адресов для своего приложения.  Это позволяет системе аутентификации выполнять перенаправление обратно в приложение после завершения процесса аутентификации.  В этом руководстве мы повсеместно используем схему URL-адресов _appname_.  Тем не менее можно использовать любую схему URL-адресов на свой выбор.  Она должна быть уникальной для мобильного приложения.  Вот как можно включить перенаправление на стороне сервера.
 
-1. В hello [портал Azure], выделите службу приложения.
+1. На [портале Azure] выберите свою службу приложений.
 
-2. Нажмите кнопку hello **проверки подлинности и авторизации** пункт меню.
+2. Выберите пункт меню **Аутентификация или авторизация**.
 
-3. Нажмите кнопку **Azure Active Directory** под hello **поставщики проверки подлинности** раздела.
+3. В разделе **Поставщики проверки подлинности** щелкните **Azure Active Directory**.
 
-4. Набор hello **режим управления** слишком**Дополнительно**.
+4. Для параметра **Режим управления** задайте значение **Дополнительно**.
 
-5. В hello **допускается внешний URL-адреса перенаправления**, введите `appname://easyauth.callback`.  Hello _appname_ в данной строке — hello схема URL-адресов для мобильного приложения.  Она должна соответствовать обычной спецификации URL-адресов для протокола (можно использовать буквы и цифры, и адрес должен начинаться с буквы).  Необходимо записать строку hello, выбранный как он потребуется tooadjust кода приложений для мобильных устройств с hello схема URL-адресов в нескольких местах.
+5. В поле **Разрешенные URL-адреса внешнего перенаправления** введите `appname://easyauth.callback`.  _appname_ в этой строке — это схема URL-адресов для вашего мобильного приложения.  Она должна соответствовать обычной спецификации URL-адресов для протокола (можно использовать буквы и цифры, и адрес должен начинаться с буквы).  Необходимо записать выбранную строку, так как потребуется в нескольких местах настроить код мобильного приложения с использованием схемы URL-адресов.
 
 6. Нажмите кнопку **ОК**.
 
 7. Щелкните **Сохранить**.
 
-## <a name="permissions"></a>Ограничить разрешения пользователей tooauthenticated
+## <a name="permissions"></a>Предоставление разрешений только пользователям, прошедшим проверку подлинности
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-В Xcode, нажмите клавишу **запуска** toostart приложение hello. Вызывает исключение, так как приложение hello пытается tooaccess серверной части, не прошедшие проверку подлинности пользователя, но hello *TodoItem* таблица теперь требует проверки подлинности.
+В Xcode нажмите кнопку **Выполнить** , чтобы запустить приложение. Будет порождено исключение, так как приложение попытается получить доступ к серверной части как пользователь, не прошедший аутентификацию, а для таблицы *TodoItem* теперь требуется аутентификация.
 
-## <a name="add-authentication"></a>Добавление проверки подлинности tooapp
+## <a name="add-authentication"></a>Добавление проверки подлинности в приложение
 **Objective-C**:
 
-1. На компьютере Mac откройте *QSTodoListViewController.m* в Xcode и добавьте следующий метод hello:
+1. На компьютере Mac откройте файл *QSTodoListViewController.m* в Xcode и добавьте следующий метод.
 
     ```Objective-C
     - (void)loginAndGetData
@@ -76,17 +76,17 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-    Изменение *google* слишком*microsoftaccount*, *twitter*, *facebook*, или *windowsazureactivedirectory* Если вы не используете как поставщика удостоверений Google. Если используется Facebook, то [требуется добавить домены Facebook в список разрешений][1] в приложении.
+    Измените *google* на *microsoftaccount*, *twitter*, *facebook* или *windowsazureactivedirectory*, если Google не используется как поставщик удостоверений. Если используется Facebook, то [требуется добавить домены Facebook в список разрешений][1] в приложении.
 
-    Замените hello **urlScheme** уникальное имя для вашего приложения.  Hello urlScheme должен быть hello таким же как hello протокола схема URL-адрес, указанный в hello **допускается внешний URL-адреса перенаправления** в hello портал Azure. Hello urlScheme используется приложением hello проверки подлинности обратного вызова tooswitch задней tooyour после завершения проверки подлинности запроса.
+    Замените **urlScheme** уникальным именем своего приложения.  Значение urlScheme должно быть таким же, как и для протокола схемы URL-адресов, указанного в поле **Разрешенные URL-адреса внешнего перенаправления** на портале Azure. urlScheme используется при обратном вызове аутентификации для переключения на приложение после завершения запроса аутентификации.
 
-2. Замените `[self refresh]` в `viewDidLoad` в *QSTodoListViewController.m* с hello, следующий код:
+2. Замените `[self refresh]` в `viewDidLoad` в файле *QSTodoListViewController.m* следующим кодом.
 
     ```Objective-C
     [self loginAndGetData];
     ```
 
-3. Откройте hello `QSAppDelegate.h` и добавьте следующий код hello файла:
+3. Откройте файл `QSAppDelegate.h` и добавьте в него следующий код.
 
     ```Objective-C
     #import "QSTodoService.h"
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/06/2017
     @property (strong, nonatomic) QSTodoService *qsTodoService;
     ```
 
-4. Откройте hello `QSAppDelegate.m` и добавьте следующий код hello файла:
+4. Откройте файл `QSAppDelegate.m` и добавьте в него следующий код.
 
     ```Objective-C
     - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -109,9 +109,9 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-   Добавьте следующий код непосредственно перед чтением строку hello `#pragma mark - Core Data stack`.  Замените _appname_ wih hello urlScheme значение, выбранное на шаге 1.
+   Добавьте этот код непосредственно перед строкой `#pragma mark - Core Data stack`.  Замените _appname_ значением urlScheme, указанным на шаге 1.
 
-5. Откройте hello `AppName-Info.plist` (вместо AppName с именем hello приложения) и добавьте hello, следующий код:
+5. Откройте файл `AppName-Info.plist` (замените AppName именем своего приложения) и добавьте в него следующий код.
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -127,15 +127,15 @@ ms.lasthandoff: 10/06/2017
     </array>
     ```
 
-    Этот код следует разместить внутри hello `<dict>` элемента.  Замените hello _appname_ строки (в массиве, **CFBundleURLSchemes**) с именем приложения hello, выбранное на шаге 1.  Также внести эти изменения в hello plist редактор - щелкните hello `AppName-Info.plist` файл в редакторе plist hello tooopen XCode.
+    Этот код должен быть помещен в элемент `<dict>`.  Замените строку _appname_ (в массиве для **CFBundleURLSchemes**) именем приложения, выбранным на шаге 1.  Внести эти изменения можно также в редакторе PList. Щелкните файл `AppName-Info.plist` в XCode, чтобы открыть редактор PList.
 
-    Замените hello `com.microsoft.azure.zumo` строка для **CFBundleURLName** с вашей Apple объединить идентификатор.
+    Замените строку `com.microsoft.azure.zumo` для **CFBundleURLName** идентификатором своего пакета Apple.
 
-6. Нажмите клавишу *запуска* toostart приложения hello и войдите в систему. При входе необходимо будет tooview hello Todo list и обновления.
+6. Нажмите кнопку *Выполнить*, чтобы запустить приложение, и войдите в систему. После входа вы должны увидеть список Todo и сможете вносить изменения.
 
 **Swift**:
 
-1. На компьютере Mac откройте *ToDoTableViewController.swift* в Xcode и добавьте следующий метод hello:
+1. На компьютере Mac откройте файл *ToDoTableViewController.swift* в Xcode и добавьте следующий метод.
 
     ```swift
     func loginAndGetData() {
@@ -162,17 +162,17 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-    Изменение *google* слишком*microsoftaccount*, *twitter*, *facebook*, или *windowsazureactivedirectory* Если вы не используете как поставщика удостоверений Google. Если используется Facebook, то [требуется добавить домены Facebook в список разрешений][1] в приложении.
+    Измените *google* на *microsoftaccount*, *twitter*, *facebook* или *windowsazureactivedirectory*, если Google не используется как поставщик удостоверений. Если используется Facebook, то [требуется добавить домены Facebook в список разрешений][1] в приложении.
 
-    Замените hello **urlScheme** уникальное имя для вашего приложения.  Hello urlScheme должен быть hello таким же как hello протокола схема URL-адрес, указанный в hello **допускается внешний URL-адреса перенаправления** в hello портал Azure. Hello urlScheme используется приложением hello проверки подлинности обратного вызова tooswitch задней tooyour после завершения проверки подлинности запроса.
+    Замените **urlScheme** уникальным именем своего приложения.  Значение urlScheme должно быть таким же, как и для протокола схемы URL-адресов, указанного в поле **Разрешенные URL-адреса внешнего перенаправления** на портале Azure. urlScheme используется при обратном вызове аутентификации для переключения на приложение после завершения запроса аутентификации.
 
-2. Удалить строки hello `self.refreshControl?.beginRefreshing()` и `self.onRefresh(self.refreshControl)` в конце `viewDidLoad()` в *ToDoTableViewController.swift*. Добавьте вызов слишком`loginAndGetData()` вместо них:
+2. Удалите строки `self.refreshControl?.beginRefreshing()` и `self.onRefresh(self.refreshControl)` в конце `viewDidLoad()` в файле *ToDoTableViewController.swift*. Добавьте вызов `loginAndGetData()` вместо них:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Откройте hello `AppDelegate.swift` и добавьте следующие строки toohello hello `AppDelegate` класса:
+3. Откройте файл `AppDelegate.swift` и добавьте следующую строку в класс `AppDelegate`.
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -187,9 +187,9 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-    Замените hello _appname_ wih hello urlScheme значение, выбранное на шаге 1.
+    Замените _appname_ значением urlScheme, указанным на шаге 1.
 
-4. Откройте hello `AppName-Info.plist` (вместо AppName с именем hello приложения) и добавьте hello, следующий код:
+4. Откройте файл `AppName-Info.plist` (замените AppName именем своего приложения) и добавьте в него следующий код.
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -205,18 +205,18 @@ ms.lasthandoff: 10/06/2017
     </array>
     ```
 
-    Этот код следует разместить внутри hello `<dict>` элемента.  Замените hello _appname_ строки (в массиве, **CFBundleURLSchemes**) с именем приложения hello, выбранное на шаге 1.  Также внести эти изменения в hello plist редактор - щелкните hello `AppName-Info.plist` файл в редакторе plist hello tooopen XCode.
+    Этот код должен быть помещен в элемент `<dict>`.  Замените строку _appname_ (в массиве для **CFBundleURLSchemes**) именем приложения, выбранным на шаге 1.  Внести эти изменения можно также в редакторе PList. Щелкните файл `AppName-Info.plist` в XCode, чтобы открыть редактор PList.
 
-    Замените hello `com.microsoft.azure.zumo` строка для **CFBundleURLName** с вашей Apple объединить идентификатор.
+    Замените строку `com.microsoft.azure.zumo` для **CFBundleURLName** идентификатором своего пакета Apple.
 
-5. Нажмите клавишу *запуска* toostart приложения hello и войдите в систему. При входе необходимо будет tooview hello Todo list и обновления.
+5. Нажмите кнопку *Выполнить*, чтобы запустить приложение, и войдите в систему. После входа вы должны увидеть список Todo и сможете вносить изменения.
 
-Для аутентификации службы приложений используется технология взаимодействия приложений Apple.  Дополнительные сведения по этому вопросу см. в разделе toohello [документации Apple][2]
+Для аутентификации службы приложений используется технология взаимодействия приложений Apple.  Дополнительные сведения по этой теме доступны в [документации Apple][2].
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[портал Azure]: https://portal.azure.com
+[портале Azure]: https://portal.azure.com
 
-[iOS быстрый запуск]: app-service-mobile-ios-get-started.md
+[быстрому запуску iOS]: app-service-mobile-ios-get-started.md
 

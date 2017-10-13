@@ -1,6 +1,6 @@
-### <a name="noconnection"></a>toomodify локальной сети шлюза префиксов IP-адресов — подключение к шлюзу
+### <a name="noconnection"></a>Изменение префиксов IP-адресов для шлюза локальной сети при отсутствии подключения шлюза
 
-префиксы tooadd дополнительный адрес:
+Чтобы добавить дополнительные префиксы адресов:
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -8,8 +8,8 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 ```
 
-tooremove префиксы адресов:<br>
-Оставьте hello префиксов, которые больше не нужны. В этом примере мы больше не требуется префикс 20.0.0.0/24 (из предыдущего примера hello), поэтому мы обновление шлюза локальной сети hello, за исключением этого префикса.
+Чтобы удалить префиксы адресов, используйте фрагмент кода ниже.<br>
+Не указывайте префиксы, которые больше не нужны. В этом примере нам больше не нужен префикс 20.0.0.0/24 (из предыдущего примера), поэтому мы обновим сетевой шлюз и исключим этот префикс.
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -17,39 +17,39 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 ```
 
-### <a name="withconnection"></a>toomodify локальной сети шлюза префиксов IP-адресов — существующие подключения шлюза
+### <a name="withconnection"></a>Изменение префиксов IP-адресов для шлюза локальной сети при наличии подключения шлюза
 
-Если после подключения шлюза и хотите tooadd или префиксов IP-адресов hello, содержащихся в шлюз локальной сети, необходимо hello toodo следующие шаги в порядке. После этого VPN-подключение будет некоторое время недоступно. При изменении префиксов IP-адресов, не требуется toodelete hello VPN-шлюз. Необходимо только подключение tooremove hello.
+Если шлюз уже подключен и вам нужно добавить или удалить префиксы IP-адресов, указанные для локального сетевого шлюза, выполните приведенные ниже шаги именно в такой последовательности. После этого VPN-подключение будет некоторое время недоступно. При изменении префиксов IP-адресов не нужно удалять VPN-шлюз. Необходимо удалить только подключение.
 
 
-1. Удалите подключение hello.
+1. Удалите подключение.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName
   ```
-2. Измените префиксы адресов hello шлюза локальной сети.
+2. Измените префиксы адресов для локального сетевого шлюза.
    
-  Задайте переменную hello для hello LocalNetworkGateway.
+  Задайте переменную для локального сетевого шлюза.
 
   ```powershell
   $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName
   ```
    
-  Измените префиксы hello.
+  Измените префиксы.
    
   ```powershell
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
-3. Создание подключения hello. В этом примере мы настраиваем тип подключения IPsec. При повторном создании подключения, используйте hello тип соединения, указанный для вашей конфигурации. Для подключения дополнительных типов, в разделе hello [командлета PowerShell](https://msdn.microsoft.com/library/mt603611.aspx) страницы.
+3. Создайте подключение. В этом примере мы настраиваем тип подключения IPsec. При повторном создании подключения используйте тип соединения, указанный для вашей конфигурации. Дополнительные типы подключений см. на странице с [командлетами PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).
    
-  Задайте переменную hello для hello задана как.
+  Задайте переменную для шлюза виртуальной сети.
 
   ```powershell
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  Создание подключения hello. В этом примере используется переменная hello $local, установленное на шаге 2.
+  Создайте подключение. В этом примере используется переменная $local, присвоенная на шаге 2.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

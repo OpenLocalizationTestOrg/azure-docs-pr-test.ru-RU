@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с каталогом hello U-SQL | Документы Microsoft"
-description: "Узнайте, как toouse hello U-SQL каталога tooshare кода и данных."
+title: "Начало работы с каталогом U-SQL | Документация Майкрософт"
+description: "Сведения об использовании каталога U-SQL для совместного использования кода и данных."
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/09/2017
 ms.author: edmaca
-ms.openlocfilehash: 559bb7a3879031eb290a3e82946d7bf42ac9f553
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 08364c6c7bea53807844e3b1cc327dc3742e0487
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-u-sql-catalog"></a>Приступая к работе с hello каталога U-SQL
+# <a name="get-started-with-the-u-sql-catalog"></a>Начало работы с каталогом U-SQL
 
 ## <a name="create-a-tvf"></a>Создание функции TVF
 
-Hello предыдущих скрипт U-SQL, повторяющиеся hello использование tooread ИЗВЛЕЧЕНИЯ из hello же исходном файле. С U-SQL возвращающих табличные значения функции hello (TVF) можно инкапсулировать hello данных для повторного использования в будущем.  
+В предыдущем скрипте U-SQL мы повторно использовали EXTRACT для чтения из одного и того же исходного файла. В U-SQL функция с табличным значением (TVF) позволяет инкапсулировать данные для повторного использования в будущем.  
 
-Hello следующий скрипт создает возвращающей табличное значение функции вызывается `Searchlog()` в базе данных по умолчанию hello и схемы:
+Следующий скрипт создает возвращающую табличное значение функцию с именем `Searchlog()` в базе данных и схеме по умолчанию:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -57,7 +57,7 @@ RETURN;
 END;
 ```
 
-Привет, выполнив сценарий показывает, как toouse hello возвращающей табличное значение, которое было определено в предыдущем сценарии hello:
+Следующий скрипт демонстрирует, как использовать функцию TVF, определенную в предыдущем скрипте:
 
 ```
 @res =
@@ -69,16 +69,16 @@ GROUP BY Region
 HAVING SUM(Duration) > 200;
 
 OUTPUT @res
-    too"/output/SerachLog-use-tvf.csv"
+    TO "/output/SerachLog-use-tvf.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
 ## <a name="create-views"></a>Создание представлений
 
-Если единственное выражение запроса, вместо возвращающей табличное значение функции можно использовать tooencapsulate U-SQL-ПРЕДСТАВЛЕНИЕ этого выражения.
+Если у вас есть одно выражение запроса вместо возвращающей табличное значение функции, можно использовать представление U-SQL для инкапсуляции этого выражения.
 
-Hello следующий скрипт создает представление с именем `SearchlogView` в базе данных по умолчанию hello и схемы:
+Следующий скрипт создает представление с именем `SearchlogView` в базе данных и схеме по умолчанию:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -95,7 +95,7 @@ CREATE VIEW SearchlogView AS
 USING Extractors.Tsv();
 ```
 
-Привет, выполнив сценарий демонстрирует использование hello hello определенные представления:
+Следующий скрипт демонстрирует, как использовать определенное представление.
 
 ```
 @res =
@@ -107,15 +107,15 @@ GROUP BY Region
 HAVING SUM(Duration) > 200;
 
 OUTPUT @res
-    too"/output/Searchlog-use-view.csv"
+    TO "/output/Searchlog-use-view.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
 ## <a name="create-tables"></a>создание таблиц.
-Как с таблицами в реляционной базе данных, с помощью U-SQL можно создать таблицу с предварительно определенной схемой или создать таблицу, которая выводит схему hello hello запроса, который заполняет таблицу hello (также известный как CREATE TABLE AS SELECT или CTAS).
+Как и в случае с таблицами реляционной базы данных, U-SQL позволяет создать таблицу с предварительно определенной схемой или же создать таблицу и определить схему из запроса, который заполняет таблицу (CREATE TABLE AS SELECT или CTAS).
 
-Создание базы данных и две таблицы с помощью hello следующий скрипт:
+Следующий скрипт создает базу данных и две таблицы:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -147,9 +147,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Запросы к таблицам
-Вы можете запрашивать таблицы, созданные в предыдущих сценария hello в hello таким же образом, что выполняется запрос hello файлов данных. Вместо создания набора строк с помощью ИЗВЛЕЧЕНИЯ, теперь можно ссылаться toohello имя таблицы.
+Вы можете отправлять запросы к таблицам (созданным с помощью предыдущего скрипта) так же, как вы отправляете запросы к файлам данных. Чтобы не создавать набор строк с помощью EXTRACT, теперь можно просто ссылаться на имя таблицы.
 
-tooread из таблиц hello, измените hello преобразования скрипта, который использовался ранее.
+Для чтения из таблиц нужно изменить скрипт преобразования, который использовался ранее:
 
 ```
 @rs1 =
@@ -166,13 +166,13 @@ GROUP BY Region;
     FETCH 5 ROWS;
 
 OUTPUT @res
-    too"/output/Searchlog-query-table.csv"
+    TO "/output/Searchlog-query-table.csv"
     ORDER BY TotalDuration DESC
     USING Outputters.Csv();
 ```
 
  >[!NOTE]
- >В настоящее время невозможно запустить SELECT на таблицу в hello же скрипт как один hello которой была создана таблица hello.
+ >Сейчас выполнять SELECT для таблицы в том же скрипте, где создается таблица, нельзя.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Обзор аналитики озера данных Microsoft Azure](data-lake-analytics-overview.md)

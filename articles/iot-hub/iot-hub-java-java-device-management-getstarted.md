@@ -1,6 +1,6 @@
 ---
-title: "aaaGet работы с управлением устройства Azure IoT Hub (Java) | Документы Microsoft"
-description: "Как tooinitiate управления устройства Azure IoT Hub toouse перезагрузите удаленного устройства. Использовать устройства Azure IoT hello пакета SDK для Java tooimplement приложение имитированное устройство, которое включает прямой метод и hello Azure IoT служба пакета SDK для Java tooimplement приложение службы, которое вызывает метод прямой hello."
+title: "Начало работы с функцией управления Центром Интернета вещей Azure (Java) | Документы Майкрософт"
+description: "Использование функции управления устройствами в Центре Интернета вещей Azure для начала удаленной перезагрузки устройства. Используйте пакет SDK для устройств Azure IoT для Java, чтобы реализовать приложение имитации устройства, включающее прямой метод, и пакет SDK для служб Azure IoT для Java, чтобы реализовать приложение-службу, вызывающее прямой метод."
 services: iot-hub
 documentationcenter: .java
 author: dominicbetts
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7aaeda9d4ff7002e5c66adfd61e2dfd5bcea964f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-management-java"></a>Начало работы с управлением устройствами (Java)
 
@@ -25,57 +25,57 @@ ms.lasthandoff: 10/06/2017
 
 В этом учебнике описаны следующие процедуры.
 
-* Используйте hello Azure портала toocreate центр IoT и создать удостоверение устройства в концентратор IoT.
-* Создание приложения имитированное устройство, которое реализует устройства прямой метод tooreboot hello. Прямой методы вызываются из облака hello.
-* Создайте приложение, которое вызывает метод прямой перезагрузки hello в приложение hello имитированное устройство через концентратор IoT. Это приложение, а затем мониторы hello выводятся свойства из toosee hello устройств после завершения операции перезагрузки hello.
+* Создание экземпляра Центра Интернета вещей на портале Azure и удостоверения устройства в экземпляре Центра Интернета вещей.
+* Создание приложения имитации устройства, которое реализует прямой метод для перезагрузки устройства. Прямые методы вызываются из облака.
+* Создание приложения, вызывающего прямой метод перезагрузки в приложении имитации устройства с помощью Центра Интернета вещей. Это приложение затем отслеживает передаваемые свойства с устройства, ожидая завершения операции перезагрузки.
 
-В конце этого учебника hello у вас есть два консольные приложения Java:
+Завершив работу с этим руководством, вы создадите два консольных приложения Java:
 
 **simulated-device**. Это приложение:
 
-* Центр IoT tooyour подключается с идентификатором hello устройства, созданный ранее.
+* подключается к вашему Центру Интернета вещей с помощью идентификатора устройства, созданного ранее;
 * получает вызов прямого метода перезагрузки;
 * имитирует физическую перезагрузку;
-* Отчеты hello время последней перезагрузки hello через свойство отчета.
+* возвращает время последней перезагрузки через переданное свойство.
 
 **trigger-reboot**. Это приложение:
 
-* Вызывает метод с прямой приложение hello имитированное устройство.
-* Отображает hello ответа toohello непосредственный вызов методов отправленных hello имитированное устройство
-* Отображает hello обновлены сообщил свойства.
+* вызывает прямой метод в приложении имитации устройства;
+* отображает ответ на вызов прямого метода, отправленный имитируемым устройством;
+* отображает обновленные переданные свойства.
 
 > [!NOTE]
-> Сведения о hello пакетов SDK, которые можно использовать toorun toobuild приложений на устройствах и серверной части вашего решения см. в разделе [пакеты SDK Azure IoT][lnk-hub-sdks].
+> Статья о [пакетах SDK для Центра Интернета вещей Azure][lnk-hub-sdks] содержит сведения о различных пакетах SDK, которые можно использовать для создания приложений, работающих на устройствах и в серверной части решения.
 
-toocomplete этого учебника, необходимо:
+Для работы с этим руководством необходимы указанные ниже компоненты.
 
-* Java SE 8. <br/> [Подготовка среды разработки] [ lnk-dev-setup] описывает способ tooinstall Java для этого учебника в Windows или Linux.
-* Maven 3.  <br/> [Подготовка среды разработки] [ lnk-dev-setup] описывает способ tooinstall [Maven] [ lnk-maven] для этого учебника в Windows или Linux.
+* Java SE 8. <br/> В статье [Prepare your development environment][lnk-dev-setup] (Подготовка среды разработки) описывается, как установить Java для работы с этим руководством в ОС Windows или Linux.
+* Maven 3.  <br/> В статье [Prepare your development environment][lnk-dev-setup] (Подготовка среды разработки) описывается, как установить [Maven][lnk-maven] для работы с этим руководством в ОС Windows или Linux.
 * [Node.js версии 0.10.0 или более поздней](http://nodejs.org).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Триггер удаленной перезагрузки на устройстве hello, с помощью прямой метод
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Активация удаленной перезагрузки на устройстве с помощью прямого метода
 
 В этом разделе приведена процедура создания консольного приложения Java, которое выполняет следующие действия:
 
-1. Вызывает метод прямой перезагрузки hello в приложение hello имитированное устройство.
-1. Отображает hello ответа.
-1. Опрашивает hello сообщила, отправленных из устройства toodetermine hello после завершения перезагрузки hello свойств.
+1. вызывает прямой метод перезагрузки в приложении имитации устройства;
+1. отображает ответ;
+1. опрашивает переданные свойства, отправляемые с устройства, для определения завершения перезагрузки.
 
-Это консольное приложение подключается tooyour центр IoT прямой метод tooinvoke hello и чтения hello сообщил свойства.
+Это консольное приложение подключается к Центру Интернета вещей для вызова прямого метода и чтения переданных свойств.
 
 1. Создайте пустую папку с именем dm-get-started.
 
-1. В папке dm get started hello создайте Maven проект с именем **триггер перезагрузки** с помощью hello следующую команду в командной строке. Hello ниже показан один, long команды:
+1. В папке dm-get-started создайте проект Maven с именем **trigger-reboot**, выполнив в командной строке следующую команду. Ниже показана одна длинная команда.
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. В командной строке перейдите папку toohello перезагрузки триггера.
+1. В командной строке перейдите к папке trigger-reboot.
 
-1. В текстовом редакторе, откройте файл pom.xml hello в папке триггер перезагрузки hello и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет вам toouse hello клиента для службы iot пакета в toocommunicate вашего приложения с вашего центра IoT:
+1. Откройте в текстовом редакторе файл pom.xml из папки trigger-reboot и добавьте зависимости, приведенные ниже, в узел **dependency**. Эта зависимость позволит вам использовать в приложении пакет iot-service-client для обмена данными с Центром Интернета вещей:
 
     ```xml
     <dependency>
@@ -87,9 +87,9 @@ toocomplete этого учебника, необходимо:
     ```
 
     > [!NOTE]
-    > Вы можете проверить наличие hello последнюю версию **клиента для службы iot** с помощью [поиска Maven][lnk-maven-service-search].
+    > Наличие последней версии пакета **iot-service-client** можно проверить с помощью [поиска Maven][lnk-maven-service-search].
 
-1. Добавьте следующее hello **построения** узел после hello **зависимости** узла. Эта конфигурация указывает, что приложение hello 1,8 toobuild Java toouse Maven:
+1. Добавьте следующий узел, **build**, после узла **dependencies**. Эта конфигурация дает указание Maven использовать Java версии 1.8 для создания приложения:
 
     ```xml
     <build>
@@ -107,11 +107,11 @@ toocomplete этого учебника, необходимо:
     </build>
     ```
 
-1. Сохраните и закройте файл pom.xml hello.
+1. Сохраните и закройте файл pom.xml.
 
-1. В текстовом редакторе откройте файл источника trigger-reboot\src\main\java\com\mycompany\app\App.java hello.
+1. Откройте в текстовом редакторе файл trigger-reboot\src\main\java\com\mycompany\app\App.java.
 
-1. Добавьте следующее hello **импорта** toohello файл инструкций:
+1. Добавьте в файл следующие инструкции **import** .
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -126,7 +126,7 @@ toocomplete этого учебника, необходимо:
     import java.util.concurrent.ExecutorService;
     ```
 
-1. Добавьте следующие переменные уровня класса toohello hello **приложения** класса. Замените `{youriothubconnectionstring}` с IoT строку подключения к концентратору нижеприведенного hello *создать центр IoT* раздела:
+1. Добавьте в класс **App** . Замените `{youriothubconnectionstring}` строкой подключения к вашему Центру Интернета вещей, которую вы записали, выполняя инструкции в разделе *Создание Центра Интернета вещей*:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -137,7 +137,7 @@ toocomplete этого учебника, необходимо:
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. tooimplement поток, который считывает hello сообщил свойства из устройства двойных hello каждые 10 секунд, добавьте следующее hello вложенных классов toohello **приложения** класса:
+1. Для реализации потока, который считывает переданные свойства с двойника устройства каждые 10 секунд, добавьте следующий вложенный класс в класс **App**:
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -158,7 +158,13 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. прямой метод tooinvoke hello перезагрузки на устройстве имитацию hello, добавить следующие toohello кода hello **основной** метод:
+1. Измените сигнатуру **основного** метода, чтобы создавать следующие исключения:
+
+    ```java
+    public static void main(String[] args) throws IOException
+    ```
+
+1. Добавьте следующий код в метод **main** для вызова прямого метода перезагрузки на имитируемом устройстве:
 
     ```java
     System.out.println("Starting sample...");
@@ -183,7 +189,7 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. поток toopoll toostart hello Здравствуйте выводятся свойства из hello имитированное устройство, добавьте следующий код toohello hello **основной** метод:
+1. Добавьте следующий код в метод **main** для запуска потока, опрашивающего переданные свойства на имитируемом устройстве:
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -191,32 +197,32 @@ toocomplete этого учебника, необходимо:
     executor.execute(showReportedProperties);
     ```
 
-1. tooenable вы toostop приложение hello, добавьте следующий код toohello hello **основной** метод:
+1. Чтобы иметь возможность остановить приложение, добавьте следующий код в метод **main**:
 
     ```java
-    System.out.println("Press ENTER tooexit.");
+    System.out.println("Press ENTER to exit.");
     System.in.read();
     executor.shutdownNow();
     System.out.println("Shutting down sample...");
     ```
 
-1. Сохраните и закройте файл trigger-reboot\src\main\java\com\mycompany\app\App.java hello.
+1. Сохраните и закройте файл trigger-reboot\src\main\java\com\mycompany\app\App.java.
 
-1. Построение hello **триггер перезагрузки** серверной части приложения и исправьте все ошибки. В командной строке перейдите папку триггер перезагрузки toohello и выполнения hello следующую команду:
+1. Выполните сборку внутреннего приложения **trigger-reboot** и исправьте ошибки (при наличии). В командной строке перейдите к папке trigger-reboot и выполните следующую команду:
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-simulated-device-app"></a>Создание приложения виртуального устройства
 
-В этом разделе приведена процедура создания консольного приложения Java, которое имитирует устройство. приложение Hello прослушивает hello перезагрузки непосредственный вызов методов из вашего центра IoT и немедленно отвечает, toothat вызова. Здравствуйте, приложения, а затем бездействует в течение некоторого времени процесса перезагрузки toosimulate hello до начала использования типа hello toonotify выводятся свойства **триггер перезагрузки** серверной части приложения, которое hello перезагрузка завершена.
+В этом разделе приведена процедура создания консольного приложения Java, которое имитирует устройство. Приложение прослушивает вызовы прямого метода перезагрузки из вашего Центра Интернета вещей и немедленно отвечает на такие вызовы. Затем приложение на некоторое время переходит в спящий режим, чтобы имитировать процесс перезагрузки, после чего использует переданное свойство для уведомления внутреннего приложения **trigger-reboot** о завершении перезагрузки.
 
-1. В папке dm get started hello создайте Maven проект с именем **имитируемые устройства** с помощью hello следующую команду в командной строке. Hello ниже приведен один, long команды.
+1. В папке dm-get-started создайте проект Maven с именем **simulated-device**, выполнив в командной строке следующую команду. Ниже показана одна длинная команда.
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. В командной строке перейдите папку toohello имитируемые устройства.
+1. В командной строке перейдите к папке simulated-device.
 
-1. В текстовом редакторе, откройте файл pom.xml hello в папке имитируемые устройства hello и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет вам toouse hello клиента для службы iot пакета в toocommunicate вашего приложения с вашего центра IoT:
+1. Откройте в текстовом редакторе файл pom.xml из папки simulated-device и добавьте приведенную ниже зависимость в узел **dependency**. Эта зависимость позволит вам использовать в приложении пакет iot-service-client для обмена данными с Центром Интернета вещей:
 
     ```xml
     <dependency>
@@ -227,9 +233,9 @@ toocomplete этого учебника, необходимо:
     ```
 
     > [!NOTE]
-    > Вы можете проверить наличие hello последнюю версию **клиента для устройства iot** с помощью [поиска Maven][lnk-maven-device-search].
+    > Наличие последней версии пакета **iot-device-client** можно проверить с помощью [поиска Maven][lnk-maven-device-search].
 
-1. Добавьте следующее hello **построения** узел после hello **зависимости** узла. Эта конфигурация указывает, что приложение hello 1,8 toobuild Java toouse Maven:
+1. Добавьте следующий узел, **build**, после узла **dependencies**. Эта конфигурация дает указание Maven использовать Java версии 1.8 для создания приложения:
 
     ```xml
     <build>
@@ -247,11 +253,11 @@ toocomplete этого учебника, необходимо:
     </build>
     ```
 
-1. Сохраните и закройте файл pom.xml hello.
+1. Сохраните и закройте файл pom.xml.
 
-1. В текстовом редакторе откройте файл источника simulated-device\src\main\java\com\mycompany\app\App.java hello.
+1. Откройте в текстовом редакторе исходный файл simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Добавьте следующее hello **импорта** toohello файл инструкций:
+1. Добавьте в файл следующие инструкции **import** .
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -265,7 +271,7 @@ toocomplete этого учебника, необходимо:
     import java.util.HashSet;
     ```
 
-1. Добавьте следующие переменные уровня класса toohello hello **приложения** класса. Замените `{yourdeviceconnectionstring}` со строкой подключения устройства hello, записанное в hello *создать удостоверение устройства* раздела:
+1. Добавьте в класс **App** . Замените `{yourdeviceconnectionstring}` строкой подключения устройства, записанной в разделе *Создание удостоверения устройства*:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -276,31 +282,31 @@ toocomplete этого учебника, необходимо:
     private static DeviceClient client;
     ```
 
-1. tooimplement обратного вызова обработчика для события состояния прямой метод, добавьте следующее hello вложенных классов toohello **приложения** класса:
+1. Чтобы реализовать обработчик обратного вызова для событий состояния прямого метода, добавьте следующий вложенный класс в класс **App**:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
+        System.out.println("IoT Hub responded to device method operation with status " + status.name());
       }
     }
     ```
 
-1. tooimplement обратного вызова обработчика для события состояния двойных устройство, добавьте следующее hello вложенных классов toohello **приложения** класса:
+1. Чтобы реализовать обработчик обратного вызова для событий состояния двойника устройства, добавьте следующий вложенный класс в класс **App**:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
     {
         public void execute(IotHubStatusCode status, Object context)
         {
-            System.out.println("IoT Hub responded toodevice twin operation with status " + status.name());
+            System.out.println("IoT Hub responded to device twin operation with status " + status.name());
         }
     }
     ```
 
-1. tooimplement обработчик обратного вызова для событий свойства, добавьте следующее hello вложенных классов toohello **приложения** класса:
+1. Чтобы реализовать обработчик обратного вызова для событий свойства, добавьте следующий вложенный класс в класс **App**:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -313,7 +319,7 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. tooimplement поток toosimulate hello перезагрузка устройства, добавьте следующее hello вложенных классов toohello **приложения** класса. Hello поток бездействует в течение 5 секунд, а затем задает hello **lastReboot** сообщил свойство:
+1. Для реализации потока для имитации перезагрузка устройства добавьте указанный ниже вложенный класс в класс **App**. Поток бездействует в течение пяти секунд, а затем устанавливает переданное свойство **lastReboot**:
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -334,7 +340,7 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. прямой метод tooimplement hello на устройстве hello, добавьте следующее hello вложенных классов toohello **приложения** класса. Когда имитацию приложение hello получает toohello вызов **перезагрузить** прямой метод возвращает вызывающий объект подтверждения toohello и запускает поток tooprocess hello перезагрузите:
+1. Чтобы реализовать прямой метод на устройстве, добавьте указанный ниже вложенный класс в класс **App**. Когда приложение имитации получает вызов прямого метода **reboot**, оно возвращает вызывающему объекту подтверждение, а затем запускает поток для обработки перезагрузки:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -366,20 +372,20 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. Измените сигнатуру hello объекта hello **основной** метод toothrow hello следующие исключения:
+1. Измените сигнатуру метода **main**, чтобы создавать следующие исключения:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. tooinstantiate **DeviceClient**, добавьте следующий код toohello hello **основной** метод:
+1. Для создания экземпляра **DeviceClient** добавьте следующий код в метод **main**:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. toostart прослушивание прямых вызовов, добавьте следующий код toohello hello **основной** метод:
+1. Чтобы запустить прослушивание вызовов прямого метода, добавьте следующий код в метод **main**:
 
     ```java
     try
@@ -387,7 +393,7 @@ toocomplete этого учебника, необходимо:
       client.open();
       client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
       client.startDeviceTwin(new DeviceTwinStatusCallback(), null, new PropertyCallback(), null);
-      System.out.println("Subscribed toodirect methods and polling for reported properties. Waiting...");
+      System.out.println("Subscribed to direct methods and polling for reported properties. Waiting...");
     }
     catch (Exception e)
     {
@@ -397,10 +403,10 @@ toocomplete этого учебника, необходимо:
     }
     ```
 
-1. tooshut работу имитатора устройства hello, добавьте следующий код toohello hello **основной** метод:
+1. Для завершения работы симулятора устройства добавьте следующий код в метод **main**:
 
     ```java
-    System.out.println("Press any key tooexit...");
+    System.out.println("Press any key to exit...");
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
     scanner.close();
@@ -408,31 +414,31 @@ toocomplete этого учебника, необходимо:
     System.out.println("Shutting down...");
     ```
 
-1. Сохраните и закройте файл simulated-device\src\main\java\com\mycompany\app\App.java hello.
+1. Сохраните и закройте файл simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Построение hello **имитируемые устройства** серверной части приложения и исправьте все ошибки. В командной строке перейдите папка имитируемые устройства toohello и выполнения hello следующую команду:
+1. Создайте внутреннее приложение **simulated-device** и исправьте все ошибки. В командной строке перейдите к папке simulated-device и выполните следующую команду:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-hello-apps"></a>Запускайте приложения hello
+## <a name="run-the-apps"></a>Запуск приложений
 
-Теперь вы находитесь toorun готовности приложения hello.
+Теперь все готово к запуску приложений.
 
-1. В командной строке в папке имитируемые устройства hello выполните следующие команды toobegin Ожидание перезагрузки вызовы методов из вашего центра IoT hello:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Центр IoT Java имитируемые устройства toolisten приложения для прямых вызовов перезагрузки][1]
-
-1. В командной строке в папке hello перезагрузки триггер выполните следующую метод перезагрузки hello toocall команды на устройстве имитацию из вашего центра IoT hello:
+1. В командной строке в папке simulated-device выполните следующую команду, чтобы начать прослушивать вызовы метода перезагрузки из Центра Интернета вещей:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Центр IoT Java службы приложения toocall hello перезагрузить прямой метод][2]
+    ![Приложение имитации устройства Центра Интернета вещей на языке Java для прослушивания вызовов прямого метода перезагрузки][1]
 
-1. имитированное устройство Hello в ответ отправляет toohello перезагрузки непосредственный вызов методов:
+1. В командной строке в папке trigger-reboot выполните следующую команду, чтобы вызвать метод перезагрузки на имитируемом устройстве из Центра Интернета вещей:
 
-    ![Приложение для имитации устройства центра IoT Java отвечает toohello непосредственный вызов методов][3]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Приложение службы Центра Интернета вещей на языке Java для вызова прямого метода перезагрузки][2]
+
+1. Ответ имитируемого устройства на вызов прямого метода перезагрузки:
+
+    ![Ответ приложения имитации устройства Центра Интернета вещей на языке Java на вызов прямого метода][3]
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

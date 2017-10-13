@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate полное доменное имя для виртуальной Машины Windows в hello портал Azure | Документы Microsoft"
-description: "Узнайте, как toocreate полное доменное имя или полное доменное имя, для диспетчера ресурсов на основе виртуальной машины в hello портал Azure."
+title: "Создание FQDN для виртуальной машины Windows на портале Azure | Документация Майкрософт"
+description: "Узнайте, как создать полное доменное имя (FQDN) для виртуальной машины на основе Resource Manager на портале Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -16,22 +16,22 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67c817ec97073803e513bc41ebde67b75ced565e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2d5a555cd873222efcdb29e8eb3aaf128a24414b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-fully-qualified-domain-name-in-hello-azure-portal-for-a-windows-vm"></a>Создание полного доменного имени в hello портал Azure для виртуальной Машины Windows.
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Создание полного доменного имени на портале Azure для виртуальной машины Windows
 
-При создании виртуальной машины (VM) в hello [портал Azure](https://portal.azure.com), открытому ресурсу IP для hello виртуальной машины создается автоматически. Можно использовать этот IP адрес tooremotely доступа hello виртуальной Машины. Несмотря на то, что портал hello не приводит к созданию [полного доменного имени](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), или полное доменное имя, его можно создать после hello виртуальной Машины. В этой статье демонстрируется toocreate hello действия DNS-имя или полное доменное имя.
+При создании виртуальной машины на [портале Azure](https://portal.azure.com) для нее автоматически создается ресурс общедоступного IP-адреса. Этот IP-адрес используется для удаленного доступа к данной виртуальной машине. Несмотря на то что портал не создает [полное доменное имя](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), его можно создать после создания виртуальной машины. В этой статье показан процесс создания DNS-имени или полного доменного имени.
 
 ## <a name="create-a-fqdn"></a>Создание полного доменного имени
-Для работы с руководством требуется виртуальная машина. При необходимости вы можете [создания виртуальной Машины на портале hello](quick-create-portal.md) или [с помощью Azure PowerShell](quick-create-powershell.md). Когда виртуальная машина будет готова, выполните следующие действия:
+Для работы с руководством требуется виртуальная машина. При необходимости ее можно создать [на портале](quick-create-portal.md) или с помощью [Azure PowerShell](quick-create-powershell.md). Когда виртуальная машина будет готова, выполните следующие действия:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Теперь можно удаленно подключиться toohello виртуальную Машину с помощью этого DNS-имя как для протокола удаленного рабочего стола (RDP).
+Теперь вы можете удаленно подключиться к виртуальной машине с помощью DNS-имени, например, используя протокол удаленного рабочего стола (RDP).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда у виртуальной машины имеется общедоступный IP-адрес и DNS-имя, можно развернуть общие программные платформы или службы, такие как IIS, SQL или SharePoint.

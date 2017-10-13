@@ -1,5 +1,5 @@
 ---
-title: "сценарий CLI aaaAzure пример — создание сети многоуровневых приложений | Документы Microsoft"
+title: "Пример скрипта Azure CLI. Создание сети для многоуровневых приложений | Документация Майкрософт"
 description: "Пример скрипта Azure CLI. Создание сети для многоуровневых приложений."
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,15 +15,15 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: deeb3f459499cebd1b8ded6a299eb759d49cf08d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: de65d820f2d9eea49b58185c81d815675fd76740
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Создание сети для многоуровневых приложений
 
-В этом примере скрипта создается виртуальная сеть с интерфейсной и внутренней подсетями. Подсети интерфейса toohello трафика является ограниченной tooHTTP и SSH, при toohello трафика конечной подсети ограниченный tooMySQL, порт 3306. После выполнения скрипта hello имеется две виртуальные машины, по одному в каждой подсети, можно развернуть веб-сервера и программное обеспечение MySQL.
+В этом примере скрипта создается виртуальная сеть с интерфейсной и внутренней подсетями. Трафик к интерфейсной подсети принимается по протоколам HTTP и SSH, в то время как трафик к внутренней подсети принимается только от MySQL по порту 3306. После запуска скрипта у вас будет две виртуальные машины, по одной в каждой подсети, на которых вы можете развернуть веб-сервер и программное обеспечение MySQL.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 10/06/2017
 ## <a name="sample-script"></a>Пример скрипта
 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.sh  "Virtual network for multi-tier application")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.sh  "Виртуальная сеть для многоуровневого приложения")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
+Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
 
 ```azurecli
 az group delete --name MyResourceGroup --yes
@@ -45,22 +45,22 @@ az group delete --name MyResourceGroup --yes
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды toocreate hello группы ресурсов, виртуальной сети и группы безопасности сети. Каждая команда в таблице hello связывает toocommand документации.
+Для создания группы ресурсов, виртуальной сети и групп безопасности сети этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
 | [az group create](/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
 | [az network vnet create](/cli/azure/network/vnet#create) | Создает виртуальную сеть Azure и интерфейсную подсеть. |
 | [az network subnet create](/cli/azure/network/vnet/subnet#create) | Создает внутреннюю подсеть. |
-| [az network public-ip create](/cli/azure/network/public-ip#create) | Создает открытый tooaccess hello IP адрес виртуальной Машины из Интернета hello. |
-| [az network nic create](/cli/azure/network/nic#create) | Создает виртуальными сетевыми интерфейсами и вкладывает их подсети виртуальной сети toohello внешнего и внутреннего интерфейса. |
-| [az network nsg create](/cli/azure/network/nsg#create) | Создание группы безопасности сети (NSG), которые будут связанного toohello внешнего и внутреннего интерфейса подсети. |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#create) |Создаются правила NSG, разрешать или запрещать определенные порты toospecific подсетей. |
-| [az vm create](/cli/azure/vm#create) | Создает виртуальные машины и присоединяет tooeach сетевого Адаптера виртуальной Машины. Эта команда также указывает toouse образ виртуальной машины hello и учетные данные администратора. |
+| [az network public-ip create](/cli/azure/network/public-ip#create) | Создает общедоступный IP-адрес для доступа к виртуальной машине из Интернета. |
+| [az network nic create](/cli/azure/network/nic#create) | Создает виртуальные сетевые интерфейсы и присоединяет их к интерфейсной и внутренней подсети виртуальной сети. |
+| [az network nsg create](/cli/azure/network/nsg#create) | Создает группы безопасности сети (NSG), которые связаны с интерфейсной и внутренней подсетями. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#create) |Создает правила групп безопасности сети, которые разрешают или блокируют определенные порты для конкретных подсетей. |
+| [az vm create](/cli/azure/vm#create) | Создает виртуальные машины и присоединяет сетевой адаптер к каждой из них. Эта команда также указывает образ виртуальной машины и учетные данные администратора. |
 | [az group delete](/cli/azure/group#delete) | Удаляет группу ресурсов и все содержащиеся в ней ресурсы. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](/cli/azure/overview).
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](/cli/azure/overview).
 
-Дополнительные сетевые образцы сценариев CLI можно найти в hello [документации Azure Общие сведения о сети](../cli-samples.md)
+Дополнительные примеры сценариев Azure CLI для сетей Azure см. в [обзоре документации по сетям Azure](../cli-samples.md).

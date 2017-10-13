@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate и управления базой данных Azure для правила брандмауэра PostgreSQL, с помощью Azure CLI | Документы Microsoft"
-description: "В этой статье описывается как toocreate и управления базой данных Azure для правила брандмауэра PostgreSQL, с помощью командной строки Azure CLI."
+title: "Создание правил брандмауэра базы данных Azure для PostgreSQL и управление ими с помощью Azure CLI | Документация Майкрософт"
+description: "В этой статье описывается, как создать базу данных Azure для правил брандмауэра PostgreSQL и управлять ею с помощью интерфейса командной строки Azure."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -10,70 +10,70 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/13/2017
-ms.openlocfilehash: 06e34c9e3996c2ec3df63191d794bc34d0ca0cf2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6f081416dd7d78f0153b3fda21a340a8c1a70c5f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Создание правил брандмауэра базы данных Azure для PostgreSQL и управление ими с помощью Azure CLI
-Правила брандмауэра уровня сервера включите tooan доступа toomanage администраторы базы данных Azure для сервера PostgreSQL определенный IP-адрес или диапазон IP-адресов. Командами удобный Azure CLI можно создать, обновить, удалить, а также выполнять их список и Показать toomanage правила брандмауэра сервера. Обзор брандмауэров базы данных Azure для PostgreSQL приведен в разделе [Правила брандмауэра сервера базы данных Azure для PostgreSQL](concepts-firewall-rules.md).
+Правила брандмауэра уровня сервера позволяют администраторам управлять доступом к серверу базы данных Azure для PostgreSQL с указанного IP-адреса или диапазона IP-адресов. С помощью удобных команд Azure CLI можно создавать, обновлять, удалять, выводить список и отображать правила брандмауэра для управления сервером. Обзор брандмауэров базы данных Azure для PostgreSQL приведен в разделе [Правила брандмауэра сервера базы данных Azure для PostgreSQL](concepts-firewall-rules.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-toostep через этот как tooguide необходимо:
+Прежде чем приступить к выполнению этого руководства, необходимы следующие компоненты:
 - [сервер и база данных Azure для PostgreSQL](quickstart-create-server-database-azure-cli.md);
-- Установка [Azure CLI 2.0](/cli/azure/install-azure-cli) командной строки программы или используйте hello оболочки облако Azure в обозревателе hello.
+- Установите служебную программу командной строки [Azure CLI 2.0](/cli/azure/install-azure-cli) или используйте Azure Cloud Shell в браузере.
 
 ## <a name="configure-firewall-rules-for-azure-database-for-postgresql"></a>Настройка правил брандмауэра сервера базы данных Azure для PostgreSQL
-Hello [az postgres правила брандмауэра для сервера —](/cli/azure/postgres/server/firewall-rule) команды, используемые tooconfigure правила брандмауэра.
+Команда [az postgres server firewall-rule](/cli/azure/postgres/server/firewall-rule) используется для настройки правил брандмауэра.
 
 ## <a name="list-firewall-rules"></a>Вывод списка правил брандмауэра 
-toolist hello существующих правил брандмауэра сервера на сервере hello запуска hello [список правила брандмауэра сервера postgres az](/cli/azure/postgres/server/firewall-rule#list) команды.
+Чтобы вывести список существующих правил брандмауэра сервера на сервере, запустите команду [az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule#list).
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server mypgserver-20170401
 ```
-выходные данные Hello перечислены правила hello, если таковая имеется, по умолчанию в формате JSON формата. Можно использовать переключатель hello `--output table` для более удобочитаемый формат таблицы в качестве выходных данных hello.
+Выходные данные будут содержать правила, если они имеются, в используемом по умолчанию формате JSON. Вы можете использовать `--output table`, чтобы получить выходные данные в виде более удобной таблицы.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server mypgserver-20170401 --output table
 ```
 ## <a name="create-firewall-rule"></a>Создание правила брандмауэра
-новое правило брандмауэра на сервере hello, выполните hello toocreate [az postgres правила брандмауэра для сервера — создание](/cli/azure/postgres/server/firewall-rule#create) команды. 
+Чтобы создать правило брандмауэра на сервере, выполните команду [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create). 
 
-В этом примере обеспечивает ряд все IP-адреса tooaccess hello сервера **mypgserver 20170401.postgres.database.azure.com**
+Этот пример разрешает доступ к серверу **mypgserver-20170401.postgres.database.azure.com** всем диапазонам IP-адресов.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup  --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
-tooallow единственном числе tooaccess IP адрес, укажите hello таким же адресом как hello начальный IP- и конечного IP-адресов, как показано в примере.
+Чтобы разрешить доступ с отдельного IP-адреса, укажите одинаковый начальный и конечный IP-адрес, как показано в этом примере.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup  
 --server mypgserver-20170401 --name "AllowSingleIpAddress" --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
-После успешного выполнения выходные данные команды hello указаны подробности hello hello правило брандмауэра, которое вы создали, по умолчанию в формате JSON. В случае сбоя hello вместо вывода showserror текст сообщения.
+При успешном выполнении команды ее выходные данные будут содержать сведения о созданном правиле брандмауэра в используемом по умолчанию формате JSON. Если возникнет сбой, выходные данные будут содержать сообщение об ошибке.
 
 ## <a name="update-firewall-rule"></a>Обновление правила брандмауэра 
-Обновление существующего правила брандмауэра на сервере с помощью hello [обновление правила брандмауэра сервера postgres az](/cli/azure/postgres/server/firewall-rule#update) команды. Укажите имя hello существующее правило брандмауэра, как входные данные и hello начала IP-адресов и конечным IP атрибуты tooupdate hello.
+Обновите существующее правило брандмауэра на сервере с помощью команды [az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule#update). В качестве входных данных укажите имя существующего правила брандмауэра, которое нужно обновить, а также атрибуты начального и конечного IP-адресов.
 ```azurecli-interactive
 az postgres server firewall-rule update --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.255
 ```
-При успешном завершении hello выходные данные команды выводятся сведения hello hello правила брандмауэра, которые были обновлены, по умолчанию в формате JSON. В случае сбоя hello вместо вывода showserror текст сообщения.
+При успешном выполнении команды ее выходные данные будут содержать сведения об обновленном правиле брандмауэра в используемом по умолчанию формате JSON. Если возникнет сбой, выходные данные будут содержать сообщение об ошибке.
 > [!NOTE]
-> Если правило брандмауэра hello не существует, он возвращает созданный командой обновления hello.
+> Если правило брандмауэра не существует, оно будет создано командой update.
 
 ## <a name="show-firewall-rule-details"></a>Отображение сведений о правиле брандмауэра
-Также можно показать существующий брандмауэра hello сведения о правиле, для сервера, запустив [Показать правила брандмауэра сервера postgres az](/cli/azure/postgres/server/firewall-rule#show) команды.
+Вы также можете отобразить сведения о существующем правиле брандмауэра, выполнив команду [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule#show).
 ```azurecli-interactive
 az postgres server firewall-rule show --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange"
 ```
-После успешного выполнения выходные данные команды hello указаны подробности hello hello правило брандмауэра, которое вы задали, по умолчанию в формате JSON. В случае сбоя hello вместо вывода showserror текст сообщения.
+При успешном выполнении команды ее выходные данные будут содержать сведения об указанном правиле брандмауэра в используемом по умолчанию формате JSON. Если возникнет сбой, выходные данные будут содержать сообщение об ошибке.
 
 ## <a name="delete-firewall-rule"></a>Удаление правила брандмауэра
-toorevoke доступ с сервера hello диапазона IP-удаление существующего правила брандмауэра, выполнив hello [az postgres правила брандмауэра для сервера — Удалить](/cli/azure/postgres/server/firewall-rule#delete) команды. Укажите имя hello hello существующее правило брандмауэра.
+Чтобы отменить доступ для диапазона IP-адресов с сервера, удалите существующее правило брандмауэра, выполнив команду [az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule#delete). Укажите имя существующего правила брандмауэра.
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange"
 ```
-При успешном выполнении выходные данные отсутствуют. При сбое возвращается сообщение об ошибке hello.
+При успешном выполнении выходные данные отсутствуют. В случае сбоя возвращается сообщение об ошибке.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- Аналогичным образом, можно использовать веб-браузер слишком[Создание и управление для правила брандмауэра PostgreSQL, с помощью портала Azure hello базы данных Azure](howto-manage-firewall-using-portal.md)
+- Аналогичным образом можно использовать веб-браузер, чтобы [создать правила брандмауэра базы данных Azure для PostgreSQL и управлять ими с помощью портала Azure](howto-manage-firewall-using-portal.md).
 - Узнайте больше о [правилах брандмауэра сервера базы данных Azure для PostgreSQL](concepts-firewall-rules.md).
-- Справку в подключении tooan базы данных Azure для сервера PostgreSQL см [библиотеки подключений к базе данных Azure для PostgreSQL](concepts-connection-libraries.md)
+- Справка по подключению к серверу базы данных Azure для PostgreSQL доступна в разделе [Библиотеки подключений для базы данных Azure для PostgreSQL](concepts-connection-libraries.md).

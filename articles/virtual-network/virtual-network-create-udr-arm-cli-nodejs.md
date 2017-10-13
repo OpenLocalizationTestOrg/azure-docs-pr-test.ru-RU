@@ -1,6 +1,6 @@
 ---
-title: "Здравствуйте, aaaControl маршрутизации и виртуальных устройств с помощью Azure CLI 1.0 | Документы Microsoft"
-description: "Узнайте, как toocontrol маршрутизации и виртуальных устройств с помощью hello Azure CLI 1.0."
+title: "Управление маршрутизацией и виртуальными модулями с помощью Azure CLI 1.0 | Документация Майкрософт"
+description: "Сведения о том, как управлять маршрутизацией и виртуальными модулями с помощью Azure CLI 1.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2017
 ms.author: jdial
-ms.openlocfilehash: 1c8a552d949521fa554880c00405e65fa47a8162
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5f21bc7a4fcd9507ea9d6b2b752a2328a7b834f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-user-defined-routes-udr-using-hello-azure-cli-10"></a>Создайте маршруты определяемые пользователем (UDR) с помощью hello Azure CLI 1.0
+# <a name="create-user-defined-routes-udr-using-the-azure-cli-10"></a>Создание определяемых пользователем маршрутов с помощью Azure CLI 1.0
 
 > [!div class="op_single_selector"]
 > * [PowerShell](virtual-network-create-udr-arm-ps.md)
@@ -29,27 +29,27 @@ ms.lasthandoff: 10/06/2017
 > * [PowerShell (классическая модель)](virtual-network-create-udr-classic-ps.md)
 > * [Интерфейс командной строки (классическая модель)](virtual-network-create-udr-classic-cli.md)
 
-Создание пользовательских маршрутизации и виртуальных устройств с помощью hello Azure CLI.
+Создание настраиваемой маршрутизации и виртуальных модулей с помощью Azure CLI.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI 
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи 
 
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello. 
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки. 
 
-- [Azure CLI 1.0](#Create-the-UDR-for-the-front-end-subnet) — нашей CLI для hello классический и ресурса управления развертывания моделей (в этой статье)
-- [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md) -нашей нового поколения CLI для модели развертывания hello ресурсов управления 
+- [Azure CLI 1.0](#Create-the-UDR-for-the-front-end-subnet) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager (в этой статье).
+- [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md) — интерфейс командной строки следующего поколения для модели развертывания с помощью Resource Manager. 
 
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-приведенную ниже команду Azure CLI Образец Hello ожидать простой среде уже создан на основании hello сценарии выше. Toorun hello команд, отображаемых в этом документе, сначала построения необходимо hello тестовой среды, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello При необходимости и выполнения инструкции hello в hello портала.
+Для приведенных ниже примеров команд интерфейса командной строки Azure требуется уже созданная простая среда, основанная на приведенном выше сценарии. Чтобы выполнять команды в том виде, в котором они представлены в этом документе, сначала создайте тестовую среду, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
 
 
-## <a name="create-hello-udr-for-hello-front-end-subnet"></a>Создать hello UDR для интерфейса подсети hello
-Таблица маршрутов toocreate hello и маршрутов для подсети hello переднего плана, в зависимости от варианта hello выше, выполните следующие шаги hello.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Создание определяемого пользователем маршрута для интерфейсной подсети
+Чтобы создать таблицу маршрутов и маршрут, необходимые для подсети переднего плана, на основании приведенного выше сценария, выполните следующие действия.
 
-1. Выполните следующие команды toocreate hello таблицы маршрутов для подсети интерфейса hello:
+1. Чтобы создать таблицу маршрутов для интерфейсной подсети, выполните следующую команду:
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
@@ -71,10 +71,10 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-g (или --resource-group)**. Имя группы ресурсов hello, где будут создаваться hello UDR. В данном сценарии это *TestRG*.
-   * **-l (или --location)**. Регион Azure, где hello новый UDR будет создан. В нашем случае это *westus*.
-   * **-n (или --name)**. Имя для hello новый UDR. В данном сценарии это *UDR-FrontEnd*.
-2. Запустите все toohello внутренней подсети (192.168.2.0/24) toohello трафика, предназначенного hello, следующая команда toocreate маршрут в toosend таблицы маршрутов hello **FW1** виртуальной Машины (192.168.0.4):
+   * **-g (или --resource-group)**. Имя группы ресурсов, в которой будет создан определяемый пользователем маршрут. В данном сценарии это *TestRG*.
+   * **-l (или --location)**. Регион Azure, в котором будет создан новый определяемый пользователем маршрут. В нашем случае это *westus*.
+   * **-n (или --name)**. Имя нового определяемого пользователем маршрута. В данном сценарии это *UDR-FrontEnd*.
+2. Чтобы создать маршрут в таблице маршрутов для отправки всего трафика, предназначенного для серверной подсети (192.168.2.0/24), в виртуальную машину **FW1** (192.168.0.4), выполните следующую команду:
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
@@ -97,11 +97,11 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-r (или --route-table-name)**. Имя таблицы маршрутов hello, куда будут добавлены hello маршрута. В данном сценарии это *UDR-FrontEnd*.
-   * **-a (или --address-prefix)**. Префикс адреса для подсети hello, где пакеты, предназначенные для. В данном сценарии это *192.168.2.0/24*.
+   * **-r (или --route-table-name)**. Имя таблицы маршрутов, куда будет добавлен маршрут. В данном сценарии это *UDR-FrontEnd*.
+   * **-a (или --address-prefix)**. Префикс адреса для подсети, в которую адресованы пакеты. В данном сценарии это *192.168.2.0/24*.
    * **-y (или --next-hop-type)**. Тип объекта, куда будет отправляться трафик. Возможные значения: *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* или *None*.
    * **-p (или --next-hop-ip-address**). IP-адрес следующего прыжка. В нашем случае это *192.168.0.4*.
-3. Выполнения hello следующая команда созданную с hello таблицу маршрутов hello tooassociate **переднего плана** подсети:
+3. Чтобы сопоставить созданную выше таблицу маршрутов с подсетью **FrontEnd**, выполните следующую команду:
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -110,10 +110,10 @@ ms.lasthandoff: 10/06/2017
     Выходные данные:
    
         info:    Executing command network vnet subnet set
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         info:    Looking up route table "UDR-FrontEnd"
         info:    Setting subnet "FrontEnd"
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         virtualNetworks/TestVNet/subnets/FrontEnd
         data:    Type                            : Microsoft.Network/virtualNetworks/subnets
@@ -133,33 +133,33 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-e (или --vnet-name)**. Имя виртуальной сети, где находится подсети hello hello. В данном сценарии это *TestVNet*.
+   * **-e (или --vnet-name)**. Имя виртуальной сети, в которой расположена подсеть. В данном сценарии это *TestVNet*.
 
-## <a name="create-hello-udr-for-hello-back-end-subnet"></a>Создать hello UDR для hello внутренней подсети
-toocreate hello таблицы маршрутов и маршрутизации для подсети hello серверной части, в зависимости от варианта hello выше завершения hello, следующие шаги:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Создание определяемого пользователем маршрута для серверной подсети
+Чтобы создать таблицу маршрутов и маршрут, необходимые для серверной подсети, на основании приведенного выше сценария, выполните следующие действия:
 
-1. Выполните следующие команды toocreate hello таблицы маршрутов для подсети внутренней hello:
+1. Чтобы создать таблицу маршрутов для серверной подсети, выполните следующую команду:
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-BackEnd -l westus
     ```
 
-2. Запустите все toohello интерфейса подсети (192.168.1.0/24) toohello трафика, предназначенного hello, следующая команда toocreate маршрут в toosend таблицы маршрутов hello **FW1** виртуальной Машины (192.168.0.4):
+2. Чтобы создать маршрут в таблице маршрутов для отправки всего трафика, предназначенного для интерфейсной подсети (192.168.1.0/24), в виртуальную машину **FW1** (192.168.0.4), выполните следующую команду:
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
     ```
 
-3. Выполнения hello следующие таблицы маршрутов hello tooassociate команды с hello **серверной** подсети:
+3. Чтобы сопоставить таблицу маршрутов с подсетью **BackEnd**, выполните следующую команду:
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
     ```
 
 ## <a name="enable-ip-forwarding-on-fw1"></a>Включение IP-пересылки на FW1
-tooenable IP-пересылки в hello сетевой Адаптер, используемый с **FW1**полный hello следующие действия:
+Чтобы включить IP-пересылку в сетевом интерфейсе, используемом **FW1**, выполните следующие действия:
 
-1. Выполните команду hello, которое следует и обратите внимание, значение hello **включить IP-пересылки**. Оно должно быть задано слишком*false*.
+1. Выполните следующую команду и проверьте значение параметра **Enable IP forwarding** (Включить IP-пересылку). Оно должно быть равно *false*.
 
     ```azurecli
     azure network nic show -g TestRG -n NICFW1
@@ -168,7 +168,7 @@ tooenable IP-пересылки в hello сетевой Адаптер, испо
     Выходные данные:
    
         info:    Executing command network nic show
-        info:    Looking up hello network interface "NICFW1"
+        info:    Looking up the network interface "NICFW1"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         networkInterfaces/NICFW1
         data:    Name                            : NICFW1
@@ -191,7 +191,7 @@ tooenable IP-пересылки в hello сетевой Адаптер, испо
         virtualNetworks/TestVNet/subnets/DMZ
         data:    
         info:    network nic show command OK
-2. Выполните следующие команды tooenable IP-пересылки hello.
+2. Чтобы включить IP-пересылку, выполните следующую команду:
 
     ```azurecli
     azure network nic set -g TestRG -n NICFW1 -f true
@@ -200,9 +200,9 @@ tooenable IP-пересылки в hello сетевой Адаптер, испо
     Выходные данные:
    
         info:    Executing command network nic set
-        info:    Looking up hello network interface "NICFW1"
+        info:    Looking up the network interface "NICFW1"
         info:    Updating network interface "NICFW1"
-        info:    Looking up hello network interface "NICFW1"
+        info:    Looking up the network interface "NICFW1"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         networkInterfaces/NICFW1
         data:    Name                            : NICFW1

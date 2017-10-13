@@ -1,6 +1,6 @@
 ---
 title: "Настройка долгосрочного хранения резервных копий для Базы данных SQL Azure | Документация Майкрософт"
-description: "Узнайте, как toostore автоматизировать резервных копий в хранилище служб восстановления Azure hello и toorestore из hello в хранилище служб восстановления Azure"
+description: "Узнайте, как сохранять создаваемые автоматически резервные копии в хранилище служб восстановления Azure, а также как восстанавливать из хранилища служб восстановления Azure."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 603f4dd21cee4407d46f749655aba8f9ef3322c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Настройка долгосрочного хранения резервных копий для Базы данных SQL Azure и восстановление из резервной копии
 
-Можно настроить резервные копии баз данных Azure SQL toostore в хранилище служб восстановления Azure hello и затем восстановить базу данных, используя резервные копии хранятся в хранилище, используя hello hello портал Azure или PowerShell.
+Вы можете настроить хранилище служб восстановления Azure для хранения резервных копий баз данных SQL Azure, а затем восстановить базы данных из сохраненных резервных копий, используя портал Azure или PowerShell.
 
 ## <a name="azure-portal"></a>Портал Azure
 
-следующие разделы Показать вы как хранилище toouse hello Azure портала tooconfigure hello служб восстановления Azure, просмотр резервных копий в хранилище hello и восстановление из хранилища hello Hello.
+В следующих разделах показывается, как с помощью портала Azure настроить хранилище служб восстановления Azure, просмотреть резервные копии в хранилище и выполнить восстановление из хранилища.
 
-### <a name="configure-hello-vault-register-hello-server-and-select-databases"></a>Настройка хранилища hello, зарегистрируйте сервер hello и выбор баз данных
+### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Настройка хранилища, регистрация сервера и выбор баз данных
 
-Вы [Настройка архивации tooretain автоматическое хранилище служб восстановления Azure](sql-database-long-term-retention.md) в течение периода времени, чем срок хранения hello для уровня службы. 
+Вы [настроите более длительный срок хранения создаваемых автоматически резервных копий в хранилище служб восстановления Azure](sql-database-long-term-retention.md), чем для вашего уровня служб. 
 
-1. Откройте hello **SQL Server** страницы для вашего сервера.
+1. Откройте страницу **SQL Server** для своего сервера.
 
    ![страница sql server](./media/sql-database-get-started-portal/sql-server-blade.png)
 
@@ -41,118 +41,118 @@ ms.lasthandoff: 10/06/2017
 
    ![Ссылка Long-term backup retention (Долгосрочное хранение резервных копий)](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
 
-3. На hello **долгосрочного хранения резервной копии** сервера просмотрите и примите условия предварительной версии hello (Если вы еще - или эта функция больше не предварительная версия).
+3. На странице **Долгосрочное хранение архивных копий** для вашего сервера просмотрите и примите условия использования предварительной версии (если вы этого еще не сделали или эта функция по-прежнему находится на этапе предварительной версии).
 
-   ![Примите условия предварительной версии hello](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
+   ![Принятие условий использования предварительной версии](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. tooconfigure долгосрочного хранения резервной копии, выберите эту базу данных в сетке hello и нажмите кнопку **Настройка** на панели инструментов hello.
+4. Чтобы настроить долгосрочное хранение резервных копий, выберите эту базу данных в таблице и щелкните **Настройка** на панели инструментов.
 
    ![Выбор базы данных для настройки долгосрочного хранения резервных копий](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-5. На hello **Настройка** щелкните **настроить необходимые параметры** под **хранилище службы восстановления**.
+5. На странице **Настройка** в разделе **Хранилище служб восстановления** щелкните **Настройка обязательных параметров**.
 
    ![Ссылка для настройки хранилища](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
 
-6. На hello **хранилище служб восстановления** выберите существующем хранилище, если таковые имеются. В противном случае если хранилище служб восстановления не найден для вашей подписки, щелкните tooexit hello потока и создайте хранилище служб восстановления.
+6. На странице **Хранилище служб восстановления** выберите имеющееся хранилище (при наличии). Если хранилище служб восстановления отсутствует, щелкните, чтобы выйти, и создайте хранилище служб восстановления.
 
    ![ссылка на создание хранилища](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
 
-7. На hello **хранилищ служб восстановления** щелкните **добавить**.
+7. На странице **Хранилища служб восстановления** щелкните **Добавить**.
 
    ![ссылка на добавление хранилища](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
    
-8. На hello **хранилище служб восстановления** укажите допустимое имя для службы восстановления hello в хранилище.
+8. На странице **Хранилище служб восстановления** введите допустимое имя для хранилища служб восстановления.
 
    ![Имя нового хранилища](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
 
-9. Выберите подписку и группе ресурсов и выберите расположение хранилища hello hello. По завершении нажмите кнопку **Создать**.
+9. Выберите подписку и группу ресурсов, а затем выберите расположение хранилища. По завершении нажмите кнопку **Создать**.
 
    ![создание хранилища](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > Hello хранилища должен быть расположен в hello же регионе, что логический сервер Azure SQL hello и необходимо использовать hello же группе ресурсов, что hello логического сервера.
+   > Хранилище должно находиться в том же регионе, что и логический сервер Azure SQL Server, и использовать ту же группу ресурсов.
    >
 
-10. После создания нового хранилища hello выполнение hello необходимые шаги tooreturn toohello **хранилище служб восстановления** страницы.
+10. После создания хранилища вернитесь на страницу **Хранилище служб восстановления**.
 
-11. На hello **хранилище служб восстановления** выберите хранилище hello и нажмите кнопку **выберите**.
+11. На странице **Хранилище служб восстановления** щелкните хранилище, а затем нажмите кнопку **Выбрать**.
 
    ![Выбор имеющегося хранилища](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
 
-12. На hello **Настройка** страницы, укажите допустимое имя для новой политики хранения hello, изменение политики хранения по умолчанию hello соответствующим образом и нажмите кнопку **ОК**.
+12. На странице **Настройка** введите допустимое имя для новой политики хранения, измените ее должным образом и нажмите кнопку **ОК**.
 
    ![Определение политики хранения](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
 
-13. На hello **долгосрочного хранения резервной копии** для базы данных и щелкните **Сохранить** и нажмите кнопку **ОК** tooapply hello долгосрочной политики tooall хранения резервных копий, которые выбраны базы данных.
+13. На странице **Долгосрочное хранение архивных копий** для вашей базы данных щелкните **Сохранить**, а затем нажмите кнопку **ОК**, чтобы применить политику долгосрочного хранения резервных копий ко всем выбранным базам данных.
 
    ![Определение политики хранения](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. Нажмите кнопку **Сохранить** tooenable долгосрочного хранения резервной копии с помощью этого нового хранилища служб восстановления Azure toohello политики, настроенной.
+14. Щелкните **Сохранить**, чтобы включить новую политику долгосрочного хранения резервных копий в настроенном хранилище служб восстановления Azure.
 
    ![Определение политики хранения](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 
 > [!IMPORTANT]
-> После настройки резервного копирования, отображаются в хранилище hello в течение следующих семи дней. Не следует продолжать этого учебника, пока не отображаются резервные копии в хранилище hello.
+> После настройки резервные копии появятся в хранилище в течение следующих семи дней. Не выполняйте следующие этапы до появления резервных копий в хранилище.
 >
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Просмотр резервных копий долгосрочного хранения с помощью портала Azure
 
 Просмотрите сведения о резервных копиях базы данных в хранилище с включенной функцией [долгосрочного хранения резервных копий](sql-database-long-term-retention.md). 
 
-1. В hello портал Azure, откройте ваше хранилище служб восстановления Azure для резервного копирования базы данных (go слишком**все ресурсы** и выберите его из списка hello ресурсов по подписке) tooview hello объем хранилища, используемых в вашей базе данных Создание резервных копий в хранилище hello.
+1. На портале Azure откройте хранилище служб восстановления Azure, где хранятся резервные копии вашей базы данных (щелкните **Все ресурсы** и выберите его из списка ресурсов вашей подписки), чтобы просмотреть сведения об объеме хранилища, используемого для хранения резервных копий базы данных.
 
    ![Просмотр хранилища служб восстановления с резервными копиями](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
 
-2. Откройте hello **базы данных SQL** страницу для базы данных.
+2. Откройте страницу **База данных SQL** для своей базы данных.
 
    ![страница нового примера базы данных](./media/sql-database-get-started-portal/new-sample-db-blade.png)
 
-3. На панели инструментов hello, нажмите кнопку **восстановить**.
+3. На панели инструментов щелкните **Восстановить**.
 
    ![Элемент "Восстановить" на панели инструментов](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
-4. На странице приветствия восстановления, нажмите кнопку **долгосрочной**.
+4. На странице "Восстановление" щелкните **Долгосрочные**.
 
-5. Резервные копии в хранилище Azure, установите для **выберите архив** tooview hello доступные резервные копии в долгосрочного хранения резервной копии.
+5. В разделе Azure vault backups (Резервные копии хранилища Azure) щелкните **Выберите архив**, чтобы просмотреть список доступных резервных копий с долгосрочным хранением.
 
    ![Резервные копии в хранилище](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
 
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-hello-azure-portal"></a>Восстановление базы данных из резервной копии в долгосрочного хранения резервной копии с помощью портала Azure hello
+### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Восстановление базы данных из резервной копии долгосрочного хранения с помощью портала Azure
 
-Восстановить базы данных hello tooa новую базу данных из резервной копии в хранилище служб восстановления Azure hello.
+Вы восстановите имеющуюся базу данных из резервной копии, расположенной в хранилище служб восстановления Azure, в новую базу данных.
 
-1. На hello **резервных копий в хранилище Azure** выберите резервного копирования toorestore hello и нажмите кнопку **выберите**.
+1. На странице **Архивные копии в хранилище Azure** щелкните резервную копию, которую необходимо восстановить, а затем нажмите кнопку **Выбрать**.
 
    ![Выбор резервной копии в хранилище](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
-2. В hello **имя базы данных** текста введите имя hello hello восстановления базы данных.
+2. В текстовом поле **Имя базы данных** введите имя для восстановленной базы данных.
 
    ![Имя новой базы данных](./media/sql-database-get-started-backup-recovery/new-database-name.png)
 
-3. Нажмите кнопку **ОК** toorestore базы данных из резервной копии hello в хранилище hello toohello новой базы данных.
+3. Нажмите кнопку **ОК**, чтобы восстановить базу данных из резервной копии, расположенной в хранилище, в новую базу данных.
 
-4. На панели инструментов hello щелкните hello уведомления значок tooview hello состояние задания восстановления hello.
+4. На панели инструментов щелкните значок уведомления, чтобы просмотреть состояние задания восстановления.
 
    ![Ход выполнения задания восстановления из хранилища](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. После завершения задания восстановления Привет открыть hello **баз данных SQL** базы данных недавно восстановленных hello tooview страницы.
+5. После завершения задания откройте страницу **Базы данных SQL**, чтобы просмотреть восстановленную базу данных.
 
    ![Имя базы данных, восстановленной из хранилища](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
 
 > [!NOTE]
-> Здесь можно подключиться toohello восстановить базы данных с помощью SQL Server Management Studio tooperform необходимые задачи, такие как слишком[Извлеките бит данных из toocopy базы данных восстановлена hello в hello существующей базы данных или имеющиеся hello toodelete базы данных и существующие toohello переименования hello восстановления базы данных имя базы данных](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Здесь вы можете подключиться к восстановленной базе данных с помощью SQL Server Management Studio и выполнить необходимые задания, например [извлечь часть данных из восстановленной базы данных, чтобы скопировать их в имеющуюся базу данных, или удалить имеющуюся базу данных и присвоить ее имя восстановленной базе данных](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
 ## <a name="powershell"></a>PowerShell
 
-Привет, в следующих разделах показано, как хранилище служб восстановления Azure hello tooconfigure PowerShell toouse, просмотр резервных копий в хранилище hello и восстановление из хранилища hello.
+В следующих разделах показывается, как с помощью PowerShell настроить хранилище служб восстановления Azure, просмотреть резервные копии в хранилище и выполнить восстановление из хранилища.
 
 ### <a name="create-a-recovery-services-vault"></a>Создание хранилища служб восстановления
 
-Используйте hello [New AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) хранилища служб toocreate во время операции восстановления.
+Воспользуйтесь командлетом [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault), чтобы создать хранилище служб восстановления.
 
 > [!IMPORTANT]
-> Hello хранилища должен быть расположен в hello же регионе, что логический сервер Azure SQL hello и необходимо использовать hello же группе ресурсов, что hello логического сервера.
+> Хранилище должно находиться в том же регионе, что и логический сервер Azure SQL Server, и использовать ту же группу ресурсов.
 
 ```PowerShell
 # Create a recovery services vault
@@ -166,44 +166,44 @@ $vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -Resou
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
-### <a name="set-your-server-toouse-hello-recovery-vault-for-its-long-term-retention-backups"></a>Задать hello восстановления сервера toouse хранилище для резервных копиях ее долгосрочного хранения
+### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Настройка сервера на использование хранилища служб восстановления для долгосрочного хранения резервных копий
 
-Используйте hello [AzureRmSqlServerBackupLongTermRetentionVault набор](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) командлет tooassociate ранее созданное хранилище служб восстановления с конкретным сервером Azure SQL.
+Воспользуйтесь командлетом [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault), чтобы связать созданное ранее хранилище служб восстановления с определенным сервером SQL Azure.
 
 ```PowerShell
-# Set your server toouse hello vault toofor long-term backup retention 
+# Set your server to use the vault to for long-term backup retention 
 
 Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>Создание политики хранения
 
-Политика хранения не задаются как долго tookeep резервной копии базы данных. Используйте hello [Get AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) командлет tooget hello по умолчанию хранения политики toouse как hello шаблон для создания политик. В этом шаблоне срок хранения hello задан для 2 года. Затем выполните hello [New AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) toofinally Создание политики hello. 
+Политика хранения определяет срок хранения резервной копии базы данных. Воспользуйтесь командлетом [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject), чтобы получить политику хранения по умолчанию. Она будет использоваться как шаблон при создании других политик. В этом шаблоне для срока хранения задано значение 2 года. Затем выполните командлет [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy), чтобы создать политику. 
 
 > [!NOTE]
-> Некоторые командлеты, требуют настройки контекст хранилища hello перед запуском ([AzureRmRecoveryServicesVaultContext набор](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), вы видите этот командлет в несколько связанных фрагментов кода. Можно задать контекст hello, так как политика hello является частью хранилища hello. Можно создать несколько политик хранения для каждого хранилища и применить политики hello требуемого toospecific-базы данных. 
+> Для некоторых командлетов необходимо настроить контекст хранилища перед выполнением ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)). Поэтому вы увидите этот командлет в нескольких связанных фрагментах кода. Контекст необходимо настроить, так как политика является частью хранилища. Вы можете создать несколько политик хранения для каждого хранилища, а затем применять требуемую политику для указанных баз данных. 
 
 
 ```PowerShell
-# Retrieve hello default retention policy for hello AzureSQLDatabase workload type
+# Retrieve the default retention policy for the AzureSQLDatabase workload type
 $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
 
-# Set hello retention value tootwo years (you can set tooany time between 1 week and 10 years)
+# Set the retention value to two years (you can set to any time between 1 week and 10 years)
 $retentionPolicy.RetentionDurationType = "Years"
 $retentionPolicy.RetentionCount = 2
 $retentionPolicyName = "my2YearRetentionPolicy"
 
-# Set hello vault context toohello vault you are creating hello policy for
+# Set the vault context to the vault you are creating the policy for
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# Create hello new policy
+# Create the new policy
 $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
 $policy
 ```
 
-### <a name="configure-a-database-toouse-hello-previously-defined-retention-policy"></a>Настроить политику хранения toouse hello ранее определенные базы данных
+### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Настройка базы данных для использования ранее определенной политики хранения
 
-Используйте hello [AzureRmSqlDatabaseBackupLongTermRetentionPolicy набор](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) командлет tooapply hello новой политики tooa конкретной базы данных.
+Воспользуйтесь командлетом [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy), чтобы применить новую политику к определенной базе данных.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -215,7 +215,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 Просмотрите сведения о резервных копиях базы данных в хранилище с включенной функцией [долгосрочного хранения резервных копий](sql-database-long-term-retention.md). 
 
-Используйте следующие сведения о резервном копировании tooview командлеты hello.
+Воспользуйтесь следующими командлетами для просмотра сведений о резервных копиях:
 
 - [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
 - [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
@@ -226,28 +226,28 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 #$serverName = "{server-name}"
 $databaseNeedingRestore = $databaseName
 
-# Set hello vault context toohello vault we want toorestore from
+# Set the vault context to the vault we want to restore from
 #$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# hello following commands find hello container associated with hello server 'myserver' under resource group 'myresourcegroup'
+# the following commands find the container associated with the server 'myserver' under resource group 'myresourcegroup'
 $container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
 
-# Get hello long-term retention metadata associated with a specific database
+# Get the long-term retention metadata associated with a specific database
 $item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
 
-# Get all available backups for hello previously indicated database
-# Optionally, set hello -StartDate and -EndDate parameters tooreturn backups within a specific time period
+# Get all available backups for the previously indicated database
+# Optionally, set the -StartDate and -EndDate parameters to return backups within a specific time period
 $availableBackups = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item
 $availableBackups
 ```
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Восстановление базы данных из резервной копии с долгосрочным хранением
 
-Восстановление из долгосрочного хранения резервной копии используется hello [AzureRmSqlDatabase восстановления](/powershell/module/azurerm.sql/restore-azurermsqldatabase) командлета.
+Для восстановления из резервной копии долгосрочного хранения используется командлет [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
 ```PowerShell
-# Restore hello most recent backup: $availableBackups[0]
+# Restore the most recent backup: $availableBackups[0]
 #$resourceGroupName = "{resource-group-name}"
 #$serverName = "{server-name}"
 $restoredDatabaseName = "{new-database-name}"
@@ -261,10 +261,10 @@ $restoredDb
 
 
 > [!NOTE]
-> Здесь можно подключить toohello восстановления базы данных с помощью SQL Server Management Studio tooperform необходимые задачи, например tooextract бит данных из hello восстанавливается toocopy базы данных в hello существующей базы данных или существующую базу данных hello toodelete и переименования Hello восстановленной базы данных toohello именем существующей базы данных. Ознакомьтесь с [восстановлением до точки во времени](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Здесь вы можете подключиться к восстановленной базе данных с помощью SQL Server Management Studio и выполнить необходимые задания, например извлечь часть данных из восстановленной базы данных, чтобы скопировать их в имеющуюся базу данных или удалить имеющуюся базу данных и присвоить ее имя восстановленной базе данных. Ознакомьтесь с [восстановлением до точки во времени](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- toolearn о создан службы автоматического резервного копирования, в разделе [автоматического резервного копирования](sql-database-automated-backups.md)
-- toolearn о долгосрочного хранения резервной копии, в разделе [долгосрочного хранения резервной копии](sql-database-long-term-retention.md)
-- в разделе toolearn о восстановлении из резервных копий, [восстановление из резервной копии](sql-database-recovery-using-backups.md)
+- Дополнительные сведения о резервных копиях базы данных, создаваемых автоматически службой, см. в [этой статье](sql-database-automated-backups.md).
+- Дополнительные сведения о долгосрочном хранении резервных копий см. в статье [Хранение резервных копий базы данных SQL Azure до 10 лет](sql-database-long-term-retention.md).
+- Дополнительные сведения о восстановлении из резервных копий см. в статье [Восстановление базы данных Azure SQL с помощью создаваемых автоматически резервных копий](sql-database-recovery-using-backups.md).

@@ -1,6 +1,6 @@
 ---
-title: "aaaPublish-WebApplicationWebSite (скрипт Windows PowerShell) | Документы Microsoft"
-description: "Узнайте, как toopublish веб-узел проекта tooan веб-сайте Azure. Этот скрипт создает hello необходимые ресурсы в подписке Azure, если они не существуют."
+title: "Publish-WebApplicationWebSite (сценарий Windows PowerShell) | Документация Майкрософт"
+description: "Узнайте, как опубликовать веб-проект на веб-сайте Azure. Этот сценарий создает необходимые ресурсы в подписке Azure, если они еще не созданы."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: d46904e30e3c2e040e57888fa31543e8e366527f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publish-WebApplicationWebSite (сценарий Windows PowerShell)
 ## <a name="syntax"></a>Синтаксис
-Публикует tooan проект web веб-сайте Azure. Hello скрипт создает hello необходимые ресурсы в подписке Azure, если они не существуют.
+Этот сценарий публикует веб-проект на веб-сайте Azure и создает необходимые ресурсы в подписке Azure, если они еще не созданы.
 
     Publish-WebApplicationWebSite
     –Configuration <configuration>
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/06/2017
     -Verbose
 
 
-## <a name="configuration"></a>Конфигурация
-Hello путь toohello файл конфигурации JSON, описывающий сведения hello hello развертывания.
+## <a name="configuration"></a>Параметр Configuration
+Путь к файлу конфигурации JSON, содержащему подробные сведения о развертывании.
 
 | Параметр | Значение по умолчанию |
 | --- | --- |
@@ -46,7 +46,7 @@ Hello путь toohello файл конфигурации JSON, описываю
 | Принимает подстановочные знаки? |нет |
 
 ## <a name="subscriptionname"></a>Параметр SubscriptionName
-Имя Hello hello подписки Azure, вы должны быть toocreate hello веб-сайта.
+Имя подписки Azure, в которой необходимо создать веб-сайт.
 
 | Параметр | Значение по умолчанию |
 | --- | --- |
@@ -58,7 +58,7 @@ Hello путь toohello файл конфигурации JSON, описываю
 | Принимает подстановочные знаки? |нет |
 
 ## <a name="webdeploypackage"></a>Параметр WebDeployPackage
-Hello путь toohello web развертывания пакета toopublish toohello веб-сайта. Этот пакет можно создать с помощью мастера публикации веб-сайта hello в Visual Studio. Дополнительные сведения можно найти в статье [Начало работы с облачными службами Azure и ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
+Путь к пакету веб-развертывания для публикации на веб-сайте. Этот пакет можно создать с помощью мастера «Публикация веб-сайта» в Visual Studio. Дополнительные сведения можно найти в статье [Начало работы с облачными службами Azure и ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
 
 | Параметр | Значение по умолчанию |
 | --- | --- |
@@ -70,7 +70,7 @@ Hello путь toohello web развертывания пакета toopublish t
 | Принимает подстановочные знаки? |нет |
 
 ## <a name="databaseserverpassword"></a>Параметр DatabaseServerPassword
-Hello имя пользователя и пароль для hello базы данных SQL Azure.
+Имя и пароль администратора базы данных SQL в Azure.
 
 | Параметр | Значение по умолчанию |
 | --- | --- |
@@ -82,7 +82,7 @@ Hello имя пользователя и пароль для hello базы да
 | Принимает подстановочные знаки? |нет |
 
 ## <a name="sendhostmessagestooutput"></a>Параметр SendHostMessagesToOutput
-Значение true, если поток вывода для печати сообщения из скрипта toohello hello.
+Если установлено значение true, оправляет сообщения из сценария в поток вывода.
 
 | Параметр | Значение по умолчанию |
 | --- | --- |
@@ -94,9 +94,9 @@ Hello имя пользователя и пароль для hello базы да
 | Принимает подстановочные знаки? |нет |
 
 ## <a name="remarks"></a>Примечания
-Полное описание toouse hello сценария toocreate разработки и тестовой среде. в статье [tooDev tooPublish с помощью сценариев Windows PowerShell и тестовых средах](vs-azure-tools-publishing-using-powershell-scripts.md).
+Подробное описание того, как использовать сценарий для создания сред разработки и тестирования, см. в статье [Использование скриптов Windows PowerShell для публикации в среды разработки и тестирования](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-файл конфигурации JSON Hello указывает hello сведения о том, что будет toobe развертывания. Он включает сведения hello, указанный при создании проекта hello, такие как имя hello и имя пользователя для веб-сайта hello. Он также включает tooprovision hello базы данных, если таковые имеются. После кода Hello показан пример файла конфигурации JSON:
+В файле конфигурации JSON указаны данные объектов, которые необходимо развернуть. Он содержит сведения, указанные при создании проекта, такие как имя веб-сайта и имя пользователя. Он также содержит сведения о базе данных, которую нужно подготовить (если она есть). В следующем коде показан пример файла конфигурации JSON.
 
     {
         "environmentSettings": {
@@ -120,7 +120,7 @@ Hello имя пользователя и пароль для hello базы да
         }
     }
 
-Вы можете изменить состав развертывания файла toochange hello JSON конфигурации. Раздел веб-сайта является обязательным, но hello раздел базы данных является необязательным.
+В файле конфигурации JSON можно изменить объекты, которые подлежат развертыванию. Раздел webSite является обязательным, а раздел database — необязательным.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные сведения см. в статье [Publish-WebApplicationVM (сценарий Windows PowerShell)](vs-azure-tools-publish-webapplicationvm.md)

@@ -1,6 +1,6 @@
 ---
-title: "поток aaaTrace hello в приложение облачной службы с диагностикой Azure | Документы Microsoft"
-description: "Добавьте трассировки сообщений tooan приложения Azure toohelp отладки, измерения производительности, мониторинга, анализа трафика и многое другое."
+title: "Трассировка потока в приложении облачных служб с использованием системы диагностики Azure | Документация Майкрософт"
+description: "Добавление сообщений трассировки в приложения Azure для отладки, измерения производительности, мониторинга, анализа трафика и выполнения других задач."
 services: cloud-services
 documentationcenter: .net
 author: rboucher
@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: robb
-ms.openlocfilehash: d2ed7b5997ae1d298115b4ce593bb5051a9a0c75
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 35b4a4270846c54a1ca760e803ef7adba60cf03b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="trace-hello-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Трассировка потока hello облачные службы приложения с помощью системы диагностики Azure
-Трассировка — это способ для вас toomonitor hello выполнения приложения, пока она запущена. Можно использовать hello [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), и [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) классы toorecord сведения об ошибках и выполнение приложения в журналы, текстовые файлы или другие устройства для последующего анализа. Дополнительные сведения о трассировке см. в статье [Tracing and Instrumenting Applications](https://msdn.microsoft.com/library/zs6s4h68.aspx) (Трассировка и инструментирование приложений).
+# <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Трассировка потока в приложении облачных служб с помощью системы диагностики Azure
+Трассировка — это мониторинг выполнения запущенного приложения. Сведения об ошибках и выполнении приложений можно записывать в журналы, текстовые файлы или на устройства для последующего анализа с помощью классов [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx) и [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx). Дополнительные сведения о трассировке см. в статье [Tracing and Instrumenting Applications](https://msdn.microsoft.com/library/zs6s4h68.aspx) (Трассировка и инструментирование приложений).
 
 ## <a name="use-trace-statements-and-trace-switches"></a>Использование трассировочных операторов и переключателей
-Реализуйте трассировку в приложении облачные службы, добавив hello [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) toohello конфигурации приложения и внесения вызывает tooSystem.Diagnostics.Trace или System.Diagnostics.Debug в вашей код приложения. Использование файла конфигурации hello *app.config* для рабочих ролей и hello *web.config* для веб-ролей. При создании новой размещенной службы с помощью шаблона Visual Studio автоматически добавляется проект toohello диагностики Azure и hello DiagnosticMonitorTraceListener добавляется toohello соответствующий файл конфигурации для hello ролей, которые вы добавляете.
+Чтобы реализовать трассировку в приложении облачных служб, добавьте класс [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) в конфигурацию приложения и вызовите метод System.Diagnostics.Trace или System.Diagnostics.Debug в коде приложения. Используйте файл конфигурации *app.config* для рабочих ролей и *web.config* для веб-ролей. Во время создания размещенной службы с помощью шаблона Visual Studio система диагностики Azure автоматически добавляется в проект. При этом класс DiagnosticMonitorTraceListener включается в соответствующий файл конфигурации для добавляемых ролей.
 
-Сведения о размещении операторов трассировки см. в разделе [как: добавление операторов трассировки tooApplication кода](https://msdn.microsoft.com/library/zd83saa2.aspx).
+Дополнительные сведения о размещении трассировочных операторов см. в статье [How to: Add Trace Statements to Application Code](https://msdn.microsoft.com/library/zd83saa2.aspx) (Добавление трассировочных операторов в код приложения).
 
-Процессом и масштабом трассировки можно управлять. Для этого добавьте в код [переключатели трассировки](https://msdn.microsoft.com/library/3at424ac.aspx). Это позволяет отслеживать состояние приложения в производственной среде hello. Это особенно важно в бизнес-приложениях, которые используют различные компоненты, выполняющиеся на нескольких компьютерах. Дополнительные сведения см. в статье [How to: Configure Trace Switches](https://msdn.microsoft.com/library/t06xyy08.aspx) (Настройка переключателей трассировки).
+Процессом и масштабом трассировки можно управлять. Для этого добавьте в код [переключатели трассировки](https://msdn.microsoft.com/library/3at424ac.aspx). Так вы сможете отслеживать состояние приложения в рабочей среде. Это особенно важно в бизнес-приложениях, которые используют различные компоненты, выполняющиеся на нескольких компьютерах. Дополнительные сведения см. в статье [How to: Configure Trace Switches](https://msdn.microsoft.com/library/t06xyy08.aspx) (Настройка переключателей трассировки).
 
-## <a name="configure-hello-trace-listener-in-an-azure-application"></a>Настройте прослушиватель трассировки hello в приложении Azure
-Trace, Debug и TraceSource, требуют настройки toocollect «прослушиватели» и сообщения hello записей, которые были отправлены. Прослушиватели собирают, хранят и перенаправляют сообщения трассировки. Они направлять hello трассировки вывода tooan соответствующему целевому объекту, например журнал, окно или текстовый файл. Диагностика Azure использует hello [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) класса.
+## <a name="configure-the-trace-listener-in-an-azure-application"></a>Настройка прослушивателя трассировки в приложении Azure
+Использование элементов Trace, Debug и TraceSource предполагает настройку прослушивателей для сбора и записи отправляемых сообщений. Прослушиватели собирают, хранят и перенаправляют сообщения трассировки. Они направляют выходные данные трассировки в соответствующий целевой объект, например журнал, окно или текстовый файл. Система диагностики Azure использует класс [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) .
 
-Перед выполнением процедуры hello необходимо инициализировать монитор диагностики Azure hello. toodo это, см. в разделе [включение диагностики в Microsoft Azure](cloud-services-dotnet-diagnostics.md).
+Перед выполнением следующей процедуры необходимо инициализировать монитор диагностики Azure. Сведения о том, как это сделать, см. в статье [Включение системы диагностики Azure в облачных службах Azure](cloud-services-dotnet-diagnostics.md).
 
-Обратите внимание, что при использовании hello шаблонов, предоставляемых средой Visual Studio, конфигурации hello hello прослушивателя добавляется автоматически.
+Обратите внимание, что при использовании шаблонов Visual Studio конфигурация прослушивателя добавляется автоматически.
 
 ### <a name="add-a-trace-listener"></a>Добавление прослушивателя трассировки
-1. Откройте файл web.config или app.config hello для вашей роли.
-2. Добавьте следующие toohello файл кода hello. Измените hello атрибут toouse hello версии номер версии hello сборки, на которую имеются ссылки. версия сборки Hello не обязательно изменяет с каждым выпуском пакета Azure SDK только при наличии обновлений tooit.
+1. Откройте файл web.config или app.config для своей роли.
+2. Добавьте в файл следующий код. Измените атрибут Version, чтобы использовать номер версии сборки, которая указана в ссылках. Версия сборки не обязательно меняется с каждым выпуском пакета SDK для Azure, а только если она обновляется.
    
     ```
     <system.diagnostics>
@@ -58,21 +58,21 @@ Trace, Debug и TraceSource, требуют настройки toocollect «пр
     </system.diagnostics>
     ```
    > [!IMPORTANT]
-   > Убедитесь, что у вас есть toohello ссылки проекта Microsoft.WindowsAzure.Diagnostics сборки. Номер версии обновления hello в xml hello выше версии hello toomatch hello связанной сборки Microsoft.WindowsAzure.Diagnostics.
+   > Убедитесь, что у вас есть ссылка проекта на сборку Microsoft.WindowsAzure.Diagnostics. Обновите номер версии в приведенном выше коде XML в соответствии с версией сборки Microsoft.WindowsAzure.Diagnostics, используемой в ссылке.
    > 
    > 
-3. Сохраните файл конфигурации hello.
+3. Сохраните файл конфигурации.
 
 Дополнительные сведения о прослушивателях см. [здесь](https://msdn.microsoft.com/library/4y5y10s7.aspx).
 
-После завершения tooadd hello hello действия прослушивателя, можно добавить код tooyour операторы трассировки.
+Добавив прослушиватель, вы можете добавить в код трассировочные операторы.
 
-### <a name="tooadd-trace-statement-tooyour-code"></a>Инструкция tooyour tooadd трассировки кода
-1. Откройте исходный файл приложения. Например, hello <RoleName>CS-файл для hello рабочей роли или веб-роли.
-2. Добавьте следующее hello с помощью инструкции, если он уже не был добавлен:
+### <a name="to-add-trace-statement-to-your-code"></a>Добавление трассировочного оператора в код
+1. Откройте исходный файл приложения. Например, файл <RoleName>.cs для рабочей роли или веб-роли.
+2. Добавьте следующий оператор using, если он еще не добавлен:
     ```
         using System.Diagnostics;
     ```
-3. Добавьте инструкции Trace место toocapture сведения о состоянии приложения hello. Можно использовать различные методы tooformat hello выходные данные операторов трассировки hello. Дополнительные сведения см. в разделе [как: добавление операторов трассировки tooApplication кода](https://msdn.microsoft.com/library/zd83saa2.aspx).
-4. Сохраните файл источника hello.
+3. Добавьте трассировочные операторы, чтобы записывать сведения о состоянии приложения. Вывод оператора трассировки можно форматировать разными способами. Дополнительные сведения об этом см. в статье [How to: Add Trace Statements to Application Code](https://msdn.microsoft.com/library/zd83saa2.aspx) (Добавление трассировочных операторов в код приложения).
+4. Сохраните исходный файл.
 

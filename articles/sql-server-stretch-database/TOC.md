@@ -4,13 +4,13 @@
 
 # Начало работы
 ## [Выявление баз данных и таблиц](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor)
-## [Запустите мастер hello](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
+## [Запуск мастера](/sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard)
 
 # Практическое руководство
 ## Включение
 ### [Включение базы данных](/sql/sql-server/stretch-database/enable-stretch-database-for-a-database)
 ### [Включение таблицы](/sql/sql-server/stretch-database/enable-stretch-database-for-a-table)
-### [Выберите toomigrate строк](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
+### [Выбор строк для переноса](/sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database)
 ## Управление
 ### [Отслеживание переноса данных](/sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database)
 ### [Приостановка и возобновление переноса](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database)

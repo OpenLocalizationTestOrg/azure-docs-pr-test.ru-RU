@@ -1,5 +1,5 @@
 ---
-title: "AAA» событие завершения удаления пула | Документы Microsoft»"
+title: "Событие завершения удаления пула пакетной службы Azure | Документы Майкрософт"
 description: "Справочник по событию завершения удаления пула пакетной службы."
 services: batch
 author: tamram
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 494c371e48ebfb1bf3d2973a7401829a939ba141
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 890f2ba7fda37060c56177868d6214d517d91831
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="pool-delete-complete-event"></a>Событие завершения удаления пула
 
  Это событие создается при завершении операции удаления пула.
 
- Hello примере показан текст hello событие завершения удаления пула.
+ Ниже приведен пример текста для события завершения удаления пула.
 
 ```
 {
@@ -34,9 +34,9 @@ ms.lasthandoff: 10/06/2017
 
 |Элемент|Тип|Примечания|
 |-------------|----------|-----------|
-|id|Строка|Идентификатор Hello hello пула.|
-|startTime|DateTime|Удаление пула hello время Hello запуска.|
-|endTime|DateTime|Hello время удаления пула hello завершения.|
+|id|string|Идентификатор пула.|
+|startTime|DateTime|Время, когда было начато удаление пула.|
+|endTime|DateTime|Время, когда удаление пула было завершено.|
 
 ## <a name="remarks"></a>Примечания
 Дополнительные сведения о состояниях и кодах ошибок для операции изменения размера пула см. в статье [Удаление пула из учетной записи](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse табличного хранилища Azure из Ruby | Документы Microsoft"
-description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
+title: "Как использовать хранилище таблиц Azure из Ruby | Документация Майкрософт"
+description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
 services: cosmos-db
 documentationcenter: ruby
 author: mimig1
@@ -14,58 +14,58 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 2f9eb5a9160b551d6d1d198869787070c402b1d4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 372bc89f75ad4730f0defbf9d6f9f041ae5ce1bf
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-azure-table-storage-from-ruby"></a>Как toouse табличного хранилища Azure из Ruby
+# <a name="how-to-use-azure-table-storage-from-ruby"></a>Использование табличного хранилища Azure в Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве показано, как с помощью распространенных сценариев tooperform hello службы таблиц Azure. образцы Hello записываются с помощью Ruby API hello. Hello сценарии включают **Создание и удаление таблицы, вставка и выполнения запросов к сущностям в таблице**.
+В этом руководстве показано, как реализовать типичные сценарии с использованием службы таблиц Azure. Примеры написаны с помощью Ruby API. Здесь описаны такие сценарии, как **создание и удаление таблицы, вставка и запрос сущностей в таблице**.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Создание приложения Ruby
-Инструкции toocreate приложении Ruby. в статье [Ruby на направляющие веб-приложения на Виртуальной машине Azure](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
+Инструкции по созданию приложение Ruby см. в статье [Веб-приложение Ruby on Rails на виртуальной машине Azure](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
-## <a name="configure-your-application-tooaccess-storage"></a>Настройка вашего приложения tooaccess хранилища
-toouse хранилища Azure, понадобится toodownload и используйте hello Ruby azure пакет, который включает в себя набор библиотек удобства, взаимодействующих со службами хранилища REST hello.
+## <a name="configure-your-application-to-access-storage"></a>Настройка приложения для доступа к хранилищу
+Чтобы использовать службу хранилища Azure, скачайте пакет Azure для Ruby, который содержит набор библиотек, взаимодействующих со службами REST хранилища.
 
-### <a name="use-rubygems-tooobtain-hello-package"></a>Используйте RubyGems tooobtain hello пакет
+### <a name="use-rubygems-to-obtain-the-package"></a>Использование RubyGems для получения пакета
 1. Используйте интерфейс командной строки, например **PowerShell** (Windows), **Terminal** (Mac) или **Bash** (Unix).
-2. Тип **gem установки azure** в hello команда окна tooinstall hello gem и зависимости.
+2. Введите **gem install azure** в окне командной строки, чтобы установить пакеты и зависимости.
 
-### <a name="import-hello-package"></a>Импорт пакета hello
-Используйте текстовый редактор, добавить следующие toohello вверху hello Ruby файл, куда будет toouse хранилища hello:
+### <a name="import-the-package"></a>Импорт пакета
+С помощью любого текстового редактора добавьте указанный код в начало файла Ruby, где планируется использовать службу хранилища.
 
 ```ruby
 require "azure"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Настройка подключения к службе хранилища Azure
-Hello модуль azure будет считывать переменные среды hello **AZURE\_ХРАНЕНИЯ\_учетной записи** и **AZURE\_ХРАНЕНИЯ\_доступа\_ключ**сведения, необходимые учетной записи хранилища Azure tooyour tooconnect. Если эти переменные среды не установлены, необходимо указать сведения об учетной записи hello перед использованием **Azure::TableService** с hello, следующий код:
+Модуль Azure считывает переменные среды **AZURE\_STORAGE\_ACCOUNT** и **AZURE\_STORAGE\_ACCESS\_KEY**, чтобы получить информацию, необходимую для подключения к учетной записи хранения Azure. Если эти переменные среды не заданы, необходимо указать сведения об учетной записи перед использованием **Azure::TableService** с помощью следующего кода:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your azure storage access key>"
 ```
 
-tooobtain эти значения из классические или диспетчер ресурсов хранилища учетной записи в hello портала Azure:
+Вот как можно получить эти значения из классический учетной записи хранения или учетной записи хранения Resource Manager на портале Azure.
 
-1. Войдите в toohello [портал Azure](https://portal.azure.com).
-2. Перейдите toohello необходимом toouse учетной записи хранилища.
-3. В колонке параметров hello на hello вправо, щелкните **клавиши доступа**.
-4. В колонке ключи hello доступа, отображается вы увидите ключ доступа hello 1 и ключ доступа 2. Можно использовать любой из них.
-5. Щелкните hello скопировать значок toocopy hello ключа toohello буфер обмена.
+1. Войдите на [портал Azure](https://portal.azure.com).
+2. Перейдите к учетной записи хранения, которая будет использоваться.
+3. В колонке "Параметры" справа щелкните **Ключи доступа**.
+4. В колонке "Ключи доступа" вы увидите ключи доступа 1 и 2. Можно использовать любой из них.
+5. Щелкните значок копирования, чтобы скопировать ключ в буфер обмена.
 
 ## <a name="create-a-table"></a>Создание таблицы
-Hello **Azure::TableService** объектов позволяет работать с таблицами и сущностями. toocreate таблицы, используйте hello **создания\_table()** метод. Hello следующий пример создает таблицу или отпечатков hello ошибки, если оно назначено.
+Объект **Azure::TableService** позволяет работать с таблицами и сущностями. Чтобы создать таблицу, используйте метод **create\_table()**. В следующем примере создается таблица или выводится ошибка, если она возникла.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -76,8 +76,8 @@ rescue
 end
 ```
 
-## <a name="add-an-entity-tooa-table"></a>Добавьте таблицу tooa сущности
-tooadd сущности, сначала создать хэш-объект, определяющий свойства сущности. Обратите внимание, что для каждой сущности необходимо указать **PartitionKey** и **RowKey**. Это hello уникальные идентификаторы объектов и значений, которые могут запрашиваться гораздо быстрее, чем другие свойства. Хранилище Azure использует **PartitionKey** tooautomatically распределения сущностей таблицы hello по многим узлам хранилища. Здравствуйте сущности с одинаковым **PartitionKey** хранятся на hello того же узла. Hello **RowKey** hello уникальным идентификатором hello сущности внутри раздела hello, он принадлежит.
+## <a name="add-an-entity-to-a-table"></a>Добавление сущности в таблицу
+Чтобы добавить сущность, сначала создайте хэш-объект, который определяет свойства сущности. Обратите внимание, что для каждой сущности необходимо указать **PartitionKey** и **RowKey**. Это уникальные идентификаторы сущностей, которые можно запросить гораздо быстрее, чем для других свойств. Служба хранилища Azure использует **PartitionKey** , чтобы автоматически распространять сущности таблицы на множество узлов хранилища. Сущности с одним значением **PartitionKey** хранятся на одном узле. **RowKey** — это уникальный идентификатор сущности в разделе, которому она принадлежит.
 
 ```ruby
 entity = { "content" => "test entity",
@@ -86,14 +86,14 @@ azure_table_service.insert_entity("testtable", entity)
 ```
 
 ## <a name="update-an-entity"></a>Обновление сущности
-Существует несколько методов, доступных tooupdate существующей сущности.
+Для обновления имеющейся сущности доступно несколько методов:
 
 * **update\_entity():** обновляет имеющуюся сущность путем ее замены.
-* **Слияние\_entity():** обновляет существующую сущность, объединив новых значений свойств в hello существующей сущности.
+* **merge\_entity():** обновляет сущность посредством объединения новых значений свойств с имеющейся сущностью.
 * **insert\_or\_merge\_entity():** обновляет имеющуюся сущность путем ее замены. Если сущность не существует, будет вставлена новая сущность.
-* **Вставить\_или\_заменить\_entity():** обновляет существующую сущность, объединив новых значений свойств в hello существующей сущности. Если сущность не существует, будет вставлена новая сущность.
+* **insert\_or\_replace\_entity():** обновляет сущность посредством объединения новых значений свойств с имеющейся сущностью. Если сущность не существует, будет вставлена новая сущность.
 
-Hello ниже приведен пример обновления сущности, используя **обновление\_entity()**:
+В следующем примере показано обновление сущности с помощью метода **update\_entity()**.
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -101,10 +101,10 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-С **обновление\_entity()** и **слияния\_entity()**, если сущности hello, обновление которого не существует, операция обновления hello завершается с ошибкой. Поэтому если вы хотите toostore сущности независимо от того, является ли он уже существует, следует использовать **вставить\_или\_заменить\_entity()** или **вставить\_или \_слияния\_entity()**.
+Если сущность, которая обновляется, не существует, при использовании метода **update\_entity()** или **merge\_entity()** операция завершится ошибкой. Поэтому, если вы хотите сохранить сущность независимо от того, существует она или нет, используйте метод **insert\_or\_replace\_entity()** или **insert\_or\_merge\_entity()**.
 
 ## <a name="work-with-groups-of-entities"></a>Работа с группами сущностей
-Иногда он делает toosubmit смысле несколько операций друг с другом в tooensure пакета atomic обработки сервером hello. tooaccomplish, сначала необходимо создать **пакета** объекта, а затем использовать hello **выполнение\_batch()** метод **TableService**. Hello ниже приведен пример отправки две сущности с RowKey 2 и 3 в пакете. Обратите внимание что он только работает для сущностей с hello же PartitionKey.
+Иногда имеет смысл отправлять совместно несколько операций в пакете для атомарной обработки сервером. Для этого сначала требуется создать объект **Batch**, а затем использовать метод **execute\_batch()** для **TableService**. В следующем примере показана отправка двух сущностей с RowKey 2 и 3 в пакете. Обратите внимание, что пример работает только для сущностей с одинаковым значением PartitionKey.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -117,7 +117,7 @@ results = azure_table_service.execute_batch(batch)
 ```
 
 ## <a name="query-for-an-entity"></a>Запрос сущности
-сущности в таблице, используйте hello tooquery **получить\_entity()** метод путем передачи имени таблицы hello, **PartitionKey** и **RowKey**.
+Чтобы отправить запрос к сущности в таблице, используйте метод **get\_entity()**: передайте имя таблицы, **PartitionKey** и **RowKey**.
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
@@ -125,7 +125,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 ```
 
 ## <a name="query-a-set-of-entities"></a>Запрос набора сущностей
-tooquery набора сущностей в таблице, создать хэш-объект запроса и использовать hello **запроса\_entities()** метод. Hello следующем примере показано получение всех сущностей hello hello же **PartitionKey**:
+Чтобы отправить запрос к набору сущностей в таблице, создайте хэш-объект запроса и используйте метод **query\_entities()**. В следующем примере показано, как получить все сущности с одним значением **PartitionKey**:
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -133,12 +133,12 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 > [!NOTE]
-> Если результирующий набор hello слишком велик для tooreturn одного запроса, токен продолжения будут возвращены которого производится tooretrieve последующих страницах.
+> Если полученный в результате набор слишком велик и не может быть возвращен в одном запросе, возвращается токен продолжения, который можно использовать для извлечения последующих страниц.
 >
 >
 
 ## <a name="query-a-subset-of-entity-properties"></a>Запрос подмножества свойств сущности
-Таблицы tooa запроса можно получить только несколько свойств сущности. Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. Предложение select используется hello и передайте hello имена hello свойства toobring через toohello клиента.
+Запрос к таблице может получить лишь несколько свойств сущности. Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. Используйте предложение select и передайте имена свойств, которые необходимо передать клиенту.
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'",
@@ -147,14 +147,14 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Удаление сущности
-toodelete сущности, используйте hello **удаление\_entity()** метод. Вы должны toopass в качестве имени hello hello таблица, содержащая сущность hello, hello PartitionKey и RowKey hello сущности.
+Чтобы удалить сущность, используйте метод **delete\_entity()**. Необходимо передать имя таблицы, содержащей сущность, а также свойства PartitionKey и RowKey сущности.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 ```
 
 ## <a name="delete-a-table"></a>Удаление таблицы
-toodelete таблицы, используйте hello **удаление\_table()** метод и передайте имя hello hello toodelete таблицу.
+Чтобы удалить таблицу, используйте метод **delete\_table()** и передайте имя удаляемой таблицы.
 
 ```ruby
 azure_table_service.delete_table("testtable")
@@ -162,6 +162,6 @@ azure_table_service.delete_table("testtable")
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.
+* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.
 * [пакетов SDK Azure для Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) на веб-сайте GitHub
 

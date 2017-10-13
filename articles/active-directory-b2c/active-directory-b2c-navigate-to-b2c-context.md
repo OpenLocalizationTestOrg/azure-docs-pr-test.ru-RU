@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory B2C: Переключение tooa B2C клиента | Документы Microsoft"
-description: "Как для клиента tooswitch в контексте hello в Active Directory B2C"
+title: "Azure Active Directory B2C. Переключение на клиент B2C | Документация Майкрософт"
+description: "Как переключиться в контекст клиента Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 572f9ab283ecac68d284bb04fdfc98575bcf9393
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 40d8d57d974a949fbdc0a06eeceb2d06bfbaa09f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="switching-tooyour-azure-ad-b2c-tenant"></a>Переключение клиента Azure AD B2C tooyour
+# <a name="switching-to-your-azure-ad-b2c-tenant"></a>Переключение на клиент Azure AD B2C
 
-В Azure AD B2C tooconfigure заказ необходимо toobe в контексте hello вашего клиента Azure AD B2C.
+Чтобы настроить Azure AD B2C, вам нужно быть в контексте вашего клиента Azure AD B2C.
 
 ## <a name="log-into-azure-ad-b2c-tenant"></a>Вход в клиент Azure AD B2C
 
-для клиента Azure AD B2C toonavigate tooyour, вы должны войти в портал Azure hello как глобальный администратор клиента Azure AD B2C hello.
+Чтобы перейти к вашему клиенту Azure AD B2C, необходимо войти на портал Azure как глобальный администратор клиента Azure AD B2C.
 
-1. Вход в hello [портал Azure](http://portal.azure.com).
-1. Переключать клиентов с помощью адрес электронной почты или изображение в правом верхнем углу hello.
-1. В hello `Directory` списка выберите hello Azure AD B2C клиента обратиться в toomanage.
+1. Войдите на [портал Azure](http://portal.azure.com).
+1. Щелкните адрес электронной почты или картинку в правом верхнем углу, чтобы переключить клиентов.
+1. В списке `Directory` выберите клиента Azure AD B2C, которым вы хотите управлять.
 
-обновит Hello портала Azure.  Теперь вы вошли в hello портала Azure в контексте hello вашего клиента Azure AD B2C.
+Портал Azure обновится.  Теперь вы вошли на портал Azure в контексте вашего клиента Azure AD B2C.
 
-## <a name="navigate-toohello-b2c-features-blade"></a>Перейдите в колонку функции toohello B2C
+## <a name="navigate-to-the-b2c-features-blade"></a>Переход в колонку функций B2C
 
-1. Нажмите кнопку **Обзор** на hello навигации слева.
-1. Нажмите кнопку **> больше услуг** и выполните поиск `Azure AD B2C` hello левой панели навигации.  (toopin tooyour начальной левой панели, щелкните hello toohello типа «звезда» слева от Azure AD B2C)
-1. Нажмите кнопку **Azure AD B2C** tooaccess hello B2C функции колонку.
+1. Нажмите кнопку **Обзор** в области навигации слева.
+1. Щелкните **Больше служб**, а затем в области навигации слева найдите `Azure AD B2C`.  (Щелкните звезду слева от Azure AD B2C, чтобы закрепить его на левой начальной панели.)
+1. Для доступа к колонке с функциями B2C щелкните ярлык **Azure AD B2C** .
    
-    ![Снимок экрана: колонка функции tooB2C обзора](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Снимок экрана: переход к колонке функций B2C](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> Необходимо toobe hello B2C клиента toobe может tooaccess функции hello B2C колонка глобального администратора. Доступ к ней невозможен для глобальных администраторов или пользователей из других клиентов.  Tooyour B2C клиента можно переключаться с помощью переключателя клиента hello в верхнем правом углу hello hello портал Azure.
+> Вам необходимо быть глобальным администратором данного клиента B2C, чтобы получить доступ к колонке функций B2C. Доступ к ней невозможен для глобальных администраторов или пользователей из других клиентов.  Переключиться на клиент B2C можно с помощью переключателя клиента в правом верхнем углу портала Azure.

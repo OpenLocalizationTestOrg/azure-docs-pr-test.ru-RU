@@ -1,6 +1,6 @@
 ---
-title: "aaaDownload hello шаблона виртуальной машины Azure | Документы Microsoft"
-description: "Загрузите hello процессадля toohelp виртуальной Машины с помощью автоматизации развертываний в модели развертывания диспетчера ресурсов hello"
+title: "Скачивание шаблона для виртуальной машины Azure | Документация Майкрософт"
+description: "Автоматизация развертываний в модели развертывания с помощью Resource Manager с использованием скачанного шаблона для виртуальной машины."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 86fd05f67409019b5e5c9023881745047860eee1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9e4c0c3cf0e233447369a24b1d5fe27495abd1cf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="download-hello-template-for-a-vm"></a>Загрузите шаблон hello для виртуальной Машины
-При создании виртуальной Машины в Azure с помощью портала hello или PowerShell диспетчера ресурсов шаблона создается автоматически для вас. Можно использовать этот шаблон tooquickly дубликат развертывания. шаблон Hello содержит сведения обо всех hello ресурсов в группе ресурсов. Для виртуальной машины это означает, что шаблон hello содержит все элементы, созданные для поддержки hello виртуальной Машины в этой группе ресурсов, включая hello сетевых ресурсов.
+# <a name="download-the-template-for-a-vm"></a>Скачивание шаблона для виртуальной машины
+При создании виртуальной машины в Azure с помощью портала или PowerShell автоматически создается шаблон Resource Manager. Этот шаблон можно использовать для быстрого дублирования развертывания. Шаблон содержит сведения обо всех ресурсах в группе ресурсов. Для виртуальной машины это означает, что шаблон содержит все, что создается для поддержки виртуальных машин в этой группе ресурсов, включая сетевые ресурсы.
 
-## <a name="download-hello-template-using-hello-portal"></a>Загрузите шаблон hello, с помощью портала hello
-1. Войдите в toohello [портал Azure](https://portal.azure.com/).
-2. Один hello концентратора последовательно выберите пункты **виртуальные машины**.
-3. Выберите виртуальную машину hello из списка hello.
+## <a name="download-the-template-using-the-portal"></a>Скачивание шаблона с помощью портала
+1. Войдите на [портал Azure](https://portal.azure.com/).
+2. В главном меню выберите **Виртуальные машины**.
+3. Затем выберите виртуальную машину из списка.
 4. Выберите элемент **Сценарий автоматизации**.
-5. Выберите **загрузки** и сохранить на локальном компьютере файл .zip tooyour hello.
-6. Откройте hello ZIP-файл и извлеките папки tooa файлов hello. Hello ZIP-файл будет содержать:
+5. Выберите **Скачать** и сохраните ZIP-файл на локальном компьютере.
+6. Откройте ZIP-файл и извлеките файлы в папку. ZIP-файл будет содержать такие файлы:
    
    * deploy.ps1;
    * deploy.sh; 
@@ -39,15 +39,15 @@ ms.lasthandoff: 10/06/2017
    * parameters.json;
    * template.json.
 
-файл template.json Hello — шаблон hello.
+Файл template.json является шаблоном.
 
-## <a name="download-hello-template-using-powershell"></a>Загрузите шаблон hello, с помощью PowerShell
-Можно также загрузить файл шаблона .json hello, с помощью hello [AzureRMResourceGroup экспорта](https://msdn.microsoft.com/library/mt715427.aspx) командлета. Можно использовать hello `-path` параметр tooprovide hello, имя файла и путь для hello JSON-файл. В этом примере показано, как с именем шаблона hello toodownload для группы ресурсов hello **myResourceGroup** toohello **C:\users\public\downloads** папку на локальном компьютере.
+## <a name="download-the-template-using-powershell"></a>Скачивание шаблона с помощью PowerShell
+JSON-файл шаблона можно также скачать с помощью командлета [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx). Имя файла и путь к JSON-файлу можно указать с помощью параметра `-path`. В этом примере показано, как скачать шаблон для группы ресурсов с именем **myResourceGroup** в папку **C:\users\public\downloads** на локальном компьютере.
 
 ```powershell
     Export-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-toolearn Дополнительные сведения о развертывании ресурсов с помощью шаблонов, в разделе [Пошаговое руководство диспетчера ресурсов шаблона](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Дополнительные сведения о развертывании ресурсов с помощью шаблонов см. в статье [Resource Manager template walkthrough](../../azure-resource-manager/resource-manager-template-walkthrough.md) (Пошаговое руководство по шаблону Resource Manager).
 

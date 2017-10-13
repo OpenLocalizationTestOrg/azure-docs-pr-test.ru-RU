@@ -1,8 +1,8 @@
-### <a name="gwipnoconnection"></a>шлюз локальной сети toomodify hello «GatewayIpAddress» - нет подключение к шлюзу
+### <a name="gwipnoconnection"></a> Изменение шлюза локальной сети с использованием GatewayIpAddress при отсутствии подключения к шлюзу
 
-Если hello VPN-устройства, которые должны tooconnect toohas изменено его общедоступный IP-адрес, необходимо tooreflect шлюза локальной сети hello toomodify, изменяется. Используйте пример hello toomodify шлюза локальной сети, у которого нет подключения шлюза.
+Если общедоступный IP-адрес VPN-устройства, к которому вы хотите подключиться, изменился, измените шлюз локальной сети в соответствии с изменениями. Используйте пример ниже, чтобы изменить шлюз локальной сети, к которому нет подключения.
 
-При изменении этого значения, также можно изменить префиксы адресов hello в hello то же время. Быть убедиться, что существующее имя toouse hello в порядке toooverwrite hello текущие параметры шлюза локальной сети. Если используется другое имя, можно создать новый шлюз локальной сети, вместо переопределения Здравствуйте существующий.
+При изменении этого значения вы также можете изменить префиксы адресов. Не забудьте указать имеющееся имя шлюза локальной сети для перезаписи текущих параметров. Если используется другое имя, необходимо создать новый шлюз локальной сети вместо перезаписи существующего.
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
@@ -10,34 +10,34 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 ```
 
-### <a name="gwipwithconnection"></a>шлюз локальной сети toomodify hello «GatewayIpAddress» - существующее подключение шлюза
+### <a name="gwipwithconnection"></a> Изменение шлюза локальной сети с использованием GatewayIpAddress, если подключение к шлюзу установлено
 
-Если hello VPN-устройства, которые должны tooconnect toohas изменено его общедоступный IP-адрес, необходимо tooreflect шлюза локальной сети hello toomodify, изменяется. Если подключение шлюза уже существует, необходимо сначала tooremove hello соединения. После удаления hello подключения, можно изменить IP-адрес шлюза hello и заново создайте новое соединение. Можно также изменить префиксы адресов hello в hello то же время. После этого VPN-подключение будет некоторое время недоступно. При изменении IP-адрес шлюза hello, не требуется toodelete hello VPN-шлюз. Необходимо только подключение tooremove hello.
+Если общедоступный IP-адрес VPN-устройства, к которому вы хотите подключиться, изменился, измените шлюз локальной сети в соответствии с изменениями. Если шлюз уже подключен, сначала вам нужно удалить подключение. Затем вы сможете изменить IP-адрес шлюза и создать новое подключение. При этом вы также можете изменить префиксы адресов. После этого VPN-подключение будет некоторое время недоступно. Не удаляйте VPN-шлюз при изменении IP-адреса шлюза. Необходимо удалить только подключение.
  
 
-1. Удалите подключение hello. Имя hello подключения можно найти с помощью командлета hello «Get-AzureRmVirtualNetworkGatewayConnection».
+1. Удалите подключение. Вы можете найти имя своего подключения с помощью командлета Get-AzureRmVirtualNetworkGatewayConnection.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
   -ResourceGroupName MyRGName
   ```
-2. Измените значение «GatewayIpAddress» hello. Можно также изменить префиксы адресов hello в hello то же время. Быть убедиться, что toouse hello существующее имя локальной сети шлюза toooverwrite hello текущие настройки. Если этого не сделать, можно создать новый шлюз локальной сети, вместо переопределения Здравствуйте существующий.
+2. Измените значение GatewayIpAddress. При этом вы также можете изменить префиксы адресов. Не забудьте указать существующее имя шлюза локальной сети для перезаписи текущих параметров. Иначе вы создадите новый шлюз локальной сети, а не перезапишете существующий.
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
   -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
   -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
   ```
-3. Создание подключения hello. В этом примере мы настраиваем тип подключения IPsec. При повторном создании подключения, используйте hello тип соединения, указанный для вашей конфигурации. Для подключения дополнительных типов, в разделе hello [командлета PowerShell](https://msdn.microsoft.com/library/mt603611.aspx) страницы.  tooobtain hello задана как имя, можно запустить командлет «Get-AzureRmVirtualNetworkGateway» hello.
+3. Создайте подключение. В этом примере мы настраиваем тип подключения IPsec. При повторном создании подключения используйте тип соединения, указанный для вашей конфигурации. Дополнительные типы подключений см. на странице с [командлетами PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).  Чтобы получить имя VirtualNetworkGateway, запустите командлет Get-AzureRmVirtualNetworkGateway.
    
-    Установка переменных hello.
+    Задайте переменные.
 
   ```powershell
   $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
   ```
    
-    Создание подключения hello.
+    Создайте подключение.
 
   ```powershell 
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `

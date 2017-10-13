@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy в виртуальную Машину с помощью C# и шаблона диспетчера ресурсов | Документы Microsoft"
-description: "Дополнительные сведения, toouse toohow C# и toodeploy шаблона диспетчера ресурсов виртуальной Машины Azure."
+title: "Развертывание виртуальной машины с помощью C# и шаблона Resource Manager | Документация Майкрософт"
+description: "Узнайте, как использовать C# и шаблон Resource Manager для развертывания виртуальной машины Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,47 +15,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: davidmu
-ms.openlocfilehash: 91d470228cfeed72336b488ffef4dfbb25bc3a40
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bd1c860db026f948202cd1f3aa763b4547c597b4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Развертывание виртуальной машины Azure с помощью C# и шаблона Resource Manager
-В этой статье показано, как toodeploy шаблона Azure Resource Manager с помощью C#. Hello шаблон, который вы создаете развертывает одной виртуальной машины под управлением Windows Server в новую виртуальную сеть с одной подсетью.
+В этой статье описывается развертывание шаблона Azure Resource Manager с помощью C#. Создаваемый шаблон позволяет выполнить развертывание одной виртуальной машины под управлением Windows Server в новой виртуальной сети с одной подсетью.
 
-Подробное описание hello ресурса виртуальной машины см. в разделе [виртуальные машины в шаблоне Azure Resource Manager](template-description.md). Дополнительные сведения обо всех ресурсах hello в шаблоне см. в разделе [Пошаговое руководство шаблона Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Подробное описание ресурса виртуальной машины см. в статье [Виртуальные машины в шаблоне Azure Resource Manager](template-description.md). Дополнительные сведения обо всех ресурсах в шаблоне см. в статье [Пошаговое руководство по созданию шаблона Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Занимает около 10 минут toodo следующие действия.
+На выполнение этих действий требуется примерно 10 минут.
 
 ## <a name="create-a-visual-studio-project"></a>Создание проекта Visual Studio
 
-На этом шаге вы убедитесь, что установлена среда Visual Studio и создать шаблон консольного приложения, используемого toodeploy hello.
+На этом шаге нужно убедиться, что экземпляр Visual Studio установлен, и создать консольное приложение, используемое для развертывания шаблона.
 
-1. Если вы этого еще не сделали, установите [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Выберите **разработки настольных приложений .NET** на hello рабочих нагрузок страницы и нажмите кнопку **установить**. В hello сводки, можно видеть, что **средства разработки .NET Framework 4 4.6** автоматически выбирается автоматически. Если вы уже установили Visual Studio, можно добавить hello рабочей нагрузки .NET с помощью hello запуска Visual Studio.
+1. Если вы этого еще не сделали, установите [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). На странице рабочих нагрузок выберите **Разработка классических приложений .NET** и нажмите кнопку **Установить**. В сводке вы увидите, что **средства разработки .NET Framework 4–4.6** выберутся автоматически. Если вы уже установили Visual Studio, можно добавить рабочую нагрузку .NET с помощью средства запуска Visual Studio.
 2. В Visual Studio выберите **Файл** > **Создать** > **Проект**.
-3. В **шаблоны** > **Visual C#**выберите **консольного приложения (.NET Framework)**, введите *myDotnetProject* имени hello Здравствуйте, проект, выберите hello расположение проекта hello, а затем нажмите кнопку **ОК**.
+3. В разделе **Шаблоны** > **Visual C#** выберите пункт **Консольное приложение (.NET Framework)**, укажите имя *myDotnetProject* и расположение проекта, а затем нажмите кнопку **OK**.
 
-## <a name="install-hello-packages"></a>Установить пакеты hello
+## <a name="install-the-packages"></a>Установка пакетов
 
-Пакеты NuGet — это hello простым способом tooinstall hello библиотеки требуется toofinish следующие действия. tooget hello библиотеки, необходимые в Visual Studio, выполните следующие действия:
+Самый простой способ установить библиотеки, необходимые для выполнения этих инструкций, — это использовать пакеты NuGet. Чтобы получить эти библиотеки в Visual Studio, выполните следующие действия.
 
 1. Щелкните **Сервис** > **Диспетчер пакетов NuGet**, а затем — **Консоль диспетчера пакетов**.
-2. В консоли hello, введите следующие команды:
+2. В консоли введите следующие команды:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
 
-## <a name="create-hello-files"></a>Создание файлов hello
+## <a name="create-the-files"></a>Создание файлов
 
-На этом шаге создается файл шаблона, которая развертывает hello ресурсы и файл параметров, который предоставляет шаблон toohello значения параметра. Можно также создать файла авторизации, который является используется tooperform операции диспетчера ресурсов Azure.
+На этом шаге вы создадите файл шаблона, который развертывает ресурсы, и файл параметров, который предоставляет значения для параметров шаблона. Кроме того, создается файл авторизации, который используется для выполнения операций Azure Resource Manager.
 
-### <a name="create-hello-template-file"></a>Создайте файл шаблона hello
+### <a name="create-the-template-file"></a>Создание файла шаблона
 
-1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Имя файла hello *CreateVMTemplate.json*, а затем нажмите кнопку **добавить**.
-2. Добавьте этот файл toohello JSON код, созданный вами:
+1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Назовите файл *CreateVMTemplate.json*, а затем щелкните **Добавить**.
+2. Добавьте следующий код JSON в созданный файл:
 
     ```json
     {
@@ -160,14 +160,14 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-3. Сохраните файл CreateVMTemplate.json hello.
+3. Сохраните файл CreateVMTemplate.json.
 
-### <a name="create-hello-parameters-file"></a>Создание файла параметров hello
+### <a name="create-the-parameters-file"></a>Создание файла параметров
 
-toospecify значения для параметров ресурсов hello, которые определены в шаблоне hello, создайте файл параметров, содержащий значения hello.
+Чтобы задать значения для параметров ресурсов, определенных в шаблоне, создайте файл параметров, содержащий эти значения.
 
-1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Имя файла hello *Parameters.json*, а затем нажмите кнопку **добавить**.
-2. Добавьте этот файл toohello JSON код, созданный вами:
+1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Назовите файл *Parameters.json*, а затем щелкните **Добавить**.
+2. Добавьте следующий код JSON в созданный файл:
 
     ```json
     {
@@ -180,13 +180,13 @@ toospecify значения для параметров ресурсов hello, 
     }
     ```
 
-4. Сохраните файл Parameters.json hello.
+4. Сохраните файл Parameters.json.
 
-### <a name="create-hello-authorization-file"></a>Создание файла авторизации hello
+### <a name="create-the-authorization-file"></a>Создание файла авторизации
 
-Перед развертыванием шаблона убедитесь, что доступ tooan [участника-службы Active Directory](../../resource-group-authenticate-service-principal.md). Из hello участника-службы получить токен для проверки подлинности запросов tooAzure диспетчера ресурсов. Также следует записать идентификатор приложения hello, ключ проверки подлинности hello и hello ИД клиента, необходимо в файле авторизации hello.
+Перед развертыванием шаблона убедитесь в наличии доступа к [субъекту-службе Active Directory](../../resource-group-authenticate-service-principal.md). Субъект-служба предоставляет маркер для аутентификации запросов к Azure Resource Manager. Кроме того, необходимо записать идентификатор приложения, ключ проверки подлинности и идентификатор клиента, которые понадобятся в файле авторизации.
 
-1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Имя файла hello *azureauth.properties*, а затем нажмите кнопку **добавить**.
+1. В обозревателе решений щелкните правой кнопкой мыши *myDotnetProject* > **Добавить** > **Новый элемент** и в списке **Элементы Visual C#** выберите *Текстовый файл*. Назовите файл *azureauth.properties* и щелкните **Добавить**.
 2. Добавьте следующие свойства авторизации:
 
     ```
@@ -200,18 +200,18 @@ toospecify значения для параметров ресурсов hello, 
     graphURL=https://graph.windows.net/
     ```
 
-    Замените  **&lt;идентификатор подписки&gt;**  на идентификатор вашей подписки  **&lt;идентификатор приложения&gt;**  с hello приложение Active Directory идентификатор,  **&lt;ключ проверки подлинности&gt;**  с ключом приложения hello, и  **&lt;ИД клиента&gt;**  с клиентом hello идентификатор.
+    Замените **&lt;subscription-id&gt;** своим идентификатором подписки, **&lt;application-id&gt;** — идентификатором приложения Active Directory, **&lt;authentication-key&gt;** — ключом приложения, а **&lt;tenant-id&gt;** — идентификатором клиента.
 
-3. Сохраните файл azureauth.properties hello.
-4. Задать переменную среды в Windows с именем AZURE_AUTH_LOCATION и hello полный путь tooauthorization файл, созданный, например hello следующие можно использовать команду PowerShell:
+3. Сохраните файл azureauth.properties.
+4. Задайте переменную среды в Windows с именем AZURE_AUTH_LOCATION с полным путем к файлу авторизации, созданному вами. Например, можно использовать такую команду PowerShell:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
     
-## <a name="create-hello-management-client"></a>Создание клиента управления hello
+## <a name="create-the-management-client"></a>Создание клиента управления
 
-1. Откройте файл Program.cs hello для hello проект, созданный и затем добавьте следующие инструкции toohello существующие операторы using в верхней части файла hello:
+1. Откройте файл Program.cs для созданного проекта и добавьте в начало файла (к существующим операторам) следующие операторы using:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -223,7 +223,7 @@ toospecify значения для параметров ресурсов hello, 
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-2. клиент управления toocreate hello, добавьте этот код toohello метод Main:
+2. Чтобы создать клиент управления, добавьте следующий код в метод Main:
 
     ```
     var credentials = SdkContext.AzureCredentialsFactory
@@ -238,7 +238,7 @@ toospecify значения для параметров ресурсов hello, 
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-toospecify значений для приложения hello, добавьте метод Main toohello кода:
+Чтобы задать значения для приложения, добавьте код в метод Main:
 
 ```
 var groupName = "myResourceGroup";
@@ -249,11 +249,11 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-## <a name="create-a-storage-account"></a>Создать учетную запись хранения
+## <a name="create-a-storage-account"></a>Создайте учетную запись хранения.
 
-Hello шаблона и параметров развертываются из учетной записи хранилища в Azure. На этом шаге создания учетной записи hello и отправить файлы hello. 
+Шаблон и параметры развертываются из учетной записи хранения в Azure. На этом шаге создается учетная запись и отправляются файлы. 
 
-toocreate Здравствуйте, учетная запись, добавьте этот код toohello метод Main:
+Чтобы создать учетную запись, добавьте следующий код в метод Main:
 
 ```
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
@@ -289,11 +289,11 @@ var paramblob = container.GetBlockBlobReference("Parameters.json");
 paramblob.UploadFromFile("..\\..\\Parameters.json");
 ```
 
-## <a name="deploy-hello-template"></a>Развертывание шаблона hello
+## <a name="deploy-the-template"></a>Развертывание шаблона
 
-Развертывание шаблона hello и параметров из учетной записи хранения hello, который был создан. 
+Разверните шаблон и параметры из созданной учетной записи хранения. 
 
-шаблон toodeploy hello, добавьте этот код toohello метод Main:
+Для развертывания шаблона добавьте следующий код в метод Main.
 
 ```
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
@@ -304,28 +304,28 @@ var deployment = azure.Deployments.Define("myDeployment")
     .WithParametersLink(paramPath, "1.0.0.0")
     .WithMode(Microsoft.Azure.Management.ResourceManager.Fluent.Models.DeploymentMode.Incremental)
     .Create();
-Console.WriteLine("Press enter toodelete hello resource group...");
+Console.WriteLine("Press enter to delete the resource group...");
 Console.ReadLine();
 ```
 
-## <a name="delete-hello-resources"></a>Удаление ресурсов hello
+## <a name="delete-the-resources"></a>Удаление ресурсов
 
-Поскольку вы оплачивать ресурсы, используемые в Azure, всегда является хорошей практикой toodelete ресурсы, которые больше не нужны. Не нужно toodelete каждого ресурса, отдельно от группы ресурсов. Удаление группы ресурсов hello и всех его ресурсов автоматически удаляются. 
+Так как за использование ресурсов Azure взимается плата, рекомендуется всегда удалять ресурсы, которые больше не нужны. Не нужно отдельно удалять каждый ресурс из группы ресурсов. Удалите группу ресурсов, и все ее ресурсы будут автоматически удалены. 
 
-toodelete hello ресурсов группы, добавьте этот код toohello метод Main:
+Чтобы удалить группу ресурсов, добавьте следующий код в метод Main:
 
 ```
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
-## <a name="run-hello-application"></a>Запустите приложение hello
+## <a name="run-the-application"></a>Выполнение приложения
 
-Занимает около пяти минут для этого toorun приложения консоли полностью с начала toofinish. 
+На полное выполнение этого консольного приложения потребуется примерно 5 минут. 
 
-1. toorun hello консольное приложение, нажмите кнопку **запустить**.
+1. Чтобы запустить консольное приложение, щелкните **Запустить**.
 
-2. Перед нажатием кнопки **ввод** toostart удаление ресурсов, может потребоваться несколько минут tooverify hello Создание ресурсов hello в hello портал Azure. Щелкните hello развертывания toosee сведения о состоянии развертывания hello.
+2. Прежде чем нажать клавишу **ВВОД** и начать удаление ресурсов, потратьте несколько минут и проверьте на портале Azure, созданы ли эти ресурсы. Щелкните состояние развертывания, чтобы просмотреть сведения о развертывании.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Если возникли проблемы с развертыванием hello, следующим шагом будет toolook в [Устранение общих ошибок развертывания Azure с помощью диспетчера ресурсов Azure](../../resource-manager-common-deployment-errors.md).
-* Узнайте, как toodeploy виртуальной машины и ее вспомогательные ресурсы, просмотрев [развертывания Azure виртуальной машины с помощью C#](csharp.md).
+* При наличии проблем с развертыванием ознакомьтесь с информацией об [устранении распространенных ошибок при развертывании Azure с помощью Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* Узнайте, как развернуть виртуальную машину и ее вспомогательные ресурсы, ознакомившись с разделом [Развертывание ресурсов Azure с помощью языка C#](csharp.md).

@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с ADP Globalview | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и ADP Globalview."
+description: "Узнайте, как настроить единый вход Azure Active Directory в ADP Globalview."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: aee2d56f05b486d12facbc41c9503455094604ec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e9a5e65c484dfb98d1a7bc63d55f6ef92039554b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Руководство по интеграции Azure Active Directory с ADP Globalview
 
-В этом учебнике вы узнаете, как toointegrate ADP Globalview в Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать ADP Globalview с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD ADP Globalview предоставляет hello следующие преимущества:
+Интеграция Azure AD с ADP Globalview обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooADP Globalview
-- Можно включить на пользователей tooautomatically get вошедшего tooADP Globalview (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к ADP Globalview.
+- Вы можете включить автоматический вход пользователей в ADP Globalview (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с ADP Globalview требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с ADP Globalview, вам потребуется:
 
 - подписка Azure AD;
 - подписка ADP Globalview с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление ADP Globalview из галереи hello
+1. Добавление ADP Globalview из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-adp-globalview-from-hello-gallery"></a>Добавление ADP Globalview из галереи hello
-tooconfigure hello интеграции ADP Globalview в Azure AD, вы должны tooadd ADP Globalview из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-adp-globalview-from-the-gallery"></a>Добавление ADP Globalview из коллекции
+Чтобы настроить интеграцию ADP Globalview с Azure AD, необходимо добавить ADP Globalview из коллекции в список управляемых приложений SaaS.
 
-**tooadd ADP Globalview из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить ADP Globalview из коллекции, выполните следующие действия.**
 
-1. В hello ** [портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **ADP Globalview**.
+4. В поле поиска введите **ADP Globalview**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_search.png)
 
-5. В панели результатов hello выберите **ADP Globalview**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **ADP Globalview** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в ADP Globalview с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в ADP Globalview является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в ADP Globalview должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в ADP Globalview соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в ADP Globalview.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в ADP Globalview.
+Чтобы установить эту связь, следует указать **имя пользователя** в Azure AD в качестве значения **имени пользователя** в ADP Globalview.
 
-tooconfigure и теста Azure AD единого входа с ADP Globalview, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в ADP Globalview, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on) ** -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user) ** -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя, прошедшего ADP Globalview](#creating-an-adp-globalview-test-user) ** -toohave аналог Саймон Britta в ADP Globalview, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on) ** -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя ADP Globalview](#creating-an-adp-globalview-test-user)** нужно для того, чтобы в ADP Globalview также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении ADP Globalview.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении ADP Globalview.
 
-**tooconfigure Azure AD единого входа с ADP Globalview выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в ADP Globalview, выполните следующие действия.**
 
-1. В hello в hello портала Azure **ADP Globalview** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **ADP Globalview** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_samlbase.png)
 
-3. На hello **URL-адреса и домена Globalview ADP** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения ADP Globalview** сделайте следующее.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
-     В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello: `https://<subdomain>.globalview.adp.com/federate` или`https://<subdomain>.globalview.adp.com/federate2`
+     В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<subdomain>.globalview.adp.com/federate` или `https://<subdomain>.globalview.adp.com/federate2`.
 
     > [!NOTE] 
-    > значение Hello не является вещественным числом. Обновите значение hello с hello фактический идентификатор. Обратитесь к [ADP Globalview поддержки](https://www.adp.com/contact-us/overview.aspx) tooget значение hello.
+    > Это значение приведено для примера. Вместо него нужно указать фактический идентификатор. Обратитесь в [службу поддержки ADP Globalview](https://www.adp.com/contact-us/overview.aspx) для получения этого значения.
  
-4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_certificate.png) 
 
-5. Hello ADP GlobalView приложения ожидает утверждения SAML hello в определенном формате, требующий вы tooadd настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. 
+5. Приложение ADP Globalview ожидает проверочные утверждения SAML в определенном формате, который требует добавить настраиваемые сопоставления атрибутов в вашу конфигурацию атрибутов токена SAML. 
 
-6. пример Hello следующий снимок экрана для него. Hello утверждения имена всегда быть **«PersonImmutableID»** и из которых сопоставленной tooExtensionAttribute2, который содержит значение hello hello EmployeeID hello пользователя. Здесь hello сопоставление пользователей из Azure AD tooADP GlobalView выполняется на hello EmployeeID, но можно сопоставить их другим значением tooa также основана на параметры приложения. Можно работать с hello ADP GlobalView команды первого toouse hello правильный идентификатор пользователя и сопоставить это значение с hello **«PersonImmutableID»** утверждения. Также можно сопоставить hello утверждения электронной почты и UserID как показано на рисунке hello.
+6. На следующем снимке экрана приведен пример. Утверждение всегда будет носить имя **PersonImmutableID** и иметь значение, которое было сопоставлено с ExtensionAttribute2, содержащим EmployeeID пользователя. Здесь выполняется сопоставление пользователя из Azure AD с ADP Globalview по значению EmployeeID, однако его можно сопоставить с другим значением, учитывая параметры приложения. Вместе со службой поддержки ADP GlobalView выполните действия по использованию правильного идентификатора пользователя и его сопоставлению с утверждением **PersonImmutableID**. Также можно сопоставить утверждения электронной почты и идентификатора пользователя, как показано на рисунке.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_attribute.png)
 
-7. В hello **атрибуты пользователя** раздела, посвященного hello **единого входа** диалогового окна, Настройка атрибутов токена SAML, как показано на рисунке hello и выполните следующие шаги hello:
+7. В разделе **Атрибуты пользователя** диалогового окна **Единый вход** настройте атрибут токена SAML, как показано на рисунке, и выполните следующие действия.
     
     | Имя атрибута | Значение атрибута |
     | ------------------- | -------------------- |    
@@ -133,22 +133,22 @@ tooconfigure и теста Azure AD единого входа с ADP Globalview,
     | email               | user.mail |
     | userid              | user.userprincipalname|
     
-    а. Нажмите кнопку **добавить атрибут** tooopen hello **Добавление атрибута** диалогового окна.
+    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно **Добавление атрибута**.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_attribute_04.png)
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_attribute_05.png)
 
-    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
+    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
 
-    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
+    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
     
-    d. Нажмите кнопку **ОК**.
+    г) Нажмите кнопку **ОК**.
 
     > [!NOTE] 
-    > Перед настройкой hello утверждения SAML, необходимо toocontact вашей [ADP Globalview поддержки](https://www.adp.com/contact-us/overview.aspx) и запросить значение hello hello уникальный идентификатор атрибута для вашего клиента. Необходимо, чтобы это значение tooconfigure hello пользовательского утверждения для приложения. 
+    > Чтобы настроить утверждение SAML, обратитесь в [службу поддержки ADP Globalview](https://www.adp.com/contact-us/overview.aspx) и запросите значение атрибута уникального идентификатора для своего клиента. Это значение необходимо для настройки пользовательского утверждения для вашего приложения. 
 
-8. На hello **конфигурации ADP Globalview** щелкните **Настройка ADP Globalview** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+8. В разделе **Конфигурация ADP Globalview** щелкните **Настроить ADP Globalview**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_configure.png) 
 
@@ -156,63 +156,63 @@ tooconfigure и теста Azure AD единого входа с ADP Globalview,
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_general_400.png)
 
-10. tooconfigure единого входа на **ADP Globalview** стороны, необходимо загрузить hello toosend **сертификата (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** слишком[ADP Globalview поддержки](https://www.adp.com/contact-us/overview.aspx).
+10. Чтобы настроить единый вход на стороне **ADP Globalview**, нужно отправить скачанный **сертификат (Base64)**, **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** в [службу поддержки ADP Globalview](https://www.adp.com/contact-us/overview.aspx).
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello ** Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/create_aaduser_01.png) 
 
-2.  hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2.  Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adglobalview-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-adp-globalview-test-user"></a>Создание тестового пользователя ADP Globalview
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в ADP GlobalView. Работать с [ADP Globalview поддержки](https://www.adp.com/contact-us/overview.aspx) tooadd пользователей hello в hello ADP GlobalView учетной записи. 
+Цель этого раздела — создать пользователя с именем Britta Simon в приложении ADP GlobalView. Обратитесь в [службу поддержки ADP Globalview](https://www.adp.com/contact-us/overview.aspx), чтобы добавить пользователей в учетную запись ADP Globalview. 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooADP Globalview.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к ADP Globalview.
 
 ![Назначение пользователя][200] 
 
-**tooassign Britta Simon tooADP Globalview, выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в ADP Globalview, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **ADP Globalview**.
+2. Из списка приложений выберите **ADP Globalview**.
 
     ![Настройка единого входа](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -220,7 +220,7 @@ tooconfigure и теста Azure AD единого входа с ADP Globalview,
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -228,13 +228,13 @@ tooconfigure и теста Azure AD единого входа с ADP Globalview,
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest конфигурации единого входа Azure AD с помощью панели доступа "hello".  
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.  
 
-При нажатии кнопки hello ADP GlobalView плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour ADP GlobalView приложения.
+Щелкнув элемент ADP GlobalView на панели доступа, вы автоматически войдете в приложение ADP GlobalView.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

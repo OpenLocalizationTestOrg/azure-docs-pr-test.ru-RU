@@ -1,6 +1,6 @@
 ---
-title: "hello aaaInstall CLI DC/OS | Документы Microsoft"
-description: "Установка контроллера домена/OS CLI hello."
+title: "Установка интерфейса командной строки контроллера домена или ОС | Документация Майкрософт"
+description: "Установка интерфейса командной строки контроллера домена или ОС."
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
-ms.openlocfilehash: b077c05beff9a5638486ea5efe9df31089e32701
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a8ea47f158c0d666340815d2e039995c7483257f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 > [!NOTE]
-> Это необходимо для работы с кластерами ACS на основе контроллеров домена или ОС. Нет нет необходимости toodo это для кластеров под управлением группу мелких объектов ACS.
+> Это необходимо для работы с кластерами ACS на основе контроллеров домена или ОС. Это не требуется для кластеров ACS под управлением Swarm.
 > 
 > 
 
-Во-первых, [подключения кластера tooyour ACS на основе контроллера домена или ОС](../articles/container-service/container-service-connect.md). Сделав это, можно установить на клиентском компьютере с приведенную ниже команду hello hello CLI DC/OS:
+Сначала [подключитесь к кластеру ACS на основе контроллеров домена или ОС](../articles/container-service/container-service-connect.md). Теперь вы можете установить интерфейс командной строки контроллера домена или операционной системы на клиентский компьютер с помощью приведенной ниже команды:
 
 ```bash
 sudo pip install virtualenv
@@ -38,7 +38,7 @@ chmod +x install-optout-dcos-cli.sh
 
 Если вы используете старую версию Python, можно заметить предупреждения о незащищенной платформе (InsecurePlatformWarnings). Эти предупреждения можно игнорировать.
 
-В порядке tooget работы без перезапуска оболочка выполните следующую команду:
+Чтобы приступить к работе без перезагрузки оболочки, выполните следующую команду:
 
 ```bash
 source ~/.bashrc
@@ -46,7 +46,7 @@ source ~/.bashrc
 
 Этот шаг не нужно выполнять при запуске новой оболочки.
 
-Теперь можно проверить, hello установлен CLI:
+Теперь можно проверить, установлен ли интерфейс командной строки:
 
 ```bash
 dcos --help

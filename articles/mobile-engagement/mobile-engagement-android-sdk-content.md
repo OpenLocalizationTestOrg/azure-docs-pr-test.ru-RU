@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure интеграции пакета SDK Android Mobile Engagement"
+title: "Интеграция пакета Android SDK для Служб мобильного взаимодействия Azure"
 description: "Последние обновления и процедуры пакета Android SDK для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,14 +14,14 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6085a9ba90b713235e0aae99759597af9db77865
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 27190b54fc2b3b5c77b5f0a02273883e36ceaf1d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sdk-content"></a>Содержимое пакета SDK
-В этом документе перечислены и описаны hello содержимое архива SDK hello.
+В этом документе указано и описано содержимое архива SDK.
 
 `mobile-engagement-VERSION.jar`
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/06/2017
 
 `res` 
 
-> Пакет SDK для Reach ресурсы engagement (drawable и tooinclude файлы макета в приложениях).
+> Ресурсы Engagement Reach SDK (графические файлы и файлы разметки для включения в ваши приложения).
 > 
 > 
 
@@ -39,15 +39,15 @@ ms.lasthandoff: 10/06/2017
 
 > Исходный код пакета SDK.
 > 
-> Обратите внимание, что источники hello hello службы не включено (`com.microsoft.azure.engagement.service.EngagementService` и его связанные исходных файлов).
+> Обратите внимание, что исходный код службы не входит в пакет (`com.microsoft.azure.engagement.service.EngagementService` и связанные файлы исходного кода).
 > 
 > 
 
 `documentation.html`
 
-> Ярлык toohello документации сайта соответствующий toohello загрузить версию пакета SDK для hello.
+> Ярлык на сайт с документацией, соответствующей загруженной версии SDK.
 > 
 > 
 
-Другие файлы являются копией hello лицензий на программное обеспечение.
+Другие файлы являются копиями лицензий на программное обеспечение.
 

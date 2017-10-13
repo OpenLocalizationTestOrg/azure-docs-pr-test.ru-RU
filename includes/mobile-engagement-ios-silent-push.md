@@ -1,20 +1,20 @@
 > [!IMPORTANT]
-> tooreceive Push-уведомления от мобильного охвата необходимо tooenable `Silent Remote Notifications` в приложении. Необходимо tooadd hello уведомления удаленного toohello UIBackgroundModes массив значений в файле Info.plist.
+> Чтобы получать push-уведомления от Mobile Engagement, необходимо включить в приложении `Silent Remote Notifications`. Для этого требуется добавить значение remote-notification в массив UIBackgroundModes в файле info.plist.
 > 
 > 
 
-1. Откройте `info.plist` файл в проекте hello
-2. Щелкните правой кнопкой мыши hello верхний элемент в списке hello (`Information Property List`) и добавить новую строку
+1. Откройте файл `info.plist` в проекте.
+2. Щелкните правой кнопкой мыши верхний элемент в списке (`Information Property List`) и добавьте новую строку.
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push1.png)
-3. Введите в новую строку hello`Required background modes`
+3. В новой строке введите: `Required background modes`
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push2.png)
-4. Щелкните строку hello tooexpand стрелка влево hello
-5. Добавьте следующий элемент toohello значение 0 hello`App downloads content in response toopush notifications`
+4. Щелкните стрелку влево, чтобы развернуть строку.
+5. Добавьте следующее значение в элемент 0 `App downloads content in response to push notifications`
    
     ![](./media/mobile-engagement-ios-silent-push/xcode-plist-add-silent-push3.png)
-6. После внесения изменения hello info.plist hello XML должен содержать следующие hello ключ и значение:
+6. После внесения изменений XML-файл info.plist должен содержать следующий ключ и значение:
    
         <key>UIBackgroundModes</key>
         <array>

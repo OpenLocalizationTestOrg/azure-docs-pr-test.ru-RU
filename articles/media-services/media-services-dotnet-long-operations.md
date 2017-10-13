@@ -1,6 +1,6 @@
 ---
-title: "Длительные операции aaaPolling | Документы Microsoft"
-description: "В этом разделе показано, как toopoll длительных операций."
+title: "Опрос долговременных операций | Документация Майкрософт"
+description: "В этом разделе содержатся сведения об опросе долговременных операций."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: f8315a5ddbe484d794c3e2164e47dd9e70521671
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7123a2d44d3b7c332afe30fb0fcea88ca29e313a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Доставка динамической потоковой передачи с помощью служб мультимедиа Azure
 
 ## <a name="overview"></a>Обзор
 
-Службы мультимедиа Microsoft Azure предлагает API которые отправляют запросы операций toostart tooMedia служб (например: создание, запуск, остановка или удаление канала). Эти операции являются долговременными.
+Службы Microsoft Azure Media Services предоставляют интерфейсы API, которые отправляют запросы в службы мультимедиа на запуск операций (например, создание, запуск, остановка или удаление канала). Эти операции являются долговременными.
 
-Hello Media Services .NET SDK предоставляет интерфейсы API, отправка запроса hello и дождитесь toocomplete hello операции (на внутреннем уровне приветствия API запрашивают прогресс операции через определенные промежутки времени). Например, при вызове канала. Start(), hello метод возвращается после запуска канала hello. Можно также использовать асинхронную версию hello: await канала. StartAsync() (сведения об асинхронной модели на основе задач см. в разделе [КОСНИТЕСЬ](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). API-интерфейсы, которые отправляют запрос на операцию и затем запрашивают состояние hello до завершения операции hello, называются «методы опроса». Эти методы (особенно hello асинхронная версия) рекомендуются для полнофункциональных клиентских приложений или служб с отслеживанием состояния.
+Пакет SDK .NET служб мультимедиа предоставляет интерфейсы API, которые отправляют запрос и ожидают завершения операции (на внутреннем уровне API выполняют опрос о ходе операции через определенные промежутки времени). Например, при вызове channel.Start() метод возвращается после запуска канала. Кроме того, вы можете использовать асинхронную версию: await channel.StartAsync() (сведения об асинхронном шаблоне на основе задач см. в статье [TAP](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). API, которые отправляют запрос на операцию, а затем запрашивают состояние до завершения операции, называются методами опроса. Такие методы (особенно асинхронная версия) рекомендуются для полнофункциональных клиентских приложений и (или) служб с отслеживанием состояния.
 
-Существуют сценарии, где приложение нельзя ждать долговременного HTTP-запроса и хочет toopoll hello прогресс операции вручную. Типичным примером может быть браузер, взаимодействующий со службой без учета состояния: при hello браузер запрашивает toocreate канал, длительная операция инициирует hello веб-службы и возвращает hello браузера toohello идентификатор операции. затем Hello браузер может запросить hello состояние веб-службы tooget hello операции на основе идентификатора hello. Hello Media Services .NET SDK предоставляет интерфейсы API, которые удобно использовать для этого сценария. Такие API называются неопросными методами.
-Hello «неопросные методы» имеют следующий шаблон именования hello: Отправка*Имя_операции*операции (например, SendCreateOperation). Отправить*Имя_операции*операции методы возвращают hello **IOperation** объекта; hello возвращаемый объект содержит сведения, которые можно используется tootrack hello операции. Hello отправки*OperationName*OperationAsync методы возвращают **задачи<IOperation>**.
+Существуют сценарии, когда приложение не может ждать долговременного HTTP-запроса и хочет запросить ход выполнения операции вручную. Типичным примером может служить браузер, взаимодействующий со службой без учета состояния: когда браузер запрашивает создание канала, веб-служба инициирует долговременную операцию и возвращает идентификатор операции в браузер. Затем браузер может запросить в веб-службе состояние операции на основе идентификатора Пакет SDK .NET служб мультимедиа предоставляет интерфейсы API, полезные для этого сценария. Пакет SDK .NET служб мультимедиа предоставляет интерфейсы API, полезные для этого сценария. Такие API называются неопросными методами.
+"Неопросные методы" именуются по такому шаблону: Send*имя_операции*Operation (например, SendCreateOperation). Методы Send*имя_операции*Operation возвращают объект **IOperation**. Полученный объект содержит сведения, которые можно использовать для отслеживания операции. Методы Send*имя_операции*OperationAsync возвращают **Task<IOperation>**.
 
-В настоящее время hello следующие классы поддержки неопросные методы: **канала**, **StreamingEndpoint**, и **программы**.
+В настоящее время неопросные методы поддерживаются такими классами: **Channel**, **StreamingEndpoint** и **Program**.
 
-toopoll статус операции hello, используйте hello **GetOperation** метод hello **OperationBaseCollection** класса. Используйте следующие состояния операции hello toocheck интервалы hello: для **канала** и **конечной точки потоковой передачи** операции, используйте 30 секунд; для **программы** операции, при использовании 10 количество секунд.
+Чтобы опросить состояние операции, используйте метод **GetOperation** в классе **OperationBaseCollection**. Для проверки состояния операции используйте такие интервалы: для операций **Channel** и **StreamingEndpoint** — 30 секунд, для операций **Program** — 10 секунд.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).
+Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).
 
 ## <a name="example"></a>Пример
 
-Hello в примере определяется класс с именем **ChannelOperations**. Это определение класса может быть стартовой точкой для определения класса веб-службы. Для простоты hello следующих примерах используется hello синхронные версии методов.
+Пример ниже определяет класс, который называется **ChannelOperations**. Это определение класса может быть стартовой точкой для определения класса веб-службы. Для простоты в примерах ниже используются синхронные версии методов.
 
-Hello примере также показано, как hello клиент может использовать этот класс.
+В примере также показано, как клиент может использовать этот класс.
 
 ### <a name="channeloperations-class-definition"></a>Определение класса ChannelOperations
 
@@ -54,12 +54,12 @@ Hello примере также показано, как hello клиент мо
     using System.Net;
 
     /// <summary> 
-    /// hello ChannelOperations class only implements 
-    /// hello Channel’s creation operation. 
+    /// The ChannelOperations class only implements 
+    /// the Channel’s creation operation. 
     /// </summary> 
     public class ChannelOperations
     {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -77,12 +77,12 @@ Hello примере также показано, как hello клиент мо
         }
 
         /// <summary>  
-        /// Initiates hello creation of a new channel.  
+        /// Initiates the creation of a new channel.  
         /// </summary>  
-        /// <param name="channelName">Name toobe given toohello new channel</param>  
+        /// <param name="channelName">Name to be given to the new channel</param>  
         /// <returns>  
-        /// Operation Id for hello long running operation being executed by Media Services. 
-        /// Use this operation Id toopoll for hello channel creation status. 
+        /// Operation Id for the long running operation being executed by Media Services. 
+        /// Use this operation Id to poll for the channel creation status. 
         /// </returns> 
         public string StartChannelCreation(string channelName)
         {
@@ -99,14 +99,14 @@ Hello примере также показано, как hello клиент мо
         }
 
         /// <summary> 
-        /// Checks if hello operation has been completed. 
-        /// If hello operation succeeded, hello created channel Id is returned in hello out parameter.
+        /// Checks if the operation has been completed. 
+        /// If the operation succeeded, the created channel Id is returned in the out parameter.
         /// </summary> 
-        /// <param name="operationId">hello operation Id.</param> 
+        /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
-        /// If hello operation succeeded, 
-        /// hello created channel Id is returned in hello out parameter.</param>
-        /// <returns>Returns false if hello operation is still in progress; otherwise, true.</returns> 
+        /// If the operation succeeded, 
+        /// the created channel Id is returned in the out parameter.</param>
+        /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         public bool IsCompleted(string operationId, out string channelId)
         {
             IOperation operation = _context.Operations.GetOperation(operationId);
@@ -117,9 +117,9 @@ Hello примере также показано, как hello клиент мо
             switch (operation.State)
             {
                 case OperationState.Failed:
-                    // Handle hello failure. 
+                    // Handle the failure. 
                     // For example, throw an exception. 
-                    // Use hello following information in hello exception: operationId, operation.ErrorMessage.
+                    // Use the following information in the exception: operationId, operation.ErrorMessage.
                     break;
                 case OperationState.Succeeded:
                     completed = true;
@@ -180,7 +180,7 @@ Hello примере также показано, как hello клиент мо
         }
     }
 
-### <a name="hello-client-code"></a>клиентский код Hello
+### <a name="the-client-code"></a>Код клиента
     ChannelOperations channelOperations = new ChannelOperations();
     string opId = channelOperations.StartChannelCreation("MyChannel001");
 
@@ -193,7 +193,7 @@ Hello примере также показано, как hello клиент мо
         isCompleted = channelOperations.IsCompleted(opId, out channelId);
     }
 
-    // If we got here, we should have hello newly created channel id.
+    // If we got here, we should have the newly created channel id.
     Console.WriteLine(channelId);
 
 

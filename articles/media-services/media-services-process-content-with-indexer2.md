@@ -1,6 +1,6 @@
 ---
-title: "aaaIndexing файлов мультимедиа с помощью предварительной версии 2 индексатора мультимедиа Azure | Документы Microsoft"
-description: "Индексатор мультимедиа Azure позволяет toomake содержимого для поиска файлов мультимедиа и toogenerate полнотекстового сообщения для закрыто субтитров и ключевых слов. В этом разделе показано, как просмотреть toouse индексатора мультимедиа 2."
+title: "Индексирование файлов мультимедиа с помощью Azure Media Indexer 2 (предварительная версия) | Документация Майкрософт"
+description: "Индексатор мультимедийных данных Azure позволяет искать содержимое файлов мультимедиа и создавать полнотекстовую транскрипцию для скрытых субтитров и ключевых слов. В этом разделе показано, как использовать индексатор мультимедийных данных 2 (предварительная версия)."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,48 +14,48 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: f83fa0db58b828ffa29933d68ce108b4906dcd78
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0afdd1c04e50215a55fb92c70b1210d1f80d8e3f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Индексирование файлов мультимедиа с помощью индексатора мультимедийных данных Azure 2 (предварительная версия)
 ## <a name="overview"></a>Обзор
-Hello **предварительной версии 2 индексатора мультимедиа Azure** обработчик мультимедиа (MP) позволяет toomake файлы и контент мультимедиа с возможностью поиска, а также создавать дорожек со скрытыми субтитрами. Сравниваемые toohello предыдущей версии [индексатора мультимедиа Azure](media-services-index-content.md), **предварительной версии 2 индексатора мультимедиа Azure** выполняет более быстрого индексирования и обеспечивает более широкую поддержку языка. В число поддерживаемых языков входят английский, испанский, французский, немецкий, итальянский, китайский (мандаринский диалект, упрощенное письмо), португальский, арабский и японский.
+Обработчик мультимедиа **индексатор мультимедийных данных Azure 2 (предварительная версия)** позволяет сделать мультимедийные файлы и содержимое доступными для поиска, а также создавать дорожки для субтитров. По сравнению с предыдущей версией [индексатора мультимедийных данных](media-services-index-content.md), **индексатор мультимедийных данных Azure 2 (предварительная версия)** быстрее выполняет индексирование и предлагает более широкую поддержку языков. В число поддерживаемых языков входят английский, испанский, французский, немецкий, итальянский, китайский (мандаринский диалект, упрощенное письмо), португальский, арабский и японский.
 
-Hello **предварительной версии 2 индексатора мультимедиа Azure** MP в настоящее время находится в предварительной версии.
+Сейчас обработчик мультимедиа **индексатор мультимедийных данных Azure 2 (предварительная версия)** доступен в предварительной версии.
 
-В этом разделе показано, как индексирование toocreate заданий с **предварительной версии 2 индексатора мультимедиа Azure**.
+В этом разделе показано, как создать задания индексирования с помощью **индексатора мультимедийных данных Azure 2 (предварительная версия)**.
 
 > [!NOTE]
-> применить Hello следующие вопросы:
+> Действительны следующие условия.
 > 
 > Индексатор 2 не поддерживается в Azure в Китае и Azure для государственных организаций.
 > 
-> Во время индексирования содержимого, убедитесь, что toouse файлы мультимедиа, которые максимально разборчивой речью (без фоновой музыки, шума, эффектов или шипения микрофона). Примерами подходящего содержимого могут служить записи собраний, лекций или презентаций. Hello следующее содержимое может не подходить для индексирования: фильмы, ТВ-передачи, что-либо со смешанными аудио- и звуковыми эффектами, некачественная запись содержимого с фоновым шумом (шипением).
+> При индексировании содержимого обязательно используйте файлы мультимедиа, содержащие отчетливую речь (без фоновой музыки, шума, эффектов или шипения микрофона). Примерами подходящего содержимого могут служить записи собраний, лекций или презентаций. Для индексирования, как правило, не подходит такое содержимое, как фильмы, телепередачи, любые материалы со смешанными аудио- и звуковыми эффектами, записи плохого качества с фоновым шумом (шипением).
 > 
 > 
 
-В этом разделе приведены подробные сведения о **предварительной версии 2 индексатора мультимедиа Azure** и показано, как toouse с помощью пакета SDK служб мультимедиа для .NET
+В этой статье приводятся сведения об **индексаторе мультимедийных данных Azure 2 (предварительная версия)** и демонстрируется его использование с пакетом SDK служб мультимедиа для .NET.
 
 ## <a name="input-and-output-files"></a>Входные и выходные файлы
 ### <a name="input-files"></a>Входные файлы
 Аудио- или видеофайлы
 
 ### <a name="output-files"></a>Выходные файлы
-Задание индексирования можно создать файлы титров hello следующие форматы:  
+Задание индексирования может создавать файлы скрытых субтитров в следующих форматах:  
 
 * **SAMI**
 * **TTML**
 * **WebVTT**
 
-Закрытых субтитров (CC) файлов в этих форматах можно использовать toomake аудио и видео файлы доступны toopeople возможностями слуха.
+С помощью файлов скрытых субтитров в этих форматах аудио- и видеофайлы можно сделать доступным для людей с нарушениями слуха.
 
 ## <a name="task-configuration-preset"></a>Конфигурация задачи (предустановка)
 При создании задачи индексирования с помощью **предварительной версии индексатора мультимедийных данных Azure 2**необходимо указать предустановку конфигурации.
 
-Hello следующий JSON задает доступных параметров.
+Следующий объект JSON задает доступные параметры.
 
     {
       "version":"1.0",
@@ -72,7 +72,7 @@ Hello следующий JSON задает доступных параметро
     }
 
 ## <a name="supported-languages"></a>Поддерживаемые языки
-Предварительная версия 2 для Azure Media индексатор поддерживает речи в текст hello следующих языков (при указании имени языка hello в конфигурации задачи hello, используйте 4-значный код в квадратные скобки, как показано ниже).
+Индексатор мультимедийных данных Azure 2 (предварительная версия) поддерживает распознавание речи для следующих языков (при указании названия языка в файле конфигурации задачи используйте 4-значный код в квадратных скобках, как показано ниже):
 
 * английский [EnUs];
 * испанский [EsEs];
@@ -89,14 +89,14 @@ Hello следующий JSON задает доступных параметро
 
 ## <a name="supported-file-types"></a>Поддерживаемые типы файлов
 
-Сведения о типах файлов, поддерживаемых см. в разделе hello [поддерживаемые кодеки и форматы](media-services-media-encoder-standard-formats.md#input-containerfile-formats) раздела.
+Дополнительные сведения о поддерживаемых типах файлов см. в разделе [Контейнер ввода/ форматы файлов](media-services-media-encoder-standard-formats.md#input-containerfile-formats).
 
 ## <a name="net-sample-code"></a>Пример кода .NET
 
-Hello следующей программе показано как:
+В следующей программе показано, как выполнить следующие задачи.
 
-1. Создание актива и отправка файла мультимедиа в актив hello.
-2. Создание задания с задачи индексирования на основе файла конфигурации, содержащий hello, следующая Предустановка json.
+1. Создание ресурса-контейнера и отправка в него файла мультимедиа.
+2. Создание задания с задачей индексации на основе файла конфигурации, содержащего следующую предустановку JSON.
    
         {
           "version":"1.0",
@@ -111,11 +111,11 @@ Hello следующей программе показано как:
                "Type":"SpReco"
             }]
         }
-3. Загрузите hello выходные файлы. 
+3. Скачивание выходных файлов. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Пример
 
@@ -131,7 +131,7 @@ Hello следующей программе показано как:
     {
         class Program
         {
-            // Read values from hello App.config file.
+            // Read values from the App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -151,13 +151,13 @@ Hello следующей программе показано как:
                 var asset = RunIndexingJob(@"C:\supportFiles\Indexer\BigBuckBunny.mp4",
                                             @"C:\supportFiles\Indexer\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\Indexer\Output");
             }
 
             static IAsset RunIndexingJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Indexing Input Asset",
                     AssetCreationOptions.None);
@@ -165,38 +165,38 @@ Hello следующей программе показано как:
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Indexing Job");
 
-                // Get a reference tooAzure Media Indexer 2 Preview.
+                // Get a reference to Azure Media Indexer 2 Preview.
                 string MediaProcessorName = "Azure Media Indexer 2 Preview";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Indexing Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset toobe indexed.
+                // Specify the input asset to be indexed.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Indexing Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

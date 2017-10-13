@@ -1,9 +1,9 @@
 ---
-title: "шаблоны aaaApplication в службе управления API Azure | Документы Microsoft"
-description: "Узнайте, как toocustomize hello содержимое страницы приложения hello hello портал разработчиков в службе управления API Azure."
+title: "Шаблоны приложений в службе управления API Azure | Документация Майкрософт"
+description: "Узнайте, как настроить содержимое страниц приложения на портале разработчика в службе управления API Azure."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40a4d159afff4db78e27f89b448e21b1d94cd378
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-templates-in-azure-api-management"></a>Шаблоны приложений в службе управления API Azure
-Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого. С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.  
+Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов. С помощью синтаксиса [DotLiquid](http://dotliquidmarkup.org/), выбранного редактора, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и указанного набора локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления на странице](api-management-page-controls.md) можно гибко настраивать содержимое страниц по своему усмотрению с использованием этих шаблонов.  
   
- шаблоны Hello в этом разделе позволяют toocustomize hello содержимое страницы приложения hello на портале разработчиков hello.  
+ С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц приложения на портале разработчика.  
   
 -   [Список приложений](#ProductList)  
   
 -   [Приложения](#Application)  
   
 > [!NOTE]
->  Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения. Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов. Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Примеры шаблонов по умолчанию включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению. Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону. Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a> Список приложений  
- Hello **список приложений** шаблон позволяет текст hello toocustomize страницу списка приложения hello на портале разработчиков hello.  
+ Шаблон **списка приложений** позволяет настроить текст страницы со списком приложений на портале разработчика.  
   
  ![Шаблоны портала разработчиков для страницы со списком приложений](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM шаблонов портала разработчиков для страницы со списком приложений")  
   
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Hello `Product list` шаблона может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
+ В шаблоне `Product list` можно использовать следующие [элементы управления страницы](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -78,9 +78,9 @@ ms.lasthandoff: 10/06/2017
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|Разбиение по страницам|Сущность [разбиения по страницам](api-management-template-data-model-reference.md#Paging).|сведения о Hello разбиения на страницы для коллекции приложения hello.|  
-|Приложения|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|Hello приложений отображается toohello текущего пользователя.|  
-|CategoryName|string|Категория приложения Hello.|  
+|Разбиение по страницам|Сущность [разбиения по страницам](api-management-template-data-model-reference.md#Paging).|Сведения о разбиении по страницам для коллекции приложений.|  
+|Приложения|Коллекция сущностей [приложения](api-management-template-data-model-reference.md#Application).|Приложения, которые отображаются для текущего пользователя.|  
+|CategoryName|строка|Категория приложения.|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -134,7 +134,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ##  <a name="Application"></a> Приложение  
- Hello **приложения** шаблон позволяет текст hello toocustomize hello страницы приложения на портале разработчиков hello.  
+ Шаблон **приложения** позволяет настроить текст страницы приложения на портале разработчика.  
   
  ![Шаблоны портала разработчиков для страницы приложения](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM шаблонов портала разработчиков для страницы приложения")  
   
@@ -177,7 +177,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Hello `Application` шаблона не позволяет использовать hello любого [страницы элементов управления](api-management-page-controls.md).  
+ В шаблоне `Application` нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Модель данных  
  Сущность [приложения](api-management-template-data-model-reference.md#Application).  
@@ -220,4 +220,4 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).
+Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).

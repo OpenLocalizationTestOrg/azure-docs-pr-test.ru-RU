@@ -1,5 +1,5 @@
 ---
-title: "aaaRun ЗВЕЗДА-CCM + с пакетом HPC на виртуальных машинах Linux | Документы Microsoft"
+title: "Выполнение заданий STAR-CCM+ с помощью пакета HPC на виртуальных машинах Linux | Документация Майкрософт"
 description: "Развертывание кластера Microsoft HPC в Azure и запуск задания STAR-CCM+ на нескольких вычислительных узлах Linux в сети RDMA."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: 8265013cb295f53d6d4354ab2f100ef20d9f4c8c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Выполнение заданий STAR-CCM+ в кластере Linux RDMA в Azure с помощью пакета Microsoft HPC
-В этой статье показано, как кластера toodeploy пакета Microsoft HPC в Azure и выполнения [ЗВЕЗДА приложения adapco CD-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) задания на нескольких вычислительных узлов Linux, которые связаны между собой с InfiniBand.
+В этой статье показано, как развернуть кластер пакета Microsoft HPC в Azure и запустить задание [STAR-CCM+ CD-adapco](http://www.cd-adapco.com/products/star-ccm%C2%AE) на нескольких вычислительных узлах Linux, соединенных с помощью InfiniBand.
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-Пакет Microsoft HPC предоставляет возможности toorun разнообразные крупномасштабных HPC и параллельных приложений, включая приложения MPI, в кластерах из виртуальных машин Microsoft Azure. Пакет HPC также поддерживает приложения высокопроизводительных вычислений для Linux на виртуальных вычислительных узлах Linux, развернутых в кластере HPC. Введение toousing Linux вычислительных узлов с помощью пакета HPC, см. в разделе [Приступая к работе с Linux вычислительных узлов в кластере HPC Pack в Azure](hpcpack-cluster.md).
+Пакет Microsoft HPC предоставляет функции, необходимые для работы приложений высокопроизводительных и параллельных вычислений, включая приложения MPI, в кластерах виртуальных машин Microsoft Azure. Пакет HPC также поддерживает приложения высокопроизводительных вычислений для Linux на виртуальных вычислительных узлах Linux, развернутых в кластере HPC. Общие сведения об использовании вычислительных узлов Linux и пакета HPC см. в статье [Начало работы с вычислительными узлами Linux в кластере пакета HPC в Azure](hpcpack-cluster.md).
 
 ## <a name="set-up-an-hpc-pack-cluster"></a>Настройка кластера пакета HPC
-Загрузите скрипты развертывания IaaS пакета HPC hello из hello [центра загрузки](https://www.microsoft.com/en-us/download/details.aspx?id=44949) и извлеките их локально.
+Скачайте сценарии развертывания IaaS из пакета HPC из [Центра загрузки](https://www.microsoft.com/en-us/download/details.aspx?id=44949) и извлеките их в локальное расположение.
 
-В системе должен быть установлен компонент Azure PowerShell. Если PowerShell на локальном компьютере не настроен, прочтите статью hello [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
+В системе должен быть установлен компонент Azure PowerShell. Если Azure PowerShell не настроен на локальном компьютере, то см. статью [Установка и настройка Azure PowerShell](/powershell/azure/overview).
 
-На момент написания этой статьи hello образы Linux hello из hello Azure Marketplace (который содержит драйверы hello InfiniBand в Azure) — для SLES 12, CentOS версии 6.5 и CentOS 7.1. Эта статья основана на использовании hello SLES 12. Имя hello tooretrieve все образы Linux, которые поддерживают HPC в hello Marketplace, выполните следующую команду PowerShell hello:
+На момент написания этой статьи образы Linux из Azure Marketplace (включая драйверы InfiniBand для Azure) предназначены для SLES 12, CentOS 6.5 и CentOS 7.1. В этой статье используется SLES 12. Чтобы получить имена всех образов Linux, поддерживающих HPC в Marketplace, можно выполнить следующую команду PowerShell:
 
 ```
     get-azurevmimage | ?{$_.ImageName.Contains("hpc") -and $_.OS -eq "Linux" }
 ```
 
-Результатом Hello список hello расположение, в котором эти изображения доступны и hello имя образа (**ImageName**) toobe, используемый в шаблон развертывания hello позже.
+На экран будут выведены расположение этих образов и имя образа (**ImageName**), который будет использоваться в шаблоне развертывания позже.
 
-Перед развертыванием кластера hello toobuild имеется файл шаблона развертывания пакета HPC. Так как мы целевой кластер небольшой, hello головной узел будет hello контроллера домена и размещения локальной базы данных SQL.
+Перед развертыванием кластера необходимо создать файл шаблона развертывания пакета HPC. Поскольку мы намереваемся создать небольшой кластер, головной узел будет контроллером домена и на нем будет размещаться локальная база данных SQL.
 
-Hello следующий шаблон будет развертывания головного узла, создайте XML-файл с именем **MyCluster.xml**и замените значения hello **SubscriptionId**, **StorageAccount**,  **Расположение**, **VMName**, и **ServiceName** с вашими.
+Этот головной узел можно развернуть с помощью следующего шаблона. Создайте XML-файл с именем **MyCluster.xml** и задайте для параметров **SubscriptionId**, **StorageAccount**, **Location**, **VMName** и **ServiceName** собственные значения.
 
     <?xml version="1.0" encoding="utf-8" ?>
     <IaaSClusterConfig>
@@ -79,138 +79,138 @@ Hello следующий шаблон будет развертывания го
       </LinuxComputeNodes>
     </IaaSClusterConfig>
 
-Запустите Создание hello головной узел, выполнив команду PowerShell hello в командную строку с повышенными привилегиями:
+Создайте головной узел, выполнив команду PowerShell в командной строке с повышенными привилегиями:
 
 ```
     .\New-HPCIaaSCluster.ps1 -ConfigFile MyCluster.xml
 ```
 
-Через 20 минут too30 hello головной узел должен быть готов. Tooit можно подключиться из hello портал Azure, щелкнув hello **Connect** значок hello виртуальной машины.
+Создание головного узла обычно занимает 20–30 минут. Вы можете подключиться к нему на портале Azure, щелкнув значок **подключения** виртуальной машины.
 
-В конечном итоге возможно toofix hello DNS-сервер пересылки. toodo таким образом, запустите диспетчер DNS.
+Со временем может потребоваться исправить DNS-сервер пересылки. Для этого необходимо запустить диспетчер DNS.
 
-1. Имя сервера правой кнопкой мыши hello в диспетчере DNS, выберите **свойства**, а затем нажмите кнопку hello **серверов пересылки** вкладку.
-2. Нажмите кнопку hello **изменить** tooremove серверы пересылки, а затем нажмите **ОК**.
-3. Убедитесь в том, что hello **использовать корневые ссылки, если нет серверов пересылки доступны** флажок установлен и нажмите кнопку **ОК**.
+1. Щелкните правой кнопкой мыши имя сервера в диспетчере DNS, выберите пункт **Свойства** и перейдите на вкладку **Серверы пересылки**.
+2. Нажмите кнопку **Изменить**, чтобы удалить серверы пересылки, а затем нажмите кнопку **ОК**.
+3. Убедитесь, что установлен флажок **Использовать корневые ссылки, если нет доступных серверов пересылки**, и нажмите кнопку **ОК**.
 
 ## <a name="set-up-linux-compute-nodes"></a>Настройка вычислительных узлов Linux
-Развертывание вычислительных узлов hello Linux с помощью hello того же шаблона развертывания, вы использовали toocreate hello головного узла.
+Развертывание вычислительных узлов Linux выполняется с помощью того же шаблона развертывания, который использовался для создания головного узла.
 
-Копирование файла hello **MyCluster.xml** из головного узла toohello локального компьютера, а также обновление hello **NodeCount** тег с hello число узлов, которое следует toodeploy (< = 20). Быть внимательны toohave достаточное количество доступных ядер Azure квоты, так как каждого экземпляра A9 будет занимать 16 ядер в подписке. Экземпляры A8 (8 ядер) можно использовать вместо A9, если требуется больше виртуальных машин в hello toouse же бюджет.
+Скопируйте файл **MyCluster.xml** с локального компьютера в головной узел и укажите для тега **NodeCount** число узлов, которые требуется развернуть (не более 20). Убедитесь, что в квотах Azure достаточно доступных ядер, так как для каждого экземпляра A9 в подписке используется 16 ядер. Если вы хотите увеличить число виртуальных машин в рамках того же бюджета, вместо A9 можно использовать экземпляры A8 (8 ядер).
 
-На головном узле hello скопируйте скрипты развертывания IaaS пакета HPC hello.
+В головном узле скопируйте сценарии развертывания IaaS из пакета HPC.
 
-Выполните следующие команды Azure PowerShell в командную строку hello.
+В командной строке с повышенными привилегиями выполните следующие команды Azure PowerShell:
 
-1. Запустите **Add-AzureAccount** tooconnect tooyour подписки Azure.
-2. Если у вас несколько подписок, запустите **Get-AzureSubscription** toolist их.
-3. Задать подписку по умолчанию, выполнив hello **xxxx Select-AzureSubscription - SubscriptionName-по умолчанию** команды.
-4. Запустите **.\New-HPCIaaSCluster.ps1 - ConfigFile MyCluster.xml** toostart развертывание Linux вычислительных узлов.
+1. Выполните командлет **Add-AzureAccount** , чтобы подключиться к подписке Azure.
+2. При наличии нескольких подписок выполните командлет **Get-AzureSubscription** , чтобы получить их список.
+3. Установите подписку по умолчанию, выполнив команду **Select-AzureSubscription -SubscriptionName xxxx -Default** .
+4. Выполните команду **.\New-HPCIaaSCluster.ps1 -ConfigFile MyCluster.xml**, чтобы запустить развертывание вычислительных узлов Linux.
    
    ![Развертывание головного узла][hndeploy]
 
-Откройте средство диспетчера кластеров HPC Pack hello. Через несколько минут вычислительные узлы Linux станут периодически появляться в списке вычислительных узлов кластера. Режимом hello классического развертывания ВМ IaaS создаются последовательно. Поэтому если важно hello количество узлов, получение все развертывания может занять значительное время.
+Откройте диспетчер кластера пакета HPC. Через несколько минут вычислительные узлы Linux станут периодически появляться в списке вычислительных узлов кластера. В режиме классического развертывания виртуальные машины IaaS создаются последовательно. Поэтому, если важно количество узлов, развертывание всех машин может занять значительное время.
 
 ![Узлы Linux в диспетчере кластера пакета HPC][clustermanager]
 
-Теперь, когда все узлы в кластере hello доступны и запущены, существуют параметры toomake дополнительную инфраструктуру.
+Теперь, когда все узлы работают в кластере, нужно настроить дополнительные параметры инфраструктуры.
 
 ## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Настройка общей папки Azure для узлов Windows и Linux
-Можно использовать скрипты toostore службы файлов Azure hello, пакеты приложений и файлов данных. Служба файлов Azure предоставляет возможности CIFS на базе хранилища BLOB-объектов Azure как постоянного хранилища. Имейте в виду, это не самым эффективным решением hello, но он hello один простой и не требует выделенных виртуальных машин.
+Службу файлов Azure можно использовать для хранения сценариев, пакетов приложений и файлов данных. Служба файлов Azure предоставляет возможности CIFS на базе хранилища BLOB-объектов Azure как постоянного хранилища. Это не самое масштабируемое решение, но оно самое простое и не требует выделенных виртуальных машин.
 
-Создать общий ресурс файла Azure в соответствии с инструкциями hello в статье hello [приступить к работе с хранилищем Windows Azure файл](../../../storage/files/storage-dotnet-how-to-use-files.md).
+Создайте общую папку Azure, следуя инструкциям в статье [Приступая к работе с хранилищем файлов Azure в Windows](../../../storage/files/storage-dotnet-how-to-use-files.md).
 
-Оставьте hello имя вашей учетной записи хранилища, как **saname**, имя общей папки hello как **sharename**и ключ учетной записи хранения hello как **sakey**.
+Оставьте **saname** в качестве имени учетной записи хранения, **sharename** — в качестве имени общей папки и **sakey** — в качестве ключа учетной записи хранения.
 
-### <a name="mount-hello-azure-file-share-on-hello-head-node"></a>Подключите hello Azure общей папки на головном узле hello
-Откройте окно командной строки с повышенными привилегиями и выполните следующие команды toostore hello и учетные данные в хранилище локального компьютера hello hello:
+### <a name="mount-the-azure-file-share-on-the-head-node"></a>Подключение общей папки Azure в головном узле
+Откройте командную строку с повышенными привилегиями и выполните команду, указанную ниже, чтобы сохранить учетные данные в локальном хранилище компьютера.
 
 ```
     cmdkey /add:<saname>.file.core.windows.net /user:<saname> /pass:<sakey>
 ```
 
-Затем toomount hello Azure общую папку, запустите:
+Затем, чтобы подключить общую папку Azure, выполните следующую команду:
 
 ```
     net use Z: \\<saname>.file.core.windows.net\<sharename> /persistent:yes
 ```
 
-### <a name="mount-hello-azure-file-share-on-linux-compute-nodes"></a>Подключите hello Azure общей папки на вычислительных узлах Linux
-Один полезным инструментом, который поставляется с пакетом HPC — средство clusrun hello. Это средство командной строки toorun hello, же команды можно использовать одновременно на нескольких вычислительных узлов. В нашем случае он использовал toomount hello Azure общую папку и ее сохранения toosurvive после перезагрузки.
-В командную строку на головном узле hello выполните следующие команды hello.
+### <a name="mount-the-azure-file-share-on-linux-compute-nodes"></a>Подключение общей папки Azure в вычислительных узлах Linux
+В пакете HPC содержится один полезный инструмент — средство clusrun. Это средство командной строки позволяет выполнить одну и ту же команду одновременно на нескольких вычислительных узлах. В нашем случае оно используется для подключения общей папки Azure и ее сохранения после перезагрузки.
+Выполните следующие команды в головном узле в командной строке с повышенными привилегиями.
 
-каталог подключения hello toocreate:
+Чтобы создать каталог подключения:
 
 ```
     clusrun /nodegroup:LinuxNodes mkdir -p /hpcdata
 ```
 
-toomount hello Azure общей папки:
+Чтобы подключить общую папку Azure:
 
 ```
     clusrun /nodegroup:LinuxNodes mount -t cifs //<saname>.file.core.windows.net/<sharename> /hpcdata -o vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777
 ```
 
-общий ресурс подключения hello toopersist:
+Чтобы сохранить общую папку подключения:
 
 ```
     clusrun /nodegroup:LinuxNodes "echo //<saname>.file.core.windows.net/<sharename> /hpcdata cifs vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777 >> /etc/fstab"
 ```
 
 ## <a name="install-star-ccm"></a>Установка STAR-CCM+
-Экземпляры виртуальной машины Azure A8 и A9 обеспечивают поддержку InfiniBand и возможности RDMA. драйверы ядра Hello, обеспечивающие эти возможности доступны для Windows Server 2012 R2, SUSE 12, CentOS версии 6.5 и CentOS 7.1 изображений в hello Azure Marketplace. Microsoft MPI и Intel MPI (выпуск 5.x) — это два MPI библиотеки hello, поддерживающие драйверы в Azure.
+Экземпляры виртуальной машины Azure A8 и A9 обеспечивают поддержку InfiniBand и возможности RDMA. Драйверы ядра, обеспечивающие эти возможности, доступны для образов Windows Server 2012 R2, SUSE 12, CentOS 6.5 и CentOS 7.1 в Azure Marketplace. Microsoft MPI и Intel MPI (выпуск 5.x) — это две библиотеки MPI, которые поддерживают эти драйверы в среде Azure.
 
 В состав пакета STAR-CCM+ CD-adapco (11.x и более поздней версии) входит библиотека Intel MPI версии 5.x, что обеспечивает поддержку InfiniBand для Azure.
 
-Получить hello Linux64 ЗВЕЗДА-CCM + пакета из hello [приложения adapco компакт-диска портал](https://steve.cd-adapco.com). В нашем случае мы использовали версию 11.02.010 в режиме смешанной точности.
+Скачайте пакет Linux64 STAR-CCM+ с [портала CD-adapco](https://steve.cd-adapco.com). В нашем случае мы использовали версию 11.02.010 в режиме смешанной точности.
 
-На головном узле hello в hello **/hpcdata** файла Azure совместного использования, создайте сценарий с именем **setupstarccm.sh** с hello после содержимого. Этот сценарий будет выполняться каждый tooset узел вычислений копирование ЗВЕЗДА-CCM + локально.
+На головном узле в общей папке Azure **/hpcdata** создайте сценарий оболочки **setupstarccm.sh** со следующим содержимым. Этот сценарий будет выполняться на каждом вычислительном узле для локальной настройки STAR-CCM+.
 
 #### <a name="sample-setupstarcmsh-script"></a>Пример сценария setupstarcm.sh
 ```
     #!/bin/bash
-    # setupstarcm.sh tooset up STAR-CCM+ locally
+    # setupstarcm.sh to set up STAR-CCM+ locally
 
-    # Create hello CD-adapco main directory
+    # Create the CD-adapco main directory
     mkdir -p /opt/CD-adapco
 
-    # Copy hello STAR-CCM package from hello file share toohello local directory
+    # Copy the STAR-CCM package from the file share to the local directory
     cp /hpcdata/StarCCM/STAR-CCM+11.02.010_01_linux-x86_64.tar.gz /opt/CD-adapco/
 
-    # Extract hello package
+    # Extract the package
     tar -xzf /opt/CD-adapco/STAR-CCM+11.02.010_01_linux-x86_64.tar.gz -C /opt/CD-adapco/
 
-    # Start a silent installation of STAR-CCM without hello FLEXlm component
+    # Start a silent installation of STAR-CCM without the FLEXlm component
     /opt/CD-adapco/starccm+_11.02.010/STAR-CCM+11.02.010_01_linux-x86_64-2.5_gnu4.8.bin -i silent -DCOMPUTE_NODE=true -DNODOC=true -DINSTALLFLEX=false
 
     # Update memory limits
     echo "*               hard    memlock         unlimited" >> /etc/security/limits.conf
     echo "*               soft    memlock         unlimited" >> /etc/security/limits.conf
 ```
-Теперь tooset копирование ЗВЕЗДА-CCM + в вашей системе Linux вычислительных узлов, откройте командную строку с повышенными привилегиями и выполните hello следующую команду:
+Чтобы настроить STAR-CCM+ на всех вычислительных узлах Linux, откройте командную строку с повышенными привилегиями и выполните следующую команду:
 
 ```
     clusrun /nodegroup:LinuxNodes bash /hpcdata/setupstarccm.sh
 ```
 
-Пока выполняется команда hello, hello ЦП можно отслеживать с помощью hello тепловой карты диспетчера кластеров служб. Через несколько минут все узлы будут настроены должным образом.
+Во время выполнения команды можно отслеживать загрузку ЦП на тепловой карте диспетчера кластеров. Через несколько минут все узлы будут настроены должным образом.
 
 ## <a name="run-star-ccm-jobs"></a>Запуск заданий STAR-CCM+
-Пакет HPC используется для его возможности планировщика заданий в порядке toorun ЗВЕЗДА-CCM + заданий. toodo таким образом, требуется hello поддержки несколько скриптов, используемых toostart hello задания и выполняемые ЗВЕЗДА-CCM +. Hello входных данных хранится на hello Azure общей папки, первый для простоты.
+Пакет HPC используется в качестве планировщика заданий для выполнения заданий STAR-CCM+. Для этого требуется обеспечить поддержку нескольких сценариев, которые используются для запуска задания и выполнения STAR-CCM+. Для упрощения входные данные хранятся в общей папке Azure.
 
-Следующий сценарий PowerShell Hello — используется tooqueue ЗВЕЗДЫ-CCM + задания. Он принимает три аргумента:
+Следующий сценарий PowerShell применяется для помещения задания STAR-CCM+ в очередь. Он принимает три аргумента:
 
-* Имя модели Hello
-* число Hello используется toobe узлов
-* Hello количество ядер на каждый узел, toobe используется
+* имя модели;
+* количество используемых узлов;
+* число используемых ядер на каждом узле.
 
-Поскольку ЗВЕЗДА-CCM + можно заполнить hello пропускной способности памяти, это обычно лучше toouse меньше ядра на вычислительные узлы и добавить новые узлы. Hello точное число ядер на узел будет зависеть от семейство процессоров hello и скорость взаимосвязь hello.
+Так как STAR-CCM+ может использовать всю пропускную способность памяти, как правило, лучше использовать меньше ядер на один вычислительный узел и добавлять новые узлы. Точное число ядер на каждый узел будет зависеть от семейства процессора и скорости взаимодействия.
 
-узлы Hello выделяются исключительно для задания hello и не может совместно использоваться другими заданиями. Hello задание не запускается как задание MPI напрямую. Hello **runstarccm.sh** запускает сценарий запуска MPI hello.
+Узлы выделяются исключительно для конкретного задания, и их не могут совместно использовать другие задания. Задание не запускается как задание MPI напрямую. Сценарий оболочки **runstarccm.sh** запустит средство запуска MPI.
 
-Hello входных данных модели и hello **runstarccm.sh** сценарий хранятся в hello **/hpcdata** общего ресурса, который был подключен ранее.
+Модель ввода и сценарий **runstarccm.sh** хранятся в общей папке **/hpcdata**, подключенной ранее.
 
-Файлы журналов именуются с ИД задания hello и хранятся в hello **/hpcdata папки**, вместе с hello ЗВЕЗДА-CCM + выходные файлы.
+Файлам журнала присваиваются имена с использованием идентификаторов заданий. Файлы журнала и выходные файлы STAR-CCM+ хранятся в **общей папке /hpcdata**.
 
 #### <a name="sample-submitstarccmjobps1-script"></a>Пример сценария SubmitStarccmJob.ps1
 ```
@@ -221,13 +221,13 @@ Hello входных данных модели и hello **runstarccm.sh** сце
     $nbNodes=$args[1]
 
     #---------------------------------------------------------------------------------------------------------
-    # Create a new job; this will give us hello job ID that's used tooidentify hello name of hello uploaded package in Azure
+    # Create a new job; this will give us the job ID that's used to identify the name of the uploaded package in Azure
     #
     $job = New-HpcJob -Name "$modelName $nbNodes $nbCoresPerNode" -Scheduler $scheduler -NumNodes $nbNodes -NodeGroups "LinuxNodes" -FailOnTaskFailure $true -Exclusive $true
     $jobId = [String]$job.Id
 
     #---------------------------------------------------------------------------------------------------------
-    # Submit hello job     
+    # Submit the job     
     $workdir =  "/hpcdata"
     $execName = "$nbCoresPerNode runner.java $modelName.sim"
 
@@ -242,10 +242,10 @@ Hello входных данных модели и hello **runstarccm.sh** сце
 ```
     #!/bin/bash
     echo "start"
-    # hello path of this script
+    # The path of this script
     SCRIPT_PATH="$( dirname "${BASH_SOURCE[0]}" )"
     echo ${SCRIPT_PATH}
-    # Set hello mpirun runtime environment
+    # Set the mpirun runtime environment
     export CDLMD_LICENSE_FILE=1999@flex.cd-adapco.com
 
     # mpirun command
@@ -256,11 +256,11 @@ Hello входных данных модели и hello **runstarccm.sh** сце
     COUNT=${#NODESCORES[@]}
     NBCORESPERNODE=$1
 
-    # Create hello hostfile file
+    # Create the hostfile file
     NODELIST_PATH=${SCRIPT_PATH}/hostfile_$$
     echo ${NODELIST_PATH}
 
-    # Get every node name and write into hello hostfile file
+    # Get every node name and write into the hostfile file
     I=1
     NBNODES=0
     while [ ${I} -lt ${COUNT} ]
@@ -271,7 +271,7 @@ Hello входных данных модели и hello **runstarccm.sh** сце
     done
     let "NBCORES=${NBNODES}*${NBCORESPERNODE}"
 
-    # Run STAR-CCM with hello hostfile argument
+    # Run STAR-CCM with the hostfile argument
     #  
     ${STARCCM} -np ${NBCORES} -machinefile ${NODELIST_PATH} \
         -power -podkey "<yourkey>" -rsh ssh \
@@ -284,11 +284,11 @@ Hello входных данных модели и hello **runstarccm.sh** сце
     exit ${RTNSTS}
 ```
 
-В рамках теста мы использовали маркер лицензии увеличения мощности по требованию. Для этого токена у вас есть tooset hello **$CDLMD_LICENSE_FILE** переменной среды слишком **1999@flex.cd-adapco.com**  и ключ hello в hello **- podkey** параметр hello командной строки .
+В рамках теста мы использовали маркер лицензии увеличения мощности по требованию. Для этого маркера переменной среды **$CDLMD_LICENSE_FILE** необходимо присвоить значение **1999@flex.cd-adapco.com**. Кроме того, нужно задать ключ в параметре командной строки **-podkey**.
 
-После некоторых инициализации hello сценарий извлекает--из hello **$CCP_NODES_CORES** переменные среды, HPC Pack — hello список узлов toobuild использует hostfile, который hello запуска MPI. Этот hostfile будет содержать список имен узлов вычислений, используемые для задания hello, по одному имени на строку hello.
+После инициализации сценарий извлечет из переменных среды **$CCP_NODES_CORES**, заданных в пакете HPC, список узлов для создания файла узла, используемого средством запуска MPI. Этот файл узла будет содержать список имен вычислительных узлов, используемых для задания (по одному имени в строке).
 
-Формат Hello **$CCP_NODES_CORES** имеет следующую структуру:
+Формат **$CCP_NODES_CORES** соответствует следующему шаблону:
 
 ```
 <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
@@ -296,28 +296,28 @@ Hello входных данных модели и hello **runstarccm.sh** сце
 
 Описание
 
-* `<Number of nodes>`— количество узлов, выделенных toothis задания hello.
-* `<Name of node_n_...>`— Имя каждого узла, выделенное задание toothis hello.
-* `<Cores of node_n_...>`— hello количество ядер на узле hello выделенной toothis задания.
+* `<Number of nodes>` — количество узлов, выделенных для этого задания.
+* `<Name of node_n_...>` — имя каждого узла, выделенного для этого задания.
+* `<Cores of node_n_...>` — количество ядер узла, выделенного для этого задания.
 
-Здравствуйте, количество ядер (**$NBCORES**) — это также вычисляемый на основе hello количество узлов (**$NBNODES**) и hello количество ядер на узел (передается в качестве параметра **$NBCORESPERNODE**).
+Число ядер (**$NBCORES**) рассчитывается на основе числа узлов (**$NBNODES**) и числа ядер на узел, заданного в параметре **$NBCORESPERNODE**.
 
-Для доступа к параметрам MPI hello, hello, которые используются с Intel MPI в Azure:
+Для Intel MPI в среде Azure используются следующие параметры MPI:
 
-* `-mpi intel`toospecify Intel MPI.
-* `-fabric UDAPL`команды toouse InfiniBand в Azure.
-* `-cpubind bandwidth,v`пропускная способность toooptimize для MPI с ЗВЕЗДА-CCM +.
-* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"`toomake Intel MPI работы с Azure InfiniBand и tooset hello необходимое количество ядер на узел.
-* `-batch`toostart ЗВЕЗДА-CCM + в пакетном режиме без пользовательского интерфейса.
+* `-mpi intel` для указания Intel MPI;
+* `-fabric UDAPL` для использования команд Azure InfiniBand;
+* `-cpubind bandwidth,v` для оптимизации пропускной способности для MPI со STAR-CCM+;
+* `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` для настройки работы Intel MPI с Azure InfiniBand и задания необходимого числа ядер на узел;
+* `-batch` для запуска STAR-CCM+ в пакетном режиме без пользовательского интерфейса.
 
-И, наконец toostart задания, убедитесь, что узлы доступны и запущены и находятся в оперативном режиме в диспетчере кластеров. В командной строке PowerShell выполните следующую команду:
+Наконец, чтобы запустить задание, убедитесь, что узлы работают и подключены в диспетчере кластера. В командной строке PowerShell выполните следующую команду:
 
 ```
     .\ SubmitStarccmJob.ps1 <model> <nbNodes> <nbCoresPerNode>
 ```
 
 ## <a name="stop-nodes"></a>Остановка узлов
-Позднее после завершения тестов, можно использовать следующие toostop команд HPC Pack PowerShell hello и запуска узлов:
+Чтобы останавливать и запускать узлы после завершения тестов, можно выполнить следующие команды PowerShell пакета HPC:
 
 ```
     Stop-HPCIaaSNode.ps1 -Name <prefix>-00*

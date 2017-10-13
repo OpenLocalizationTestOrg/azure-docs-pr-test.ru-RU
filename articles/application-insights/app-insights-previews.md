@@ -1,6 +1,6 @@
 ---
-title: "Параметры aaaSet предварительной версии Azure Application Insights | Документы Microsoft"
-description: "команда разработчиков Azure Application Insights Hello развертывает объединенные новые возможности. Можно задать какие новых функций, которые вы хотите toopreview в hello портал Azure."
+title: "Настройка параметров предварительной версии Azure Application Insights | Документация Майкрософт"
+description: "Команда разработчиков Azure Application Insights развертывает новые возможности. На портале Azure можно настроить новые возможности, для которых следует создать предварительные версии."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -11,25 +11,25 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/1/2017
+ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 04a1d763bd706a9cc050d72512a8ca405f980dc4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d3929698cb3f3520b838bcaf88da6dca0c93c806
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="preview-upcoming-changes-tooazure-application-insights"></a>Просмотреть Предстоящие изменения tooAzure Application Insights 
+# <a name="preview-upcoming-changes-to-azure-application-insights"></a>Предварительные версии будущих изменений Azure Application Insights 
 
-Для Application Insights часто выпускаются новые функции. Если вы хотите toosee предварительных версий этих улучшений, можно зарегистрироваться в колонке Предварительный просмотр Insights приложения hello.  команда разработчиков Hello доступны Предварительный просмотр новых возможностей в ограниченном объеме прежде чем освободить их tooall пользователей. 
+Для Application Insights часто выпускаются новые функции. Если вы хотите предварительные версии этих улучшений, можно зарегистрироваться в соответствующей колонке Application Insights.  Команда разработчиков дает доступ к ограниченной предварительной версии новых возможностей перед их выпуском для всех пользователей. 
 
-Hello на рисунке ниже показана как tooset предпочтениями предварительного просмотра.
+На следующем рисунке показан способ настройки параметров предварительной версии.
 
 ![колонка предварительной версии Application Insights](./media/app-insights-preview/preview.png)
 
 ## <a name="set-preferences"></a>Настройка параметров
 
-В колонке hello предварительного просмотра можно выбрать из hello следующие параметры для при появлении предварительного просмотра.
+В колонке предварительной версии можно выбрать следующие варианты отображения предварительного просмотра.
 
 - Всегда. Предварительные версии возможностей будут отображаться, как только они станут доступны.
 - Авто. Будут отображаться предварительные версии возможностей в соответствии с рекомендациями Майкрософт для вашей учетной записи. 

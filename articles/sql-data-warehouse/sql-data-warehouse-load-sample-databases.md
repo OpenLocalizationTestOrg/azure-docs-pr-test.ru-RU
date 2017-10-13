@@ -1,5 +1,5 @@
 ---
-title: "aaaLoad образца данных в хранилище данных SQL | Документы Microsoft"
+title: "Загрузка образца данных в хранилище данных SQL | Документация Майкрософт"
 description: "Загрузка образца данных в хранилище данных SQL"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,19 +15,19 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 3459c42f3aae51c27fd35db7874faf99e1e577e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>Загрузка образца данных в хранилище данных SQL
-Выполните эти простые действия tooload и запрос к базе данных Adventure Works образец hello. Сначала с помощью этих скриптов sqlcmd toorun SQL, что приведет к созданию таблиц и представлений. После создания таблицы bcp tooload данные будут использоваться в сценарии hello.  Если у вас еще нет sqlcmd и bcp установлена, перейдите по соответствующей ссылке слишком[установить bcp] [ install bcp] и слишком[установить sqlcmd][install sqlcmd].
+Выполните эти простые действия для загрузки примера базы данных Adventure Works и выполнения запроса к ней. Эти сценарии сначала используют sqlcmd для выполнения инструкций SQL, что приведет к созданию таблиц и представлений. После создания таблицы сценарии используют bcp для загрузки данных.  Если вы еще не установили sqlcmd и bcp, воспользуйтесь следующими ссылками для [установки bcp][install bcp] и [sqlcmd][install sqlcmd].
 
 ## <a name="load-sample-data"></a>Загрузка примера данных
-1. Загрузите hello [Adventure Works примеры сценариев для хранилища данных SQL] [ Adventure Works Sample Scripts for SQL Data Warehouse] ZIP-файл.
-2. Извлеките файлы hello из каталога tooa загруженный zip на локальном компьютере.
-3. Измените aw_create.bat hello извлечь файл и задайте следующие переменные, найденные в начале hello файла hello hello.  Быть убедиться, что tooleave без пробелов между hello «=» и параметром hello.  Ниже приведены примеры того, как могут выглядеть такие изменения.
+1. Скачайте ZIP-файл с [примерами сценариев Adventure Works для хранилища данных SQL][Adventure Works Sample Scripts for SQL Data Warehouse].
+2. Извлеките файлы из скачанного ZIP-файла в каталог на локальном компьютере.
+3. Измените извлеченный файл aw_create.bat и задайте следующие переменные в верхней его части:  Не забудьте, что между знаком = и параметром не должно быть пробелов.  Ниже приведены примеры того, как могут выглядеть такие изменения.
    
     ```
     server=mylogicalserver.database.windows.net
@@ -35,25 +35,25 @@ ms.lasthandoff: 10/06/2017
     password=Mydwpassw0rd
     database=mydwdatabase
     ```
-4. Запустите aw_create.bat изменить hello из командную строку Windows.  Убедитесь, что вы находитесь в каталоге hello, где был сохранен aw_create.bat вашей измененной версии.
+4. Запустите измененный файл aw_create.bat из командной строки Windows.  Убедитесь, что вы находитесь в том каталоге, куда была сохранена измененная версия aw_create.bat.
    Вот что делает этот сценарий:
    
    * удаляет все представления и таблицы Adventure Works, которые уже существуют в базе данных;
-   * Создание hello Adventure Works таблиц и представлений
+   * создает представления и таблицы Adventure Works;
    * загружает каждую таблицу Adventure Works с помощью bcp;
-   * Проверка hello количество строк для каждой таблицы Adventure Works
+   * проверяет количество строк для каждой таблицы Adventure Works;
    * собирает статистику по каждому столбцу для каждой таблицы Adventure Works.
 
 ## <a name="query-sample-data"></a>Запрос части данных для примера
-После загрузки некоторых демонстрационных данных в хранилище данных SQL можно быстро выполнить несколько запросов.  toorun запроса, подключите tooyour вновь созданные базы данных Adventure Works в хранилища данных SQL Azure с помощью Visual Studio и SSDT, как описано в hello [запроса с помощью Visual Studio] [ query with Visual Studio] документа.
+После загрузки некоторых демонстрационных данных в хранилище данных SQL можно быстро выполнить несколько запросов.  Для выполнения запроса подключитесь к недавно созданной базе данных Adventure Works в хранилище данных SQL Azure с помощью Visual Studio и SSDT, как описано в документе о [выполнении запроса с помощью Visual Studio][query with Visual Studio].
 
-Пример простого выберите tooget инструкции все сведения о hello hello сотрудников:
+Пример простого оператора select для получения всех сведений о сотрудниках:
 
 ```sql
 SELECT * FROM DimEmployee;
 ```
 
-Пример более сложный запрос с помощью конструкций, таких как toolook GROUP BY в hello Общая сумма всех продаж за каждый день.
+Пример более сложного запроса с использованием таких конструкций, как GROUP BY, для просмотра общей суммы всех продаж за каждый день:
 
 ```sql
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -62,7 +62,7 @@ GROUP BY OrderDateKey
 ORDER BY OrderDateKey;
 ```
 
-Пример инструкции SELECT с toofilter предложение WHERE out заказами до определенной даты.
+Пример оператора SELECT с выражением WHERE для фильтрации заказов, размещенных до определенной даты:
 
 ```
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -75,7 +75,7 @@ ORDER BY OrderDateKey;
 Хранилище данных SQL поддерживает почти все конструкции T-SQL, которые поддерживаются SQL Server.  Все различия описаны в нашей документации по [переносу кода][migrate code].
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы tootry вероятность некоторых запросов с образцами данных, узнать о возможностях слишком[разработки][develop], [загрузить][load], или [ Перенос] [ migrate] tooSQL хранилища данных.
+Теперь, когда имеется возможность выполнить некоторые запросы с демонстрационными данными, попробуйте осуществлять [разработку][develop], [загрузку][load] или [перенос][migrate] в хранилище данных SQL.
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "диск aaaExpand операционной системы на виртуальной Машине Linux с hello Azure CLI 1.0 | Документы Microsoft"
-description: "Узнайте, как tooexpand hello виртуального диска операционной системы (ОС) на виртуальной Машине Linux с помощью hello Azure CLI 1.0 и модели развертывания диспетчера ресурсов hello"
+title: "Расширение диска операционной системы на виртуальной машине Linux с помощью Azure CLI 1.0 | Документация Майкрософт"
+description: "Узнайте, как расширить виртуальный диск операционной системы на виртуальной машине Linux с использованием Azure CLI 1.0 и модели развертывания Resource Manager."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 0db78c0b86b48b2c5358611e11bb0b7ad781a559
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="expand-os-disk-on-a-linux-vm-using-hello-azure-cli-with-hello-azure-cli-10"></a>Расширить диск операционной системы на виртуальной Машине Linux с помощью hello Azure CLI с hello Azure CLI 1.0
-размер виртуального жесткого диска по умолчанию Hello hello операционной системы (ОС) обычно составляет 30 ГБ на виртуальной машине (VM) Linux в Azure. Вы можете [добавить диски данных](add-disk.md) tooprovide для дополнительного пространства хранилища, но вы также можете tooexpand hello ОС диска. В этой статье указаны как диск tooexpand hello ОС для ВМ Linux с помощью неуправляемых диски с hello Azure CLI 1.0.
+# <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Расширение дисков операционной системы на виртуальной машине Linux с помощью Azure CLI 1.0
+Как правило, размер виртуального жесткого диска по умолчанию для операционной системы на виртуальной машине Linux в Azure составляет 30 ГБ. Вы можете [добавить диски данных](add-disk.md), чтобы предоставить дополнительное место для хранения, а также расширить диск операционной системы. В этой статье подробно описано, как расширить диск ОС виртуальной машины Linux, использующей неуправляемые диски, с помощью Azure CLI 1.0.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello.
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки.
 
-- [Azure CLI 1.0](#prerequisites) — нашей CLI для hello классический и ресурса управления развертывания моделей (в этой статье)
-- [Azure CLI 2.0](expand-disks.md) -нашей нового поколения CLI для модели развертывания hello ресурсов управления
+- [Azure CLI 1.0](#prerequisites) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager (в этой статье).
+- [Azure CLI 2.0](expand-disks.md) — интерфейс командной строки следующего поколения для модели развертывания с помощью Resource Manager.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Требуется hello [последние Azure CLI 1.0](../../cli-install-nodejs.md) установлен и вход tooan [учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/) использование режима диспетчера ресурсов hello следующим образом:
+Вам потребуется установить [последнюю версию Azure CLI 1.0](../../cli-install-nodejs.md) и войти в [учетную запись Azure](https://azure.microsoft.com/pricing/free-trial/) в режиме Resource Manager, как показано ниже:
 
 ```azurecli
 azure config mode arm
 ```
 
-В hello следующим примерам, замените имена параметров примере собственные значения. Примеры имен параметров: *myResourceGroup* и *myVM*.
+В следующих примерах замените имена параметров собственными значениями. Примеры имен параметров: *myResourceGroup* и *myVM*.
 
 ## <a name="expand-os-disk"></a>Расширение диска операционной системы
 
-1. Невозможно выполнить операции для виртуальных жестких дисков с hello виртуальной Машины под управлением. Hello примере останавливается и освобождает Виртуальную машину с именем hello *myVM* в группе ресурсов hello с именем *myResourceGroup*:
+1. Нельзя выполнять операции с виртуальными жесткими дисками на работающей виртуальной машине. В следующем примере завершается работа и отменяется распределение виртуальной машины *myVM*, входящей в группу ресурсов с именем *myResourceGroup*.
 
     ```azurecli
     azure vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > `azure vm stop`не освобождает hello вычислительных ресурсов. toorelease вычислительных ресурсов, используйте `azure vm deallocate`. Hello виртуальная машина должна быть освобождена tooexpand hello виртуального жесткого диска.
+    > Операция `azure vm stop` не освобождает вычислительные ресурсы. Чтобы освободить вычислительные ресурсы, используйте `azure vm deallocate`. Для расширения виртуального жесткого диска следует отменить распределение виртуальной машины.
 
-2. Изменить размер hello hello неуправляемого диска операционной системы, выполнив hello `azure vm set` команды. Следующий пример обновляет Hello hello виртуальной Машины с именем *myVM* в группе ресурсов hello с именем *myResourceGroup* toobe *50* ГБ:
+2. Обновите размер неуправляемого диска ОС, используя команду `azure vm set`. В следующем примере выполняется обновление виртуальной машины *myVM*, входящей в группу ресурсов с именем *myResourceGroup*, до *50* ГБ.
 
     ```azurecli
     azure vm set \
@@ -64,7 +64,7 @@ azure config mode arm
     azure vm start --resource-group myResourceGroup --name myVM
     ```
 
-4. Tooyour SSH виртуальных Машин с соответствующими учетными данными hello. диск ОС hello tooverify был изменен, используйте `df -h`. Hello следующий пример выходных данных показан основной раздел hello (*sda1/dev/*) теперь составляет 50 ГБ:
+4. Подключитесь к виртуальной машине по протоколу SSH, используя соответствующие учетные данные. Чтобы проверить, изменился ли размер диска операционной системы, используйте `df -h`. В следующем примере выходных данных показано, что теперь размер основного раздела (*/dev/sda1*) составляет 50 ГБ:
 
     ```bash
     Filesystem      Size  Used Avail Use% Mounted on
@@ -74,4 +74,4 @@ azure config mode arm
     ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если требуется дополнительное хранилище, вы также [добавить tooa дисков данных виртуальной Машины с Linux](add-disk.md). Дополнительные сведения о шифровании диска см. в разделе [шифрование дисков на виртуальной Машине Linux с помощью hello Azure CLI](encrypt-disks.md).
+Если вам требуется дополнительное место для хранения, можно также [добавить диски данных в виртуальную машину Linux](add-disk.md). Дополнительные сведения о шифровании диска см. в статье [Encrypt disks on a Linux VM using the Azure CLI](encrypt-disks.md) (Шифрование дисков на виртуальной машине Linux с помощью Azure CLI).

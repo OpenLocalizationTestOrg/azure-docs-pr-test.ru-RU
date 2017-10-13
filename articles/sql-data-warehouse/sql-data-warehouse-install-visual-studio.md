@@ -1,5 +1,5 @@
 ---
-title: "aaaInstall Visual Studio и SSDT для хранилища данных SQL | Документы Microsoft"
+title: "Установка Visual Studio и SSDT для хранилища данных SQL | Документация Майкрософт"
 description: "Установка Visual Studio и SQL Server Data Tools (SSDT) для хранилища данных SQL Azure."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 03/30/2017
 ms.author: anvang;barbkess
-ms.openlocfilehash: cf49c13d5cab598ed127f5702c04168b62ede0dc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7023b78c241a7bc8014276cd0bfa455165b42cc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>Установка Visual Studio и SSDT для хранилища данных SQL
-toodevelop приложений для хранилища данных SQL, мы рекомендуем использовать hello самую последнюю версию Visual Studio с последней версией hello из SQL Server Data Tools (SSDT).  Также для обратной совместимости поддерживается Visual Studio 2013 Update 5 с SSDT.  
+При разработке приложений для хранилища данных SQL мы рекомендуем использовать последнюю версию Visual Studio с последней версией SQL Server Data Tools (SSDT).  Также для обратной совместимости поддерживается Visual Studio 2013 Update 5 с SSDT.  
 
-С помощью Visual Studio с помощью SSDT позволит вам toouse hello обозреватель объектов SQL Server toovisually просмотра таблиц, представлений, хранимых процедур и намного больше объектов в хранилище данных SQL, а также для выполнения запросов.
+С помощью Visual Studio с SSDT вы сможете использовать обозреватель объектов SQL Server для визуального исследования таблиц, представлений, хранимых процедур и многих других объектов в хранилище данных SQL, а также выполнения запросов.
 
 > [!NOTE]
 > Хранилище данных SQL пока не поддерживает проекты базы данных Visual Studio.  Эта функция будет добавлена в одной из следующих версий.
@@ -32,21 +32,21 @@ toodevelop приложений для хранилища данных SQL, мы
 > 
 
 ## <a name="step-1-install-visual-studio"></a>Шаг 1. Установка Visual Studio
-Выполните эти ссылки toodownload и установите Visual Studio. Если у вас уже есть Visual Studio 2013 или более поздней версии, можно пропустить tooStep 2, установите SSDT.
+Скачайте и установите Visual Studio, используя приведенные ниже ссылки. Если приложение Visual Studio 2013 или его более поздняя версия уже установлена, можно перейти к шагу 2 и установить SSDT.
 
 1. [Скачайте Visual Studio][].
-2. Выполните hello [установка Visual Studio] [ Installing Visual Studio] руководство по на сайте MSDN и выбрать конфигурации по умолчанию hello.
+2. Выполните установку, следуя инструкциям по [установке Visual Studio][Installing Visual Studio] с сайта MSDN, а затем выберите настройки по умолчанию.
 
 ## <a name="step-2-install-ssdt"></a>Шаг 2. Установка SSDT
-tooinstall SSDT для Visual Studio просто проверить наличие обновлений SSDT из среды Visual Studio, выполните следующие действия.
+Чтобы установить SSDT для Visual Studio, проверьте наличие обновления SSDT в Visual Studio, выполнив следующие действия.
 
 1. В Visual Studio щелкните **Сервис** / **Расширения и обновления…** / **Обновления**
 2. Выберите **Обновления продукта** и найдите элемент **Обновление Microsoft SQL Server для средств работы с базами данных**.
 
-Если обновление не установлено, то должен иметь hello последняя версия.  tooconfirm SSDT установлен, щелкните **справки** / **о Microsoft Visual Studio** и найдите в списке hello SQL Server Data Tools.  Последняя версия SSDT Hello — 14.0.60525.0.  Если параметр tooinstall hello не доступен из Visual Studio, либо можно посетить hello [загрузки SSDT] [ SSDT Download] toodownload и вручную установить SSDT.
+Если обновление не найдено, у вас установлена последняя версия.  Чтобы убедиться, что компонент SSDT установлен, выберите **Справка** / **О Microsoft Visual Studio** и найдите в списке SQL Server Data Tools.  Последняя версия SSDT: 14.0.60525.0.  Если команда установки недоступна в Visual Studio, также можно посетить страницу [Скачать SQL Server Data Tools (SSDT)][SSDT Download], чтобы скачать и установить SSDT вручную.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда hello последней версии SSDT вы готовы слишком[подключения] [ connect] tooyour хранилище данных SQL.
+Теперь, когда у вас установлена последняя версия SSDT, можно [подключиться][connect] к хранилищу данных SQL.
 
 <!--Anchors-->
 

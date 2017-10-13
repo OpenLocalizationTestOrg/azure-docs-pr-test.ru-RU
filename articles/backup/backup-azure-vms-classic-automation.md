@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy и управление резервным копированием для виртуальных машин Azure с помощью PowerShell | Документы Microsoft"
-description: "Узнайте, как toodeploy и управление резервным копированием Azure с помощью PowerShell."
+title: "Развертывание архивации виртуальных машин Azure и управление ею с помощью PowerShell | Документация Майкрософт"
+description: "Узнайте о том, как развернуть службу архивации Azure и управлять ею с помощью PowerShell."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 8/2/2017
 ms.author: markgal;trinadhk;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3ecd3f94c5e3e8fc8018e8786302edd4847744b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5f0f06adb8177ce2d17aa0b40666470279c04e22
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azurermbackup-cmdlets-tooback-up-virtual-machines"></a>Использовать tooback командлеты AzureRM.Backup копирование виртуальных машин
+# <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>Архивация виртуальных машин с помощью командлетов AzureRM.Backup
 > [!div class="op_single_selector"]
 > * [Диспетчер ресурсов](backup-azure-vms-automation.md)
 > * [Классический](backup-azure-vms-classic-automation.md)
 >
 >
 
-В этой статье показано, как toouse Azure PowerShell для резервного копирования и восстановления виртуальных машин Azure. В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: модель Resource Manager и классическая модель. В этой статье описан с помощью tooback модели развертывания классический hello копирование данных tooa резервное хранилище. Если вы не создали резервное хранилище в вашей подписке, см. раздел hello диспетчера ресурсов версию этой статьи [tooback AzureRM.RecoveryServices.Backup используйте командлеты копирование виртуальных машин](backup-azure-vms-automation.md). Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.
+В этой статье объясняется, как использовать Azure PowerShell для архивации и восстановления виртуальных машин Azure. В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: модель Resource Manager и классическая модель. В этой статье описывается архивация данных в резервное хранилище с использованием классической модели развертывания. Если вы не создали резервное хранилище в своей подписке, см. версию этого руководства для диспетчера ресурсов, [Архивация виртуальных машин с помощью командлетов AzureRM.RecoveryServices.Backup](backup-azure-vms-automation.md). Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.
 
 > [!IMPORTANT]
-> Теперь можно обновить вашими хранилищами служб tooRecovery хранилища резервной копии. Дополнительные сведения см. в статье hello [обновление tooa хранилища резервной копии, в хранилище служб восстановления](backup-azure-upgrade-backup-to-recovery-services.md). Корпорация Майкрософт рекомендует tooupgrade вашей резервных хранилищ tooRecovery хранилищами служб.<br/> После 15 октября 2017 г. нельзя использовать PowerShell toocreate резервное копирование хранилищ. **К 1 ноября 2017 года**:
->- Все оставшиеся хранилища резервной копии будет автоматически обновленные tooRecovery хранилищами служб.
->- Вы не будет возможности tooaccess данные резервной копии hello классического портала. Вместо этого используйте hello Azure портала tooaccess резервного копирования данных в хранилищах службы восстановления.
+> Теперь вы можете обновить свои резервные хранилища до хранилищ служб восстановления. См. дополнительные сведения об [обновлении резервного хранилища до хранилища служб восстановления](backup-azure-upgrade-backup-to-recovery-services.md). Корпорация Майкрософт рекомендует обновить резервные хранилища до хранилищ служб восстановления.<br/> После 15 октября 2017 года вы не сможете использовать PowerShell для создания резервных хранилищ. **К 1 ноября 2017 года**:
+>- Все остальные резервные хранилища будут автоматически обновлены до хранилищ служб восстановления.
+>- Вы не сможете получить доступ к данным резервных копий на классическом портале. Вместо этого для доступа к данным резервных копий в хранилищах служб восстановления используйте портал Azure.
 >
 
 ## <a name="concepts"></a>Основные понятия
-Эта статья содержит сведения о конкретных toohello командлеты PowerShell tooback копии виртуальных машин. Чтобы изучить вводные сведения о защите виртуальных машин Azure, ознакомьтесь с разделом [Планирование инфраструктуры резервного копирования виртуальных машин в Azure](backup-azure-vms-introduction.md).
+В этой статье содержатся сведения о командлетах PowerShell, используемых для архивации виртуальных машин. Чтобы изучить вводные сведения о защите виртуальных машин Azure, ознакомьтесь с разделом [Планирование инфраструктуры резервного копирования виртуальных машин в Azure](backup-azure-vms-introduction.md).
 
 > [!NOTE]
-> Прежде чем начать, познакомьтесь hello [необходимые компоненты](backup-azure-vms-prepare.md) необходимые toowork с резервного копирования Azure и hello [ограничения](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm) из текущего решения резервного копирования hello виртуальной Машины.
+> Перед началом работы изучите [предварительные требования](backup-azure-vms-prepare.md) для работы со службой архивации Azure и [ограничения](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm) текущего решения для архивации виртуальных машин.
 >
 >
 
-toouse PowerShell, по сути, принимают момент иерархии hello toounderstand объектов и откуда toostart.
+Чтобы эффективно использовать PowerShell, необходимо понимать иерархию объектов и знать, с чего начать.
 
 ![Иерархия объектов](./media/backup-azure-vms-classic-automation/object-hierarchy.png)
 
-Hello два самых важных потока включения защиты для виртуальной Машины, а восстановление данных из точки восстановления. Hello посвящена эта статья является toohelp, вы становитесь детальное представление о работе с tooenable командлеты PowerShell hello эти два сценария.
+Две самые важные процедуры — это обеспечение защиты виртуальной машины и восстановление данных из точки восстановления. Эта статья поможет вам приобрести опыт в работе с командлетами PowerShell для выполнения этих двух сценариев.
 
 ## <a name="setup-and-registration"></a>Настройка и регистрация
-toobegin:
+Чтобы начать работу, сделайте следующее:
 
-1. [Скачайте последнюю версию PowerShell](https://github.com/Azure/azure-powershell/releases) (минимальная требуемая версия — 1.0.0)
-2. Находите hello доступных командлетов Azure PowerShell резервного копирования с помощью hello следующую команду:
+1. [Скачайте последнюю версию PowerShell](https://github.com/Azure/azure-powershell/releases) (минимальная требуемая версия: 1.0.0).
+2. Чтобы получить список доступных командлетов PowerShell для службы архивации Azure, введите следующую команду:
 
 ```
 PS C:\> Get-Command *azurermbackup*
@@ -87,35 +87,35 @@ Cmdlet          Unregister-AzureRmBackupContainer                  1.0.1      Az
 Cmdlet          Wait-AzureRmBackupJob                              1.0.1      AzureRM.Backup
 ```
 
-Hello следующие программы установки и регистрации задачи можно автоматизировать с помощью PowerShell:
+С помощью PowerShell можно автоматизировать указанные ниже задачи по настройке и регистрации.
 
 * создать хранилище архивации;
-* Регистрация виртуальных машин hello hello службы архивации Azure
+* Регистрация виртуальной машины в службе архивации Azure
 
 ### <a name="create-a-backup-vault"></a>создать хранилище архивации;
 > [!WARNING]
-> Для клиентов, использующих Azure Backup для hello первый раз необходимо использовать с вашей подпиской поставщика toobe tooregister hello Azure Backup. Это можно сделать, выполнив следующую команду hello: Register AzureRmResourceProvider - ProviderNamespace «Microsoft.Backup»
+> Для клиентов, использующих службу архивации Azure впервые, необходимо зарегистрировать поставщика службы архивации для использования с вашей подпиской. Для этого выполните следующую команду: Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
 >
 >
 
-Можно создать новое хранилище резервных копий с помощью hello **New AzureRmBackupVault** командлета. резервное хранилище Hello является ресурс ARM, поэтому вам необходимо tooplace его в группе ресурсов. В консоли Azure PowerShell с повышенными привилегиями выполните hello, следующие команды:
+Вы можете создать новое хранилище службы архивации с помощью командлета **New-AzureRMBackupVault** . Хранилище архивов представляет собой ресурс ARM, поэтому вам потребуется разместить его в группе ресурсов. В консоли Azure PowerShell с повышенными привилегиями выполните следующие команды:
 
 ```
 PS C:\> New-AzureRmResourceGroup –Name “test-rg” –Location “West US”
 PS C:\> $backupvault = New-AzureRmBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
 ```
 
-Можно получить список всех резервных хранилищ hello в данной подписке с помощью hello **Get AzureRmBackupVault** командлета.
+Чтобы получить список всех хранилищ службы архивации в заданной подписке, используйте командлет **Get-AzureRmBackupVault** .
 
 > [!NOTE]
-> — Это удобный toostore hello резервного хранилища объект в переменную. Hello объекта хранилища, необходимое в качестве входных данных для многих командлеты службы архивации Azure.
+> Объект хранилища службы архивации удобно хранить в переменной. Объект хранилища используется в качестве входных данных для многих командлетов службы архивации Azure.
 >
 >
 
-### <a name="registering-hello-vms"></a>Регистрация виртуальных машин hello
-Hello первым шагом к настройке резервного копирования с помощью службы архивации Azure является tooregister компьютер или ВМ с Azure резервного хранилища. Hello **AzureRmBackupContainer регистра** командлет принимает входные данные для hello виртуальной машины Azure IaaS и регистрирует его с указанным хранилищем hello. Операция register Hello связывает hello виртуальной машины Azure с резервным хранилищем hello и отслеживает hello ВМ жизненного цикла резервного копирования hello.
+### <a name="registering-the-vms"></a>Регистрация виртуальных машин
+Чтобы настроить резервное копирование с помощью службы архивации Azure, сначала зарегистрируйте свой компьютер или виртуальную машину в хранилище службы архивации Azure. Командлет **Register-AzureRmBackupContainer** принимает входные данные виртуальной машины Azure IaaS и регистрирует ее в указанном хранилище. Операция регистрации связывает виртуальную машину Azure с хранилищем службы архивации и отслеживает виртуальную машину на протяжении всего цикла резервного копирования.
 
-Регистрация ВМ с hello службы архивации Azure создает объект верхнего уровня контейнера. Контейнер обычно содержит несколько элементов, которые можно архивировать, но в случае hello виртуальных машин будет только один элемент резервного копирования для контейнера hello.
+Во время регистрации виртуальной машины в службе архивации Azure создается объект контейнера верхнего уровня. Контейнер обычно содержит несколько элементов, которые можно архивировать, но контейнер для виртуальной машины содержит только один элемент для резервного копирования.
 
 ```
 PS C:\> $registerjob = Register-AzureRmBackupContainer -Vault $backupvault -Name "testvm" -ServiceName "testvm"
@@ -123,7 +123,7 @@ PS C:\> $registerjob = Register-AzureRmBackupContainer -Vault $backupvault -Name
 
 ## <a name="backup-azure-vms"></a>Виртуальные машины службы архивации Azure
 ### <a name="create-a-protection-policy"></a>Создание политики защиты
-Это не обязательное toocreate новую резервную копию toostart защиты политики виртуальных машин. хранилище Hello поставляется с «политика по умолчанию», можно использовать tooquickly включить защиту и затем hello правой сведения изменены позже. Список политик hello, доступных в хранилище hello можно получить с помощью hello **Get AzureRmBackupProtectionPolicy** командлета:
+Чтобы начать резервное копирование виртуальных машин, создавать новую политику защиты не обязательно. Хранилище поставляется с "политикой по умолчанию", которую можно использовать для быстрого включения защиты. Позднее в эту политику можно внести сведения о правах. Список доступных в хранилище политик можно получить, используя командлет **Get-AzureRmBackupProtectionPolicy**:
 
 ```
 PS C:\> Get-AzureRmBackupProtectionPolicy -Vault $backupvault
@@ -134,13 +134,13 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 ```
 
 > [!NOTE]
-> часовой пояс Hello поля BackupTime hello в PowerShell — в формате UTC. Тем не менее при отображении hello время резервного копирования в hello портал Azure, часовой пояс hello является выровненных tooyour local system вместе со смещением hello UTC.
+> Часовой пояс поля BackupTime в PowerShell — UTC. Однако при отображении времени резервного копирования на портале Azure часовой пояс выравнивается с локальной системой вместо со смещением от UTC.
 >
 >
 
-Политика резервного копирования связана по крайней мере с одной политикой хранения. Политика хранения Hello определяет, как долго точки восстановления хранится в службе архивации Azure. Hello **New AzureRmBackupRetentionPolicy** командлет создает объекты PowerShell, которые содержат сведения о политике хранения. Эти объекты политики хранения используются как входные данные toohello *New AzureRmBackupProtectionPolicy* командлета, или непосредственно с hello *Enable AzureRmBackupProtection* командлета.
+Политика резервного копирования связана по крайней мере с одной политикой хранения. Политика хранения определяет продолжительность хранения точки восстановления в службе архивации Azure. Командлет **New-AzureRmBackupRetentionPolicy** создает объекты PowerShell, в которых содержатся сведения о политике хранения. Эти объекты политики хранения используются в качестве входных данных для командлета *New-AzureRmBackupProtectionPolicy* или используются непосредственно с командлетом *Enable-AzureRmBackupProtection*.
 
-Политики резервного копирования определяет, когда и как часто hello выполняется резервное копирование элемента. Hello **New AzureRmBackupProtectionPolicy** командлет создает объект PowerShell, который содержит сведения о политике резервного копирования. Hello политику резервного копирования используется в качестве входного toohello *Enable AzureRmBackupProtection* командлета.
+Политика резервного копирования определяет время и частоту резервного копирования элемента. Командлет **New-AzureRmBackupProtectionPolicy** создает объект PowerShell, в котором содержатся сведения о политике архивации. Политика архивации используется в качестве входных данных для командлета *Enable-AzureRmBackupProtection* .
 
 ```
 PS C:\> $Daily = New-AzureRmBackupRetentionPolicyObject -DailyRetention -Retention 30
@@ -152,14 +152,14 @@ DailyBackup01             AzureVM            Daily              01-Sep-15 3:30:0
 ```
 
 ### <a name="enable-protection"></a>Включить защиту
-Включение защиты включает в себя два объекта - hello элемента и hello политики и оба toohello toobelong необходимость же хранилища. После hello политики связан с элементом hello, рабочий процесс резервного копирования hello включится на определенное расписание hello.
+Защита включается для двух объектов: элемента и политики, оба объекта должны принадлежать одному хранилищу. После того как политика сопоставится с элементом, рабочий процесс резервного копирования будет срабатывать по определенному расписанию.
 
 ```
 PS C:\> Get-AzureRmBackupContainer -Type AzureVM -Status Registered -Vault $backupvault | Get-AzureRmBackupItem | Enable-AzureRmBackupProtection -Policy $newpolicy
 ```
 
 ### <a name="initial-backup"></a>Начальное резервное копирование
-расписание резервного копирования Hello позаботится сделать hello полной первоначальной копии элемента hello и добавочного копирования hello для hello последующие резервные копии. Однако если требуется tooforce hello начальной резервной копии toohappen в определенное время или даже немедленно используйте hello **AzureRmBackupItem резервного копирования** командлета:
+Расписание резервного копирования предполагает создание полной начальной копии элемента и добавочное копирование последующих резервных копий. Если вы хотите, чтобы начальная архивация была выполнена в определенное время или даже немедленно, то используйте командлет **Backup-AzureRmBackupItem** .
 
 ```
 PS C:\> $container = Get-AzureRmBackupContainer -Vault $backupvault -Type AzureVM -Name "testvm"
@@ -172,14 +172,14 @@ testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01
 ```
 
 > [!NOTE]
-> Здравствуйте, часовой пояс hello StartTime и EndTime поля, показанные в PowerShell — в формате UTC. При отображении hello аналогичные сведения в hello портал Azure, часовой пояс hello то, выровненные tooyour локальные системные часы.
+> Часовой пояс для полей StartTime и EndTime, отображаемый в PowerShell, — UTC. Однако при отображении подобной информации на портале Azure часовой пояс выравнивается с часами локальной системы.
 >
 >
 
 ### <a name="monitoring-a-backup-job"></a>Наблюдение за выполнением задания резервного копирования
-Большинство длительных операций службы архивации Azure моделируются в виде задания. Это позволяет легко tootrack выполняется без необходимости tookeep hello Azure откройте портал в любое время.
+Большинство длительных операций службы архивации Azure моделируются в виде задания. Это упрощает отслеживание хода выполнения, при этом вам не нужно все время держать открытым портал Azure.
 
-Последнее состояние tooget hello выполняющиеся задания, используйте hello **Get AzureRmBackupJob** командлета.
+Чтобы получить последнее состояние выполняющегося задания, используйте командлет **Get-AzureRmBackupJob** .
 
 ```
 PS C:\> $joblist = Get-AzureRmBackupJob -Vault $backupvault -Status InProgress
@@ -190,7 +190,7 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01 12:00:00 AM
 ```
 
-Вместо опроса эти задания для завершения — то есть ненужные, дополнительный код - это проще hello toouse **AzureRmBackupJob ожидания** командлета. При использовании в скрипте hello командлет приостанавливает hello выполнения до завершения задания hello или hello указано, что достигнуто значение тайм-аута.
+Вместо опроса этих заданий о ходе их выполнения, который требует дополнительного кода, проще использовать командлет **Wait-AzureRmBackupJob** . Если командлет используется в сценарии, он приостанавливает выполнение сценария до завершения задания или до достижения конкретного значения времени ожидания.
 
 ```
 PS C:\> Wait-AzureRmBackupJob -Job $joblist[0] -Timeout 43200
@@ -198,17 +198,17 @@ PS C:\> Wait-AzureRmBackupJob -Job $joblist[0] -Timeout 43200
 
 
 ## <a name="restore-an-azure-vm"></a>Восстановление виртуальной машины Azure
-В порядке toorestore резервных копий данных необходимо tooidentify hello архивных элементов и точки восстановления hello, содержащий данные на момент hello. Эта информация является tooinitiate командлет предоставленного toohello восстановление AzureRmBackupItem восстановления данных из учетной записи клиента toohello hello хранилища.
+Чтобы восстановить данные резервной копии, необходимо определить архивный элемент и точку восстановления, которая содержит данные на определенный момент времени. Эти сведения предоставляются командлету AzureRmBackupItem, чтобы инициировать восстановление данных из хранилища в учетную запись клиента.
 
-### <a name="select-hello-vm"></a>Выберите hello виртуальной Машины
-tooget hello PowerShell объект, определяющий Здравствуйте элемент право резервного копирования, вы должны toostart из hello контейнера в хранилище hello и постепенно вниз по иерархии объектов. tooselect hello контейнера, представляющий hello виртуальной Машины, используйте hello **Get AzureRmBackupContainer** командлета и передать этот toohello **Get AzureRmBackupItem** командлета.
+### <a name="select-the-vm"></a>Выбор виртуальной машины.
+Чтобы получить объект PowerShell, определяющий правильный архивный элемент, необходимо начать с контейнера в хранилище и пройти постепенно вниз по иерархии объектов. Чтобы выбрать контейнер, который представляет виртуальную машину, используйте командлет **Get-AzureRmBackupContainer** и передайте найденный контейнер в командлет **Get-AzureRmBackupItem**.
 
 ```
 PS C:\> $backupitem = Get-AzureRmBackupContainer -Vault $backupvault -Type AzureVM -name "testvm" | Get-AzureRmBackupItem
 ```
 
 ### <a name="choose-a-recovery-point"></a>Выбор точки восстановления
-Теперь можно получить список всех точек восстановления hello hello резервное копирование элемента с помощью hello **Get AzureRmBackupRecoveryPoint** командлет и выберите toorestore точки восстановления hello. Обычно пользователи выбирается hello последней *AppConsistent* указывают в списке hello.
+Теперь можно получить список всех точек восстановления для архивного элемента с помощью командлета **Get-AzureRmBackupRecoveryPoint** и выбрать точку восстановления. Обычно пользователи выбирают самую последнюю точку *AppConsistent* в списке.
 
 ```
 PS C:\> $rp =  Get-AzureRmBackupRecoveryPoint -Item $backupitem
@@ -219,13 +219,13 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 15273496567119     AppConsistent      01-Sep-15 12:27:38 PM  iaasvmcontainer;testvm;testv...
 ```
 
-переменная приветствия ```$rp``` является массивом точек восстановления для hello выбран элемент резервного копирования, сортируются в обратном порядке времени — hello последняя точка восстановления находится по индексу 0. Используйте обычный массив PowerShell индексирования точки восстановления toopick hello. Например: ```$rp[0]``` выберет hello последней точки восстановления.
+Переменная ```$rp``` — массив точек восстановления для выбранного архивного элемента, отсортированный по времени в обратном порядке, — последняя точка восстановления имеет индекс 0. Используйте стандартное индексирование массива PowerShell для выбора точки восстановления. Например: ```$rp[0]``` выбирает последнюю точку восстановления.
 
 ### <a name="restoring-disks"></a>Восстановление дисков
-Отсутствует ключевое различие между операциями восстановления hello сделать hello портал Azure и Azure PowerShell. С помощью PowerShell операция восстановления hello останавливается на восстановление из точки восстановления hello hello диски и сведения о конфигурации. Она не создает виртуальную машину.
+Операции восстановления, выполняемые на портале Azure и с помощью Azure PowerShell, существенно отличаются. При использовании PowerShell операция восстановления прекращается на восстановлении дисков и сведений о конфигурации из точки восстановления. Она не создает виртуальную машину.
 
 > [!WARNING]
-> Hello AzureRmBackupItem восстановления не создает виртуальную Машину. Восстанавливает только диски hello toohello указана учетная запись хранения. Это не является hello такое же поведение, будет наблюдаться в hello портал Azure.
+> Командлет Restore-AzureRmBackupItem не создает виртуальную машину. Он только восстанавливает диски в указанную учетную запись хранения. На портале Azure операция восстановления выполняется иначе.
 >
 >
 
@@ -238,15 +238,15 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Restore         InProgress      01-Sep-15 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-Можно получить сведения hello hello операции восстановления, используя hello **Get AzureRmBackupJobDetails** командлета, после завершения задания восстановления hello. Hello *ErrorDetails* свойство будет hello сведения о необходимости toorebuild hello виртуальной Машины.
+Когда задание восстановления будет выполнено, вы сможете получить сведения об операции восстановления с помощью командлета **Get-AzureRmBackupJobDetails** . Свойство *ErrorDetails* будет содержать сведения, необходимые для повторного создания виртуальной машины.
 
 ```
 PS C:\> $restorejob = Get-AzureRmBackupJob -Job $restorejob
 PS C:\> $details = Get-AzureRmBackupJobDetails -Job $restorejob
 ```
 
-### <a name="build-hello-vm"></a>Построение hello виртуальной Машины
-Построение hello виртуальной Машины из hello восстановить диски можно сделать с помощью старых командлетов Azure Service Management PowerShell hello, hello новых шаблонов диспетчера ресурсов Azure, или даже при использовании hello портал Azure. В краткий пример, будет показано, как tooget существует, с помощью командлетов для управления службой Azure hello.
+### <a name="build-the-vm"></a>Сборка виртуальной машины
+Вы можете собрать виртуальную машину из восстановленных дисков с помощью старых командлетов PowerShell управления службами Azure, новых шаблонов диспетчера ресурсов Azure или даже с помощью портала Azure. В кратком примере мы покажем, как это сделать с помощью командлетов управления службами Azure.
 
 ```
 $properties  = $details.Properties
@@ -289,15 +289,15 @@ if (!($dds -eq $null))
 New-AzureVM -ServiceName "panbhasample" -Location "SouthEast Asia" -VM $vm
 ```
 
-Дополнительные сведения о том, как toobuild ВМ с hello восстановления дисков, узнайте, как hello следующие командлеты:
+Дополнительные сведения о сборке виртуальной машины из восстановленных дисков см. в документации для следующих командлетов:
 
 * [Add-AzureDisk](https://msdn.microsoft.com/library/azure/dn495252.aspx)
 * [New-AzureVMConfig](https://msdn.microsoft.com/library/azure/dn495159.aspx)
 * [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)
 
 ## <a name="code-samples"></a>Примеры кода
-### <a name="1-get-hello-completion-status-of-job-sub-tasks"></a>1. Получить состояние завершения hello задания дополнительных задач
-состояние завершения hello tootrack отдельных вложенных задач, можно использовать hello **Get AzureRmBackupJobDetails** командлета:
+### <a name="1-get-the-completion-status-of-job-sub-tasks"></a>1. Получение состояния выполнения подзадач
+Чтобы отслеживать состояние выполнения отдельных подзадач, можно использовать командлет **Get-AzureRmBackupJobDetails** .
 
 ```
 PS C:\> $details = Get-AzureRmBackupJobDetails -JobId $backupjob.InstanceId -Vault $backupvault
@@ -306,11 +306,11 @@ PS C:\> $details.SubTasks
 Name                                                        Status
 ----                                                        ------
 Take Snapshot                                               Completed
-Transfer data tooBackup vault                               InProgress
+Transfer data to Backup vault                               InProgress
 ```
 
 ### <a name="2-create-a-dailyweekly-report-of-backup-jobs"></a>2. Создание ежедневного или еженедельного отчета для задач резервного копирования
-Администраторы обычно требуется, какие задания резервного копирования выполнялись в hello последние 24 часа, tooknow hello состояние этих заданий резервного копирования. Кроме того, hello объем передаваемых данных позволяет администраторам tooestimate способ их ежемесячное использование данных. Приведенный ниже сценарий Hello hello необработанные данные извлекаются из службы архивации Azure hello и отображает hello сведения в консоли PowerShell hello.
+Администраторы обычно хотят знать, какие задачи резервного копирования запускались за последние 24 часа и каково состояние этих заданий резервного копирования. Кроме того, объем передаваемых данных позволяет администраторам оценить ежемесячное использование данных. Следующий сценарий извлекает необработанные данные из службы архивации Azure и отображает сведения в консоли PowerShell.
 
 ```
 param(  [Parameter(Mandatory=$True,Position=1)]
@@ -329,12 +329,12 @@ $startdate = ([datetime]::Today)
 for( $i = 1; $i -le $numberofdays; $i++ )
 {
     # We query one day at a time because pulling 7 days of data might be too much
-    $dailyjoblist = Get-AzureRmBackupJob -Vault $backupvault -From $startdate -too$enddate -Type AzureVM -Operation Backup
-    Write-Progress -Activity "Getting job information for hello last $numberofdays days" -Status "Day -$i" -PercentComplete ([int]([decimal]$i*100/$numberofdays))
+    $dailyjoblist = Get-AzureRmBackupJob -Vault $backupvault -From $startdate -To $enddate -Type AzureVM -Operation Backup
+    Write-Progress -Activity "Getting job information for the last $numberofdays days" -Status "Day -$i" -PercentComplete ([int]([decimal]$i*100/$numberofdays))
 
     foreach( $job in $dailyjoblist )
     {
-        #Extract hello information for hello reports
+        #Extract the information for the reports
         $newstatsobj = New-Object System.Object
         $newstatsobj | Add-Member -Type NoteProperty -Name Date -Value $startdate
         $newstatsobj | Add-Member -Type NoteProperty -Name VMName -Value $job.WorkloadName
@@ -353,7 +353,7 @@ for( $i = 1; $i -le $numberofdays; $i++ )
 $DAILYBACKUPSTATS | Out-GridView
 ```
 
-Tooadd построения диаграмм возможности вывода отчета toothis следует узнать из блога TechNet hello [построения диаграмм с помощью PowerShell](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)
+Если вы хотите добавить в выходные данные отчета возможности построения диаграмм, ознакомьтесь с записью [Charting with PowerShell](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если вы предпочитаете PowerShell tooengage с ресурсами Azure, ознакомиться с hello статье PowerShell для защиты Windows Server [развертывание и управление резервного копирования для Windows Server](backup-client-automation-classic.md). Доступна и другая статья, посвященная тому, как использовать PowerShell для управления службой архивации DPM: [Развертывание службы архивации для DPM и управление ею](backup-dpm-automation-classic.md). Обе эти статьи имеют две версии — для развертывания с помощью Resource Manager и для классической модели развертывания.
+Если вы предпочитаете использовать PowerShell для взаимодействия с ресурсами Azure, ознакомьтесь со статьей о защите Windows Server с помощью PowerShell: [Развертывание службы архивации для Windows Server и управление ею](backup-client-automation-classic.md). Доступна и другая статья, посвященная тому, как использовать PowerShell для управления службой архивации DPM: [Развертывание службы архивации для DPM и управление ею](backup-dpm-automation-classic.md). Обе эти статьи имеют две версии — для развертывания с помощью Resource Manager и для классической модели развертывания.

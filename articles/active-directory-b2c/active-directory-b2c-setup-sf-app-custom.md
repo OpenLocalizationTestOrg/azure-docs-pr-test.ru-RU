@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C. Добавление поставщика SAML Salesforce с помощью пользовательских политик | Документы Майкрософт"
-description: "Дополнительные сведения о том, как toocreate Azure Active Directory B2C пользовательской политики и управлять ими."
+description: "В этой статье содержатся сведения о создании пользовательских политик Azure Active Directory B2C и управлении ими."
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,23 +14,23 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/11/2017
 ms.author: parakhj
-ms.openlocfilehash: f14c9d96980ff124110db7cfb58bf7cd81750b7c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 269cbd80fb6e861fa8588025eec70b6c6e2890d7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C. Выполнение входа с помощью учетных записей Salesforce через SAML
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-В этой статье показано, как toouse [настраиваемые политики](active-directory-b2c-overview-custom.md) tooset копирование вход для пользователей в определенной организации Salesforce.
+В этой статье описывается настройка входа для пользователей из определенной организации Salesforce с помощью [пользовательских политик](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 ### <a name="azure-ad-b2c-setup"></a>Настройка Azure AD B2C
 
-Убедитесь, что выполнены все шаги hello, которые показывают, как слишком[приступить к работе с помощью настроенных политик](active-directory-b2c-get-started-custom.md) в Azure Active Directory B2C (Azure AD B2C).
+Убедитесь, что вы выполнили все действия, связанные с [началом работы с пользовательскими политиками](active-directory-b2c-get-started-custom.md) в Azure Active Directory B2C (Azure AD B2C).
 
 В частности, описаны такие возможности:
 
@@ -38,63 +38,63 @@ ms.lasthandoff: 10/06/2017
 * Создание приложения Azure AD B2C.
 * Регистрация двух приложений подсистемы политик.
 * Настройка ключей.
-* Настройка пакета начального приветствия.
+* Настройка начального пакета.
 
 ### <a name="salesforce-setup"></a>Настройка Salesforce
 
-В этой статье предполагается, что уже выполнены следующие hello:
+Для выполнения действий, описанных в этой статье, вам необходимо следующее.
 
 * Подписка на учетную запись Salesforce. Вы можете зарегистрироваться для получения [бесплатной учетной записи Developer Edition](https://developer.salesforce.com/signup).
 * [Настройка собственного домена](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0) для организации Salesforce.
 
 ## <a name="set-up-salesforce-so-users-can-federate"></a>Настройка Salesforce для федерации пользователей
 
-toohelp Azure AD B2C взаимодействовать с Salesforce, необходимо, чтобы URL-адрес метаданных Salesforce tooget hello.
+Чтобы обеспечить взаимодействие Azure AD B2C с Salesforce, необходимо получить URL-адрес метаданных Salesforce.
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>Настройка Salesforce в качестве поставщика удостоверений
 
 > [!NOTE]
 > В этой статье предполагается, что вы используете [Salesforce Lightning Experience](https://developer.salesforce.com/page/Lightning_Experience_FAQ).
 
-1. [Войдите в tooSalesforce](https://login.salesforce.com/). 
-2. На hello влево меню в разделе **параметры**, разверните **удостоверение**и нажмите кнопку **поставщика удостоверений**.
+1. [Войдите в Salesforce](https://login.salesforce.com/). 
+2. В меню слева в разделе **Параметры** разверните узел **Удостоверение** и щелкните **Поставщик удостоверений**.
 3. Щелкните **Enable Identity Provider** (Включить поставщик удостоверений).
-4. В разделе **сертификата выберите hello**выберите hello сертификат, который будет toocommunicate toouse Salesforce с Azure AD B2C. (Можно использовать сертификат по умолчанию hello.) Щелкните **Сохранить**. 
+4. В разделе **Select the certificate** (Выберите сертификат) выберите сертификат, который необходимо использовать в Salesforce при взаимодействии с Azure AD B2C. Вы можете использовать сертификат по умолчанию. Щелкните **Сохранить**. 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Создание подключенного приложения в Salesforce
 
-1. На hello **поставщика удостоверений** страницы, перейдите в слишком**поставщиков услуг**.
+1. На странице **Поставщик удостоверений** перейдите в раздел **Поставщики услуг**.
 2. Щелкните **Service Providers are now created via Connected Apps. Click here** (Поставщики услуг теперь создаются с помощью подключенных приложений. Щелкните здесь).
-3. В разделе **основные сведения**, введите подключенного приложения hello необходимые значения.
-4. В разделе **параметры веб-приложения**выберите hello **включить SAML** флажок.
-5. В hello **идентификатор сущности** введите следующий URL-адрес hello. Заменили hello значение `tenantName`.
+3. В разделе **Основные сведения** введите нужные значения для подключенного приложения.
+4. В разделе **Параметры веб-приложения** установите флажок **Включить SAML**.
+5. В поле **Идентификатор сущности** введите следующий URL-адрес. Проверьте, заменено ли значение `tenantName`.
       ```
       https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
-6. В hello **URL-адрес ACS** введите следующий URL-адрес hello. Заменили hello значение `tenantName`.
+6. В поле **ACS URL** (URL-адрес ACS) введите приведенный ниже URL-адрес. Проверьте, заменено ли значение `tenantName`.
       ```
       https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
-7. Оставьте значения по умолчанию hello другие параметры.
-8. Прокрутите toohello нижней части списка hello и нажмите кнопку **Сохранить**.
+7. Для остальных параметров оставьте значения по умолчанию.
+8. Прокрутите до нижней части списка и нажмите кнопку **Сохранить**.
 
-### <a name="get-hello-metadata-url"></a>Получить URL-адрес метаданных hello
+### <a name="get-the-metadata-url"></a>Получить URL-адреса метаданных
 
-1. На странице Общие сведения о подключенных приложения hello, нажмите кнопку **управление**.
-2. Скопируйте значение hello для **конечную точку обнаружения метаданных**, а затем сохраните его. Оно будет использоваться далее в этой статье.
+1. На странице общих сведений о подключенном приложении щелкните **Управление**.
+2. Скопируйте значение **конечной точки обнаружения метаданных**, а затем сохраните его. Оно будет использоваться далее в этой статье.
 
-### <a name="set-up-salesforce-users-toofederate"></a>Настройка toofederate пользователей Salesforce
+### <a name="set-up-salesforce-users-to-federate"></a>Настройка пользователей Salesforce для федерации
 
-1. На hello **управление** страницы подключенных приложений, перейти слишком**профилей**.
+1. На странице **Управление** подключенного приложения перейдите в раздел **Профили**.
 2. Щелкните **Управление профилями**.
-3. Выберите профили hello (или группы пользователей), которые должны toofederate с Azure AD B2C. Системный администратор, выберите hello **системный администратор** флажок, так что можно создать федерацию с помощью учетной записи Salesforce.
+3. Выберите профили (или группы пользователей) для федерации с Azure AD B2C. Используя права системного администратора, установите флажок **Системный администратор** для федерации с помощью учетной записи Salesforce.
 
 ## <a name="generate-a-signing-certificate-for-azure-ad-b2c"></a>Создание сертификата подписи для Azure AD B2C
 
-Подписанные Azure AD B2C toobe необходимость tooSalesforce отправлены запросы. toogenerate сертификата подписи, откройте Azure PowerShell и выполните следующие команды hello.
+Запросы, отправляемые в Salesforce, должны быть подписаны Azure AD B2C. Чтобы создать сертификат подписи, откройте Azure PowerShell и выполните следующие команды.
 
 > [!NOTE]
-> Убедитесь, что необходимо обновить имя клиента hello и пароль в верхнем две строки hello.
+> Обновите имя клиента и пароль в первых двух строках.
 
 ```PowerShell
 $tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
@@ -107,25 +107,25 @@ $pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
 Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 ```
 
-## <a name="add-hello-saml-signing-certificate-tooazure-ad-b2c"></a>Добавить tooAzure подписи сертификата hello SAML AD B2C
+## <a name="add-the-saml-signing-certificate-to-azure-ad-b2c"></a>Добавление сертификата подписи SAML в Azure AD B2C
 
-Отправьте подписи сертификата клиента Azure AD B2C tooyour hello. 
+Отправьте сертификат подписи в клиент Azure AD B2C: 
 
-1. Go tooyour Azure AD B2C клиента. Последовательно выберите **Settings** > **Identity Experience Framework** > **Policy Keys** (Параметры, Инфраструктура процедур идентификации, Ключи политики).
+1. Перейдите в клиент Azure AD B2C. Последовательно выберите **Settings** > **Identity Experience Framework** > **Policy Keys** (Параметры, Инфраструктура процедур идентификации, Ключи политики).
 2. Щелкните **+Добавить**, а затем:
     1. Щелкните **Параметры** > **Отправить**.
-    2. Введите **имя** (например, SAMLSigningCert). префикс Hello *B2C_1A_* автоматически добавляется toohello имя ключа.
-    3. tooselect свой сертификат, выберите **отправить файл управления**. 
-    4. Введите пароль сертификата hello, заданный в скрипте PowerShell hello.
+    2. Введите **имя** (например, SAMLSigningCert). Префикс *B2C_1A_* будет автоматически добавлен к имени ключа.
+    3. Чтобы выбрать сертификат, выберите **элемент управления отправкой файла**. 
+    4. Введите пароль сертификата, который задан в скрипте PowerShell.
 3. Щелкните **Создать**.
-4. Убедитесь, что ключ создан (например, B2C_1A_SAMLSigningCert). Запишите hello полное имя (включая *B2C_1A_*). Можно будет ссылаться toothis ключ позже в политике hello.
+4. Убедитесь, что ключ создан (например, B2C_1A_SAMLSigningCert). Запишите полное имя (включая *B2C_1A_*). Вы будете ссылаться на этот ключ позднее в политике.
 
-## <a name="create-hello-salesforce-saml-claims-provider-in-your-base-policy"></a>Создать hello поставщика утверждений Salesforce SAML в базовый политике
+## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>Создание поставщика утверждений SAML Salesforce в базовой политике
 
-Вам требуется toodefine Salesforce в качестве поставщика утверждений, пользователи могут войти в с помощью Salesforce. Другими словами вы должны hello toospecify конечную точку, которая будет взаимодействовать Azure AD B2C. Конечная точка Hello будет *предоставляют* набор *утверждений* , Azure AD B2C использует tooverify проверку определенного пользователя. toodo это, добавьте `<ClaimsProvider>` для Salesforce в файле расширения hello политики:
+Чтобы пользователи могли выполнять вход с помощью Salesforce, необходимо определить Salesforce в качестве поставщика утверждений. Другими словами, необходимо указать конечную точку, с которой будет взаимодействовать Azure AD B2C. Конечная точка *предоставит* набор *утверждений*, используемых Azure AD B2C, чтобы проверить, была ли выполнена проверка подлинности определенного пользователя. Это можно сделать, добавив `<ClaimsProvider>` для Salesforce в файл расширения политики.
 
-1. В рабочий каталог откройте файл расширения hello (TrustFrameworkExtensions.xml).
-2. Найти hello `<ClaimsProviders>` раздела. Если он не существует, создайте его в корневом узле hello.
+1. Откройте файл расширения (TrustFrameworkExtensions.xml) из рабочего каталога.
+2. Найдите раздел `<ClaimsProviders>`. Если он не существует, создайте его в корневом узле.
 3. Добавьте новый `<ClaimsProvider>`:
 
     ```XML
@@ -168,90 +168,90 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
     </ClaimsProvider>
     ```
 
-В разделе hello `<ClaimsProvider>` узла:
+В узле `<ClaimsProvider>`:
 
-1. Измените значение hello `<Domain>` tooa уникальное значение, отличающее `<ClaimsProvider>` от других поставщиков удостоверений.
-2. Измените значение в hello `<DisplayName>` tooa отображаемое имя для hello поставщика утверждений. Сейчас это значение не используется.
+1. Укажите для `<Domain>` уникальное значение, позволяющее отличить этот `<ClaimsProvider>` от других.
+2. Задайте для `<DisplayName>` отображаемое имя поставщика утверждений. Сейчас это значение не используется.
 
-### <a name="update-hello-technical-profile"></a>Обновление профиля технические hello
+### <a name="update-the-technical-profile"></a>Обновление технического профиля
 
-tooget маркер SAML из Salesforce, определите протоколы hello, использование Azure AD B2C toocommunicate с Azure Active Directory (Azure AD). Для этого в hello `<TechnicalProfile>` элемент `<ClaimsProvider>`:
+Чтобы получить токен SAML из Salesforce, определите протоколы, используемые Azure AD B2C для взаимодействия с Active Directory (Azure AD). Сделайте в элементе `<TechnicalProfile>` поставщика `<ClaimsProvider>` следующее:
 
-1. Обновить идентификатор hello hello `<TechnicalProfile>` узла. Этот идентификатор является toothis используется toorefer технические профиль из других частей hello политики.
-2. Измените значение в hello `<DisplayName>`. Это значение отображается hello вход кнопку на страницу входа.
-3. Измените значение в hello `<Description>`.
-4. SalesForce с помощью протокола hello SAML 2.0. Убедитесь, что значение hello для `<Protocol>` — **SAML2**.
+1. Обновите идентификатор узла `<TechnicalProfile>`. Этот идентификатор используется для ссылки на этот технический профиль из других частей политики.
+2. Обновите значение для `<DisplayName>`. Это значение отображается на кнопке входа на экране входа.
+3. Обновите значение для `<Description>`.
+4. Salesforce использует протокол SAML 2.0. Убедитесь, что значение для `<Protocol>` — **SAML2**.
 
-Обновление hello `<Metadata>` раздела hello, предшествующий настройки hello tooreflect XML для определенной учетной записи Salesforce. Обновление hello значения метаданных для hello XML:
+Обновите раздел `<Metadata>` в предыдущем коде XML в соответствии с параметрами для определенной учетной записи Salesforce. В коде XML обновите значения метаданных:
 
-1. Обновите значение hello `<Item Key="PartnerEntity">` с hello Salesforce URL-адрес метаданных скопированное ранее. Он имеет следующий формат hello: 
+1. Измените значение `<Item Key="PartnerEntity">` на скопированный ранее URL-адрес метаданных Salesforce. В нем используется следующий формат: 
 
     `https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp/connectedapp.xml`
 
-2. В hello `<CryptographicKeys>` статьи, значение hello обновления для обоих экземпляров `StorageReferenceId` toohello имя hello ключа сертификата подписи (например, B2C_1A_SAMLSigningCert).
+2. В разделе `<CryptographicKeys>` измените значение для обоих экземпляров `StorageReferenceId` на имя ключа сертификата подписи (например, B2C_1A_SAMLSigningCert).
 
-### <a name="upload-hello-extension-file-for-verification"></a>Отправить файл hello расширения для проверки
+### <a name="upload-the-extension-file-for-verification"></a>Отправка файла расширения для проверки
 
-Политика настроена, чтобы Azure AD B2C известно как toocommunicate с Salesforce. Попробуйте отправить файл hello расширения политики, tooverify, что в нем не все проблемы до сих. файл расширения hello tooupload политики:
+Теперь политика настроена, а Azure AD B2C известно, как взаимодействовать с Salesforce. Попробуйте отправить файл расширения политики, чтобы убедиться, что все в порядке. Чтобы отправить файл расширения политики:
 
-1. В клиенте Azure AD B2C go toohello **все политики** колонку.
-2. Выберите hello **перезаписать hello политики, если он существует** флажок.
-3. Отправьте файл расширения hello (TrustFrameworkExtensions.xml). Убедитесь, что проверка пройдена.
+1. В клиенте Azure AD B2C перейдите в колонку **Все политики**.
+2. Установите флажок **Перезаписать политику, если она существует**.
+3. Отправьте файл расширения (TrustFrameworkExtensions.xml). Убедитесь, что проверка пройдена.
 
-## <a name="register-hello-salesforce-saml-claims-provider-tooa-user-journey"></a>Регистрация hello Salesforce SAML утверждения поставщика tooa пользователя пути
+## <a name="register-the-salesforce-saml-claims-provider-to-a-user-journey"></a>Регистрация поставщика утверждений SAML Salesforce для пути взаимодействия пользователя
 
-Затем добавьте hello tooone поставщика удостоверений Salesforce SAML для вашего пути пользователя. На этом этапе Настройка поставщика удостоверений hello, но он не доступен на всех страницах регистрации или входа пользователя hello. tooadd hello удостоверение поставщика tooa страницы входа, сначала необходимо создать копию существующего шаблона пути пользователя. Измените шаблон hello, придав ему hello поставщика удостоверений Azure AD.
+Теперь вам необходимо добавить поставщик удостоверений SAML Salesforce в один из путей взаимодействия пользователя. На этом этапе поставщик удостоверений уже настроен, но еще не доступен ни на одной странице регистрации или входа пользователя. Чтобы добавить поставщик на страницу входа, сначала создайте копию существующего шаблона пути пользователя. Затем измените шаблон, чтобы у него также был поставщик удостоверений Azure AD.
 
-1. Откройте файл базовый hello политики (например, TrustFrameworkBase.xml).
-2. Найти hello `<UserJourneys>` элемент, а затем hello Копировать всю `<UserJourney>` значений, включая идентификатор = «SignUpOrSignIn».
-3. Откройте файл hello расширения (например, TrustFrameworkExtensions.xml). Найти hello `<UserJourneys>` элемента. Если элемент hello не существует, создайте его.
-4. Вставить hello всего скопировать `<UserJourney>` как дочерний hello `<UserJourneys>` элемента.
-5. Переименуйте идентификатор hello hello новый `<UserJourney>` (например, SignUpOrSignUsingContoso).
+1. Откройте базовый файл политики (например, TrustFrameworkBase.xml).
+2. Найдите элемент `<UserJourneys>` и скопируйте полное значение `<UserJourney>`, включая Id="SignUpOrSignIn".
+3. Откройте файл расширения (например, TrustFrameworkExtensions.xml). Найдите элемент `<UserJourneys>`. Если элемент не существует, создайте его.
+4. Вставьте весь скопированный путь `<UserJourney>` как дочерний элемент `<UserJourneys>`.
+5. Переименуйте идентификатор нового пути `<UserJourney>` (например, SignUpOrSignUsingContoso).
 
-### <a name="display-hello-identity-provider-button"></a>Кнопку поставщика удостоверений hello отображения
+### <a name="display-the-identity-provider-button"></a>Отображение кнопки поставщика удостоверений
 
-Hello `<ClaimsProviderSelection>` элемент является аналогом tooan кнопку поставщика удостоверений на странице регистрации или входа. Добавив `<ClaimsProviderSelection>` элемент для Salesforce новая кнопка отображается при посещении toothis страницы. Кнопка поставщика удостоверений hello toodisplay:
+Элемент `<ClaimsProviderSelection>` является аналогом кнопки поставщика удостоверений на странице регистрации или входа. Если вы добавите для Salesforce элемент `<ClaimsProviderSelection>`, новая кнопка отобразится при переходе пользователя на эту страницу. Чтобы отобразить кнопку поставщика удостоверений:
 
-1. В hello `<UserJourney>` , созданный, найти hello `<OrchestrationStep>` с `Order="1"`.
-2. Добавьте следующий XML-код hello:
+1. В созданном `<UserJourney>` найдите `<OrchestrationStep>` со значением `Order="1"`.
+2. Добавьте следующий код XML:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-3. Задать `TargetClaimsExchangeId` tooa логическое значение. Мы рекомендуем следующие hello же соглашениями, что и другие (например,  *\[ClaimProviderName\]Exchange*).
+3. Задайте для `TargetClaimsExchangeId` логическое значение. Мы советуем следовать общему соглашению: (например, *\[ClaimProviderName\]Exchange*).
 
-### <a name="link-hello-identity-provider-button-tooan-action"></a>Действие tooan кнопку поставщика удостоверений ссылки hello
+### <a name="link-the-identity-provider-button-to-an-action"></a>Связывание кнопки поставщика удостоверений с действием
 
-Теперь, когда имеется кнопка поставщика удостоверений в месте, свяжите его tooan действие. В этом случае hello действии для Azure AD B2C toocommunicate с Salesforce tooreceive маркера SAML. Это можно сделать путем связывания hello технические профиля для вашего Salesforce SAML поставщика утверждений:
+Теперь, когда у вас есть кнопка поставщика удостоверений, свяжите ее с действием. В этом случае действие — это возможность взаимодействия Azure AD B2C с Salesforce для получения токена SAML. Чтобы получить эту возможность, необходимо связать технический профиль для поставщика утверждений SAML Salesforce.
 
-1. В hello `<UserJourney>` узел, найти hello `<OrchestrationStep>` с `Order="2"`.
-2. Добавьте следующий XML-код hello:
+1. В узле `<UserJourney>` найдите `<OrchestrationStep>` со значением `Order="2"`.
+2. Добавьте следующий код XML:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
     ```
 
-3. Обновление `Id` toohello одинаковое значение, которые использовали для `TargetClaimsExchangeId`.
-4. Обновление `TechnicalProfileReferenceId` toohello `Id` hello технические профиля созданную ранее (например, ContosoProfile).
+3. Измените `Id` на то же значение, которое ранее использовалось для `TargetClaimsExchangeId`.
+4. Задайте для `TechnicalProfileReferenceId` значение `Id` ранее созданного технического профиля (например, ContosoProfile).
 
-### <a name="upload-hello-updated-extension-file"></a>Отправка файла обновленного расширения hello
+### <a name="upload-the-updated-extension-file"></a>Передача обновленного файла расширения
 
-Изменение файла hello расширения завершено. Сохраните и отправьте этот файл. Убедитесь, что все проверки пройдены успешно.
+Вы внесли все необходимые изменения в файл расширения. Сохраните и отправьте этот файл. Убедитесь, что все проверки пройдены успешно.
 
-### <a name="update-hello-relying-party-file"></a>Обновить проверяющей стороной файл hello
+### <a name="update-the-relying-party-file"></a>Обновление файла проверяющей стороны
 
-Затем обновите hello проверяющей стороны (RP) файл, который инициирует hello пути пользователя, созданный вами:
+Теперь обновите файл проверяющей стороны, который активирует созданный путь взаимодействия пользователя.
 
 1. Создайте копию SignUpOrSignIn.xml в рабочем каталоге. Затем переименуйте ее (например, SignUpOrSignInWithAAD.xml).
-2. Привет открыть новый файл и обновление hello `PolicyId` для атрибута `<TrustFrameworkPolicy>` с уникальным значением. Это имя hello политики (например, SignUpOrSignInWithAAD).
-3. Изменение hello `ReferenceId` атрибута в `<DefaultUserJourney>` toomatch hello `Id` из нового пользователя пути hello созданный вами (например, SignUpOrSignUsingContoso).
-4. Сохранить изменения, а затем отправьте файл hello.
+2. Откройте новый файл и задайте для атрибута `PolicyId` `<TrustFrameworkPolicy>` уникальное значение. Это имя вашей политики (например, SignUpOrSignInWithAAD).
+3. Измените атрибут `ReferenceId` в `<DefaultUserJourney>` для соответствия `Id` нового созданного пути взаимодействия пользователя (например, SignUpOrSignUsingContoso).
+4. Сохраните изменения и отправьте файл.
 
 ## <a name="test-and-troubleshoot"></a>Тестирование и устранение неполадок
 
-пользовательские политики hello tootest, только что переданного, в hello портал Azure, перейдите в колонку toohello политики и нажмите кнопку **запустить сейчас**. В случае неудачи см. сведения в разделе [Устранение неполадок пользовательских политик](active-directory-b2c-troubleshoot-custom.md).
+Чтобы протестировать отправленную настраиваемую политику, на портале Azure перейдите к колонке политики и нажмите кнопку **Выполнить**. В случае неудачи см. сведения в разделе [Устранение неполадок пользовательских политик](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Отправить отзыв слишком[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).
+Свои отзывы отправляйте сюда: [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).

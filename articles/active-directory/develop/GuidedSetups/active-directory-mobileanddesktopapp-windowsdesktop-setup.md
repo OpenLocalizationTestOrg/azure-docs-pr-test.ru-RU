@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 Windows Desktop начало работы — Настройка | Документы Microsoft"
+title: "Приступая к работе с Azure AD версии 2 для классического приложения для Windows. Настройка | Документация Майкрософт"
 description: "Здесь описывается, как классические приложения для Windows .NET (XAML) могут вызвать API, требующий маркеры доступа от конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,40 +15,40 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 097ea99bef01e15edaa5ff914ff4e18392b77c5a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4065727aef04d7969d438c6ef79127bb44568be1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="set-up-your-project"></a>Настройка проекта
 
-Этот раздел содержит пошаговые инструкции для toocreate нового toodemonstrate проекта как toointegrate .NET рабочего стола Windows приложение (XAML) с *вход с помощью Microsoft* , может обращаться к веб-API, который требует передачи маркера.
+В этом разделе содержатся пошаговые инструкции по созданию проекта, чтобы продемонстрировать, как интегрировать классическое приложение для Windows .NET (XAML) с *входом с учетной записью Майкрософт*, что позволит выполнять запрос к веб-API, требующим маркер.
 
-приложения Hello, созданным в этом руководстве предоставляет кнопки toograph и отображение результатов на экране и кнопку выхода.
+Приложение, созданное в этом руководстве, предоставляет кнопку для графа, а также отображает результаты на экране и кнопку выхода.
 
-> Предпочтение toodownload проекта Visual Studio в этом примере вместо этого? [Загрузка проекта](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip) и пропустить toohello [шаг настройки](#create-an-application-express) образец кода hello tooconfigure перед выполнением.
+> Предпочитаете скачать этот пример проекта Visual Studio? [Скачайте проект](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip) и перейдите к [настройке](#create-an-application-express), чтобы настроить пример кода перед выполнением.
 
 
 ### <a name="create-your-application"></a>Создание приложения
 1. В Visual Studio выберите `File` > `New` > `Project`.<br/>
 2. В разделе *Шаблоны* выберите `Visual C#`.
-3. Выберите `WPF App` (или *приложение WPF* в зависимости от версии hello в Visual Studio)
+3. Выберите `WPF App` (или *приложение WPF* в зависимости от версии Visual Studio).
 
-## <a name="add-hello-microsoft-authentication-library-msal-tooyour-project"></a>Добавление проекта tooyour hello библиотеки проверки подлинности Microsoft (MSAL)
+## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>Добавление библиотеки проверки подлинности Майкрософт (MSAL) в проект
 1. В Visual Studio выберите `Tools` > `Nuget Package Manager` > `Package Manager Console`.
-2. Скопируйте и вставьте следующий hello в hello в окне консоли диспетчера пакетов:
+2. Скопируйте и вставьте следующий код в окне "Консоль диспетчера пакетов".
 
 ```powershell
 Install-Package Microsoft.Identity.Client -Pre
 ```
 
-> пакет Hello выше устанавливает hello библиотеки проверки подлинности Microsoft (MSAL). MSAL обрабатывает получение, кэширование и обновление tooaccess пользователя toskens использовать интерфейсы API, защищенные Azure Active Directory v2.
+> Приведенный выше пакет устанавливает библиотеку проверки подлинности Майкрософт (MSAL). MSAL обрабатывает получение, кэширование и обновление маркеров пользователей, которые используются для доступа к API, защищенному конечной точкой Azure Active Directory версии 2.
 
-## <a name="add-hello-code-tooinitialize-msal"></a>Добавление кода hello tooinitialize MSAL
-Этот шаг поможет вам создать взаимодействие toohandle класса с библиотекой MSAL, такие как обработка токенов.
+## <a name="add-the-code-to-initialize-msal"></a>Добавление кода для инициализации MSAL
+На этом шаге вы сможете создать класс для обработки взаимодействия с библиотекой MSAL, например обработки маркеров.
 
-1. Откройте hello `App.xaml.cs` файл и добавьте ссылку hello для класса toohello MSAL библиотеки:
+1. Откройте файл `App.xaml.cs` и добавьте справочник по библиотеке MSAL в класс:
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -56,15 +56,15 @@ using Microsoft.Identity.Client;
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Обновите следующие toohello класса приложения hello:
+Обновите класс App следующим образом:
 </li>
 </ol>
 
 ```csharp
 public partial class App : Application
 {
-    //Below is hello clientId of your app registration. 
-    //You have tooreplace hello below with hello Application Id for your app registration
+    //Below is the clientId of your app registration. 
+    //You have to replace the below with the Application Id for your app registration
     private static string ClientId = "your_client_id_here";
 
     public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -73,9 +73,9 @@ public partial class App : Application
 ```
 
 ## <a name="create-your-applications-ui"></a>Создание пользовательского интерфейса приложения
-Hello ниже показано, как приложение может выполнять запросы с защищенным сервером как Microsoft Graph. Файл MainWindow.xaml должен создаваться автоматически как часть шаблона проекта. Откройте этот файл, этот файл и следуйте приведенным ниже инструкциям hello:
+В разделе ниже описывается, как приложение может запрашивать защищенный внутренний сервер, например Microsoft Graph. Файл MainWindow.xaml должен создаваться автоматически как часть шаблона проекта. Откройте этот файл и выполните приведенные далее инструкции.
 
-Замена приложения `<Grid>` с быть hello следующее:
+Вставьте в раздел `<Grid>` приложения следующий код:
 
 ```xml
 <Grid>

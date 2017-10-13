@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure IIS с помощью SSL-сертификаты в Azure | Документы Microsoft"
-description: "Узнайте, как toosecure hello IIS веб-сервер с SSL-сертификаты на виртуальной Машине Windows в Azure"
+title: "Защита служб IIS с помощью SSL-сертификатов в Azure | Документация Майкрософт"
+description: "Узнайте, как защитить веб-сервер IIS с помощью SSL-сертификатов на виртуальной машине Windows в Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,32 +16,32 @@ ms.workload: infrastructure
 ms.date: 07/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7a9e0ce07be2f55095fdb5347b64faf5caa4f7e3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6567853e9ef3cad63595dc0afe7a793bdc5d972c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>Защита веб-сервера IIS с помощью SSL-сертификатов на виртуальной машине Windows в Azure
-toosecure веб-серверов, сертификат позже SSL (Secure Sockets) можно использовать tooencrypt веб-трафика. SSL-сертификаты могут храниться в хранилище ключей Azure и разрешать безопасного развертывания сертификатов tooWindows виртуальных машин (ВМ) в Azure. Из этого руководства вы узнаете, как выполнить следующие задачи:
+Чтобы защитить веб-серверы, можно использовать сертификат Secure Sockets Later (SSL) для шифрования веб-трафика. SSL-сертификаты могут храниться в Azure Key Vault и разрешать безопасное развертывание сертификатов на виртуальных машинах Windows в Azure. Из этого руководства вы узнаете, как выполнить следующие задачи:
 
 > [!div class="checklist"]
 > * Создание Azure Key Vault
-> * Создать или отправить сертификат toohello хранилища ключей
-> * Создайте виртуальную Машину и установите веб-сервера IIS hello
-> * Вставить сертификат hello в hello виртуальной Машины и настроить службы IIS с помощью SSL-привязки
+> * создать или передать сертификат в Key Vault;
+> * Создание виртуальной машины и установка веб-сервера IIS
+> * Внедрение сертификата в виртуальную машину и настройка IIS с помощью SSL-привязки
 
-Этот учебник требует hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите ` Get-Module -ListAvailable AzureRM` версии toofind hello. Получить tooupgrade [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
+Для работы с этим руководством требуется модуль Azure PowerShell версии не ниже 3.6. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить обновление, ознакомьтесь со статьей, посвященной [установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="overview"></a>Обзор
-Azure Key Vault защищает криптографические ключи и секреты, в том числе сертификаты или пароли. Хранилище ключей помогает ускорить процесс управления сертификата hello и позволяет toomaintain управление ключами, которые обращаются к этих сертификатов. Можно создать самозаверяющий сертификат в Key Vault или передать существующий доверенный сертификат.
+Azure Key Vault защищает криптографические ключи и секреты, в том числе сертификаты или пароли. Key Vault помогает оптимизировать управление сертификатами и позволяет контролировать ключи, которые предоставляют доступ к этим сертификатам. Можно создать самозаверяющий сертификат в Key Vault или передать существующий доверенный сертификат.
 
-Вместо того чтобы использовать образ виртуальной машины, включающий встроенные сертификаты, можно внедрить сертификаты в работающую виртуальную машину. Этот процесс гарантирует, что hello наиболее актуальные сертификаты установлены на веб-сервере во время развертывания. Если обновления или замены сертификата, также нет toocreate нового пользовательского образа виртуальной Машины. Hello последние сертификаты добавляются автоматически при создании дополнительных виртуальных машин. В процессе hello всей hello сертификаты никогда не оставить hello платформы Azure или, представлены в скрипт, командной строки журнала или шаблона.
+Вместо того чтобы использовать образ виртуальной машины, включающий встроенные сертификаты, можно внедрить сертификаты в работающую виртуальную машину. Этот процесс гарантирует установку на веб-сервер самых последних сертификатов во время развертывания. Если вы обновляете или заменяете сертификат, вам не нужно создавать новый пользовательский образ виртуальной машины. Последние сертификаты внедряются автоматически при создании дополнительных виртуальных машин. При этом сертификат никогда не покидает платформу Azure и не отображается в скрипте, журнале командной строки или шаблоне.
 
 
 ## <a name="create-an-azure-key-vault"></a>Создание Azure Key Vault
-Прежде чем создать Key Vault и сертификаты, выполните командлет [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup), чтобы создать группу ресурсов. Hello следующий пример создает группу ресурсов с именем *myResourceGroupSecureWeb* в hello *Восток США* расположение:
+Прежде чем создать Key Vault и сертификаты, выполните командлет [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup), чтобы создать группу ресурсов. В следующем примере создается имя группы ресурсов *myResourceGroupSecureWeb* в расположении *восточная часть США*:
 
 ```powershell
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -49,7 +49,7 @@ $location = "East US"
 New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Чтобы создать Key Vault, используйте командлет [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). У каждого Key Vault должно быть уникальное имя в нижнем регистре. Замените `<mykeyvault>` в hello следующий пример с собственное уникальное имя хранилища ключей:
+Чтобы создать Key Vault, используйте командлет [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault). У каждого Key Vault должно быть уникальное имя в нижнем регистре. Замените `<mykeyvault>` в следующем примере собственным уникальным именем Key Vault.
 
 ```powershell
 $keyvaultName="<mykeyvault>"
@@ -60,7 +60,7 @@ New-AzureRmKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Создание сертификата и его сохранение в Key Vault
-Для использования в рабочей среде импортируйте действительный сертификат, подписанный доверенным поставщиком, выполнив командлет [Import-AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate). В этом учебнике hello следующем примере показано, как можно создать самозаверяющий сертификат с [добавить AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificate) hello, используется политика по умолчанию из [ Новый AzureKeyVaultCertificatePolicy](/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy). 
+Для использования в рабочей среде импортируйте действительный сертификат, подписанный доверенным поставщиком, выполнив командлет [Import-AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate). В следующем примере показано, как с помощью командлета [Add-AzureKeyVaultCertificate](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificate) создать самозаверяющий сертификат, использующий политику сертификата из [New-AzureKeyVaultCertificatePolicy](/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificatepolicy). 
 
 ```powershell
 $policy = New-AzureKeyVaultCertificatePolicy `
@@ -77,13 +77,13 @@ Add-AzureKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>Создание виртуальной машины
-Имя пользователя администратора и пароль для hello ВМ с набора [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Укажите имя и пароль администратора для виртуальной машины с помощью командлета [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Теперь можно создавать hello виртуальной Машины с [New AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Hello следующий пример создает компоненты hello необходимые виртуальной сети, конфигурации hello ОС и затем создает Виртуальную машину с именем *myVM*:
+Теперь вы можете создать виртуальную машину с помощью командлета [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Следующий пример создает необходимые компоненты виртуальной сети, конфигурацию операционной системы, а затем виртуальную машину *myVM*.
 
 ```powershell
 # Create a subnet configuration
@@ -157,7 +157,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 # Create virtual machine
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
-# Use hello Custom Script Extension tooinstall IIS
+# Use the Custom Script Extension to install IIS
 Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName "IIS" `
     -VMName "myVM" `
@@ -168,11 +168,11 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-Он занимает несколько минут для создания toobe ВМ hello. Hello последний шаг использует hello Azure настраиваемое расширение скриптов tooinstall hello веб-сервера IIS с [AzureRmVmExtension набор](/powershell/module/azurerm.compute/set-azurermvmextension).
+Создание виртуальной машины может занять несколько минут. На последнем шаге с помощью расширения пользовательских сценариев Azure устанавливается веб-сервер IIS. Для этого используется командлет [Set-AzureRmVmExtension](/powershell/module/azurerm.compute/set-azurermvmextension).
 
 
-## <a name="add-a-certificate-toovm-from-key-vault"></a>Добавить tooVM сертификат из хранилища ключей
-tooadd hello сертификат из хранилища ключей tooa виртуальной Машины, получить hello Удостоверение сертификата с [Get AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret). Добавление сертификата hello toohello виртуальной Машины с [AzureRmVMSecret добавить](/powershell/module/azurerm.compute/add-azurermvmsecret):
+## <a name="add-a-certificate-to-vm-from-key-vault"></a>Добавление сертификата на виртуальную машину из Key Vault
+Чтобы добавить сертификат из Key Vault на виртуальную машину, получите идентификатор сертификата с помощью командлета [Get-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret). Добавьте сертификат на виртуальную машину с помощью командлета [Add-AzureRmVMSecret](/powershell/module/azurerm.compute/add-azurermvmsecret):
 
 ```powershell
 $certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -185,8 +185,8 @@ Update-AzureRmVM -ResourceGroupName $resourceGroup -VM $vm
 ```
 
 
-## <a name="configure-iis-toouse-hello-certificate"></a>Настройка сертификата hello toouse IIS
-Используйте hello настраиваемое расширение скриптов с [AzureRmVMExtension набор](/powershell/module/azurerm.compute/set-azurermvmextension) конфигурации IIS tooupdate hello. Это обновление применяется hello сертификат из хранилища ключей tooIIS вставлен и настраивает hello-привязку веб:
+## <a name="configure-iis-to-use-the-certificate"></a>Настройка IIS для использования сертификата
+Обновите конфигурацию IIS с помощью расширения пользовательских сценариев и командлета [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension). Это обновление применяет внедренный из Key Vault в IIS сертификат и настраивает веб-привязку:
 
 ```powershell
 $PublicSettings = '{
@@ -205,18 +205,18 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
 ```
 
 
-### <a name="test-hello-secure-web-app"></a>Тест hello безопасного веб-приложения
-Получить hello общедоступный IP-адрес виртуальной Машины с [Get AzureRmPublicIPAddress](/powershell/resourcemanager/azurerm.network/get-azurermpublicipaddress). Hello следующий пример извлекает hello IP-адрес для `myPublicIP` созданную ранее:
+### <a name="test-the-secure-web-app"></a>Тестирование защищенного веб-приложения
+Получите общедоступный IP-адрес своей виртуальной машины с помощью командлета [Get-AzureRmPublicIPAddress](/powershell/resourcemanager/azurerm.network/get-azurermpublicipaddress). Следующий пример позволяет получить IP-адрес для созданного ранее `myPublicIP`.
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIP" | select "IpAddress"
 ```
 
-Теперь можно открыть веб-браузер и введите `https://<myPublicIP>` в адресную строку hello. предупреждения безопасности hello tooaccept, если используется самозаверяющий сертификат, выберите **сведения** и затем **перейдите на веб-странице toohello**:
+Теперь можно открыть веб-браузер и ввести в адресной строке `https://<myPublicIP>`. Чтобы принять предупреждение системы безопасности, если используется самозаверяющий сертификат безопасности, выберите **Сведения**, а затем — **Перейти на веб-страницу**:
 
 ![Принятие предупреждения о безопасности веб-браузера](./media/tutorial-secure-web-server/browser-warning.png)
 
-Защищенные веб-сайт IIS отображается как hello в следующем примере:
+На экране отобразится защищенный веб-сайт IIS, как в показано следующем примере:
 
 ![Просмотр работающего защищенного сайта IIS](./media/tutorial-secure-web-server/secured-iis.png)
 
@@ -227,11 +227,11 @@ Get-AzureRmPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIP" 
 
 > [!div class="checklist"]
 > * Создание Azure Key Vault
-> * Создать или отправить сертификат toohello хранилища ключей
-> * Создайте виртуальную Машину и установите веб-сервера IIS hello
-> * Вставить сертификат hello в hello виртуальной Машины и настроить службы IIS с помощью SSL-привязки
+> * создать или передать сертификат в Key Vault;
+> * Создание виртуальной машины и установка веб-сервера IIS
+> * Внедрение сертификата в виртуальную машину и настройка IIS с помощью SSL-привязки
 
-Выполните этот toosee ссылку готовые примеры скриптов для виртуальной машины.
+Чтобы увидеть предварительно созданные примеры скриптов виртуальной машины, перейдите по ссылке ниже.
 
 > [!div class="nextstepaction"]
 > [Примеры скриптов для виртуальной машины Windows](./powershell-samples.md)

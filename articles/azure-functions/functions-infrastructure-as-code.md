@@ -1,10 +1,10 @@
 ---
-title: "aaaAutomate ресурсов развертывания для приложения функции в функции Azure | Документы Microsoft"
-description: "Узнайте, как toobuild шаблона Azure Resource Manager, которая развертывает приложение функции."
+title: "Автоматизация развертывания ресурсов приложения-функции для службы \"Функции Azure\" | Документация Майкрософт"
+description: "Узнайте, как создать шаблон Azure Resource Manager, позволяющий развертывать приложения-функции."
 services: Functions
 documtationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "функции Azure, функции, независимая от сервера архитектура, инфраструктура как код, Azure Resource Manager"
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: b0df0d4ef9fe93213f7b1cb1d1e6b4e14f8b3a30
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2fee04ee11210b9081fc7edb64da1f0210f1bd06
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Автоматизация развертывания ресурсов приложения-функции для службы "Функции Azure"
 
-Можно использовать toodeploy шаблона диспетчера ресурсов Azure приложения функции. В этой статье рассматриваются hello необходимые ресурсы и параметры для этого. Могут потребоваться дополнительные ресурсы toodeploy, в зависимости от hello [триггеры и привязки](functions-triggers-bindings.md) в приложении функции.
+Для развертывания приложения-функции можно использовать шаблон Azure Resource Manager. В этой статье рассматриваются необходимые для этого ресурсы и параметры. В зависимости от [триггеров и привязок](functions-triggers-bindings.md) в приложении-функции может потребоваться развернуть дополнительные ресурсы.
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/06/2017
 
 Для приложения-функции требуются следующие ресурсы:
 
-* [Учетная запись хранения Azure.](../storage/index.md)
+* [Учетная запись хранения Azure.](../storage/index.yml)
 * План размещения (план потребления или план службы приложений).
 * Приложение-функция. 
 
@@ -56,9 +56,9 @@ ms.lasthandoff: 10/06/2017
 }
 ```
 
-Кроме того, hello свойства `AzureWebJobsStorage` и `AzureWebJobsDashboard` должен быть указан как параметры приложения в конфигурации сайта hello. Среда выполнения Azure функции Hello использует hello `AzureWebJobsStorage` внутренние очереди toocreate строка соединения. Здравствуйте, строка подключения `AzureWebJobsDashboard` — используется toolog tooAzure таблиц хранения и управления питанием hello **монитор** вкладка на портале hello.
+Кроме того, свойства `AzureWebJobsStorage` и `AzureWebJobsDashboard` необходимо указать как параметры приложения в конфигурации сайта. Чтобы создать внутренние очереди, среда выполнения службы "Функции Azure" использует строку подключения `AzureWebJobsStorage`. Строка подключения `AzureWebJobsDashboard` используется для регистрации в Хранилище таблиц Azure и обеспечения работы вкладки **Мониторинг** на портале.
 
-Эти свойства задаются в hello `appSettings` коллекции в hello `siteConfig` объекта:
+Эти свойства задаются в коллекции `appSettings` в объекте `siteConfig`:
 
 ```json
 "appSettings": [
@@ -74,11 +74,11 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="hosting-plan"></a>План размещения
 
-Определение Hello hello план размещения зависит от, используется ли план потребления или службы приложений. В разделе [развертывание приложения функции hello потребления плана](#consumption) и [развертывание приложения функции на hello план служб приложений](#app-service-plan).
+Определение плана размещения зависит от того, используется ли план потребления или план службы приложений. Дополнительные сведения см. в разделе [Развертывание приложения-функции в плане потребления](#consumption) и [Развертывание приложения-функции в плане службы приложений](#app-service-plan).
 
 ### <a name="function-app"></a>Приложение-функция
 
-ресурс приложения Hello функций определяется с помощью ресурса типа **Microsoft.Web/Site** и вид **functionapp**:
+Ресурс приложения-функции определяется с помощью ресурса типа **Microsoft.Web/Site** и вида **functionapp**:
 
 ```json
 {
@@ -95,15 +95,15 @@ ms.lasthandoff: 10/06/2017
 
 <a name="consumption"></a>
 
-## <a name="deploy-a-function-app-on-hello-consumption-plan"></a>Развертывание приложения в плане использования hello функции
+## <a name="deploy-a-function-app-on-the-consumption-plan"></a>Развертывание приложения-функции в плане потребления
 
-Вы можете запустить приложение функции в двух разных режимах: hello потребления план и hello план служб приложений. план потребления Hello автоматически размещает вычислительной мощности, когда кода выполняется, при необходимости toohandle загрузки масштабируемостью и затем масштабируется, если код не выполняется. Таким образом нет toopay для неактивных виртуальных машин и отсутствии tooreserve ресурсов, заранее. toolearn Дополнительные сведения о планах размещения см [планы потребления функций Azure и службы приложений](functions-scale.md).
+Вы можете запускать приложение-функцию в двух разных режимах: план потребления и план службы приложений. План потребления автоматически выделяет вычислительные ресурсы в процессе выполнения кода, масштабируя их в соответствии с нагрузкой и уменьшая, когда код не выполняется. Таким образом, нет необходимости платить за бездействующие виртуальные машины и заранее резервировать ресурсы. Дополнительные сведения о планах размещения см. в статье [Потребление Функций Azure и планы службы приложений](functions-scale.md).
 
 Образец шаблона диспетчера ресурсов Azure см. на странице [Function app on Consumption plan] (План потребления приложения-функции)
 
 ### <a name="create-a-consumption-plan"></a>Создание плана потребления
 
-План потребления — это специальный тип ресурса "ферма серверов". Можно указать с помощью hello `Dynamic` значение hello `computeMode` и `sku` свойства:
+План потребления — это специальный тип ресурса "ферма серверов". Его можно указать с помощью значения `Dynamic` для свойств `computeMode` и `sku`:
 
 ```json
 {
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="create-a-function-app"></a>Создание приложения-функции
 
-Кроме того, план потребления требует двух дополнительных настроек в конфигурации сайта hello: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` и `WEBSITE_CONTENTSHARE`. Эти свойства позволяют настраивать hello хранилища учетной записи и путь к файлу хранения код приложения функции hello и конфигурации.
+Кроме того, для плана потребления следует выполнить две дополнительные настройки в конфигурации сайта: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` и `WEBSITE_CONTENTSHARE`. Эти свойства настраивают учетную запись хранения и путь к файлам кода приложения-функции и конфигурации.
 
 ```json
 {
@@ -166,9 +166,9 @@ ms.lasthandoff: 10/06/2017
 
 <a name="app-service-plan"></a> 
 
-## <a name="deploy-a-function-app-on-hello-app-service-plan"></a>Развертывание приложения функции на hello план служб приложений
+## <a name="deploy-a-function-app-on-the-app-service-plan"></a>Развертывание приложения-функции в плане службы приложений
 
-В hello план служб приложений функция приложения выполняется на выделенных виртуальных машинах на Basic, Standard и Premium SKU, аналогичные tooweb приложений. Дополнительные сведения о работе hello план служб приложений см. в разделе hello [исчерпывающий обзор планы службы приложений Azure](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+В плане службы приложений ваши приложения-функции запускаются на выделенных виртуальных машинах на Basic, Standard и Premium SKU аналогично веб-приложениям. Дополнительную информацию о том, как действует план службы приложений, см. в статье [Подробный обзор планов службы приложений Azure](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 Образец шаблона Azure Resource Manager см. на странице [Function app on Azure App Service plan] (Приложение-функция в плане службы приложений Azure).
 
@@ -192,12 +192,12 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="create-a-function-app"></a>Создание приложения-функции 
 
-Выбрав вариант масштабирования, создайте приложение-функцию. приложение Hello — hello контейнер, который содержит все функции.
+Выбрав вариант масштабирования, создайте приложение-функцию. Приложение является контейнером, в котором содержатся все функции.
 
-Приложение-функция содержит много дочерних ресурсов, которые можно использовать при развертывании, в том числе параметры приложения и параметры системы управления версиями. Можно также выбрать tooremove hello **sourcecontrols** дочерний ресурс и используйте другой [вариант развертывания](functions-continuous-deployment.md) вместо него.
+Приложение-функция содержит много дочерних ресурсов, которые можно использовать при развертывании, в том числе параметры приложения и параметры системы управления версиями. Вы можете также удалить дочерний ресурс **sourcecontrols** и выбрать другой [вариант развертывания](functions-continuous-deployment.md).
 
 > [!IMPORTANT]
-> toosuccessfully развернуть приложение с помощью диспетчера ресурсов Azure, важно toounderstand способа развертывания ресурсов в Azure. В следующем примере hello, верхнего уровня конфигурации применяются с помощью **siteConfig**. Это важные tooset этих конфигураций на высшем уровне, так как они передают сведения toohello функции среды выполнения и развертывания ядра. Необходимы сведения верхнего уровня перед дочерним элементом hello **sourcecontrols и веб-** применяется ресурсов. Несмотря на возможные tooconfigure эти параметры в hello дочернего уровня **config/appSettings** ресурсов, в некоторых случаях функции приложения должны быть развернуты *перед* **config/appSettings**  применяется. В таких случаях, например в [Logic Apps](../logic-apps/index.md), функции зависят от другого ресурса.
+> Чтобы с помощью Azure Resource Manager успешно развернуть приложение, важно понимать, каким образом ресурсы развертываются в Azure. В следующем примере конфигурации верхнего уровня применяются с помощью **siteConfig**. Их важно задать на верхнем уровне, так как эти конфигурации передают сведения в среду выполнения функций и механизм развертывания. Сведения верхнего уровня требуются перед применением дочернего ресурса **sourcecontrols/web**. Хотя эти параметры можно настроить в дочернем ресурсе **config/appSettings**, в некоторых сценариях приложение-функцию требуется развернуть *до* применения **config/appSettings**. В таких случаях, например в [Logic Apps](../logic-apps/index.md), функции зависят от другого ресурса.
 
 ```json
 {
@@ -252,25 +252,25 @@ ms.lasthandoff: 10/06/2017
 }
 ```
 > [!TIP]
-> Этот шаблон использует hello [проекта](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) значение параметров приложения, которое задает hello базовый каталог, в какой hello подсистема развертывания функции (Kudu) ищет развертываемых код. В нашем репозитории нашей функции находятся в вложенную Привет **src** папки. Таким образом, в предыдущих пример hello, задается значение параметров приложения hello слишком`src`. Если функций находятся в корне hello репозиторий или не выполняется развертывание из системы управления версиями, можно удалить это значение параметров приложения.
+> В этом шаблоне используется значение параметров приложения [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file), задающее базовый каталог, в котором подсистема развертывания функций (Kudu) ищет развертываемый код. В нашем репозитории функции находятся во вложенной папке папки **src**. Таким образом, в предыдущем примере мы задаем для параметров приложения значение `src`. Если ваши функции находятся в корневой папке репозитория, или если развертывание выполняется не из системы управления версиями, то это значение параметров приложения можно удалить.
 
 ## <a name="deploy-your-template"></a>Развертывание шаблона
 
-Можно использовать любой из следующих способов toodeploy hello шаблон:
+Для развертывания шаблона можно использовать любой из следующих способов:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Интерфейс командной строки Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Портал Azure](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [ИНТЕРФЕЙС REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-### <a name="deploy-tooazure-button"></a>TooAzure кнопка "Развертывание"
+### <a name="deploy-to-azure-button"></a>Кнопка "Развертывание в Azure"
 
-Замените ```<url-encoded-path-to-azuredeploy-json>``` с [URL-адреса](https://www.bing.com/search?q=url+encode) версии hello необработанный путь к `azuredeploy.json` в GitHub в файл.
+Замените ```<url-encoded-path-to-azuredeploy-json>``` версией необработанного пути к файлу `azuredeploy.json` на сайте GitHub, указав его в формате [URL-адреса](https://www.bing.com/search?q=url+encode).
 
 Ниже приведен пример использования разметки:
 
 ```markdown
-[![Deploy tooAzure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>)
 ```
 
 Ниже приведен пример использования HTML:
@@ -281,10 +281,10 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о toodevelop и настройки функций Azure.
+Дополнительные сведения о разработке и настройке Функций Azure:
 
 * [Справочник разработчика по функциям Azure](functions-reference.md)
-* [Как tooconfigure Azure функция параметров приложения](functions-how-to-use-azure-function-app-settings.md)
+* [Управление приложением-функцией на портале Azure](functions-how-to-use-azure-function-app-settings.md)
 * [Создание первой функции Azure](functions-create-first-azure-function.md)
 
 <!-- LINKS -->

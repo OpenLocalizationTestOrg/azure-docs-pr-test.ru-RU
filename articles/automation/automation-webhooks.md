@@ -1,9 +1,9 @@
 ---
-title: "runbook службы автоматизации Azure с веб-перехватчика aaaStarting | Документы Microsoft"
-description: "Веб-перехватчика, позволяющую toostart клиента runbook в автоматизации Azure вызова HTTP.  В этой статье описывается как toocreate веб-перехватчика и как один toostart toocall runbook."
+title: "Запуск Runbook службы автоматизации Azure с помощью объекта webhook | Документация Майкрософт"
+description: "Объект Webhook, который позволяет клиенту запустить модуль Runbook в службе автоматизации Azure с помощью HTTP-запроса.  В статье рассматривается создание объекта Webhook и вызов такого объекта для запуска модуля Runbook."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,111 +14,111 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: ca6cde66b3784ceb5d0bc5921cee87aea74cb150
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d384a1f6e0f6bf49cf94020265fe5675ffc0029d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Запуск Runbook службы автоматизации Azure с помощью объекта webhook
-Объект *веб-перехватчика* позволяет toostart конкретного модуля runbook в автоматизации Azure через один HTTP-запроса. Это позволяет внешней службы, такие как Visual Studio Team Services, GitHub, аналитика журналов пакета управления Operations Microsoft или пользовательских приложений toostart модулей Runbook без реализации полного решения с использованием hello API автоматизации Azure.  
+*Webhook* позволяет запустить модуль Runbook в службе автоматизации Azure с помощью одного HTTP-запроса. Это позволяет внешним службам, таким как Visual Studio Team Services, GitHub, Microsoft Operations Management Suite Log Analytics, или пользовательским приложениям запускать модули Runbook без реализации полного решения с помощью API службы автоматизации Azure.  
 ![Обзор веб-перехватчиков](media/automation-webhooks/webhook-overview-image.png)
 
-Вы можете сравнить веб-перехватчиков tooother способов запуска модуля runbook [запуск runbook в автоматизации Azure](automation-starting-a-runbook.md)
+Сравнение объектов webhook с другими методами запуска модуля Runbook см. в разделе [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).
 
 ## <a name="details-of-a-webhook"></a>Подробные сведения о Webhook
-Hello следующей таблице описаны свойства hello, необходимо настроить для веб-перехватчик.
+В следующей таблице описаны свойства, которые необходимо настроить для объекта Webhook.
 
 | Свойство | Описание |
 |:--- |:--- |
-| Имя |Вы можете указать любое имя, которое требуется для веб-перехватчика, так как это не предоставляется toohello клиента.  Оно используется только для вас tooidentify hello runbook в автоматизации Azure. <br>  Рекомендуется следует предоставить веб-перехватчика hello имя связанных toohello клиента, который будет его использовать. |
-| URL-адрес |Hello URL-адрес веб-перехватчика hello: hello уникальный адрес, что клиент вызывает с runbook hello HTTP POST toostart связанные toohello веб-перехватчика.  Он создается автоматически при создании веб-перехватчика hello.  Нельзя указать другой URL-адрес. <br> <br>  Hello URL-адрес содержит маркер безопасности, позволяющий hello toobe runbook, вызываемые сторонняя система без дальнейшей проверки подлинности. По этой причине он должен рассматриваться как пароль.  По соображениям безопасности можно только hello представление создается URL-адрес в Azure портал на веб-перехватчика hello время hello hello. Следует отметить hello URL-адрес в безопасном месте для будущего использования. |
-| Срок действия |Как и сертификат, каждый объект Webhook имеет срок действия, после которого он больше не используется.  Эта дата истечения срока действия можно изменить после создания веб-перехватчика hello. |
-| Включено |При создании объекта Webhook он по умолчанию включается.  Если задать tooDisabled, то клиент не будет возможности toouse его.  Можно задать hello **включено** создается свойство при создании веб-перехватчика hello, или в любое время один раз. |
+| Имя |Для объекта Webhook можно указать любое имя, так как оно не раскрывается клиенту.  Имя используется для идентификации модуля Runbook в службе автоматизации Azure. <br>  Рекомендуется задать объекту Webhook имя, связанное с клиентом, который будет его использовать. |
+| URL-адрес |URL-адрес Webhook — это уникальный адрес, который использует клиент для метода HTTP POST для запуска модуля Runbook, связанного с объектом Webhook.  URL-адрес создается автоматически при создании объекта Webhook.  Нельзя указать другой URL-адрес. <br> <br>  URL-адрес содержит токен безопасности, который позволяет сторонней системе вызвать модуль Runbook без дополнительной проверки подлинности. По этой причине он должен рассматриваться как пароль.  По соображениям безопасности просмотреть URL-адрес на портале Azure можно только в момент создания веб-перехватчика. URL-адрес следует записать в надежном месте, чтобы использовать его в дальнейшем. |
+| Срок действия |Как и сертификат, каждый объект Webhook имеет срок действия, после которого он больше не используется.  Этот срок можно изменить после создания объекта webhook. |
+| Включено |При создании объекта Webhook он по умолчанию включается.  Если его отключить, клиенты не смогут его использовать.  Свойство **Включен** можно задать при создании объекта Webhook или в любое время после его создания. |
 
 ### <a name="parameters"></a>Параметры
-Веб-перехватчика можно определить значения для параметров runbook, которые используются при запуске hello runbook, что веб-перехватчика. веб-перехватчика Hello должна содержать значения для всех обязательных параметров hello runbook и могут включать значения для необязательных параметров. Веб-перехватчика tooa настроить значение параметра можно изменить даже после создания hello webhoook. Несколько связанных веб-перехватчиков tooa отдельного модуля runbook можно использовать различные значения параметра.
+Объект Webhook может определять значения для параметров модуля Runbook, которые используются при запуске модуля Runbook этим объектом Webhook. Объект Webhook должен содержать значения для всех обязательных параметров модуля Runbook и может также включать необязательные параметры. Значение параметра, который настроен для объекта Webhook, можно изменить даже после создания объекта Webhoook. Несколько объектов Webhook, привязанных к одному модулю Runbook, могут использовать разные значения параметров.
 
-При запуске модуля runbook с помощью веб-перехватчика клиента, он не может переопределить hello значения параметров, определенные в веб-перехватчика hello.  tooreceive данные от клиента hello, hello runbook может принимать один параметр с именем **$WebhookData** тип [object], который будет содержать данные этого клиента hello включает в себя в запросе POST hello.
+Когда клиент запускает модуль Runbook с помощью объекта Webhook, клиент не может переопределить значения параметров, определяемые Webhook.  Чтобы получать данные от клиента, модуль Runbook может принимать один параметр **$WebhookData** типа [object], который содержит данные, включаемые клиентом в POST-запрос.
 
 ![Свойства Webhookdata](media/automation-webhooks/webhook-data-properties.png)
 
-Hello **$WebhookData** объект будет иметь hello следующие свойства:
+Объект **$WebhookData** имеет следующие свойства.
 
 | Свойство | Описание |
 |:--- |:--- |
-| WebhookName |Имя веб-перехватчика hello Hello. |
-| RequestHeader |Хэш-таблица с заголовками hello hello входящего запроса POST. |
-| RequestBody |текст Hello hello входящего запроса POST.  Это сохранит все форматирование, такое как строка, JSON, XML или данные, закодированные в форме. Hello runbook должно быть написано toowork с форматом данных hello, которая ожидается. |
+| WebhookName |Имя объекта Webhook. |
+| RequestHeader |Хэш-таблица, содержащая заголовки входящего запроса POST. |
+| RequestBody |Текст входящего запроса POST.  Это сохранит все форматирование, такое как строка, JSON, XML или данные, закодированные в форме. Модуль Runbook должен быть написан для работы с форматом данных, который ожидается. |
 
-Нет конфигураций hello необходимые toosupport веб-перехватчика hello **$WebhookData** параметра, и hello runbook не требуется tooaccept его.  Если hello runbook не определяет параметр hello, все сведения о запросе hello, отправляемых с клиента hello учитывается.
+Нет настройки объекта Webhook, которая была бы обязательной для поддержки параметра **$WebhookData** , однако модуль Runbook не обязан принимать его.  Если модуль Runbook не определяет параметр, любые сведения в запросе клиента пропускаются.
 
-Если указать значение для $WebhookData при создании веб-перехватчика hello, что значение будет переопределенное в начале веб-перехватчика hello hello runbook hello данными из hello клиентский запрос POST, даже если клиент hello не включать данные в текст запроса hello.  При запуске модуля runbook, который имеет $WebhookData с помощью метода, отличного от веб-перехватчик может предоставить значение для $Webhookdata, будут распознаваться hello runbook.  Это значение должно быть объектом с hello же [свойства](#details-of-a-webhook) как $Webhookdata, этого модуля hello должным образом можно работать с ними, как если бы он работал фактическое WebhookData, переданных веб-перехватчик.
+Если указать значение для параметра $WebhookData в момент создания объекта Webhook, это значение будет переопределено, когда объект Webhook запустит модуль Runbook с данными из клиентского POST-запроса, даже если клиент не включает какие-либо данные в текст запроса.  При запуске модуля Runbook, у которого параметр $WebhookData использует метод, отличный от Webhook, можно указать значение для $Webhookdata, которое будет распознаваться модулем Runbook.  Это значение должно быть объектом с теми же [свойствами](#details-of-a-webhook) , что и $Webhookdata, чтобы модуль Runbook смог с ним правильно работать как с фактическим WebhookData, переданным веб-перехватчиком.
 
-Например если вы начинаете hello следующую runbook из портала Azure hello и toopass WebhookData некоторые образцы для тестирования, так как WebhookData — это объект, он должен передаваться как JSON в hello пользовательского интерфейса.
+Например, если на портале Azure запускается следующий модуль Runbook и требуется передать несколько примеров WebhookData для тестирования, то, так как WebhookData является объектом, он должен быть передан в пользовательском интерфейсе как JSON.
 
 ![Параметр WebhookData из пользовательского интерфейса](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-Для hello выше runbook, если у вас есть следующие свойства для параметра WebhookData hello hello:
+Для приведенного выше модуля Runbook, если у вас есть следующие свойства для параметра WebhookData:
 
 1. WebhookName: *MyWebhook*
 2. RequestHeader: *From=Test User*
 3. RequestBody: *[“VM1”, “VM2”]*
 
-Затем можно передать следующие значения JSON в hello пользовательского интерфейса для параметра WebhookData hello hello:  
+То в пользовательском интерфейсе для параметра WebhookData следует передать следующее значение JSON:  
 
 * {"WebhookName":"MyWebhook", "RequestHeader":{"From":"Test User"}, "RequestBody":"[\"VM1\",\"VM2\"]"}
 
 ![Запуск параметра WebhookData из пользовательского интерфейса](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 > [!NOTE]
-> с заданием runbook hello регистрируются Hello значения всех входных параметров.  Это означает, что любой входных данных, предоставленных клиентом hello в запрос веб-перехватчика hello будет tooanyone регистрируются и доступны с помощью задания автоматизации toohello доступа.  По этой причине необходимо соблюдать осторожность при указании критических данных в вызовах Webhook.
+> Значения входных параметров вводятся вместе с заданием Runbook.  Это означает, что любые входные данные, предоставленные клиентом в запросе Webhook, будут записаны в журнал и станут доступны любому пользователю с доступом к заданию автоматизации.  По этой причине необходимо соблюдать осторожность при указании критических данных в вызовах Webhook.
 >
 
 ## <a name="security"></a>Безопасность
-безопасность веб-перехватчика Hello зависит от hello конфиденциальность его URL-адрес, который содержит маркер безопасности, позволяющий ему toobe вызывается. Службы автоматизации Azure не будет выполнять проверку подлинности hello запроса до тех пор, пока он станет toohello правильный URL-адрес. По этой причине веб-привязок не должен использоваться для модулей Runbook, которые выполняют конфиденциальными функции без использования альтернативный способ проверки запроса hello.
+Безопасность объекта Webhook зависит от безопасности URL-адреса, который содержит токен безопасности, позволяющий вызывать объект Webhook. Служба автоматизации Azure не выполняет проверку подлинности для запроса, если он выполняется с правильным URL-адресом. По этой причине объекты Webhook не следует применять для модулей Runbook, которые выполняют важные функции, без использования дополнительной проверки запроса.
 
-Можно включить логику в toodetermine runbook hello, что она была вызвана веб-перехватчика, проверив hello **WebhookName** свойства параметра hello $WebhookData. Hello runbook может выполнять последующие проверки путем поиска определенной информации в hello **RequestHeader** или **RequestBody** свойства.
+Можно включить логику в модуль Runbook, которая будет определять вызов объектом Webhook путем проверки свойства **WebhookName** для параметра $WebhookData. Модуль Runbook может выполнять последующие проверки путем поиска определенной информации в свойствах **RequestHeader** или **RequestBody**.
 
-Другая стратегия — toohave hello runbook выполнить некоторые проверки внешнего условия при получении запроса на веб-перехватчика.  Например рассмотрим книгу выполнения, вызывается GitHub всякий раз, когда новый репозиторий GitHub tooa фиксации.  Hello runbook может подключиться toovalidate tooGitHub, новые фиксации просто возникла перед продолжением.
+Еще одна стратегия заключается в том, чтобы модуль Runbook выполнял проверку внешнего условия после получения запроса Webhook.  Например, рассмотрим модуль Runbook, вызываемый из GitHub каждый раз, когда на GitHub появляется обновление репозитория.  Модуль Runbook может подключаться к GitHub, чтобы проверить доступность обновления.
 
 ## <a name="creating-a-webhook"></a>Создание объекта Webhook
-Используйте следующие процедуры toocreate новый модуль runbook связан с веб-перехватчика tooa в hello портал Azure hello.
+Чтобы создать новый веб-перехватчик, связанный с модулем Runbook, на портале Azure, воспользуйтесь следующей процедурой.
 
-1. Из hello **Runbooks колонки** hello портал Azure, щелкните runbook hello, hello веб-перехватчика начнет tooview колонке детализации.
-2. Нажмите кнопку **веб-перехватчика** вверху hello hello колонке tooopen hello **добавить веб-перехватчика** колонку. <br>
+1. В колонке **Модули Runbook** на портале Azure щелкните модуль Runbook, запускаемый веб-перехватчиком, чтобы открыть колонку с подробной информацией о нем.
+2. Щелкните **Webhook** в верхней части колонки, чтобы открыть колонку **Add Webhook** (Добавить объект webhook). <br>
    ![Кнопка Webhook](media/automation-webhooks/webhooks-button.png)
-3. Нажмите кнопку **создать новый веб-перехватчика** tooopen hello **создать веб-перехватчика колонке**.
-4. Укажите **имя**, **Дата окончания срока действия** для веб-перехватчика hello и является ли он должен быть включен. Подробные сведения об этих свойствах см. в разделе [Details of a webhook](#details-of-a-webhook) (Сведения об объекте webhook).
-5. Щелкните значок копирования hello и нажмите Ctrl + C toocopy hello URL-адрес веб-перехватчика hello.  Сохраните URL-адрес в безопасном месте.  **После создания веб-перехватчика hello hello URL-адрес не удается получить еще раз.** <br>
+3. Щелкните **Create new webhook** (Создать объект webhook), чтобы открыть колонку **Create webhook blade** (Создание объекта webhook).
+4. Укажите для объекта webhook **имя**, **Срок действия** и необходимость его включения. Подробные сведения об этих свойствах см. в разделе [Details of a webhook](#details-of-a-webhook) (Сведения об объекте webhook).
+5. Щелкните значок копирования и нажмите Ctrl+C, чтобы скопировать URL-адрес объекта Webhook.  Сохраните URL-адрес в безопасном месте.  **После создания объекта webhook URL-адрес нельзя получить повторно.** <br>
    ![URL-адрес объекта webhook](media/automation-webhooks/copy-webhook-url.png)
-6. Нажмите кнопку **параметры** tooprovide значения для параметров runbook hello.  Если hello runbook обязательные параметры, затем нельзя веб-перехватчик может toocreate hello, если не предоставлены значения.
-7. Нажмите кнопку **создать** веб-перехватчика toocreate hello.
+6. Щелкните **Параметры** , чтобы указать значения для параметров модуля Runbook.  Если модуль Runbook содержит обязательные параметры, то его нельзя будет создать, не указав значения.
+7. Щелкните **Создать** , чтобы создать объект Webhook.
 
 ## <a name="using-a-webhook"></a>Использование объекта Webhook
-toouse веб-перехватчика после его создания клиентского приложения должен выдать HTTP POST с hello URL-адрес для веб-перехватчика hello.  синтаксис Hello веб-перехватчика hello будут в кодировке hello.
+Чтобы использовать объект Webhook после его создания, клиентское приложение должно создать запрос HTTP POST с URL-адресом объекта Webhook.  Синтаксис объекта Webhook будет иметь следующий формат.
 
     http://<Webhook Server>/token?=<Token Value>
 
-Hello клиент получит следующие коды возврата из запроса POST hello hello.  
+Клиент получит один из следующих кодов возврата в ответ на запрос POST.  
 
 | Код | текст | Описание |
 |:--- |:--- |:--- |
-| 202 |Принято |Hello запрос принят и hello runbook был успешно помещен в очередь. |
-| 400 |Ошибка запроса |Hello запрос не был принят для одной из следующих причин hello. <ul> <li>веб-перехватчика Hello истек.</li> <li>Hello веб-перехватчик отключен.</li> <li>Недопустимый токен Hello в URL-АДРЕСЕ hello.</li>  </ul> |
-| 404 |Не найдено |Hello запрос не был принят для одной из следующих причин hello. <ul> <li>веб-перехватчика Hello не найден.</li> <li>Hello runbook не найдено.</li> <li>Hello учетная запись не найдена.</li>  </ul> |
-| 500 |Внутренняя ошибка сервера |Hello URL-адрес является допустимым, но произошла ошибка.  Повторно отправьте запрос hello. |
+| 202 |Принято |Запрос был принят, и модуль Runbook успешно поставлен в очередь. |
+| 400 |Ошибка запроса |Запрос не был принят по одной из следующих причин. <ul> <li>Срок действия объекта webhook истек.</li> <li>Объект webhook отключен.</li> <li>Недопустимый токен в URL-адресе.</li>  </ul> |
+| 404 |Не найдено |Запрос не был принят по одной из следующих причин. <ul> <li>Объект webhook не найден.</li> <li>Модуль Runbook не найден.</li> <li>Учетная запись не найдена.</li>  </ul> |
+| 500 |Внутренняя ошибка сервера |URL-адрес допустимый, но произошла ошибка.  Отправьте запрос повторно. |
 
-Предположим, что hello запрос выполнен успешно, hello веб-перехватчика ответ содержит идентификатор задания hello в формате JSON следующим образом. Он будет содержать идентификатор одним заданием, но позволяет hello формат JSON для возможных будущих улучшений.
+Если предположить, что запрос выполнен успешно, ответ Webhook будет содержать идентификатор задания в формате JSON, как показано далее. Он будет содержать идентификатор одного задания, но формат JSON предоставляет возможность потенциальных будущих улучшений.
 
     {"JobIds":["<JobId>"]}  
 
-Hello клиент не может определить при завершении задания runbook hello или его состояние завершения с веб-перехватчика hello.  Он определяет эти сведения, такие как с помощью идентификатора задания hello одного метода другим [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) или hello [API автоматизации Azure](https://msdn.microsoft.com/library/azure/mt163826.aspx).
+Клиент не может определить момент завершения задания Runbook и состояние его завершения из объекта Webhook.  Он может определить эти сведения с помощью идентификатора задания, используя другой метод, например [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) или [API службы автоматизации Azure](https://msdn.microsoft.com/library/azure/mt163826.aspx).
 
 ### <a name="example"></a>Пример
-Следующий пример Hello использует Windows PowerShell toostart runbook с веб-перехватчик.  Обратите внимание, что в любом языке, способном выполнить HTTP-запрос, можно использовать объект Webhook; Windows PowerShell используется здесь просто для примера.
+В следующем примере модуль Runbook запускается с помощью Webhook из Windows PowerShell.  Обратите внимание, что в любом языке, способном выполнить HTTP-запрос, можно использовать объект Webhook; Windows PowerShell используется здесь просто для примера.
 
-Hello runbook ожидает список виртуальных машин, в формате JSON в тексте hello hello запроса в формате. Сведения о, выполняется запуск hello runbook и hello даты и времени, она запущена в заголовке hello hello запроса также предоставляются вместе.      
+Модуль Runbook ожидает список виртуальных машин, отформатированный в JSON, в теле запроса. Также мы включаем в заголовок запроса сведения о том, кто запускает модуль Runbook, а также о дате и времени запуска.      
 
     $uri = "https://s1events.azure-automation.net/webhooks?token=8ud0dSrSo%2fvHWpYbklW%3c8s0GrOKJZ9Nr7zqcS%2bIQr4c%3d"
     $headers = @{"From"="user@contoso.com";"Date"="05/28/2015 15:47:00"}
@@ -133,19 +133,19 @@ Hello runbook ожидает список виртуальных машин, в 
     $jobid = ConvertFrom-Json $response
 
 
-Hello на рисунке показаны сведения о заголовке hello (с помощью [Fiddler](http://www.telerik.com/fiddler) трассировки) из этого запроса. Сюда входят стандартные заголовки HTTP-запроса на добавление toohello настраиваемые дата и из заголовков, которые мы добавили.  Каждое из этих значений является доступной toohello runbook в hello **RequestHeaders** свойство **WebhookData**.
+На следующем рисунке показаны данные заголовка (с использованием трассировки [Fiddler](http://www.telerik.com/fiddler) ) из этого запроса. Они включают стандартные заголовки HTTP-запроса в дополнение к пользовательским заголовкам Date и From, которые мы добавили.  Каждое из этих значений доступно модулю Runbook в свойстве **RequestHeaders** объекта **WebhookData**.
 
 ![Кнопка Webhook](media/automation-webhooks/webhook-request-headers.png)
 
-Hello на рисунке показаны hello тексте hello запроса (с помощью [Fiddler](http://www.telerik.com/fiddler) трассировки), доступные toohello runbook в hello **RequestBody** свойство **WebhookData**. Это в формате JSON за hello формат, который был включен в тексте hello hello запроса.     
+На следующем рисунке показан текст запроса (с использованием трассировки [Fiddler](http://www.telerik.com/fiddler)), доступное модулю Runbook в свойстве **RequestBody** объекта **WebhookData**. Оно отформатировано как JSON, так как это формат, который был включен в тело запроса.     
 
 ![Кнопка Webhook](media/automation-webhooks/webhook-request-body.png)
 
-Hello следующем рисунке показан запрос hello, отправляемых из Windows PowerShell, а также получаемые ответы hello.  Идентификатор задания Hello извлекается из ответа hello и tooa преобразованной строки.
+На следующем рисунке показан запрос, отправляемый из Windows PowerShell, а также получаемый в результате ответ.  Идентификатор задания извлекается из ответа и преобразуется в строку.
 
 ![Кнопка Webhook](media/automation-webhooks/webhook-request-response.png)
 
-Hello следующий пример модуля runbook принимает hello предыдущего примера запрос и запускает hello виртуальных машин, указанный в тексте запроса hello.
+Следующий образец модуля Runbook принимает предыдущий пример запроса и запускает виртуальные машины, указанные в теле запроса.
 
     workflow Test-StartVirtualMachinesFromWebhook
     {
@@ -166,7 +166,7 @@ Hello следующий пример модуля runbook принимает he
             $VMList = ConvertFrom-Json -InputObject $WebhookBody
             Write-Output "Runbook started from webhook $WebhookName by $From."
 
-            # Authenticate tooAzure resources
+            # Authenticate to Azure resources
             $Cred = Get-AutomationPSCredential -Name 'MyAzureCredential'
             Add-AzureAccount -Credential $Cred
 
@@ -179,27 +179,27 @@ Hello следующий пример модуля runbook принимает he
             }
         }
         else {
-            Write-Error "Runbook mean toobe started only from webhook."
+            Write-Error "Runbook mean to be started only from webhook."
         }
     }
 
 
-## <a name="starting-runbooks-in-response-tooazure-alerts"></a>Запуск модулей Runbook в ответ tooAzure оповещения
-Модули Runbook с поддержкой веб-перехватчика также может быть используется tooreact[оповещения Azure](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). Ресурсы в Azure можно отслеживать путем сбора статистики hello как производительности, доступности и использования с помощью hello оповещения Azure. Вы можете получать оповещения на основе отслеживания метрик или событий в ресурсах Azure, сейчас учетные записи автоматизации поддерживают только метрики. Если значение hello указанной метрики превышает hello установленный порог, заданный или, если настроена hello события затем toohello администратора или соадминистраторам tooresolve hello предупреждение службы, Дополнительные сведения о показателях отправляется уведомление о и событий можно найти слишком[ Оповещения Azure](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+## <a name="starting-runbooks-in-response-to-azure-alerts"></a>Запуск модулей Runbook в ответ на оповещения Azure
+Модули Runbook с поддержкой объектов webhook можно использовать для реагирования на [оповещения Azure](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). Ресурсы в Azure можно отслеживать, собирая статистику производительности, доступности и использования с помощью оповещений Azure. Вы можете получать оповещения на основе отслеживания метрик или событий в ресурсах Azure, сейчас учетные записи автоматизации поддерживают только метрики. Когда значение заданной метрики превышает установленный порог или активируется заданное событие, администратору или соадминистраторам службы отправляется уведомление о том, что оповещение необходимо разрешить. Дополнительные сведения о метриках и событиях см. в статье [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) (Получение уведомлений об оповещениях).
 
-Помимо использования оповещения Azure как система уведомлений, можно также начнем Runbook в tooalerts ответа. Служба автоматизации Azure обеспечивает hello возможность toorun включен веб-перехватчика Runbook с оповещения Azure. При превышении показателем hello настроен пороговое значение, то hello правило оповещения становится активным и триггеры hello веб-перехватчика автоматизации, который в свою очередь выполняет hello runbook.
+Оповещения Azure можно использовать не только как систему уведомлений, но и для запуска модулей Runbook. Служба автоматизации Azure позволяет запускать модули Runbook с поддержкой веб-перехватчика в ответ на оповещения Azure. Как только метрика превышает заданное пороговое значение, правило оповещения становится активным и запускает веб-перехватчик службы автоматизации, который, в свою очередь, запускает модуль Runbook.
 
 ![Объекты Webhook](media/automation-webhooks/webhook-alert.jpg)
 
 ### <a name="alert-context"></a>Контекст оповещения
-ЦП этой машины является одним из hello метрики производительности, учитывайте ресурс Azure, такие как виртуальной машины. Если hello ЦП — 100% или превышает определенное длительного периода времени, может потребоваться toorestart hello виртуальной машины toofix hello проблему. Это может быть решена Настройка виртуальной машины toohello правила оповещения и это правило имеет процент использования ЦП в качестве его метрик. Здесь процент использования ЦП берется только в качестве примера, но существует множество метрик, которые можно настроить tooyour Azure ресурсов и перезапуск hello виртуальной машины — это действие, будет предпринято toofix эту проблему, hello runbook tootake можно настроить другие действия.
+Для ресурса Azure, такого как виртуальная машина, одной из основных метрик производительности является загрузка ЦП. Если загрузка ЦП составляет 100 % или превышает определенный порог в течение долгого времени, перезапустите виртуальную машину, чтобы решить проблему. Ситуацию можно исправить, настроив правило оповещения для виртуальной машины, используя в качестве метрики процент загрузки ЦП. Процент загрузки ЦП в данном случае взят для примера, и в ресурсах Azure можно настраивать другие метрики, а перезапуск виртуальной машины — лишь одно из действий по решению проблемы, и можно настраивать модуль Runbook на выполнение других действий.
 
-После этого правила оповещения hello становится активным и триггеры hello runbook с поддержкой веб-перехватчика, он отправляет runbook toohello hello контекст предупреждения. [Контекст предупреждения](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) содержит сведения, включая **SubscriptionID**, **ResourceGroupName**, **ResourceName**, **ResourceType**, **ResourceId** и **Timestamp** , необходимые для hello runbook tooidentify hello ресурса, на котором он будет предпринимать действия. Предупреждения, контекст внедрен в часть текста hello hello **WebhookData** объекта отправленных toohello runbook, и можно осуществить с помощью **Webhook.RequestBody** свойство
+Когда правило оповещения становится активным и запускает модуль Runbook с поддержкой веб-перехватчика, в модуль Runbook отправляется контекст оповещения. [Контекст оповещения](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) содержит сведения, позволяющие модулю Runbook идентифицировать ресурс, к которому будет применено действие, включая **SubscriptionID**, **ResourceGroupName**, **ResourceName**, **ResourceType**, **ResourceId** и **Timestamp**. Контекст оповещения внедряется в основную часть объекта **WebhookData**, передаваемого в модуль Runbook, и извлекается с помощью свойства **Webhook.RequestBody**.
 
 ### <a name="example"></a>Пример
-Создание виртуальной машины Azure в подписку и связывание [предупреждения toomonitor ЦП в процентах метрика](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). При создании предупреждения hello убедитесь, что необходимо заполнить поле веб-перехватчика hello hello URL-адрес веб-перехватчика hello, который был создан при создании веб-перехватчика hello.
+Создание виртуальной машины Azure в подписке и привязка [оповещения для мониторинга метрики процента загрузки ЦП](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). При создании оповещения введите в поле веб-перехватчика URL-адрес, сгенерированный при создании веб-перехватчика.
 
-Hello следующий пример модуля runbook инициируется при hello правило оповещения становится активным и собирает параметры hello контекст предупреждения, которые требуются для hello tooidentify runbook hello ресурса, на котором он будет предпринимать действия.
+Приведенный ниже пример модуля Runbook запускается, когда правило оповещения становится активным и собирает параметры контекста Azure, необходимые модулю Runbook для идентификации ресурса, к которому нужно применить действие.
 
     workflow Invoke-RunbookUsingAlerts
     {
@@ -214,17 +214,17 @@ Hello следующий пример модуля runbook инициирует�
             $WebhookBody    =   $WebhookData.RequestBody
             $WebhookHeaders =   $WebhookData.RequestHeader
 
-            # Outputs information on hello webhook name that called This
+            # Outputs information on the webhook name that called This
             Write-Output "This runbook was started from webhook $WebhookName."
 
 
-            # Obtain hello WebhookBody containing hello AlertContext
+            # Obtain the WebhookBody containing the AlertContext
             $WebhookBody = (ConvertFrom-Json -InputObject $WebhookBody)
             Write-Output "`nWEBHOOK BODY"
             Write-Output "============="
             Write-Output $WebhookBody
 
-            # Obtain hello AlertContext     
+            # Obtain the AlertContext     
             $AlertContext = [object]$WebhookBody.context
 
             # Some selected AlertContext information
@@ -238,31 +238,31 @@ Hello следующий пример модуля runbook инициирует�
             Write-Output $AlertContext.resourceId
             Write-Output $AlertContext.timestamp
 
-            # Act on hello AlertContext data, in our case restarting hello VM.
-            # Authenticate tooyour Azure subscription using Organization ID toobe able toorestart that Virtual Machine.
+            # Act on the AlertContext data, in our case restarting the VM.
+            # Authenticate to your Azure subscription using Organization ID to be able to restart that Virtual Machine.
             $cred = Get-AutomationPSCredential -Name "MyAzureCredential"
             Add-AzureAccount -Credential $cred
             Select-AzureSubscription -subscriptionName "Visual Studio Ultimate with MSDN"
 
-            #Check hello status property of hello VM
+            #Check the status property of the VM
             Write-Output "Status of VM before taking action"
             Get-AzureVM -Name $AlertContext.resourceName -ServiceName $AlertContext.resourceName
             Write-Output "Restarting VM"
 
-            # Restart hello VM by passing VM name and Service name which are same in this case
+            # Restart the VM by passing VM name and Service name which are same in this case
             Restart-AzureVM -ServiceName $AlertContext.resourceName -Name $AlertContext.resourceName
             Write-Output "Status of VM after alert is active and takes action"
             Get-AzureVM -Name $AlertContext.resourceName -ServiceName $AlertContext.resourceName
         }
         else  
         {
-            Write-Error "This runbook is meant tooonly be started from a webhook."  
+            Write-Error "This runbook is meant to only be started from a webhook."  
         }  
     }
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения о различных способов toostart runbook см. в разделе [запуск Runbook](automation-starting-a-runbook.md).
-* Сведения о hello Просмотр состояния задания Runbook, см. в разделе слишком[выполнение модуля Runbook в автоматизации Azure](automation-runbook-execution.md).
-* toouse действия tootake автоматизации Azure в Azure Alerts. в статье toolearn [устранения предупреждения виртуальной Машины Azure с Runbook автоматизации](automation-azure-vm-alert-integration.md).
+* Дополнительные сведения о различных способах запуска модуля Runbook см. в статье [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).
+* Сведения о просмотре состояния задания Runbook см. в статье [Выполнение модуля Runbook в службе автоматизации Azure](automation-runbook-execution.md).
+* Узнать, как использовать службу автоматизации Azure для выполнения действий на основе оповещений Azure, можно в статье [Обработка оповещений виртуальной машины Azure с помощью модулей Runbook службы автоматизации](automation-azure-vm-alert-integration.md).

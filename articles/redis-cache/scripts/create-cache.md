@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария CLI - aaaAzure создать кэш Azure Redis | Документы Microsoft"
+title: "Пример сценария Azure CLI. Создание кэша Redis для Azure | Документация Майкрософт"
 description: "Пример сценария Azure CLI. Создание кэша Redis для Azure"
 services: redis-cache
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/14/2017
+ms.date: 08/30/2017
 ms.author: sdanie
-ms.openlocfilehash: 85b007a426fbd4752034ec8663835963d140dd75
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 19b582a0cecd72b9f30283ccf822b74cf400a155
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-redis-cache"></a>Создание кэша Redis для Azure
 
-В этом сценарии вы узнаете, как toocreate Redis для Azure кэша.
+С помощью этого сценария вы узнаете, как создать кэш Redis для Azure.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,16 +35,16 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды toocreate hello, группу ресурсов и кэш redis. Каждая команда в таблице hello связывает toocommand документацию.
+Для создания группы ресурсов и кэша Redis этот сценарий использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis#create) | Создает экземпляр кэша Redis. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
+| [az redis create](https://docs.microsoft.com/cli/azure/redis#az_redis_create) | Создает экземпляр кэша Redis. |
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные образцы сценариев CLI кэша Redis Azure можно найти в hello [документации кэш Azure Redis](../cli-samples.md).
+Дополнительные примеры сценариев Azure CLI для кэша Redis для Azure см. в [документации по кэшу Redis для Azure](../cli-samples.md).

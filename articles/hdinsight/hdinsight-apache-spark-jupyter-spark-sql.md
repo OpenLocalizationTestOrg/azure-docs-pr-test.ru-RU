@@ -1,10 +1,10 @@
 ---
-title: "кластер aaaCreate Apache Spark в Azure HDInsight | Документы Microsoft"
-description: "Примеры использования HDInsight Spark на как кластер toocreate Apache Spark в HDInsight."
+title: "Создание кластера Apache Spark в Azure HDInsight | Документация Майкрософт"
+description: "Краткое руководство HDInsight Spark по созданию кластера Apache Spark в HDInsight."
 keywords: "краткое руководство Spark,интерактивный запрос Spark,интерактивный запрос,Hdinsight Spark,Azure Spark"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,19 +15,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
-ms.author: nitinme
-ms.openlocfilehash: 002f71b3cd4fb315d4a556cebc9263026515ec4a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.date: 09/07/2017
+ms.author: maxluk
+ms.openlocfilehash: e64720efa168a84193dc3f351def0e58979f7f86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Создание кластера Apache Spark в Azure HDInsight
 
-В этой статье вы узнаете, как кластер toocreate Apache Spark в Azure HDInsight. Сведения о Spark в HDInsight см. в [этой статье](hdinsight-apache-spark-overview.md).
+Из этой статьи вы узнаете, как создать кластер Apache Spark в Azure HDInsight и отправить запросы Spark SQL к таблице Hive. Сведения о Spark в HDInsight см. в [этой статье](hdinsight-apache-spark-overview.md).
 
-   ![Краткое руководство схема, описывающая шаги toocreate кластера с Apache Spark на Azure HDInsight](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "Spark начало работы с помощью Apache Spark в HDInsight. Описанные действия: создание кластера; выполнение интерактивного запроса Spark")
+   ![Схема быстрого руководства, описывающая шаги по созданию кластера Apache Spark в Azure HDInsight](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "Краткое руководство по Spark с использованием Apache Spark в HDInsight. Описанные действия: создание кластера; выполнение интерактивного запроса Spark")
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -37,90 +37,96 @@ ms.lasthandoff: 10/06/2017
 
 Следуя инструкциям из этого раздела, вы создадите кластер HDInsight Spark, используя [шаблон Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). Другие способы создания кластера см. в статье [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Щелкните hello следующий шаблон hello tooopen изображения в hello портал Azure.         
+1. Щелкните следующее изображение, чтобы открыть шаблон на портале Azure.         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-2. Введите hello следующие значения:
+2. Введите следующие значения.
 
     ![Создание кластера HDInsight Spark с использованием шаблона Azure Resource Manager](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Создание кластера Spark в HDInsight с использованием шаблона Azure Resource Manager")
 
     * **Подписка.** Выберите свою подписку Azure для этого кластера.
-    * **Группа ресурсов.** Создайте группу ресурсов или выберите существующую. Группы ресурсов — используется toomanage ресурсы Azure для проектов.
-    * **Расположение**: выберите расположение для группы ресурсов hello. шаблон Hello использует это расположение для создания кластера hello также и для хранения данных кластера по умолчанию hello.
-    * **Имя_кластера**: Введите имя кластера HDInsight hello, которое следует toocreate.
-    * **Версия Spark**: выберите **2.0** hello версии, которые должны tooinstall на кластере hello.
-    * **Имя входа и пароль кластера**: hello имя входа по умолчанию — admin.
+    * **Группа ресурсов.** Создайте группу ресурсов или выберите существующую. Она используется для управления ресурсами Azure для ваших проектов.
+    * **Расположение**. Выберите расположение группы ресурсов. В шаблоне используется это расположение для создания кластера и его хранения по умолчанию.
+    * **Имя кластера**. Введите имя создаваемого кластера HDInsight.
+    * **Версия Spark**. Для версии, которую необходимо установить в кластере, выберите значение **2.0**.
+    * **Имя для входа в кластер и пароль**: имя для входа по умолчанию — admin.
     * **Имя пользователя SSH и пароль**.
 
-   Запишите эти значения.  Они необходимы далее в учебнике hello.
+   Запишите эти значения.  Они потребуются позже в данном руководстве.
 
-3. Выберите **я принимаю условия, указанных выше, toohello**выберите **toodashboard ПИН-код**и нажмите кнопку **покупки**. Появится новый элемент под названием "Идет отправка развертывания для развертывания шаблона". Он принимает кластера hello toocreate около 20 минут.
+3. Установите флажок **Я принимаю указанные выше условия** и **Закрепить на панели мониторинга**, а затем нажмите кнопку **Приобрести**. Появится новый элемент под названием "Идет отправка развертывания для развертывания шаблона". Процесс создания кластеров занимает около 20 минут.
 
-Если возникли проблемы с создания кластеров HDInsight, возможно, у вас toodo hello нужные разрешения таким образом. Дополнительные сведения см. в разделе [Требования к контролю доступа](hdinsight-administer-use-portal-linux.md#create-clusters).
+Если при создании кластера HDInsight возникают проблемы, возможно, у вас нет необходимых разрешений. Дополнительные сведения см. в разделе [Требования к контролю доступа](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 > [!NOTE]
-> В этой статье создается кластер Spark, использующий [BLOB-объектов хранилища Azure как hello кластера хранилища](hdinsight-hadoop-use-blob-storage.md). Можно также создать кластер Spark, которая использует [хранилища Озера данных Azure](hdinsight-hadoop-use-data-lake-store.md) хранения по умолчанию hello. Инструкции см. в инструкциях по [созданию кластера HDInsight с Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+> В этой статье описано, как создать кластер Spark, использующий [большие двоичные объекты службы хранилища Azure в качестве хранилища кластера](hdinsight-hadoop-use-blob-storage.md). Кроме того, вы можете создать кластер Spark, использующий [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) в качестве хранилища по умолчанию. Инструкции см. в инструкциях по [созданию кластера HDInsight с Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 >
 >
 
-## <a name="run-a-hive-query-using-spark-sql"></a>Выполнение запросов Hive с помощью Spark SQL
+## <a name="run-spark-sql-statements-on-a-hive-table"></a>Выполнение инструкций Spark SQL в таблице Hive
 
-При использовании записной книжке Jupyter, настроенных для кластера HDInsight Spark, вы получаете стиль `sqlContext` , которые можно использовать запросы Hive toorun с помощью Spark SQL. В этом разделе вы узнаете, как toostart записной книжке Jupyter, а затем запустите базового запроса Hive.
+SQL — это наиболее распространенный и широко используемый язык для создания запросов и определения данных. Основатели Spark в полной мере использовали эти знания, чтобы сделать широко известный язык запросов доступным для более широкого круга аналитиков, которые хотят работать с данными, хранящимися в распределенной файловой системе Hadoop (HDFS). Со Spark SQL это стало возможным. Spark SQL работает как расширение Apache Spark для обработки структурированных данных с использованием знакомого синтаксиса SQL.
 
-1. Откройте hello [портал Azure](https://portal.azure.com/).
+Это расширение поддерживает такие языки запросов, как SQL и HiveQL. Его возможности включают привязки в Python, Scala и Java. Это позволяет запрашивать данные, хранящиеся в различных расположениях, таких как внешние базы данных, структурированные файлы данных (например, JSON) и таблицы Hive.
 
-2. Если вы выбрали мониторинга toohello toopin hello кластера, щелкните плитку кластера hello из hello мониторинга toolaunch hello кластера колонки.
+### <a name="running-spark-sql-on-an-hdinsight-cluster"></a>Выполнение запросов Spark SQL в кластере HDInsight
 
-    Если не закрепить мониторинга toohello кластера hello hello левой панели, нажмите кнопку **кластеров HDInsight**и нажмите кнопку hello кластера, вы создали.
+При использовании записной книжки Jupyter, настроенной для кластера HDInsight Spark, вы получаете предустановку `sqlContext`, которую можно применять для выполнения запросов Hive с помощью Spark SQL. Из этого раздела вы узнаете, как запустить записную книжку Jupyter и выполнить простой запрос Spark SQL к существующей таблице Hive (**hivesampletable**), доступной на всех кластерах HDInsight.
 
-3. В разделе **Быстрые ссылки** щелкните **Панели мониторинга кластера**, а затем — **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора hello hello кластера.
+1. Откройте [портал Azure](https://portal.azure.com/).
 
-   ![Откройте Jupyter записной книжки toorun интерактивного Spark SQL-запроса](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "откройте Jupyter записной книжки toorun интерактивного Spark SQL-запроса")
+2. Если закрепили кластер на панели мониторинга, щелкните элемент кластера на панели мониторинга, чтобы открыть колонку кластера.
+
+    Если вы не закрепили кластер на панели мониторинга, в области слева щелкните **Кластеры HDInsight**, а затем выберите созданный кластер.
+
+3. В разделе **Быстрые ссылки** щелкните **Панели мониторинга кластера**, а затем — **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора для кластера.
+
+   ![Открытие записной книжки Jupyter для выполнения интерактивного запроса Spark SQL](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Открытие записной книжки Jupyter для выполнения интерактивного запроса Spark SQL")
 
    > [!NOTE]
-   > Также может обращаться к записной книжки Jupyter hello для кластера, открыв hello следующий URL-адрес в браузере. Замените **CLUSTERNAME** с hello имя кластера:
+   > Также можно открыть записную книжку Jupyter для своего кластера, открыв следующий URL-адрес в браузере. Замените **CLUSTERNAME** именем кластера:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
 3. Создайте записную книжку. Щелкните **Создать**, а затем выберите **PySpark**.
 
-   ![Создать интерактивный запрос Spark SQL Jupyter записной книжки toorun](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "создания Jupyter записной книжки toorun интерактивного Spark SQL-запроса")
+   ![Создание записной книжки Jupyter для выполнения интерактивного запроса Spark SQL](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Создание записной книжки Jupyter для выполнения интерактивного запроса Spark SQL")
 
-   Создается и открывается с именем hello Untitled(Untitled.pynb) новый блокнот.
+   Будет создана и открыта записная книжка с именем Untitled (Untitled.pynb).
 
-4. Щелкните имя записной книжки hello вверху hello и введите понятное имя, если требуется.
+4. Щелкните имя записной книжки вверху и по желанию введите понятное имя.
 
-    ![Введите имя для hello Jupter записной книжки toorun интерактивных Spark запросов из](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "укажите имя для hello Jupter записной книжки toorun интерактивных Spark запросов из")
+    ![Указание имени записной книжки Jupyter, из которой будет выполняться интерактивный запрос Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "Provide a name for the Jupyter notebook to run interactive Spark query from")
 
-5.  Ниже hello вставить код в пустой ячейке и нажмите клавишу **SHIFT + ВВОД** toorun кода hello. В следующем примере кода hello `%%sql` (вызываемой hello sql magic) сообщает предустановку hello toouse записной книжки Jupyter `sqlContext` toorun запроса Hive hello. Hello запрос извлекает hello первые 10 строк из таблицы Hive (**hivesampletable**), доступное по умолчанию для всех кластеров HDInsight.
+5.  Вставьте указанный ниже код в пустую ячейку и нажмите сочетание клавиш **SHIFT + ВВОД**, чтобы выполнить код. В примере кода ниже `%%sql` (sql magic) указывает записной книжке Jupyter использовать предустановку `sqlContext` для выполнения запроса Hive. Запрос извлекает первые 10 строк из таблицы Hive (**hivesampletable**), которая по умолчанию доступна для всех кластеров HDInsight.
 
         %%sql
         SELECT * FROM hivesampletable LIMIT 10
 
     ![Запрос Hive в HDInsight Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive query in HDInsight Spark")
 
-    Дополнительные сведения о hello `%%sql` magic и hello предустановленный набор контекстов см. в разделе [Jupyter ядер, доступных для кластера HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
+    Дополнительные сведения о `%%sql` magic и предустановленных контекстах см. в статье [Ядра для записной книжки Jupyter в кластерах Spark в Azure HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
     > [!NOTE]
-    > Показывает каждый раз при выполнении запроса в Jupyter, заголовок окна обозревателя вашей веб **(Busy)** состояния вместе с hello записной книжки заголовка. Появится следующий toohello сплошной кружок **PySpark** текст в верхнем правом углу hello. По завершении задания hello изменяется tooa полый круг.
+    > При каждом выполнении запроса в Jupyter в заголовке окна веб-браузера будет отображаться состояние **(Занято)**, а также название записной книжки. Кроме того, рядом с надписью **PySpark** в верхнем правом углу окна будет показан закрашенный кружок. После завершения задания он изменится на кружок без заливки.
     >
     >
     
-6. экран приветствия следует обновить результат запроса tooshow hello.
+6. Экран обновится, и отобразятся выходные данные запроса.
 
     ![Выходные данные запроса Hive в HDInsight Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Hive query output in HDInsight Spark")
 
-7. Завершение работы ресурсов кластера hello toorelease записной книжки hello, после завершения работы приложения hello. toodo так, hello **файл** меню на ноутбуке hello щелкните **закрыть и остановить**.
+7. Завершив работу с приложением, можно закрыть записную книжку, чтобы освободить ресурсы кластера. Для этого в записной книжке в меню **Файл** выберите пункт **Close and Halt** (Закрыть и остановить).
 
-8. Если в дальнейшем планируется toocomplete hello дальнейшие действия, убедитесь, что удаление кластера HDInsight hello, созданный в этой статье. 
+8. Если вы планируете выполнить следующие действия позже, обязательно удалите кластер HDInsight, созданный во время работы с этой статьей. 
 
-    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-step"></a>Дальнейшие действия 
 
-В этой статье вы узнали, как кластер HDInsight Spark toocreate и выполнения основных Spark SQL запроса. Переместить toohello toolearn далее в статье как кластер HDInsight Spark toouse toorun интерактивной обработки запросов на образце данных.
+Из этой статьи вы узнали, как создать кластер HDInsight Spark и выполнить базовый запрос Spark SQL. Из следующей статьи вы узнаете, как с помощью кластера HDInsight Spark выполнять интерактивные запросы, используя пример данных.
 
 > [!div class="nextstepaction"]
 >[Выполнение интерактивных запросов в кластере HDInsight Spark](hdinsight-apache-spark-load-data-run-query.md)

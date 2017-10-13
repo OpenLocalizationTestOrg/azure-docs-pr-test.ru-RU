@@ -1,6 +1,6 @@
 ---
-title: "адреса aaaAzure уровне экземпляра общедоступный IP-адрес (классические) | Документы Microsoft"
-description: "Понимать экземпляра уровня общедоступных адресов IP (ILPIP) и как toomanage их с помощью PowerShell."
+title: "Общедоступные IP-адреса уровня экземпляра Azure (классическая модель) | Документация Майкрософт"
+description: "Описание общедоступных IP-адресов уровня экземпляра (ILPIP-адресов) и инструкции по управлению ими с помощью PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
-ms.openlocfilehash: 832143ee6fdd80b634e1cebfddc759a8cacda583
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Общие сведения об общедоступных IP-адресах уровня экземпляра (классическая модель развертывания)
-Экземпляр уровня открытый IP (ILPIP) — общедоступный IP-адрес, который можно назначить непосредственно tooa экземпляра роли виртуальной Машины или облачные службы, а не toohello облачной службы, в котором экземпляр виртуальной Машины или роли. ILPIP не принимает hello вместо hello виртуальный IP-адрес (VIP), назначенный tooyour облачной службы. Скорее, это дополнительный IP-адрес, что можно использовать tooconnect непосредственно tooyour ВМ или экземпляру роли.
+Общедоступный IP-адрес уровня экземпляра (ILPIP) — это общедоступный IP-адрес, который можно назначить непосредственно виртуальной машине или экземпляру роли облачных служб, а не облачной службе, в которой они находятся. Он не заменяет виртуальный IP-адрес (VIP), назначенный облачной службе. а представляет собой дополнительный IP-адрес, с помощью которого можно подключаться непосредственно к виртуальной машине или экземпляру роли.
 
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует создавать виртуальные машины с помощью Resource Manager. Убедитесь, что вы понимаете как работают в Azure [IP-адреса](virtual-network-ip-addresses-overview-classic.md) .
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). В этой статье рассматривается использование классической модели развертывания. Корпорация Майкрософт рекомендует создавать виртуальные машины с помощью Resource Manager. Убедитесь, что вы понимаете как работают в Azure [IP-адреса](virtual-network-ip-addresses-overview-classic.md) .
 
 ![Разница между ILPIP-адресом и виртуальным IP-адресом](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Как показано на рисунке 1 hello облачной службе осуществляется с использованием VIP, при hello отдельные виртуальные машины обычно осуществляется с помощью виртуального IP-адреса:&lt;номер порта&gt;. Назначив tooa ILPIP определенную виртуальную Машину, что виртуальная машина может быть доступ непосредственно с помощью этого IP-адреса.
+Как показано на рис. 1, для доступа к облачной службе используется виртуальный IP-адрес, а для обращения к отдельным виртуальным машинам, как правило, применяется формат "виртуальный IP-адрес:&lt;номер_порта&gt;". Назначив определенной виртуальной машине ILPIP-адрес, вы сможете обращаться к ней напрямую.
 
-При создании облачной службы в Azure, соответствующие записи DNS создаются автоматически службы toohello tooallow доступа через полное доменное имя (FQDN), вместо использования hello фактических виртуальных IP-адресов. Hello для ILPIP, позволяя доступа toohello ВМ или экземпляру роли по полному доменному ИМЕНИ вместо hello ILPIP может произойти одного процесса. Для экземпляра при создании облачной службы с именем *contosoadservice*, и настройте веб-роль с именем *contosoweb* с двумя экземплярами hello Azure регистрирует следующие A записей для hello экземпляров:
+При создании облачной службы в среде Azure автоматически создаются соответствующие записи A DNS, благодаря которым к службе можно обращаться по полному доменному имени вместо ее фактического виртуального IP-адреса. То же самое выполняется и для ILPIP-адресов, благодаря чему к виртуальным машинам и экземплярам ролей можно обращаться по полному доменному имени, не указывая ILPIP-адрес. Например, если при создании облачной службы *contosoadservice* вы настраиваете веб-роль *contosoweb* с двумя экземплярами, то платформа Azure регистрирует следующие записи A для этих экземпляров:
 
 * contosoweb\_IN_0.contosoadservice.cloudapp.net;
 * contosoweb\_IN_1.contosoadservice.cloudapp.net. 
 
 > [!NOTE]
-> Каждой виртуальной машине или экземпляру роли можно назначить только один ILPIP-адрес. Воспользуйтесь ILPIPs too5 на подписку. ILPIP-адреса не поддерживаются для виртуальных машин с несколькими сетевыми картами.
+> Каждой виртуальной машине или экземпляру роли можно назначить только один ILPIP-адрес. В одной подписке разрешается использовать до 5 ILPIP-адресов. ILPIP-адреса не поддерживаются для виртуальных машин с несколькими сетевыми картами.
 > 
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Зачем запрашивать ILPIP-адрес?
-Tooyour может tooconnect toobe виртуальной Машины или экземпляра роли по IP-адреса назначаются напрямую tooit, вместо использования hello облачной службы VIP:&lt;номер порта&gt;, запрос ILPIP для виртуальной Машины или экземпляра роли.
+Чтобы подключиться к виртуальной машине или экземпляру роли непосредственно по определенному IP-адресу, не используйте формат "виртуальный IP-адрес облачной службы:&lt;номер_порта&gt;", а вместо этого отправьте запрос на создание ILPIP-адреса для виртуальной машины или экземпляра роли.
 
-* **Активный режим FTP** -назначая ILPIP tooa виртуальной Машины, она может получать трафик через любой порт. Конечные точки не являются обязательными для hello tooreceive трафика виртуальных Машин.  Дополнительные сведения по протоколу hello FTP. в разделе (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) [Обзор протокола FTP].
-* **Исходящий IP-адрес** - исходящий трафик от ВМ hello сопоставлен toohello ILPIP в качестве источника hello и hello ILPIP однозначно определяет объекты tooexternal hello виртуальной Машины.
+* **Активный FTP-сервер**. Если назначить ILPIP-адрес виртуальной машине, она сможет получать трафик через любой порт. Ей не понадобятся конечные точки, чтобы получать трафик.  Дополнительные сведения о протоколе FTP см. в обзоре протокола FTP (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP Protocol Overview] .
+* **Исходящий IP-трафик.** Исходящий трафик с виртуальной машины сопоставляется с ILPIP-адресом в качестве источника, который уникальным образом идентифицирует эту виртуальную машину для внешних сущностей.
 
 > [!NOTE]
-> В прошлом hello адрес ILPIP была ссылка tooas общедоступному IP (PIP).
+> Ранее ILPIP-адрес назывался общедоступным IP-адресом.
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Управление ILPIP-адресом виртуальной машины
-следующие задачи Hello позволяют toocreate, назначение и удаление ILPIPs из виртуальных машин:
+Ниже описано, как создавать, назначать и удалять ILPIP-адреса виртуальных машин.
 
-### <a name="how-toorequest-an-ilpip-during-vm-creation-using-powershell"></a>Как toorequest ILPIP во время создания виртуальной Машины с помощью PowerShell
-Следующий сценарий PowerShell Hello создает облачную службу с именем *FTP-Служба\всего*, извлекает изображение из Azure, создает Виртуальную машину с именем *FTPInstance* с помощью образа hello получить задает hello ВМ toouse ILPIP и добавляет новую службу hello ВМ toohello:
+### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Как отправлять запрос на получение ILPIP-адреса на этапе создания виртуальной машины с помощью PowerShell
+Приведенный ниже сценарий PowerShell создает облачную службу *FTPService*, получает образ из Azure, создает на его основе виртуальную машину *FTPInstance*, задает для нее ILPIP-адрес и добавляет эту виртуальную машину в новую службу.
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -65,8 +65,8 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
-### <a name="how-tooretrieve-ilpip-information-for-a-vm"></a>Как tooretrieve ILPIP сведения для виртуальной Машины
-hello tooview ILPIP сведения для hello создания ВМ и для предыдущего сценария hello, запустите следующую команду PowerShell hello и просмотрите значения hello *PublicIPAddress* и *PublicIPName*:
+### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Получение сведений об ILPIP-адресе виртуальной машины
+Чтобы узнать ILPIP-адрес виртуальной машины, созданной с помощью приведенного выше сценария, выполните следующую команду PowerShell и обратите внимание на значения *PublicIPAddress* и *PublicIPName*.
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -101,15 +101,15 @@ Get-AzureVM -Name FTPInstance -ServiceName FTPService
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-### <a name="how-tooremove-an-ilpip-from-a-vm"></a>Как tooremove ILPIP из виртуальной Машины
-в предыдущий сценарий hello, запустите следующую команду PowerShell hello tooremove hello ILPIP добавлены toohello виртуальной Машины:
+### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Удаление ILPIP-адреса виртуальной машины
+Чтобы удалить ILPIP-адрес, назначенный виртуальной машине в приведенном выше сценарии, выполните следующую команду PowerShell.
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
-### <a name="how-tooadd-an-ilpip-tooan-existing-vm"></a>Как tooadd tooan ILPIP существующей виртуальной Машины
-tooadd ILPIP toohello виртуальной Машины, созданной с помощью скрипта hello предыдущей, выполните следующую команду hello:
+### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Назначение ILPIP-адреса существующей виртуальной машине
+Чтобы добавить ILPIP-адрес для виртуальной машины, созданной с помощью приведенного выше сценария, выполните следующую команду.
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
@@ -117,10 +117,10 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 
 ## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Управление ILPIP-адресом экземпляра роли облачных служб
 
-tooadd экземпляр роли облачных служб ILPIP tooa завершения hello, следующие шаги:
+Чтобы добавить ILPIP-адрес для экземпляра роли облачных служб, выполните следующие действия.
 
-1. Загрузите файл cscfg hello hello облачную службу, выполнив hello шагов в hello [как tooConfigure облачных служб](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) статьи.
-2. Обновление hello cscfg-файле, добавив hello `InstanceAddress` элемента. Hello следующий пример добавляет ILPIP с именем *MyPublicIP* с именем экземпляра роли tooa *WebRole1*: 
+1. Скачайте CSCFG-файл облачной службы, выполнив действия, описанные в статье [Настройка облачных служб](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg).
+2. Измените этот CSCFG-файл, добавив в него элемент `InstanceAddress`. Приведенный ниже пример добавляет ILPIP-адрес *MyPublicIP* для экземпляра роли *WebRole1*. 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -142,8 +142,8 @@ tooadd экземпляр роли облачных служб ILPIP tooa зав
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Отправить файл cscfg hello hello облачную службу, выполнив hello шагов в hello [как tooConfigure облачных служб](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) статьи.
+3. Передайте CSCFG-файл облачной службы, выполнив действия, описанные в статье [Настройка облачных служб](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Понять, как [IP-адресация](virtual-network-ip-addresses-overview-classic.md) работает в hello классической модели развертывания.
+* Общие сведения об IP-адресах в классической модели развертывания см. в статье [IP-адреса в Azure (классическая модель развертывания)](virtual-network-ip-addresses-overview-classic.md).
 * Общие сведения о зарезервированных IP-адресах см. в [этой статье](virtual-networks-reserved-public-ip.md).

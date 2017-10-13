@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с BetterWorks | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и BetterWorks."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и BetterWorks."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,207 +13,207 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 9803593124318ea82e5a8888cc5a95b5da84472e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d6a5b167c0befbd0fe2c65bdd16abc35ed0a659c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>Учебник. Интеграция Azure Active Directory с BetterWorks
 
-В этом учебнике вы узнаете, как toointegrate BetterWorks с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать BetterWorks с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD BetterWorks предоставляет hello следующие преимущества:
+Интеграция Azure AD с BetterWorks обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooBetterWorks
-- Можно включить на пользователей tooautomatically get вошедшего tooBetterWorks (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к BetterWorks.
+- Вы можете включить автоматический вход пользователей в BetterWorks (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с BetterWorks требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с BetterWorks, вам потребуется:
 
 - подписка Azure AD;
 - подписка BetterWorks с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление BetterWorks из галереи hello
+1. Добавление BetterWorks из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-betterworks-from-hello-gallery"></a>Добавление BetterWorks из галереи hello
-tooconfigure hello интеграции BetterWorks в Azure AD, вы должны tooadd BetterWorks из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-betterworks-from-the-gallery"></a>Добавление BetterWorks из коллекции
+Чтобы настроить интеграцию BetterWorks с Azure AD, необходимо добавить BetterWorks из коллекции в список управляемых приложений SaaS.
 
-**tooadd BetterWorks из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить BetterWorks из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **BetterWorks**.
+4. В поле поиска введите **BetterWorks**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_search.png)
 
-5. В панели результатов hello выберите **BetterWorks**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **BetterWorks** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в BetterWorks с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в BetterWorks является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в BetterWorks должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в BetterWorks соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в BetterWorks.
 
-В BetterWorks, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в BetterWorks.
 
-tooconfigure и теста Azure AD единого входа с BetterWorks, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в BetterWorks, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя BetterWorks](#creating-a-betterworks-test-user)**  -toohave аналог Саймон Britta в BetterWorks, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя BetterWorks](#creating-a-betterworks-test-user)** нужно для того, чтобы в BetterWorks также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении BetterWorks.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении BetterWorks.
 
-**tooconfigure Azure AD единого входа с BetterWorks, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в BetterWorks, выполните следующие действия.**
 
-1. В hello в hello портала Azure **BetterWorks** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **BetterWorks** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_samlbase.png)
 
-3. На hello **URL-адреса и домена BetterWorks** статьи, при желании tooconfigure приложения hello в **режиме, инициированный IDP**:
+3. Если вы хотите настроить приложение в **режиме, инициируемом IdP**, то в разделе **Домены и URL-адреса приложения BetterWorks** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
 
-    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://app.betterworks.com/saml2/metadata/`
+    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://app.betterworks.com/saml2/metadata/`
 
-    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://app.betterworks.com/saml2/acs/`
+    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://app.betterworks.com/saml2/acs/`.
 
-4. На hello **URL-адреса и домена BetterWorks** статьи, при желании tooconfigure приложения hello в **режиме, инициируемая SP**, выполните следующие шаги hello:
+4. Если вы хотите настроить приложение в **режиме, инициируемом поставщиком услуг**, то в разделе **Домены и URL-адреса приложения BetterWorks** выполните следующие действия.
     
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url1.png)
 
-    а. Щелкните hello **Показывать дополнительные параметры URL-адреса**.
+    а. Установите флажок **Показать дополнительные параметры URL-адресов**.
 
-    b. В hello **на URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://app.betterworks.com`
+    b. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://app.betterworks.com`.
 
     > [!NOTE] 
-    > Значения, указанные выше, приведены в качестве примера. Обновите эти значения с hello URL-адрес ответа, идентификатор и фактический на URL-адрес входа. Обратитесь к [BetterWorks поддержки](mailto:support@betterworks.com) tooget эти значения.
+    > Значения, указанные выше, приведены в качестве примера. Вместо них необходимо указать фактические значения URL-адреса ответа, идентификатора и URL-адреса для входа. Чтобы получить эти значения, обратитесь к [группе поддержки BetterWorks](mailto:support@betterworks.com).
  
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_certificate.png)  
 
-5. BetterWorks приложение ожидает утверждения SAML hello в определенном формате. Настройка следующих утверждений для этого приложения hello. Вы можете управлять hello значения этих атрибутов из hello»**атрибута**» вкладку приложения hello. пример Hello следующий снимок экрана для этого. 
+5. Приложение BetterWorks ожидает утверждения SAML в определенном формате. Настройте следующие утверждения для этого приложения. Управлять значениями этих атрибутов можно на вкладке **Attribute** (Атрибут) приложения. На следующем снимке экрана приведен пример. 
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_attribute.png)
 
-6. На hello **атрибутов токена SAML** диалоговое окно, для каждой строки, показано в следующей таблице hello выполните следующие шаги hello:
+6. В диалоговом окне **Атрибуты токена SAML** для каждой строки в таблице ниже выполните следующие действия:
  
    | Имя атрибута | Значение атрибута |
    | -------------- |  ------------ |
    | saml_token     | bd189cf6-1701-11e6-8f90-d26992eca2a5 |
 
-   а. Нажмите кнопку **добавить атрибут** tooopen hello **Добавление атрибута** диалогового окна.
+   а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно **Добавление атрибута**.
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_04.png)
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_officespace_05.png)
 
-   b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки. 
+   b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки. 
 
-   c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
+   c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
     
-   d. Нажмите кнопку **ОК**.
+   г) Нажмите кнопку **ОК**.
 
 7. Нажмите кнопку **Сохранить** .
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_general_400.png)
 
-8. tooconfigure единого входа на **BetterWorks** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[BetterWorks поддержки](mailto:support@betterworks.com).
+8. Чтобы настроить единый вход на стороне **BetterWorks**, отправьте скачанный **XML-файл метаданных** [группе поддержки BetterWorks](mailto:support@betterworks.com).
 
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-betterworks-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-betterworks-test-user"></a>Создание тестового пользователя BetterWorks
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении BetterWorks. Работать с [BetterWorks поддержки](mailto:support@betterworks.com) tooadd hello пользователей на платформе BetterWorks hello.
+В этом разделе описано, как создать пользователя Britta Simon в приложении BetterWorks. Обратитесь к [группе поддержки BetterWorks](mailto:support@betterworks.com), чтобы добавить пользователей на платформу BetterWorks.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooBetterWorks доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к BetterWorks.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooBetterWorks Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в BetterWorks, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **BetterWorks**.
+2. В списке приложений выберите **BetterWorks**.
 
     ![Настройка единого входа](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -221,7 +221,7 @@ tooconfigure и теста Azure AD единого входа с BetterWorks, т
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -229,13 +229,13 @@ tooconfigure и теста Azure AD единого входа с BetterWorks, т
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки BetterWorks плитки в панели доступа hello приветствия, вы должны получить автоматически вошедшего tooyour BetterWorks приложения.
+Щелкнув элемент BetterWorks на панели доступа, вы автоматически войдете в приложение BetterWorks.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

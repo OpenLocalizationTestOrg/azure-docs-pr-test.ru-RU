@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate центр IoT Azure с помощью шаблона (PowerShell) | Документы Microsoft"
-description: "Как toouse toocreate шаблона диспетчера ресурсов Azure центр IoT с помощью PowerShell."
+title: "Создание Центра Интернета вещей Azure с помощью шаблона (PowerShell) | Документация Майкрософт"
+description: "Создание Центра Интернета вещей с помощью шаблона Azure Resource Manager и PowerShell."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e98ff5e898200cd727b9326fb3df393e43b021e6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f83fac6cffc9e58582417324a4348ca3b6220f0c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Создание Центра Интернета вещей с помощью шаблона Azure Resource Manager (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Можно использовать toocreate диспетчера ресурсов Azure и программно управлять центры Azure IoT. В этом учебнике показано как toouse toocreate шаблона диспетчера ресурсов Azure центр IoT с помощью PowerShell.
+Диспетчер ресурсов Azure можно использовать для создания Центров Интернета вещей Azure программным способом и управления ими. В этом учебнике показано, как использовать шаблон Azure Resource Manager для создания Центра Интернета вещей с помощью PowerShell.
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md). В этой статье описан с помощью модели развертывания диспетчера ресурсов Azure hello.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Azure Resource Manager и классическая модель](../azure-resource-manager/resource-manager-deployment-model.md). В этой статье описывается использование модели развертывания на основе Azure Resource Manager.
 
-toocomplete этого учебника требуется hello следующие:
+Для работы с этим учебником требуется:
 
 * Активная учетная запись Azure. <br/>Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.
 * [Azure PowerShell 1.0][lnk-powershell-install] или более поздней версии.
 
 > [!TIP]
-> статья Hello [с помощью Azure PowerShell с помощью диспетчера ресурсов Azure] [ lnk-powershell-arm] предоставляет дополнительные сведения о том, как toouse PowerShell и диспетчера ресурсов Azure шаблоны toocreate Azure ресурсы.
+> Дополнительные сведения об использовании PowerShell и шаблонов Azure Resource Manager для создания ресурсов Azure см. в статье [Управление ресурсами с помощью Azure PowerShell и Resource Manager][lnk-powershell-arm].
 
-## <a name="connect-tooyour-azure-subscription"></a>Подключение tooyour подписки Azure
+## <a name="connect-to-your-azure-subscription"></a>Подключение к подписке Azure
 
-В командной строке PowerShell введите hello, следующая команда toosign в tooyour подписки Azure:
+В командной строке PowerShell введите следующую команду, чтобы войти в подписку Azure.
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Если у вас несколько подписок Azure, предоставляет доступ tooall вход tooAzure hello подписок Azure, связанных с учетными данными. Используйте следующую команду, toolist hello подписки Azure доступны для вас toouse hello.
+Если у вас есть несколько подписок Azure, то при входе в Azure вы получите доступ ко всем подпискам Azure, связанным с вашими учетными данными. Используйте следующую команду, чтобы просмотреть подписки Azure, доступные для использования:
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Используется следующая команда tooselect подписки требуется toouse toorun hello команды toocreate концентратор IoT hello. Можно использовать имя подписки hello или идентификатор из hello выходные данные предыдущей команды hello:
+Используйте следующую команду, чтобы выбрать подписку, которая будет использоваться для выполнения команд для создания Центра Интернета вещей. Вы можете использовать имя подписки или идентификатор из выходных данных предыдущей команды:
 
 ```powershell
 Select-AzureRMSubscription `
     -SubscriptionName "{your subscription name}"
 ```
 
-Можно использовать следующие команды toodiscover, где вы можете развернуть центр IoT и hello в настоящее время поддерживаемые версии API hello:
+Чтобы узнать, где можно развернуть Центр Интернета вещей, и ознакомиться с текущими поддерживаемыми версиями API, используйте следующие команды:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).Locations
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Devices).ResourceTypes | Where-Object ResourceTypeName -eq IoTHubs).ApiVersions
 ```
 
-Создайте группы ресурсов toocontain IoT концентраторе, используя следующую команду в одном из расположений hello поддерживается для центра IoT hello. В этом примере создается группа ресурсов с именем **MyIoTRG1**.
+Создайте группу ресурсов для хранения Центра Интернета вещей, используя указанную ниже команду в одном из поддерживаемых расположений для Центра Интернета вещей. В этом примере создается группа ресурсов с именем **MyIoTRG1**.
 
 ```powershell
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="submit-a-template-toocreate-an-iot-hub"></a>Отправить шаблон toocreate центра IoT
+## <a name="submit-a-template-to-create-an-iot-hub"></a>Отправка шаблона для создания Центра Интернета вещей
 
-Используйте toocreate шаблона JSON центр IoT в группе ресурсов. Также можно использовать существующий концентратор IoT toomake изменения диспетчера ресурсов Azure шаблона tooan.
+Используйте шаблон JSON для создания Центра Интернета вещей в группе ресурсов. Можно также использовать шаблон Azure Resource Manager для изменения существующего Центра Интернета вещей.
 
-1. Использовать toocreate текстовый редактор, вызывается шаблона Azure Resource Manager **template.json** с hello следующие toocreate определения ресурсов Стандартная центр IoT. В этом примере добавляется hello центр IoT в hello **Восток США** области, создает две группы потребителей (**cg1** и **cg2**) на конечной точке hello совместимое концентратора событий и использует hello **2016-02-03** версия API. Этот шаблон также ожидает, что вы toopass имя концентратора IoT hello как параметр с именем **hubName**. Текущий список расположений, которые поддерживают Центр IoT hello. в разделе [состояние Azure][lnk-status].
+1. Используйте текстовый редактор, чтобы создать шаблон Azure Resource Manager с именем **template.json** с помощью следующего определения ресурса для создания стандартного Центра Интернета вещей. В этом примере в регион **Восточная часть США** добавляется Центр Интернета вещей, создаются две группы потребителей (**cg1** и **cg2**) для конечной точки, совместимой с концентраторами событий, и используется версия API **2016-02-03**. При использовании этого шаблона нужно передать имя Центра Интернета вещей в качестве параметра с именем **hubName**. Текущий список расположений, которые поддерживают Центр Интернета вещей, указан на странице [Состояние Azure][lnk-status].
 
     ```json
     {
@@ -127,35 +127,35 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
     }
     ```
 
-2. Сохраните файл шаблона диспетчера ресурсов Azure hello на локальном компьютере. В этом примере предполагается, что файл сохраняется в папке **c:\templates**.
+2. Сохраните файл шаблона Azure Resource Manager на локальном компьютере. В этом примере предполагается, что файл сохраняется в папке **c:\templates**.
 
-3. Выполните следующие команды toodeploy hello новый концентратор IoT, передавая имя вашего центра IoT hello в качестве параметра. В этом примере hello центра IoT hello называется `abcmyiothub`. имя вашего центра IoT Hello должно быть глобально уникальным:
+3. Выполните следующую команду, чтобы развернуть новый Центр Интернета вещей, передав в качестве параметра имя Центра Интернета вещей. В этом примере имя Центра Интернета вещей — `abcmyiothub`. Имя Центра Интернета вещей должно быть глобально уникальным.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-4. для вывода Hello hello ключи для центра IoT hello, созданный.
+4. В выходных данных отображаются ключи для созданного Центра Интернета вещей.
 
-5. tooverify добавлено приложение hello новый центр IoT hello посещение [портал Azure] [ lnk-azure-portal] и Просмотр списка ресурсов. Можно также использовать hello **Get-AzureRmResource** командлета PowerShell.
+5. Чтобы убедиться, что в приложение добавлен новый Центр Интернета вещей, посетите [портал Azure][lnk-azure-portal] и просмотрите список ресурсов. Вы также можете воспользоваться командлетом PowerShell **Get-AzureRmResource**.
 
 > [!NOTE]
-> В этом примере приложения добавляется стандартный Центр Интернета вещей S1, который подлежит оплате. Вы можете удалить центр IoT hello через hello [портал Azure] [ lnk-azure-portal] или с помощью hello **Remove-AzureRmResource** командлета PowerShell при завершении.
+> В этом примере приложения добавляется стандартный Центр Интернета вещей S1, который подлежит оплате. Когда закончите, Центр Интернета вещей можно удалить через [портал Azure][lnk-azure-portal] или с помощью командлета PowerShell **Remove-AzureRmResource**.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь вы развернули центр IoT, с помощью шаблона Azure Resource Manager с помощью PowerShell, вы можете tooexplore дальнейшей:
+После развертывания Центра Интернета вещей с использованием шаблона Azure Resource Manager и PowerShell вас могут заинтересовать следующие статьи:
 
-* Узнайте о возможностях hello hello [поставщика ресурсов центра IoT API-интерфейса REST][lnk-rest-api].
-* Чтение [Обзор диспетчера ресурсов Azure] [ lnk-azure-rm-overview] toolearn больше о возможностях hello диспетчера ресурсов Azure.
+* Ознакомьтесь с возможностями [REST API поставщика ресурсов Центра Интернета вещей][lnk-rest-api].
+* Сведения о возможностях Azure Resource Manager см. в статье [Общие сведения об Azure Resource Manager][lnk-azure-rm-overview].
 
-toolearn Дополнительные сведения о разработке приложений для центра IoT см. следующие статьи hello.
+Дополнительные сведения о разработке для Центра Интернета вещей см. в следующих статьях:
 
-* [Введение tooC SDK][lnk-c-sdk]
+* [Знакомство с пакетом SDK для устройств Azure IoT для C][lnk-c-sdk]
 * [IoT Hub SDKs][lnk-sdks] (Пакеты SDK для Центра Интернета вещей)
 
-Изучение возможностей hello центра IoT toofurther см. в разделе:
+Для дальнейшего изучения возможностей Центра Интернета вещей см. следующие статьи:
 
 * [Отправка сообщений с устройства в облако с помощью имитации устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-iotedge]
 

@@ -5,15 +5,15 @@
 
 * включение данных в виртуальную машину Azure при ее подготовке;
 * извлечение их для Windows и Linux;
-* Использование специальных средств, доступных в некоторых системах toodetect и автоматически обрабатывать пользовательские данные.
+* использование специальных средств, доступных в некоторых системах, для автоматического обнаружения и обработки пользовательских данных.
 
 > [!NOTE]
-> В этой статье описывается, как пользовательские данные могут быть добавлены с помощью виртуальных Машин, созданных с помощью hello API управления службами Azure. toouse hello Azure ресурсов API-интерфейса управления. в статье toosee [hello пример шаблона](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+> В этой статье рассказывается, как вставить пользовательские данные с помощью виртуальной машины, созданной с помощью API управления службами Azure. Чтобы узнать, как использовать API управления ресурсами Azure, см. [этот пример шаблона](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 > 
 > 
 
 ## <a name="injecting-custom-data-into-your-azure-virtual-machine"></a>Включение пользовательских данных в виртуальную машину Azure
-Эта функция в настоящее время поддерживается только в hello [интерфейса командной строки Azure](https://github.com/Azure/azure-xplat-cli). Здесь мы создадим `custom-data.txt` файл, который содержит ваши данные, затем вставить, в toohello виртуальной Машины во время инициализации. Однако вы можете использовать любой из параметров hello для hello `azure vm create` команды hello следующий код демонстрирует один подход очень простой:
+В настоящее время эта функция поддерживается только в [интерфейсе командной строки Azure](https://github.com/Azure/azure-xplat-cli). Создадим файл `custom-data.txt` , содержащий наши данные, и вставим ее в виртуальную машину в процессе подготовки. Хотя для команды `azure vm create` можно использовать любой из вариантов, следующий подход демонстрирует самый простой способ.
 
 ```
     azure vm create <vmname> <vmimage> <username> <password> \  
@@ -22,30 +22,30 @@
 ```
 
 
-## <a name="using-custom-data-in-hello-virtual-machine"></a>Использование пользовательских данных в виртуальной машине hello
-* Если ВМ Azure виртуальной Машины на основе Windows, то файл hello пользовательских данных сохраняется слишком`%SYSTEMDRIVE%\AzureData\CustomData.bin`. Несмотря на то, что она была tootransfer кодировке base64 из локального компьютера toohello hello новой виртуальной Машины, она будет автоматически декодировать и можно открыть или использовать немедленно.
+## <a name="using-custom-data-in-the-virtual-machine"></a>Использование пользовательских данных в виртуальной машине
+* Если на виртуальной машине Azure используется платформа Windows, то пользовательские данные сохраняются в файл `%SYSTEMDRIVE%\AzureData\CustomData.bin`. Хотя для передачи с локального компьютера на новую виртуальную машину эти данные были зашифрованы с помощью кодировки base64, они автоматически расшифровываются и могут немедленно открываться и использоваться.
   
   > [!NOTE]
-  > Если hello файл существует, он будет переопределен. безопасность Hello в каталоге hello задано слишком**System: Full Control** и **Administrators: Full Control**.
+  > Если такой файл существует, он перезаписывается. В каталоге устанавливается защита **System:Full Control** и **Administrators:Full Control**.
   > 
   > 
-* Если ВМ Azure представляет собой виртуальную Машину под управлением Linux, то hello пользовательских данных файл будет находиться в одно из следующих hello помещает в зависимости от вашей дистрибутив. Hello данные могут быть кодировке base64, поэтому может потребоваться сначала toodecode hello данных:
+* Если на виртуальной машине Azure используется платформа Linux, файл пользовательских данных размещается в одном из следующих двух мест (в зависимости от вашего дистрибутива): Данные будут в кодировке Base64, поэтому их необходимо сначала расшифровать:
   
   * `/var/lib/waagent/ovf-env.xml`
   * `/var/lib/waagent/CustomData`
   * `/var/lib/cloud/instance/user-data.txt` 
 
 ## <a name="cloud-init-on-azure"></a>Cloud-Init в Azure
-Если из Ubuntu или CoreOS образа ВМ Azure, можно использовать toosend CustomData облачной конфигурации toocloud-init. Если же файл пользовательских данных является сценарием, пакет cloud-init может просто выполнить его.
+Если виртуальная машина Azure создана из образа Ubuntu или CoreOS, то с помощью CustomData вы можете отправить файл cloud-config в пакет cloud-init. Если же файл пользовательских данных является сценарием, пакет cloud-init может просто выполнить его.
 
 ### <a name="ubuntu-cloud-images"></a>Образы облаков Ubuntu
-В большинстве изображений Azure Linux изменение «/ etc/waagent.conf» tooconfigure hello временный диск и замены файла ресурсов. Дополнительные сведения см. в [руководстве пользователя агента Linux Azure](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+В большинстве образов Azure Linux вы изменяете /etc/waagent.conf, чтобы настроить временный диск ресурсов и файл подкачки. Дополнительные сведения см. в [руководстве пользователя агента Linux Azure](../articles/virtual-machines/linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Тем не менее, на изображениях облака Ubuntu hello, необходимо использовать облака init tooconfigure hello ресурсов диск (т. е hello «эфемерных») и переключения секций. См. следующие страницы на вики-сайте Ubuntu hello подробнее hello: [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+В образах Ubuntu Cloud для настройки диска ресурсов (который также называется временным) и раздела подкачки необходимо использовать пакет cloud-init. Дополнительные сведения см. [здесь](https://wiki.ubuntu.com/AzureSwapPartitions).
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps-using-cloud-init"></a>Дальнейшие действия: использование пакета cloud-init
-Дополнительные сведения см. в разделе hello [документации init облака для Ubuntu](https://help.ubuntu.com/community/CloudInit).
+Дополнительные сведения см. в [документации по cloud-init для Ubuntu](https://help.ubuntu.com/community/CloudInit).
 
 <!--Link references-->
 [Справочник по REST API управления добавлением службы роли](http://msdn.microsoft.com/library/azure/jj157186.aspx)

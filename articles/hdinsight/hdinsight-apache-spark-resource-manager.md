@@ -1,6 +1,6 @@
 ---
-title: "кластер aaaManage ресурсы для Apache Spark на Azure HDInsight | Документы Microsoft"
-description: "Узнайте, как toouse управления ресурсами для кластеров Spark на Azure HDInsight для повышения производительности."
+title: "Управление ресурсами для кластера Apache Spark в Azure HDInsight | Документы Майкрософт"
+description: "Узнайте, как управлять ресурсами для кластеров Spark в Azure HDInsight для повышения производительности."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,140 +14,138 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: e18682a24f77494db884105f9db03c0a350ddad6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1d69c361b609a2f50ce11432bc422acd0d8cb178
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Управление ресурсами для кластера Apache Spark в Azure HDInsight 
 
-В этой статье вы узнаете, как интерфейсы hello tooaccess Ambari пользовательского интерфейса, YARN пользовательского интерфейса и hello Spark журнала сервера связан с свой кластер Spark. Вы также узнаете о как tootune hello конфигурации кластера для обеспечения оптимальной производительности.
+Из этой статьи вы узнаете, как получать доступ к разным интерфейсам, связанным с кластером Spark, включая пользовательский интерфейс Ambari, пользовательский интерфейс YARN и сервер журнала Spark. Также вы узнаете, как настроить конфигурацию кластера для оптимальной производительности.
 
 **Предварительные требования:**
-
-Необходимо иметь следующие hello.
 
 * Подписка Azure. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Кластер Apache Spark в HDInsight. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-do-i-launch-hello-ambari-web-ui"></a>Как запустить hello Ambari веб-интерфейса?
-1. Из hello [портала Azure](https://portal.azure.com/), hello начальной панели, щелкните плитку hello свой кластер Spark (Если вы закрепили toohello начальной панели). Вы также можете переходить tooyour кластера в списке **просмотреть все** > **кластеров HDInsight**.
-2. В колонке кластера Spark hello, выберите **мониторинга**. При появлении запроса введите учетные данные администратора hello кластера Spark hello.
+## <a name="how-do-i-launch-the-ambari-web-ui"></a>Как запустить веб-интерфейс Ambari?
+1. На начальной панели [портала Azure](https://portal.azure.com/)щелкните плитку кластера Spark (если она закреплена на начальной панели). Кроме того, вы можете перейти к кластеру, последовательно щелкнув **Просмотреть все** > **Кластеры HDInsight**.
+2. Для своего кластера Spark щелкните **Панель мониторинга**. При появлении запроса введите учетные данные администратора для кластера Spark.
 
     ![Запуск Ambari](./media/hdinsight-apache-spark-resource-manager/hdinsight-launch-cluster-dashboard.png "Запуск Resource Manager")
-3. Это должен быть запущен hello Ambari веб-интерфейса, как показано ниже.
+3. В результате должен запуститься пользовательский веб-интерфейс Ambari, как показано на снимке экрана.
 
     ![Веб-интерфейс Ambari](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Веб-интерфейс Ambari")   
 
-## <a name="how-do-i-launch-hello-spark-history-server"></a>Как запустить hello Spark журнала сервера?
-1. Из hello [портала Azure](https://portal.azure.com/), hello начальной панели, щелкните плитку hello свой кластер Spark (Если вы закрепили toohello начальной панели).
-2. Из hello кластера колонки, в разделе **быстрые ссылки**, нажмите кнопку **мониторинга кластера**. В hello **мониторинга кластера** колонка, щелкните **Spark журнала сервера**.
+## <a name="how-do-i-launch-the-spark-history-server"></a>Как запустить сервер журнала Spark?
+1. На начальной панели [портала Azure](https://portal.azure.com/)щелкните плитку кластера Spark (если она закреплена на начальной панели).
+2. В разделе **Быстрые ссылки** колонки кластера щелкните **Панель мониторинга кластера**. В колонке **Панель мониторинга кластера** щелкните **Сервер журнала Spark**.
 
     ![Сервер журнала Spark](./media/hdinsight-apache-spark-resource-manager/launch-history-server.png "Сервер журнала Spark")
 
-    При появлении запроса введите учетные данные администратора hello кластера Spark hello.
+    При появлении запроса введите учетные данные администратора для кластера Spark.
 
-## <a name="how-do-i-launch-hello-yarn-ui"></a>Как запустить hello Yarn пользовательского интерфейса?
-Можно использовать hello пользовательского интерфейса YARN toomonitor приложений, запущенных на кластере Spark hello.
+## <a name="how-do-i-launch-the-yarn-ui"></a>Как запустить пользовательский интерфейс Yarn?
+Вы можете использовать пользовательский интерфейс YARN для мониторинга приложений, которые выполняются в кластере Spark в настоящее время.
 
-1. Из колонки hello кластера, нажмите кнопку **мониторинга кластера**, а затем нажмите кнопку **YARN**.
+1. В колонке кластера щелкните **Панель мониторинга кластера**, а затем выберите пункт **YARN**.
 
     ![Запуск пользовательского интерфейса YARN](./media/hdinsight-apache-spark-resource-manager/launch-yarn-ui.png)
 
    > [!TIP]
-   > Кроме того вы можете запустить hello YARN пользовательского интерфейса из hello Ambari пользовательского интерфейса. hello toolaunch Ambari пользовательского интерфейса, из колонки hello кластера, нажмите кнопку **мониторинга кластера**, а затем нажмите кнопку **мониторинга кластера HDInsight**. Hello Ambari пользовательского интерфейса, выберите **YARN**, нажмите кнопку **быстрые ссылки**, щелкните Диспетчер ресурсов active hello и нажмите кнопку **пользовательского интерфейса диспетчера ресурсов**.
+   > Также пользовательский интерфейс YARN можно открыть из пользовательского интерфейса Ambari. Чтобы открыть пользовательский интерфейс Ambari, выберите в колонке кластера **Панель мониторинга кластера**, а затем щелкните **Панель мониторинга кластера HDInsight**. В пользовательском интерфейсе Ambari щелкните **YARN**, затем — **Quick Links** (Быстрые ссылки). Щелкните активный Resource Manager и щелкните **ResourceManager UI** (Пользовательский интерфейс Resource Manager).
    >
    >
 
-## <a name="what-is-hello-optimum-cluster-configuration-toorun-spark-applications"></a>Что такое hello оптимальной конфигурации toorun Spark приложения кластера
-Hello три ключевых параметров, которые можно использовать для конфигурации Spark в зависимости от требований приложения являются `spark.executor.instances`, `spark.executor.cores`, и `spark.executor.memory`. Исполнитель — это процесс, запущенный для приложения Spark. Он работает на узле работника hello и отвечает toocarry hello задач для приложения hello. Hello, по умолчанию число исполнителей и размеры hello исполнителя для каждого кластера, рассчитывается на основании hello число рабочих узлов и размер узла hello рабочего потока. Эти значения хранятся в `spark-defaults.conf` на головного узла кластера hello.
+## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>Какая конфигурация кластера будет оптимальной для запуска приложений Spark?
+В зависимости от требований приложения можно изменять три основных параметра Spark: `spark.executor.instances`, `spark.executor.cores` и `spark.executor.memory`. Исполнитель — это процесс, запущенный для приложения Spark. Он выполняется на рабочем узле и отвечает за выполнение задач этого приложения. Число исполнителей по умолчанию и размеры исполнителя для каждого кластера определяются с учетом числа рабочих узлов и размера каждого рабочего узла. Эти сведения хранятся в файле `spark-defaults.conf` на головных узлах кластера.
 
-Hello трех параметров конфигурации можно настроить на уровне кластера hello (для всех приложений, работающих на кластере hello) или могут быть указаны для каждого отдельного приложения.
+Эти три параметра конфигурации можно настроить на уровне кластера (для всех приложений, работающих в кластере) или для каждого отдельного приложения.
 
-### <a name="change-hello-parameters-using-ambari-ui"></a>Изменение параметров hello, с помощью Ambari пользовательского интерфейса
-1. Hello Ambari пользовательского интерфейса выберите **Spark**, нажмите кнопку **Configs**и разверните **spark значения по умолчанию пользовательский**.
+### <a name="change-the-parameters-using-ambari-ui"></a>Изменение параметров с помощью пользовательского интерфейса Ambari
+1. В пользовательском интерфейсе Ambari щелкните **Spark**, выберите **Configs** (Конфигурации) и разверните категорию **Custom spark-defaults** (Настраиваемые значения по умолчанию Spark).
 
     ![Изменение параметров с помощью Ambari](./media/hdinsight-apache-spark-resource-manager/set-parameters-using-ambari.png)
-2. значения по умолчанию Hello — хороший toohave 4 Spark приложения, одновременно запускать на кластере hello. Можно изменять эти значения из hello пользовательского интерфейса, как показано ниже.
+2. Значения по умолчанию позволяют запустить в кластере одновременно четыре приложения Spark. Вы можете изменять эти значения из пользовательского интерфейса, как показано ниже.
 
     ![Изменение параметров с помощью Ambari](./media/hdinsight-apache-spark-resource-manager/set-executor-parameters.png)
-3. Нажмите кнопку **Сохранить** изменения конфигурации toosave hello. В начале hello страницы приветствия, вам будет предложено toorestart hello все затронутые службы. Щелкните **Перезапустить**.
+3. Чтобы сохранить изменения конфигурации, нажмите кнопку **Сохранить** . В верхней части страницы вы увидите предложение перезапустить все используемые службы. Щелкните **Перезапустить**.
 
     ![Перезапуск служб](./media/hdinsight-apache-spark-resource-manager/restart-services.png)
 
-### <a name="change-hello-parameters-for-an-application-running-in-jupyter-notebook"></a>Изменение параметров приложения, работающего в записной книжке Jupyter hello
-Для приложений, работающих в записной книжке Jupyter hello, можно использовать hello `%%configure` магическая изменения конфигурации toomake hello. В идеальном случае необходимо внести такие изменения в начале приложения hello, прежде чем выполнять первой ячейки кода hello. Это гарантирует, что конфигурация hello примененных toohello Livy сеанса, когда он создается. Если необходимо, чтобы конфигурация toochange hello позже в приложении hello, необходимо использовать hello `-f` параметра. Однако предположим, что все хода выполнения работы в hello приложения будут потеряны.
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Изменение параметров для приложения, запущенного в записной книжке Jupyter
+Чтобы изменить конфигурацию для приложений, запущенных в записной книжке Jupyter, можно использовать волшебную команду `%%configure` . Желательно вносить такие изменения в начале приложения, перед запуском первой ячейки кода. Это гарантирует, что конфигурация будет применена к сеансу Livy, когда он будет создан. Если вы хотите изменить конфигурацию на более позднем этапе выполнения приложения, следует использовать параметр `-f` . Но при этом будут потеряны все результаты, полученные в приложении.
 
-фрагмент кода Hello ниже показано, как toochange hello конфигурации для приложения, работающего в Jupyter.
+В следующем фрагменте показано, как изменить конфигурацию для приложения, работающего в Jupyter.
 
     %%configure
     {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
-Параметры конфигурации должны передаваться в виде строки JSON и должен быть на следующую строку hello после hello magic, как показано в примере столбец hello.
+Параметры конфигурации следует передавать в виде строки JSON, расположенной сразу после команды magic, как показано в столбце примера.
 
-### <a name="change-hello-parameters-for-an-application-submitted-using-spark-submit"></a>Изменение параметров hello для отправки с помощью приложения команду spark-submit
-Следующая команда является примером как toochange hello параметры конфигурации для пакета приложения, которое отправляется с помощью `spark-submit`.
+### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Изменение параметров для приложения, отправленного с помощью spark-submit
+Следующая команда демонстрирует, как можно изменять параметры конфигурации для приложения пакетной службы, отправленного с помощью `spark-submit`.
 
-    spark-submit --class <hello application class tooexecute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
-### <a name="change-hello-parameters-for-an-application-submitted-using-curl"></a>Изменение параметров отправки с помощью перелистывание приложения hello
-Следующая команда является примером как toochange hello параметры конфигурации для пакета приложения, которое отправляется с помощью cURL.
+### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Изменение параметров для приложения, отправленного с помощью cURL
+Следующая команда демонстрирует, как можно изменять параметры конфигурации для приложения пакетной службы, отправленного с помощью cURL.
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<hello application class tooexecute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 
 ### <a name="how-do-i-change-these-parameters-on-a-spark-thrift-server"></a>Как изменить эти параметры на сервере Thrift Spark?
-Сервера Thrift Spark предоставляет кластера Spark tooa доступа JDBC/ODBC и используется tooservice Spark SQL-запросов. Он используется для обслуживания запросов к службе Spark SQL. Используйте toocommunicate протокол ODBC с запросами Spark SQL tooexecute сервера Thrift Spark как приложение Spark. При создании кластера Spark двух экземпляров hello запуска сервера Thrift Spark на каждый головной узел. Каждый сервер Thrift Spark отображается как приложение Spark в hello YARN пользовательского интерфейса.
+Сервер Thrift Spark предоставляет доступ JDBC и ODBC к кластеру Spark. Он используется для обслуживания запросов к службе Spark SQL. Разные средства, такие как Power BI, Tableau и др., используют протокол ODBC для обмена данными с сервером Thrift Spark и выполнения запросов Spark SQL в виде приложения Spark. Когда вы создаете кластер Spark, запускаются два экземпляра сервера Thrift Spark, по одному на каждый головной узел. Каждый сервер Thrift Spark отображается в пользовательском интерфейсе YARN как приложение Spark.
 
-Использует сервера Thrift Spark усилить исполнителя динамического выделения и поэтому hello `spark.executor.instances` не используется. Вместо этого использует сервера Thrift Spark `spark.dynamicAllocation.minExecutors` и `spark.dynamicAllocation.maxExecutors` toospecify hello исполнителя count. Здравствуйте, параметры конфигурации `spark.executor.cores` и `spark.executor.memory` — используемый размер исполнителя toomodify hello. Все эти параметры вы можете изменять, как показано ниже.
+Сервер Thrift Spark использует динамическое выделение исполнителей Spark, поэтому `spark.executor.instances` не используется. Вместо этого сервер Thrift Spark использует `spark.dynamicAllocation.minExecutors` и `spark.dynamicAllocation.maxExecutors`, чтобы указать число исполнителей. Параметры конфигурации `spark.executor.cores` и `spark.executor.memory` используются для изменения размера исполнителя. Эти параметры вы можете изменить, как описано ниже.
 
-* Разверните hello **Advanced spark thrift-sparkconf** параметры hello категории tooupdate `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors`, и `spark.executor.memory`.
+* Разверните категорию **Advanced spark-thrift-sparkconf**, чтобы обновить параметры `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors` и `spark.executor.memory`.
 
     ![Настройка сервера Thrift Spark](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-1.png)    
-* Разверните hello **настраиваемый spark-thrift-sparkconf** параметр hello категории tooupdate `spark.executor.cores`.
+* Разверните категорию **Custom spark-thrift-sparkconf**, чтобы изменить параметр `spark.executor.cores`.
 
     ![Настройка сервера Thrift Spark](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-2.png)
 
-### <a name="how-do-i-change-hello-driver-memory-of-hello-spark-thrift-server"></a>Изменение памяти драйвера hello hello сервера Thrift Spark
-Драйвер памяти сервера Thrift Spark предоставляется настроенных too25% от размера головного узла ОЗУ hello, общий размер ОЗУ hello головного узла hello больше 14 ГБ. Можно использовать hello конфигурации памяти драйвера hello toochange Ambari пользовательского интерфейса, как показано ниже.
+### <a name="how-do-i-change-the-driver-memory-of-the-spark-thrift-server"></a>Как можно изменить память драйверов для сервера Thrift Spark?
+Память драйверов сервера Thrift Spark настроена так, что она использует 25 % от размера ОЗУ головного узла, при условии, что общий объем ОЗУ головного узла превышает 14 ГБ. Конфигурацию памяти драйверов можно изменить с помощью пользовательского интерфейса Ambari, как показано ниже.
 
-* Hello Ambari пользовательского интерфейса выберите **Spark**, нажмите кнопку **конфигураций**, разверните **Advanced spark env**и затем задайте значение hello **spark_thrift_cmd_opts**.
+* В пользовательском интерфейсе Ambari щелкните **Spark**, нажмите **Конфигурации**, разверните категорию **Advanced spark-env** и введите значение для параметра **spark_thrift_cmd_opts**.
 
     ![Настройка памяти сервера Thrift Spark](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-ram.png)
 
-## <a name="i-do-not-use-bi-with-spark-cluster-how-do-i-take-hello-resources-back"></a>Я не использую бизнес-аналитику с кластером Spark. Как сделать ресурсы hello назад
-Поскольку используется динамическое выделение Spark, hello только ресурсы, используемые сервером thrift — это hello ресурсы для двух шаблонов приложения hello. Эти ресурсы, которые необходимо остановить hello сервера Thrift служб, работающих в кластере hello tooreclaim.
+## <a name="i-do-not-use-bi-with-spark-cluster-how-do-i-take-the-resources-back"></a>Я не использую бизнес-аналитику с кластером Spark. Как получить ресурсы обратно?
+Так как мы используем динамическое выделение Spark, сервер Thrift потребляет только ресурсы, предназначенные для двух главных серверов приложений. Чтобы освободить эти ресурсы, следует остановить службы сервера Thrift, запущенные в кластере.
 
-1. Hello Ambari пользовательского интерфейса, hello левой панели щелкните **Spark**.
-2. На следующей странице приветствия щелкните **серверы Thrift Spark**.
+1. В пользовательском интерфейсе Ambari на панели слева щелкните **Spark**.
+2. На следующей странице щелкните **Серверы Thrift Spark**.
 
     ![Перезапуск сервера Thrift](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-1.png)
-3. Вы увидите два headnodes hello, на какие hello выполняется сервера Thrift Spark. Выберите один из hello headnodes.
+3. Вы увидите два головных узла, на которых запущен сервер Thrift Spark. Выберите один из этих головных узлов.
 
     ![Перезапуск сервера Thrift](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-2.png)
-4. Следующая страница приветствия перечислены все hello службы, запущенные на этом головному узлу. Щелкните hello разворачивающуюся кнопку Далее tooSpark сервера Thrift hello списке и нажмите кнопку **остановить**.
+4. На следующей странице перечислены все службы, запущенные на выбранном головном узле. Нажмите в этом списке кнопку раскрывающегося списка рядом с сервером Thrift Spark, затем нажмите кнопку **Остановить**.
 
     ![Перезапуск сервера Thrift](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-3.png)
-5. Повторите эти действия на hello других головному узлу.
+5. Повторите эти действия на другом головном узле.
 
-## <a name="my-jupyter-notebooks-are-not-running-as-expected-how-can-i-restart-hello-service"></a>Мои записные книжки Jupyter работают не так, как ожидалось. Как можно перезапустить службу hello?
-Запустите hello Ambari веб-интерфейса, как показано выше. Hello левой области навигации щелкните **Jupyter**, нажмите кнопку **действий службы**, а затем нажмите кнопку **перезапустите все**. Это приведет к запуску hello Jupyter службы на всех headnodes hello.
+## <a name="my-jupyter-notebooks-are-not-running-as-expected-how-can-i-restart-the-service"></a>Мои записные книжки Jupyter работают не так, как ожидалось. Как я могу перезапустить службу?
+Запустите веб-интерфейс Ambari, как показано выше. В левой области навигации щелкните **Jupyter**, **Service Actions** (Действия службы), а затем — **Перезапустить все**. При этом служба Jupyter запускается на всех головных узлах.
 
     ![Restart Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
 
 ## <a name="how-do-i-know-if-i-am-running-out-of-resources"></a>Как узнать, что ресурсы заканчиваются?
-Запустите hello Yarn пользовательского интерфейса, как показано выше. В таблице показателей кластера поверх экрана приветствия, проверьте значения **памяти,** и **общей памяти** столбцов. Если очень близкие значения hello 2, может не иметься достаточно ресурсов toostart hello Далее приложение. Hello применимо и к toohello **используется VCores** и **VCores всего** столбцов. Кроме того, в основном представлении hello, если имеется приложение лет в **ПРИНЯТО** состоянии и не переходит **под УПРАВЛЕНИЕМ** , ни **сбой** состоянии, это может также свидетельствовать об не становится toostart достаточно ресурсов.
+Запустите пользовательский интерфейс Yarn, как показано выше. В таблице метрик кластера в верхней части экрана проверьте значения столбцов **Memory Used** (Используемая память) и **Memory Total** (Всего памяти). Если эти два значения очень близки, то для запуска следующего приложения может не хватить ресурсов. То же самое относится к столбцам **VCores Used** (Используемые ядра VCore) и **VCores Total** (Всего ядер VCore). Кроме того, если в главном представлении есть приложение с состоянием **ACCEPTED** (Принято), которое не переходит в состояние **RUNNING** (Выполняется) или **FAILED** (Сбой), то это также может означать, что для его запуска недостаточно ресурсов.
 
     ![Resource Limit](./media/hdinsight-apache-spark-resource-manager/resource-limit.png "Resource Limit")
 
-## <a name="how-do-i-kill-a-running-application-toofree-up-resource"></a>Как kill работающего приложения toofree ресурса?
-1. В hello Yarn пользовательского интерфейса, с помощью hello левой панели, щелкните **под управлением**. Из списка выполняющихся приложений hello, определить toobe приложения hello завершен и щелкнуть hello **идентификатор**.
+## <a name="how-do-i-kill-a-running-application-to-free-up-resource"></a>Как завершить работу запущенного приложения, чтобы освободить ресурс?
+1. В пользовательском интерфейсе Yarn на левой панели щелкните **Running** (Выполняется). В списке выполняющихся приложений определите приложение, работу которого необходимо завершить, и щелкните **ID** (Идентификатор).
 
     ![Завершение работы приложения 1](./media/hdinsight-apache-spark-resource-manager/kill-app1.png "Завершение работы приложения 1")
 
-2. Нажмите кнопку **Kill приложения** hello правом верхнем углу, затем щелкните **ОК**.
+2. В правом верхнем углу щелкните **Kill Application** (Завершить работу приложения), а затем нажмите кнопку **ОК**.
 
     ![Завершение работы приложения 2](./media/hdinsight-apache-spark-resource-manager/kill-app2.png "Завершение работы приложения 2")
 
@@ -157,7 +155,7 @@ Hello трех параметров конфигурации можно наст
 ### <a name="for-data-analysts"></a>Для специалистов по анализу данных
 
 * [Использование Spark с машинным обучением. Использование Spark в HDInsight для анализа температуры в здании на основе данных системы кондиционирования](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Анализ журнала веб-сайта с использованием Spark в HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 * [Analyze Application Insights telemetry logs with Spark on HDInsight (Анализ журналов телеметрии Application Insights с помощью Spark в HDInsight)](hdinsight-spark-analyze-application-insight-logs.md)
 * [Использование Caffe в кластере Azure HDInsight Spark для распределенного глубокого обучения](hdinsight-deep-learning-caffe-spark.md)
@@ -166,10 +164,10 @@ Hello трех параметров конфигурации можно наст
 
 * [Создание автономного приложения с использованием Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Удаленный запуск заданий с помощью Livy в кластере Spark](hdinsight-apache-spark-livy-rest-interface.md)
-* [Использование подключаемого модуля средства HDInsight для toocreate ИДЕЯ IntelliJ и отправка Spark Scala приложений](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Использование подключаемого модуля средств HDInsight для IntelliJ IDEA для создания и отправки приложений Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени](hdinsight-apache-spark-eventhub-streaming.md)
-* [Удаленно использовать подключаемый модуль средства HDInsight для приложений Spark toodebug ИДЕЯ IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Удаленная отладка приложений Spark в кластере HDInsight Spark Linux с помощью подключаемого модуля средств HDInsight для IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Использование внешних пакетов с записными книжками Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Установка Jupyter на вашем компьютере и подключение tooan кластера HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Установка записной книжки Jupyter на компьютере и ее подключение к кластеру Apache Spark в Azure HDInsight (предварительная версия)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)

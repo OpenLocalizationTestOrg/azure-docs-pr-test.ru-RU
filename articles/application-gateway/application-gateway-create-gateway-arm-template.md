@@ -1,9 +1,9 @@
 ---
-title: "Шлюз приложений Azure — шаблоны aaaCreate | Документы Microsoft"
-description: "Эта страница содержит toocreate инструкции шлюза приложения Azure с помощью шаблона Azure Resource Manager hello"
+title: "Создание шлюза приложений Azure с помощью шаблонов | Документация Майкрософт"
+description: "На этой странице приводятся инструкции по созданию шлюза приложений Azure с помощью шаблона диспетчера ресурсов Azure."
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: fc18e553852551326d6a302abe2c7f8a08c2eb6c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: davidmu
+ms.openlocfilehash: 305a0529b6f6ad8bd96ac10da5f7ebc48317df45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-application-gateway-by-using-hello-azure-resource-manager-template"></a>Создание шлюза приложения с помощью шаблона Azure Resource Manager hello
+# <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Создание шлюза приложений с помощью шаблона диспетчера ресурсов Azure
 
 > [!div class="op_single_selector"]
 > * [Портал Azure](application-gateway-create-gateway-portal.md)
@@ -28,11 +28,11 @@ ms.lasthandoff: 10/06/2017
 > * [Шаблон диспетчера ресурсов Azure](application-gateway-create-gateway-arm-template.md)
 > * [Интерфейс командной строки Azure](application-gateway-create-gateway-cli.md)
 
-Шлюз приложений — это балансировщик нагрузки уровня 7. Он предоставляет отработки отказа и маршрутизации производительности HTTP-запросов между различными серверами, являются ли они на hello облачной или локальной. Шлюз приложений выполняет многие функции контроллера доставки приложений (ADC), включая балансировку нагрузки HTTP, определение сходства сеансов на основе файлов cookie, разгрузку SSL, выполнение пользовательской проверки работоспособности, поддержку нескольких сайтов и т. д. Полный список поддерживаемых функций toofind посетите [Обзор шлюза приложения](application-gateway-introduction.md)
+Шлюз приложений — это балансировщик нагрузки уровня 7. Он отвечает за отработку отказов и эффективную маршрутизацию HTTP-запросов между разными серверами (облачными и локальными). Шлюз приложений выполняет многие функции контроллера доставки приложений (ADC), включая балансировку нагрузки HTTP, определение сходства сеансов на основе файлов cookie, разгрузку SSL, выполнение пользовательской проверки работоспособности, поддержку нескольких сайтов и т. д. Полный список поддерживаемых функций представлен в [обзоре шлюза приложений](application-gateway-introduction.md).
 
-В этой статье описывается загрузка и изменение существующего шаблона диспетчера ресурсов Azure из GitHub и развертывания шаблона hello из GitHub, PowerShell и hello Azure CLI.
+В этой статье вы узнаете, как скачать и изменить существующий шаблон Azure Resource Manager из GitHub, а также развернуть шаблон из GitHub, PowerShell и интерфейса командной строки Azure (Azure CLI).
 
-При развертывании просто hello шаблона диспетчера ресурсов Azure непосредственно из GitHub без изменений, пропустите toodeploy шаблона в GitHub.
+Если вы развертываете шаблон ARM непосредственно из GitHub без изменений, перейдите к соответствующему разделу.
 
 ## <a name="scenario"></a>Сценарий
 
@@ -41,48 +41,48 @@ ms.lasthandoff: 10/06/2017
 * как создать шлюз приложений с брандмауэром веб-приложения;
 * как создать виртуальную сеть с именем VirtualNetwork1 и зарезервированным блоком CIDR (10.0.0.0/16);
 * как создать подсеть с именем Appgatewaysubnet и блоком CIDR (10.0.0.0/28);
-* Требуется настроить два ранее настроенный серверной части IP-адреса для веб-серверов hello tooload Балансировка трафика hello. В этом примере шаблон hello серверной части IP-адреса являются 10.0.1.10 и 10.0.1.11.
+* как задать два ранее настроенных внутренних IP-адреса для веб-серверов, которые будут балансировать трафик. В этом примере в качестве внутренних IP-адресов используются адреса 10.0.1.10 и 10.0.1.11.
 
 > [!NOTE]
-> Эти параметры являются параметрами hello для этого шаблона. toocustomize hello шаблона, можно изменить правила, прослушиватель hello, SSL и другие параметры в файле azuredeploy.json hello.
+> Приведенные значения представляют в этом шаблоне параметры. Чтобы настроить шаблон, можно изменить правила, прослушиватель, SSL и другие параметры в файле azuredeploy.json.
 
 ![Сценарий](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
-## <a name="download-and-understand-hello-azure-resource-manager-template"></a>Загрузите и понять hello шаблона диспетчера ресурсов Azure
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>Скачивание и использование шаблона диспетчера ресурсов Azure
 
-Можно загрузить шаблон toocreate hello существующего диспетчера ресурсов Azure виртуальной сети и две подсети из GitHub, внесите изменения можно будет и использовать его. Таким образом, toodo используйте hello следующие шаги:
+Вы можете скачать из GitHub уже существующий шаблон диспетчера ресурсов Azure (ARM), чтобы создать виртуальную сеть и две подсети, а также внести в него нужные изменения и применить. Для этого выполните следующие действия.
 
-1. Перейдите в слишком[создать шлюз приложения при включенном брандмауэре приложения web](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
+1. Перейдите к статье [Create Application Gateway with web application firewall enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf) (Создание шлюза приложения с включенным брандмауэром веб-приложений).
 1. Щелкните **azuredeploy.json** и нажмите кнопку **RAW**.
-1. Сохранение hello файл tooa локальную папку на компьютере.
-1. Если вы знакомы с шаблоны Azure Resource Manager, пропустите toostep 7.
-1. Откройте сохраненный файл hello и просмотрите содержимое hello в **параметры** в строке
+1. Сохраните файл в локальную папку на своем компьютере.
+1. Если вы знакомы с шаблонами ARM, перейдите к шагу 7.
+1. Откройте только что сохраненный файл и просмотрите содержимое раздела **parameters** в строке
 1. В параметрах шаблона ARM есть заполнитель для значений, которые могут подставляться во время развертывания.
 
   | Параметр | Описание |
   | --- | --- |
-  | **subnetPrefix** |Блок CIDR для подсети шлюза приложения hello. |
-  | **applicationGatewaySize** | Размер шлюза приложения hello.  WAF позволяет только средний и крупный. |
-  | **backendIpaddress1** |IP-адрес hello первого веб-сервера. |
-  | **backendIpaddress2** |IP-адрес hello второй веб-сервер. |
-  | **wafEnabled** | Параметр toodetermine, если включен WAF.|
-  | **wafMode** | Режим hello брандмауэр веб-приложения.  Доступные варианты: **Предотвращение** или **Защита**.|
-  | **wafRuleSetType** | Тип набора правил для WAF.  В настоящее время OWASP — hello поддерживается только параметр. |
-  | **wafRuleSetVersion** |Версия набора правил. CRS OWASP 2.2.9 и 3.0 в настоящий момент параметры hello поддерживается. |
+  | **subnetPrefix** |Блок CIDR для подсети шлюза приложений. |
+  | **applicationGatewaySize** | Размер шлюза приложений.  WAF позволяет только средний и крупный. |
+  | **backendIpaddress1** |IP-адрес первого веб-сервера. |
+  | **backendIpaddress2** |IP-адрес второго веб-сервера. |
+  | **wafEnabled** | Параметр, определяющий, включен ли WAF.|
+  | **wafMode** | Режим брандмауэра веб-приложения.  Доступные варианты: **Предотвращение** или **Защита**.|
+  | **wafRuleSetType** | Тип набора правил для WAF.  В настоящее время поддерживается только OWASP. |
+  | **wafRuleSetVersion** |Версия набора правил. Поддерживаются только OWASP CRS 2.2.9 и 3.0. |
 
-1. Проверьте содержимое hello в **ресурсов** и уведомление hello следующие свойства:
+1. Проверьте содержимое раздела **resources** и обратите внимание на следующие свойства.
 
-   * **type**. Тип ресурса, создаваемого шаблоном hello. В этом случае тип hello — `Microsoft.Network/applicationGateways`, который представляет шлюз приложений.
-   * **name**. Имя ресурса hello. Использование уведомления hello `[parameters('applicationGatewayName')]`, что означает это имя hello предоставляется как вход пользователем или файл параметров во время развертывания.
-   * **properties**. Список свойств для ресурса hello. Этот шаблон использует hello виртуальную сеть и общедоступный IP-адрес во время создания шлюза приложения.
+   * **type**. Тип ресурса, созданного на основе шаблона. В этом случае используется тип `Microsoft.Network/applicationGateways`, представляющий шлюз приложений.
+   * **name**. Имя ресурса. Обратите внимание на применение `[parameters('applicationGatewayName')]`. Эта строка кода означает, что имя предоставляется пользователем или извлекается из файла параметров при развертывании.
+   * **properties**. Список свойств для ресурса. Во время создания шлюза приложений этот шаблон использует виртуальную сеть и общедоступный IP-адрес.
 
    > [!NOTE]
    > Дополнительные сведения о шаблонах Resource Manager см. [здесь](/templates/).
 
-1. Переход назад слишком[https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Вернитесь на страницу [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Щелкните **azuredeploy-parameters.json** и нажмите кнопку **RAW**.
-1. Сохранение hello файл tooa локальную папку на компьютере.
-1. Откройте сохраненный файл hello и отредактируйте hello значения для параметров hello. Используйте следующие значения toodeploy hello приложения шлюза, описанной в нашем сценарии hello.
+1. Сохраните файл в локальную папку на своем компьютере.
+1. Откройте сохраненный файл и измените значения параметров. Чтобы развернуть шлюз приложений в соответствии с задачами этого руководства, используйте следующие значения.
 
     ```json
     {
@@ -123,88 +123,88 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-1. Сохраните файл hello. Можно проверить hello JSON и параметра шаблона с помощью документации средства проверки JSON, как [JSlint.com](http://www.jslint.com/).
+1. Сохраните файл. Вы можете проверить шаблон JSON и шаблон параметров с помощью таких веб-инструментов проверки JSON, как [JSlint.com](http://www.jslint.com/).
 
-## <a name="deploy-hello-azure-resource-manager-template-by-using-powershell"></a>Развертывание шаблона hello диспетчера ресурсов Azure с помощью PowerShell
+## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Развертывание шаблона диспетчера ресурсов Azure с помощью PowerShell
 
-Если ранее не пользовались Azure PowerShell, посетите: [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview) и следуйте инструкциям toosign hello в Azure и выберите свою подписку.
+Если вы ранее не использовали Azure PowerShell, то ознакомьтесь со статьей об [установке и настройке Azure PowerShell](/powershell/azure/overview). Следуйте инструкциям, приведенным в статье, чтобы войти в Azure и выбрать подписку.
 
-1. TooPowerShell входа
+1. Войдите в PowerShell.
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Проверьте hello подписки для учетной записи hello.
+1. Просмотрите подписки учетной записи.
 
     ```powershell
     Get-AzureRmSubscription
     ```
 
-    С помощью учетных данных, запрашиваемых tooauthenticate.
+    Вам будет предложено указать свои учетные данные для проверки подлинности.
 
-1. Выберите, какие toouse вашей подписки Azure.
+1. Выберите подписку Azure.
 
     ```powershell
     Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. При необходимости создайте группу ресурсов с помощью hello **New AzureResourceGroup** командлета. В следующем примере hello создать группу ресурсов под названием AppgatewayRG в расположении, восток США.
+1. При необходимости создайте новую группу ресурсов с помощью командлета **New-AzureResourceGroup** . В примере ниже создается группа ресурсов с именем AppgatewayRG, расположенная в восточной части США.
 
     ```powershell
     New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Запустите hello **New AzureRmResourceGroupDeployment** командлет toodeploy hello новую виртуальную сеть с помощью hello предшествующий файлы шаблонов и параметров загрузки и изменения.
+1. Запустите командлет **New-AzureRmResourceGroupDeployment** , чтобы развернуть новую виртуальную сеть с помощью шаблона и файлов параметров, которые вы скачали и изменили ранее.
     
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
-## <a name="deploy-hello-azure-resource-manager-template-by-using-hello-azure-cli"></a>Развертывание с помощью Azure CLI hello hello шаблона диспетчера ресурсов Azure
+## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Развертывание шаблона ARM с помощью интерфейса командной строки Azure
 
-toodeploy hello Azure Resource Manager загруженный шаблон с помощью Azure CLI, выполните следующие шаги hello.
+Чтобы развернуть шаблон ARM, скачанный с помощью Azure CLI, выполните следующее.
 
-1. Если ранее не пользовались Azure CLI, см. раздел [установить и настроить hello Azure CLI](/cli/azure/install-azure-cli) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+1. Если вы еще не использовали Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](/cli/azure/install-azure-cli) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
 
-1. При необходимости выполнения hello `az group create` команда toocreate группы ресурсов, как показано в следующий фрагмент кода hello. Обратите внимание, hello выходные данные команды hello. Список Hello отображаться после вывода hello объясняется hello параметров, используемых. Дополнительные сведения о группах ресурсов см. в статье [Общие сведения о диспетчере ресурсов Azure](../azure-resource-manager/resource-group-overview.md).
+1. При необходимости выполните команду `az group create`, как показано во фрагменте кода ниже, чтобы создать группу ресурсов. Обратите внимание на результат выполнения команды. В списке, который откроется после выполнения команды, будут указаны используемые параметры. Дополнительные сведения о группах ресурсов см. в статье [Общие сведения о диспетчере ресурсов Azure](../azure-resource-manager/resource-group-overview.md).
 
     ```azurecli
     az group create --location westus --name appgatewayRG
     ```
     
-    **-n (или --name)**. Имя для новой группы ресурсов hello. В нашем примере это *appgatewayRG*.
+    **-n (или --name)**. Имя для новой группы ресурсов. В нашем примере это *appgatewayRG*.
     
-    **-l (или --location)**. Регион Azure, где создается новая группа ресурсов hello. В нашем примере это *westus*.
+    **-l (или --location)**. Регион Azure, в котором создается группа ресурсов. В нашем примере это *westus*.
 
-1. Запустите hello `az group deployment create` командлет toodeploy hello новую виртуальную сеть с помощью шаблона hello и параметр файлы загружены и изменен в предшествующих шаг hello. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
+1. Выполните командлет `az group deployment create`, чтобы развернуть новую виртуальную сеть с помощью шаблона и файлов параметров, которые вы скачали и изменили на предыдущем шаге. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
 
     ```azurecli
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
     ```
 
-## <a name="deploy-hello-azure-resource-manager-template-by-using-click-to-deploy"></a>Развертывание шаблона hello Azure Resource Manager с помощью щелкните развертывание
+## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Развертывание шаблона ARM с помощью интерфейса кнопки развертывания
 
-Нажмите кнопку развертывания является другим способом toouse шаблоны Azure Resource Manager. Это легко toouse шаблонов hello портал Azure.
+Развертывание с помощью кнопки развертывания — еще один способ использования шаблонов ARM. Он позволяет быстро и удобно работать с шаблонами на портале Azure.
 
-1. Go слишком[создать шлюз приложений с брандмауэр веб-приложения](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
+1. Перейдите к статье о [создании шлюза приложений с брандмауэром веб-приложения](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/).
 
-1. Нажмите кнопку **развертывание tooAzure**.
+1. Нажмите кнопку **Развернуть в Azure**.
 
-    ![Развертывание tooAzure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    ![Развернуть в Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
-1. Заполните параметры hello hello шаблон развертывания на портале hello и нажмите кнопку **ОК**.
+1. На портале укажите параметры шаблона развертывания и нажмите кнопку **OК**.
 
     ![Параметры](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
-1. Выберите **я принимаю условия, указанных выше, toohello** и нажмите кнопку **покупки**.
+1. Установите флажок **Я принимаю указанные выше условия** и нажмите кнопку **Приобрести**.
 
-1. В колонке развертывания пользовательского hello, нажмите кнопку **создать**.
+1. В колонке "Настраиваемое развертывание" щелкните **Создать**.
 
-## <a name="providing-certificate-data-tooresource-manager-templates"></a>Предоставление сертификата tooResource данных диспетчер шаблонов
+## <a name="providing-certificate-data-to-resource-manager-templates"></a>Добавление данных сертификата в шаблоны Resource Manager
 
-При использовании SSL с помощью шаблона, hello сертификат должен toobe в строку base64, вместо загружена. Строка base64 tooa PFX или CER tooconvert используйте одну из hello, следующие команды. Hello ниже команды преобразуют hello сертификат tooa base64 строку, которая может быть указано toohello шаблона. Hello тесты на ожидаемые выходные данные — это строка, хранится в переменной и вставить в шаблоне hello.
+При использовании протокола SSL с шаблоном сертификат необходимо указать в виде строки в формате base64, а не передать его. Для преобразования PFX- или CER-файла в строку base64, используйте одну из следующих команд. Следующие команды преобразуют сертификат в строку base64, которую можно указать для шаблона. Ожидаемым результатом является строка, которую можно сохранить в переменной и вставить в шаблон.
 
 ### <a name="macos"></a>macOS
 ```bash
@@ -219,7 +219,7 @@ echo $cert
 
 ## <a name="delete-all-resources"></a>Удаление всех ресурсов
 
-toodelete все ресурсы, которые созданы в этой статье, выполнение одного из hello следующие шаги:
+Чтобы удалить все ресурсы, созданные в этой статье, выполните одно из следующих действий:
 
 ### <a name="powershell"></a>PowerShell
 
@@ -235,9 +235,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Если вы хотите tooconfigure разгрузки SSL, посетите: [настройки шлюза приложения для разгрузки SSL](application-gateway-ssl.md).
+Чтобы настроить разгрузку SSL, ознакомьтесь с [настройкой шлюза приложений для разгрузки SSL](application-gateway-ssl.md).
 
-Если вы хотите tooconfigure toouse шлюза приложения с внутренней подсистемы балансировки нагрузки, посетите: [создать шлюз приложений с внутренней подсистемы балансировки нагрузки (ILB)](application-gateway-ilb.md).
+Указания по настройке шлюза приложений для использования с внутренним балансировщиком нагрузки см. в статье [Создание шлюза приложений с внутренней подсистемой балансировщика нагрузки (ILB)](application-gateway-ilb.md).
 
 Дополнительные сведения о параметрах балансировки нагрузки в целом см. в статьях:
 

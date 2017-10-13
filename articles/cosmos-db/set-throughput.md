@@ -1,6 +1,6 @@
 ---
-title: "пропускная способность aaaProvision для Azure Cosmos DB | Документы Microsoft"
-description: "Узнайте, каким образом tooset провизионирование пропускной способности для вашего Azure Cosmos DB containsers, коллекций, диаграмм и таблиц."
+title: "Подготовка пропускной способности для Azure Cosmos DB | Документация Майкрософт"
+description: "Узнайте, как задать подготовленную пропускную способность для контейнеров, коллекций, графов и таблиц Azure Cosmos DB."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: mimig
-ms.openlocfilehash: c143f4aace466b7109168a50e2eb80ddeca6400e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Настройка пропускной способности для коллекций Azure Cosmos DB
 
-Можно задать пропускную способность для вашей базы данных Azure Cosmos контейнеров в hello портал Azure или с помощью hello клиентских пакетов SDK. 
+Пропускную способность для контейнеров Azure Cosmos DB можно настроить на портале Azure или с помощью клиентских пакетов SDK. 
 
-Привет, в следующей таблице перечислены hello пропускной способности, доступных для контейнеров.
+В следующей таблице указана пропускная способность, доступная для каждой коллекции.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -46,43 +46,43 @@ ms.lasthandoff: 10/06/2017
     </tbody>
 </table>
 
-## <a name="tooset-hello-throughput-by-using-hello-azure-portal"></a>пропускная способность hello tooset с помощью портала Azure hello
+## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Настройка пропускной способности с помощью портала Azure
 
-1. В новом окне, откройте hello [портал Azure](https://portal.azure.com).
-2. На левой панели hello щелкните **Azure Cosmos DB**, или нажмите кнопку **более служб** внизу hello прокрутите слишком**баз данных**и нажмите кнопку **Cosmos Azure DB**.
+1. В новом окне откройте [портал Azure](https://portal.azure.com).
+2. На панели слева щелкните **Azure Cosmos DB** или выберите внизу пункт **Больше служб**, перейдите к разделу **Базы данных** и выберите **Azure Cosmos DB**.
 3. Выберите учетную запись Cosmos DB.
-4. В новом окне приветствия щелкните **обозреватель данных (Предварительная версия)** в меню навигации hello.
-5. В новом окне приветствия, разверните базу данных и контейнера и нажмите кнопку **параметры масштабирования и**.
-6. В новом окне приветствия, введите новое значение пропускной способности hello в hello **пропускной способности** , а затем щелкните **Сохранить**.
+4. В новом окне в меню навигации щелкните **Data Explorer (Preview)** (Обозреватель данных (предварительная версия)).
+5. В новом окне разверните узел базы данных и контейнера и щелкните **Scale & Settings** (Параметры масштабирования).
+6. В новом окне в поле **Пропускная способность** введите новое значение пропускной способности, а затем щелкните **Сохранить**.
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="tooset-hello-throughput-by-using-hello-documentdb-api-for-net"></a>пропускная способность hello tooset с помощью hello DocumentDB API для .NET
+## <a name="to-set-the-throughput-by-using-the-documentdb-api-for-net"></a>Настройка пропускной способности с помощью DocumentDB API для .NET
 
 ```C#
-//Fetch hello resource toobe updated
+//Fetch the resource to be updated
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
     .SingleOrDefault();
 
-// Set hello throughput toohello new value, for example 12,000 request units per second
+// Set the throughput to the new value, for example 12,000 request units per second
 offer = new OfferV2(offer, 12000);
 
-//Now persist these changes toohello database by replacing hello original resource
+//Now persist these changes to the database by replacing the original resource
 await client.ReplaceOfferAsync(offer);
 ```
 
 ## <a name="throughput-faq"></a>Часто задаваемые вопросы о пропускной способности
 
-**Можно задать Мой сборки пропускной способности, чем 400 единиц Запросов в секунду.**
+**Можно ли задать значение пропускной способности ниже 400 ЕЗ/с?**
 
-400 единиц Запросов в секунду — hello минимальная пропускная способность доступны в коллекции с одной секцией Cosmos DB (2500 единиц Запросов в секунду — hello минимальное для секционированных коллекций). Запрос единицы устанавливаются в интервалах 100 единиц Запросов в секунду, но пропускная способность невозможно задать too100 единиц Запросов в секунду или любое значение меньше, чем 400 единиц Запросов в секунду. Если вы ищете toodevelop экономичным способом и тестов Cosmos DB, можно использовать бесплатно hello [DB эмулятор Azure Cosmos](local-emulator.md), которое можно развертывать локально без затрат. 
+400 ЕЗ/с — это минимальное значение пропускной способности, доступное для односекционных коллекций Cosmos DB (минимальное значение для секционированных коллекций — 2500 ЕЗ/с). Единицы запроса можно задать с интервалом в 100 ЕЗ/с, но невозможно задать значение пропускной способности равное 100 ЕЗ/с или любое значение менее 400 ЕЗ/с. Чтобы определить экономически эффективный метод разработки и тестирования в Cosmos DB, можно воспользоваться бесплатным [эмулятором Azure Cosmos DB](local-emulator.md), который развертывается локально и без дополнительных затрат. 
 
-**Как задать с помощью MongoDB API hello througput?**
+**Как настроить пропускную способность с использованием API MongoDB?**
 
-Нет пропускной способности MongoDB API расширения tooset не существует. Hello рекомендуется hello toouse DocumentDB API, как показано в [пропускной способности hello tooset с помощью hello DocumentDB API для .NET](#set-throughput-sdk).
+Для настройки пропускной способности нет расширения API MongoDB. Мы рекомендуем использовать DocumentDB API, как показано в разделе [Настройка пропускной способности с помощью API DocumentDB для .NET](#set-throughput-sdk).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-toolearn Дополнительные сведения о подготовке и планеты шкалы переход с Cosmos DB. в разделе [секционирование и масштабирование с Cosmos DB](partition-data.md).
+Дополнительные сведения о подготовке и глобальном масштабировании с помощью Cosmos DB см. в статье [Секционирование в базе данных Azure Cosmos DB с помощью API DocumentDB](partition-data.md).

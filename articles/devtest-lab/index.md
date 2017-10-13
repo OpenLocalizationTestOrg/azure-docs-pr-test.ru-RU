@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документации Devtest Labs - учебные материалы | Документы Microsoft"
-description: "Узнайте, как tooquickly создать среды тестирования приложения, использующие многократно используемые артефакты. Учебники, видео и других показано, как toocreate, управление и защиту labs."
+title: "Документация по Azure DevTest Labs. Руководства | Документация Майкрософт"
+description: "Узнайте, как быстро создавать среды для тестирования приложений с помощью многократно используемых артефактов. В руководствах, видеороликах и других документах объясняется, как создавать лаборатории, управлять ими и обеспечивать их безопасность."
 services: devtest-lab
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b403eeda791425bc8f74ee4430224479e39d727c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="devtest-labs-documentation"></a>Документация DevTest Labs
 
-Узнайте, как tooquickly Devtest Labs toouse создать среды тестирования приложения, использующие многократно используемые артефакты. Учебники, видеоролики и другую документацию показано, как toocreate, управлять и secure labs и добавление и управление артефактами.
+Узнайте, как с помощью Devtest Labs быстро создавать среды для тестирования приложений с помощью многократно используемых артефактов. В руководствах, видеороликах и других документах показано, как создавать лаборатории, управлять ими и обеспечивать их безопасность, а также как добавлять артефакты и управлять ими.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Приступая к работе с DevTest Labs Azure с помощью портала Azure hello</h3>
+                        <h3>Начало работы со службой Azure DevTest Labs на портале Azure</h3>
                     </div>
                 </div>
             </div>

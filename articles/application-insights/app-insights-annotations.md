@@ -1,6 +1,6 @@
 ---
-title: "aaaRelease заметки для Application Insights | Документы Microsoft"
-description: "Добавление развертывания или построения маркеры диаграммы обозревателя метрик tooyour в Application Insights."
+title: "Заметки о выпуске для Application Insights | Документация Майкрософт"
+description: "Добавление маркеров развертывания или сборки для диаграмм обозревателя метрик в Application Insights."
 services: application-insights
 documentationcenter: .net
 author: CFreemanwa
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.openlocfilehash: e802d22701cb69e96fd1a6b469ea67454195f77a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7eb2f3cba535eb64db5544c498289c9e895987a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Заметки к диаграммам метрик в Application Insights
-Заметки к диаграммам [обозревателя метрик](app-insights-metrics-explorer.md) показывают, где развернута новая сборка, а также отображают другие важные события. Они позволяют легко toosee ли изменения имели никакого воздействия на производительность приложения. Они могут создаваться автоматически с hello [системы сборки Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Можно также создать заметки tooflag любого события, например по [создание их на основе PowerShell](#create-annotations-from-powershell).
+Заметки к диаграммам [обозревателя метрик](app-insights-metrics-explorer.md) показывают, где развернута новая сборка, а также отображают другие важные события. С их помощью легко увидеть, повлияли ли ваши изменения на производительность приложения. Заметки могут быть созданы автоматически [системой сборки Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Заметки можно также создавать, чтобы помечать какие-либо события, [используя PowerShell](#create-annotations-from-powershell).
 
 ![Пример заметок с видимой корреляцией с временем ответа сервера](./media/app-insights-annotations/00.png)
 
@@ -28,54 +28,54 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="release-annotations-with-vsts-build"></a>Заметки о выпуске сборки VSTS
 
-Выпуск заметки являются компонентом облачной сборки hello и выпуска службы из Visual Studio Team Services. 
+Заметки к выпуску являются функцией службы облачной сборки и выпуска Visual Studio Team Services. 
 
-### <a name="install-hello-annotations-extension-one-time"></a>Установка расширения заметок hello (один раз)
-заметки выпуска может toocreate toobe, вам потребуется tooinstall один из hello многие службы Team расширения, доступные в hello Visual Studio Marketplace.
+### <a name="install-the-annotations-extension-one-time"></a>Установка расширения заметок (однократно)
+Чтобы получить возможность создания заметок к выпуску, необходимо установить одно из расширений Team Service, доступных в магазине Visual Studio.
 
-1. Войдите в tooyour [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online) проекта.
-2. В Visual Studio Marketplace [расширение заметок выпуска hello](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)и добавить его учетную запись Team Services tooyour.
+1. Войдите в свой проект в [Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/setup/sign-up-for-visual-studio-online).
+2. В магазине Visual Studio [найдите расширение заметок к выпуску](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)и добавьте его к своей учетной записи Team Services.
 
 ![В верхнем правом углу веб-страницы Team Services откройте "Магазин". Выберите Visual Team Services и нажмите кнопку "Дополнительно" в разделе "Сборка и выпуск".](./media/app-insights-annotations/10.png)
 
-Требуется только toodo этом один раз для учетной записи Visual Studio Team Services. Теперь можно настроить заметки к выпуску для любого проекта в вашей учетной записи. 
+Это необходимо сделать только один раз для учетной записи Visual Studio Team Services. Теперь можно настроить заметки к выпуску для любого проекта в вашей учетной записи. 
 
 ### <a name="configure-release-annotations"></a>Настройка заметок к выпуску
 
-Для каждого шаблона выпуска VSTS необходим ключ tooget отдельный API.
+Для каждого шаблона выпуска VSTS необходимо получить отдельный ключ API.
 
-1. Войдите в toohello [портал Microsoft Azure](https://portal.azure.com) и открыть ресурс Application Insights hello, осуществляющее мониторинг приложения. (Или [создайте новый](app-insights-overview.md), если вы этого еще не сделали.)
+1. Выполните вход на [портал Microsoft Azure](https://portal.azure.com) и откройте ресурс Application Insights, который используется для мониторинга вашего приложения. (Или [создайте новый](app-insights-overview.md), если вы этого еще не сделали.)
 2. Откройте **Доступ через API** и выберите **Идентификатор Application Insights**.
    
-    ![На сайте portal.azure.com откройте ресурс Application Insights и выберите "Параметры". Откройте "Доступ к API". Скопируйте идентификатор приложения hello](./media/app-insights-annotations/20.png)
+    ![На сайте portal.azure.com откройте ресурс Application Insights и выберите "Параметры". Откройте "Доступ к API". Скопируйте идентификатор приложения.](./media/app-insights-annotations/20.png)
 
-4. В отдельном окне браузера откройте (или создайте) hello шаблон выпуска, который управляет развертываний из Visual Studio Team Services. 
+4. В отдельном окне браузера откройте (или создайте) шаблон выпуска, который управляет развертываниями из Visual Studio Team Services. 
    
-    Добавьте задачу и выберите задачу заметки выпуска аналитики приложения hello меню "hello".
+    Добавьте задачу и выберите в меню задачу заметок к выпуску Application Insights.
    
-    Вставить hello **идентификатор приложения** , скопированный из hello колонке доступа к API.
+    Вставьте **идентификатор приложения** , скопированный из колонки "Доступ к API".
    
-    ![В Visual Studio Team Services откройте "Выпуск", выберите определение выпуска и нажмите кнопку "Изменить". Щелкните "Добавьте задачу" и выберите "Заметки к выпуску Application Insights". Вставьте hello идентификатор аналитики приложений.](./media/app-insights-annotations/30.png)
-4. Набор hello **APIKey** переменной tooa поля `$(ApiKey)`.
+    ![В Visual Studio Team Services откройте "Выпуск", выберите определение выпуска и нажмите кнопку "Изменить". Щелкните "Добавьте задачу" и выберите "Заметки к выпуску Application Insights". Вставьте ИД Application Insights.](./media/app-insights-annotations/30.png)
+4. Задайте в качестве значения поля **APIKey** переменную `$(ApiKey)`.
 
-5. Обратно в hello Azure окна создайте новый ключ API и сделайте его копию.
+5. В окне Azure создайте ключ API и скопируйте его.
    
-    ![В hello колонке доступа к API в Azure окно приветствия нажмите кнопку Создать ключ API. Введите комментарий, щелкните "Написать заметки" и нажмите кнопку "Создать ключ". Скопируйте новый ключ hello.](./media/app-insights-annotations/40.png)
+    ![В колонке "Доступ к API" в окне Azure щелкните "Создать ключ API". Введите комментарий, щелкните "Написать заметки" и нажмите кнопку "Создать ключ". Скопируйте новый ключ.](./media/app-insights-annotations/40.png)
 
-6. Перейдите на вкладку конфигурации hello hello шаблона выпуска.
+6. Перейдите на вкладку "Конфигурация" шаблона выпуска.
    
     Создайте определение переменной для `ApiKey`.
    
-    Вставьте определение переменной ApiKey ключа toohello ваш API.
+    Вставьте ключ API в определение переменной ApiKey.
    
-    ![В окне Team Services hello перейдите на вкладку конфигурации hello и нажмите кнопку Добавить переменную. Задайте имя tooApiKey hello в hello значение ключа hello только что созданный и нажмите кнопку hello значок блокировки.](./media/app-insights-annotations/50.png)
-7. Наконец **Сохранить** hello определения выпуска.
+    ![В окне Team Services перейдите на вкладку "Конфигурация" и щелкните "Добавить переменную". Задайте "ApiKey" в качестве имени и в поле "Значение" вставьте ключ, который был только что создан, и щелкните значок замка.](./media/app-insights-annotations/50.png)
+7. Наконец, **сохраните** определение выпуска.
 
 
 ## <a name="view-annotations"></a>Просмотр заметок
-Теперь при использовании toodeploy шаблона выпуска hello нового выпуска заметки будут отправляться tooApplication аналитики. Hello заметки будут отображаться на диаграммах в обозревателе метрик.
+Теперь при каждом развертывании нового выпуска с помощью шаблона выпуска заметки будут отправляться в Application Insights. Заметки будут отображаться на диаграммах в обозревателе метрик.
 
-Щелкните любой заметки маркер tooopen подробности hello выпуска, включая запрашивающей стороны, ветвь системы управления версиями, определение выпуска, среды и многое другое.
+Щелкните любой маркер заметки, чтобы открыть подробные сведения о выпуске, включая запросившую сторону, ветвь системы управления версиями, определение выпуска, среду и многое другое.
 
 ![Щелкните любой маркер заметки о выпуске.](./media/app-insights-annotations/60.png)
 
@@ -83,11 +83,11 @@ ms.lasthandoff: 10/06/2017
 Вы можете создать аннотации из любого процесса на свой выбор (без использования Visual Studio Team System). 
 
 
-1. Создать локальную копию hello [сценарий Powershell из GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Создайте локальную копию [сценария PowerShell из GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
 
-2. Получить идентификатор приложения hello и создайте ключ API из hello колонке доступа к API.
+2. Получите идентификатор приложения и создайте ключ API в колонке "Доступ через API".
 
-3. Вызов скрипта hello следующим образом:
+3. Вызовите сценарий следующим образом.
 
 ```PS
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/06/2017
           "TriggerBy"="My Name" }
 ```
 
-Это легко toomodify hello скрипт, например toocreate заметок для прошлых hello.
+Сценарий легко изменить, например, чтобы создать заметки для предыдущих выпусков.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

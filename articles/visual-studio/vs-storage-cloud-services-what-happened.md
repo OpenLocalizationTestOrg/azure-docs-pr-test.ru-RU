@@ -1,6 +1,6 @@
 ---
-title: "aaaWhat произошло toomy проекта облачной службы? | Документация Майкрософт"
-description: "Описывает, что происходит в проекте облачных служб, после подключения tooan учетной записи хранилища Azure с помощью Visual Studio подключенные службы"
+title: "Что произошло с моим проектом облачных служб? | Документация Майкрософт"
+description: "Сведения о том, что происходит в проекте облачных служб после подключения к учетной записи хранения Azure с помощью подключенных служб Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 52e292558fb66b56e9d2e8e06ff489ae7a4bc845
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4c9de56f6daf07097c0f593db37d14dce3bce05f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-happened-toomy-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Какая ошибка toomy проектами облачных служб (службы Visual Studio службы хранилища Azure подключен)?
+# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Что произошло с моим проектом облачных служб (подключенными к службе хранилища Azure службами Visual Studio)?
 ## <a name="references-added"></a>Добавлены ссылки
-пакет NuGet хранилища Azure Hello был добавлен tooyour проекта Visual Studio.  
-Этот пакет добавляет hello следующие ссылки .NET:
+Пакет NuGet хранилища Azure был добавлен в проект Visual Studio.  
+Этот пакет добавляет следующие ссылки .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/06/2017
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Добавлена строка подключения к хранилищу Azure
-Элементы были созданы с помощью строки подключения и ключа учетной записи хранилища hello выбран. Изменений toohello следующие файлы:
+Созданы элементы с ключом и строкой подключения выбранной учетной записи хранилища. Внесены изменения в следующие файлы:
 
 * **ServiceDefinition.csdef**
 * **ServiceConfiguration.Cloud.cscfg**

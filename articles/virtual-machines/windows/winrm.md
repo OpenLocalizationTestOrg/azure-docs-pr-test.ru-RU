@@ -1,6 +1,6 @@
 ---
-title: "aaaSet доступа для удаленного управления Windows для ВМ Azure | Документы Microsoft"
-description: "Настройка WinRM доступ для использования с виртуальной машины Azure создаются в модели развертывания диспетчера ресурсов hello."
+title: "Настройка доступа WinRM для виртуальной машины Azure | Документация Майкрософт"
+description: "Настройте доступ WinRM для использования с виртуальной машиной Azure, созданной в модели развертывания Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,32 +15,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 23d1d3a3065cbd8e4036be085c6d835cae36caae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Настройка доступа WinRM для виртуальных машин в Azure Resource Manager
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>WinRM в управлении службами Azure или Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-* Общие сведения о hello диспетчера ресурсов Azure, см. в разделе это [статьи](../../azure-resource-manager/resource-group-overview.md)
+* Общие сведения об Azure Resource Manager см. в этой [статье](../../azure-resource-manager/resource-group-overview.md).
 * Сведения о различиях между управлением службами Azure и Azure Resource Manager см. в этой [статье](../../resource-manager-deployment-model.md).
 
-Hello ключевое различие в настройке конфигурации WinRM между двумя стеками hello происходит сертификат hello возвращает Установка hello виртуальной Машины. В стеке диспетчера ресурсов Azure hello сертификаты hello моделируются как ресурсы, управляемые hello поставщика ресурсов хранилища ключей. Таким образом пользователь hello должен tooprovide свой собственный сертификат и отправить tooa хранилище ключей перед их использованием в виртуальной Машине.
+Основное различие в настройке конфигурации WinRM между двумя стеками — это как на виртуальной машине устанавливается сертификат. В стеке Azure Resource Manager сертификаты моделируются как ресурсы, управляемые поставщиком ресурсов хранилища ключей. Поэтому пользователь должен предоставить свой собственный сертификат и передать его в хранилище ключей, прежде чем использовать на виртуальной машине.
 
-Ниже приведены шаги hello необходимо tooset tootake ВМ с подключением удаленного управления Windows
+Ниже приведены шаги, которые необходимо выполнить для настройки виртуальной машины с возможностью подключения WinRM:
 
 1. создать хранилище ключей;
-2. Создание самозаверяющего сертификата
-3. Отправьте ваш tooKey самозаверяющий сертификат хранилища
-4. Получение URL-адреса hello самозаверяющего сертификата в хранилище ключей hello
+2. создать самозаверяющий сертификат;
+3. передать самозаверяющий сертификат в хранилище ключей;
+4. получить URL-адрес для самозаверяющего сертификата в хранилище ключей;
 5. сослаться на URL-адрес самозаверяющего сертификата при создании виртуальной машины.
 
 ## <a name="step-1-create-a-key-vault"></a>Шаг 1. Создание хранилища ключей
-Можно использовать hello ниже команда toocreate hello хранилища ключей
+Для создания хранилища ключей можно воспользоваться следующей командой:
 
 ```
 New-AzureRmKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
@@ -56,16 +56,16 @@ $thumbprint = (New-SelfSignedCertificate -DnsName $certificateName -CertStoreLoc
 
 $cert = (Get-ChildItem -Path cert:\CurrentUser\My\$thumbprint)
 
-$password = Read-Host -Prompt "Please enter hello certificate password." -AsSecureString
+$password = Read-Host -Prompt "Please enter the certificate password." -AsSecureString
 
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-toohello-key-vault"></a>Шаг 3: Отправка вашей toohello самозаверяющий сертификат хранилища ключей
-Перед созданием отправка сертификата hello toohello хранилища ключей на шаге 1, в формате hello, понимали, поставщик ресурсов Microsoft.Compute ему tooconverted. Разрешает Hello ниже сценарий PowerShell, необходимо
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Шаг 3. Передача самозаверяющего сертификата в хранилище ключей
+Перед передачей сертификата в хранилище ключей, созданное на шаге 1, необходимо преобразовать его в формат, который будет понятен для поставщика ресурсов Microsoft.Compute. Следующий сценарий PowerShell позволит это сделать:
 
 ```
-$fileName = "<Path toohello .pfx file>"
+$fileName = "<Path to the .pfx file>"
 $fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 
@@ -84,39 +84,39 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-hello-url-for-your-self-signed-certificate-in-hello-key-vault"></a>Шаг 4: Получение hello URL-адреса для самозаверяющего сертификата в хранилище ключей hello
-Hello поставщике ресурсов Microsoft.Compute должен секрета toohello URL-адрес внутри hello хранилища ключей во время подготовки hello виртуальной Машины. Это позволяет hello Microsoft.Compute ресурсов поставщика toodownload hello секрета и создайте сертификат эквивалентные hello hello виртуальной Машины.
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Шаг 4. Получение URL-адреса для самозаверяющего сертификата в хранилище ключей
+При подготовке виртуальной машины поставщику ресурсов Microsoft.Compute требуется URL-адрес для секрета в хранилище ключей. Это позволяет поставщику ресурсов Microsoft.Compute скачать секрет и создать эквивалент сертификата на виртуальной машине.
 
 > [!NOTE]
-> URL-адрес Hello hello секрет должен также версия hello tooinclude. Пример URL-адреса выглядит так: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> URL-адрес секрета также должен включать в себя версию. Пример URL-адреса выглядит так: https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 
 #### <a name="templates"></a>Шаблоны
-URL-адрес toohello hello ссылки можно получить в шаблон hello, используя hello ниже код
+Получить ссылку на URL-адрес в шаблоне можно с помощью следующего кода:
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
 #### <a name="powershell"></a>PowerShell
-Вы можете получить этот URL-адрес, используя hello ниже команды PowerShell
+Также для получения этого URL-адреса можно воспользоваться следующей командой PowerShell:
 
     $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Шаг 5. Создание ссылки на URL-адрес самозаверяющего сертификата при создании виртуальной машины
 #### <a name="azure-resource-manager-templates"></a>Шаблоны Azure Resource Manager
-При создании ВМ с помощью шаблонов, сертификат hello возвращает ссылаться секреты hello и разделов winRM hello, как показано ниже:
+При создании виртуальной машины с помощью шаблонов ссылки на сертификат задаются в разделе секретов и разделе winRM, как показано ниже.
 
     "osProfile": {
           ...
           "secrets": [
             {
               "sourceVault": {
-                "id": "<resource id of hello Key Vault containing hello secret>"
+                "id": "<resource id of the Key Vault containing the secret>"
               },
               "vaultCertificates": [
                 {
-                  "certificateUrl": "<URL for hello certificate you got in Step 4>",
-                  "certificateStore": "<Name of hello certificate store on hello VM>"
+                  "certificateUrl": "<URL for the certificate you got in Step 4>",
+                  "certificateStore": "<Name of the certificate store on the VM>"
                 }
               ]
             }
@@ -130,7 +130,7 @@ URL-адрес toohello hello ссылки можно получить в шаб
                 },
                 {
                   "protocol": "https",
-                  "certificateUrl": "<URL for hello certificate you got in Step 4>"
+                  "certificateUrl": "<URL for the certificate you got in Step 4>"
                 }
               ]
             },
@@ -138,7 +138,7 @@ URL-адрес toohello hello ссылки можно получить в шаб
           }
         },
 
-Образец шаблона для hello выше приведены ниже в [201-vm-winrm-keyvault — windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+Пример шаблона для описанного выше сценария можно найти здесь: [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
 Исходный код для этого шаблона можно найти на портале [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
@@ -151,16 +151,16 @@ URL-адрес toohello hello ссылки можно получить в шаб
     $CertificateStore = "My"
     $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-toohello-vm"></a>Шаг 6: Подключение toohello виртуальной Машины
-Перед подключением toohello виртуальной Машины необходимо убедиться, что компьютер настроен для удаленного управления WinRM toomake. Запустите PowerShell с правами администратора и выполните hello ниже команда toomake том, что настройки нужных параметров.
+## <a name="step-6-connecting-to-the-vm"></a>Шаг 6. Подключение к виртуальной машине
+Перед подключением к виртуальной машине убедитесь, что машина настроена для удаленного управления WinRM. Запустите PowerShell от имени администратора и выполните следующую команду, чтобы убедиться в правильности настроек:
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Может потребоваться toomake том, что hello служба WinRM работает в том случае, если выше hello не работает. Это можно сделать с помощью команды `Get-Service WinRM`
+> Если вышеописанные действия не дали результата, убедитесь, что служба WinRM запущена. Это можно сделать с помощью команды `Get-Service WinRM`
 > 
 > 
 
-После завершения установки hello toohello ВМ можно подключиться с помощью hello ниже команды
+Когда настройки выполнены, можно подключиться к виртуальной машине с помощью следующей команды:
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

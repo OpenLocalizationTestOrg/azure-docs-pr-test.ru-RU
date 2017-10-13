@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toouse хранилище таблиц из Java | Документы Microsoft"
-description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
+title: "Как использовать хранилище таблиц из Java | Документация Майкрософт"
+description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
 services: cosmos-db
 documentationcenter: java
 author: mimig1
@@ -14,20 +14,20 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 20d03e867219cc254da8dad37cf3cf61bca65671
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7f92b1e14a514e9eda39f7ca94f63fc761dfdf41
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-table-storage-from-java"></a>Как toouse хранилище таблиц из Java
+# <a name="how-to-use-table-storage-from-java"></a>Использование табличного хранилища из Java
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве будет показано, как tooperform распространенных сценариев использования hello службы хранилища таблиц Azure. Hello примеры написаны на Java и использовать hello [пакет SDK хранилища Azure для Java][Azure Storage SDK for Java]. Hello сценарии включают **создание**, **вывод**, и **удаление** таблиц, а также **Вставка**,  **запрос**, **изменение**, и **удаление** сущностей в таблице. Дополнительные сведения о таблицах см. в разделе hello [дальнейшие действия](#Next-Steps) раздела.
+В этом руководстве показано, как реализовать типичные сценарии с использованием службы табличного хранилища Azure. Примеры написаны на Java и используют [пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]. Рассматриваются сценарии **создания**, **перечисления** и **удаления** таблиц, а также **вставки**, **запроса**, **изменения** и **удаления** сущностей в таблице. Дополнительные сведения о таблицах см. в разделе [Дальнейшие действия](#Next-Steps).
 
-Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android. Дополнительные сведения см. в разделе hello [пакет SDK хранилища Azure для Android][Azure Storage SDK for Android].
+Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android. Дополнительные сведения см. в разделе [Microsoft Azure Storage SDK for Android][Azure Storage SDK for Android] (Пакет SDK хранилища Azure для Android).
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -36,30 +36,30 @@ ms.lasthandoff: 10/06/2017
 ## <a name="create-a-java-application"></a>Создание приложения Java
 В этом руководстве будут использоваться компоненты хранилища, которые могут быть вызваны локально в приложении Java или в коде, работающем в веб-роли или рабочей роли в Azure.
 
-toodo таким образом, вам потребуется tooinstall hello Java Development Kit (JDK) и создать учетную запись хранилища Azure в подписке Azure. Как только вы делали, вам потребуется tooverify, разработки система удовлетворяет минимальным требованиям hello и зависимости, которые указаны в hello [пакет SDK хранилища Azure для Java] [ Azure Storage SDK for Java] репозитория в GitHub. Если компьютер соответствует этим требованиям, можно выполнить hello инструкции по загрузке и установке hello библиотеки хранилища Azure для Java в вашей системе из этого репозитория. После завершения этих задач можно будет toocreate приложения Java, использующего hello примеры в этой статье.
+Для этого необходимо установить пакет SDK для Java (JDK) и создать учетную запись хранения Azure в подписке Azure. После того, как это будет сделано, необходимо убедиться, что ваша система разработки отвечает минимальным требованиям и зависимостям, указанным в репозитории [пакета SDK службы хранилища Azure для Java][Azure Storage SDK for Java] на сайте GitHub. Если ваша система отвечает указанным требованиям можно приступить к выполнению инструкций по загрузке библиотек хранилища Azure для Java из репозитория и их установке на своей системе. После завершение этих задач вы сможете приступить к созданию приложения Java с использованием примеров из данной статьи.
 
-## <a name="configure-your-application-tooaccess-table-storage"></a>Настройка хранилища таблицы tooaccess приложения
-Добавьте следующие начало toohello инструкции импорта файла Java hello, место таблиц tooaccess API-интерфейсов хранилища Microsoft Azure toouse hello:
+## <a name="configure-your-application-to-access-table-storage"></a>Настройка приложения для доступа к хранилищу таблиц
+Если нужно использовать API-интерфейсы хранилища Microsoft Azure для доступа к таблицам, добавьте следующие инструкции импорта в верхнюю часть файла Java.
 
 ```java
-// Include hello following imports toouse table APIs
+// Include the following imports to use table APIs
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.table.*;
 import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Настройка строки подключения к хранилищу Azure
-Клиент хранилища Azure использует хранилища конечные точки toostore соединения строки и учетные данные для доступа к службам данных управления. При работе в клиентском приложении, необходимо указать строку соединения хранения hello в hello следующая формата, используя hello имя учетной записи и hello первичный ключ доступа для учетной записи хранения hello, перечисленные в hello [портал Azure](https://portal.azure.com)для hello *AccountName* и *AccountKey* значения. В этом примере показано, как объявить строки подключения hello toohold статического поля:
+Клиент хранилища Azure использует строку подключения с целью хранения конечных точек и учетных данных для доступа к службам управления данными. При работе в клиентском приложении необходимо указать для хранилища строку подключения в следующем формате, используя имя своей учетной записи хранения и первичный ключ доступа для учетной записи хранения, указанные на [портале Azure](https://portal.azure.com) значениями *AccountName* и *AccountKey*. В этом примере показано, как объявить статическое поле для размещения строки подключения:
 
 ```java
-// Define hello connection-string with your values.
+// Define the connection-string with your values.
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
 
-Эта строка в приложения, запущенного в рамках роли в Microsoft Azure, могут храниться в файле конфигурации службы hello, *ServiceConfiguration.cscfg*и можно осуществить с помощью toohello вызова  **RoleEnvironment.getConfigurationSettings** метод. Ниже приведен пример получения строки подключения hello из **параметр** элемента с именем *StorageConnectionString* в файле конфигурации службы hello:
+Если приложение выполняется в роли на платформе Microsoft Azure, эта строка может храниться в файле конфигурации службы *ServiceConfiguration.cscfg*, для доступа к которой можно использовать вызов метода **RoleEnvironment.getConfigurationSettings** . Ниже приведен пример получения строки подключения из элемента **Setting** с именем *StorageConnectionString* в файле конфигурации службы:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -67,10 +67,10 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-Hello следующие образцы предполагается, что используется один из этих двух методов tooget hello строки подключения к хранилищу.
+В приведенных ниже примерах предполагается, что вы использовали одно из этих двух определений для получения строки подключения к хранилищу.
 
 ## <a name="how-to-create-a-table"></a>Практическое руководство. Создание таблицы
-Объект **CloudTableClient** позволяет ссылаться на объекты таблиц и сущностей. Hello следующий код создает **CloudTableClient** объекта и использует его toocreate новый **CloudTable** объект, который представляет таблицу с именем «пользователи». (Примечание: существуют дополнительные способы toocreate **CloudStorageAccount** объектов; Дополнительные сведения см. в разделе **CloudStorageAccount** в hello [Azure SDK Справочник по клиентской хранилища].)
+Объект **CloudTableClient** позволяет ссылаться на объекты таблиц и сущностей. Следующий код создает объект **CloudTableClient** и использует его для создания нового объекта **CloudTable**, который представляет таблицу people. (Примечание. Есть и другие способы создания объектов **CloudStorageAccount**. Дополнительные сведения см. в разделе **CloudStorageAccount** в [справочнике по пакету SDK для клиента службы хранилища Azure].)
 
 ```java
 try
@@ -79,23 +79,23 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create hello table if it doesn't exist.
+    // Create the table if it doesn't exist.
     String tableName = "people";
     CloudTable cloudTable = tableClient.getTableReference(tableName);
     cloudTable.createIfNotExists();
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-list-hello-tables"></a>Как: список таблиц hello
-список таблиц, вызов hello tooget **CloudTableClient.listTables()** tooretrieve метод итерируемого перечень имен таблиц.
+## <a name="how-to-list-the-tables"></a>Как перечислять таблицы
+Чтобы получить список таблиц, вызовите метод **CloudTableClient.listTables()** для извлечения пригодного к итерации списка имен таблиц.
 
 ```java
 try
@@ -104,10 +104,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Loop through hello collection of table names.
+    // Loop through the collection of table names.
     for (String table : tableClient.listTables())
     {
         // Output each table name.
@@ -116,13 +116,13 @@ try
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-add-an-entity-tooa-table"></a>Способ: добавьте таблицу tooa сущности
-Сущности сопоставляют объекты tooJava, используя пользовательский класс, реализующий **TableEntity**. Для удобства hello **TableServiceEntity** класс реализует **TableEntity** и использует отражение toomap свойства с именем toogetter и задание значения для hello свойства. tooadd таблицу tooa сущности сначала создать класс, определяющий hello свойства сущности. Hello следующий код определяет класс сущностей, который использует имя клиента hello как ключ строки hello и фамилию в качестве ключа секции hello. Вместе секции и ключом строки идентификации сущности hello hello таблицы. Сущности с одинаковым ключом секции могут выполняться быстрее, чем с разными ключами секционирования приветствия.
+## <a name="how-to-add-an-entity-to-a-table"></a>Практическое руководство. Добавление сущности в таблицу
+Сущности сопоставляются с объектами Java с помощью настраиваемого класса, реализующего **TableEntity**. Для удобства класс **TableServiceEntity** реализует **TableEntity** и использует отражение для сопоставления свойств с указанными для свойств методами получения и задания. Чтобы добавить сущность в таблицу, сначала создайте класс, который определяет свойства сущности. Следующий код определяет класс сущностей, который использует имя клиента как ключ строки, а фамилию клиента — как ключ раздела. Вместе ключ раздела и ключ строки сущности уникальным образом идентифицируют сущность в таблице. Сущности с одним ключом раздела можно запрашивать быстрее, чем сущности с разными ключами раздела.
 
 ```java
 public class CustomerEntity extends TableServiceEntity {
@@ -154,7 +154,7 @@ public class CustomerEntity extends TableServiceEntity {
 }
 ```
 
-Табличные операций, включающие сущности, требуют объект **TableOperation** . Этот объект определяет toobe операции hello выполнена на сущность, которая может выполняться с **CloudTable** объекта. Hello следующий код создает новый экземпляр hello **CustomerEntity** класса хранимых данных toobe некоторых клиентов система. Здравствуйте, следующий код вызывает метод **TableOperation.insertOrReplace** toocreate **TableOperation** объекта tooinsert сущность в таблицу, и связывает hello новые **CustomerEntity**с ним. Наконец, код hello вызывает hello **выполнение** метод hello **CloudTable** указание таблицы «people» hello и новый hello объекта **TableOperation**, которая затем отправляет запрос toohello хранилища службы tooinsert hello новой сущности customer в таблицу «люди» hello, или заменяет сущность hello в том случае, если он уже существует.
+Табличные операций, включающие сущности, требуют объект **TableOperation** . Этот объект определяет выполняемую для сущности операцию, которую можно запустить с помощью объекта **CloudTable** . В следующем коде создается новый экземпляр класса **CustomerEntity** с сохраняемыми данными клиента. Далее код вызывает **TableOperation.insertOrReplace**, чтобы создать объект **TableOperation** для вставки сущности в таблицу, а также связывает с ним новый объект **CustomerEntity**. Наконец код вызывает метод **execute** объекта **CloudTable**, определяя таблицу people и новый объект **TableOperation**, который затем отправляет запрос в службу хранилища для вставки новой сущности клиента в таблицу people или замены сущности, если она уже существует.
 
 ```java
 try
@@ -163,10 +163,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
     // Create a new customer entity.
@@ -174,21 +174,21 @@ try
     customer1.setEmail("Walter@contoso.com");
     customer1.setPhoneNumber("425-555-0101");
 
-    // Create an operation tooadd hello new customer toohello people table.
+    // Create an operation to add the new customer to the people table.
     TableOperation insertCustomer1 = TableOperation.insertOrReplace(customer1);
 
-    // Submit hello operation toohello table service.
+    // Submit the operation to the table service.
     cloudTable.execute(insertCustomer1);
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-insert-a-batch-of-entities"></a>Практическое руководство. Вставка пакета сущностей
-Пакет службы таблиц toohello сущностей можно вставить в одну операцию записи. Hello следующий код создает **TableBatchOperation** объекта, а затем добавляет три вставить tooit операций. Каждой операции вставки добавляется путем создания нового объекта сущностей, задание его значения и последующего вызова hello **вставить** метод hello **TableBatchOperation** объекта tooassociate hello сущности с новым операции вставки. Здравствуйте, затем код вызывает метод **выполнение** на hello **CloudTable** указание таблицы «people» hello и hello объекта **TableBatchOperation** объекта, который отправляет пакет hello таблицы Служба хранилища toohello операций в одном запросе.
+Вы можете вставить пакет сущностей в таблицу в одной операции записи. Следующий код создает объект **TableBatchOperation** , а затем добавляет в него три операции вставки. Каждая операция вставки добавляется путем создания нового объекта сущности, установки его значений и последующего вызова метода **insert** для объекта **TableBatchOperation**, чтобы связать сущность с новой операцией вставки. Затем код вызывает метод **execute** объекта **CloudTable**, определяя таблицу people и объект **TableBatchOperation**, который отправляет пакет операций таблицы в службу хранилища в одном запросе.
 
 ```java
 try
@@ -197,52 +197,52 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
     // Define a batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a customer entity tooadd toohello table.
+    // Create a customer entity to add to the table.
     CustomerEntity customer = new CustomerEntity("Smith", "Jeff");
     customer.setEmail("Jeff@contoso.com");
     customer.setPhoneNumber("425-555-0104");
     batchOperation.insertOrReplace(customer);
 
-    // Create another customer entity tooadd toohello table.
+    // Create another customer entity to add to the table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.setEmail("Ben@contoso.com");
     customer2.setPhoneNumber("425-555-0102");
     batchOperation.insertOrReplace(customer2);
 
-    // Create a third customer entity tooadd toohello table.
+    // Create a third customer entity to add to the table.
     CustomerEntity customer3 = new CustomerEntity("Smith", "Denise");
     customer3.setEmail("Denise@contoso.com");
     customer3.setPhoneNumber("425-555-0103");
     batchOperation.insertOrReplace(customer3);
 
-    // Execute hello batch of operations on hello "people" table.
+    // Execute the batch of operations on the "people" table.
     cloudTable.execute(batchOperation);
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
-Некоторые действия toonote на пакетные операции:
+Некоторые другие примечания к пакетным операциям:
 
-* Можно выполнять копирование too100 insert, delete, merge, replace, insert или merge и вставки или замены в любой комбинации в одном пакете.
-* В него входит только операция hello в пакете hello пакетная операция может быть операцией извлечения.
-* Все сущности в одной пакетной операции должен иметь hello же ключ секционирования.
-* Пакетная операция представляет полезные данные ограниченного tooa 4 МБ.
+* В отдельном пакете можно выполнить до 100 операций вставки, удаления, объединения, замены, вставки или замены и вставки или замены операций в любом сочетании.
+* Пакетная операция может иметь операцию извлечения, если она является единственной операцией в пакете.
+* У всех сущностей в одной пакетной операции должен быть одинаковый ключ раздела.
+* Объем полезных данных пакетной операции ограничен размером 4 МБ.
 
 ## <a name="how-to-retrieve-all-entities-in-a-partition"></a>Практическое руководство. Получение всех сущностей в разделе
-tooquery таблицы для сущностей из секции, можно использовать **TableQuery**. Вызовите **TableQuery.from** toocreate запроса на определенной таблице, которая возвращает тип, заданный результат. Hello следующий код задает фильтр для сущности, где ключ раздела hello 'Smith'. **TableQuery.generateFilterCondition** — это вспомогательный метод toocreate фильтры для запросов. Вызовите **где** hello ссылки, возвращенные hello **TableQuery.from** метод tooapply hello фильтра toohello запроса. Если hello запрос выполняется с помощью вызова слишком**выполнение** на hello **CloudTable** он возвращает **итератор** с hello **CustomerEntity**указан тип результата. Затем можно использовать hello **итератор** возвращается в для каждого цикла tooconsume hello результатов. Этот код выводит hello поля в каждой сущности в консоли toohello результаты запроса hello.
+Чтобы запросить из таблицы сущности раздела, можно использовать **TableQuery**. Вызовите **TableQuery.from**, чтобы создать запрос для определенной таблицы, который возвращает результаты заданного типа. Следующий код задает фильтр для сущностей с ключомраздела "Smith". **TableQuery.generateFilterCondition** — это вспомогательный метод для создания фильтров запросов. Вызовите **where** по ссылке, которую вернул метод **TableQuery.from**, чтобы применить фильтр к запросу. При выполнении запроса с помощью вызова **execute** для объекта **CloudTable** он возвращает **Iterator** с указанным типом результата **CustomerEntity**. Затем можно использовать возвращенное значение **Iterator** в каждом цикле для получения результатов. Этот код выводит на консоль поля каждой сущности в результатах запроса.
 
 ```java
 try
@@ -256,24 +256,24 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a filter condition where hello partition key is "Smith".
+    // Create a filter condition where the partition key is "Smith".
     String partitionFilter = TableQuery.generateFilterCondition(
         PARTITION_KEY,
         QueryComparisons.EQUAL,
         "Smith");
 
-    // Specify a partition query, using "Smith" as hello partition key filter.
+    // Specify a partition query, using "Smith" as the partition key filter.
     TableQuery<CustomerEntity> partitionQuery =
         TableQuery.from(CustomerEntity.class)
         .where(partitionFilter);
 
-    // Loop through hello results, displaying information about hello entity.
+    // Loop through the results, displaying information about the entity.
     for (CustomerEntity entity : cloudTable.execute(partitionQuery)) {
         System.out.println(entity.getPartitionKey() +
             " " + entity.getRowKey() +
@@ -283,13 +283,13 @@ try
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-retrieve-a-range-of-entities-in-a-partition"></a>Практическое руководство. Получение диапазона сущностей в разделе
-Если вы не хотите tooquery все сущности hello в секции, можно указать диапазон с помощью операторов сравнения в фильтре. Здравствуйте, следующий код объединяет два фильтрует tooget всех сущностей в разделе «Smith» где ключ строки hello (имя) начинается с буквы вверх too'E "hello алфавита. Затем он выводит результаты запроса hello. При использовании таблицы добавлены toohello hello сущностей в пакете hello вставить данного руководства, возвращаются только две сущности, это время (Бен и Юлия Smith); Джефф Smith не включается.
+Если вы не хотите запрашивать все сущности в разделе, можно указать диапазон с помощью операторов сравнения в фильтре. В следующем коде совместно используются два фильтра для получения всех сущностей в разделе "Smith", где ключ строки (имя) начинается с буквы до "E" в алфавите. После чего результаты запроса выводятся на консоль. Если вы используете сущности, добавленные в таблицу во время работы с разделом о пакетной вставке, то на этот раз возвращаются только две сущности (Ben Smith и Denise Smith), а Jeff Smith не выводится.
 
 ```java
 try
@@ -303,35 +303,35 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a filter condition where hello partition key is "Smith".
+    // Create a filter condition where the partition key is "Smith".
     String partitionFilter = TableQuery.generateFilterCondition(
         PARTITION_KEY,
         QueryComparisons.EQUAL,
         "Smith");
 
-    // Create a filter condition where hello row key is less than hello letter "E".
+    // Create a filter condition where the row key is less than the letter "E".
     String rowFilter = TableQuery.generateFilterCondition(
         ROW_KEY,
         QueryComparisons.LESS_THAN,
         "E");
 
-    // Combine hello two conditions into a filter expression.
+    // Combine the two conditions into a filter expression.
     String combinedFilter = TableQuery.combineFilters(partitionFilter,
         Operators.AND, rowFilter);
 
-    // Specify a range query, using "Smith" as hello partition key,
-    // with hello row key being up toohello letter "E".
+    // Specify a range query, using "Smith" as the partition key,
+    // with the row key being up to the letter "E".
     TableQuery<CustomerEntity> rangeQuery =
         TableQuery.from(CustomerEntity.class)
         .where(combinedFilter);
 
-    // Loop through hello results, displaying information about hello entity
+    // Loop through the results, displaying information about the entity
     for (CustomerEntity entity : cloudTable.execute(rangeQuery)) {
         System.out.println(entity.getPartitionKey() +
             " " + entity.getRowKey() +
@@ -341,13 +341,13 @@ try
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-retrieve-a-single-entity"></a>Практическое руководство. Извлечение одной сущности
-Можно написать tooretrieve запроса конкретную сущность. Hello следующий код вызывает **TableOperation.retrieve** с секции ключ и строку параметров ключа toospecify hello клиентом «Джефф Smith», вместо создания **TableQuery** и использование фильтров toodo hello одинаково. Во время выполнения получить hello, операция возвращает только одну сущность, а не коллекцию. Hello **getResultAsType** метод приводит hello результат toohello тип цели назначения hello, **CustomerEntity** объекта. Если этот тип несовместим с типом hello hello запросе указано, будет вызвано исключение. Значение NULL возвращается, если ни одна сущность не подходит по ключам раздела и строки. Указание ключи секций и строк в запросе является hello самый быстрый способ tooretrieve одной сущности из службы таблиц hello.
+Можно написать запрос для получения отдельной сущности. В следующем коде выполняется вызов **TableOperation.retrieve** с параметрами ключа раздела и ключа строки для указания клиента Jeff Smith вместо создания **TableQuery** и применения фильтров с таким же результатом. При выполнении операция извлечения возвращает только одну сущность, а не коллекцию. Метод **getResultAsType** приводит результат к типу назначенной цели — объекту **CustomerEntity**. Если этот тип не совместим с типом, указанным в запросе, возникает исключение. Значение NULL возвращается, если ни одна сущность не подходит по ключам раздела и строки. Указание ключа раздела и ключа строки в запросе — самый быстрый способ извлечь одну сущность из службы таблиц.
 
 ```java
 try
@@ -356,21 +356,21 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff"
+    // Retrieve the entity with partition key of "Smith" and row key of "Jeff"
     TableOperation retrieveSmithJeff =
         TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Submit hello operation toohello table service and get hello specific entity.
+    // Submit the operation to the table service and get the specific entity.
     CustomerEntity specificEntity =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
-    // Output hello entity.
+    // Output the entity.
     if (specificEntity != null)
     {
         System.out.println(specificEntity.getPartitionKey() +
@@ -381,13 +381,13 @@ try
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-modify-an-entity"></a>Практическое руководство. Изменение сущности
-toomodify сущности, получить его из службы таблиц hello, сделать объект сущности toohello изменения и сохранить изменения hello задней toohello службы таблиц с помощью операции слияния или замены. Hello следующий код позволяет изменить номер телефона существующего клиента. Вместо вызова метода **TableOperation.insert** как мы делали tooinsert, этот код вызывает **TableOperation.replace**. Hello **CloudTable.execute** метод вызывает службу hello таблицы и сущности hello заменяется первоначально другое приложение его hello времени с момента получения данного приложения, его. Когда это происходит, возникает исключение и hello сущности необходимо извлечь, изменения и снова сохранить. Этот оптимистичный шаблон повторения в случае конфликтов широко применяется в системе распределенного хранения.
+Чтобы изменить сущность, извлеките ее из службы таблиц, измените объект сущности и сохраните изменения в службе таблиц с помощью операции замены или объединения. Следующий код изменяет существующий номер телефона клиента. Вместо вызова метода **TableOperation.insert**, который мы осуществляли при вставке, этот код вызывает **TableOperation.replace**. Метод **CloudTableClient.execute** вызывает службу таблиц и заменяет сущность, если только другое приложение не изменило ее с момента извлечения данным приложением. Когда это происходит, возникает исключение, и сущность необходимо получить, изменить и сохранить повторно. Этот оптимистичный шаблон повторения в случае конфликтов широко применяется в системе распределенного хранения.
 
 ```java
 try
@@ -396,38 +396,38 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff".
+    // Retrieve the entity with partition key of "Smith" and row key of "Jeff".
     TableOperation retrieveSmithJeff =
         TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Submit hello operation toohello table service and get hello specific entity.
+    // Submit the operation to the table service and get the specific entity.
     CustomerEntity specificEntity =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
     // Specify a new phone number.
     specificEntity.setPhoneNumber("425-555-0105");
 
-    // Create an operation tooreplace hello entity.
+    // Create an operation to replace the entity.
     TableOperation replaceEntity = TableOperation.replace(specificEntity);
 
-    // Submit hello operation toohello table service.
+    // Submit the operation to the table service.
     cloudTable.execute(replaceEntity);
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-query-a-subset-of-entity-properties"></a>Практическое руководство. Запрос подмножества свойств сущности
-Таблицы tooa запроса можно получить только несколько свойств сущности. Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. Hello запрос в hello, следующий код использует hello **выберите** метод tooreturn только hello адреса электронной почты сущности в таблице hello. Hello результаты проецируются в коллекцию **строка** с помощью hello **EntityResolver**, который does hello преобразование типов сущностей hello, возвращенный от сервера hello. Дополнительные сведения о проекции см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах). Обратите внимание, что проекции не поддерживается эмуляторе hello локального хранилища, поэтому этот код выполняется только при использовании учетной записи для службы таблиц hello.
+Запрос к таблице может получить лишь несколько свойств сущности. Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей. Запрос в следующем коде использует метод **select**, чтобы возвратить только адреса электронной почты сущностей в таблице. Результаты проецируются в коллекцию **String** с помощью метода **EntityResolver**, который выполняет преобразование типов сущностей, возвращенных с сервера. Дополнительные сведения о проекции см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах). Обратите внимание, что проекция не поддерживается в эмуляторе локального хранилища, поэтому этот код выполняется только при использовании учетной записи хранения в службе таблиц.
 
 ```java
 try
@@ -436,18 +436,18 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Define a projection query that retrieves only hello Email property
+    // Define a projection query that retrieves only the Email property
     TableQuery<CustomerEntity> projectionQuery =
         TableQuery.from(CustomerEntity.class)
         .select(new String[] {"Email"});
 
-    // Define a Entity resolver tooproject hello entity toohello Email value.
+    // Define a Entity resolver to project the entity to the Email value.
     EntityResolver<String> emailResolver = new EntityResolver<String>() {
         @Override
         public String resolve(String PartitionKey, String RowKey, Date timeStamp, HashMap<String, EntityProperty> properties, String etag) {
@@ -455,7 +455,7 @@ try
         }
     };
 
-    // Loop through hello results, displaying hello Email values.
+    // Loop through the results, displaying the Email values.
     for (String projectedString :
         cloudTable.execute(projectionQuery, emailResolver)) {
             System.out.println(projectedString);
@@ -463,13 +463,13 @@ try
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-insert-or-replace-an-entity"></a>Как вставлять и заменять сущности
-Часто возникает необходимость tooadd tooa сущности таблицы, не зная, если он уже существует в таблице hello. Операция вставки или замены позволяет toomake одного запроса, который будет вставлять hello сущности, если он не существует, или замените hello один существующий, если он не. Основываясь на предыдущих примерах, hello следующий код вставляет или заменяет сущность hello для «Уолтер Harp». После создания новой сущности, этот код вызывает hello **TableOperation.insertOrReplace** метод. Затем этот код вызывает **выполнение** на hello **CloudTable** объекта с помощью вставки таблицы и hello hello или заменить таблицу операцию, так как параметры hello. в сущности, tooupdate hello **TableOperation.insertOrMerge** можно метода. Обратите внимание, что вставки или replace не поддерживается на эмулятор локального хранилища hello, поэтому этот код выполняется только при использовании учетной записи для службы таблиц hello. Дополнительные сведения об операциях "вставка или замена" и "вставка или объединение" см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).
+Часто требуется добавить сущность в таблицу, не зная, присутствует ли она там. Операция вставки или замены позволяет сделать один запрос, который вставит сущность, если она не существует, или заменит существующую сущность. В продолжение материала предыдущих примеров следующий код вставляет или заменяет сущность "Walter Harp". После создания новой сущности этот код вызывает метод **TableOperation.insertOrReplace**. Далее код вызывает метод **execute** объекта **CloudTable** с таблицей, а также табличными операциями вставки или замены в качестве параметров. Чтобы обновить только часть сущности, можно вместо этого использовать метод **TableOperation.insertOrMerge**. Обратите внимание, что операция вставить-или-заменить не поддерживается в эмуляторе локального хранилища, поэтому этот код выполняется только при использовании учетной записи хранения в службе таблиц. Дополнительные сведения об операциях "вставка или замена" и "вставка или объединение" см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).
 
 ```java
 try
@@ -478,10 +478,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
     // Create a new customer entity.
@@ -489,21 +489,21 @@ try
     customer5.setEmail("Walter@contoso.com");
     customer5.setPhoneNumber("425-555-0106");
 
-    // Create an operation tooadd hello new customer toohello people table.
+    // Create an operation to add the new customer to the people table.
     TableOperation insertCustomer5 = TableOperation.insertOrReplace(customer5);
 
-    // Submit hello operation toohello table service.
+    // Submit the operation to the table service.
     cloudTable.execute(insertCustomer5);
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-delete-an-entity"></a>Практическое руководство. Удаление сущности
-Сущность можно легко удалить после ее получения. Когда извлекается hello объекта, вызовите **TableOperation.delete** с toodelete hello сущности. Затем вызовите **выполнение** на hello **CloudTable** объекта. Привет, следующий код извлекает и удаляет сущность «клиент».
+Сущность можно легко удалить после ее получения. После получение сущности вызовите **TableOperation.delete** с удаляемой сущностью. Затем вызовите **execute** объекта **CloudTable**. Следующий код извлекает и удаляет сущность клиента.
 
 ```java
 try
@@ -512,34 +512,34 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for hello table.
+    // Create a cloud table object for the table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create an operation tooretrieve hello entity with partition key of "Smith" and row key of "Jeff".
+    // Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
     TableOperation retrieveSmithJeff = TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff".
+    // Retrieve the entity with partition key of "Smith" and row key of "Jeff".
     CustomerEntity entitySmithJeff =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
-    // Create an operation toodelete hello entity.
+    // Create an operation to delete the entity.
     TableOperation deleteSmithJeff = TableOperation.delete(entitySmithJeff);
 
-    // Submit hello delete operation toohello table service.
+    // Submit the delete operation to the table service.
     cloudTable.execute(deleteSmithJeff);
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
 
 ## <a name="how-to-delete-a-table"></a>Практическое руководство. Удаление таблицы
-Наконец, hello следующий код удаляет таблицы из учетной записи хранилища. Таблицы, который был удален будет недоступным toobe повторно в течение заданного времени, после удаления hello, обычно менее 40 секунд.
+Наконец, следующий код удаляет таблицу из учетной записи хранения. Удаленную таблицу нельзя воссоздать в течение определенного времени после удаления. Этот период обычно составляет менее сорока секунд.
 
 ```java
 try
@@ -548,16 +548,16 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create hello table client.
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Delete hello table and all its data if it exists.
+    // Delete the table and all its data if it exists.
     CloudTable cloudTable = tableClient.getTableReference("people");
     cloudTable.deleteIfExists();
 }
 catch (Exception e)
 {
-    // Output hello stack trace.
+    // Output the stack trace.
     e.printStackTrace();
 }
 ```
@@ -565,9 +565,9 @@ catch (Exception e)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.
+* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.
 * [Пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]
-* [Azure SDK Справочник по клиентской хранилища][Azure SDK Справочник по клиентской хранилища]
+* [справочнике по пакету SDK для клиента службы хранилища Azure][справочнике по пакету SDK для клиента службы хранилища Azure]
 * [REST API службы хранилища Azure][Azure Storage REST API]
 * [Блог рабочей группы службы хранилища Azure][Azure Storage Team Blog]
 
@@ -576,7 +576,7 @@ catch (Exception e)
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure SDK Справочник по клиентской хранилища]: http://dl.windowsazure.com/storage/javadoc/
+[справочнике по пакету SDK для клиента службы хранилища Azure]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

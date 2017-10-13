@@ -1,5 +1,5 @@
 ---
-title: "Учебник контейнера службы aaaAzure - развертывание приложений | Документы Microsoft"
+title: "Руководство по Службе контейнеров Azure: развертывание приложения | Документация Майкрософт"
 description: "Руководство по Службе контейнеров Azure: развертывание приложения"
 services: container-service
 documentationcenter: 
@@ -14,61 +14,53 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7e2fa06d359caf83e684df3966624a6e9a8e7efa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b8f747b15bf491b7221a71b5beaa595aa7f1b49b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-applications-in-kubernetes"></a>Запуск приложений в Kubernetes
 
 В этом руководстве (часть 4 из 7) выполняется развертывание примера приложения в кластер Kubernetes. В частности, рассматриваются такие шаги:
 
 > [!div class="checklist"]
-> * скачивание файлов манифестов Kubernetes;
+> * обновление файлов манифестов Kubernetes;
 > * выполнение приложения в Kubernetes;
-> * Тестирование приложения hello
+> * Тестирование приложения
 
-В последующих учебники это приложение является горизонтального масштабирования, обновления и Operations Management Suite настраивается toomonitor hello Kubernetes кластера.
+В последующих руководствах мы сегментируем это приложение, обновим его, а также настроим Operations Management Suite для отслеживания кластера Kubernetes.
 
-В этом учебнике предполагается основные понятия Kubernetes см. подробные сведения о Kubernetes hello [Kubernetes документации](https://kubernetes.io/docs/home/).
+Для работы с этим руководством требуется понимание основных концепций Kubernetes. Подробные сведения см. в [документации по Kubernetes](https://kubernetes.io/docs/home/).
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В предыдущих учебниках приложение было упаковано в образ контейнера, этот образ был отправленного tooAzure реестре контейнеров и Kubernetes кластера был создан. Если вы не были выполнены следующие действия и хотите toofollow вдоль, возвращают слишком[учебник 1 – Создание образов контейнеров](./container-service-tutorial-kubernetes-prepare-app.md). 
+В предыдущих руководствах приложение упаковывалось в образ контейнера, далее этот образ отправлялся в реестр контейнеров Azure, после чего создавался кластер Kubernetes. 
 
-Для изучения данного руководства как минимум необходим кластер Kubernetes.
+Для работы с этим руководством необходимо предварительно создать файл манифеста Kubernetes `azure-vote-all-in-one-redis.yml`. Этот файл был скачан вместе с исходным кодом приложения в предыдущем руководстве. Проверьте, клонировали ли вы репозиторий и изменили ли каталоги на клонированный репозиторий.
 
-## <a name="get-manifest-file"></a>Получение файла манифеста
-
-В этом руководстве [объекты Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/) развертываются с помощью манифеста Kubernetes. Манифест Kubernetes — это файл формата YAML или JSON, содержащий инструкции по развертыванию и настройке объектов Kubernetes.
-
-файл манифеста приложения Hello для этого учебника доступен в репозитории приложения hello голос Azure, которая была клонирована в предыдущем учебнике. Если вы еще не сделали клонируйте репозиторий hello с hello следующую команду: 
-
-```bash
-git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
-```
-
-файл манифеста Hello находится в следующий каталог hello клонирования репозитория hello.
-
-```bash
-/azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
-```
+Если вы не выполнили эти действия, вы можете ознакомиться со статьей [Создание образов контейнеров для использования со службой контейнеров Azure](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 ## <a name="update-manifest-file"></a>Обновление файла манифеста
 
-При использовании образов контейнеров hello toostore реестра контейнера Azure, toobe манифеста потребностей hello дополнен hello loginServer имя записи контроля доступа.
+В этом руководстве для хранения образа контейнера использовался реестр контейнеров Azure (ACR). Перед запуском приложения необходимо обновить имя сервера входа ACR в файле манифеста Kubernetes.
 
-Получить имя входа сервера hello контроля доступа с hello [списка контроля доступа az](/cli/azure/acr#list) команды.
+Получите имя сервера входа ACR, выполнив команду [az acr list](/cli/azure/acr#list).
 
 ```azurecli-interactive
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Hello манифест образец был предварительно созданную с именем репозитория *microsoft*. Откройте файл hello в любом текстовом редакторе и замените hello *microsoft* значение с именем входа сервера hello, контроля доступа экземпляра.
+Предварительно созданный файл манифеста содержит имя сервера входа `microsoft`. Откройте этот файл в любом текстовом редакторе. В этом примере файл открыт в `vi`.
+
+```bash
+vi azure-vote-all-in-one-redis.yml
+```
+
+Замените `microsoft` именем сервера входа ACR. Это значение можно найти в строке **47** файла манифеста.
 
 ```yaml
 containers:
@@ -76,12 +68,14 @@ containers:
   image: microsoft/azure-vote-front:redis-v1
 ```
 
+Сохраните и закройте файл.
+
 ## <a name="deploy-application"></a>Развертывание приложения
 
-Используйте hello [kubectl создания](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) команды toorun приложения hello. Это команда hello производит синтаксический анализ файла манифеста и создания объектов Kubernetes определенные hello.
+Используйте команду [kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create), чтобы запустить приложение. Эта команда анализирует файл манифеста и создает заданные объекты Kubernetes.
 
 ```azurecli-interactive
-kubectl create -f ./azure-voting-app-redis/kubernetes-manifests/azure-vote-all-in-one-redis.yml
+kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 Выходные данные:
@@ -95,15 +89,15 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Тестирование приложения
 
-Объект [Kubernetes службы](https://kubernetes.io/docs/concepts/services-networking/service/) создается в результате чего предоставляется toohello приложения hello Интернета. Это может занять несколько минут. 
+Создается [служба Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/), которая открывает доступ к приложению через Интернет. Это может занять несколько минут. 
 
-toomonitor о ходе выполнения, используйте hello [kubectl получить службу](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) с hello `--watch` аргумент.
+Чтобы отслеживать ход выполнения, используйте команду [kubectl get service](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) с аргументом `--watch`.
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
 ```
 
-Здравствуйте, изначально **внешний IP-** для hello *azure голос передней панели* службы отображается как *ожидающие*. После hello внешний IP-адрес отличается от *ожидающие* tooan *IP-адрес*, используйте `CTRL-C` toostop hello kubectl Контрольные значения процесса.
+Изначально для параметра **EXTERNAL-IP** службы `azure-vote-front` отображается состояние `pending`. Как только для параметра "EXTERNAL-IP" состояние `pending` изменится на `IP address`, используйте команду `CTRL-C`, чтобы остановить процесс отслеживания kubectl.
 
 ```bash
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
@@ -111,20 +105,20 @@ azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m
 ```
 
-приложение hello toosee, обзора toohello внешний IP-адрес.
+Чтобы увидеть приложение, откройте в браузере внешний IP-адрес.
 
 ![Схема кластера Kubernetes в Аzure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом учебнике hello приложения Azure голос был кластера развернутой tooan Kubernetes службы контейнера Azure. Вам предстоят следующие задачи:  
+В этом руководстве приложение Vote Azure было развернуто в кластере Kubernetes Службы контейнеров Azure. Вы выполнили следующие задачи:  
 
 > [!div class="checklist"]
 > * скачивание файлов манифестов Kubernetes;
-> * Запустите приложение hello в Kubernetes
-> * Протестированные hello приложения
+> * запуск приложения в Kubernetes;
+> * тестирование приложения.
 
-Переместить Далее учебника toolearn toohello о масштабировании hello базовой инфраструктуры Kubernetes и Kubernetes приложения. 
+Перейдите к следующему руководству, чтобы узнать о масштабировании приложения Kubernetes и базовой инфраструктуры Kubernetes. 
 
 > [!div class="nextstepaction"]
 > [Масштабирование pod и инфраструктуры Kubernetes](./container-service-tutorial-kubernetes-scale.md)

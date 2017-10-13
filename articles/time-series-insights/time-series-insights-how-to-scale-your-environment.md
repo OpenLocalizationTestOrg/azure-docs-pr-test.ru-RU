@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooscale среды аналитики ряда времени Azure | Документы Microsoft"
-description: "В этом учебнике описано как tooscale среды Azure Insights ряда времени"
+title: "Как масштабировать среду Azure Time Series Insights | Документация Майкрософт"
+description: "Это руководство содержит сведения о масштабировании среды Azure Time Series Insights"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -8,22 +8,22 @@ author: sandshadow
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: 55eda388997589185bd34228762b95e182b228ba
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ba6bd1ab05bb7e24dd1bc307218e7a772fbde601
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooscale-your-time-series-insights-environment"></a>Как tooscale среды времени серии аналитики
+# <a name="how-to-scale-your-time-series-insights-environment"></a>Как масштабировать среду Azure Time Series Insights
 
-В этом учебнике описано как tooscale среды аналитики ряда времени.
+Это руководство содержит сведения о масштабировании среды Time Series Insights.
 
 > [!NOTE]
 > Увеличение масштаба в разных номерах SKU запрещено. Среду с номером SKU S1 нельзя преобразовать в среду S2.
@@ -44,12 +44,12 @@ ms.lasthandoff: 10/06/2017
 
 Емкость масштабируется линейно, поэтому номер SKU S1 с емкостью 2 поддерживает скорость приема 2 ГБ (2 млн событий) в неделю и 60 ГБ (60 млн событий) в месяц.
 
-## <a name="changing-hello-capacity-of-your-environment"></a>Изменение емкости hello среды
+## <a name="changing-the-capacity-of-your-environment"></a>Изменение емкости среды
 
-1. В hello портал Azure, выберите hello среды, емкость которого вы хотите toochange.
+1. На портале Azure выберите среду, емкость которой требуется изменить.
 1. В разделе "Параметры" щелкните "Настроить".
-1. Используйте hello емкость ползунок tooselect hello емкость, удовлетворяющий требованиям тарифы входящих сообщений hello и емкость хранилища.
+1. Используйте ползунок показателя емкости для выбора емкости, соответствующей требованиям скорости приема и емкости хранилища.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Убедитесь, что достаточно hello новой емкости tooprevent регулирования. Дополнительные сведения см. в разделе hello *среды возможно получение регулироваться* раздел [здесь](time-series-insights-diagnose-and-solve-problems.md).
+* Убедитесь, что новой емкости недостаточно для предотвращения регулирования. Дополнительные сведения см. в разделе *Регулирование среды* [здесь](time-series-insights-diagnose-and-solve-problems.md).

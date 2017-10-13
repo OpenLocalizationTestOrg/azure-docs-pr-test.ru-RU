@@ -1,6 +1,6 @@
 ---
-title: "aaaTasks допускается в разных состояниях в службах BizTalk | Документы Microsoft"
-description: "Здравствуйте, действия или операции, разрешенные в другое состояние MABS: остановить, запустить, перезапустить, приостановить, возобновить, удалить, масштабирования, обновления конфигурации, а также резервное копирование"
+title: "Допустимые в различных состояниях задания в службах BizTalk | Документация Майкрософт"
+description: "Действия и операции, разрешенные в другом состоянии MABS: остановка, запуск, перезапуск, приостановка, возобновление, удаление, масштабирование, обновление конфигурации и архивация"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 643307ba6fa9b05c82b867912feab249c42b65dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="what-you-can-and-cant-do-using-hello-biztalk-service-state"></a>Что можно и нельзя сделать с помощью hello состояния службы BizTalk
+# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Что можно и что нельзя сделать с помощью состояния службы BizTalk
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-В зависимости от hello текущее состояние hello службы BizTalk существуют операции, которые можно или нельзя выполнять на hello службы BizTalk.
+В зависимости от текущего состояния службы BizTalk существуют операции, которые можно или нельзя выполнять со службой BizTalk.
 
-Например вы можете предоставить новую службу BizTalk в hello классический портал Azure. После успешного завершения, hello служба BizTalk находится в `active` состояние. В активном состоянии hello можно остановить, приостановить и удалить службу BizTalk hello. Если остановить службу BizTalk hello и не удается выполнить остановку, после чего hello службы BizTalk переходит tooa `StopFailed` состояния. В hello `StopFailed` состоянии, можно перезапустить службу BizTalk hello. Если повторите операцию, которая не может быть, как продолжить, возникает следующая ошибка hello:
+Например, можно подготовить новую службу BizTalk на классическом портале Azure. После успешного завершения этого процесса служба BizTalk переводится в состояние `active`. В активном состоянии службу BizTalk остановить, приостановить и удалить. Если при попытке остановить службу BizTalk произошел сбой, то она переходит в состояние `StopFailed`. Службу BizTalk в состоянии `StopFailed` можно перезапустить. При попытке выполнения запрещенной операции, например возобновления, произойдет следующая ошибка.
 
 `Operation not allowed`
 
-## <a name="view-hello-possible-states"></a>Возможные состояния представления hello
+## <a name="view-the-possible-states"></a>Просмотр возможных состояний
 
-Hello следующие таблицы список hello операции или действия, которые можно выполнить при hello служба BizTalk находится в определенном состоянии. ✔ означает, что операция hello разрешена в этом состоянии. Пустое означает, что операция hello не может выполняться в этом состоянии.
+В следующих таблицах перечислены операции или действия, которые могут быть выполнены, когда служба BizTalk находится в том или ином состоянии. Установленный флажок ✔ означает, что в этом состоянии операция разрешена. Пустая запись означает, что операция не может быть выполнена в этом состоянии.
 
 | Состояние службы | Начало | Остановить | Перезагрузить | Приостановить | Продолжить | Удалить | Масштаб | Блокировка изменений <br/> Конфигурация | Архивация |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
@@ -52,11 +52,11 @@ Hello следующие таблицы список hello операции ил
 
 
 ## <a name="see-also"></a>См. также
-* [Создайте службу BizTalk, используя hello классический портал Azure](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [Можно сделать на вкладках панели мониторинга, монитора и масштабирования hello в службах BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [Можно получить с помощью выпусков Developer, Basic, Standard и Premium hello в службах BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Как tooback копировании и восстановлении службы BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Создание службы BizTalk с помощью классического портала Azure](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Просмотр вкладок "Панель мониторинга", "Монитор", "Масштаб", "Настройка" и "Гибридное подключение"](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [Службы BizTalk: диаграмма выпусков](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Службы BizTalk: резервное копирование и восстановление](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [Службы BizTalk: регулирование](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [Получить hello служебной шины и управление доступом издателя имя и издатель значения ключей для службы BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Как я запустить с помощью hello пакета SDK служб BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Службы BizTalk: имя и ключ издателя](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Как приступить к работе с пакетом SDK для служб BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

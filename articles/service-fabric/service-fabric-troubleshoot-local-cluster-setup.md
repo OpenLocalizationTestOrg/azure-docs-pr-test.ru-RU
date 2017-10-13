@@ -1,5 +1,5 @@
 ---
-title: "aaaTroubleshoot вашей локальной настройки кластера Service Fabric | Документы Microsoft"
+title: "Устранение неполадок в настройке локального кластера Service Fabric | Документация Майкрософт"
 description: "В этой статье описываются рекомендации по устранению неполадок с кластером локальной разработки."
 services: service-fabric
 documentationcenter: .net
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: ce36f62a4bc69d2cd5b6c3df4abda6ca88fa84f0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Устранение неполадок в работе кластера локальной разработки
-Если возникли проблемы при взаимодействии с локального кластера разработки Azure Service Fabric просмотрите hello из следующих способов для возможных решений.
+Если у вас возникли проблемы при взаимодействии с кластером локальной разработки Azure Service Fabric, ознакомьтесь со следующими возможностями для решения.
 
 ## <a name="cluster-setup-failures"></a>Ошибки настройки кластера
 ### <a name="cannot-clean-up-service-fabric-logs"></a>Не удается очистить журналы Service Fabric
 #### <a name="problem"></a>Проблема
-При выполнении скрипта DevClusterSetup hello, появится сообщение об ошибке, следующим образом:
+При выполнении сценария DevClusterSetup появляется следующее сообщение об ошибке:
 
-    Cannot clean up C:\SfDevCluster\Log fully as references are likely being held tooitems in it. Please remove those and run this script again.
+    Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
     + ~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo : NotSpecified: (:) [Write-Error], WriteErrorException
@@ -36,33 +36,33 @@ ms.lasthandoff: 10/06/2017
 
 
 #### <a name="solution"></a>Решение
-Закройте hello текущее окно PowerShell и откройте окно PowerShell с правами администратора. Теперь должен быть доступ toosuccessfully, запустите скрипт hello.
+Закройте текущее и откройте новое окно PowerShell от имени администратора. Теперь можно успешно запустить сценарий.
 
 ## <a name="cluster-connection-failures"></a>Ошибки подключения к кластеру
 ### <a name="service-fabric-powershell-cmdlets-are-not-recognized-in-azure-powershell"></a>Командлеты Service Fabric PowerShell не распознаются в Azure PowerShell
 #### <a name="problem"></a>Проблема
-Если вы выполните toorun hello командлеты PowerShell для службы структуры, таких как `Connect-ServiceFabricCluster` в окне Azure PowerShell, происходит сбой, о том, командлет hello не распознан. Hello причина в том, что Azure PowerShell используется hello 32-разрядной версии оболочки Windows PowerShell (даже на 64-разрядной версии ОС), в то время как hello Service Fabric командлеты работают только в 64-разрядных сред.
+Попытка запустить командлеты Service Fabric PowerShell, например `Connect-ServiceFabricCluster` в окне Azure PowerShell, не удается, с сообщением о том, что командлет не распознан. Причина в том, что Azure PowerShell использует 32-разрядную версию Windows PowerShell (даже на 64-разрядной версии ОС), а командлеты Service Fabric работают только в 64-разрядной среде.
 
 #### <a name="solution"></a>Решение
 Всегда запускайте командлеты Service Fabric непосредственно из Windows PowerShell.
 
 > [!NOTE]
-> Hello последнюю версию Azure PowerShell не создает специальные ярлык, поэтому это больше не возникает.
+> Последняя версия Azure PowerShell не создает специальный ярлык, поэтому так больше не должно происходить.
 > 
 > 
 
 ### <a name="type-initialization-exception"></a>Исключение типа инициализации
 #### <a name="problem"></a>Проблема
-При подключении toohello кластера в PowerShell, вы увидите hello ошибка TypeInitializationException System.Fabric.Common.AppTrace.
+При подключении к кластеру в PowerShell отображается ошибка TypeInitializationException для System.Fabric.Common.AppTrace.
 
 #### <a name="solution"></a>Решение
 При установке была неправильно настроена переменная пути. Выйдите из Windows и снова выполните вход. Путь обновится.
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>Сбой подключения к кластеру с сообщением об ошибке "Объект закрыт"
 #### <a name="problem"></a>Проблема
-Вызов tooConnect-ServiceFabricCluster завершается с ошибкой следующим образом:
+Вызов Connect-ServiceFabricCluster завершается со следующей ошибкой:
 
-    Connect-ServiceFabricCluster : hello object is closed.
+    Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
     + Connect-ServiceFabricCluster
     + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,19 +70,19 @@ ms.lasthandoff: 10/06/2017
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Решение
-Закройте hello текущее окно PowerShell и откройте окно PowerShell с правами администратора. Теперь можно подключиться toosuccessfully.
+Закройте текущее и откройте новое окно PowerShell от имени администратора. Теперь можно успешно подключиться.
 
 ### <a name="fabric-connection-denied-exception"></a>Исключение Fabric Connection Denied
 #### <a name="problem"></a>Проблема
 При отладке в Visual Studio отображается ошибка FabricConnectionDeniedException.
 
 #### <a name="solution"></a>Решение
-Эта ошибка обычно возникает при попытке toostart хост-процесса службы вручную, а не указывайте toostart среда выполнения Service Fabric hello его автоматически.
+Эта ошибка обычно возникает, если вы пытаетесь запустить процесс узла службы вручную, а не указываете среде выполнения Service Fabric запустить его автоматически.
 
 Убедитесь, что в решении нет проектов служб, настроенных в качестве запускаемых проектов. В качестве запускаемых проектов можно настраивать только проекты приложений Service Fabric.
 
 > [!TIP]
-> Если после завершения программы установки, локального кластера начинает toobehave аварийно, его можно сбросить с помощью приложения для области hello локального кластера диспетчера уведомлений. Это удаляет hello существующего кластера и настройте новый. Учтите, что все развернутые приложения и связанные данные будут удалены.
+> Если после завершения программы установки у локального кластера наблюдается нетипичное поведение, такой кластер можно сбросить с помощью приложения панели задач диспетчера локального кластера. Будет удален существующий кластер и настроен новый. Учтите, что все развернутые приложения и связанные данные будут удалены.
 > 
 > 
 

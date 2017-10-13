@@ -1,6 +1,6 @@
 ---
-title: "решение хранилища ключей в службе анализа журналов aaaAzure | Документы Microsoft"
-description: "Можно использовать решение хранилища ключей Azure hello в tooreview аналитики журналов, журналов хранилища ключей Azure."
+title: "Решение хранилища ключей Azure в Log Analytics | Документация Майкрософт"
+description: "Решение хранилища ключей Azure в Log Analytics позволяет просматривать журналы хранилища ключей Azure."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 1c6eae26ded7ad55b0159a3be09cdc9901596298
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Решение Azure Key Vault Analytics в Log Analytics
 
 ![Символ Key Vault](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
 
-Можно использовать решение хранилища ключей Azure hello в tooreview аналитики журналов, журналов AuditEvent хранилище ключей Azure.
+Решение хранилища ключей Azure в Log Analytics позволяет просматривать журналы AuditEvent хранилища ключей Azure.
 
-решение toouse hello, необходимо tooenable ведения журнала диагностики для хранилища ключей Azure и прямой hello диагностики tooa анализа журналов рабочей. Это не hello журналы необходимые toowrite tooAzure-хранилище больших двоичных объектов.
+Чтобы использовать решение, необходимо включить ведение журнала диагностики хранилища ключей Azure и направить диагностику в рабочую область Log Analytics. Необязательно записывать журналы в хранилище BLOB-объектов Azure.
 
 > [!NOTE]
-> В января 2017 г hello поддерживается способ отправки журналов из хранилища ключей tooLog Analytics изменено. При использовании решения хранилища ключей hello показывает *(устарело)* в заголовок hello, ссылаетесь слишком[миграция из старого решения хранилища ключей hello](#migrating-from-the-old-key-vault-solution) для действия необходимы toofollow.
+> В январе 2017 г. поддерживаемый способ отправки журналов из Key Vault в Log Analytics был изменен. Если в используемом вами решении Key Vault в названии отображается *(не рекомендуется)*, то выполните действия, описанные в разделе [Миграция из устаревшего решения Key Vault](#migrating-from-the-old-key-vault-solution).
 >
 >
 
-## <a name="install-and-configure-hello-solution"></a>Установка и настройка решения hello
-Используйте следующие инструкции tooinstall hello и настроить решение hello хранилище ключей Azure:
+## <a name="install-and-configure-the-solution"></a>Установка и настройка решения
+Установите и настройте решение хранилища ключей Azure, выполнив следующие указания:
 
-1. Включить решение hello хранилище ключей Azure из [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) или с помощью hello процесс, описанный в [решений добавьте анализа журналов из коллекции решений hello](log-analytics-add-solutions.md).
-2. Включение диагностики ведения журнала для toomonitor ресурсы hello хранилище ключей, с помощью либо hello [портала](#enable-key-vault-diagnostics-in-the-portal) или [PowerShell](#enable-key-vault-diagnostics-using-powershell)
+1. Включите решение Azure Key Vault из [Azure Мarketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) или в соответствии с инструкциями по [добавлению решений Log Analytics из коллекции решений](log-analytics-add-solutions.md).
+2. Включите ведение журнала диагностики для мониторинга ресурсов Key Vault, используя [портал](#enable-key-vault-diagnostics-in-the-portal) или [PowerShell](#enable-key-vault-diagnostics-using-powershell).
 
-### <a name="enable-key-vault-diagnostics-in-hello-portal"></a>Включение диагностики хранилища ключей на портале hello
+### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Включение диагностики Key Vault на портале
 
-1. Hello портал Azure перейдите toomonitor ресурсов toohello хранилища ключей
-2. Выберите *журналы диагностики* после страницы приветствия tooopen
+1. На портале Azure перейдите к ресурсу Key Vault, который необходимо отслеживать.
+2. Выберите *Журналы диагностики*, чтобы открыть следующую страницу:
 
    ![изображение плитки "Хранилище ключей Azure"](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
-3. Нажмите кнопку *включить диагностику* после страницы приветствия tooopen
+3. Щелкните *Включить диагностику*, чтобы открыть следующую страницу:
 
    ![изображение плитки "Хранилище ключей Azure"](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
-4. Щелкните tooturn диагностику, *на* под *состояния*
-5. Щелкните флажок hello *отправки tooLog аналитика*
+4. Чтобы включить диагностику, нажмите кнопку *Вкл.* в разделе *Состояние*.
+5. Установите флажок *Send to Log Analytics* (Отправить в Log Analytics).
 6. Выберите существующую рабочую область Log Analytics или создайте новую.
-7. tooenable *AuditEvent* журналы, установите флажок hello в журнал
-8. Нажмите кнопку *Сохранить* tooenable hello ведение журнала диагностики tooLog аналитика
+7. Чтобы включить журналы *AuditEvent*, установите соответствующий флажок в разделе "Журнал".
+8. Щелкните *Сохранить*, чтобы включить ведение журнала диагностики в Log Analytics.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Включение диагностики Key Vault с помощью PowerShell
-Hello следующий скрипт PowerShell приведен пример того, как toouse `Set-AzureRmDiagnosticSetting` tooenable ведения журналов диагностики для хранилища ключей:
+Следующий сценарий PowerShell приведен в качестве примера того, как с помощью командлета `Set-AzureRmDiagnosticSetting` включить ведения журналов диагностики для Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -67,88 +67,88 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspace
 
 
 ## <a name="review-azure-key-vault-data-collection-details"></a>Просмотр сведений о сборе данных хранилища ключей Azure
-Решение хранилища ключей Azure собирает журналы диагностики непосредственно из хранилища ключей hello.
-Не является tooAzure журналы hello необходимые toowrite хранилища больших двоичных объектов и агент не требуется для сбора данных.
+Решение хранилища ключей Azure собирает журналы диагностики напрямую из хранилища ключей.
+Необязательно записывать журналы в хранилище BLOB-объектов Azure. Для сбора данных агенты не требуются.
 
-Hello следующей таблице приведены методы сбора данных и другие сведения о сборе данных для хранилища ключей Azure.
+В следующей таблице приведены методы сбора данных и другие сведения о сборе данных для хранилища ключей Azure.
 
 | Платформа | Direct Agent | Агент Systems Center Operations Manager | Таблицы Azure | Нужен ли Operations Manager? | Отправка данных агента Operations Manager через группу управления | Частота сбора |
 | --- | --- | --- | --- | --- | --- | --- |
 | Таблицы Azure |  |  |&#8226; |  |  | при получении |
 
 ## <a name="use-azure-key-vault"></a>Использование хранилища ключей Azure
-По окончании [установки решения hello](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), просматривать данные хранилища ключей hello, щелкнув hello **хранилище ключей Azure** плитки из hello **Обзор** страницы аналитики журналов.
+[Установив решение](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) просмотрите данные Key Vault, щелкнув плитку **Azure Key Vault** на странице **Обзор** в службе Log Analytics.
 
 ![изображение плитки "Хранилище ключей Azure"](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
 
-После нажатия кнопки hello **Обзор** плитки, можно просмотреть сводные данные журналов и затем в toodetails для hello, следующие категории:
+Выбрав плитку **Обзор**, можно просмотреть сводные данные журналов и подробные сведения по следующим категориям:
 
 * количество всех операций хранилища ключей за определенный период;
 * количество неудавшихся операций за определенный период;
 * среднее время задержки для каждой операции;
-* Качество обслуживания для операций с hello количество операций, которые занимают более 1 000 мс и список операций, которые занимают более 1 000 мс.
+* качество обслуживания для операций с количеством операций, выполнявшихся более 1000 мс, и списком этих операций.
 
 ![изображение панели мониторинга хранилища ключей Azure](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
 
 ![изображение панели мониторинга хранилища ключей Azure](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
 
-### <a name="tooview-details-for-any-operation"></a>сведения о tooview для любой операции
-1. На hello **Обзор** щелкните hello **хранилище ключей Azure** плитки.
-2. На hello **хранилище ключей Azure** панели мониторинга, просмотрите сводные сведения о hello в одной из колонок hello и выберите один tooview подробные сведения о нем в hello страницы поиска журналов.
+### <a name="to-view-details-for-any-operation"></a>Просмотр сведений об операциях
+1. На странице **Обзор** щелкните плитку **Хранилище ключей Azure**.
+2. На панели мониторинга **Хранилище ключей Azure** просмотрите сводные данные в одной из колонок, а затем щелкните одну из них, чтобы просмотреть подробные сведения на странице поиска журналов.
 
-    На любой из страниц поиска журналов hello можно просмотреть результаты по времени, подробные результаты и историю поиска журналов. Можно также фильтровать по результатам hello toonarrow аспектов.
+    На любой из страниц поиска журналов можно просмотреть результаты по времени, подробные результаты и историю поиска журналов. Для сужения области результатов выполните фильтрацию по аспектам.
 
 ## <a name="log-analytics-records"></a>Записи Log Analytics
-Hello решения хранилища ключей Azure анализирует записей, имеющих тип **KeyVaults** , получаемые от [AuditEvent журналы](../key-vault/key-vault-logging.md) в системе диагностики Azure.  В следующей таблице hello имеют свойства для этих записей:  
+Решение хранилища ключей Azure анализирует записи типа **KeyVaults**, полученные из [журналов AuditEvent](../key-vault/key-vault-logging.md) системы диагностики Azure.  Свойства этих записей приведены в таблице ниже.  
 
 | Свойство | Описание |
 |:--- |:--- |
 | Тип |*AzureDiagnostics* |
 | SourceSystem |*Таблицы Azure* |
-| CallerIpAddress |IP-адрес клиента hello, сделавшего запрос hello |
+| CallerIpAddress |IP-адрес клиента, отправившего запрос. |
 | Категория | *AuditEvent* |
-| CorrelationId |Необязательный идентификатор GUID, который hello клиента можно передать toocorrelate клиентские журналы с журналами (хранилище ключей) на стороне службы. |
-| DurationMs |Время, затраченное запроса REST API tooservice hello, в миллисекундах. Это время не включает задержки в сети, поэтому это время может не совпадать с моментом hello мер на стороне клиента hello. |
-| HttpStatusCode_d |Код состояния HTTP, возвращаемый запросом hello (например, *200*) |
-| id_s |Уникальный идентификатор запроса hello |
-| identity_claim_appid_g | Идентификатор GUID для идентификатора приложения hello |
-| OperationName |Имя операции hello, как описано в документе [ведение журнала хранилища ключей Azure](../key-vault/key-vault-logging.md) |
-| OperationVersion |Версия REST API, необходимая для клиента hello (например *2015-06-01*) |
-| requestUri_s |URI запроса hello |
-| Ресурс |Имя хранилища ключей hello |
-| ResourceGroup |Группа ресурсов хранилища ключей hello |
-| ResourceId |Идентификатор ресурса диспетчера ресурсов Azure. Для журналов хранилища ключей это hello хранилище ключей, идентификатор ресурса. |
+| CorrelationId |Необязательный GUID, который клиент может передавать для сопоставления журналов на стороне клиента с журналами на стороне службы (хранилища ключей). |
+| DurationMs |Время обслуживания запроса REST API в миллисекундах. Это время не включает в себя задержку сети, поэтому время, зарегистрированное на стороне клиента, может не соответствовать этому значению. |
+| HttpStatusCode_d |Код состояния HTTP, возвращаемый запросом (например, *200*) |
+| id_s |Уникальный идентификатор запроса. |
+| identity_claim_appid_g | GUID для идентификатора приложения |
+| OperationName |Имя операции, как описано в статье [Ведение журнала хранилища ключей Azure](../key-vault/key-vault-logging.md) |
+| OperationVersion |Запрошенная клиентом версия REST API (например, *2015-06-01*) |
+| requestUri_s |URI запроса |
+| Ресурс |Имя хранилища ключей. |
+| ResourceGroup |Группа ресурсов хранилища ключей. |
+| ResourceId |Идентификатор ресурса диспетчера ресурсов Azure. Для журналов хранилища ключей это идентификатор ресурса хранилища ключей. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *VAULTS* |
 | ResultSignature |Код состояния HTTP (например, *ОК*) |
 | ResultType |Результат запроса REST API (например, *Успешно*) |
-| SubscriptionId |Идентификатор подписки Azure hello подписку, содержащую hello хранилища ключей |
+| SubscriptionId |Идентификатор подписки Azure, которая содержит хранилище ключей. |
 
-## <a name="migrating-from-hello-old-key-vault-solution"></a>Миграция из старого решения хранилища ключей hello
-В января 2017 г hello поддерживается способ отправки журналов из хранилища ключей tooLog Analytics изменено. Эти изменения обеспечивают hello следующие преимущества:
-+ Журналы записываются напрямую tooLog Analytics без hello требуется toouse учетной записи хранения
-+ Меньше задержка из hello время, когда журналы, созданные toothem, недоступными в службе анализа журналов
+## <a name="migrating-from-the-old-key-vault-solution"></a>Миграция из устаревшего решения Key Vault
+В январе 2017 г. поддерживаемый способ отправки журналов из Key Vault в Log Analytics был изменен. Эти изменения обеспечивают следующие преимущества:
++ Журналы записываются непосредственно в Log Analytics без необходимости использования учетной записи хранения.
++ Меньше задержка между моментом создания журналов и их доступностью в Log Analytics.
 + Меньше этапов настройки.
 + Общий формат для всех типов системы диагностики Azure.
 
-toouse hello обновление решения:
+Чтобы использовать обновленное решение, выполните следующие действия:
 
-1. [Настройка диагностики toobe tooLog Analytics отправляется непосредственно из хранилища ключей](#enable-key-vault-diagnostics-in-the-portal)  
-2. Включить решение hello хранилище ключей Azure с помощью hello процесс, описанный в [решений добавьте анализа журналов из hello коллекции решений](log-analytics-add-solutions.md)
-3. Обновить все сохраненные запросы, панели мониторинга и новый тип данных оповещения toouse hello
-  + Тип — изменение с: KeyVaults tooAzureDiagnostics. Можно использовать hello ResourceType toofilter tooKey хранилище журналов.
+1. [Настройте непосредственную отправку данных диагностики из Key Vault в Log Analytics](#enable-key-vault-diagnostics-in-the-portal).  
+2. Включите решение Azure Key Vault, как описано в статье [Добавление решений для управления Log Analytics](log-analytics-add-solutions.md).
+3. Обновите все сохраненные запросы, панели мониторинга и оповещения, чтобы использовать новый тип данных.
+  + Тип меняется с KeyVaults на AzureDiagnostics. Параметр ResourceType можно использовать для фильтрации по журналам Key Vault.
   - Вместо `Type=KeyVaults` используйте `Type=AzureDiagnostics ResourceType=VAULTS`.
   + Поля (в именах полей учитывается регистр).
-  - Для любого поля, имеет суффикс \_s, \_d, или \_g в поле имя hello hello первый символ toolower регистр
-  - Для любого поля, имеет суффикс \_«o» в имени hello данных разбивается на отдельные поля на основе имен hello вложенные поля. Например hello UPN вызывающему Привет хранится в поле`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
-   - TooCallerIPAddress CallerIpAddress поля изменен
+  - Для любого поля, имя которого содержит суффикс \_s, \_d или \_g, переведите первый знак в нижний регистр.
+  - Для любого поля, имя которого содержит суффикс \_o, данные разбиваются на отдельные поля на основе имен вложенных полей. Например, имя участника-пользователя вызывающего объекта сохраняется в поле `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`.
+   - Поле CallerIpAddress меняется на CallerIPAddress.
    - Поле RemoteIPCountry больше не используется.
-4. Удалите hello *аналитика хранилища ключей (не рекомендуется)* решения. Если используется PowerShell, то выполните следующую команду: `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that hello workspace is in> -WorkspaceName <name of hello log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Удалите устаревшее решение *Key Vault Analytics (не рекомендуется)*. Если используется PowerShell, то выполните следующую команду: `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
-Данные, собранные до вызова hello изменений не отображается в новом решении hello. Вы можете продолжить tooquery для этого данные с помощью hello и старый тип и имена полей.
+Данные, собранные до этого изменения, не отображаются в новом решении. Эти данные по-прежнему можно запрашивать с помощью старых имен типов и полей.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Используйте [входа поиска аналитики журналов](log-analytics-log-searches.md) tooview подробных данных хранилища ключей Azure.
+* Используйте [поиск по журналам в Log Analytics](log-analytics-log-searches.md) для просмотра подробных данных о хранилище ключей Azure.

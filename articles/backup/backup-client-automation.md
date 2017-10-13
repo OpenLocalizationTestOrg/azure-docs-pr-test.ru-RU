@@ -1,6 +1,6 @@
 ---
-title: "tooback PowerShell aaaUse копии Windows Server tooAzure | Документы Microsoft"
-description: "Узнайте, как toodeploy и управление резервным копированием Azure с помощью PowerShell"
+title: "Использование PowerShell для архивации Windows Server в Azure | Документация Майкрософт"
+description: "Узнайте о том, как развернуть службу архивации Azure и управлять ею с помощью PowerShell"
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: f13224f53abd6fbd132fee4347b0b99e8f5e2678
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d3f165c749af0553c4918b33b0d24cc1e21af2a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-and-manage-backup-tooazure-for-windows-serverwindows-client-using-powershell"></a>Развертывание и управление ими tooAzure резервного копирования для клиента Windows Server и Windows с помощью PowerShell
+# <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Развертывание резервного копирования в Azure для Windows Server или клиента Windows и управление им с помощью PowerShell
 > [!div class="op_single_selector"]
 > * [ARM](backup-client-automation.md)
 > * [Классический](backup-client-automation-classic.md)
 >
 >
 
-В этой статье показано, как toouse PowerShell для настройки резервного копирования Azure на Windows Server или на клиенте Windows и управление резервного копирования и восстановления.
+В этой статье описано, как использовать PowerShell для настройки службы архивации Azure на сервере Windows Server или клиенте Windows, а также для управления резервным копированием и восстановлением данных.
 
 ## <a name="install-azure-powershell"></a>Установка Azure PowerShell
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Эта статья посвящена hello диспетчера ресурсов Azure (ARM) и hello MS Online Backup PowerShell командлеты, позволяющие toouse хранилище служб восстановления в группе ресурсов.
+Эта статья посвящена командлетам PowerShell для диспетчера ресурсов Azure (ARM) и Microsoft Azure Online Backup, которые позволяют использовать хранилище служб восстановления в группе ресурсов.
 
-Версия Azure PowerShell 1.0 была выпущена в октябре 2015 г. В этом выпуске успешно hello 0.9.8 выпуска и приводящими существенные изменения, особенно в шаблон именования hello hello командлетов. 1.0 выполните командлеты hello шаблону именования {глагол}-AzureRm {существительное}; в то время как hello 0.9.8 имена не включают **Rm** (например, New-AzureRmResourceGroup вместо New AzureResourceGroup). При использовании Azure PowerShell 0.9.8, необходимо сначала включить режим диспетчера ресурсов hello, запустив hello **AzureResourceManager Switch-AzureMode** команды. Эта команда не требуется в версии 1.0 и более поздних версиях.
+Версия Azure PowerShell 1.0 была выпущена в октябре 2015 г. Следуя после версии 0.9.8, она содержит несколько существенных изменений, которые в основном касаются шаблона именования командлетов. В командлетах выпуска 1.0 используется шаблон именования {глагол}-AzureRm{существительное}, тогда как в командлетах выпуска 0.9.8 суффикс **Rm** не используется (например, New-AzureRmResourceGroup вместо New-AzureResourceGroup). При использовании Azure PowerShell 0.9.8 необходимо сначала включить режим диспетчера ресурсов, выполнив команду **Switch-AzureMode AzureResourceManager** . Эта команда не требуется в версии 1.0 и более поздних версиях.
 
-Если требуется toouse в сценарии, написанные для среды hello 0.9.8, hello 1.0 или более поздней версии среды следует тщательно обновления и тестировать сценарии hello в тестовой среде перед их использованием в рабочей среде tooavoid непредвиденного влияния.
+Если вы хотите использовать сценарии, написанные для PowerShell 0.9.8, в среде 1.0 или более поздних версий, следует обновить и тщательно протестировать эти сценарии в подготовительной среде, прежде чем использовать их в рабочей среде. Это позволит избежать непредвиденных последствий.
 
-[Загрузка последней версии PowerShell hello](https://github.com/Azure/azure-powershell/releases) (Минимальная требуемая версия —: 1.0.0)
+[Скачайте последнюю версию PowerShell](https://github.com/Azure/azure-powershell/releases) (минимальная требуемая версия — 1.0.0)
 
 [!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## <a name="create-a-recovery-services-vault"></a>Создание хранилища служб восстановления
-Привет, следующие шаги, чтобы привести по созданию хранилище служб восстановления. Хранилище служб восстановления отличается от хранилища службы архивации.
+Чтобы создать хранилище служб восстановления, выполните описанные ниже действия. Хранилище служб восстановления отличается от хранилища службы архивации.
 
-1. При использовании резервного копирования Azure для hello первый раз, необходимо использовать hello **AzureRMResourceProvider регистра** поставщика службы восстановления Azure hello tooregister командлетов с вашей подпиской.
+1. Если вы используете службу архивации Azure впервые, выполните командлет **Register-AzureRMResourceProvider** , чтобы зарегистрировать поставщик служб восстановления Azure в своей подписке.
 
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-2. Hello хранилище служб восстановления это ARM ресурс, поэтому требуется tooplace его в группе ресурсов. Вы можете выбрать существующую группу ресурсов или создать новую. При создании новой группы ресурсов, укажите hello имя и расположение для группы ресурсов hello.  
+2. Хранилище служб восстановления представляет собой ресурс ARM, поэтому вам потребуется разместить его в группе ресурсов. Вы можете выбрать существующую группу ресурсов или создать новую. При создании группы ресурсов укажите ее имя и расположение.  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. Используйте hello **New AzureRmRecoveryServicesVault** командлет toocreate hello новое хранилище. Убедитесь, что toospecify hello одинаковое расположение для hello хранилище, которое использовалось для группы ресурсов hello.
+3. Выполните командлет **New-AzureRmRecoveryServicesVault** , чтобы создать хранилище. Разместите хранилище там же, где находится группа ресурсов.
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
-4. Укажите тип hello toouse избыточности хранилища; можно использовать [локально избыточное хранилище (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) или [географически избыточное хранилище (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Hello следующий пример демонстрирует hello - BackupStorageRedundancy для testVault был установлен tooGeoRedundant.
+4. Укажите необходимый тип избыточности хранилища: [локально избыточное (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) или [геоизбыточное (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). В следующем примере показано, что для параметра BackupStorageRedundancy для testVault задано значение GeoRedundant.
 
    > [!TIP]
-   > Многие командлеты службы архивации Azure в качестве входных данных необходим объект хранилища служб восстановления hello. По этой причине — это объект хранилища служб восстановления резервной копии удобный toostore hello в переменной.
+   > Для многих командлетов службы архивации Azure требуется объект хранилища служб восстановления в качестве входных данных. По этой причине объект хранилища служб восстановления резервных копий удобно хранить в переменной.
    >
    >
 
@@ -72,10 +72,10 @@ ms.lasthandoff: 10/06/2017
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-## <a name="view-hello-vaults-in-a-subscription"></a>Представление hello хранилища в подписке
-Используйте **Get AzureRmRecoveryServicesVault** tooview hello список всех хранилищ в текущей подписке hello. Можно использовать этот toocheck команды создания нового хранилища или toosee какие хранилищами доступны в подписке hello.
+## <a name="view-the-vaults-in-a-subscription"></a>Просмотр хранилищ в подписке
+Чтобы получить список всех хранилищ в текущей подписке, используйте командлет **Get AzureRmRecoveryServicesVault** . Он позволяет убедиться в том, что хранилище создано, и увидеть, какие хранилища доступны в подписке.
 
-Выполните команду hello **Get AzureRmRecoveryServicesVault**, и перечислены все хранилища в подписке hello.
+Выполнив команду **Get-AzureRmRecoveryServicesVault**, вы получите список всех хранилищ в подписке.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault
@@ -89,10 +89,10 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="installing-hello-azure-backup-agent"></a>Установка агента Azure Backup hello
-Перед установкой агента Azure Backup hello загружены и на приветствия Windows Server необходимо toohave hello установщика. Можно получить последнюю версию установщика hello hello hello [центра загрузки Майкрософт](http://aka.ms/azurebackup_agent) или хранилище служб восстановления hello страницы панели мониторинга. Сохранить hello установщика tooan легкодоступном месте как * C:\Downloads\*.
+## <a name="installing-the-azure-backup-agent"></a>Установка агента службы архивации Azure.
+Прежде чем устанавливать агент службы архивации Azure, необходимо загрузить установщик и разместить его в системе Windows Server. Последнюю версию установщика можно загрузить в [центре загрузки Майкрософт](http://aka.ms/azurebackup_agent) или на странице панели мониторинга для хранилища служб восстановления. Сохраните установщик в удобном для вас месте, например в папке *C:\Downloads\*.
 
-Кроме того используйте загрузчик программы hello tooget PowerShell:
+Можно также получить установщик с помощью PowerShell:
  
  ```
  $MarsAURL = 'Http://Aka.Ms/Azurebackup_Agent'
@@ -101,33 +101,33 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
  C:\Downloads\MARSAgentInstaller.EXE /q
  ```
 
-tooinstall агент hello, запустите следующую команду в консоли PowerShell с повышенными hello:
+Чтобы установить агент, в консоли PowerShell с повышенными привилегиями выполните следующую команду:
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
 ```
 
-При этом устанавливаются hello агента со всеми параметрами по умолчанию hello. Установка Hello занимает несколько минут в фоновом режиме hello. Если вы не укажете hello */nu* параметр, а затем hello **центра обновления Windows** окно в конце hello hello toocheck установки обновлений. После установки агент hello будет отображаться в списке установленных программ hello.
+Агент будет установлен с параметрами по умолчанию. Установка займет всего несколько минут и пройдет в фоновом режиме. Если параметр */nu* не будет указан, в конце установки откроется окно **Обновления Windows** для проверки наличия обновлений. После установки агент появится в списке установленных программ.
 
-toosee hello список установленных программ, перейдите в слишком**панели управления** > **программы** > **программы и компоненты**.
+Чтобы просмотреть список установленных программ, выберите **Панель управления** > **Программы** > **Программы и компоненты**.
 
 ![Агент установлен](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Параметры установки
-toosee, Здравствуйте, все параметры, доступные через hello командной строки, выполните следующую команду hello.
+Чтобы просмотреть все доступные в командной строке параметры, используйте следующую команду:
 
 ```
 PS C:\> MARSAgentInstaller.exe /?
 ```
 
-Hello доступны следующие параметры.
+Доступны следующие параметры.
 
 | Параметр | Сведения | значение по умолчанию |
 | --- | --- | --- |
 | /q |Позволяет выполнить тихую установку. |- |
-| /p:"расположение" |Путь toohello папку для установки агента Azure Backup hello. |C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"расположение" |Путь toohello для папки кэша hello Azure Backup agent. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Участие в tooMicrosoft обновления |- |
+| /p:"расположение" |Путь к папке установки для агента архивации Azure. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s:"расположение" |Путь к папке кэша для агента архивации Azure. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Позволяет явно согласиться на использование Центра обновления Майкрософт. |- |
 | /nu |Позволяет отказаться от проверки наличия обновлений после завершения установки. |- |
 | /d |Удаляет агент служб восстановления Microsoft Azure. |- |
 | /ph |Адрес узла прокси-сервера. |- |
@@ -135,31 +135,31 @@ Hello доступны следующие параметры.
 | /pu |Имя пользователя узла прокси-сервера. |- |
 | /pw |Пароль прокси-сервера. |- |
 
-## <a name="registering-windows-server-or-windows-client-machine-tooa-recovery-services-vault"></a>Регистрация Windows Server или Windows клиентского компьютера tooa хранилище служб восстановления
-После создания хранилище служб восстановления hello, загрузите последнюю версию агента hello и учетные данные хранилища hello и сохранить его в удобном месте, например C:\Downloads.
+## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Регистрация Windows Server или клиентского компьютера Windows в хранилище служб восстановления
+После создания хранилища служб восстановления скачайте последнюю версию агента и учетные данные хранилища и сохраните их в удобном расположении, например C:\Downloads.
 
 ```
 PS C:\> $credspath = "C:\downloads"
 PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
-На приветствия Windows Server или клиентский компьютер Windows, запустите hello [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) командлет tooregister hello машины с хранилищем hello.
-Этот и другие командлеты, используемые для резервного копирования, являются модуль MSONLINE hello какие hello установщика агента Mars добавляется как часть процесса установки hello. 
+На сервере Windows Server или DPM запустите командлет [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) , чтобы зарегистрировать компьютер в хранилище.
+Этот и другие командлеты, используемые для резервного копирования, входят в модуль MSONLINE, который установщик агента Mars добавляет в процессе установки. 
 
-Установка агента Hello не обновляет hello $Env: PSModulePath переменной. Это означает, что автоматическая загрузка модуля завершается ошибкой. tooresolve это можно сделать hello следующее:
+Установка агента не обновляет переменную $Env:PSModulePath. Это означает, что автоматическая загрузка модуля завершается ошибкой. Чтобы устранить эту проблему, выполните следующие действия.
 
 ```
 PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules
 ```
 
-Кроме того можно вручную загрузить модуль hello в скрипте следующим образом:
+Кроме того, модуль можно вручную загрузить в скрипте следующим образом:
 
 ```
 PS C:\>  Import-Module  'C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup'
 
 ```
 
-После загрузки командлеты оперативной архивации hello регистрации hello учетные данные хранилища:
+Когда вы загрузите командлеты Online Backup, зарегистрируйте учетные данные хранилища:
 
 
 ```
@@ -173,16 +173,16 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> Не используйте файл учетных данных хранилища hello toospecify относительные пути. Необходимо указать абсолютный путь в качестве входного toohello командлета.
+> Не используйте относительные пути для указания файла с учетными данными хранилища. Укажите абсолютный путь в качестве входных данных командлета.
 >
 >
 
 ## <a name="networking-settings"></a>Параметры сети
-Если подключение hello hello Windows компьютера toohello является Интернет через прокси-сервер, параметры прокси-сервера hello также можно указать toohello агента. В нашем случае прокси-сервер не используется, поэтому мы явным образом удаляем все данные прокси-сервера.
+Если подключение компьютера под управлением Windows к Интернету осуществляется через прокси-сервер, параметры этого прокси-сервера могут сообщаться агенту. В нашем случае прокси-сервер не используется, поэтому мы явным образом удаляем все данные прокси-сервера.
 
-Использование пропускной способности также можно управлять с помощью параметров hello ```work hour bandwidth``` и ```non-work hour bandwidth``` для заданного набора дней недели hello.
+Управлять использованием пропускной способности для выбранных дней недели можно с помощью параметров ```work hour bandwidth``` и ```non-work hour bandwidth``` 
 
-Задания параметров прокси-сервера и пропускной способности hello осуществляется с помощью hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) командлета:
+Внесение сведений о прокси-сервере и пропускной способности выполняется с помощью командлета [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) :
 
 ```
 PS C:\> Set-OBMachineSetting -NoProxy
@@ -193,7 +193,7 @@ Server properties updated successfully.
 ```
 
 ## <a name="encryption-settings"></a>Параметры шифрования
-tooAzure Hello резервного копирования данных, отправляемых резервной копии является зашифрованным tooprotect hello конфиденциальность данных hello. Парольная фраза для шифрования Hello — hello «password» toodecrypt hello данные во время восстановления hello.
+Для защиты конфиденциальности данных резервные копии данных, отправляемые в службу архивации Azure, зашифровываются. Используемая для шифрования парольная фраза является "паролем" для расшифровки данных во время их восстановления.
 
 ```
 PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
@@ -204,30 +204,30 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Обновление сведений парольную фразу hello надежным и безопасным, после ее установки. Не быть может toorestore данные из Azure без этой парольной фразы.
+> После создания парольной фразы надежно сохраните ее и никому не сообщайте о ней. Восстановить данные из Azure без этой парольной фразы невозможно.
 >
 >
 
 ## <a name="back-up-files-and-folders"></a>Резервное копирование файлов и папок
-Для политики определены все резервные копии из серверов и клиентов Windows tooAzure резервного копирования. Hello политики состоит из трех частей:
+Для управления всеми резервными копиями с серверов и рабочих станций Windows, которые имеются в службе резервного копирования Azure, применяется соответствующая политика. Политика состоит из трех частей:
 
-1. Объект **расписание резервного копирования** , указывающий, когда архивы toobe выполнены и синхронизируются с hello службой.
-2. Объект **расписание хранения** , указывающее, как долго точки восстановления tooretain hello в Azure.
+1. **Расписание резервного копирования** — определяет, когда следует создавать резервные копии и синхронизировать их со службой.
+2. **Расписание хранения** — определяет период хранения точек восстановления в Azure.
 3. **Указания включения/исключения файлов** — определяет, для каких элементов следует создавать резервные копии.
 
-Поскольку мы будем использовать автоматическое резервное копирование данных, в этой статье предполагается, что заданных настроек нет. Мы сначала необходимо создать новую политику резервного копирования, с помощью hello [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) командлета.
+Поскольку мы будем использовать автоматическое резервное копирование данных, в этой статье предполагается, что заданных настроек нет. Начнем с создания новой политики резервного копирования с помощью командлета [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) .
 
 ```
 PS C:\> $newpolicy = New-OBPolicy
 ```
 
-В это время hello политики является пустым и другие командлеты, необходимые toodefine какие элементы будут включены или исключены, при резервные копии выполняются и Здравствуйте, где будут храниться резервные копии.
+В настоящее время политика пуста, и необходимо воспользоваться другими командлетами, чтобы определить, какие элементы будут включены или исключены, когда резервное копирование будет выполняться и где будут храниться резервные копии.
 
-### <a name="configuring-hello-backup-schedule"></a>Настройка расписания резервного копирования hello
-Здравствуйте, сначала hello состоит из трех частей политики — расписание архивации hello, которое создается с помощью hello [New OBSchedule](https://technet.microsoft.com/library/hh770401) командлета. расписание резервного копирования Hello определяет, когда архивы toobe копии. При создании расписания необходимые toospecify 2 входных параметров.
+### <a name="configuring-the-backup-schedule"></a>Настройка расписания резервного копирования
+Первым из трех компонентов политики является расписание резервного копирования, которое создается с помощью командлета [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . В расписании резервного копирования указывается, когда необходимо выполнить резервное копирование. При создании расписания необходимо указать 2 входных параметра:
 
-* **Дни недели hello** следует запускать эту резервную копию hello. Можно запустить задание резервного копирования hello только один день, или каждый день недели hello или любую комбинацию между ними.
-* **Время суток hello** когда должно выполняться резервное копирование hello. Определяется too3 разное время суток hello, когда будут создаваться hello резервного копирования.
+* **Дни недели** , в которые необходимо выполнять резервное копирование. Можно указать, чтобы задание резервного копирования выполнялось только один день или каждый день недели либо в определенный промежуток времени.
+* **Время** запуска резервного копирования. Можно определить до трех разных значений времени дня, когда будет выполняться резервное копирование.
 
 Например, политику резервного копирования можно настроить таким образом, чтобы соответствующее задание выполнялось в 16:00 каждые субботу и воскресенье.
 
@@ -235,20 +235,20 @@ PS C:\> $newpolicy = New-OBPolicy
 PS C:\> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
 ```
 
-расписание резервного копирования Hello требуется toobe, связанных с политикой, но это можно сделать с помощью hello [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) командлета.
+Расписание резервного копирования должно быть связано с политикой. Этого можно добиться с помощью командлета [Set-OBSchedule](https://technet.microsoft.com/library/hh770407).
 
 ```
 PS C:> Set-OBSchedule -Policy $newpolicy -Schedule $sched
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 ### <a name="configuring-a-retention-policy"></a>Настройка политики хранения
-Политика хранения Hello определяет продолжительность восстановления сохраняются точки, созданные из задания резервного копирования. При создании новой политики хранения с помощью hello [New OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) командлета, можно указать hello, сколько дней hello точки восстановления резервной копии должны toobe сохранило резервного копирования Azure. пример Hello задана политика сохранения 7 дней.
+Политика хранения определяет, как долго хранятся точки восстановления, созданные из заданий резервного копирования. При создании новой политики хранения с помощью командлета [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425) можно указать число дней, в течение которых следует хранить точки восстановления в службе архивации Azure. В приведенном ниже примере приведена политика хранения точек восстановления в течение 7 дней.
 
 ```
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-Hello политика хранения должна быть связана hello основной политики с помощью командлета hello [OBRetentionPolicy набор](https://technet.microsoft.com/library/hh770405):
+Политику хранения следует связать с основной политикой с помощью командлета [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
 
 ```
 PS C:\> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
@@ -272,16 +272,16 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
-### <a name="including-and-excluding-files-toobe-backed-up"></a>Включение и исключение файлов toobe резервного копирования
-```OBFileSpec``` Объект определяет hello файлы toobe включен и исключен из резервной копии. Это набор правил, что область out hello защищенных файлов и папок на компьютере. Можно создать любое количество правил включения или исключения файлов и связать их с политикой. При создании нового объекта OBFileSpec, можно сделать следующее:
+### <a name="including-and-excluding-files-to-be-backed-up"></a>Включение и исключение файлов для резервного копирования
+Объект ```OBFileSpec``` определяет файлы для включения в резервную копию или исключения из нее. Это набор правил, которые определяют область защищенных файлов и папок на компьютере. Можно создать любое количество правил включения или исключения файлов и связать их с политикой. При создании нового объекта OBFileSpec, можно сделать следующее:
 
-* Укажите hello файлов и папок toobe включены
-* Укажите hello файлов и папок toobe исключены
-* Укажите рекурсивные резервного копирования данных в папке (или) ли следует копировать только hello верхнего уровня файлы в указанной папке hello вверх.
+* указать файлы и папки для включения в резервную копию;
+* указать файлы и папки для исключения из резервной копии;
+* указать рекурсивное резервное копирование данных в папке либо указать, что в резервную копию следует включить только файлы верхнего уровня в указанной папке.
 
-Hello последний достигается с помощью флага - нерекурсивных hello в команде New-OBFileSpec hello.
+Для выполнения последней задачи необходимо установить флаг -NonRecursive в команде New-OBFileSpec.
 
-В следующем примере hello мы резервное копирование тома C: и D: и исключить hello двоичных файлов операционной системы в папке Windows hello и любые временные папки. toodo, поэтому мы создадим две спецификации файла с помощью hello [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) командлет - для включения и исключения. После создания спецификации файла hello они связаны hello политики с помощью hello [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) командлета.
+В примере ниже выполняется резервное копирование томов C: и D: с исключением двоичных файлов операционной системы в папке Windows и других временных папках. Для этого мы создадим две спецификации файлов с помощью командлета [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) — для включения и исключения. После создания спецификации файлов связываются с политикой с помощью командлета [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) .
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -372,19 +372,19 @@ State           : New
 PolicyState     : Valid
 ```
 
-### <a name="applying-hello-policy"></a>Применение политики hello
-Теперь hello объекта политики завершена и имеет связанное расписание резервного копирования, политика хранения и список включения и исключения файлов. Эта политика теперь могут быть зафиксированы для toouse резервного копирования Azure. Перед установкой hello вновь созданные политики убедитесь, что нет существующие политики резервного копирования, связанных с сервером hello с помощью hello [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) командлета. Удаление политики hello выдаст запрос на подтверждение. Подтверждение hello tooskip использовать hello ```-Confirm:$false``` флаг с командлетом hello.
+### <a name="applying-the-policy"></a>Применение политики
+Объект политики готов и имеет связанные расписание резервного копирования, политику хранения, а также список включенных и исключенных файлов. На данном этапе эту политику можно зафиксировать в службе архивации Azure для использования. Перед применением новой политики убедитесь в отсутствии существующих политик резервного копирования, связанных с сервером, с помощью командлета [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . При удалении политики будет запрошено соответствующее подтверждение. Чтобы пропустить подтверждение, используйте в командлете флаг ```-Confirm:$false``` .
 
 ```
 PS C:> Get-OBPolicy | Remove-OBPolicy
-Microsoft Azure Backup Are you sure you want tooremove this backup policy? This will delete all hello backed up data. [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-Слишком большой объем выделяемой объект политики hello выполняется с помощью hello [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) командлета. При этом также будет запрашиваться соответствующее подтверждение. Подтверждение hello tooskip использовать hello ```-Confirm:$false``` флаг с командлетом hello.
+Фиксация объекта политики выполняется с помощью командлета [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) . При этом также будет запрашиваться соответствующее подтверждение. Чтобы пропустить подтверждение, используйте в командлете флаг ```-Confirm:$false``` .
 
 ```
 PS C:> Set-OBPolicy -Policy $newpolicy
-Microsoft Azure Backup Do you want toosave this backup policy ? [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
          DatasourceId:4508156004108672185
@@ -425,7 +425,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-Вы можете просмотреть сведения hello hello существующие политики резервного копирования с помощью hello [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) командлета. Можно выполнять детализацию дальше с помощью hello [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) командлет расписание резервного копирования hello и hello [Get OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) командлета для политики хранения hello
+Чтобы просмотреть сведения о существующей политике резервного копирования, воспользуйтесь командлетом [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) . Чтобы получить подробные сведения, воспользуйтесь командлетом [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) для расписания архивации и командлетом [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) для политик хранения.
 
 ```
 PS C:> Get-OBPolicy | Get-OBSchedule
@@ -466,32 +466,32 @@ IsRecursive : True
 ```
 
 ### <a name="performing-an-ad-hoc-backup"></a>Выполнение нерегламентированного резервного копирования
-После настройки политики резервного копирования резервных копий hello будет выполняться по расписанию hello. Резервное копирование ad-hoc запуска можно также с помощью hello [OBBackup начала](https://technet.microsoft.com/library/hh770426) командлета:
+После настройки соответствующей политики резервное копирование будет выполняться по расписанию. Кроме того, можно выполнить резервное копирование вне регламента с помощью командлета [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
 
 ```
 PS C:> Get-OBPolicy | Start-OBBackup
 Initializing
 Taking snapshot of volumes...
 Preparing storage...
-Generating backup metadata information and preparing hello metadata VHD...
-Data transfer is in progress. It might take longer since it is hello first backup and all data needs toobe transferred...
-Data transfer completed and all backed up data is in hello cloud. Verifying data integrity...
+Generating backup metadata information and preparing the metadata VHD...
+Data transfer is in progress. It might take longer since it is the first backup and all data needs to be transferred...
+Data transfer completed and all backed up data is in the cloud. Verifying data integrity...
 Data transfer completed
 In progress...
 Job completed.
-hello backup operation completed successfully.
+The backup operation completed successfully.
 ```
 
 ## <a name="restore-data-from-azure-backup"></a>Восстановление данных из службы архивации Azure
-Этот раздел поможет выполнить шаги hello для автоматического восстановления данных из резервной копии Azure. Это включает в себя таким образом hello следующие шаги:
+В этом разделе представлены шаги по настройке автоматического восстановления данных из службы архивации Azure. Выполнение настройки предполагает указанные ниже действия.
 
-1. Выберите исходный том hello
-2. Выберите резервного копирования toorestore точки
-3. Выберите элемент toorestore
-4. Инициирующий процесс восстановления hello
+1. Выбор исходного тома
+2. Выбор точки резервного копирования для восстановления
+3. Выбор элемента для восстановления
+4. Запуск процесса восстановления
 
-### <a name="picking-hello-source-volume"></a>Комплектации hello исходного тома
-В порядке toorestore элемент из резервного копирования Azure необходимо сначала tooidentify hello источник элемента hello. Поскольку команды hello выполнении в контексте сервера или клиента Windows hello, hello машины уже определен. Hello следующим шагом в определение исходного hello — tooidentify hello том, содержащий его. Список томов или источников резервного копирования с этого компьютера можно получить, выполнив hello [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) командлета. Эта команда возвращает массив всех источников hello, полученные с сервера и клиента.
+### <a name="picking-the-source-volume"></a>Выбор исходного тома
+Чтобы восстановить элемент из службы архивации Azure, сначала необходимо определить его источник. Поскольку мы выполняем команды в контексте Windows Server или клиента Windows, компьютер уже определен. Далее необходимо определить том, на котором находится источник элемента. Список томов или источников, для которых на данном компьютере выполнено резервное копирование, можно получить, выполнив командлет [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) . Эта команда возвращает массив всех источников на сервере или клиенте, для которых созданы резервные копии.
 
 ```
 PS C:> $source = Get-OBRecoverableSource
@@ -505,8 +505,8 @@ RecoverySourceName : D:\
 ServerName : myserver.microsoft.com
 ```
 
-### <a name="choosing-a-backup-point-from-which-toorestore"></a>Выбрав какие toorestore точки резервного копирования
-Получить список точек резервного копирования, выполнив hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) командлет с соответствующими параметрами. В нашем примере мы выберем hello последней резервной копии точки для исходного тома hello *D:* и использовать его toorecover определенного файла.
+### <a name="choosing-a-backup-point-from-which-to-restore"></a>Выбор точки резервного копирования для восстановления
+Чтобы получить список точек резервного копирования, выполните командлет [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) с соответствующими параметрами. В нашем примере мы выберем последнюю точку резервного копирования для исходного тома *D:* и используем его для восстановления определенного файла.
 
 ```
 PS C:> $rps = Get-OBRecoverableItem -Source $source[1]
@@ -532,12 +532,12 @@ ServerName : myserver.microsoft.com
 ItemSize :
 ItemLastModifiedTime :
 ```
-Hello объекта ```$rps``` является массивом точек резервного копирования. Hello первый элемент является последней точки hello и n-й элемент hello — самая старая точка hello. Последняя точка toochoose hello, мы будем использовать ```$rps[0]```.
+Объект ```$rps``` представляет собой массив точек резервного копирования. Первый элемент является последней точкой, а n-й элемент — самой старой. Чтобы выбрать последнюю точку, мы будем использовать ```$rps[0]```.
 
-### <a name="choosing-an-item-toorestore"></a>Выбор элемента toorestore
-использовать tooidentify hello точное файл или папка toorestore, рекурсивно hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) командлета. Иерархии папок hello этот способ можно просматривать только с помощью hello ```Get-OBRecoverableItem```.
+### <a name="choosing-an-item-to-restore"></a>Выбор элемента для восстановления
+Чтобы определить точный файл или папку для восстановления, рекурсивно воспользуйтесь командлетом [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . В этом случае иерархию папок можно просматривать только с помощью ```Get-OBRecoverableItem```.
 
-В этом примере, если мы хотим файл hello toorestore *finances.xls* мы ссылаться, используя hello объекта ```$filesFolders[1]```.
+В этом примере, если нужно восстановить файл *finances.xls*, его можно найти, используя объект ```$filesFolders[1]```.
 
 ```
 PS C:> $filesFolders = Get-OBRecoverableItem $rps[0]
@@ -578,20 +578,20 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-Можно также выполнить поиск toorestore элементов с помощью hello ```Get-OBRecoverableItem``` командлета. В нашем примере toosearch для *finances.xls* удалось получить дескриптор файла hello, запустив следующую команду:
+Для поиска элементов для восстановления также можно использовать командлет ```Get-OBRecoverableItem``` . В нашем примере, чтобы найти файл *finances.xls* можно получить его дескриптор, выполнив следующую команду:
 
 ```
 PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
-### <a name="triggering-hello-restore-process"></a>Запуск процесса восстановления hello
-процесс восстановления tootrigger hello, необходимо сначала параметры восстановления toospecify hello. Это можно сделать с помощью hello [New OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) командлета. Например, предположим, что файлы hello toorestore мы хотим слишком*C:\temp*. Также предположим, что мы хотим tooskip существующие файлы в папку назначения hello *C:\temp*. toocreate такой вариант восстановления, используйте hello следующую команду:
+### <a name="triggering-the-restore-process"></a>Запуск процесса восстановления
+Чтобы запустить процесс восстановления, необходимо сначала указать параметры восстановления. Это можно сделать с помощью командлета [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) . В этом примере предположим, что нужно восстановить файлы в папку *C:\temp*. Предположим также, что нужно пропустить файлы, которые уже существуют в целевой папке *C:\temp*. Для создания такого параметра восстановления используйте следующую команду:
 
 ```
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Теперь запускать hello процесса восстановления с помощью hello [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) на выбранных hello ```$item``` из вывода hello hello ```Get-OBRecoverableItem``` командлета:
+Теперь запустите процесс восстановления, выполнив команду [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) со значением ```$item``` из выходных данных командлета ```Get-OBRecoverableItem```:
 
 ```
 PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
@@ -600,29 +600,29 @@ Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
 Job completed.
-hello recovery operation completed successfully.
+The recovery operation completed successfully.
 ```
 
 
-## <a name="uninstalling-hello-azure-backup-agent"></a>Удаление агента Azure Backup hello
-Удаление агента Azure Backup hello можно сделать с помощью hello следующую команду:
+## <a name="uninstalling-the-azure-backup-agent"></a>Удаление агента службы архивации Azure.
+Удалить агент службы архивации Azure можно с помощью следующей команды:
 
 ```
 PS C:\> .\MARSAgentInstaller.exe /d /q
 ```
 
-При удалении hello двоичные файлы агента с компьютера hello имеет некоторые последствия tooconsider:
+Удаление с компьютера двоичных файлов агента имеет некоторые последствия, которые следует учитывать.
 
-* Удаляет фильтр файлов hello из машины hello и остановить отслеживание изменений.
-* Все данные политики удаляется с компьютера hello, но сведения о политике hello продолжается toobe хранятся в службе hello.
+* С компьютера удаляется фильтр файлов, а также останавливается отслеживание изменений.
+* Все данные политики удаляются с компьютера, однако сведения о политике по-прежнему хранятся в службе.
 * Удаляются все расписания резервного копирования, и последующие операции резервного копирования больше не выполняются.
 
-Однако hello данные хранятся в Azure остается и сохраняются согласно установки политики хранения hello вами. Предыдущие точки восстановления автоматически рассматриваются как устаревшие.
+Тем не менее, данные, хранящиеся в Azure, останутся там в течение установленного политикой хранения периода времени. Предыдущие точки восстановления автоматически рассматриваются как устаревшие.
 
 ## <a name="remote-management"></a>Удаленное управление
-Все управление hello вокруг hello Azure Backup agent, политики и источников данных может быть выполнена удаленно с помощью PowerShell. Привет, удаленное управление компьютеру toobe правильно подготовлен.
+PowerShell обеспечивает удаленное управление агентом службы архивации Azure, политикой и источниками данных. Компьютер, который будет управляться удаленно, необходимо специально подготовить.
 
-По умолчанию служба удаленного управления Windows hello настроена на запуск вручную. Тип запуска Hello должен быть установлен слишком*автоматического* и hello служба должна быть запущена. tooverify, hello служба WinRM запущена, значение свойства Status hello hello должно быть *под управлением*.
+По умолчанию служба WinRM настроена на запуск вручную. Установите тип запуска *Automatic*. Служба запустится. Чтобы проверить работу службы WinRM, присвойте свойству Status значение *Running*.
 
 ```
 PS C:\> Get-Service WinRM
@@ -636,14 +636,14 @@ Running  winrm              Windows Remote Management (WS-Manag...
 
 ```
 PS C:\> Enable-PSRemoting -force
-WinRM is already set up tooreceive requests on this computer.
+WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.
 
 PS C:\> Set-ExecutionPolicy unrestricted -force
 ```
 
-машины Hello теперь можно управлять удаленно — начиная с установки hello hello агента. Например следующий скрипт hello копирует hello агента toohello удаленный компьютер и устанавливает его.
+Теперь компьютером можно управлять удаленно. Начните с установки агента. Например, следующий сценарий копирует агент на удаленный компьютер и устанавливает его.
 
 ```
 PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
@@ -658,5 +658,5 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительная информация о службе архивации Azure для сервера или клиента Windows
 
-* [Введение tooAzure резервной копии](backup-introduction-to-azure-backup.md)
+* [Общие сведения о службе архивации Azure](backup-introduction-to-azure-backup.md)
 * [Резервное копирование серверов Windows](backup-configure-vault.md)

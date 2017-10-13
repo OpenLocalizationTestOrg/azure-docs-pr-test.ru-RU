@@ -1,5 +1,5 @@
 ---
-title: "сжатие файлов aaaTroubleshooting в Azure CDN | Документы Microsoft"
+title: "Устранение неполадок со сжатием файлов в Azure CDN | Документация Майкрософт"
 description: "Узнайте, как устранить неполадки со сжатием файлов Azure CDN."
 services: cdn
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f00b98beaf6b3b3cd30108ece65a8191edc06ff5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Устранение неполадок со сжатием файлов CDN
 Эта статья поможет вам устранить неполадки со [сжатием файлов CDN](cdn-improve-performance.md).
 
-Если вам нужна дополнительная помощь в любой момент в этой статье, можно обратиться в hello экспертов Azure на [hello MSDN Azure и hello переполнения стека форумы](https://azure.microsoft.com/support/forums/). Кроме того, можно зарегистрировать обращение в службу поддержки Azure. Go toohello [сайте поддержки Azure](https://azure.microsoft.com/support/options/) и нажмите кнопку **Get Support**.
+Если вам потребуется дополнительная помощь по любому из вопросов, рассматриваемых в статье, вы можете обратиться к экспертам по Azure на [форумах MSDN Azure и Stack Overflow](https://azure.microsoft.com/support/forums/). Кроме того, можно зарегистрировать обращение в службу поддержки Azure. Перейдите на [веб-сайт поддержки Azure](https://azure.microsoft.com/support/options/) и щелкните **Получить поддержку**.
 
 ## <a name="symptom"></a>Симптом
 Сжатие для конечной точки включено, но файлы возвращаются без сжатия.
 
 > [!TIP]
-> toocheck файлы возвращаются сжатые, необходимость toouse, такие как средство [Fiddler](http://www.telerik.com/fiddler) или обозревателя [средств разработчика](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Заголовки ответа hello HTTP проверки возвращаемые CDN кэшированного содержимого.  Если есть заголовок с именем `Content-Encoding` со значением **gzip**, **bzip2** или **deflate**, то содержимое сжато.
+> Чтобы проверить, сжаты ли возвращаемые файлы, используйте такой инструмент, как [Fiddler](http://www.telerik.com/fiddler), или [инструменты разработчика](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) в браузере.  Проверьте заголовки HTTP-ответа, возвращаемые с кэшированным содержимым CDN.  Если есть заголовок с именем `Content-Encoding` со значением **gzip**, **bzip2** или **deflate**, то содержимое сжато.
 > 
 > ![Заголовок Content-Encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -38,21 +38,21 @@ ms.lasthandoff: 10/06/2017
 ## <a name="cause"></a>Причина:
 Возможно несколько причин, включая указанные ниже.
 
-* Hello указанного содержимого не подходит для сжатия.
-* Не включено сжатие для hello запрошенный тип файла.
-* Hello HTTP-запроса не включать заголовок, запрашивает тип допустимым сжатия.
+* Запрошенное содержимое не подходит для сжатия.
+* Сжатие не включено для запрошенного типа файла.
+* В запросе HTTP не было заголовка, запрашивающего допустимый тип сжатия.
 
 ## <a name="troubleshooting-steps"></a>Действия по устранению неполадок
 > [!TIP]
-> Наряду с развертыванием новых конечных точек, CDN изменений конфигурации вступают некоторые toopropagate времени через сеть hello.  Как правило, изменения применяются в течение 90 минут.  Если это hello при первом запуске настройки сжатия для конечной точки CDN, следует ожидания действительно распространения параметров сжатия hello извлекает toohello toobe 1 – 2 часов. 
+> Как и при развертывании новых конечных точек, требуется некоторое время для распространения изменений конфигурации CDN по сети.  Как правило, изменения применяются в течение 90 минут.  Если сжатие для конечной точки CDN задается впервые, следует подождать один-два часа, чтобы настройки сжатия гарантированно распространились на серверы POP. 
 > 
 > 
 
-### <a name="verify-hello-request"></a>Проверьте запрос hello
-Во-первых мы должны сделать быстрого проверочной меры по запросу hello.  Можно использовать в браузере [средств разработчика](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) tooview hello запросов.
+### <a name="verify-the-request"></a>Проверка запроса
+Сначала следует быстро проверить запрос.  Чтобы просмотреть поступивший запрос, можно использовать [средства разработчика](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) в браузере.
 
-* Проверьте запрос hello отправляется URL-адрес конечной точки tooyour `<endpointname>.azureedge.net`, а не в источник.
-* Проверьте запрос hello содержит **Accept-Encoding** содержит заголовок, значение заголовка и hello **gzip**, **deflate**, или **bzip2** .
+* Запрос должен отправляться по URL-адресу конечной точки ( `<endpointname>.azureedge.net`), а не в источник.
+* Запрос должен содержать заголовок **Accept-Encoding** со значением **gzip**, **deflate** или **bzip2**.
 
 > [!NOTE]
 > Профили **Azure CDN от Akamai** поддерживают только кодирование **GZIP**.
@@ -67,10 +67,10 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Перейдите tooyour конечной точки в hello [портал Azure](https://portal.azure.com) и нажмите кнопку hello **Настройка** кнопки.
+Перейдите к конечной точке на [портале Azure](https://portal.azure.com) и нажмите кнопку **Настроить** .
 
 * Проверьте, включено ли сжатие.
-* Проверьте hello тип MIME для содержимого, сжатые toobe входит в список hello сжатых форматов hello.
+* Убедитесь в том, что тип MIME для сжимаемого содержимого включен в список сжимаемых форматов.
 
 ![Параметры сжатия CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
@@ -80,41 +80,41 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Перейдите tooyour конечной точки в hello [портал Azure](https://portal.azure.com) и нажмите кнопку hello **управление** кнопки.  Hello дополнительный портал будет открыт.  Наведите указатель мыши hello **HTTP больших** , а затем наведите указатель мыши hello **параметры кэша** всплывающим меню.  Щелкните **Сжатие**. 
+Перейдите к конечной точке на [портале Azure](https://portal.azure.com) и нажмите кнопку **Управление** .  Откроется дополнительный портал.  Наведите указатель мыши на вкладку **HTTP Large** (Большая платформа HTTP), а затем наведите указатель мыши на всплывающий элемент **Параметры кэша**.  Щелкните **Сжатие**. 
 
 * Проверьте, включено ли сжатие.
-* Проверьте hello **типы файлов** список содержит список разделенных запятыми (без пробелов) типов MIME.
-* Проверьте hello тип MIME для содержимого, сжатые toobe входит в список hello сжатых форматов hello.
+* Список **Типы файлов** должен включать разделенный запятыми список типов MIME (без пробелов).
+* Убедитесь в том, что тип MIME для сжимаемого содержимого включен в список сжимаемых форматов.
 
 ![Параметры сжатия CDN уровня "Премиум"](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-hello-content-is-cached"></a>Убедитесь, что кэш содержимого hello
+### <a name="verify-the-content-is-cached"></a>Проверка кэширования содержимого
 > [!NOTE]
 > Это действие применимо только для профиля **Azure CDN от Verizon** (уровня "Премиум" или "Стандартный").
 > 
 > 
 
-С помощью средств разработчика в браузере, убедитесь, что файл hello tooensure заголовки ответа hello кэшируются в области hello, где он был запрошен.
+С помощью средств разработчика в браузере проверьте заголовки ответов, чтобы убедиться в том, что файл кэширован в регионе, где он запрашивается.
 
-* Проверьте hello **сервера** заголовок ответа.  Hello заголовок должен иметь формат hello **платформы (POP-сервер ID)**, как показано в следующий пример hello.
-* Проверьте hello **X кэша** заголовок ответа.  следует прочитать заголовок Hello **ПОПАДАНИЙ**.  
+* Проверьте заголовок ответа **Server** в формате  **платформа (POP/идентификатор сервера)**, как показано в примере ниже.
+* Проверьте заголовок ответа **X-Cache** .  Он должен иметь значение **HIT**.  
 
 ![Заголовки ответа CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-hello-file-meets-hello-size-requirements"></a>Убедитесь, что файл hello отвечает требованиям к размеру hello
+### <a name="verify-the-file-meets-the-size-requirements"></a>Проверка соответствия файла требованиям к размеру
 > [!NOTE]
 > Это действие применимо только для профиля **Azure CDN от Verizon** (уровня "Премиум" или "Стандартный").
 > 
 > 
 
-toobe отсрочить сжатие, файл должен соответствовать hello следующие требования к размеру:
+Чтобы сжатие файла было возможным, его размер должен удовлетворять таким требованиям:
 
 * более 128 байт;
 * менее 1 МБ.
 
-### <a name="check-hello-request-at-hello-origin-server-for-a-via-header"></a>Проверка запроса hello на исходном сервере hello для **через** заголовок
-Hello **через** заголовок HTTP указывает toohello веб-сервера, hello запрос передается через прокси-сервер.  Веб-серверов Microsoft IIS по умолчанию не сжатия ответов, когда запрос hello содержит **через** заголовок.  toooverride такое поведение следующих hello:
+### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Проверьте, есть ли в запросе на сервере-источнике заголовок **Via** .
+HTTP-заголовок **Via** указывает веб-серверу, что запрос передается через прокси-сервер.  Если запрос содержит заголовок **Via** , веб-серверы Microsoft IIS по умолчанию не сжимают ответы.  Чтобы изменить это поведение, сделайте следующее.
 
-* **IIS 6**: [задать HcNoCompressionForProxies = «FALSE» в свойствах hello метабазы IIS](https://msdn.microsoft.com/library/ms525390.aspx)
-* **Службы IIS 7 и выше**: [установите **noCompressionForHttp10** и **noCompressionForProxies** tooFalse в конфигурации сервера hello](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**: [задайте HcNoCompressionForProxies="FALSE" в свойствах метабазы IIS](https://msdn.microsoft.com/library/ms525390.aspx)
+* **IIS 7 и выше**: [присвойте параметрам **noCompressionForHttp10** и **noCompressionForProxies** значение False в конфигурации сервера](http://www.iis.net/configreference/system.webserver/httpcompression).
 

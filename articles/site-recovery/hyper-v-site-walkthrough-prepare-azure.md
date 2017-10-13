@@ -1,6 +1,6 @@
 ---
-title: "с помощью Azure Site Recovery виртуальных машин Hyper-V (без System Center VMM) tooAzure aaaPrepare ресурсы Azure tooreplicate | Документы Microsoft"
-description: "Основные сведения, необходимые на месте в Azure перед началом репликации с помощью Azure Site Recovery tooAzure виртуальных машин Hyper-V (без VMM)"
+title: "Подготовка ресурсов Azure для репликации виртуальных машин Hyper-V (без System Center VMM) в Azure с помощью Azure Site Recovery | Документация Майкрософт"
+description: "Основные сведения о том, что нужно сделать в среде Azure перед началом репликации виртуальных машин Hyper-V (без VMM) в Azure с помощью Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
-ms.openlocfilehash: f659e300c39253b0eaf7218bee9d39b11682edb1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1a30cadaab7e053184f0be133f1da5bfddc1fd91
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="step-5-prepare-azure-resources-for-hyper-v-replication-tooazure"></a>Шаг 5: Подготовка ресурсов Azure для tooAzure репликации Hyper-V
+# <a name="step-5-prepare-azure-resources-for-hyper-v-replication-to-azure"></a>Шаг 5. Подготовка ресурсов Azure для репликации Hyper-V в Azure
 
-Используйте инструкции hello в этой статье tooprepare Azure, чтобы можно было реплицировать локальные ресурсы виртуальных машин Hyper-V (без System Center VMM) с помощью hello tooAzure [Azure Site Recovery](site-recovery-overview.md) службы.
+Воспользуйтесь инструкциями из этой статьи, чтобы с помощью службы [Azure Site Recovery](site-recovery-overview.md) подготовить ресурсы Azure для репликации локальных виртуальных машин Hyper-V (без в System Center VMM) Azure.
 
-После считывания в этой статье, отправлять любые комментарии внизу hello или задавайте технические вопросы на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Комментарии или вопросы технического характера можно добавить в конце этой статьи или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="before-you-start"></a>Перед началом работы
 
-Убедитесь, что вы прочитали hello [предварительные требования](hyper-v-site-walkthrough-prerequisites.md)
+Ознакомьтесь со статьей о [предварительных требованиях](hyper-v-site-walkthrough-prerequisites.md).
 
 ## <a name="set-up-an-azure-account"></a>Настройка учетной записи Azure
 
 - Получите [учетную запись Microsoft Azure](http://azure.microsoft.com/).
 - Начните с [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).
-- Проверьте областей hello поддерживается для восстановления сайта в группе географическая доступность в [сведения о ценах Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-- Дополнительные сведения о [цены Site Recovery](site-recovery-faq.md#pricing)и получить hello [сведения о ценах](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Сведения о поддерживаемых регионах для Site Recovery см. в разделе "Географическая доступность" на странице [цен на службу Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+- Ознакомьтесь с расходами [при использования Site Recovery](site-recovery-faq.md#pricing) и [сведениями о ценах](https://azure.microsoft.com/pricing/details/site-recovery/).
 
 
-## <a name="set-up-an-azure-network"></a>Настроить сеть Azure
+## <a name="set-up-an-azure-network"></a>Настроить сеть
 
 - Настройка сети Azure. Виртуальные машины Azure будут размещаться в этой сети при создании после отработки отказа.
-- сеть Hello должны находиться в hello же регионе, что hello в хранилище службы восстановления
-- Восстановление сайта в hello портал Azure можно использовать настройки сетей в [диспетчера ресурсов](../resource-manager-deployment-model.md), или в классическом режиме.
-- Рекомендуется настроить сеть перед началом работы. Если этого не сделать, то необходимо toodo его во время развертывания службы восстановления сайтов.
+- Сеть должна располагаться в том же регионе, что и хранилище служб восстановления.
+- Служба Site Recovery на портале Azure может использовать сети, настроенные в режиме [Resource Manager](../resource-manager-deployment-model.md) или в классическом режиме.
+- Рекомендуется настроить сеть перед началом работы. В противном случае это нужно будет сделать во время развертывания службы Site Recovery.
 - Ознакомьтесь со сведениями о [ценах на виртуальную сеть](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 
 ## <a name="set-up-an-azure-storage-account"></a>Настроить учетную запись хранения Azure
 
-- Site Recovery реплицирует tooAzure машин в локальном хранилище. Виртуальные машины Azure создаются из хранилища hello после отработки отказа.
-- Настройка standard и premium [учетной записи хранилища Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account) tooAzure репликации toohold данных.
-- [Хранилище Premium](../storage/common/storage-premium-storage.md) обычно используется для виртуальных машин, требующих постоянно высокое производительности операций ввода-ВЫВОДА и toohost низкую задержку операций ввода-ВЫВОДА интенсивных рабочих нагрузок.
-- Если вы хотите toouse toostore учетной записи premium реплицированные данные, необходимо также стандартные журналы учетной записи хранения toostore репликации, отслеживания текущих изменений tooon локальные данные.
-- В зависимости от модели ресурсов hello хотите toouse отработку отказа виртуальных машин Azure, настройте учетную запись в [режим диспетчера ресурсов](../storage/common/storage-create-storage-account.md), или [классический режим](../storage/common/storage-create-storage-account.md).
-- Рекомендуется настроить учетную запись хранения до начала работы. Если не требуется toodo его во время развертывания службы восстановления сайтов. Hello должны находиться в hello же регионе, что hello в хранилище служб восстановления.
-- Не удается переместить использовать учетные записи хранения с Site Recovery для групп ресурсов в hello же подписки, или в разных подписках.
+- Служба Site Recovery реплицирует локальные машины в службе хранилища Azure. Виртуальные машины Azure создаются из хранилища после отработки отказа.
+- Для хранения данных, реплицированных в Azure, понадобится настроить [учетную запись хранения Azure](../storage/common/storage-create-storage-account.md#create-a-storage-account) класса "Стандартный" или Premium.
+- [Хранилище класса Premium](../storage/common/storage-premium-storage.md) обычно используется для виртуальных машин, которым постоянно требуется высокая производительность ввода-вывода и малая задержка для размещения интенсивных рабочих нагрузок ввода-вывода.
+- Если для хранения реплицированных данных вы будете использовать учетную запись хранения класса Premium, потребуется дополнительная учетная запись хранения класса Standard для хранения журналов репликации, в которые записываются текущие изменения локальных данных.
+- В зависимости от модели ресурсов, которую будут использовать виртуальные машины Azure после отработки отказа, для учетной записи необходимо настроить [режим Resource Manager](../storage/common/storage-create-storage-account.md) или [классический режим](../storage/common/storage-create-storage-account.md).
+- Рекомендуется настроить учетную запись хранения до начала работы. В противном случае это нужно будет сделать во время развертывания службы Site Recovery. Учетные записи должны находиться в том же регионе, что и хранилище служб восстановления.
+- Учетные записи хранения, используемые для Site Recovery, нельзя перемещать между группами в одной подписке или между разными подписками.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Go слишком[шаг 6: ресурсы Подготовка Hyper-V](hyper-v-site-walkthrough-prepare-hyper-v.md)
+Перейдите к статье [Step 6: Prepare on-premises VMware replication to Azure](hyper-v-site-walkthrough-prepare-hyper-v.md) (Шаг 6. Подготовка ресурсов Hyper-V).

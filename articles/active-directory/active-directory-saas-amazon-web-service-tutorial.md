@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Amazon Web Services (AWS) | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Amazon Web Services (AWS)."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и Amazon Web Services (AWS)."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,120 +14,120 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 1b79572ace63f6174ce4fa014c49bf44bd728228
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0fb9c8f428368271b548e3f174726fa01ea910c5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Руководство по интеграции Azure Active Directory с Amazon Web Services
 
-В этом учебнике вы узнаете, как toointegrate Amazon Web Services (AWS) с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение Amazon Web Services (AWS) с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD Amazon Web Services (AWS) предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением Amazon Web Services обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooAmazon Web Services (AWS)
-- Ваш пользователей tooautomatically get вошедшего tooAmazon Web Services (AWS) (Single Sign-On) можно включить с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к Amazon Web Services.
+- Вы можете включить автоматический вход пользователей в Amazon Web Services (AWS) (единый вход) под учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-tooenable single sign-on with Amazon Web Services (AWS), it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Amazon Web Services (AWS).
+To enable single sign-on with Amazon Web Services (AWS), it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Amazon Web Services (AWS).
 
 >[!Note]: 
->This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с Amazon Web Services (AWS) требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Amazon Web Services, вам потребуется следующее:
 
 - подписка Azure AD;
 - Подписка с поддержкой единого входа в Amazon Web Services (AWS)
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление Amazon Web Services (AWS) из коллекции hello
+1. Добавление Amazon Web Services из коллекции.
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-amazon-web-services-aws-from-hello-gallery"></a>Добавление Amazon Web Services (AWS) из коллекции hello
-tooconfigure hello интеграция Amazon Web Services (AWS) в Azure AD, вы должны tooadd Amazon Web Services (AWS) из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Добавление Amazon Web Services из коллекции
+Чтобы настроить интеграцию Amazon Web Services с Azure AD, вам потребуется добавить Amazon Web Services из коллекции в список управляемых приложений SaaS.
 
-**tooadd Amazon Web Services (AWS) из коллекции hello, выполните следующие шаги hello.**
+**Чтобы добавить Amazon Web Services (AWS) из коллекции, выполните следующее.**
 
-1. В hello  **[портала Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **Amazon Web Services (AWS)**.
+4. В поле поиска введите **Amazon Web Services (AWS)**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_search.png)
 
-5. В панели результатов hello выберите **Amazon Web Services (AWS)**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **Amazon Web Services (AWS)** и щелкните **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Amazon Web Services (AWS) с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow какие пользователь аналог hello в Amazon Web Services (AWS) является tooa в Azure AD. Иными словами связи между пользователя Azure AD и связанных пользователей hello в Amazon Web Services (AWS) необходимо установить toobe.
+Чтобы единый вход работал, в Azure AD необходимо указать, какой пользователь в Amazon Web Services соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем Amazon Web Services.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Amazon Web Services (AWS).
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Amazon Web Services.
 
-tooconfigure и тестирования Azure AD единого входа с Amazon Web Services (AWS), необходимы следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в Amazon Web Services, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя, прошедшего Amazon Web Services](#creating-an-amazon-web-services-test-user)**  -toohave аналог Саймон Britta в Amazon Web Services (AWS), являющийся представлением ей связанного toohello Azure AD.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя Amazon Web Services](#creating-an-amazon-web-services-test-user)** требуется для создания соответствующего пользователя Britta Simon в Amazon Web Services, связанного с ее представлением в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Amazon Web Services (AWS).
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Amazon Web Services (AWS).
 
-**tooconfigure Azure AD единого входа с Amazon Web Services (AWS), выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в Amazon Web Services, выполните следующие действия:**
 
-1. В hello портале Azure на hello **Amazon Web Services (AWS)** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **Amazon Web Services (AWS)** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_samlbase.png)
 
-3. На hello **Amazon Web Services (AWS) доменов и URL-адреса** статьи, hello пользователь не имеет tooperform все меры как приложение hello уже заранее интегрировано с Azure.
+3. В разделе **Домены и URL-адреса приложения Amazon Web Services (AWS)** не нужно выполнять никаких действий, так как приложение уже предварительно интегрировано с Azure.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_url.png)
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
     
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_certificate.png)
 
-5. Hello Amazon Web Services (AWS) приложение ожидает утверждения SAML hello в определенном формате. Выполните настройку следующих утверждений для этого приложения hello. Вы можете управлять hello значения этих атрибутов из hello»**атрибуты пользователя**» на странице интеграции приложения. пример Hello следующий снимок экрана для этого.
+5. Приложение Amazon Web Services (AWS) ожидает утверждения SAML в определенном формате. Настройте следующие утверждения для этого приложения. Управлять значениями этих атрибутов можно в разделе **Атрибуты пользователя** на странице интеграции приложения. На следующем снимке экрана приведен пример.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_attribute.png)
 
-6. В hello **атрибуты пользователя** раздела, посвященного hello **единого входа** диалогового окна, настроить атрибутов токена SAML, как показано в приведенном выше рисунке hello и выполнять hello следующие шаги:
+6. В разделе **Атрибуты пользователя** диалогового окна **Единый вход** настройте атрибут токена SAML, как показано на рисунке выше, и выполните следующие действия:
     
     | Имя атрибута  | Значение атрибута | Пространство имен |
     | --------------- | --------------- | --------------- |
@@ -135,25 +135,25 @@ tooconfigure и тестирования Azure AD единого входа с A
     | Роль            | user.assignedroles |  https://aws.Amazon.com/SAML/Attributes |
     
     >[!TIP]
-    >Необходимо tooconfigure hello Подготовка пользователя к Azure AD toofetch все роли hello из консоли AWS. См. шаги подготовки hello.
+    >Необходимо настроить подготовку пользователя в Azure AD для получения всех ролей из консоли AWS. Этапы подготовки см. ниже.
 
-    а. Нажмите кнопку **добавить атрибут** tooopen hello **Добавление атрибута** диалогового окна.
+    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно **Добавление атрибута**.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
-    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
+    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
 
-    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки. Добавьте значение пространства имен hello, как показано выше.
+    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки. Добавьте значение пространства имен, как показано выше.
     
-    d. Нажмите кнопку **ОК**.
+    г) Нажмите кнопку **ОК**.
 
-7. Нажмите кнопку **Сохранить** кнопку Параметры toosave hello в Azure.
+7. Нажмите кнопку **Сохранить**, чтобы сохранить параметры в Azure.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_400.png)
 
-8. В другом окне браузера, tooyour входа на сайт компании Amazon Web Services (AWS) от имени администратора.
+8. В другом окне браузера войдите на сайт Amazon Web Services компании в качестве администратора.
 
 9. Щелкните **Console Home**(Домашняя страница консоли).
    
@@ -167,19 +167,19 @@ tooconfigure и тестирования Azure AD единого входа с A
    
     ![Настройка единого входа][13]
 
-12. На hello **настроить поставщик** диалогового окна выполните следующие шаги hello:
+12. На странице диалогового окна **Configure Provider** (Настройка поставщика) выполните следующие действия.
    
     ![Настройка единого входа][14]
  
     а. Выберите для параметра **Тип поставщика** значение **SAML**.
 
-    b. В hello **имя поставщика** текстовом поле введите имя поставщика (например: *WAAD*).
+    b. В текстовом поле **Имя поставщика** введите имя поставщика (например, *WAAD*).
 
-    c. tooupload скачанный файл метаданных, щелкните **выбрать файл**.
+    В. Чтобы отправить загруженный файл метаданных, нажмите кнопку **Выбрать файл**.
 
     d. Щелкните **Следующий шаг**.
 
-13. На hello **проверить сведения о поставщике** странице диалогового окна щелкните **создать**. 
+13. На странице диалогового окна **Verify Provider Information** (Проверка сведений о поставщике) щелкните **Create** (Создать). 
     
     ![Настройка единого входа][15]
 
@@ -187,136 +187,136 @@ tooconfigure и тестирования Azure AD единого входа с A
     
     ![Настройка единого входа][16]
 
-15. На hello **задать имя роли** диалоговое окно, выполните следующие шаги hello: 
+15. В диалоговом окне **Set Role Name** (Настройка имени роли) выполните следующие действия. 
     
     ![Настройка единого входа][17] 
 
-    а. В hello **имя роли** текстовом поле введите имя роли (например: *TestUser*). 
+    а. В текстовом поле **Имя роли** введите имя роли (например, *TestUser*). 
 
     b. Щелкните **Следующий шаг**.
 
-16. На hello **выберите тип роли** диалоговое окно, выполните следующие шаги hello: 
+16. В диалоговом окне **Select Role Type** (Выбор типа роли) выполните следующие действия. 
     
     ![Настройка единого входа][18] 
 
     а. Выберите **Роль для доступа поставщика удостоверений**. 
 
-    b. В hello **предоставление единого входа через Интернет (WebSSO) поставщики доступа к tooSAML** щелкните **выберите**.
+    b. В разделе **Grant Web Single Sign-On (WebSSO) access to SAML providers** (Предоставление единого входа через Интернет (WebSSO) для доступа к поставщикам SAML) щелкните **Select** (Выбрать).
 
-17. На hello **установления доверия** диалоговое окно, выполните следующие шаги hello:  
+17. В диалоговом окне **Establish Trust** (Установка доверия) выполните следующие действия.  
     
     ![Настройка единого входа][19] 
 
-    а. В качестве поставщика SAML выбрать поставщика SAML hello, вы создали ранее (например: *WAAD*)
+    а. В качестве поставщика SAML выберите поставщик SAML, созданный ранее (например, *WAAD*).
   
     b. Щелкните **Следующий шаг**.
 
-18. На hello **проверить доверие роли** диалоговое окно, нажмите кнопку **следующий шаг**.
+18. В диалоговом окне **Verify Role Trust** (Проверка доверия роли) нажмите кнопку **Next Step** (Следующий шаг).
     
     ![Настройка единого входа][32]
 
-19. На hello **политики присоединения** диалоговое окно, нажмите кнопку **следующий шаг**.
+19. В диалоговом окне **Attach Policy** (Присоединение политики) нажмите кнопку **Next Step** (Следующий шаг).
     
     ![Настройка единого входа][33]
 
-20. На hello **проверки** диалоговое окно, выполните следующие шаги hello:
+20. В диалоговом окне **Review** (Обзор) выполните следующие действия.
     
     ![Настройка единого входа][34]
  
     а. Щелкните **Создать роль**.
 
-    b. Создайте столько ролей и сопоставить их toohello поставщика удостоверений.
+    b. Создайте необходимое количество ролей и сопоставьте их с поставщиком удостоверений.
 
-21. Теперь настройки hello подготовки пользователей toofetch все роли hello из AWS
+21. Теперь настройте подготовку пользователя для получения всех ролей из AWS.
 
-    а. В имени входа консоли AWS hello с вашей учетной записи root
+    а. В консоли AWS войдите в систему с использованием учетной записи root.
 
-    b. В hello правом верхнем углу щелкните свое имя и нажмите кнопку hello **мои учетные данные безопасности** параметр. Откроется экран с предупреждением. Нажмите кнопку "hello" **учетные данные безопасности** toopass кнопку hello экрана.
+    b. В правом верхнем углу щелкните свое имя и выберите параметр **My Security Credentials** (Мои учетные данные для безопасного доступа). Откроется экран с предупреждением. Нажмите кнопку **Security Credentials** (Учетные данные для безопасного доступа), чтобы закрыть предупреждение.
         
        ![Настройка единого входа][36]
 
        ![Настройка единого входа][37]
 
-    c. В hello ключи доступа нажмите кнопку hello **создать новый ключ доступа** кнопки. Это приводит к возникновению ошибки hello кода доступа и значение маркера.
+    c. В разделе "Ключи доступа" щелкните **Create New Access Key** (Создать ключ доступа). При этом будет создан идентификатор ключа доступа и значение токена.
     
        ![Настройка единого входа][38]
 
     d. Скопируйте оба эти значения, а также скачайте их, чтобы не потерять.
 
-    д. В hello портале Azure на странице интеграции приложения hello Amazon Web Services (AWS), щелкните **Provisioning**.
+    д. На портале Azure на странице интеграции с приложением Amazon Web Services (AWS) щелкните **Подготовка**.
         
        ![Настройка единого входа][35]
 
-    f. Установить режим подготовки hello слишком**автоматический**
+    f. Для параметра "Режим подготовки к работе" выберите значение **Автоматически**.
         
        ![Настройка единого входа][39]
 
-    ж. Теперь в hello **clientsecret** и **секрет маркера** вставьте hello соответствующего значения, которые вы скопировали из консоли AWS.
+    g. Теперь в поле **Секрет клиента** и **Секретный токен** вставьте соответствующие значения, скопированные из консоли AWS ранее.
     
-    h. Можно щелкнуть hello **проверить подключение** кнопку tootest hello подключения. После успешной можно запустить hello подготовки соединителя.
+    h. Вы можете нажать кнопку **Проверить подключение**, чтобы проверить возможность подключения. Если все подключено, можно запустить соединитель подготовки.
        
        ![Настройка единого входа][40]
 
-    i. Теперь включить hello состояние подготовки слишком**на**. Запустится выборка hello ролей из приложения hello.
+    i. Теперь в разделе "Состояние подготовки" нажмите кнопку **Вкл.** При этом запустится выборка ролей из приложения.
 
        ![Настройка единого входа][41]
 
     > [!NOTE]
-    > Запускается служба Azure AD подготовки каждой после некоторых ролей hello время toosync из AWS. Вы увидите все hello поставщика удостоверений присоединенного AWS роли в Azure AD, и их можно использовать при назначении toousers приложения hello или группы.
+    > Через некоторое время запустится служба подготовки Azure AD для синхронизации ролей из AWS. В Azure AD должны отображаться все роли AWS, подключенные к поставщику удостоверений. Их можно использовать при назначении приложения пользователям или группам.
 
 <!--### Next steps
 
-tooensure users can sign-in tooAmazon Web Services (AWS) after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
+To ensure users can sign-in to Amazon Web Services (AWS) after it has been configured to use Azure Active Directory, review the following tasks and topics:
 
-- User accounts must be pre-provisioned into Amazon Web Services (AWS) prior toosign-in. tooset this up, see Provisioning.
+- User accounts must be pre-provisioned into Amazon Web Services (AWS) prior to sign-in. To set this up, see Provisioning.
  
-- Users must be assigned access tooAmazon Web Services (AWS) in Azure AD toosign-in. tooassign users, see Users.
+- Users must be assigned access to Amazon Web Services (AWS) in Azure AD to sign-in. To assign users, see Users.
  
-- tooconfigure access polices for Amazon Web Services (AWS) users, see Access Policies.
+- To configure access polices for Amazon Web Services (AWS) users, see Access Policies.
  
-- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-amazon-web-services-test-user"></a>Создание тестового пользователя Amazon Web Services
 
-В порядке tooenable toolog пользователей Azure AD в tooAmazon Web Services (AWS) их необходимо подготовить в Amazon Web Services (AWS). В случае hello Amazon Web Services (AWS) Подготовка выполняется вручную.
+Чтобы пользователи Azure AD могли войти в службу Amazon Web Services (AWS), их необходимо подготовить в ней. В случае с Amazon Web Services (AWS) подготовка выполняется вручную.
 
-**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
+**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
 
-1. Войдите в tooyour **Amazon Web Services (AWS)** сайт компании от имени администратора.
+1. Войдите на сайт компании **Amazon Web Services** в качестве администратора.
 
-2. Нажмите кнопку hello **Главная страница консоли** значок. 
+2. Щелкните значок **домашней страницы консоли** . 
    
     ![Настройка единого входа][11]
 
@@ -324,35 +324,35 @@ tooensure users can sign-in tooAmazon Web Services (AWS) after it has been confi
    
     ![Настройка единого входа][28]
 
-4. Hello панели мониторинга, щелкните **пользователей**, а затем нажмите кнопку **создания новых пользователей**. 
+4. На панели мониторинга щелкните **Пользователи**, а затем — **Create New Users** (Создать пользователей). 
    
     ![Настройка единого входа][29]
 
-5. В диалоговом окне приветствия создать пользователя выполните hello следующие шаги. 
+5. В диалоговом окне Create User (Создание пользователя) выполните следующие действия. 
    
     ![Настройка единого входа][30]   
     
-    а. В hello **введите имена пользователей** текстовые поля, введите имя пользователя Саймон Brita (userprincipalname) в Azure AD.
+    а. В текстовых полях **Введите имена пользователей** введите имя пользователя (userprincipalname) в Azure AD.
 
     b. Щелкните **Создать**.
         
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа, предоставляя свой доступ tooAmazon Web Services (AWS).
+В этом разделе описано, как предоставить пользователю Britta Simon доступ к Amazon Web Services (AWS), чтобы он мог использовать единый вход Azure.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooAmazon Britta Simon Web Services (AWS) выполните hello следующие шаги.**
+**Чтобы назначить пользователя Britta Simon в Amazon Web Services (AWS), сделайте следующее:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **Amazon Web Services (AWS)**.
+2. В списке приложений выберите **Amazon Web Services**.
 
     ![Настройка единого входа](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -360,23 +360,23 @@ tooensure users can sign-in tooAmazon Web Services (AWS) after it has been confi
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
-7. На **выберите роль** вкладке, выберите hello соответствующую роль для пользователя hello. Эти роли обозначаются hello имя роли и имя поставщика удостоверений. Таким образом, можно легко определить роли hello из AWS.
+7. На вкладке **Выбор роли** выберите соответствующую роль для пользователя. Все эти роли показаны со своими именами и именами поставщика удостоверений. Таким образом, можно легко определить роли из AWS.
 
 8. В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки приветствия Amazon Web Services (AWS) плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour приложения Amazon Web Services (AWS). 
+Щелкнув плитку Amazon Web Services на панели доступа, вы автоматически войдете в приложение Amazon Web Services. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

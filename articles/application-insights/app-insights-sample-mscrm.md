@@ -1,5 +1,5 @@
 ---
-title: "aaaMicrosoft Dynamics CRM и аналитика приложений Azure | Документы Microsoft"
+title: "Microsoft Dynamics CRM и Azure Application Insights | Документация Майкрософт"
 description: "Получение данных телеметрии из Microsoft Dynamics CRM Online с помощью Application Insights. Пошаговое руководство по настройке, получению данных, визуализации и экспорту."
 services: application-insights
 documentationcenter: 
@@ -13,80 +13,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: bwren
-ms.openlocfilehash: a39398060d6553fb18a26c101f085b7d87443636
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a9593d5f198e05db80451a599428a296ed02e781
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Пошаговое руководство. Включение телеметрии для Microsoft Dynamics CRM Online с помощью Application Insights
-В этой статье показано, как данные телеметрии tooget из [Microsoft Dynamics CRM Online](https://www.dynamics.com/) с помощью [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Мы рассмотрим hello полный процесс добавления приложения tooyour сценария Application Insights, сбора данных и визуализации данных.
+В этой статье показано, как получить данные телеметрии из службы [Microsoft Dynamics CRM Online](https://www.dynamics.com/) с помощью [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Мы рассмотрим весь процесс добавления сценария Application Insights в приложение, сбор данных и их визуализацию.
 
 > [!NOTE]
-> [Обзор решения образца hello](https://dynamicsandappinsights.codeplex.com/).
+> [Получите пример решения.](https://dynamicsandappinsights.codeplex.com/)
 > 
 > 
 
-## <a name="add-application-insights-toonew-or-existing-crm-online-instance"></a>Добавить Application Insights toonew или существующего экземпляра CRM Online
-toomonitor приложения, добавления приложения tooyour пакет SDK Application Insights. Hello SDK отправляет данные телеметрии toohello [портале Application Insights](https://portal.azure.com), где можно использовать наши мощный анализ и средства диагностики, или экспорт данных toostorage hello.
+## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>Добавление Application Insights в новый или существующий экземпляр CRM Online
+Чтобы отслеживать работу приложения, добавьте в него пакет SDK для Application Insights. Пакет SDK отправляет данные телеметрии на [портал Application Insights](https://portal.azure.com), где вы можете использовать наши эффективные инструменты анализа и диагностики, а также экспортировать данные в хранилище.
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Создание ресурса Application Insights в Azure
 1. Получите [учетную запись Microsoft Azure](http://azure.com/pricing). 
-2. Вход в hello [портал Azure](https://portal.azure.com) и добавить новый ресурс Application Insights. Здесь будут обрабатываться и отображаться ваши данные.
+2. Войдите на [портал Azure](https://portal.azure.com) и добавьте новый ресурс Application Insights. Здесь будут обрабатываться и отображаться ваши данные.
    
     ![Щелкните значок «+» и последовательно выберите «Службы для разработчиков», Application Insights.](./media/app-insights-sample-mscrm/01.png)
    
-    Выберите в качестве типа приложения hello ASP.NET.
-3. Открытие страницы «hello Приступая к работе» и откройте «монитор и диагностики на стороне клиента».
+    Выберите приложение ASP.NET в качестве типа приложения.
+3. Откройте страницу "Начало работы", а затем откройте "Мониторинг и диагностика приложения на стороне клиента".
    
     ![Фрагмент кода для вставки на веб-страницу](./media/app-insights-sample-mscrm/03.png)
 
-**Не закрывайте hello кодовая страница** пока hello следующим шагом в другом окне браузера. Вам потребуется скоро кода hello. 
+**Не закрывайте страницу с кодом** , выполняя следующий шаг в другом окне браузера. Код вскоре вам понадобится. 
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Создание веб-ресурса JavaScript в Microsoft Dynamics CRM
 1. Откройте экземпляр CRM Online и войдите с правами администратора.
-2. Откройте Microsoft Dynamics CRM параметры настройки, hello Настройка системы
+2. Последовательно откройте элементы "Параметры Microsoft Dynamics CRM", "Настройка", "Настройка системы".
    
     ![Параметры Microsoft Dynamics CRM](./media/app-insights-sample-mscrm/04.png)
    
     ![Параметры > Настройки](./media/app-insights-sample-mscrm/05.png)
 
-    ![Настроить параметр системного hello](./media/app-insights-sample-mscrm/06.png)
+    ![Настройка параметра системы](./media/app-insights-sample-mscrm/06.png)
 
 1. Создайте ресурс JavaScript.
    
     ![Диалоговое окно создания веб-ресурса](./media/app-insights-sample-mscrm/07.png)
    
-    Присвойте ему имя, выберите **сценария (JScript)** и hello откройте текстовый редактор.
+    Присвойте ему имя, выберите тип **Script (JScript)** и откройте текстовый редактор.
    
-    ![Привет открыть текстовый редактор](./media/app-insights-sample-mscrm/08.png)
-2. Скопируйте код hello из Application Insights. При копировании убедитесь, что tooignore теги сценариев. См. ниже снимок экрана.
+    ![Откройте текстовый редактор](./media/app-insights-sample-mscrm/08.png)
+2. Скопируйте код из Application Insights. При копировании необходимо пропускать теги скриптов. См. ниже снимок экрана.
    
     ![Задайте ключ инструментирования](./media/app-insights-sample-mscrm/09.png)
    
-    Код Hello содержит ключ инструментирования hello, идентифицирующее ваш ресурс Application insights.
+    Код содержит ключ инструментирования, который идентифицирует ресурс Application Insights.
 3. Щелкните «Сохранить», а затем «Опубликовать».
    
     ![Сохранение и публикация](./media/app-insights-sample-mscrm/10.png)
 
 ### <a name="instrument-forms"></a>Формы инструментов
-1. В Microsoft CRM Online откройте форму hello учетной записи
+1. В Microsoft CRM Online откройте форму «Учетная запись».
    
     ![Форма учетной записи](./media/app-insights-sample-mscrm/11.png)
-2. Откройте форму hello свойства
+2. Откройте свойства формы.
    
     ![Свойства формы](./media/app-insights-sample-mscrm/12.png)
-3. Добавить hello JavaScript веб-ресурса, который вы создали
+3. Добавьте созданный веб-ресурс JavaScript.
    
     ![Меню "Добавить"](./media/app-insights-sample-mscrm/13.png)
    
-    ![Добавить веб-ресурс hello](./media/app-insights-sample-mscrm/14.png)
+    ![Добавление веб-ресурса](./media/app-insights-sample-mscrm/14.png)
 4. Сохраните и опубликуйте настройки формы.
 
 ## <a name="metrics-captured"></a>Собранные показатели телеметрии
-Теперь вы настроили сбор данных телеметрии для hello формы. Каждый раз, когда он используется, данные будут отправлены tooyour ресурс Application Insights.
+Теперь сбор данных телеметрии для формы настроен. При каждом использовании данные будут отправляться в ресурс Application Insights.
 
-Ниже приведены примеры данных hello, вы увидите.
+Ниже приведены примеры отображаемых данных.
 
 #### <a name="application-health"></a>Работоспособность приложения
 ![Время загрузки образца страницы](./media/app-insights-sample-mscrm/15.png)
@@ -97,7 +97,7 @@ toomonitor приложения, добавления приложения tooyo
 
 ![Диаграмма "Исключения браузера"](./media/app-insights-sample-mscrm/17.png)
 
-Щелкните диаграмму tooget hello более подробно:
+Щелкните диаграмму, чтобы получить более подробную информацию.
 
 ![Список исключений](./media/app-insights-sample-mscrm/18.png)
 
@@ -130,13 +130,13 @@ toomonitor приложения, добавления приложения tooyo
 ![Страницы по сеансам](./media/app-insights-sample-mscrm/30.png)
 
 ## <a name="sample-code"></a>Пример кода
-[Просмотр образца кода hello](https://dynamicsandappinsights.codeplex.com/).
+[Получите пример кода](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="power-bi"></a>Power BI
-Это можно сделать еще более глубокого анализа, если вы [Экспорт данных hello tooMicrosoft Power BI](app-insights-export-power-bi.md).
+Если [экспортировать данные в Microsoft Power BI](app-insights-export-power-bi.md), то можно выполнить еще более подробный анализ данных.
 
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Образец решения Microsoft Dynamics CRM
-[Ниже приведен образец решения hello, реализованные в Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
+[Ниже приведен простой пример решения, реализованного в Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
 ## <a name="learn-more"></a>Подробнее
 * [Что такое Azure Application Insights?](app-insights-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Identity Protection aaaEnabling | Документы Microsoft"
-description: "Узнайте, как tooenable Azure Active Directory Identity Protection."
+title: "Включение защиты идентификации Azure Active Directory | Документация Майкрософт"
+description: "Узнайте, как включить защиту идентификации Azure Active Directory."
 services: active-directory
 keywords: "защита удостоверений Azure Active Directory, Cloud App Discovery, управление приложениями, безопасность, риск, уровень риска, уязвимость, политика безопасности"
 documentationcenter: 
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d26f466f5c7d6a425528a277d98c2c4b341ff8de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e0683e837086ca08f4b4b3f49695bdd2b4063ea4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Включение защиты идентификации Azure Active Directory
 Защита идентификации Azure Active Directory — это новая возможность, которая обеспечивает единое представление подозрительных операций входа в систему и потенциальных уязвимостей. В этой службе реализованы уведомления, рекомендации по исправлению и политики на основе рисков, помогающие защитить организацию. 
 
-Hello служба обнаруживает подозрительные действия для конечных пользователей и правами доступа (администратора) удостоверений, основании сигналов, таких как атаки методом принудительно атак, утечке учетных данных, входы из незнакомых расположений зараженных устройств tooprotect от этих действий в режиме реального времени. Что более важно этих подозрительных действий, серьезность риск пользователя вычисляется по и политик на основе риска можно настроить и автоматической защиты hello удостоверения вашей организации. Дополнительные сведения см. в статье [Защита идентификации Azure Active Directory](active-directory-identityprotection.md).
+Данная служба обнаруживает подозрительные операции входа в систему по пользовательским и привилегированным (администраторы) удостоверениям по таким признакам, как атаки методом подбора, раскрытые учетные данные, попытки входа в систему из неизвестных расположений и зараженные устройства, чтобы обеспечить защиту в реальном времени. Что более важно, на основе этих подозрительных операций вычисляется серьезность риска пользователя, и можно настроить политики на основе рисков, чтобы обеспечить автоматическую защиту удостоверений своей организации. Дополнительные сведения см. в статье [Защита идентификации Azure Active Directory](active-directory-identityprotection.md).
 
-Приведенные здесь статьи показано, как tooenable Azure Active Directory Identity Protection.
+В этом разделе показано, как включить защиту идентификации Azure Active Directory.
 
-## <a name="steps-tooenable-azure-active-directory-identity-protection"></a>Действия tooenable Azure Active Directory Identity Protection
-1. [Вход](https://ms.portal.azure.com/) tooyour портал управления Azure как глобальный администратор. 
-2. В hello портал Azure, щелкните **Marketplace**.
+## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>Инструкции по включению защиты идентификации Azure Active Directory
+1. [Войдите](https://ms.portal.azure.com/) на портал Azure с правами глобального администратора. 
+2. На портале Azure щелкните **Marketplace**.
    
     ![Создание](./media/active-directory-identityprotection-enable/01.png "Создание")
-3. Выберите из списка приложения hello, **безопасность + удостоверения**.
+3. В списке приложений щелкните **Безопасность+идентификация**.
    
     ![Создание](./media/active-directory-identityprotection-enable/02.png "Создание")
 4. Щелкните **Azure AD Identity Protection**(Защита идентификации Azure AD).
    
     ![Создание](./media/active-directory-identityprotection-enable/03.png "Создание")
-5. На hello **Azure AD Identity Protection** колонка, щелкните **создать**.
+5. В колонке **Azure AD Identity Protection** (Защита идентификации Azure AD) щелкните **Создать**.
    
     ![Создание](./media/active-directory-identityprotection-enable/04.png "Создание")
 

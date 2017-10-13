@@ -1,6 +1,6 @@
 ---
-title: "aaaUpdate hello Azure Linux Agent из GitHub | Документы Microsoft"
-description: "Узнайте, как tooupdate агент Azure Linux для ВМ Linux в последней версии Azure toohello из GitHub"
+title: "Обновление агента Linux для Azure из GitHub | Документация Майкрософт"
+description: "Узнайте, как обновить агент Linux для Azure на виртуальной машине Linux до последней версии с сайта GitHub."
 services: virtual-machines-linux
 documentationcenter: 
 author: SuperScottz
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mingzhan
-ms.openlocfilehash: 4ce7c56efc1e6563e6415f7687573f9fb9e7b4c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c79e37976a58ae5384b5856e0f7f258a773ef0fd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="how-tooupdate-hello-azure-linux-agent-on-a-vm"></a>Как tooupdate hello агент Azure Linux на виртуальной Машине
+# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Как обновить агент Azure Linux на виртуальной машине
 
-tooupdate вашей [агент Azure Linux](https://github.com/Azure/WALinuxAgent) на виртуальной Машине Linux в Azure, необходимо иметь:
+Для обновления [агента Linux для Azure](https://github.com/Azure/WALinuxAgent) на виртуальной машине Linux требуется:
 
 - работающая виртуальная машина Linux в Azure;
-- Toothat подключение виртуальных Машин Linux с помощью SSH.
+- подключение к этой виртуальной машине Linux с помощью протокола SSH.
 
-Всегда следует выполнять проверку для пакета в репозитории дистрибутив Linux hello сначала. Возможно доступен пакет hello не может быть hello последнюю версию, однако разрешение автоматическое обновление гарантирует hello агент Linux, всегда получают hello последнее обновление. При возникновении проблем при установке из hello диспетчеров пакетов, необходимо найти поддержки поставщика дистрибутив hello.
+Пакет нужно всегда сначала проверять в репозитории дистрибутива Linux. Возможно, доступный пакет будет не последней версии. Тем не менее после включения автоматического обновления агент Linux будет всегда получать последнее обновление. При возникновении проблем во время установки из диспетчеров пакетов за поддержкой обратитесь к поставщику дистрибутива.
 
-## <a name="updating-hello-azure-linux-agent"></a>Обновление hello Azure Linux Agent
+## <a name="updating-the-azure-linux-agent"></a>Обновление агента Linux для Azure
 
 ## <a name="ubuntu"></a>Ubuntu
 
@@ -46,7 +46,7 @@ apt list --installed | grep walinuxagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo apt-get install walinuxagent
@@ -54,7 +54,7 @@ sudo apt-get install walinuxagent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -67,13 +67,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 #### <a name="restart-agent-for-1404"></a>Перезапуск агента для версии 14.04
 
@@ -103,14 +103,14 @@ dpkg -l | grep waagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo apt-get install waagent
 ```
 
 #### <a name="enable-agent-auto-update"></a>Включение автоматического обновления агента
-В этой версии Debian нет версии агента не ниже 2.0.16, поэтому для нее недоступно автоматическое обновление. Hello вывод hello выше команду Показать, если пакет hello актуален.
+В этой версии Debian нет версии агента не ниже 2.0.16, поэтому для нее недоступно автоматическое обновление. Проанализировав выходные данные команды выше, можно определить, обновлен ли пакет.
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie" и Debian 9 "Stretch"
 
@@ -126,14 +126,14 @@ apt list --installed | grep walinuxagent
 sudo apt-get -qq update
 ```
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo apt-get install waagent
 ```
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления 
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -146,13 +146,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 ```
 sudo systemctl restart walinuxagent.service
@@ -174,7 +174,7 @@ sudo yum list WALinuxAgent
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo yum install WALinuxAgent
@@ -182,7 +182,7 @@ sudo yum install WALinuxAgent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления 
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -195,13 +195,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 ```
 sudo service waagent restart
@@ -221,7 +221,7 @@ sudo yum list WALinuxAgent
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo yum install WALinuxAgent  
@@ -229,7 +229,7 @@ sudo yum install WALinuxAgent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления 
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -242,13 +242,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 ```bash
 sudo systemctl restart waagent.service
@@ -266,9 +266,9 @@ zypper info python-azure-agent
 
 #### <a name="check-available-updates"></a>Проверка доступных обновлений
 
-Hello выше выходных данных будет показано, если пакет hello работает toodate.
+Проанализировав выходные данные выше, можно определить, обновлен ли пакет.
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo zypper install python-azure-agent
@@ -276,7 +276,7 @@ sudo zypper install python-azure-agent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления 
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -289,13 +289,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -311,9 +311,9 @@ zypper info python-azure-agent
 
 #### <a name="check-available-updates"></a>Проверка доступных обновлений
 
-В выходных данных hello hello выше здесь вы найдете Если пакет hello не требует обновления.
+Проанализировав выходные данные выше, можно определить, обновлен ли пакет.
 
-#### <a name="install-hello-latest-package-version"></a>Установите последнюю версию пакета hello
+#### <a name="install-the-latest-package-version"></a>Установка последней версии пакета
 
 ```bash
 sudo zypper install python-azure-agent
@@ -321,7 +321,7 @@ sudo zypper install python-azure-agent
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления 
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -334,13 +334,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-hello-waagent-service"></a>Перезапустите службу waagent hello
+### <a name="restart-the-waagent-service"></a>Перезапустите службу waagent
 
 ```bash
 sudo systemctl restart waagent.service
@@ -348,15 +348,15 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 и 7
 
-Oracle Linux, убедитесь, что hello `Addons` репозитория включена. Выберите файл hello tooedit `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) или `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) и измените строку hello `enabled=0` слишком`enabled=1` под **[ol6_addons]** или **[ol7_addons]** в этом файле.
+При работе с Oracle Linux убедитесь, что включен репозиторий `Addons` . Откройте для редактирования файл `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) или `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux) и замените в нем строку `enabled=0` на строку `enabled=1` в разделе **[ol6_addons]** или **[ol7_addons]**.
 
-Затем tooinstall hello последнюю версию hello Azure Linux Agent типа:
+Затем введите следующие команды для установки последней версии агента Linux для Azure:
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-Если вы не нашли репозитория hello надстройку можно просто добавить эти строки в конце hello файла .repo tooyour Oracle Linux выпуск в соответствии с:
+Если вы не нашли репозиторий надстроек, можно просто добавить следующие строки в конец REPO-файла в соответствии с используемой версией Oracle Linux.
 
 Для виртуальных машин Oracle Linux 6.
 
@@ -386,15 +386,15 @@ enabled=0
 sudo yum update WALinuxAgent
 ```
 
-Обычно это все, что требуется, но если для какой-либо причине требуется tooinstall из https://github.com напрямую, hello используйте следующие шаги.
+Обычно это все, что требуется. Но если по какой-либо причине необходимо установить его с сайта https://github.com напрямую, сделайте следующее.
 
 
-## <a name="update-hello-linux-agent-when-no-agent-package-exists-for-distribution"></a>Обновить агент Linux hello существование без агента пакета для распространения
+## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Обновление агента Linux, если пакет агента для дистрибутива не существует
 
-Для установки wget (отсутствуют некоторые дистрибутивы, не устанавливайте значение по умолчанию, например Redhat CentOS и Oracle Linux версии 6.4 и 6.5) введите `sudo yum install wget` hello в командной строке.
+Установите wget (некоторые дистрибутивы не устанавливают его по умолчанию, например Redhat, CentOS и Oracle Linux версий 6.4 и 6.5), введя `sudo yum install wget` в командной строке.
 
-### <a name="1-download-hello-latest-version"></a>1. Загрузка последней версии hello
-Откройте [hello выпуска Azure Linux Agent в GitHub](https://github.com/Azure/WALinuxAgent/releases) в веб-страницы, а также узнать номер последней версии hello. (Номер текущей версии можно узнать, введя `waagent --version`.)
+### <a name="1-download-the-latest-version"></a>1. Скачайте последнюю версию
+Откройте [выпуск агента Linux для Azure в GitHub](https://github.com/Azure/WALinuxAgent/releases) на веб-странице и узнайте номер последней версии. (Номер текущей версии можно узнать, введя `waagent --version`.)
 
 #### <a name="for-version-22x-or-later-type"></a>Для версии 2.2.x или более поздней версии введите:
 ```bash
@@ -403,7 +403,7 @@ unzip v2.2.x.zip.zip
 cd WALinuxAgent-2.2.x
 ```
 
-Hello следующую строку версии 2.2.0 в качестве примера используется:
+В следующей строке используется версия 2.2.0 в качестве примера:
 
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.14.zip
@@ -411,10 +411,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-hello-azure-linux-agent"></a>2. Установите агент Azure Linux hello
+### <a name="2-install-the-azure-linux-agent"></a>2) Установка агента Linux для Azure
 
 #### <a name="for-version-22x-use"></a>Для версии 2.2.x введите:
-Может потребоваться пакет hello tooinstall `setuptools` сначала — в разделе [здесь](https://pypi.python.org/pypi/setuptools). Далее выполните:
+Возможно, сначала потребуется установить пакет `setuptools`. Ознакомьтесь со сведениями, приведенными [здесь](https://pypi.python.org/pypi/setuptools). Далее выполните:
 
 ```bash
 sudo python setup.py install
@@ -422,7 +422,7 @@ sudo python setup.py install
 
 #### <a name="ensure-auto-update-is-enabled"></a>Гарантия включения автоматического обновления
 
-Во-первых проверьте toosee, если он включен:
+Сначала проверьте, включено ли автоматическое обновление:
 
 ```bash
 cat /etc/waagent.conf
@@ -435,13 +435,13 @@ cat /etc/waagent.conf
 AutoUpdate.Enabled=y
 ```
 
-tooenable запуска:
+Чтобы включить автоматическое обновление, выполните следующую команду:
 
 ```bash
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-hello-waagent-service"></a>3. Перезапустите службу waagent hello
+### <a name="3-restart-the-waagent-service"></a>3. Перезапустите службу waagent
 Для большинства дистрибутивов Linux:
 
 ```bash
@@ -460,14 +460,14 @@ sudo service walinuxagent restart
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-hello-azure-linux-agent-version"></a>4. Проверить версию агента Azure Linux hello
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Подтвердите версию агента Linux для Azure
     
 ```bash
 waagent -version
 ```
 
-Для CoreOS hello выше команды может не работать.
+Для CoreOS приведенная выше команда может не работать.
 
-Вы увидите, что hello Azure Linux Agent версия была обновленных toohello новой версии.
+Вы увидите, что агент Linux для Azure обновлен до новой версии.
 
-Дополнительные сведения о hello агент Azure Linux см. в разделе [README агента Azure Linux](https://github.com/Azure/WALinuxAgent).
+Дополнительные сведения об агенте Linux для Azure см. в [файле сведений агента Linux для Azure](https://github.com/Azure/WALinuxAgent).

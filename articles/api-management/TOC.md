@@ -3,9 +3,13 @@
 # Начало работы
 ## [Управление вашим первым API](api-management-get-started.md)
 ## [Защита API с помощью ограничений скорости](api-management-howto-product-with-rules.md)
-## [Добавить кэширование tooimprove производительность](api-management-howto-cache.md)
+## [Добавление кэширования для повышения производительности](api-management-howto-cache.md)
 ## [Часто задаваемые вопросы](api-management-faq.md)
 # Практическое руководство
+## Установка службы APIM
+### [Создание экземпляра APIM](get-started-create-service-instance.md)
+### [Обновление и масштабирование](upgrade-and-scale.md)
+### [Настройка личного домена](configure-custom-domain.md)
 ## Разработка интерфейсов API
 ### [Добавление и публикация продукта, использующего API](api-management-howto-add-products.md)
 ### [Добавление операций](api-management-howto-add-operations.md)
@@ -13,8 +17,8 @@
 ### [Импорт определения API](api-management-howto-import-api.md)
 ## Защита серверной части
 ### [Защита серверной части веб-API с помощью AAD](api-management-howto-protect-backend-with-aad.md)
-### [Подключить виртуальную сеть tooa](api-management-using-with-vnet.md)
-### [Подключение tooan внутреннюю виртуальную сеть](api-management-using-with-internal-vnet.md)
+### [Подключение к виртуальной сети](api-management-using-with-vnet.md)
+### [Подключение к внутренней виртуальной сети](api-management-using-with-internal-vnet.md)
 ### [Интеграция шлюза приложений с внутренней виртуальной сетью](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [Взаимная аутентификация на основе сертификатов](api-management-howto-mutual-certificates.md)
 ## Настройка политик
@@ -26,7 +30,7 @@
 ### [Обзор политик](api-management-howto-policies.md)
 ### [Управление секретами с помощью свойств](api-management-howto-properties.md)
 ### [Защита API-интерфейсов с помощью проверки подлинности на основе сертификата клиента](api-management-howto-mutual-certificates-for-clients.md)
-## Настроить взаимодействие разработчика с hello
+## Настройка процесса разработки
 ### [Изменение содержимого и макета страницы](api-management-modify-content-layout.md)
 ### [Настройка стиля элементов страницы](api-management-customize-styles.md)
 ### [Настройка системных страниц с помощью шаблонов](api-management-developer-portal-templates.md)
@@ -37,10 +41,10 @@
 ### [Обеспечение поддержки консольного приложения OAuth](api-management-howto-oauth2.md)
 ## Управление в производственной среде
 ### [Управление группами](api-management-howto-create-groups.md)
-### [Развертывание toomultiple Azure областей](api-management-howto-deploy-multi-region.md)
-### [Журнал событий tooAzure концентраторов событий](api-management-howto-log-event-hubs.md)
+### [Развертывание в несколько регионов Azure](api-management-howto-deploy-multi-region.md)
+### [Регистрация событий в концентраторах событий Azure](api-management-howto-log-event-hubs.md)
 ### [Настройка аварийного восстановления с помощью резервного копирования и восстановления](api-management-howto-disaster-recovery-backup-restore.md)
-### [Трассировка вызовов с hello инспектора API](api-management-howto-api-inspector.md)
+### [Трассировка вызовов с помощью инспектора API](api-management-howto-api-inspector.md)
 ### [Управление учетными записями пользователей](api-management-howto-create-or-invite-developers.md)
 ### [Управление с помощью службы автоматизации](automation-manage-api-management.md)
 ### [Настройка с помощью Git](api-management-configuration-repository-git.md)
@@ -51,7 +55,7 @@
 #### [Краткое руководство](../service-fabric/service-fabric-api-management-quick-start.md)
 
 # Справочные материалы
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [REST](/rest/api/apimanagement/)
 ## [REST (оригинал)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 ## [Политики](api-management-policies.md)
@@ -81,14 +85,14 @@
 ## [Служба управления API идеально работает с другими службами Azure](http://weblogs.asp.net/cschittko/api-management-plays-well-with-other-azure-services)
 ## [Подключаемый модуль службы управления API для SmartBear Ready! API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
 ## [Стратегия развития Azure](https://azure.microsoft.com/roadmap/)
-## [Подключение концентраторов событий tooAPI управления](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
+## [Подключение концентраторов событий к службе управления API](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
 ## [Использование служб SOAP для WCF по протоколу HTTP](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [Форум MSDN](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Цены](https://azure.microsoft.com/pricing/details/api-management/)
 ## [Калькулятор цен](https://azure.microsoft.com/pricing/calculator/)
-## [Предоставляют доступ по принципу RBAC с помощью API-интерфейса REST hello](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
+## [Предоставление доступа по модели RBAC с помощью REST API](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [Обновления службы](https://azure.microsoft.com/updates/?product=api-management)
-## [Настройка toocall почтальон API-интерфейса API управления](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
+## [Настройка PostMan для вызова интерфейсов API службы управления API](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
 ## [Видеоролики](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
 ## [Технический документ. Облачное управление API](http://j.mp/ms-apim-whitepaper)

@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария PowerShell - маршрутизацию трафика для обеспечения высокой доступности приложений aaaAzure | Документы Microsoft"
+title: "Пример скрипта Azure PowerShell. Маршрутизация трафика для обеспечения высокой доступности приложений | Документация Майкрософт"
 description: "Пример скрипта Azure PowerShell для маршрутизация трафика с целью обеспечения высокой доступности приложений."
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 11d15780403b4ed79e85d7b3495bc5d674bfdaee
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2f0ac4fd1779661aab04bafb217e64af5d619a2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>Маршрутизация трафика для обеспечения высокой доступности приложений
 
-Этот скрипт создает группу ресурсов, два плана службы приложений, два веб-приложения, профиль и две конечные точки диспетчера трафика. Диспетчер трафика направляет трафик toohello приложения в одной области, как основной регион hello и дополнительный регион toohello при недоступности приложения hello в основном регионе hello. Перед выполнением сценария hello, необходимо изменить hello MyWebApp, MyWebAppL1 и MyWebAppL2 значения toounique значения в пределах Azure. После выполнения сценария hello, можно открыть приложение hello в основной регион hello с mywebapp.trafficmanager.net hello URL-адрес.
+Этот скрипт создает группу ресурсов, два плана службы приложений, два веб-приложения, профиль и две конечные точки диспетчера трафика. Диспетчер трафика направляет трафик в приложение в основном регионе. Если оно недоступно, трафик направляется в дополнительный регион. Перед выполнением этого скрипта необходимо задать уникальные в Azure значения MyWebApp, MyWebAppL1 и MyWebAppL2. После выполнения вы сможете подключиться к приложению в основном регионе, используя URL-адрес mywebapp.trafficmanager.net.
 
-При необходимости установите Azure PowerShell с помощью инструкции hello, найденные в hello hello [руководство по Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), а затем запустите `Login-AzureRmAccount` toocreate соединения с Azure.
+При необходимости установите Azure PowerShell с помощью инструкции, приведенной в [руководстве Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), а затем выполните команду `Login-AzureRmAccount`, чтобы создать подключение к Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/06/2017
 [!code-powershell[main](../../../powershell_scripts/traffic-manager/direct-traffic-for-increased-application-availability/direct-traffic-for-increased-application-availability.ps1 "Route traffic for high availability")]
 
 
-Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
+Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup1
@@ -44,19 +44,19 @@ Remove-AzureRmResourceGroup -Name myResourceGroup2
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды toocreate группы ресурсов, веб-приложения, профиль диспетчера трафика hello и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
+Для создания группы ресурсов, веб-приложения, профиля диспетчера трафика и всех связанных ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)  | Создает группу ресурсов, в которой хранятся все ресурсы. |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Создает план службы приложений. Это как ферма сервера для веб-приложения Azure. |
-| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Создает веб-приложение Azure в течение hello план служб приложений. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Создает веб-приложение Azure в течение hello план служб приложений. |
+| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Создает веб-приложение Azure в плане службы приложений. |
+| [Set-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Создает веб-приложение Azure в плане службы приложений. |
 | [New-AzureRmTrafficManagerProfile](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile) | Создает профиль диспетчера трафика Azure. |
-| [New-AzureRmTrafficManagerEndpoint](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerendpoint) | Добавляет конечную точку tooan профиль диспетчера трафика Azure. |
+| [New-AzureRmTrafficManagerEndpoint](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerendpoint) | Добавляет конечную точку в профиль диспетчера трафика Azure. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о hello Azure PowerShell см. в разделе [документация по Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+Дополнительные сведения о Azure PowerShell см. в [документации по Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 
-Дополнительные сетевые образцы сценариев PowerShell можно найти в hello [документации Azure Общие сведения о сети](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Дополнительные примеры скриптов PowerShell для сетей см. в [обзорной документации по сетям Azure](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

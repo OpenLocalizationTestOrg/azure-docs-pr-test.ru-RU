@@ -1,6 +1,6 @@
 ---
-title: "хранилище очередей toouse aaaHow (C++) | Документы Microsoft"
-description: "Узнайте, как toouse hello службы хранилища очередей в Azure. Примеры написаны на C++."
+title: "Использование хранилища очередей (C++) | Документация Майкрософт"
+description: "Узнайте, как использовать службу хранилища очередей в Azure. Примеры написаны на C++."
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -14,22 +14,22 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.openlocfilehash: b0cddf017878e9fab87f47d24b2906e40c9f4ad5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5e81d5e0af9871099b7f921f355cf94249e4d30c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-toouse-queue-storage-from-c"></a>Как toouse хранилища очередей из C++
+# <a name="how-to-use-queue-storage-from-c"></a>Использование хранилища очередей из C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве будет показано, как с помощью распространенных сценариев tooperform hello службы хранилища очередей Azure. Примеры Hello на языке C++ и использовать hello [клиентская библиотека хранилища Azure для C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Hello сценарии включают **Вставка**, **Просмотр**, **начало**, и **удаление** очередь сообщений, а также  **Создание и удаление очередей**.
+В этом руководстве показано, как реализовать типичные сценарии с использованием службы хранения очередей Azure. Примеры написаны на C++ и используют [клиентскую библиотеку хранилища Azure для C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Здесь описаны такие сценарии, как **вставка**, **просмотр**, **получение** и **удаление** сообщений очереди, а также **создание и удаление очередей**.
 
 > [!NOTE]
-> Это руководство по цели hello клиентская библиотека хранилища Azure для C++ версии 1.0.0 и более поздних версий. Hello рекомендуемое версии клиентской библиотеки хранилища 2.2.0, которая доступна через [NuGet](http://www.nuget.org/packages/wastorage) или [GitHub](http://github.com/Azure/azure-storage-cpp/).
+> Данное руководство предназначено для клиентской библиотеки хранилища Azure для С++ версии 1.0.0 и выше. Рекомендуемая версия клиентской библиотеки хранилища — 2.2.0. Она доступна на сайте [NuGet](http://www.nuget.org/packages/wastorage) или [GitHub](http://github.com/Azure/azure-storage-cpp/).
 > 
 > 
 
@@ -40,19 +40,19 @@ ms.lasthandoff: 10/06/2017
 ## <a name="create-a-c-application"></a>Создание приложения на C++
 В этом руководстве будут использоваться компоненты хранилища, которые могут выполняться в приложениях C++.
 
-toodo таким образом, вам потребуется tooinstall hello клиентская библиотека хранилища Azure для C++ и создать учетную запись хранилища Azure в подписке Azure.
+Для этого необходимо установить клиентскую библиотеку хранилища Azure для C++ и создать учетную запись хранения Azure в подписке Azure.
 
-hello tooinstall клиентская библиотека хранилища Azure для C++, можно использовать следующие методы hello:
+Чтобы установить клиентскую библиотеку хранилища для C++, можно использовать следующие методы.
 
-* **Linux —** выполните hello инструкциями, приведенными в hello [клиентская библиотека хранилища Azure для C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) страницы.
-* **Windows:** в Visual Studio нажмите **Инструменты > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**. Команда hello введите следующее в hello [консоль диспетчера пакетов NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) и нажмите клавишу **ввод**.
+* **Linux:** следуйте инструкциям, указанным в файле README [клиентской библиотеки хранилища Azure для C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .
+* **Windows:** в Visual Studio нажмите **Инструменты > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**. Введите следующую команду в [консоли диспетчера пакетов NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) и нажмите клавишу **ВВОД**.
 
 ```  
 Install-Package wastorage
 ```
 
-## <a name="configure-your-application-tooaccess-queue-storage"></a>Настройка вашего приложения tooaccess хранилища очередей
-Добавьте следующие hello включать инструкции toohello вверху файла C++ hello место toouse hello Azure API-интерфейсы tooaccess очереди хранилища:  
+## <a name="configure-your-application-to-access-queue-storage"></a>Настройка приложения для доступа к хранилищу очередей
+Если нужно использовать API-интерфейсы Azure для доступа к очередям, добавьте следующие инструкции импорта в верхнюю часть файла C++.  
 
 ```cpp
 #include <was/storage_account.h>
@@ -60,26 +60,26 @@ Install-Package wastorage
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Настройка строки подключения к хранилищу Azure
-Клиент хранилища Azure использует хранилища конечные точки toostore соединения строки и учетные данные для доступа к службам данных управления. При работе в клиентском приложении, необходимо указать строку соединения хранения hello в hello следующая формата, с помощью hello имя учетной записи и hello хранилища ключи доступа к хранилищу для учетной записи хранения hello, перечисленные в hello [портала Azure](https://portal.azure.com)для hello *AccountName* и *AccountKey* значения. Сведения об учетных записях хранения и ключах доступа см. в статье[Об учетных записях хранения Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). В этом примере показано, как объявить строки подключения hello toohold статического поля:  
+Клиент хранилища Azure использует строку подключения с целью хранения конечных точек и учетных данных для доступа к службам управления данными. При запуске в клиентском приложении необходимо указать строку подключения для хранилища в следующем формате (в качестве параметров *AccountName* и *AccountKey* укажите имя и ключ доступа своей учетной записи хранения, их можно получить на [портале Azure](https://portal.azure.com)). Сведения об учетных записях хранения и ключах доступа см. в статье[Об учетных записях хранения Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). В этом примере показано, как объявить статическое поле для размещения строки подключения:  
 
 ```cpp
-// Define hello connection-string with your values.
+// Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-tootest приложения на локальном компьютере Windows, можно использовать hello Microsoft Azure [эмулятор хранилища](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , установленная с hello [пакета Azure SDK](https://azure.microsoft.com/downloads/). Эмулятор хранилища Hello — это программа, которая имитирует hello больших двоичных объектов, очередей и таблиц служб, доступных в Azure на локальном компьютере разработчика. Hello следующем примере показано, как объявить статическое поле toohold hello соединения строки tooyour эмулятора локального хранилища:  
+Чтобы протестировать приложение на локальном компьютере Windows, можно использовать [эмулятор хранения](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) Microsoft Azure, установленный вместе с [пакетом SDK Azure](https://azure.microsoft.com/downloads/). Эмулятор хранения — это программа, моделирующая службы больших двоичных объектов, очередей и таблиц, доступных в Azure на локальном компьютере разработки. В следующем примере показано, как объявить статическое поле для размещения строки подключения для эмулятора локального хранилища.  
 
 ```cpp
-// Define hello connection-string with Azure Storage Emulator.
+// Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Эмулятор хранилища Azure hello toostart, выберите hello **запустить** или клавишу hello **Windows** ключа. Начните вводить **эмулятор хранилища Azure**и выберите **эмулятор хранилища Microsoft Azure** hello списке приложений.
+Чтобы запустить эмулятор хранения Azure, нажмите кнопку **Пуск** или клавишу **Windows**. Начните набирать **эмулятор хранения Azure** и выберите **эмулятор хранения Microsoft Azure** из списка приложений.
 
-Hello следующие образцы предполагается, что используется один из этих двух методов tooget hello строки подключения к хранилищу.
+В приведенных ниже примерах предполагается, что вы использовали одно из этих двух определений для получения строки подключения к хранилищу.
 
 ## <a name="retrieve-your-connection-string"></a>Получить строку подключения
-Можно использовать hello **cloud_storage_account** класса toorepresent сведений учетной записи хранилища. tooretrieve данные из строки подключения к хранилищу hello учетной записи хранилища, вы можете использовать hello **проанализировать** метод.
+Информацию о своей учетной записи хранения можно представить с помощью класса **cloud_storage_account**. Чтобы получить данные учетной записи хранения из строки подключения хранилища, можно использовать метод **синтаксического анализа** .
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -87,7 +87,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>Практическое руководство. Создание очереди
-Объект **cloud_queue_client** позволяет получать ссылки на очереди. Hello следующий код создает **cloud_queue_client** объекта.
+Объект **cloud_queue_client** позволяет получать ссылки на очереди. Следующий код создает объект **cloud_queue_client**.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -97,115 +97,115 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 ```
 
-Используйте hello **cloud_queue_client** tooget требуется toouse очереди toohello ссылку объекта. Можно создать очередь hello, если он не существует.
+С помощью объекта **cloud_queue_client** получите ссылку на очередь, которую необходимо использовать. Очередь можно создать, если она не существует.
 
 ```cpp
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Create hello queue if it doesn't already exist.
+// Create the queue if it doesn't already exist.
  queue.create_if_not_exists();  
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Практическое руководство. Вставка сообщения в очередь
-tooinsert сообщения в существующую очередь, сначала создайте **cloud_queue_message**. Затем вызовите hello **add_message** метод. Объект **cloud_queue_message** может быть создан из строки или массива **байтов**. Ниже приведен код (если он не существует), который создает очередь и вставок приветственное сообщение «Hello, World»:
+Чтобы вставить сообщение в существующую очередь, сначала создайте новый объект **cloud_queue_message**. Затем вызовите метод **add_message**. Объект **cloud_queue_message** может быть создан из строки или массива **байтов**. Ниже приведен код, который создает очередь (если она отсутствует) и вставляет сообщение "Hello World".
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Create hello queue if it doesn't already exist.
+// Create the queue if it doesn't already exist.
 queue.create_if_not_exists();
 
-// Create a message and add it toohello queue.
+// Create a message and add it to the queue.
 azure::storage::cloud_queue_message message1(U("Hello, World"));
 queue.add_message(message1);  
 ```
 
-## <a name="how-to-peek-at-hello-next-message"></a>Как: Просмотр следующего сообщения hello
-Можно считывать сообщения hello в hello передней части очереди, не удаляя его из очереди hello, вызывающему Привет **peek_message** метод.
+## <a name="how-to-peek-at-the-next-message"></a>Практическое руководство. Просмотр следующего сообщения
+Вы можете просмотреть сообщение в начале очереди, не удаляя его из очереди, вызвав метод **peek_message**.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Peek at hello next message.
+// Peek at the next message.
 azure::storage::cloud_queue_message peeked_message = queue.peek_message();
 
-// Output hello message content.
+// Output the message content.
 std::wcout << U("Peeked message content: ") << peeked_message.content_as_string() << std::endl;
 ```
 
-## <a name="how-to-change-hello-contents-of-a-queued-message"></a>Способ: измените содержимое hello сообщение из очереди
-Вы можете изменить содержимое сообщений на месте в очереди hello hello. Если сообщение hello представляет рабочей задачи, можно использовать этот компонент tooupdate hello состояние задачи рабочего hello. После кода Hello обновляется приветственное сообщение очереди новое содержимое и наборы hello tooextend время ожидания видимости другой 60 секунд. Сохраняет состояние работ, сопряженные с приветственное сообщение hello и предоставляет другой минуты toocontinue работа на приветственное сообщение клиента hello. Можно использовать этот рабочих процессов способ tootrack многоэтапной для очереди сообщений без необходимости toostart через от начала hello при неудачном завершении шага обработки из-за toohardware или ошибок программного обеспечения. Как правило будет хранить значение числа повторов и если приветственное сообщение повторяется более n раз, следует удалить его. Это обеспечивает защиту от сообщений, которые инициируют ошибку приложения при каждой попытке обработки.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Практическое руководство. Изменение содержимого сообщения в очереди
+Вы можете изменить содержимое сообщения непосредственно в очереди. Если сообщение представляет собой рабочую задачу, можно использовать эту функцию для обновления состояния рабочей задачи. Следующий код добавляет новое содержимое в очередь сообщений и продлевает время ожидания видимости еще на 60 секунд. Это сохраняет состояние работы, связанной с данным сообщением, и позволяет клиенту продолжить работу с сообщением на протяжении еще одной минуты. Этот метод можно использовать для отслеживания многошаговых рабочих процессов по сообщениям в очереди без необходимости начинать с самого начала в случае сбоя шага обработки в связи с ошибкой аппаратного или программного обеспечения. Обычно также сохраняется счетчик повторов; если количество повторов сообщения превысит n раз, его нужно удалить. Это обеспечивает защиту от сообщений, которые инициируют ошибку приложения при каждой попытке обработки.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_conection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Get hello message from hello queue and update hello message contents.
-// hello visibility timeout "0" means make it visible immediately.
-// hello visibility timeout "60" means hello client can get another minute toocontinue
-// working on hello message.
+// Get the message from the queue and update the message contents.
+// The visibility timeout "0" means make it visible immediately.
+// The visibility timeout "60" means the client can get another minute to continue
+// working on the message.
 azure::storage::cloud_queue_message changed_message = queue.get_message();
 
 changed_message.set_content(U("Changed message"));
 queue.update_message(changed_message, std::chrono::seconds(60), true);
 
-// Output hello message content.
+// Output the message content.
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-hello-next-message"></a>Как: Отмена очередь следующего сообщения hello
-Код удаляет сообщение из очереди в два этапа. При вызове **get_message**, вы получаете следующее сообщение hello в очереди. Сообщение, возвращенное из **get_message** становится невидимой tooany другой код, чтение сообщений из этой очереди. toofinish удаление приветственное сообщение из очереди hello, необходимо также вызвать **delete_message**. Это двухэтапный процесс удаления сообщения подтверждает, если tooprocess получит сообщение toohardware или ошибок программного обеспечения, другой экземпляр кода из-за сбоя программы hello одного сообщения и повторите попытку. Вызовы кода **delete_message** сразу после обработки сообщения hello.
+## <a name="how-to-de-queue-the-next-message"></a>Практическое руководство. Удаление следующего сообщения из очереди
+Код удаляет сообщение из очереди в два этапа. При вызове **get_message** вы получаете следующее сообщение в очереди. Сообщение, возвращаемое методом **get_message**, становится невидимым для другого кода, считывающего сообщения из этой очереди. Чтобы завершить удаление сообщения из очереди, необходимо также вызвать метод **delete_message**. Этот двухэтапный процесс удаления сообщения позволяет удостовериться, что если коду не удастся обработать сообщение из-за сбоя оборудования или программного обеспечения, другой экземпляр кода сможет получить то же сообщение и повторить попытку. Код вызывает метод **delete_message** сразу после обработки сообщения.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Get hello next message.
+// Get the next message.
 azure::storage::cloud_queue_message dequeued_message = queue.get_message();
 std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() << std::endl;
 
-// Delete hello message.
+// Delete the message.
 queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Дополнительные параметры для удаления сообщений из очереди
-Способ извлечения сообщения из очереди можно настроить двумя способами. Во-первых можно получить пакет сообщений (вверх too32). Во-вторых можно задать более длинный или короткий невидимости тайм-аута, позволяя вашему коду больше или меньше toofully времени обработки каждого сообщения. Hello следующий пример кода использует hello **get_messages** метод tooget 20 сообщений в одном вызове. Затем он обрабатывает каждое сообщение с помощью цикла **for** . Он также устанавливает минут toofive hello невидимости время ожидания для каждого сообщения. Обратите внимание, что hello 5 минут запускается для всех сообщений в hello же время, поэтому после 5 минут с момента вызова hello слишком**get_messages**, все сообщения, которые не были удалены становятся видимыми.
+Способ извлечения сообщения из очереди можно настроить двумя способами. Во-первых, можно получить пакет сообщений (до 32 сообщений). Во-вторых, можно задать более длительное или короткое время ожидания видимости, чтобы предоставить коду больше или меньше времени на полную обработку каждого сообщения. В следующем примере кода метод **get_messages** используется для получения 20 сообщений за один вызов. Затем он обрабатывает каждое сообщение с помощью цикла **for** . Он также задает время ожидания невидимости 5 минут для каждого сообщения. Обратите внимание, что пятиминутный период начинается для всех сообщений одновременно, поэтому по прошествии 5 минут с момента вызова **get_messages** все сообщения, которые не были удалены, снова становятся видимыми.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
 // Dequeue some queue messages (maximum 32 at a time) and set their visibility timeout to
@@ -213,33 +213,33 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 azure::storage::queue_request_options options;
 azure::storage::operation_context context;
 
-// Retrieve 20 messages from hello queue with a visibility timeout of 300 seconds.
+// Retrieve 20 messages from the queue with a visibility timeout of 300 seconds.
 std::vector<azure::storage::cloud_queue_message> messages = queue.get_messages(20, std::chrono::seconds(300), options, context);
 
 for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 {
-    // Display hello contents of hello message.
+    // Display the contents of the message.
     std::wcout << U("Get: ") << it->content_as_string() << std::endl;
 }
 ```
 
-## <a name="how-to-get-hello-queue-length"></a>Как: hello длина очереди получения
-Можно получить оценку hello количество сообщений в очереди. Hello **download_attributes** метод запрашивает hello очереди службы tooretrieve атрибуты очереди hello, включая количество сообщений hello. Hello **approximate_message_count** метод возвращает hello приблизительное количество сообщений в очереди hello.
+## <a name="how-to-get-the-queue-length"></a>Практическое руководство. Получение длины очереди
+Вы можете узнать приблизительное количество сообщений в очереди. Метод **download_attributes** отправляет в службу очередей запрос на извлечение атрибутов очереди, включая количество сообщений. Метод **Approximate_message_count** возвращает приблизительное количество сообщений в очереди.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Fetch hello queue attributes.
+// Fetch the queue attributes.
 queue.download_attributes();
 
-// Retrieve hello cached approximate message count.
+// Retrieve the cached approximate message count.
 int cachedMessageCount = queue.approximate_message_count();
 
 // Display number of messages.
@@ -247,27 +247,27 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Практическое руководство. Удаление очереди
-все сообщения hello и очереди, содержащиеся в нем, вызов hello toodelete **delete_queue_if_exists** метод hello объекта очереди.
+Для удаления очереди и всех сообщений в ней вызовите метод **delete_queue_if_exists** для объекта очереди.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create hello queue client.
+// Create the queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference tooa queue.
+// Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// If hello queue exists and delete it.
+// If the queue exists and delete it.
 queue.delete_queue_if_exists();  
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы узнали основы hello хранилища очереди, выполните следующие дополнительные сведения о хранилище Azure toolearn ссылки.
+Теперь, когда вы ознакомились с основными сведениями о хранилище очередей, используйте следующие ссылки для получения дополнительных сведений о хранилище Azure.
 
-* [Как toouse хранилища BLOB-объектов из C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Как toouse хранилище таблиц из C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Использование хранилища BLOB-объектов из C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [Использование табличного хранилища из C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Перечисление ресурсов хранилища Azure в C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 * [Справочник по клиентской библиотеке хранилища для C++](http://azure.github.io/azure-storage-cpp)
 * [Документация по хранилищу Azure](https://azure.microsoft.com/documentation/services/storage/)

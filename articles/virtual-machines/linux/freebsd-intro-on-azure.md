@@ -1,9 +1,9 @@
 ---
-title: "tooFreeBSD aaaIntroduction в Azure | Документы Microsoft"
+title: "Введение в FreeBSD в Azure | Документация Майкрософт"
 description: "Узнайте о том, как использовать виртуальные машины FreeBSD в Azure."
 services: virtual-machines-linux
 documentationcenter: 
-author: KylieLiang
+author: thomas1206
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,49 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/28/2017
-ms.author: kyliel
-ms.openlocfilehash: 43ba7a70ed21e7fb8b331f4a26db0426e098c4aa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.date: 09/13/2017
+ms.author: huishao
+ms.openlocfilehash: 2369bc893d28cf6f6174376eb961049b651c66a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-toofreebsd-on-azure"></a>TooFreeBSD введение в Azure
+# <a name="introduction-to-freebsd-on-azure"></a>Введение в FreeBSD в Azure
 В этом разделе представлен обзор запуска виртуальной машины FreeBSD в Azure.
 
 ## <a name="overview"></a>Обзор
-FreeBSD для Microsoft Azure — Дополнительно операционной системы используется toopower современных серверов, настольных компьютеров и внедренные платформы.
+FreeBSD для Microsoft Azure — это расширенная операционная система, которая использовалась для управления мощными современными серверами, настольными компьютерами и внедренными платформами.
 
-Корпорация Майкрософт предоставление FreeBSD образы в Azure с hello [гостевой агент виртуальной Машины Azure](https://github.com/Azure/WALinuxAgent/) предварительно настроен. В настоящее время hello следующие версии FreeBSD предлагается как изображения корпорацией Майкрософт:
+Корпорация Майкрософт предоставляет образы FreeBSD на платформе Azure с предварительно настроенным [гостевым агентом виртуальной машины Azure](https://github.com/Azure/WALinuxAgent/). В настоящее время она предлагает образы FreeBSD следующих версий:
 
 - FreeBSD 10.3-RELEASE
 - FreeBSD 11.0-RELEASE
+- FreeBSD 11.1-RELEASE
 
-агент Hello отвечает за обмен данными между hello FreeBSD ВМ и hello Azure fabric для операции, такие как подготовка hello виртуальной Машины на первом использовании (имя пользователя, пароль или ключ SSH, имя узла, т. д.) и включение функций для выборочного расширения виртуальной Машины.
+Этот агент отвечает за обмен данными между виртуальной машиной FreeBSD и Azure Fabric при таких операциях, как подготовка виртуальной машины к первому использованию (имя пользователя, пароль или ключ SSH, имя узла и т. д.) и выборочное включение функций расширений виртуальной машины.
 
-Как и для будущих версий FreeBSD стратегии hello toostay текущего и сделать hello последних выпусках доступных вскоре после их публикации hello FreeBSD выпуска инженеров.
+Стратегия в отношении текущей и будущих версий FreeBSD — обеспечивать актуальность и предоставлять последние версии вскоре после их публикации командой технических специалистов по выпуску FreeBSD.
 
 ## <a name="deploying-a-freebsd-virtual-machine"></a>Развертывание виртуальной машины FreeBSD
-Развертывание виртуальной машины FreeBSD представляет собой простой процесс, с помощью образа из hello Azure Marketplace из hello портала Azure:
+В развертывании образа виртуальной машины FreeBSD с помощью образа из Azure Marketplace и портала Azure нет ничего сложного:
 
-- [10.3 FreeBSD на hello Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-- [11.0 FreeBSD на hello Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+- [FreeBSD 10.3 на Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+- [FreeBSD 11.0 на Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/)
+- [FreeBSD 11.1 на Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>Создайте виртуальную машину FreeBSD с помощью Azure CLI 2.0 в FreeBSD.
-Сначала необходимо tooinstall [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) хотя следующую команду на компьютере FreeBSD.
+Сначала необходимо установить [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), выполнив следующую команду на компьютере FreeBSD.
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Если bash не установлены на компьютере FreeBSD, выполните следующую команду перед установкой hello. 
+Если на компьютере FreeBSD не установлена оболочка bash, выполните следующую команду перед установкой. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Если python не установлены на компьютере FreeBSD, выполните следующие команды перед установкой hello. 
+Если на компьютере FreeBSD не установлен python, выполните следующие команды перед установкой. 
 
 ```bash
 sudo pkg install python35
@@ -64,9 +66,9 @@ sudo rm /usr/local/bin/python
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
-Во время установки hello, будет предложено `Modify profile tooupdate your $PATH and enable shell/tab completion now? (Y/n)`. При выборе варианта `y` и введите `/etc/rc.conf` как `a path tooan rc file tooupdate`, может отвечать hello проблема `ERROR: [Errno 13] Permission denied`. tooresolve эту проблему, следует предоставить hello записи справа toocurrent пользователя по файлу hello `etc/rc.conf`.
+Во время установки вам будет задан вопрос `Modify profile to update your $PATH and enable shell/tab completion now? (Y/n)`. Если вы ответили `y` и указали `/etc/rc.conf` в качестве `a path to an rc file to update`, может возникнуть следующая ошибка: `ERROR: [Errno 13] Permission denied`. Чтобы устранить эту проблему, нужно предоставить текущему пользователю права на запись для файла `etc/rc.conf`.
 
-Теперь можно войти в Azure и создать виртуальную машину FreeBSD. Ниже приведен пример toocreate 11.0 FreeBSD виртуальной Машины. Можно также добавить параметр hello `--public-ip-address-dns-name` глобально уникальное имя DNS для только что созданный общедоступный IP-адрес. 
+Теперь можно войти в Azure и создать виртуальную машину FreeBSD. Ниже приведен пример создания виртуальной машины FreeBSD версии 11.0. Также можно добавить параметр `--public-ip-address-dns-name` с глобальным именем DNS для созданного общедоступного IP-адреса. 
 
 ```azurecli
 az login 
@@ -78,7 +80,7 @@ az vm create --name myFreeBSD11 \
     --generate-ssh-keys
 ```
 
-Затем вы можете войти tooyour FreeBSD ВМ через hello IP-адрес, печатаются в hello выше выходных данных для развертывания. 
+Затем вы сможете войти в виртуальную машину FreeBSD с помощью IP-адреса, который приведен в выходных данных описанного выше развертывания. 
 
 ```bash
 ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
@@ -88,22 +90,22 @@ ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 Ниже приведены поддерживаемые во FreeBSD расширения виртуальной машины.
 
 ### <a name="vmaccess"></a>VMAccess
-Hello [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) расширения можно:
+Возможности расширения [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) :
 
-* Сброс пароля hello hello исходного пользователя sudo.
-* Создайте нового пользователя sudo задан пароль hello.
-* Задать ключ hello общедоступного узла с заданным ключом hello.
-* Сброс ключа общедоступного узла hello, указанные во время подготовки, если не указан ключ hello узла виртуальной Машины.
-* Откройте порт SSH hello (22) и восстановления hello sshd_config, если reset_ssh tootrue.
-* Удаление существующего пользователя hello.
+* сброс пароля исходного пользователя sudo;
+* создание пользователя sudo с указанным паролем;
+* настройка заданного значения открытого ключа узла;
+* сброс открытого ключа узла, указанного во время подготовки виртуальной машины, если не указан ключ узла;
+* открытие порта SSH (22) и восстановление sshd_config, если для reset_ssh задано значение true;
+* удаление существующего пользователя;
 * проверка дисков;
 * восстановление добавленного диска.
 
 ### <a name="customscript"></a>CustomScript
-Hello [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) расширения можно:
+Возможности расширения [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) :
 
-* Если указано, загрузите hello пользовательские скрипты из хранилища Azure или открытый внешнего хранилища (например, GitHub).
-* Запустите сценарий точки входа hello.
+* скачивание предоставленных пользовательских сценариев из службы хранилища Azure или общедоступного внешнего хранилища (например, Github);
+* выполнение сценария точки входа;
 * поддержка встроенных команд;
 * автоматическое преобразование символа новой строки в стиле Windows в сценариях оболочки и Python;
 * автоматическое удаление спецификации в сценариях оболочки и Python;
@@ -113,13 +115,13 @@ Hello [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master
 > В настоящий момент виртуальная машина FreeBSD поддерживает только CustomScript версии 1.x.  
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>Аутентификация: имена пользователей, пароли и ключи SSH
-При создании FreeBSD виртуальной машины с помощью hello портал Azure, необходимо указать имя пользователя, пароль или открытый ключ SSH.
-Имена пользователей для развертывания виртуальной машины в Azure FreeBSD не должны совпадать с именами системных учетных записей (UID < 100) уже существует в виртуальной машине hello (например, «root»).
-В настоящее время поддерживается только hello RSA SSH-ключа. Многострочный ключ SSH должен начинаться с `---- BEGIN SSH2 PUBLIC KEY ----` и заканчиваться `---- END SSH2 PUBLIC KEY ----`.
+При создании виртуальной машины FreeBSD с помощью портала Azure необходимо указать имя пользователя, пароль или открытый ключ SSH.
+Имена пользователей для развертывания виртуальной машины FreeBSD в Azure не должны совпадать с именами системных учетных записей (UID < 100), уже присутствующих в виртуальной машине (например, root).
+В настоящее время поддерживается только ключ SSH на основе RSA. Многострочный ключ SSH должен начинаться с `---- BEGIN SSH2 PUBLIC KEY ----` и заканчиваться `---- END SSH2 PUBLIC KEY ----`.
 
 ## <a name="obtaining-superuser-privileges"></a>Получение привилегий суперпользователя
-Hello учетная запись пользователя, который указывается в процессе развертывания экземпляр виртуальной машины в Azure является привилегированной учетной записи. Hello пакет sudo установлена в hello опубликованных FreeBSD изображения.
-После выполнен вход с этой учетной записью пользователя, команды запускаются как корень, используя синтаксис команды hello.
+Учетная запись пользователя, указанная во время развертывания экземпляра виртуальной машины в Azure, является привилегированной учетной записью. Пакет sudo установлен в опубликованном образе FreeBSD.
+После входа в систему с помощью этой учетной записи пользователя вы сможете выполнять команды от учетной записи root, используя соответствующий синтаксис команд.
 
 ```
 $ sudo <COMMAND>
@@ -128,8 +130,8 @@ $ sudo <COMMAND>
 При необходимости можно получить доступ к оболочке root с помощью команды `sudo -s`.
 
 ## <a name="known-issues"></a>Известные проблемы
-Hello [гостевой агент виртуальной Машины Azure](https://github.com/Azure/WALinuxAgent/) версии 2.2.2 [известная проблема] (https://github.com/Azure/WALinuxAgent/pull/517), вызывает сбой подготовки hello для FreeBSD виртуальной Машины в Azure. Hello исправление было захвачено [гостевой агент виртуальной Машины Azure](https://github.com/Azure/WALinuxAgent/) версии 2.2.3 и более поздние версии. 
+[Гостевой агент виртуальной машины Azure](https://github.com/Azure/WALinuxAgent/) версии 2.2.2 имеет [известную проблему] (https://github.com/Azure/WALinuxAgent/pull/517), вызывающую сбой подготовки виртуальной машины FreeBSD в Azure. Ошибка исправлена в [гостевом агенте виртуальной машины Azure](https://github.com/Azure/WALinuxAgent/) версии 2.2.3 и более поздних выпусках. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Go слишком[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) toocreate FreeBSD виртуальной Машины.
-* Следует toobring собственные tooAzure FreeBSD ссылаться слишком[Создание и отправка виртуального жесткого диска FreeBSD tooAzure](classic/freebsd-create-upload-vhd.md).
+* Перейдите на сайт [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) , чтобы создать виртуальную машину FreeBSD.
+* Если вы хотите перенести свою собственную виртуальную машину FreeBSD в Azure, ознакомьтесь с разделом [Создание и отправка виртуального жесткого диска FreeBSD в Azure](classic/freebsd-create-upload-vhd.md).

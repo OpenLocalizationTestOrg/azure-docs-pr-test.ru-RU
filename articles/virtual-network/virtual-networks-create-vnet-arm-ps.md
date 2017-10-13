@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate виртуальной сети - Azure PowerShell | Документы Microsoft"
-description: "Узнайте, как toocreate в виртуальной сети с помощью PowerShell."
+title: "Создание виртуальной сети с помощью Azure PowerShell | Документация Майкрософт"
+description: "Узнайте, как создать виртуальную сеть с помощью PowerShell."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d6e395a77f71de9f94b6304b05450e46b47544f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e7072ddf51570d46578111e2e392e3cbea53f2aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Создание виртуальной сети с помощью PowerShell
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Корпорация Майкрософт рекомендует создать ресурсы с помощью модели развертывания диспетчера ресурсов hello. Дополнительные сведения о toolearn hello различий между моделями hello двух чтения hello [модели развертывания Azure понять](../azure-resource-manager/resource-manager-deployment-model.md) статьи.
+Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Для создания ресурсов корпорация Майкрософт рекомендует использовать модель развертывания с помощью Resource Manager. Дополнительные сведения о различиях между двумя моделями см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../azure-resource-manager/resource-manager-deployment-model.md) (Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов).
  
-В этой статье объясняется, как toocreate виртуальной сети путем развертывания диспетчера ресурсов hello модели с помощью PowerShell. Также можно создать виртуальную сеть через диспетчер ресурсов с помощью других средств или создайте виртуальную сеть через hello классической модели развертывания, выбрав другой вариант hello после списка:
+В этой статье описывается создание виртуальной сети с помощью модели развертывания Resource Manager с использованием PowerShell. Виртуальную сеть также можно создать с помощью Resource Manager, используя другие инструменты, либо с помощью классической модели развертывания, выбрав другой вариант из следующего списка:
 
 > [!div class="op_single_selector"]
 > * [Портал](virtual-networks-create-vnet-arm-pportal.md)
@@ -43,9 +43,9 @@ Azure предоставляет две модели развертывания:
 
 ## <a name="create-a-virtual-network"></a>Создать виртуальную сеть
 
-toocreate, виртуальной сети, с помощью PowerShell, полные hello следующие шаги:
+Чтобы создать виртуальную сеть с помощью PowerShell, сделайте следующее:
 
-1. Установка и настройка Azure PowerShell, выполнив указанные ниже действия hello в hello [как tooInstall и настройка Azure PowerShell](/powershell/azure/overview) статьи.
+1. Установите и настройте Azure PowerShell, выполнив действия, описанные в [этой статье](/powershell/azure/overview).
 
 2. При необходимости создайте новую группу ресурсов, как показано ниже. В этом случае нужно создать группу ресурсов с именем *TestRG*. Дополнительные сведения о группах ресурсов см. в разделе "Группы ресурсов" [обзора Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -84,7 +84,7 @@ toocreate, виртуальной сети, с помощью PowerShell, пол
         DhcpOptions                : {}
         Subnets                    : []
         VirtualNetworkPeerings     : []
-4. Сохранить hello объекта виртуальной сети в переменной:
+4. Сохраните объект виртуальной сети в переменной.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -94,7 +94,7 @@ toocreate, виртуальной сети, с помощью PowerShell, пол
    > Можно объединить шаги 3 и 4, выполнив команду `$vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus`.
    > 
 
-5. Добавьте переменную подсети toohello новой виртуальной сети:
+5. Добавьте подсеть к переменной новой виртуальной сети.
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd `
@@ -124,14 +124,14 @@ toocreate, виртуальной сети, с помощью PowerShell, пол
                                 ]
         VirtualNetworkPeerings     : []
 
-6. Повторите шаг 5 выше для каждой подсети требуется toocreate. Hello следующая команда создает hello *серверной* подсети для hello сценария:
+6. Повторите шаг 5 выше для каждой подсети, которую необходимо создать. Следующая команда создает подсеть *BackEnd* для этого сценария.
 
     ```powershell
     Add-AzureRmVirtualNetworkSubnetConfig -Name BackEnd `
     -VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
     ```
 
-7. Несмотря на то, что вы создаете подсетей, они в настоящее время только существуют в локальной переменной используется tooretrieve hello hello виртуальной сети, созданных на шаге 4 выше. hello изменения toosave tooAzure, запустите hello следующую команду:
+7. Несмотря на создание подсетей, в настоящее время они существуют только в локальной переменной, используемой для получения виртуальной сети, созданной на шаге 4. Чтобы сохранить изменения в Azure, выполните следующую команду:
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -176,8 +176,8 @@ toocreate, виртуальной сети, с помощью PowerShell, пол
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, как tooconnect:
+Инструкции по подключению:
 
-- Виртуальная сеть виртуальной машины (VM) tooa, считывая hello [создания виртуальной Машины Windows](../virtual-machines/virtual-machines-windows-ps-create.md) статьи. Вместо создания виртуальной сети и подсети в шагах hello hello статей, можно выбрать существующей виртуальной сети и подсети tooconnect для виртуальной Машины.
-- Здравствуйте, считывая hello виртуальных сетей в виртуальной сети tooother [подключение виртуальных сетей](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) статьи.
-- tooan Hello виртуальной сети в локальной сети с помощью виртуальной частной сети сеть сеть (VPN) или канал ExpressRoute. Дополнительные сведения в разделе hello [подключения локальной сети tooan виртуальной сети с помощью VPN сайтами](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) и [связывание виртуальной сети tooan канал ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md) статей.
+- Сведения о подключении виртуальной машины к виртуальной сети см. в статье о [создании виртуальной машины Windows](../virtual-machines/virtual-machines-windows-ps-create.md). Вместо создания виртуальной сети и подсети с помощью действий, описанных в этой статье, виртуальную машину можно подключить к имеющейся виртуальной сети и подсети.
+- Сведения об установке подключения между виртуальными сетями см. в статье [Настройка подключения между виртуальными сетями на портале Azure](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+- Сведения о подключении виртуальной сети к локальной сети с использованием виртуальной частной сети типа "сеть — сеть" или канала ExpressRoute см. в [этой статье](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) и в статье [Связывание виртуальной сети с каналом ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md).

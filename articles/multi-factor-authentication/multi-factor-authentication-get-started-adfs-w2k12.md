@@ -1,129 +1,129 @@
 ---
-title: "aaaMFA сервера с AD FS в Windows Server | Документы Microsoft"
-description: "В этой статье описывается, как tooget работу с Azure Multi-factor Authentication и AD FS в Windows Server 2012 R2 и 2016."
+title: "Сервер MFA со службами AD FS в Windows Server | Документация Майкрософт"
+description: "В этой статье описывается, как начать работу с Многофакторной идентификацией Azure и AD FS в Windows Server 2012 R2 и Windows Server 2016."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 57208068-1e55-45b6-840f-fdcd13723074
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2017
+ms.date: 08/25/2017
 ms.author: kgremban
+ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 656785abcc63a020add765a86670b488a3b84b51
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7fc6ad052e4e873be6a3e7009e9739e4a1c9ce03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-azure-multi-factor-authentication-server-toowork-with-ad-fs-in-windows-server"></a>Настроить toowork сервера Azure Multi-factor Authentication с AD FS в Windows Server
-Если использование служб федерации Active Directory (AD FS) и требуется toosecure облачные или локальные ресурсы, можно настроить toowork сервера Azure Multi-factor Authentication с AD FS. Эта конфигурация активирует двухфакторную проверку подлинности для важных конечных точек.
+# <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Настройка сервера Многофакторной идентификации Azure для работы с AD FS на платформе Windows Server
+Если вы используете службы федерации Active Directory (AD FS) и хотите защитить облачные или локальные ресурсы, вы можете настроить сервер многофакторной идентификации Azure для работы с AD FS. Эта конфигурация активирует двухфакторную проверку подлинности для важных конечных точек.
 
-Эта статья содержит сведения об использовании сервера Многофакторной идентификации Azure с AD FS на платформе Windows Server 2012 R2 или Windows Server 2016. Дополнительные сведения, узнайте, как слишком[защита облачных и локальных ресурсов с помощью сервера Azure Multi-factor Authentication с AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md).
+Эта статья содержит сведения об использовании сервера Многофакторной идентификации Azure с AD FS на платформе Windows Server 2012 R2 или Windows Server 2016. Дополнительные сведения см. в статье [Защита облачных и локальных ресурсов с помощью сервера многофакторной идентификации Azure и AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md).
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>Защита AD FS в Windows Server с помощью сервера Многофакторной идентификации Azure
-При установке сервера Azure Multi-factor Authentication, имеются следующие варианты hello.
+Для установки сервера Azure Multi-Factor Authentication вы можете выбрать один из следующих вариантов.
 
-* Установите сервер Azure Multi-factor Authentication локально на hello сервере AD FS
-* Установка адаптера Azure Multi-factor Authentication hello локально на приветствия сервера AD FS, а затем установите многофакторной проверки подлинности сервера на другой компьютер
+* Установка сервера Azure Multi-Factor Authentication локально на том же сервере, на котором находятся службы AD FS.
+* Установка адаптера Azure Multi-Factor Authentication локально на сервере AD FS и установка сервера Multi-Factor Authentication на другом компьютере.
 
-Прежде чем начать, помните о hello следующую информацию:
+Прежде чем начать, ознакомьтесь с приведенной ниже информацией.
 
-* Не требуется tooinstall сервера Azure Multi-factor Authentication на сервере AD FS. Тем не менее необходимо установить адаптер hello многофакторной проверки подлинности для AD FS на Windows Server 2012 R2 или Windows Server 2016, на котором выполняется AD FS. Можно установить сервер hello на другом компьютере, если он является одной из поддерживаемых версий и установить адаптер AD FS hello отдельно на сервере федерации AD FS. В разделе hello следующие процедуры toolearn как tooinstall hello адаптера отдельно.
-* Если ваша организация использует текстовое сообщение или способов проверки подлинности мобильного приложения, hello строки, определенные в параметрах компании содержать заполнитель, <$*имя_приложения*$>. На сервере MFA версии 7.1 вы можете указать имя приложения, которое заменит этот заполнитель. В v7.0 или старую этот заполнитель не заменяется автоматически при использовании hello AD FS-адаптера. Для этих более старых версий удалите заполнитель hello из hello соответствующие строки при защите AD FS.
-* Hello учетной записи, используемой toosign в должен иметь права toocreate групп безопасности в службе Active Directory.
-* Мастер установки адаптера Hello многофакторной проверки подлинности AD FS создает группу безопасности под названием PhoneFactor Admins в вашем экземпляре Active Directory. Затем добавляется учетная запись службы AD FS hello группы toothis службы федерации. Проверьте на контроллере домена, hello группы PhoneFactor Admins на самом деле создана и что учетной записи службы hello AD FS является членом этой группы. При необходимости вручную добавьте toohello учетной записи службы AD FS hello группы PhoneFactor Admins на контроллере домена.
-* Сведения об установке hello Web Service SDK с пользовательского портала hello статье [развертывание hello пользовательского портала для сервера Azure Multi-factor Authentication.](multi-factor-authentication-get-started-portal.md)
+* Вам не нужно устанавливать сервер Многофакторной идентификации Azure на сервере AD FS. Но необходимо установить адаптер Многофакторной идентификации для AD FS на Windows Server 2012 R2 или Windows Server 2016, на котором работают службы федерации AD FS. Вы можете установить сервер на другом компьютере, если адаптер AD FS установлен отдельно на сервере федерации AD FS. Чтобы узнать, как установить адаптер отдельно, см. следующие процедуры.
+* Если в вашей организации используется проверка подлинности с помощью текстового сообщения или мобильного приложения, строки, определенные в разделе "Параметры компании", содержат заполнитель <$*application_name*$> (имя приложения). На сервере MFA версии 7.1 вы можете указать имя приложения, которое заменит этот заполнитель. Если вы используете версию 7.0 или более раннюю, заменить автоматически этот заполнитель при использовании адаптера AD FS не получится. Для таких ранних версий при защите AD FS мы рекомендуем удалить этот заполнитель из соответствующих строк.
+* Учетная запись, которую вы используете для входа, должна иметь права на создание групп безопасности в службе Active Directory.
+* Мастер установки адаптера AD FS многофакторной идентификации создает группу безопасности с именем PhoneFactor Admins в вашем экземпляре Active Directory, а затем добавляет учетную запись службы AD FS в эту группу. Убедитесь, что в контроллере домена создана группа PhoneFactor Admins и учетная запись службы AD FS является участником этой группы. При необходимости добавьте вручную учетную запись службы AD FS в группу PhoneFactor Admins в контроллере домена.
+* Сведения об установке пакета SDK веб-службы с помощью пользовательского портала см. в статье [Развертывание пользовательского портала на сервере Многофакторной идентификации Azure](multi-factor-authentication-get-started-portal.md).
 
-### <a name="install-azure-multi-factor-authentication-server-locally-on-hello-ad-fs-server"></a>Установите сервер Azure Multi-factor Authentication локально на сервере AD FS hello
+### <a name="install-azure-multi-factor-authentication-server-locally-on-the-ad-fs-server"></a>Установка сервера Azure Multi-Factor Authentication локально на сервере, на котором находятся службы AD FS
 1. Скачайте и установите сервер многофакторной идентификации Azure на сервере AD FS. Сведения об установке см. в статье [Приступая к работе с сервером многофакторной идентификации Azure](multi-factor-authentication-get-started-server.md).
-2. В консоли управления hello сервера Azure Multi-factor Authentication щелкните hello **AD FS** значок. Выберите параметры hello **разрешить регистрацию пользователей** и **пользователи tooselect метод**.
-3. Выберите любые дополнительные параметры, которые вы хотите toospecify для вашей организации.
+2. В консоли управления сервером Многофакторной идентификации Azure щелкните значок **AD FS**. Установите флажки **Разрешить регистрацию пользователей** и **Разрешить пользователям выбирать метод**.
+3. Выберите дополнительные параметры, которые вы хотите указать для своей организации.
 4. Щелкните **Установить AD FS-адаптер**.
    
    <center>![Облако](./media/multi-factor-authentication-get-started-adfs-w2k12/server.png)</center>
 
-5. Если откроется окно hello Active Directory, это означает следующее. Добавление компьютера домена tooa присоединены к домену, и hello Настройка Active Directory для обеспечения безопасной связи между адаптером hello AD FS и службой многофакторной проверки подлинности hello не была завершена. Нажмите кнопку **Далее** tooautomatically выполнить эту настройку, или выберите hello **пропустить автоматическую настройку Active Directory и настроить параметры вручную** флажок. Щелкните **Далее**.
-6. Если локальная группа windows hello отображается, значит две вещи. Компьютер не присоединены к домену tooa домена и настройка локальной группы hello для обеспечения безопасной связи между адаптером hello AD FS и службой многофакторной проверки подлинности hello не была завершена. Нажмите кнопку **Далее** tooautomatically выполнить эту настройку, или выберите hello **пропустить автоматическую настройку локальной группы и настроить параметры вручную** флажок. Щелкните **Далее**.
-7. В мастере установки hello, нажмите кнопку **Далее**. Сервер Azure Multi-factor Authentication создает группы PhoneFactor Admins hello и добавляет toohello учетной записи службы AD FS hello группы PhoneFactor Admins.
+5. Запрос на настройку Active Directory может отобразиться по двум причинам. Компьютер присоединен к домену, и в Active Directory не закончена настройка защиты подключений между адаптером AD FS и службой многофакторной идентификации. Нажмите кнопку **Далее**, чтобы автоматически завершить настройку, или установите флажок **Пропустить автоматическую настройку Active Directory и настроить параметры вручную**. Щелкните **Далее**.
+6. Запрос на настройку локальной группы может отобразиться по двум причинам. Компьютер не присоединен к домену, и в локальной группе не закончена настройка защиты подключений между адаптером AD FS и службой многофакторной идентификации. Нажмите кнопку **Далее**, чтобы автоматически завершить настройку, или установите флажок **Пропустить автоматическую настройку локальной группы и настроить параметры вручную**. Щелкните **Далее**.
+7. В мастере установки нажмите кнопку **Далее**. Сервер Azure Multi-Factor Authentication создаст группу PhoneFactor Admins и добавит в эту группу учетную запись службы AD FS.
    <center>![Облако](./media/multi-factor-authentication-get-started-adfs-w2k12/adapter.png)</center>
-8. На hello **запуска установщика** щелкните **Далее**.
-9. В установщике адаптера hello многофакторной проверки подлинности AD FS щелкните **Далее**.
-10. Нажмите кнопку **закрыть** после завершения установки hello.
-11. После установки адаптера hello, необходимо зарегистрировать его с AD FS. Откройте Windows PowerShell и выполните следующую команду hello:<br>
+8. На странице **Запуск установщика** нажмите кнопку **Далее**.
+9. В установщике адаптера Multi-Factor Authentication AD FS нажмите кнопку **Далее**.
+10. По завершении установки нажмите кнопку **Закрыть** .
+11. После установки адаптера необходимо зарегистрировать его в AD FS. Откройте Windows PowerShell и выполните следующую команду:<br>
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
     <center>![Облако](./media/multi-factor-authentication-get-started-adfs-w2k12/pshell.png)</center>
-12. toouse только что зарегистрированный адаптер, изменить hello глобальной политики поверки подлинности в AD FS. В консоли управления hello AD FS, перейдите toohello **политики проверки подлинности** узла. В hello **многофакторной проверки подлинности** щелкните hello **изменить** ссылку Далее toohello **глобальные параметры** раздела. В hello **изменение глобальной политики проверки подлинности** выберите **многофакторной проверки подлинности** качестве дополнительного метода проверки подлинности, а затем щелкните **ОК**. Hello адаптер регистрируется как WindowsAzureMultiFactorAuthentication. Перезапустите службу hello AD FS для эффекта tootake регистрации hello.
+12. Чтобы использовать только что зарегистрированный адаптер, измените глобальную политику проверки подлинности в AD FS. В консоли управления AD FS откройте узел **Authentication Policies** (Политики проверки подлинности). В разделе **Многофакторная идентификация** щелкните ссылку **Изменить** рядом с разделом **Глобальные параметры**. В окне **Изменить глобальную политику проверки подлинности** выберите **Многофакторная идентификация** в качестве дополнительного метода проверки подлинности и нажмите кнопку **ОК**. Адаптер регистрируется как WindowsAzureMultiFactorAuthentication. Для завершения регистрации нужно перезапустить службу AD FS.
 
 <center>![Облако](./media/multi-factor-authentication-get-started-adfs-w2k12/global.png)</center>
 
-На этом этапе сервер Multi-factor Authentication настраивается toobe toouse поставщика дополнительной проверки подлинности с AD FS.
+На этом этапе сервер Multi-Factor Authentication уже настроен в качестве дополнительного поставщика проверки подлинности, который можно использовать с AD FS.
 
-## <a name="install-a-standalone-instance-of-hello-ad-fs-adapter-by-using-hello-web-service-sdk"></a>Установка с помощью отдельного экземпляра адаптера hello AD FS с помощью hello Web Service SDK
-1. Установите hello Web Service SDK на приветствия сервера, на котором работает сервер Multi-factor Authentication.
-2. Следующие hello копирования файлов из hello \Program Files\Multi-Factor Authentication Server каталог toohello server плана tooinstall hello AD FS-адаптер:
+## <a name="install-a-standalone-instance-of-the-ad-fs-adapter-by-using-the-web-service-sdk"></a>Установка изолированного экземпляра адаптера AD FS с помощью пакета SDK веб-службы
+1. Установите пакет SDK веб-службы на сервере, на котором запущен сервер Multi-Factor Authentication.
+2. Скопируйте следующие файлы из папки \Program Files\Multi-Factor Authentication Server на сервер, на котором вы планируете установить адаптер AD FS:
    * MultiFactorAuthenticationAdfsAdapterSetup64.msi
    * Register-MultiFactorAuthenticationAdfsAdapter.ps1
    * Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
    * MultiFactorAuthenticationAdfsAdapter.config
-3. Запустите файл установки файлы MultiFactorAuthenticationAdfsAdapterSetup64.msi hello.
-4. В установщике адаптера hello многофакторной проверки подлинности AD FS щелкните **Далее** toostart hello установки.
-5. Нажмите кнопку **закрыть** после завершения установки hello.
+3. Запустите файл установки MultiFactorAuthenticationAdfsAdapterSetup64.msi.
+4. Чтобы начать установку, в установщике адаптера многофакторной идентификации AD FS нажмите кнопку **Далее**.
+5. По завершении установки нажмите кнопку **Закрыть** .
 
-## <a name="edit-hello-multifactorauthenticationadfsadapterconfig-file"></a>Отредактируйте файл MultiFactorAuthenticationAdfsAdapter.config hello
-Выполните эти шаги файл MultiFactorAuthenticationAdfsAdapter.config hello tooedit.
+## <a name="edit-the-multifactorauthenticationadfsadapterconfig-file"></a>Изменение файла MultiFactorAuthenticationAdfsAdapter.config
+Чтобы изменить файл MultiFactorAuthenticationAdfsAdapter.config, выполните следующие действия.
 
-1. Набор hello **UseWebServiceSdk** узла слишком**true**.  
-2. Задайте значение hello **WebServiceSdkUrl** toohello URL-адрес hello SDK многофакторной проверки подлинности веб-службы. Например: *https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, где *certificatename* hello имя сертификата.  
-3. Измените скрипт hello Register-MultiFactorAuthenticationAdfsAdapter.ps1, добавив *параметр - ConfigurationFilePath &lt;путь&gt;*  toohello конец hello `Register-AdfsAuthenticationProvider` команду, где  *&lt;путь&gt;*  toohello MultiFactorAuthenticationAdfsAdapter.config hello полный путь файла.
+1. Задайте для узла **UseWebServiceSdk** значение **true**.  
+2. В поле **WebServiceSdkUrl** укажите URL-адрес пакета SDK веб-службы многофакторной идентификации. Например, *https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, где *certificatename* — это имя сертификата.  
+3. Измените скрипт Register-MultiFactorAuthenticationAdfsAdapter.ps1. Для этого добавьте `-ConfigurationFilePath &lt;path&gt;` в конец команды `Register-AdfsAuthenticationProvider`, где *&lt;path&gt;* — это полный путь к файлу MultiFactorAuthenticationAdfsAdapter.config.
 
-### <a name="configure-hello-web-service-sdk-with-a-username-and-password"></a>Настройка hello Web Service SDK с помощью имени пользователя и пароля
-Существует два варианта для настройки hello Web Service SDK. Hello сначала с помощью имени пользователя и пароля, hello, второй — с помощью сертификата клиента. Выполните следующие действия для первого параметра hello, или сразу перейти для hello секунды.  
+### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Настройка пакета SDK веб-службы с помощью имени пользователя и пароля
+Настройку пакета SDK веб-службы можно выполнить двумя способами. В первом случае используется имя пользователя и пароль, а во втором — сертификат клиента. Выполните следующие действия, чтобы настроить пакет SDK первым способом, или перейдите к инструкции для второго способа.  
 
-1. Задайте значение hello **параметра WebServiceSdkUsername** tooan учетную запись, которая является членом группы безопасности PhoneFactor Admins hello. Используйте hello &lt;домена&gt;&#92;&lt; имя пользователя&gt; формат.  
-2. Задайте значение hello **WebServiceSdkPassword** toohello пароль соответствующей учетной записи.
+1. Для параметра **WebServiceSdkUsername** укажите учетную запись, которая является участником группы безопасности PhoneFactor Admins. Используйте формат &lt;домен&gt;&#92;&lt;имя_пользователя&gt;.  
+2. Для параметра **WebServiceSdkPassword** укажите пароль соответствующей учетной записи.
 
-### <a name="configure-hello-web-service-sdk-with-a-client-certificate"></a>Настройка hello Web Service SDK с помощью сертификата клиента
-Если вы не хотите toouse имя пользователя и пароль, выполните эти шаги tooconfigure hello Web Service SDK с помощью сертификата клиента.
+### <a name="configure-the-web-service-sdk-with-a-client-certificate"></a>Настройка пакета SDK веб-службы с помощью сертификата клиента
+Если вы не хотите использовать имя пользователя и пароль для настройки пакета SDK веб-службы, выполните следующие действия для настройки с помощью сертификата клиента.
 
-1. Получите клиентский сертификат из центра сертификации для hello сервера, на котором выполняется hello Web Service SDK. Узнайте, каким образом слишком[получать сертификаты клиента](https://technet.microsoft.com/library/cc770328.aspx).  
-2. Импорт hello хранилище сертификатов клиента toohello локального компьютера личных сертификатов на сервере hello, на котором выполняется hello Web Service SDK. Убедитесь, что этот центр сертификации hello открытый сертификат находится в хранилище сертификатов доверенных корневых сертификатов.  
-3. Экспорт hello открытый и закрытый ключи hello клиентского сертификата tooa PFX-файла.  
-4. Экспортируйте открытый ключ hello в файл .cer tooa формат Base64.  
-5. В диспетчере серверов убедитесь, что установлена, функция проверки подлинности с сопоставлением сертификата клиента hello \Web Server\Security\IIS веб-сервер (IIS). Если он не установлен, установите **Добавить роли и компоненты** tooadd эту функцию.  
-6. В диспетчере служб IIS дважды щелкните **редактор конфигурации** hello веб-сайте, который содержит виртуальный каталог Web Service SDK hello. Веб-сайт важные tooselect hello, hello виртуального каталога.  
-7. Go toohello **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** раздела.  
-8. Набор включены слишком**true**.  
-9. Установите параметр oneToOneCertificateMappingsEnabled слишком**true**.  
-10. Нажмите кнопку hello **...**  toooneToOneMappings Далее, а затем нажмите hello **добавить** ссылку.  
-11. Откройте hello Base64 CER-файл, экспортированный ранее. Удалите *-----BEGIN CERTIFICATE-----*, *-----END CERTIFICATE-----* и все разрывы строк. Скопируйте результирующую строку hello.  
-12. Строка сертификата toohello набор скопированному предшествующего шаг hello.  
-13. Набор включены слишком**true**.  
-14. Задать tooan имя пользователя учетной записи, которая является членом группы безопасности PhoneFactor Admins hello. Используйте hello &lt;домена&gt;&#92;&lt; имя пользователя&gt; формат.  
-15. Задать toohello hello пароль соответствующей учетной записи, а затем закройте редактор конфигурации.  
-16. Нажмите кнопку hello **применить** ссылку.  
-17. Дважды щелкните в виртуальный каталог Web Service SDK hello **проверки подлинности**.  
-18. Убедитесь, что олицетворение ASP.NET и обычную проверку подлинности выбрано слишком**включено**, и все прочие элементы заданы слишком**отключено**.  
-19. Дважды щелкните в виртуальный каталог Web Service SDK hello **параметры SSL**.  
-20. Задать сертификаты клиентов слишком**Accept**, а затем нажмите кнопку **применить**.  
-21. Скопируйте hello PFX-файл, экспортированный ранее toohello сервера, на котором работает адаптер AD FS hello.  
-22. Импортировать в хранилище личных сертификатов локального компьютера toohello файл hello PFX-файл.  
-23. Щелкните правой кнопкой мыши и выберите **управление закрытыми ключами**и затем предоставьте доступ на чтение toohello использованная учетная запись toosign в службе toohello AD FS.  
-24. Откройте hello сертификата и скопируйте hello отпечаток клиента из hello **сведения** вкладки.  
-25. В файле MultiFactorAuthenticationAdfsAdapter.config hello присвойте **параметра WebServiceSdkCertificateThumbprint** toohello строки копируются в предыдущем шаге hello.  
+1. Получите в центре сертификации сертификат клиента для сервера, на котором запущен пакет SDK веб-службы. Дополнительные сведения см. в статье [о получении сертификатов клиента](https://technet.microsoft.com/library/cc770328.aspx).  
+2. Импортируйте сертификат клиента в хранилище личных сертификатов локального компьютера на сервере, на котором запущен пакет SDK веб-службы. Убедитесь, что открытый сертификат центра сертификации находится в хранилище доверенных корневых сертификатов.  
+3. Экспортируйте открытый и закрытый ключи сертификата клиента в PFX-файл.  
+4. Экспортируйте открытый ключ в формате Base64 в CER-файл.  
+5. Откройте диспетчер серверов и убедитесь, что компонент проверки подлинности с сопоставлением сертификата клиента установлен в папке Web Server (IIS)\Web Server\Security\IIS. Если этот компонент не установлен, добавьте его, щелкнув **Добавить роли и компоненты** .  
+6. Откройте диспетчер служб IIS и дважды щелкните **Редактор конфигураций** на веб-сайте, который содержит виртуальный каталог пакета SDK веб-службы. Важно выбрать веб-сайт, а не виртуальный каталог.  
+7. Перейдите в раздел **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** .  
+8. Присвойте параметру enabled значение **true**.  
+9. Задайте для параметра oneToOneCertificateMappingsEnabled значение **true**.  
+10. Нажмите кнопку **…** рядом с neToOneMappings, а затем щелкните ссылку **Добавить**.  
+11. Откройте предварительно экспортированный CER-файл в формате Base64. Удалите *-----BEGIN CERTIFICATE-----*, *-----END CERTIFICATE-----* и все разрывы строк. Скопируйте получившуюся строку.  
+12. Укажите скопированную строку как значение параметра certificate.  
+13. Присвойте параметру enabled значение **true**.  
+14. Для параметра userName укажите учетную запись, которая входит в группу безопасности PhoneFactor Admins. Используйте формат &lt;домен&gt;&#92;&lt;имя_пользователя&gt;.  
+15. Укажите пароль для соответствующей учетной записи, а затем закройте редактор конфигураций.  
+16. Щелкните ссылку **Применить** .  
+17. В виртуальном каталоге пакета SDK веб-службы дважды щелкните **Проверка подлинности**.  
+18. Убедитесь, что параметры "Олицетворение ASP.NET" и "Обычная проверка подлинности" имеют значение **Включено**, а все остальные — **Отключено**.  
+19. В виртуальном каталоге пакета SDK веб-службы дважды щелкните **Параметры SSL**.  
+20. Чтобы настроить параметр "Сертификаты клиентов" выберите значение **Принять**, а затем щелкните **Применить**.  
+21. Скопируйте предварительно экспортированный PFX-файл на сервер, на котором работает адаптер AD FS.  
+22. Импортируйте PFX-файл в хранилище личных сертификатов на локальном компьютере.  
+23. Щелкните правой кнопкой мыши и выберите **Управление закрытыми ключами**, а затем предоставьте разрешение на чтение учетной записи, используемой для входа в службу AD FS.  
+24. Откройте сертификат клиента и скопируйте отпечаток на вкладке **Сведения** .  
+25. В файле MultiFactorAuthenticationAdfsAdapter.config для параметра **WebServiceSdkCertificateThumbprint** укажите строку, скопированную на предыдущем этапе.  
 
-Наконец, tooregister hello адаптера, запустите hello \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1 сценарий в PowerShell. Hello адаптер регистрируется как WindowsAzureMultiFactorAuthentication. Перезапустите службу hello AD FS для эффекта tootake регистрации hello.
+Чтобы зарегистрировать адаптер, выполните в PowerShell сценарий \Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1. Адаптер регистрируется как WindowsAzureMultiFactorAuthentication. Для завершения регистрации нужно перезапустить службу AD FS.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>Защита ресурсов Azure AD с помощью AD FS
-toosecure ресурса облака, настроить правило для утверждений, чтобы службы федерации Active Directory выдает утверждение multipleauthn hello, когда пользователь успешно выполняет двухшаговую проверку. Это утверждение будет передано в tooAzure AD. Выполните это процедура toowalk шаги hello.
+Чтобы защитить облачный ресурс, настройте правило утверждений, чтобы при выполнении пользователем двухфакторной проверки подлинности службы федерации Active Directory выдавали утверждение multipleauthn. Это утверждение передается в Azure AD. Для этого следуйте такой процедуре:
 
 1. Откройте оснастку управления AD FS.
-2. В левой части экрана приветствия выберите **доверия с проверяющей стороной**.
+2. В левой части выберите **Отношения доверия проверяющей стороны**.
 3. Щелкните правой кнопкой мыши **Microsoft Office 365 Identity Platform** (Платформа удостоверений Microsoft Office 365) и выберите **Изменить правила утверждений...**.
 
    ![Облако](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
@@ -132,15 +132,15 @@ toosecure ресурса облака, настроить правило для 
 
    ![Облако](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
 
-5. На Здравствуйте преобразования мастера добавления правила утверждения, выберите **пропуск или Фильтрация входящего утверждения** из hello раскрывающегося списка и нажмите кнопку **Далее**.
+5. В мастере добавления правила преобразования утверждения выберите **Проход через входящее утверждение или его фильтрация** в раскрывающемся списке и нажмите кнопку **Далее**.
 
    ![Облако](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
 
 6. Укажите имя правила.
-7. Выберите **ссылки на методы проверки подлинности** тип hello входящего утверждения.
+7. Выберите **Ссылки на методы проверки подлинности** в качестве типа входящего утверждения.
 8. Щелкните **Пройти по всем значениям утверждений**.
     ![Мастер добавления правила преобразования утверждений](./media/multi-factor-authentication-get-started-adfs-cloud/configurewizard.png)
-9. Нажмите кнопку **Готово** Закройте консоль управления FS hello AD.
+9. Нажмите кнопку **Готово** Закройте консоль управления AD FS.
 
 ## <a name="related-topics"></a>Связанные разделы
-Справка по устранению неполадок в разделе hello [Azure многофакторной проверки подлинности, часто задаваемые вопросы](multi-factor-authentication-faq.md)
+Дополнительные сведения по поиску и устранению ошибок см. в статье [Часто задаваемые вопросы о службе многофакторной идентификации Azure](multi-factor-authentication-faq.md).

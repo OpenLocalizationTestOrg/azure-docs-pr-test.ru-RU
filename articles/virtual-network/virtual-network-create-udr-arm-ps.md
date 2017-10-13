@@ -1,6 +1,6 @@
 ---
-title: "aaaControl маршрутизации и виртуальных устройств в Azure — PowerShell | Документы Microsoft"
-description: "Узнайте, как toocontrol маршрутизации и виртуальные устройства, с помощью PowerShell."
+title: "Управление маршрутизацией и виртуальными модулями в Azure с помощью PowerShell | Документация Майкрософт"
+description: "Сведения о том, как управлять маршрутизацией и виртуальными модулями с помощью PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b7b8717529eb2cd8b1d28b8ab9c6e21159d14882
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3ab24f193c74449ae7414b4ea0675c0aae0211f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-powershell"></a>Создание определяемых пользователем маршрутов с помощью PowerShell
 
@@ -34,21 +34,21 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Перед началом работы с ресурсами Azure, он является важным toounderstand, что Azure в данный момент существуют две модели развертывания: диспетчера ресурсов Azure и классическом. Обязательно изучите [модели и инструменты развертывания](../azure-resource-manager/resource-manager-deployment-model.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации hello для различных средств, щелкнув вкладки hello hello верхней части этой статьи.
+> Прежде чем приступить к работе с ресурсами Azure, обратите внимание на то, что в настоящее время в Azure существует две модели развертывания: классическая модель развертывания и модель развертывания с помощью Azure Resource Manager. Обязательно изучите [модели и инструменты развертывания](../azure-resource-manager/resource-manager-deployment-model.md) , прежде чем приступить к работе с какими бы то ни было ресурсами Azure. Для просмотра документации о средствах развертывания выбирайте соответствующие вкладки в верхней части данной статьи.
 >
 
-В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [создать UDRs в hello классической модели развертывания](virtual-network-create-udr-classic-ps.md).
+В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [создавать определяемые пользователем маршруты на основе классической модели развертывания](virtual-network-create-udr-classic-ps.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-Образец Hello PowerShell приведенную ниже команду ожидать простой среде уже создан на основании hello сценарии выше. Toorun hello команд, отображаемых в этом документе, сначала построения необходимо hello тестовой среды, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello При необходимости и выполнения инструкции hello в hello портала.
+Для приведенных ниже примеров команд PowerShell требуется уже созданная простая среда, основанная на приведенном выше сценарии. Чтобы выполнять команды в том виде, в котором они представлены в этом документе, сначала создайте тестовую среду, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-hello-udr-for-hello-front-end-subnet"></a>Создать hello UDR для интерфейса подсети hello
-Таблица маршрутов toocreate hello и маршрутов для подсети интерфейса hello в зависимости от hello варианта выше завершения hello, следующие шаги:
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Создание определяемого пользователем маршрута для интерфейсной подсети
+Чтобы создать таблицу маршрутов и маршрут, необходимые для интерфейсной подсети, на основании приведенного выше сценария, выполните следующие действия:
 
-1. Создание toosend маршрут использоваться все toohello toobe маршрутизации трафика, предназначенного toohello внутренней подсети (192.168.2.0/24) **FW1** виртуальное устройство (192.168.0.4).
+1. Создайте маршрут, используемый для отправки всего трафика, адресованного серверной подсети (192.168.2.0/24), в виртуальный модуль **FW1** (192.168.0.4).
 
     ```powershell
     $route = New-AzureRmRouteConfig -Name RouteToBackEnd `
@@ -56,20 +56,20 @@ ms.lasthandoff: 10/06/2017
     -NextHopIpAddress 192.168.0.4
     ```
 
-2. Создайте таблицу маршрут с именем **UDR-FrontEnd** в hello **westus** область, которая содержит маршрут hello.
+2. Создайте таблицу маршрутов с именем **UDR-FrontEnd** в регионе **westus**, содержащим маршрут.
 
     ```powershell
     $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
     -Name UDR-FrontEnd -Route $route
     ```
 
-3. Создайте переменную, содержащую hello где hello подсети виртуальной сети. В нашем сценарии hello виртуальной сети называется **TestVNet**.
+3. Создайте переменную, которая содержит виртуальную сеть, где находится подсеть. В нашем случае такая виртуальная сеть называется **TestVNet**.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
     ```
 
-4. Свяжите hello таблицы маршрутов, созданной ранее toohello **переднего плана** подсети.
+4. Сопоставьте созданную выше таблицу маршрутов с подсетью **FrontEnd** .
 
     ```powershell
     Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
@@ -77,10 +77,10 @@ ms.lasthandoff: 10/06/2017
     ```
 
     > [!WARNING]
-    > Hello для приведенных выше команд hello видно содержимое hello hello объекта конфигурации виртуальной сети, который существует только на компьютере hello, где запускается PowerShell. Требуется toorun hello **AzureVirtualNetwork набор** toosave командлет tooAzure эти параметры.
+    > Результаты выполнения представленной выше команды отображают содержимое объекта конфигурации виртуальной сети, который существует только на том компьютере, где выполняется PowerShell. Чтобы сохранить эти параметры в Azure, выполните командлет **Set-AzureVirtualNetwork** .
     > 
 
-5. Сохраните новую конфигурацию подсети hello в Azure.
+5. Сохраните новую конфигурацию подсети в Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -134,11 +134,11 @@ ms.lasthandoff: 10/06/2017
                                 ...
                             ]    
 
-## <a name="create-hello-udr-for-hello-back-end-subnet"></a>Создать hello UDR для hello внутренней подсети
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Создание определяемого пользователем маршрута для серверной подсети
 
-Таблица маршрутов toocreate hello и маршрутов для подсети hello серверной части, в зависимости от варианта hello выше, выполните следующие шаги hello.
+Чтобы создать таблицу маршрутов и маршрут, необходимые для серверной подсети, на основании приведенного выше сценария, выполните следующие действия:
 
-1. Создание toosend маршрут использоваться все toohello toobe маршрутизации трафика, предназначенного toohello интерфейса подсети (192.168.1.0/24) **FW1** виртуальное устройство (192.168.0.4).
+1. Создайте маршрут, используемый для отправки всего трафика, адресованного интерфейсной подсети (192.168.1.0/24), в виртуальный модуль **FW1** (192.168.0.4).
 
     ```powershell
     $route = New-AzureRmRouteConfig -Name RouteToFrontEnd `
@@ -146,21 +146,21 @@ ms.lasthandoff: 10/06/2017
     -NextHopIpAddress 192.168.0.4
     ```
 
-2. Создайте таблицу маршрут с именем **UDR серверной** в hello **uswest** область, которая содержит маршрут hello созданной выше.
+2. Создайте таблицу маршрутов с именем **UDR-BackEnd** в регионе **uswest**, содержащем созданный ранее маршрут.
 
     ```
     $routeTable = New-AzureRmRouteTable -ResourceGroupName TestRG -Location westus `
     -Name UDR-BackEnd -Route $route
     ```
 
-3. Свяжите hello таблицы маршрутов, созданной ранее toohello **серверной** подсети.
+3. Сопоставьте созданную выше таблицу маршрутов с подсетью **BackEnd** .
 
     ```powershell
     Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd `
     -AddressPrefix 192.168.2.0/24 -RouteTable $routeTable
     ```
 
-4. Сохраните новую конфигурацию подсети hello в Azure.
+4. Сохраните новую конфигурацию подсети в Azure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -214,15 +214,15 @@ ms.lasthandoff: 10/06/2017
                             ]
 
 ## <a name="enable-ip-forwarding-on-fw1"></a>Включение IP-пересылки на FW1
-tooenable IP-пересылки в hello сетевой Адаптер, используемый с **FW1**, выполните следующие шаги hello.
+Чтобы включить IP-пересылку на сетевой карте, используемой **FW1**, выполните следующие действия.
 
-1. Создайте переменную, которая содержит параметры hello для сетевого Адаптера, используемого FW1 hello. В нашем сценарии hello сетевого Адаптера с именем **NICFW1**.
+1. Создайте переменную, которая содержит параметры для сетевой карты, используемой FW1. В нашем случае это сетевая карта **NICFW1**.
 
     ```powershell
     $nicfw1 = Get-AzureRmNetworkInterface -ResourceGroupName TestRG -Name NICFW1
     ```
 
-2. Включить IP-пересылку и сохраните параметры сетевого Адаптера hello.
+2. Включите IP-пересылку и сохраните параметры сетевой карты.
 
     ```powershell
     $nicfw1.EnableIPForwarding = 1

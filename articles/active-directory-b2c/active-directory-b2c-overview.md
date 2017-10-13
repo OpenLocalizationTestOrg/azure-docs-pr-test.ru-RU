@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: saeedakhter-msft
-ms.openlocfilehash: abfd742e710458de3193dc5051de7818a112376c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 44d5d31d49c375c802a67511d1f962df20656559
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Настройка входа и регистрация приложения в Azure AD B2C
 
-Azure AD B2C — это облачное решение, позволяющее управлять удостоверениями в веб-приложениях и мобильных приложениях. Это высокой доступности глобальной службы, которая масштабируется toohundreds миллионов идентификаторов. Так как служба Azure AD B2C разработана на основе безопасной платформы корпоративного уровня, она защищает приложения, бизнес-процессы и пользовательские данные.
+Azure AD B2C — это облачное решение, позволяющее управлять удостоверениями в веб-приложениях и мобильных приложениях. Это высокодоступная глобальная служба, которая масштабируется до сотен миллионов удостоверений. Так как служба Azure AD B2C разработана на основе безопасной платформы корпоративного уровня, она защищает приложения, бизнес-процессы и пользовательские данные.
 
-С минимальной конфигурацией Azure AD B2C обеспечивает tooauthenticate вашего приложения:
+С минимальной конфигурацией Azure AD B2C позволяет приложению выполнить аутентификацию следующих ресурсов:
 
 * **учетных записей социальных сетей** (например, Facebook, Google, LinkedIn и другое);
 * **корпоративных учетных записей** (с помощью открытых стандартных протоколов, OpenID Connect или SAML);
@@ -32,7 +32,7 @@ Azure AD B2C — это облачное решение, позволяющее 
 
 ## <a name="get-started"></a>Начало работы
 
-Сначала необходимо получить своим собственным клиентом с помощью hello действия, описанные в [создание клиента Azure AD B2C](active-directory-b2c-get-started.md).
+Сначала получите собственный клиент, следуя указаниям в статье о [создании клиента Azure AD B2C](active-directory-b2c-get-started.md).
 
 Затем выберите сценарий разработки приложения:
 
@@ -45,38 +45,38 @@ Azure AD B2C — это облачное решение, позволяющее 
 
 ## <a name="whats-new"></a>Новые возможности
 
-Обратитесь к этому списку часто toolearn о будущих изменений toohello Azure Active Directory B2C. Кроме того, мы будем сообщать о нововведениях в Twitter под именем @AzureAD.
+Регулярно просматривайте указанные ниже страницы и узнавайте о будущих изменениях в Azure Active Directory B2C. Кроме того, мы будем сообщать о нововведениях в Twitter под именем @AzureAD.
 
-* Кроме слишком «Встроенных политик» (общедоступная) hello [«Пользовательских политик»](active-directory-b2c-overview-custom.md) функция теперь доступна в общедоступной предварительной версии.  Настраиваемые политики предназначены для специалистов удостоверений, требующие контроля за композиции hello работы удостоверения.
-* Hello [токена доступа](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview) функция теперь доступна в общедоступной предварительной версии.
+* В дополнение к общедоступной версии встроенных политик [пользовательские политики](active-directory-b2c-overview-custom.md) предоставляются в общедоступной предварительной версии.  Пользовательские политики предназначены для специалистов, которым необходимо контролировать структуру процедур идентификации.
+* Функция [маркера доступа](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview) теперь общедоступна в предварительной версии.
 * Объявлено о выпуске каталогов [общедоступной версии Azure AD B2C в Европе](https://azure.microsoft.com/en-us/blog/azuread-b2c-ga-eu/).
 * Ознакомьтесь с постоянно растущей коллекцией [примеров кода на Github](https://github.com/Azure-Samples?q=b2c).
 
-## <a name="how-tooarticles"></a>Как tooarticles
+## <a name="how-to-articles"></a>Статьи с инструкциями
 
-Узнайте, как отдельные функции Azure Active Directory B2C toouse:
+Узнайте, как использовать отдельные функции Azure Active Directory B2C:
 
 * Настройка учетных записей [Facebook](active-directory-b2c-setup-fb-app.md), [Google+](active-directory-b2c-setup-goog-app.md), [Microsoft account](active-directory-b2c-setup-msa-app.md), [Amazon](active-directory-b2c-setup-amzn-app.md) и [LinkedIn](active-directory-b2c-setup-li-app.md) для использования в приложениях, ориентированных на потребителей.
-* [Используйте настраиваемые атрибуты toocollect сведения о потребителей](active-directory-b2c-reference-custom-attr.md).
+* [Используйте настраиваемые атрибуты для сбора данных о потребителях](active-directory-b2c-reference-custom-attr.md).
 * [Предварительная версия Azure Active Directory B2C: включение многофакторной проверки подлинности в пользовательских приложениях](active-directory-b2c-reference-mfa.md).
 * [Предварительная версия Azure Active Directory B2C: настройка самостоятельного сброса пароля для потребителей](active-directory-b2c-reference-sspr.md).
-* [Настройка hello внешний вид и поведение регистрации, вход в систему и других страниц потребительском](active-directory-b2c-reference-ui-customization.md) обслуживаются Azure Active Directory B2C.
-* [Используйте hello Azure Active Directory Graph API tooprogrammatically создание, чтение, обновление и удаление потребители](active-directory-b2c-devquickstarts-graph-dotnet.md) в клиенте Azure Active Directory B2C.
+* [Настройка красивого и удобного интерфейса для регистрации и входа, а также других страниц, с которыми взаимодействуют клиенты](active-directory-b2c-reference-ui-customization.md), с использованием Azure Active Directory B2C.
+* [Использование API Graph Azure Active Directory для программного создания, чтения, обновления и удаления пользователей](active-directory-b2c-devquickstarts-graph-dotnet.md) в клиенте Azure Active Directory B2C.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Эти ссылки используются для изучения hello service в глубину.
+Следующие ссылки позволят глубже изучить службу:
 
-* В разделе hello [сведения о ценах Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+* См. страницу [цен на Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 * Ознакомьтесь с [примерами кода](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c) для Azure Active Directory B2C. 
-* Получение справки о переполнении стека в с помощью hello [azure ad b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c) тег.
-* Пришлите нам ваше мнение с помощью [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c), мы хотим toohear их!
-* Просмотрите hello [ссылку Azure AD B2C протокол](active-directory-b2c-reference-protocols.md).
-* Просмотрите hello [ссылку маркера Azure AD B2C](active-directory-b2c-reference-tokens.md).
-* Чтение hello [Azure Active Directory B2C часто задаваемые вопросы о](active-directory-b2c-faqs.md).
+* См. материалы на сайте Stack Overflow (Переполнение стека) по тегу [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c).
+* Сообщите нам свое мнение через сайт [пользовательских мнений](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+* См. статью [Azure AD B2C: протоколы проверки подлинности](active-directory-b2c-reference-protocols.md).
+* См. статью [Azure AD B2C: справочник по маркерам](active-directory-b2c-reference-tokens.md).
+* См. статью [Azure Active Directory B2C: часто задаваемые вопросы](active-directory-b2c-faqs.md).
 * [Предварительная версия Azure Active Directory B2C: регистрация запросов в службу поддержки](active-directory-b2c-support.md).
 
 ## <a name="get-security-updates-for-our-products"></a>Получение обновлений системы безопасности для наших продуктов
 
-Мы рекомендуем вам уведомления при возникновении события безопасности, посетив tooget [эту страницу](https://technet.microsoft.com/security/dd252948) и подписка tooSecurity рекомендация предупреждения.
+Рекомендуем вам настроить уведомления о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на [этой странице](https://technet.microsoft.com/security/dd252948).
 

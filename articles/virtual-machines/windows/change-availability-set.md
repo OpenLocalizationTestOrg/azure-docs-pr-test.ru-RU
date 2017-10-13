@@ -1,6 +1,6 @@
 ---
-title: "набор доступности виртуальных машин aaaChange | Документы Microsoft"
-description: "Узнайте, как задать toochange hello доступности для виртуальных машин с помощью Azure PowerShell и модели развертывания диспетчера ресурсов hello."
+title: "Изменение группы доступности виртуальных машин | Документация Майкрософт"
+description: "Узнайте, как изменить группу доступности для виртуальных машин, используя Azure PowerShell и модель развертывания с помощью Resource Manager."
 keywords: 
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: 3b1cc010a6d4c4883f2e34da9cfca4372aec92cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c10c947b6fc0737a7b9fba6b7f3efcae1f96638b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="change-hello-availability-set-for-a-windows-vm"></a>Изменение доступности для ВМ Windows hello
-Привет, следующие шаги описывают, как toochange hello набор доступности ВМ с помощью Azure PowerShell. Виртуальную Машину можно добавить только tooan доступности установлен при ее создании. В группе доступности hello toochange заказа требуется toodelete и заново создайте hello виртуальной машины. 
+# <a name="change-the-availability-set-for-a-windows-vm"></a>Изменение группы доступности для виртуальной машины Windows
+Ниже приведены инструкции по изменению группы доступности виртуальной машины с помощью Azure PowerShell. Виртуальную машину можно добавить в группу доступности только при ее создании. Чтобы изменить группу доступности, необходимо удалить и повторно создать виртуальную машину. 
 
-## <a name="change-hello-availability-set-using-powershell"></a>Изменение hello доступности с помощью PowerShell
-1. Запишите следующие сведения о ключе из toobe ВМ hello изменения hello.
+## <a name="change-the-availability-set-using-powershell"></a>Изменение группы доступности с помощью PowerShell
+1. Запишите следующие важные сведения о виртуальной машине, которую нужно.
    
-    Имя виртуальной Машины hello
+    Имя виртуальной машины.
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <Name-of-resource-group> -Name <name-of-VM>
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/06/2017
     $vm.HardwareProfile.VmSize
     ```
    
-    Необязательный сетевые интерфейсы, если они расположены на hello виртуальной Машины и сети первичный сетевой интерфейс
+    Основной сетевой интерфейс и дополнительные сетевые интерфейсы, если они существуют в виртуальной машине.
    
     ```powershell
     $vm.NetworkProfile.NetworkInterfaces[0].Id
@@ -67,17 +67,17 @@ ms.lasthandoff: 10/06/2017
     ```powershell
     $vm.Extensions
     ```
-2. Удаление hello виртуальной Машины без удаления любой hello дисков или сетевые интерфейсы hello.
+2. Удалите виртуальную машину, оставив все ее диски и сетевые интерфейсы.
    
     ```powershell
     Remove-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName> 
     ```
-3. Создание hello доступности, если он еще не существует
+3. Создайте группу доступности, если она еще не существует.
    
     ```powershell
     New-AzureRmAvailabilitySet -ResourceGroupName <resourceGroupName> -Name <availabilitySetName> -Location "<location>" 
     ```
-4. Повторно создать виртуальную Машину с помощью нового набора доступности hello hello
+4. Повторно создайте виртуальную машину, указав новую группу доступности.
    
     ```powershell
     $vm2 = New-AzureRmVMConfig -VMName <VM-name> -VMSize <vm-size> -AvailabilitySetId <availability-set-id>
@@ -88,10 +88,10 @@ ms.lasthandoff: 10/06/2017
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. Добавьте в нее диски данных и расширения. Дополнительные сведения см. в разделе [tooVM присоединить диск данных](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) и [расширений в диспетчер ресурсов шаблоны](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Диски с данными и расширения могут быть добавлены toohello виртуальной Машины с помощью PowerShell или Azure CLI.
+5. Добавьте в нее диски данных и расширения. Дополнительные сведения см. в статье [Как подключить управляемый диск данных к виртуальной машине Windows на портале Azure](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) и в разделе [Расширения](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Диски данных и расширения можно добавить в виртуальную машину с помощью PowerShell или интерфейса командной строки Azure.
 
 ## <a name="example-script"></a>Пример сценария
-Hello следующий пример сценария сбора данных требуется hello, удаление hello исходной виртуальной Машины и затем создать его заново в новой группе доступности.
+Следующий сценарий иллюстрирует сбор необходимых сведений, удаление исходной виртуальной машины и ее повторное создание в новой группе доступности.
 
 ```powershell
     #set variables
@@ -103,7 +103,7 @@ Hello следующий пример сценария сбора данных �
     #Get VM Details
     $OriginalVM = get-azurermvm -ResourceGroupName $rg -Name $vmName
 
-    #Output VM details toofile
+    #Output VM details to file
     "VM Name: " | Out-File -FilePath $outFile 
     $OriginalVM.Name | Out-File -FilePath $outFile -Append
 
@@ -127,7 +127,7 @@ Hello следующий пример сценария сбора данных �
     $OriginalVM.StorageProfile.DataDisks | Out-File -FilePath $outFile -Append
     }
 
-    #Remove hello original VM
+    #Remove the original VM
     Remove-AzureRmVM -ResourceGroupName $rg -Name $vmName
 
     #Create new availability set if it does not exist
@@ -136,7 +136,7 @@ Hello следующий пример сценария сбора данных �
     $availset = New-AzureRmAvailabilitySet -ResourceGroupName $rg -Name $newAvailSetName -Location $OriginalVM.Location
     }
 
-    #Create hello basic configuration for hello replacement VM
+    #Create the basic configuration for the replacement VM
     $newVM = New-AzureRmVMConfig -VMName $OriginalVM.Name -VMSize $OriginalVM.HardwareProfile.VmSize -AvailabilitySetId $availSet.Id
     Set-AzureRmVMOSDisk -VM $NewVM -VhdUri $OriginalVM.StorageProfile.OsDisk.Vhd.Uri  -Name $OriginalVM.Name -CreateOption Attach -Windows
 
@@ -146,14 +146,14 @@ Hello следующий пример сценария сбора данных �
     }
 
     #Add NIC(s)
-    foreach ($nic in $OriginalVM.NetworkInterfaceIDs) {
-        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic
+    foreach ($nic in $OriginalVM.NetworkProfile.NetworkInterfaces) {
+        Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic.Id
     }
 
-    #Create hello VM
+    #Create the VM
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Добавьте tooyour дополнительное хранилище виртуальной Машины, добавив дополнительный [диск данных](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Увеличьте емкость хранилища для виртуальной машины, добавив дополнительный [диск данных](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

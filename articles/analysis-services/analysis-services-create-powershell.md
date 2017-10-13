@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate сервер служб Azure Analysis Services с помощью PowerShell | Документы Microsoft"
-description: "Узнайте, как toocreate служб Azure Analysis Services с помощью PowerShell"
+title: "Создание сервера Azure Analysis Services с помощью PowerShell | Документация Майкрософт"
+description: "Узнайте, как создать сервер Azure Analysis Services с помощью PowerShell."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,37 +15,37 @@ ms.topic: hero-article
 ms.date: 08/01/2017
 ms.author: owend
 ms.custom: mvc
-ms.openlocfilehash: 269b78983410f773d47c4cea34d6d353b19f9e91
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cb42fd3ed51364cf478848cc51ebbb2f175e96d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>Создание сервера Azure Analysis Services с помощью PowerShell
 
-Это краткое руководство содержит сведения об использовании PowerShell из командной строки toocreate hello сервер служб Azure Analysis Services в [группы ресурсов Azure](../azure-resource-manager/resource-group-overview.md) в вашей подписке Azure.
+В этом кратком руководстве объясняется, как с помощью PowerShell и командной строки создать сервер Azure Analysis Services в [группе ресурсов Azure](../azure-resource-manager/resource-group-overview.md) вашей подписки Azure.
 
-Для этой задачи требуется модуль Azure PowerShell 4.0 или более поздней версии. версия toofind hello, запустите ` Get-Module -ListAvailable AzureRM`. tooinstall или обновления, см. в [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps). 
+Для этой задачи требуется модуль Azure PowerShell 4.0 или более поздней версии. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Чтобы выполнить установку или обновление, см. статью [Установка и настройка Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
 > [!NOTE]
-> При создании сервера вам могут выставляться счета за новую службу. toolearn более, в разделе [цены служб Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+> При создании сервера вам могут выставляться счета за новую службу. Дополнительные сведения см. в разделе [цен на службы Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 
 ## <a name="prerequisites"></a>Предварительные требования
-toocomplete краткого руководства, необходимо:
+Для работы с этим кратким руководством вам понадобится:
 
-* **Подписка Azure**: посетите [бесплатная пробная версия](https://azure.microsoft.com/offers/ms-azr-0044p/) toocreate учетную запись.
-* **Azure Active Directory**: ваша подписка должна быть связана с клиентом Azure Active Directory, а учетная запись настроена в этом каталоге. toolearn более, в разделе [проверки подлинности и пользовательские разрешения](analysis-services-manage-users.md).
+* **Подписка Azure**: откройте ссылку на [бесплатную пробную версию Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), чтобы создать учетную запись.
+* **Azure Active Directory**: ваша подписка должна быть связана с клиентом Azure Active Directory, а учетная запись настроена в этом каталоге. Дополнительные сведения см. в руководстве по [аутентификации и настройке пользовательских разрешений](analysis-services-manage-users.md).
 
 ## <a name="import-azurermanalysisservices-module"></a>Импорт модуля AzureRm.AnalysisServices
-toocreate сервера в вашей подписке, используйте hello [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) компонент модуля. Загрузите модуль AzureRm.AnalysisServices hello в сеансе PowerShell.
+Чтобы создать сервер в подписке, используйте модуль компонентов [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices). Загрузите модуль AzureRm.AnalysisServices в сеансе PowerShell.
 
 ```powershell
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="sign-in-tooazure"></a>Войдите в tooAzure
+## <a name="sign-in-to-azure"></a>Вход в Azure
 
-Войти в tooyour подписки Azure, используя hello [AzureRmAccount добавить](/powershell/module/azurerm.profile/add-azurermaccount) команды. Выполните hello на экране инструкциям.
+Войдите в подписку Azure с помощью команды [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount). Выполните инструкции на экране.
 
 ```powershell
 Add-AzureRmAccount
@@ -53,7 +53,7 @@ Add-AzureRmAccount
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
  
-[Группа ресурсов Azure](../azure-resource-manager/resource-group-overview.md) — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа. При создании сервера необходимо указать группу ресурсов в вашей подписке. Если вы еще нет группы ресурсов, можно создать новую с помощью hello [New AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) команды. Hello следующий пример создает группу ресурсов с именем `myResourceGroup` в hello Запад США.
+[Группа ресурсов Azure](../azure-resource-manager/resource-group-overview.md) — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа. При создании сервера необходимо указать группу ресурсов в вашей подписке. Если у вас еще нет группы ресурсов, вы можете создать ее с помощью команды [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). В следующем примере создается группа ресурсов с именем `myResourceGroup` и в регионе "Западная часть США".
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
 
 ## <a name="create-a-server"></a>Создание сервера
 
-Создание нового сервера с помощью hello [New AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) команды. Hello следующий пример создает на сервере MyServer в myResourceGroup в регионе hello Запад США, на уровне hello D1 и указывает philipc@adventureworks.com администратор сервера.
+Создайте сервер с помощью команды [New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver). В следующем примере мы создадим сервер с именем MyServer в группе myResourceGroup, в регионе "Западная часть США", на уровне D1 и укажем philipc@adventureworks.com в качестве администратора сервера.
 
 ```powershell
 New-AzureRmAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myServer" -Location West US -Sku D1 -Administrator "philipc@adventure-works.com"
@@ -69,7 +69,7 @@ New-AzureRmAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "my
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
-Можно удалить сервер hello из подписки с помощью hello [AzureRmAnalysisServicesServer удаление](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) команды. Не удаляйте сервер, если вы планируете использовать другие шаблоны для быстрого начала работы и руководства в этой коллекции. Hello следующий пример удаляет hello server на предыдущем шаге hello.
+Чтобы удалить сервер из подписки, используйте команду [AzureRmAnalysisServicesServer удаление](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver). Не удаляйте сервер, если вы планируете использовать другие шаблоны для быстрого начала работы и руководства в этой коллекции. В следующем примере показано, как удалить сервер, созданный на предыдущем шаге.
 
 
 ```powershell

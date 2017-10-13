@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документация виртуальной сети - учебники, справочник по API | Документы Microsoft"
-description: "Дополнительные сведения об toouse виртуальной сети в hello облачных. Документации показано, как использовать ресурсы toolaunch toodeploy виртуальной сети и интегрировать локальную сеть."
+title: "Документация по виртуальным сетям Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как использовать виртуальную сеть в облаке. Документация, в которой показано, как развертывать виртуальную сеть, а также использовать ее для запуска ресурсов и интеграции с локальной сетью."
 services: virtual-network
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ecaecfab31a2bbfb46a712a035e07a059fa40be7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6ae5c9019f292a18bc4ae8afe8d615977e8e6c9d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-network-documentation"></a>Документация по виртуальной сети
 
-Дополнительные сведения об облачных toouse виртуальной сети (VNet), логическое представление сети в hello. Документации показано, как настроить и управление виртуальной сети, использовать toolaunch виртуальные машины или облачные службы, подключения hello виртуальной сети tooyour в локальной сети и сохраняя контроль над ресурсами, расширьте облако toohello сети.
+Узнайте, как использовать виртуальную сеть, логическое представление сети в облаке. Документация, в которой показано, как настраивать и администрировать виртуальную сеть, а также использовать ее для запуска виртуальных машин или облачных служб, подключения к локальной сети и развертывания в облако, сохраняя контроль над ресурсами.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало работы с виртуальной сети с помощью портала Azure hello</h3>
+                        <h3>Начало работы с виртуальной сетью при помощи портала Azure</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало работы с виртуальной сети с помощью hello Azure CLI</h3>
+                        <h3>Начало работы с виртуальной сетью при помощи интерфейса командной строки Azure</h3>
                     </div>
                 </div>
             </div>

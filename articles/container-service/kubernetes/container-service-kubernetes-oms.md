@@ -1,5 +1,5 @@
 ---
-title: "кластер aaaMonitor Azure Kubernetes - операции управления | Документы Microsoft"
+title: "Мониторинг кластера Azure Kubernetes с помощью Operations Management | Документация Майкрософт"
 description: "Мониторинг кластера Kubernetes в Службе контейнеров Azure с помощью Microsoft Operations Management Suite"
 services: container-service
 documentationcenter: 
@@ -17,29 +17,29 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 7474ee1571134ffe43ff8e4041cf5a64f5635bb7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bd5c81435c091d25bc14710589b7c043e9f56a25
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Мониторинг кластера Службы контейнеров Azure с помощью Microsoft Operations Management Suite (OMS)
 
 ## <a name="prerequisites"></a>Предварительные требования
 В этом пошаговом руководстве предполагается, что вы [создали кластер Kubernetes с помощью службы контейнеров Azure](container-service-kubernetes-walkthrough.md).
 
-Также предполагается, что имеется hello `az` Azure cli и `kubectl` установлены инструменты.
+Также предполагается, что у вас установлен интерфейс командной строки Azure `az` и инструменты `kubectl`.
 
-Можно проверить при наличии hello `az` установить, запустив средство:
+Чтобы проверить наличие средства `az`, выполните такую команду:
 
 ```console
 $ az --version
 ```
 
-Если у вас нет hello `az` средство установки приведены инструкции по [здесь](https://github.com/azure/azure-cli#installation).  
-Кроме того, можно использовать [оболочки облако Azure](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), имеющий hello `az` Azure cli и `kubectl` средства уже установлен автоматически.  
+Если средство `az` не установлено, следуйте инструкциям, приведенным [здесь](https://github.com/azure/azure-cli#installation).  
+Кроме того, можно использовать [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), имеющий средства Azure CLI `az` и `kubectl`, которые уже установлены.  
 
-Можно проверить при наличии hello `kubectl` установить, запустив средство:
+Чтобы проверить наличие средства `kubectl`, выполните такую команду:
 
 ```console
 $ kubectl version
@@ -50,12 +50,12 @@ $ kubectl version
 $ az acs kubernetes install-cli
 ```
 
-tootest при наличии kubernetes ключи, установленные в средстве kubectl можно запустить:
+Чтобы проверить, установлены ли ключи kubernetes в средстве kubectl, выполните следующую команду:
 ```console
 $ kubectl get nodes
 ```
 
-Если hello выше команда ошибок, tooinstall kubernetes кластера ключи требуются в средство kubectl. Это можно сделать с помощью hello следующую команду:
+Если появились ошибки команды, необходимо установить ключи кластера kubernetes в средство kubectl. Это можно сделать с помощью следующей команды:
 ```console
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
@@ -64,46 +64,46 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Мониторинг контейнеров с помощью Operations Management Suite (OMS)
 
-Microsoft Operations Management (OMS) — это облачное решение Майкрософт для управления ИТ-средой, которое помогает управлять локальной и облачной инфраструктурой и защищать ее. Решение контейнер — это решение в аналитику журнала OMS, служащей для просмотра данных инвентаризации контейнера hello, производительности и журналов в одном месте. Аудит, устранение неполадок контейнеры путем просмотра журналов hello в центральном расположении и найти шумный использование лишние контейнер на узле.
+Microsoft Operations Management (OMS) — это облачное решение Майкрософт для управления ИТ-средой, которое помогает управлять локальной и облачной инфраструктурой и защищать ее. Контейнер OMS — это решение в OMS Log Analytics, которое помогает просматривать сведения, касающиеся инвентаризации и производительности контейнеров, а также соответствующие журналы в одном расположении. Оно позволяет выполнять аудит и устранять неполадки контейнеров, просматривая журналы в централизованном расположении, а также находить контейнеры с высоким уровнем потребления ресурсов на узле.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Дополнительные сведения о решении контейнера можно найти toothe [анализа журналов контейнера решение](../../log-analytics/log-analytics-containers.md).
+Дополнительные сведения об этом решении см. в статье [Решение "Контейнеры" (предварительная версия) в Log Analytics](../../log-analytics/log-analytics-containers.md).
 
 ## <a name="installing-oms-on-kubernetes"></a>Установка OMS в Kubernetes
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Получение идентификатора и ключа рабочей области
-Hello службы toohello tootalk агента OMS должен toobe настроены идентификатор рабочей области и ключ рабочей области. идентификатор рабочей области tooget hello и toocreate OMS ключа учетной записи в <https://mms.microsoft.com>. Выполните шаги hello toocreate учетную запись. После завершения создания учетной записи hello, вам потребуется tooobtain идентификатор и ключ, щелкнув **параметры**, затем **подключенные источники**, а затем **серверы Linux**, как показано ниже.
+Чтобы агент OMS мог взаимодействовать со службой, для него нужно настроить идентификатор и ключ рабочей области. Чтобы получить идентификатор и ключ рабочей области, необходимо создать учетную запись OMS, перейдя по адресу <https://mms.microsoft.com>. Следуйте инструкциям, чтобы создать учетную запись. После создания учетной записи необходимо получить идентификатор и ключ, щелкнув **Параметры**, **Подключенные источники**, а затем — **Linux Servers** (Серверы Linux), как показано ниже.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-hello-oms-agent-using-a-daemonset"></a>Установка агента OMS hello, с помощью DaemonSet
-DaemonSets используются Kubernetes toorun один экземпляр контейнера на каждом узле в кластере hello.
+### <a name="install-the-oms-agent-using-a-daemonset"></a>Установка агента OMS с помощью DaemonSet
+Kubernetes использует наборы DaemonSet для выполнения отдельного экземпляра контейнера на каждом узле в кластере.
 Они идеально подходят для выполнения агентов мониторинга.
 
-Вот hello [DaemonSet YAML файл](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Сохраните файл с именем файла tooa `oms-daemonset.yaml` и замените значения заполнителя hello `WSID` и `KEY` с идентификатор рабочей области и ключ в файле hello.
+Ниже приведен [YAML-файл DaemonSet](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Сохраните его под именем `oms-daemonset.yaml` и замените в нем значения заполнителей `WSID` и `KEY` идентификатором и ключом рабочей области.
 
-После добавления идентификатор рабочей области и ключа toohello DaemonSet конфигурации, можно установить агент OMS hello в кластере с hello `kubectl` средство командной строки:
+После добавления идентификатора и ключа рабочей области в конфигурацию DaemonSet вы можете установить агент OMS в кластер, воспользовавшись программой командной строки `kubectl`.
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-hello-oms-agent-using-a-kubernetes-secret"></a>Установка агента OMS hello, с помощью Kubernetes секрета
-tooprotect свой идентификатор рабочей области OMS и ключ, можно использовать как часть файла DaemonSet YAML Kubernetes секрет.
+### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Установка агента OMS с помощью секрета Kubernetes
+Для защиты идентификатора и ключа рабочей области OMS можно использовать секрет Kubernetes как часть YAML-файла DaemonSet.
 
- - Скопируйте сценарий hello, файл шаблона секретный и hello DaemonSet YAML файл (из [репозитория](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) и убедитесь, что они находятся на hello один каталог. 
+ - Скопируйте сценарий, файл шаблона секретов и YAML-файл DaemonSet (из [репозитория](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) и убедитесь, что они находятся в одном и том же каталоге. 
       - Сценарий создания секретов — secret-gen.sh.
       - Шаблон секретов — secret-template.yaml.
    - YAML-файл DaemonSet — omsagent-ds-secrets.yaml.
- - Запустите сценарий hello. Hello скрипт будет запрашивать hello идентификатор рабочей области OMS и первичный ключ. Вставьте, и hello сценарий создаст файл секретный yaml, чтобы можно было запустить.   
+ - Выполните скрипт. Сценарий будет запрашивать идентификатор и первичный ключ рабочей области OMS. Вставьте их, и сценарий создаст YAML-файл секрета, который можно запустить.   
    ```
    #> sudo bash ./secret-gen.sh 
    ```
 
-   - Создайте pod hello секретные данные, выполнив следующие hello:``` kubectl create -f omsagentsecret.yaml ```
+   - Создайте модуль секретов, выполнив следующую команду: ``` kubectl create -f omsagentsecret.yaml ```
  
-   - toocheck hello следующей: 
+   - Чтобы проверить, выполните следующую команду: 
 
    ``` 
    root@ubuntu16-13db:~# kubectl get secrets
@@ -124,7 +124,7 @@ tooprotect свой идентификатор рабочей области OMS
    KEY:    88 bytes 
    ```
  
-  - Создание свой набор daemon-set omsagent, выполнив команду ``` kubectl create -f omsagent-ds-secrets.yaml ```
+  - Создайте набор daemon-set omsagent, выполнив команду ``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Заключение
-Вот и все! Через несколько минут должно быть возможности toosee данными, поступающими tooyour мониторинга OMS.
+Вот и все! Через несколько минут можно будет увидеть, как в панель мониторинга OMS поступает поток данных.

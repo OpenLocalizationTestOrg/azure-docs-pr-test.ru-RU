@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Дальнейшие действия и каким образом Azure AD Connect toomanage | Документы Microsoft"
-description: "Узнайте, как tooextend hello задачи и конфигурация по умолчанию для Azure AD Connect."
+title: "Azure AD Connect: дальнейшие действия и управление Azure AD Connect | Документация Майкрософт"
+description: "Узнайте, как расширить конфигурацию по умолчанию и операционные задачи для Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 4404aaff24d54d76b83baca3b331a6a250ba4c03
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: beace24fa00c85a5038a3c39ae8f76af5fd12111
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="next-steps-and-how-toomanage-azure-ad-connect"></a>Дальнейшие действия и как toomanage Azure AD Connect
-Используйте hello операционные процедуры в этой статье toocustomize подключение Azure Active Directory (Azure AD) toomeet требованиями и требованиями к вашей организации.  
+# <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Дальнейшие действия и управление Azure AD Connect
+Используйте рабочие процедуры, приведенные в этой статье, для настройки Azure Active Directory (Azure AD) Connect в соответствии с потребностями вашей организации.  
 
 ## <a name="add-additional-sync-admins"></a>Добавление дополнительных администраторов синхронизации
-По умолчанию только hello этот пользователь hello установки и локальных администраторов, модуль синхронизации может toomanage hello установлен. Для возможности tooaccess toobe другим пользователям и управлять подсистема синхронизации hello, hello группы с именем ADSyncAdmins на локальном сервере hello и добавьте их toothis группы.
+По умолчанию только пользователь, выполнивший установку, и локальные администраторы могут управлять установленным модулем синхронизации. Чтобы предоставить дополнительным пользователям доступ к модулю синхронизации и возможность управлять им, найдите группу ADSyncAdmins на локальном сервере и добавьте их в эту группу.
 
-## <a name="assign-licenses-tooazure-ad-premium-and-enterprise-mobility-suite-users"></a>Назначить лицензии tooAzure пользователей AD Premium и Enterprise Mobility Suite
-Теперь, когда пользователи были синхронизированы облака toohello необходимо tooassign их лицензии, поэтому они могут начать работу с облачных приложений, таких как Office 365.
+## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Назначение пользователям лицензий Azure AD Premium и Enterprise Mobility Suite
+После синхронизации данных о пользователях с облаком необходимо назначить им лицензию, чтобы они могли приступить к работе с облачными приложениями, такими как Office 365.
 
-### <a name="tooassign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>tooassign Azure AD Premium или Enterprise Mobility Suite лицензии
+### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Назначение лицензии Azure AD Premium или Enterprise Mobility Suite
 
-1. Войдите в toohello портал Azure от имени администратора.
-2. В левой части экрана приветствия выберите **Active Directory**.
-3. На hello **Active Directory** дважды щелкните каталог hello hello пользователей необходимо tooset.
-4. В начале hello hello каталог страницы, выберите **лицензий**.
-5. На hello **лицензий** выберите **Active Directory Premium** или **Enterprise Mobility Suite**, а затем нажмите кнопку **назначить**.
-6. В диалоговом окне приветствия выберите пользователей hello tooassign лицензии и нажмите кнопку hello флажок значок toosave hello изменения.
+1. Войдите на портал Azure с учетной записью администратора.
+2. Выберите **Active Directory**слева.
+3. На странице **Active Directory** дважды щелкните каталог с пользователями для настройки.
+4. В верхней части страницы каталога выберите **Лицензии**.
+5. На странице **Лицензии** выберите **Active Directory Premium** или **Enterprise Mobility Suite**, а затем щелкните **Назначить**.
+6. В диалоговом окне выберите пользователей, которым требуется назначить лицензии, и щелкните значок галочки, чтобы сохранить изменения.
 
-## <a name="verify-hello-scheduled-synchronization-task"></a>Проверить синхронизацию по расписанию задачу hello
-Использование hello Azure портала toocheck hello состояния процесса синхронизации.
+## <a name="verify-the-scheduled-synchronization-task"></a>Проверка выполнения запланированной задачи синхронизации
+Используйте портал Azure, чтобы проверить состояние синхронизации.
 
-### <a name="tooverify-hello-scheduled-synchronization-task"></a>tooverify hello запланированная задача синхронизации
-1. Войдите в toohello портал Azure от имени администратора.
-2. В левой части экрана приветствия выберите **Active Directory**.
-3. На hello **Active Directory** дважды щелкните каталог hello hello пользователей необходимо tooset.
-4. В начале hello hello каталог страницы, выберите **Интеграция каталогов**.
-5. В разделе **интеграции с локальной службой active directory**, Примечание hello время последней синхронизации.
+### <a name="to-verify-the-scheduled-synchronization-task"></a>Чтобы проверить выполнение запланированной задачи синхронизации:
+1. Войдите на портал Azure с учетной записью администратора.
+2. Выберите **Active Directory**слева.
+3. На странице **Active Directory** дважды щелкните каталог с пользователями для настройки.
+4. В верхней части страницы каталога выберите вкладку **Интеграция каталогов**.
+5. В разделе **integration with local active directory** (Интеграция с активным локальным каталогом Active Directory) просмотрите время последней синхронизации.
 
 <center>![Время синхронизации каталога](./media/active-directory-aadconnect-whats-next/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>Запуск запланированной задачи синхронизации
-Если вам требуется toorun задачу синхронизации, это можно сделать путем повторного запуска мастера Azure AD Connect hello.  Необходимо tooprovide учетные данные Azure AD.  В мастере приветствия выберите hello **настроить параметры синхронизации** задач и нажмите кнопку **Далее** toomove мастером hello. В конце hello, убедитесь, что hello **запуск процесса синхронизации hello сразу же после завершения начальной настройки hello** флажок.
+Чтобы выполнить задачу синхронизации, можно снова запустить мастер Azure AD Connect.  Для этого требуется указать учетные данные Azure AD.  В мастере выберите задачу **Настроить параметры синхронизации** и нажмите кнопку **Далее** для перехода к следующим страницам мастера. Убедитесь, что на последней странице установлен флажок **Запустить синхронизацию сразу после завершения начальной настройки**.
 
 <center>![Запуск синхронизации](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
-Дополнительные сведения о синхронизации hello Azure AD Connect планировщика см. в разделе [планировщик подключения Azure AD](active-directory-aadconnectsync-feature-scheduler.md).
+Дополнительные сведения о планировщике синхронизации Azure AD Connect см. в статье [Синхронизация Azure AD Connect: планировщик](active-directory-aadconnectsync-feature-scheduler.md).
 
 ## <a name="additional-tasks-available-in-azure-ad-connect"></a>Дополнительные задачи в Azure AD Connect
-После первоначальной установки Azure AD Connect всегда мастер можно запустить hello снова из hello Azure AD Connect Пуск страницы или рабочего стола с помощью ярлыка.  Обратите внимание, что снова перейти в мастере hello предоставляет некоторые новые параметры в форме hello дополнительные задачи.  
+После установки Azure AD Connect вы можете повторно запускать мастер с начальной страницы Azure AD Connect или используя ярлык на рабочем столе.  При повторном запуске мастера будут доступны дополнительные задачи.  
 
-Hello ниже приводится сводка этих задач и краткое описание каждой задачи.
+Список задач и их краткое описание см. в следующей таблице.
 
 ![Список дополнительных задач](./media/active-directory-aadconnect-whats-next/addtasks.png)
 
 | Дополнительная задача | Описание |
 | --- | --- |
-| **Представление hello выбранного сценария** |Просмотр текущего решения Azure AD Connect.  Включает общие параметры, синхронизированные каталоги и параметры синхронизации. |
-| **Настроить параметры синхронизации** |Изменить текущую конфигурацию hello как добавление дополнительная настройка toohello лесов Active Directory или включение параметров синхронизации, например пользователь, группа, устройства или обратная запись пароля. |
-| **Включить промежуточный режим** |Сведения о рабочей области, не синхронизирована немедленно и не экспортируются tooAzure AD или локальной Active Directory.  С помощью этой функции можно просмотреть синхронизаций hello прежде, чем они возникнут. |
+| **Просмотреть выбранный сценарий** |Просмотр текущего решения Azure AD Connect.  Включает общие параметры, синхронизированные каталоги и параметры синхронизации. |
+| **Настроить параметры синхронизации** |Изменение текущей конфигурации, например добавление в нее дополнительных лесов Active Directory или активация параметров синхронизации, таких как обратная запись для пользователей, групп, устройств или паролей. |
+| **Включить промежуточный режим** |Промежуточные сведения, которые сразу не синхронизируются и не экспортируются в Azure AD или локальной каталог Active Directory.  Эта функция позволяет просмотреть результаты синхронизации до ее выполнения. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные сведения об интеграции локальных удостоверений см. в статье [Подключение Active Directory к Azure Active Directory](active-directory-aadconnect.md).

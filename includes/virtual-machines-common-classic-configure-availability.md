@@ -1,74 +1,74 @@
 
 
 
-Группа доступности позволяет поддерживать доступность виртуальных машин во время простоев, например связанных с обслуживанием. Помещение двух или более аналогичным образом настроенные виртуальные машины в наборе доступности создает hello доступность toomaintain дублирования hello приложения или службы, выполняемые на виртуальной машине. Дополнительные сведения о том, как это работает. в разделе [Управление доступностью виртуальных машин hello][Manage hello availability of virtual machines].
+Группа доступности позволяет поддерживать доступность виртуальных машин во время простоев, например связанных с обслуживанием. Размещение двух или более одинаково настроенных виртуальных машин в группе доступности создает избыточность, необходимую для обеспечения доступности приложений или служб, выполняемых на виртуальной машине. См. дополнительные сведения об [управлении доступностью виртуальных машин][Manage the availability of virtual machines].
 
-Это наиболее toouse рекомендаций группы доступности и балансировки нагрузки toohelp конечные точки убедитесь, что приложение будет всегда доступен и работает эффективно. См. дополнительные сведения о [балансировке нагрузки для служб инфраструктуры Azure][Load balancing for Azure infrastructure services].
+Чтобы обеспечить постоянную доступность и эффективность работы приложения, рекомендуется использовать и группы доступности, и балансировку нагрузки конечных точек. См. дополнительные сведения о [балансировке нагрузки для служб инфраструктуры Azure][Load balancing for Azure infrastructure services].
 
 Добавлять классические виртуальные машины в группы доступности можно одним из двух способов.
 
-* [Вариант 1: Создание виртуальной машины и набор доступности в hello же время][Option 1: Create a virtual machine and an availability set at hello same time]. Затем можно добавьте новые виртуальные машины toohello, при создании этих виртуальных машин.
-* [Вариант 2: Добавить существующую группу доступности виртуальной машины tooan][Option 2: Add an existing virtual machine tooan availability set].
+* [Вариант 1. Одновременное создание виртуальной машины и группы доступности][Option 1: Create a virtual machine and an availability set at the same time]. Затем добавляйте создаваемые виртуальные машины в эту группу.
+* [Вариант 2. Добавление существующей виртуальной машины к группе доступности][Option 2: Add an existing virtual machine to an availability set].
 
 > [!NOTE]
-> В классической модели hello, виртуальные машины, которые нужно tooput в hello же группу доступности должен принадлежать toohello же облачной службе.
+> В классической модели виртуальные машины, которые вы хотите поместить в одну группу доступности, должны относиться к одной облачной службе.
 > 
 > 
 
-## <a id="createset"></a>Вариант 1: создайте виртуальную машину и набор доступности в hello же времени
-Можно использовать либо hello портал Azure или Azure PowerShell команды toodo это.
+## <a id="createset"> </a>Вариант 1. Одновременное создание виртуальной машины и группы доступности
+Для этого можно использовать портал Azure или команды Azure PowerShell.
 
-hello toouse портала Azure:
+Использование портала Azure
 
-1. Если это еще не сделано, войдите в toohello [портал Azure](https://portal.azure.com).
-2. Hello концентратора меню **+ создать**, а затем нажмите кнопку **виртуальной машины**.
+1. Перейдите на [портал Azure](https://portal.azure.com), если вы еще этого не сделали.
+2. В главном меню щелкните **Создать**, а затем — **Виртуальная машина**.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
-3. Выберите образ виртуальной машины Marketplace hello, нужно toouse. Вы можете toocreate виртуальной машины Windows или Linux.
-4. Для виртуальной машины, выбранного hello, убедитесь, эту модель развертывания hello слишком**классический** и нажмите кнопку **создать**
+3. Выберите нужный образ виртуальной машины Marketplace. Можно создать виртуальную машину Windows или Linux.
+4. После выбора виртуальной машины проверьте, что задана **классическая** модель развертывания, и нажмите кнопку **Создать**.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
 5. Введите имя виртуальной машины, имя пользователя и пароль (для компьютеров Windows) или открытый ключ SSH (для компьютеров Linux). 
-6. Выберите размер виртуальной Машины hello и нажмите кнопку **выберите** toocontinue.
-7. Выберите **необязательная конфигурация > Группа доступности**и выберите набор доступности hello нужно tooadd hello виртуальной машины.
+6. Укажите размер виртуальной машины и нажмите кнопку **Выбрать** , чтобы продолжить.
+7. Выберите пункты **Дополнительная настройка > Группа доступности**, а затем укажите группу доступности, в которую нужно добавить виртуальную машину.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png) 
 8. Проверьте настройки конфигурации. Когда все будет готово, нажмите **Создать**.
-9. Пока Azure создает виртуальную машину, вы можете отслеживать ход выполнения hello в **виртуальные машины** в главном меню hello.
+9. Процесс создания виртуальной машины в Azure можно отслеживать в разделе **Виртуальные машины** , который можно выбрать в главном меню.
 
-toouse Azure PowerShell команды toocreate виртуальной машине Azure и добавьте его tooa новый или существующую группу доступности см. в разделе [toocreate использование Azure PowerShell и предварительной настройки виртуальных машин под управлением Windows](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Чтобы использовать команды Azure PowerShell для создания виртуальной машины Azure и добавления ее в новую или существующую группу доступности, ознакомьтесь со статьей [Создание виртуальной машины Windows с использованием PowerShell и классической модели развертывания](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a id="addmachine"></a>Вариант 2: добавить существующую группу доступности виртуальной машины tooan
-В hello портал Azure можно добавить существующие tooan классических виртуальных машин в существующей группе доступности или создайте новую для них. (Помните, hello, hello виртуальных машин в одной группе доступности должны принадлежать toohello же облачной службе.) Hello действия являются почти hello же. С помощью Azure PowerShell можно добавить существующую группу доступности hello виртуальной машины tooan.
+## <a id="addmachine"> </a>Вариант 2. Добавление существующей виртуальной машины к группе доступности
+На портале Azure можно добавить существующие классические виртуальные машины к существующей группе доступности либо создать для них новую. (Учитывайте, что виртуальные машины из одной группы доступности должны входить в одну облачную службу.) Выполняемые действия практически идентичны. С помощью Azure PowerShell можно добавить виртуальную машину к существующей группе доступности.
 
-1. Если вы еще не сделали, войдите в toohello [портал Azure](https://portal.azure.com).
-2. Hello концентратора меню **виртуальные машины (классические)**.
+1. Войдите на [портал Azure](https://portal.azure.com), если вы еще не сделали это.
+2. В главном меню щелкните **Виртуальные машины (классические)**.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
-3. Hello список виртуальных машин выберите имя hello hello виртуальной машины, что требуется, чтобы набор toohello tooadd.
-4. Выберите **набор доступности** из виртуальной машины hello **параметры**.
+3. Выберите из списка имя виртуальной машины, которую хотите добавить к группе.
+4. Выберите пункт **Группа доступности** в **параметрах** виртуальной машины.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
-5. Выберите набор доступности hello которых надо tooadd hello виртуальной машины. Hello виртуальной машины должны принадлежать toohello же облачную службу как набор доступности hello.
+5. Выберите группу доступности, в которую нужно добавить виртуальную машину. Виртуальная машина должна находиться в той же облачной службе, что и группа доступности.
    
     ![Замещающий текст](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
 6. Щелкните **Сохранить**.
 
-toouse команд Azure PowerShell, откройте сеанс Azure PowerShell правами администратора и запустите следующую команду hello. Местозаполнители hello (такие как &lt;VmCloudServiceName&gt;), замените весь код внутри кавычек hello, включая hello < и > символы, с hello исправления имен.
+Чтобы использовать команды Azure PowerShell, откройте сеанс Azure PowerShell уровня администратора и выполните следующую команду. Для заполнителей (таких как &lt;VmCloudServiceName&gt;) замените все содержимое внутри кавычек, включая символы, на правильные имена.
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
 > [!NOTE]
-> Hello виртуальной машине может быть toofinish toobe перезапуска, добавив его в группу доступности toohello.
+> Возможно, вам нужно будет перезапустить виртуальную машину, чтобы завершить ее добавление к группе доступности.
 > 
 > 
 
 <!-- LINKS -->
-[Option 1: Create a virtual machine and an availability set at hello same time]: #createset
-[Option 2: Add an existing virtual machine tooan availability set]: #addmachine
+[Option 1: Create a virtual machine and an availability set at the same time]: #createset
+[Option 2: Add an existing virtual machine to an availability set]: #addmachine
 
 [Load balancing for Azure infrastructure services]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
-[Manage hello availability of virtual machines]:../articles/virtual-machines/linux/manage-availability.md
+[Manage the availability of virtual machines]:../articles/virtual-machines/linux/manage-availability.md
 
 [Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md

@@ -1,5 +1,5 @@
 ---
-title: "aaaOptions для отладки Azure облачные службы | Документы Microsoft"
+title: "Параметры отладки облачных служб Azure | Документация Майкрософт"
 description: "Отладка облачных служб Azure"
 services: visual-studio-online
 documentationcenter: n/a
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/18/2017
 ms.author: kraigb
-ms.openlocfilehash: 8b7779ca33cfd82fd5fbccf229ea822c311bdea0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cdcd4ca1fbc7e0a2f24122b32148cbda3d6951a0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="learn-hello-various-ways-toodebug-an-azure-cloud-service"></a>Узнайте hello различные способы toodebug облачной службы Azure
-В этой статье содержатся ссылки toohello различных способов toodebug облачной службы Azure. 
+# <a name="learn-the-various-ways-to-debug-an-azure-cloud-service"></a>Узнайте о различных способах отладки облачной службы Azure.
+В этой статье приведены ссылки на различные способы отладки облачной службы Azure. 
 
 ## <a name="debugging-an-azure-cloud-service-in-visual-studio"></a>Отладка облачной службы Azure в Visual Studio
-Можно сохранить время и деньги с помощью toodebug эмулятор вычислений Azure hello облачной службы на локальном компьютере. Посредством локальной отладки службы перед ее развертыванием можно повысить надежность и производительность службы, не платя за время использования вычислительных ресурсов. Однако некоторые ошибки могут возникнуть только при запуске облачной службы в среде Azure. Включив удаленную отладку при публикации службы, а затем присоединив экземпляра роли tooa hello отладчика можно производить отладку ошибок, возникающих только при выполнении облачной службы в Azure. Дополнительные сведения см. в разделе [Отладка облачной службы на локальном компьютере](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer).
+Вы можете сэкономить время и деньги, воспользовавшись эмулятором вычислений Azure для отладки облачной службы на локальном компьютере. Посредством локальной отладки службы перед ее развертыванием можно повысить надежность и производительность службы, не платя за время использования вычислительных ресурсов. Однако некоторые ошибки могут возникнуть только при запуске облачной службы в среде Azure. Ошибки, которые возникают только при запуске облачной службы в среде Azure, можно устранить, если включить удаленную отладку при публикации службы, а затем подключить отладчик к экземпляру роли. Дополнительные сведения см. в разделе [Отладка облачной службы на локальном компьютере](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer).
 
 ## <a name="using-azure-diagnostics"></a>Использование службы диагностики Azure 
-Вы можете использовать диагностику Azure toolog подробные сведения из кода, выполняемых внутри ролей, ли hello ролей, выполняются в среде разработки hello, или в Azure. Дополнительные сведения см. в статье [Включение системы диагностики Azure в облачных службах Azure](http://go.microsoft.com/fwlink/p/?LinkId=400450).
+Систему диагностики Azure можно использовать для регистрации подробных сведений из кода, выполняющегося в ролях, независимо от того, запущены ли эти роли в среде разработки или в Azure. Дополнительные сведения см. в статье [Включение системы диагностики Azure в облачных службах Azure](http://go.microsoft.com/fwlink/p/?LinkId=400450).
 
 ## <a name="using-intellitrace"></a>Использование IntelliTrace 
-Если вы используете Visual Studio Enterprise toowrite ролей целевое .NET Framework 4.5, можно включить IntelliTrace в момент hello развертывания облачной службы Azure из Visual Studio. IntelliTrace предоставляет журнал можно использовать с Visual Studio toodebug приложения как если бы оно было запущено в Azure. Дополнительные сведения см. в статье [Отладка опубликованной облачной службы с помощью IntelliTrace и Visual Studio](http://go.microsoft.com/fwlink/p/?LinkId=623016).
+Если Visual Studio Enterprise используется для написания ролей для .NET Framework 4.5, вы можете включить IntelliTrace в момент развертывания облачной службы Azure из Visual Studio. IntelliTrace предоставляет журнал, который можно использовать с Visual Studio для отладки приложения как в Azure. Дополнительные сведения см. в статье [Отладка опубликованной облачной службы с помощью IntelliTrace и Visual Studio](http://go.microsoft.com/fwlink/p/?LinkId=623016).
 
 ## <a name="remote-debugging"></a>Удаленная отладка 
-Можно включить удаленную отладку облачных служб во время hello при развертывании hello облачной службы из Visual Studio. При выборе tooenable удаленной отладки для развертывания службы удаленной отладки устанавливаются на hello виртуальных машин, работающих каждого экземпляра роли. Такие службы (например, `msvsmon.exe`) не влияют на производительность и не требуют дополнительных расходов. Дополнительные сведения см. в разделе [Отладка облачной службы в Azure](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure).
+Удаленную отладку облачной службы можно включить при развертывании облачной службы в Visual Studio. Если для развертывания выбрана удаленная отладка, службы удаленной отладки будут установлены на все виртуальные машины, где выполняются экземпляры роли. Такие службы (например, `msvsmon.exe`) не влияют на производительность и не требуют дополнительных расходов. Дополнительные сведения см. в разделе [Отладка облачной службы в Azure](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- [Отладка облачной службы Azure или виртуальной Машины в Visual Studio](./vs-azure-tools-debug-cloud-services-virtual-machines.md) -Узнайте подробности hello как toodebug Azure облачных служб.
+- [Отладка облачной службы или виртуальной машины Azure в Visual Studio](./vs-azure-tools-debug-cloud-services-virtual-machines.md): сведения об отладке облачных служб Azure.

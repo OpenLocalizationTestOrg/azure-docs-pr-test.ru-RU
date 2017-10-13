@@ -1,6 +1,6 @@
 ---
-title: "вопросы и ответы для классических виртуальных машин Linux aaaFrequently | Документы Microsoft"
-description: "Ответы на часто задаваемые вопросы о виртуальных машинах Azure Linux, созданных с помощью hello классической модели развертывания toosome."
+title: "Часто задаваемые вопросы о классических виртуальных машинах Linux | Документация Майкрософт"
+description: "Приведены ответы на некоторые распространенные вопросы о виртуальных машинах Linux в Azure, созданных с помощью классической модели развертывания."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-ms.openlocfilehash: ecf36140814224f0ceeeb35b90479529d100025a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 132868c00dc039e40b0782aae6da2cf29163706f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-hello-classic-deployment-model"></a>Часто задаваемые вопросы о Azure Linux виртуальных машин, созданных с помощью hello классической модели развертывания
+# <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-the-classic-deployment-model"></a>Вопросы и ответы по виртуальным машинам Linux в Azure, созданным при помощи классической модели развертывания
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Часто задаваемые вопросы о hello при использовании hello модель диспетчера ресурсов, см. в разделе [здесь](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Часто задаваемые вопросы для модели Resource Manager см. [здесь](../faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../../../includes/virtual-machines-common-classic-faq.md)]
 

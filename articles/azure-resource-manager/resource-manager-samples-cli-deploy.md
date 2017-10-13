@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария CLI - aaaAzure развертывания шаблона | Документы Microsoft"
+title: "Пример сценария Azure CLI. Развертывание шаблона | Документы Майкрософт"
 description: "Пример сценария для развертывания шаблона Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5a94eedbd898ced29d67f8ce3023ca5c65f83af2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 974230f349aec46fde58e69658e05a13bff4296f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-template-deployment---azure-cli-script"></a>Развертывание шаблона Azure Resource Manager — сценарий Azure CLI
 
-Этот сценарий выполняет развертывание группы ресурсов tooa шаблона диспетчера ресурсов в вашей подписке.
+Этот сценарий развертывает шаблон Resource Manager в группе ресурсов в вашей подписке.
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
@@ -37,7 +37,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -84,12 +84,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below toocreate a new resource group else skip this"
+    echo "Enter a location below to create a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file toobe used
+#templateFile Path - template file to be used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -110,7 +110,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login tooazure using your credentials
+#login to azure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -118,7 +118,7 @@ then
     az login
 fi
 
-#set hello default subscription id
+#set the default subscription id
 az account set --subscription $subscriptionId
 
 #Check for existing RG
@@ -147,7 +147,7 @@ fi
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполнения hello следующую команду, группа ресурсов tooremove hello и всех его ресурсов.
+Выполните следующую команду, чтобы удалить группу ресурсов и все ее ресурсы.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -155,7 +155,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды toocreate hello развертывания hello. Каждый элемент в таблице hello связывает toocommand документацию.
+Чтобы создать развертывание, скрипт использует следующие команды. Для каждого элемента в таблице приведены ссылки на документацию по команде.
 
 | Команда | Примечания |
 |---|---|
@@ -167,8 +167,8 @@ az group delete --name myResourceGroup
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Шаблоны toodeploying введение в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure PowerShell](resource-group-template-deploy-cli.md).
+* Вводные сведения о развертывании шаблонов см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](resource-group-template-deploy-cli.md).
 * Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-cli-sas-token.md).
-* toodefine параметры в шаблоне, в разделе [разработки шаблонов](resource-group-authoring-templates.md#parameters).
-* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
+* Сведения об определении параметров в шаблоне см. в разделе [Создание шаблонов](resource-group-authoring-templates.md#parameters).
+* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
 

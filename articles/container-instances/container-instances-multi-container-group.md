@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure экземпляры контейнером - группы нескольких контейнеров | Azure документы"
+title: "Служба \"Экземпляры контейнеров Azure\". Многоконтейнерная группа | Документация Azure"
 description: "Служба \"Экземпляры контейнеров Azure\". Многоконтейнерная группа"
 services: container-instances
 documentationcenter: 
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 976f578cd2a9bf7f05ab97f24662139bb72062ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-container-group"></a>Развертывание группы контейнеров
 
-Экземпляры контейнером Azure поддерживает развертывание hello несколько контейнеров на одном узле с помощью *группы контейнеров*. Это полезно при создании сопроводительного приложения для ведения журнала, мониторинга или любой другой конфигурации, когда службе требуется еще один прикрепленный процесс. 
+Служба "Экземпляры контейнеров Azure" поддерживает развертывание нескольких контейнеров на одном узле с использованием *группы контейнеров*. Это полезно при создании сопроводительного приложения для ведения журнала, мониторинга или любой другой конфигурации, когда службе требуется еще один прикрепленный процесс. 
 
 В этом документе рассматривается запуск простой конфигурации многоконтейнерного сопроводительного приложения с использованием шаблона Azure Resource Manager.
 
-## <a name="configure-hello-template"></a>Настройка шаблона hello
+## <a name="configure-the-template"></a>Настройка шаблона
 
-Создайте файл с именем `azuredeploy.json` и копирования hello json в него. 
+Создайте файл с именем `azuredeploy.json` и скопируйте в него следующий код JSON. 
 
-В этом примере определяется группа контейнеров с двумя контейнерами и общедоступным IP-адресом. первый контейнер Hello hello группы выполняется с выходом Интернет-приложения. второй контейнер Hello, сопроводительные hello делает HTTP запроса toohello основной веб-приложение через локальную сеть hello группы. 
+В этом примере определяется группа контейнеров с двумя контейнерами и общедоступным IP-адресом. Первый контейнер группы запускает приложение с выходом в Интернет. Второй контейнер (сопроводительный) осуществляет HTTP-запрос к основному веб-приложению через локальную сеть группы. 
 
-В этом примере сопроводительные может быть развернутой tootrigger оповещение, если получен код ответа HTTP, отличным от 200 OK. 
+Пример сопроводительного приложения можно расширить, реализовав активацию оповещения при получении кода ответа HTTP, отличающегося от 200 OK. 
 
 ```json
 {
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/06/2017
   }
 ```
 
-toouse закрытый контейнер реестра образа, добавления документа json объект toohello с hello следующая формата.
+Чтобы использовать частный реестр образов контейнеров, добавьте объект в документ JSON в следующем формате.
 
 ```json
 "imageRegistryCredentials": [
@@ -121,15 +121,15 @@ toouse закрытый контейнер реестра образа, доба
 ]
 ```
 
-## <a name="deploy-hello-template"></a>Развертывание шаблона hello
+## <a name="deploy-the-template"></a>Развертывание шаблона
 
-Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды.
+Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-Развертывание шаблона hello с hello [создания развертывания группы az](/cli/azure/group/deployment#create) команды.
+Разверните шаблон с помощью команды [az group deployment create](/cli/azure/group/deployment#create).
 
 ```azurecli-interactive
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
@@ -139,7 +139,7 @@ az group deployment create --name myContainerGroup --resource-group myResourceGr
 
 ## <a name="view-deployment-state"></a>Просмотр состояния развертывания
 
-состояние hello tooview hello развертывания, используйте hello `az container show` команды. Возвращает hello подготовить общедоступный IP-адрес через какие hello доступных приложений.
+Чтобы просмотреть состояние развертывания, используйте команду `az container show`. Она возвращает подготовленный общедоступный IP-адрес, по которому можно получить доступ к приложению.
 
 ```azurecli-interactive
 az container show --name myContainerGroup --resource-group myResourceGroup -o table
@@ -155,7 +155,7 @@ myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-s
 
 ## <a name="view-logs"></a>Просмотр журналов   
 
-Просмотр выходных данных журнала hello контейнера при помощи hello `az container logs` команды. Hello `--container-name` аргумент указывает контейнер hello из журналов, для которых toopull. В этом примере задается hello первый контейнер. 
+Просмотрите выходные данные журнала контейнера с помощью команды `az container logs`. Аргумент `--container-name` определяет контейнер, из которого извлекаются журналы. В этом примере указывается первый контейнер. 
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup
@@ -171,7 +171,7 @@ istening on port 80
 ::1 - - [27/Jul/2017:17:35:38 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-toosee hello в журналах hello car стороны контейнера, запустите hello же команда Указание имени контейнера второй hello.
+Чтобы просмотреть журналы для сопроводительного контейнера, выполните ту же команду, указав имя второго контейнера.
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-sidecar --resource-group myResourceGroup
@@ -193,11 +193,11 @@ Last-Modified: Sun, 16 Jul 2017 02:08:22 GMT
 Date: Mon, 17 Jul 2017 18:27:36 GMT
 ```
 
-Как видите, сопроводительные hello периодически выполняет HTTP запроса toohello основной веб-приложения через tooensure hello группы локальной сети, на котором он выполняется.
+Как видите, сопроводительное приложение периодически выполняет HTTP-запрос к основному веб-приложению через локальную сеть группы, чтобы убедиться, что оно работает.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом документе рассматривается hello шаги, необходимые для развертывания нескольких контейнер экземпляра контейнер Azure. Tooend окончания работы экземпляров контейнеров Azure см. в учебнике экземпляры контейнером Azure hello.
+В этом документе описаны шаги по развертыванию многоконтейнерного экземпляра контейнера Azure. Дополнительные сведения о службе "Экземпляры контейнеров Azure" см. в соответствующем руководстве.
 
 > [!div class="nextstepaction"]
 > [Руководство по службе "Экземпляры контейнеров Azure"]: ./container-instances-tutorial-prepare-app.md

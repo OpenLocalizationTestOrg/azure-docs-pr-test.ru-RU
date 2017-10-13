@@ -1,6 +1,6 @@
 ---
-title: "aaaMicrosoft Security Response Center | Документы Microsoft"
-description: "статья Hello список проверенный ресурсов Microsoft Security Response Center (MSRC), которые можно использовать tooobtain Дополнительные сведения о MSRC советы и рекомендации."
+title: "Центр Microsoft Security Response Center (MSRC) | Документация Майкрософт"
+description: "В этой статье приводится проверенный список ресурсов Microsoft Security Response Center (MSRC), которые могут использоваться для получения дополнительных сведений о методиках и рекомендациях от центра MSRC."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-ms.openlocfilehash: db261c34968e61905a5705d3a7d5fbbc8e308744
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bc47589ac769d89b2aa7f7565d08555ace3119d9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-security-response-center"></a>Центр Microsoft Security Response Center
-Hello Microsoft Security Response Center (MSRC) будут предоставлены инструкции по некоторые hello world самые опытные специалисты по безопасности. Эти эксперты идентификации, отслеживать, реагирования на инциденты безопасности tooand разрешения и в локальной и облачной уязвимостей вокруг часов hello каждый день года hello.
+Центр Microsoft Security Response Center (MSRC) управляется опытными специалистами в сфере обеспечения безопасности. Эти специалисты с мировым именем круглосуточно работают над обнаружением, мониторингом и решением проблем с безопасностью, а также над устранением локальных и облачных уязвимостей.
 
-Кроме hello непрерывной работы toohello MSRC выполняет в фоновом режиме hello, hello MSRC команды имеет ряд tooyou доступных ресурсов, чтобы вы могли понять как toosecure активов Azure и развертывания более эффективно.
+Помимо текущей работы MSRC, выполняемой центром в фоновом режиме, команда MSRC предоставляет пользователям набор ресурсов для более эффективной защиты ресурсов Azure и развертываний.
 
-## <a name="hello-msrc-blog"></a>Блог MSRC Hello
-Hello [блога MSRC](https://blogs.technet.microsoft.com/msrc/) — hello месте toogo tooget hello последние новости на какие hello выполняет MSRC toohelp защититься от угроз облака.
+## <a name="the-msrc-blog"></a>Блог центра MSRC
+В [блоге центра MSRC](https://blogs.technet.microsoft.com/msrc/) публикуются самые свежие новости о работе, которую проводит центр MSRC для защиты от угроз в облаке.
 
 ## <a name="white-papers"></a>Технические документы
-Hello MSRC опубликовал ряд [технические документы](https://technet.microsoft.com/library/bb969102.aspx) помогут вам понять, что именно они делают и как они это делают. Некоторые из них содержат анализировать как защита облака Microsoft hello и включать полезные сведения о том, как можно использовать hello же конфигураций безопасности.
+Центр MSRC опубликовал ряд [технических документов](https://technet.microsoft.com/library/bb969102.aspx) с описанием текущих задач и способов их решения. В некоторых документах содержатся подробные сведения о способах защиты Microsoft Cloud и полезные сведения о том, как пользователи могут использовать аналогичные настройки безопасности.
 
 ## <a name="security-researcher-engagement-and-bounty-programs"></a>Программы поощрения и привлечения в процесс исследования систем безопасности
-Hello MSRC поддерживает совместную работу и связей с исследователи безопасности глобально tooadvance продуктов корпорации Майкрософт по безопасности.
+Чтобы повысить безопасность продуктов Microsoft центр MSRC сотрудничает со специалистами по безопасности со всего мира.
 
 Программы поощрения Майкрософт предполагают выплаты специалистам за поиск новых способов взлома, способов защиты от новых способов взлома и определение критических уязвимостей в локальном и облачном программном обеспечении Microsoft.
 
-Дополнительные сведения об этих программ в hello [обширная ошибки MSRC](https://technet.microsoft.com/security/dn425036) страницы и hello [MSRC блог](https://blogs.technet.microsoft.com/msrc/).
+Дополнительные сведения об этих программах см. на странице [программы поощрения Майкрософт](https://technet.microsoft.com/security/dn425036) и в [блоге центра MSRC](https://blogs.technet.microsoft.com/msrc/).
 
-toolearn Дополнительные сведения о hello MSRC, перейдите на страницу приветствия [MSRC Домашняя страница](https://technet.microsoft.com/library/dn440717.aspx).
+Дополнительные сведения о центре MSRC см. на [домашней странице MSRC](https://technet.microsoft.com/library/dn440717.aspx).

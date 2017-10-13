@@ -1,6 +1,6 @@
 ## <a name="next-steps"></a>Дальнейшие действия
 
-После включения интеграции хранилища ключей Azure вы сможете включить шифрование SQL Server на своей виртуальной машине с SQL. Во-первых необходимо будет toocreate асимметричного ключа в хранилище ключей и симметричного ключа в SQL Server на виртуальной Машине. Затем можно шифрования tooenable инструкции T-SQL может tooexecute для баз данных и резервных копий.
+После включения интеграции хранилища ключей Azure вы сможете включить шифрование SQL Server на своей виртуальной машине с SQL. Во-первых, необходимо создать асимметричный ключ в вашем хранилище ключей и симметричный ключ в SQL Server на виртуальной машине. После этого вы сможете выполнять инструкции T-SQL для включения шифрования базы данных и резервных копий.
 
 Существует несколько способов шифрования, преимуществами которых вы можете воспользоваться.
 
@@ -8,11 +8,11 @@
 * [Зашифрованные резервные копии](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Шифрование на уровне столбцов (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-Hello следующие сценарии Transact-SQL содержатся примеры для каждого из этих областей.
+Следующие сценарии Transact-SQL содержат примеры для каждого из этих вариантов.
 
 ### <a name="prerequisites-for-examples"></a>Предварительные требования для примеров
 
-Каждый пример основан на предварительные условия двух hello: вызывается асимметричного ключа из хранилища ключей **CONTOSO_KEY** и учетные данные, созданные hello хранилищем ключей AZURE Integration называемую **Azure_EKM_TDE_cred**. Hello следующие команды Transact-SQL эти необходимые компоненты установки для запуска примеров hello.
+Каждый пример основан на двух компонентах: асимметричном ключе из хранилища ключей **CONTOSO_KEY** и учетных данных, созданных интеграцией AKV, с именем **Azure_EKM_TDE_cred**. Следующие команды Transact-SQL настраивают эти предварительные требования для запуска примеров.
 
 ``` sql
 USE master;
@@ -53,25 +53,25 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>Прозрачное шифрование данных (TDE)
 
-1. Создать toobe входа SQL Server, используемые hello компонента Database Engine для прозрачного шифрования данных, а затем добавить tooit hello учетных данных.
+1. Создайте имя входа SQL Server для использования компонентом Database Engine для прозрачного шифрования данных, а затем добавьте учетные данные.
 
    ``` sql
    USE master;
-   -- Create a SQL Server login associated with hello asymmetric key
-   -- for hello Database engine toouse when it loads a database
+   -- Create a SQL Server login associated with the asymmetric key
+   -- for the Database engine to use when it loads a database
    -- encrypted by TDE.
    CREATE LOGIN TDE_Login
    FROM ASYMMETRIC KEY CONTOSO_KEY;
    GO
 
-   -- Alter hello TDE Login tooadd hello credential for use by the
-   -- Database Engine tooaccess hello key vault
+   -- Alter the TDE Login to add the credential for use by the
+   -- Database Engine to access the key vault
    ALTER LOGIN TDE_Login
    ADD CREDENTIAL Azure_EKM_TDE_cred;
    GO
    ```
 
-1. Создайте ключ шифрования базы данных hello, который будет использоваться для прозрачного шифрования данных.
+1. Создайте ключ шифрования базы данных, который будет использоваться для прозрачного шифрования данных.
 
    ``` sql
    USE ContosoDatabase;
@@ -82,7 +82,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    ENCRYPTION BY SERVER ASYMMETRIC KEY CONTOSO_KEY;
    GO
 
-   -- Alter hello database tooenable transparent data encryption.
+   -- Alter the database to enable transparent data encryption.
    ALTER DATABASE ContosoDatabase
    SET ENCRYPTION ON;
    GO
@@ -90,29 +90,29 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>Зашифрованные резервные копии
 
-1. Создайте toobe входа SQL Server, используемые hello СУБД для шифрования резервных копий и добавьте tooit hello учетных данных.
+1. Создайте имя входа SQL Server для использования компонентом Database Engine для шифрования резервных копий, а затем добавьте учетные данные.
 
    ``` sql
    USE master;
-   -- Create a SQL Server login associated with hello asymmetric key
-   -- for hello Database engine toouse when it is encrypting hello backup.
+   -- Create a SQL Server login associated with the asymmetric key
+   -- for the Database engine to use when it is encrypting the backup.
    CREATE LOGIN Backup_Login
    FROM ASYMMETRIC KEY CONTOSO_KEY;
    GO
 
-   -- Alter hello Encrypted Backup Login tooadd hello credential for use by
-   -- hello Database Engine tooaccess hello key vault
+   -- Alter the Encrypted Backup Login to add the credential for use by
+   -- the Database Engine to access the key vault
    ALTER LOGIN Backup_Login
    ADD CREDENTIAL Azure_EKM_Backup_cred ;
    GO
    ```
 
-1. Hello резервного копирования базы данных, указав шифрование с асимметричным ключом hello хранятся в хранилище ключей hello.
+1. Выполните резервное копирование базы данных, указав шифрование с помощью асимметричного ключа, хранящегося в хранилище ключей.
 
    ``` sql
    USE master;
    BACKUP DATABASE [DATABASE_TO_BACKUP]
-   tooDISK = N'[PATH tooBACKUP FILE]'
+   TO DISK = N'[PATH TO BACKUP FILE]'
    WITH FORMAT, INIT, SKIP, NOREWIND, NOUNLOAD,
    ENCRYPTION(ALGORITHM = AES_256, SERVER ASYMMETRIC KEY = [CONTOSO_KEY]);
    GO
@@ -120,7 +120,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="column-level-encryption-cle"></a>Шифрование на уровне столбцов (CLE)
 
-Этот скрипт создает симметричный ключ, защищенный асимметричным ключом hello в хранилище ключей hello, а затем использует данные hello tooencrypt симметричного ключа в базе данных hello.
+Этот скрипт создает симметричный ключ, защищенный асимметричным ключом в хранилище ключей, и затем использует симметричный ключ для шифрования данных в базе данных.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -129,22 +129,22 @@ ENCRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
 
 DECLARE @DATA VARBINARY(MAX);
 
---Open hello symmetric key for use in this session
+--Open the symmetric key for use in this session
 OPEN SYMMETRIC KEY DATA_ENCRYPTION_KEY
 DECRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
 
 --Encrypt syntax
-SELECT @DATA = ENCRYPTBYKEY(KEY_GUID('DATA_ENCRYPTION_KEY'), CONVERT(VARBINARY,'Plain text data tooencrypt'));
+SELECT @DATA = ENCRYPTBYKEY(KEY_GUID('DATA_ENCRYPTION_KEY'), CONVERT(VARBINARY,'Plain text data to encrypt'));
 
 -- Decrypt syntax
 SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 
---Close hello symmetric key
+--Close the symmetric key
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-Дополнительные сведения о toouse этих функций шифрования в статье [с помощью расширенного управления Ключами с функциями шифрования SQL Server](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
+Дополнительные сведения об использовании этих возможностей шифрования см. в статье [Использование расширенного управления ключами с функциями шифрования SQL Server](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Обратите внимание, что hello в этой статье предполагается, что уже есть SQL Server на виртуальной машине Azure. Если нет, см. статью [Подготовка виртуальной машины с SQL Server в Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Другие темы, связанные с запуском SQL Server на виртуальных машинах Azure, см. в статье [Общие сведения об SQL Server на виртуальных машинах Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Обратите внимание, что действия, описанные в этой статье, предполагают, что у вас уже есть SQL Server на виртуальной машине Azure. Если нет, см. статью [Подготовка виртуальной машины с SQL Server в Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Другие темы, связанные с запуском SQL Server на виртуальных машинах Azure, см. в статье [Общие сведения об SQL Server на виртуальных машинах Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

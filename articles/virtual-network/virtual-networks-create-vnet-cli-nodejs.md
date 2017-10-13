@@ -1,6 +1,6 @@
 ---
-title: "Здравствуйте, aaaCreate виртуальной сети с помощью Azure CLI 1.0 | Документы Microsoft"
-description: "Узнайте, как toocreate виртуальной сети с помощью hello Azure CLI 1.0 | Диспетчер ресурсов."
+title: "Создание виртуальной сети с помощью Azure CLI 1.0 | Документация Майкрософт"
+description: "Узнайте, как создать виртуальную сеть с помощью Azure CLI 1.0 в модели Resource Manager."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
-ms.openlocfilehash: f48a8b23a5994164b71c9b51ee8a6810d17f9392
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f0649c5c8c04dda72d2f147601efb37217f9bade
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-virtual-network-using-hello-azure-cli"></a>Создание виртуальной сети с помощью hello Azure CLI
+# <a name="create-a-virtual-network-using-the-azure-cli"></a>Создание виртуальной сети с помощью интерфейса командной строки Azure
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Корпорация Майкрософт рекомендует создать ресурсы с помощью модели развертывания диспетчера ресурсов hello. Дополнительные сведения о toolearn hello различий между моделями hello двух чтения hello [модели развертывания Azure понять](../azure-resource-manager/resource-manager-deployment-model.md) статьи.
+Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Для создания ресурсов корпорация Майкрософт рекомендует использовать модель развертывания с помощью Resource Manager. Дополнительные сведения о различиях между двумя моделями см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../azure-resource-manager/resource-manager-deployment-model.md) (Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов).
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello.
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки.
 
-- [Azure CLI 2.0](virtual-networks-create-vnet-arm-cli.md) -нашей нового поколения CLI для модели развертывания hello ресурсов управления
-- [Azure CLI 1.0](#create-a-virtual-network) — нашей CLI для hello классический и ресурса управления развертывания моделей (в этой статье)
+- [Azure CLI 2.0](virtual-networks-create-vnet-arm-cli.md) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager.
+- [Azure CLI 1.0](#create-a-virtual-network) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager (в этой статье).
 
  
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 ## <a name="create-a-virtual-network"></a>Создать виртуальную сеть
 
-в виртуальной сети с помощью toocreate hello Azure CLI, полный hello, следующие шаги:
+Чтобы создать виртуальную сеть с помощью интерфейса командной строки Azure, сделайте следующее:
 
-1. Установка и настройка hello Azure CLI, hello следующие шаги в hello [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) статьи.
+1. Установите и настройте интерфейс командной строки Azure, следуя инструкциям в [этой статье](../cli-install-nodejs.md).
 
 2. Создайте виртуальную сеть и подсеть.
 
@@ -57,13 +57,13 @@ Azure предоставляет две модели развертывания:
 
     Используемые параметры:
 
-   * **--vnet**. Имя создания toobe виртуальной сети hello. В данном сценарии это *TestVNet*
+   * **--vnet**. Имя виртуальной сети, которую нужно будет создать. В данном сценарии это *TestVNet*
    * **-e (или --address-space)**. Адресное пространство виртуальной сети. В данном сценарии это *192.168.0.0*
    * **-i (или -cidr)**. Маска подсети в формате CIDR. В данном сценарии это *16*.
-   * **-n (или --subnet-name**). Имя первой подсети hello. В данном сценарии это *FrontEnd*.
+   * **-n (или --subnet-name**). Имя первой подсети. В данном сценарии это *FrontEnd*.
    * **-p (или --subnet-start-ip)**. Начальный IP-адрес для подсети или адресное пространство подсети. В нашем сценарии это *192.168.1.0*.
    * **-r (или --subnet-cidr)**. Маска подсети в формате CIDR для подсети. В данном сценарии это *24*.
-   * **-l (или --location)**. Регион Azure, где создается hello виртуальной сети. В данном сценарии это *Central US*.
+   * **-l (или --location)**. Регион Azure, в котором создается виртуальная сеть. В данном сценарии это *Central US*.
 
 3. Создайте подсеть.
 
@@ -77,7 +77,7 @@ Azure предоставляет две модели развертывания:
             + Looking up network configuration
             + Creating subnet "BackEnd"
             + Setting network configuration
-            + Looking up hello subnet "BackEnd"
+            + Looking up the subnet "BackEnd"
             + Looking up network configuration
             data:    Name                            : BackEnd
             data:    Address prefix                  : 192.168.2.0/24
@@ -85,11 +85,11 @@ Azure предоставляет две модели развертывания:
 
     Используемые параметры:
 
-   * **-t (или --vnet-name**. Имя виртуальной сети, где будут создаваться подсети hello hello. В данном сценарии это *TestVNet*.
-   * **-n (или --name)**. Имя новой подсети hello. В нашем сценарии это *BackEnd*.
+   * **-t (или --vnet-name**. Имя виртуальной сети, в которой будет создана подсеть. В данном сценарии это *TestVNet*.
+   * **-n (или --name)**. Имя новой подсети. В нашем сценарии это *BackEnd*.
    * **-a (или --address-prefix)**. Блок подсети CIDR. В данном сценарии это *192.168.2.0/24*.
    
-4. свойства hello tooview hello новой виртуальной сети:
+4. Вот как можно просмотреть свойства новой виртуальной сети.
 
     ```azurecli
     azure network vnet show
@@ -99,7 +99,7 @@ Azure предоставляет две модели развертывания:
    
             info:    Executing command network vnet show
             Virtual network name: TestVNet
-            + Looking up hello virtual network sites
+            + Looking up the virtual network sites
             data:    Name                            : TestVNet
             data:    Location                        : Central US
             data:    State                           : Created
@@ -115,8 +115,8 @@ Azure предоставляет две модели развертывания:
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, как tooconnect:
+Инструкции по подключению:
 
-- Виртуальная сеть виртуальной машины (VM) tooa, считывая hello [создания виртуальной Машины Linux](../virtual-machines/linux/quick-create-cli.md) статьи. Вместо создания виртуальной сети и подсети в шагах hello hello статей, можно выбрать существующей виртуальной сети и подсети tooconnect для виртуальной Машины.
-- Здравствуйте, считывая hello виртуальных сетей в виртуальной сети tooother [подключение виртуальных сетей](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) статьи.
-- tooan Hello виртуальной сети в локальной сети с помощью виртуальной частной сети сеть сеть (VPN) или канал ExpressRoute. Дополнительные сведения в разделе hello [подключения локальной сети tooan виртуальной сети с помощью VPN сайтами](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) и [связывание виртуальной сети tooan канал ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
+- Сведения о подключении виртуальной машины к виртуальной сети см. в статье о [создании виртуальной машины Linux](../virtual-machines/linux/quick-create-cli.md). Вместо создания виртуальной сети и подсети с помощью действий, описанных в этой статье, виртуальную машину можно подключить к имеющейся виртуальной сети и подсети.
+- Сведения об установке подключения между виртуальными сетями см. в статье [Настройка подключения между виртуальными сетями на портале Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+- Сведения о подключении виртуальной сети к локальной сети с использованием виртуальной частной сети типа "сеть — сеть" или канала ExpressRoute см. в статьях [Добавление подключения типа "сеть — сеть" к виртуальной сети с помощью существующего подключения VPN-шлюза](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) и [Подключение виртуальной сети к каналу ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).

@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария CLI - aaaAzure развертывание hello стек LAMP в Load-Balanced виртуальную компьюте Мя_входа наборе масштабирования | Документы Microsoft"
-description: "Использовать пользовательский сценарий расширения toodeploy hello стек LAMP загрузки = сбалансированная масштабирования виртуальных машин на Azure."
+title: "Пример сценария Azure CLI. Развертывание стека LAMP в масштабируемом наборе виртуальных машин с балансировкой нагрузки | Документация Майкрософт"
+description: "Использование расширения пользовательских сценариев для развертывания стека LAMP в масштабируемом наборе виртуальных машин с балансировкой нагрузки в Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: allclark
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: d5278db809faaa0997a08b00a53387d754fce3d3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 23170923d7c05c9b7230cf331725250b2a3c0f09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-hello-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Развертывание стек LAMP hello в наборе масштабирования виртуальных машин с балансировкой нагрузки
+# <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Развертывание стека LAMP в масштабируемом наборе виртуальных машин с балансировкой нагрузки
 
-В этом примере создается набор масштабирования виртуальной машины и применяет расширение, работающей на каждую виртуальную машину в наборе масштабирования hello стек LAMP hello toodeploy пользовательского скрипта.
+В этом примере создается масштабируемый набор виртуальных машин и применяется расширение, которое запускает пользовательский сценарий для развертывания стека LAMP на каждой виртуальной машины в масштабируемом наборе.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -34,13 +34,13 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="connect"></a>Подключение
 
-Используйте этот код toosee, как задать tooconnect tooyour виртуальных машин и масштаба.
+Используйте этот код, чтобы узнать, как подключаться к своим виртуальным машинам и масштабируемому набору.
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "Access hello virtual machine scale set")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "Access the virtual machine scale set")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Запустите следующие группы ресурсов hello tooremove команд, hello набор масштабирования и виртуальные машины и все связанные ресурсы hello.
+Выполните следующую команду, чтобы удалить группу ресурсов, масштабируемый набор, виртуальные машины и все связанные с ней ресурсы.
 
 ```azurecli-interactive 
 az group delete -n myResourceGroup
@@ -48,21 +48,21 @@ az group delete -n myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует hello следующие команды toocreate группы ресурсов, виртуальная машина, группа доступности, балансировки нагрузки и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
+Для создания группы ресурсов, виртуальной машины, группы доступности, балансировщика нагрузки и всех связанных ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#create) | Создает масштабируемый набор виртуальных машин. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Добавляет конечную точку с балансировкой нагрузки. |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#set) | Создание расширения hello, выполняет пользовательский скрипт hello развертывания виртуальной машины |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#update-instances) | Проведение hello экземпляров виртуальных Машин, которые были развернуты до применения hello расширение пользовательского скрипта hello toohello набора масштабирования. |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#scale) | Вертикальное масштабирование шкалы hello, задать, добавив дополнительные экземпляры виртуальной Машины. Hello пользовательского скрипта выполняется на их при развертывании. |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#list) | Получение IP-адреса hello hello виртуальные машины, созданные в образце hello. |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#show) | Получение hello внешнего и внутреннего порты, используемые подсистемой балансировки нагрузки hello. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
+| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az_vmss_create) | Создает масштабируемый набор виртуальных машин. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Добавляет конечную точку с балансировкой нагрузки. |
+| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | Создает расширение, которое запускает пользовательский сценарий при развертывании виртуальной машины. |
+| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | Запускает пользовательский сценарий на экземплярах виртуальной машины, которые были развернуты до применения расширения к масштабируемому набору. |
+| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | Увеличивает масштабируемый набор, добавляя экземпляры виртуальной машины. После развертывания на этих экземплярах выполняется пользовательский сценарий. |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | Выводит IP-адреса виртуальных машин, созданных в примере. |
+| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | Выводит интерфейсный и внутренний порты, используемые подсистемой балансировки нагрузки. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Примеры сценариев CLI дополнительную виртуальную машину можно найти в hello [документации виртуальной Машине Linux Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Дополнительные примеры скриптов интерфейса командной строки для виртуальных машин см. в [документации по виртуальным машинам Azure под управлением Linux](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

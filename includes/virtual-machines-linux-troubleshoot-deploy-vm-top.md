@@ -1,4 +1,4 @@
-Hello следующие основные проблемы могут помочь устранить проблему. toostart Устранение неполадок, просмотрите следующие действия:
+Следующие разделы помогут вам устранить проблемы. Чтобы устранить неполадки, см. инструкции по этим ссылкам.
 
-- [не поддерживает кластера Hello hello запрошенный размер виртуальной Машины](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
-- [Hello кластер не имеет свободных ресурсов](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)
+- [Этот кластер не поддерживает запрошенный размер виртуальной машины.](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-cannot-support-the-requested-vm-size)
+- [В кластере нет свободных ресурсов.](../articles/virtual-machines/linux/troubleshoot-deploy-vm.md#the-cluster-does-not-have-free-resources)

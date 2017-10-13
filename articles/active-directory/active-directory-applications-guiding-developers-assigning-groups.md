@@ -1,6 +1,6 @@
 ---
-title: "aaaAssign группы приложений tooAzure AD | Документы Microsoft"
-description: "Как tooimplement группы назначение для приложения Azure."
+title: "Назначение групп для приложений Azure AD | Документация Майкрософт"
+description: "Как реализовать назначение групп для приложений Azure."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -16,26 +16,26 @@ ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 robots: noindex
-ms.openlocfilehash: 086619df09c13bf259afc3128d45ed804b99e519
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0b0b87a454db96747f024e81882fe83d62fdbe2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="assign-azure-active-directory-groups-tooan-application"></a>Назначение группы Azure Active Directory tooan приложения
-Перед тем как назначать пользователей и групп tooan приложения, необходимо использовать назначение пользователя. toolearn как назначение toorequire пользователя, в разделе hello [требуется назначение пользователей](active-directory-applications-guiding-developers-requiring-user-assignment.md) статьи.
+# <a name="assign-azure-active-directory-groups-to-an-application"></a>Назначение групп Azure Active Directory для приложения
+Прежде чем назначить пользователей и группы для приложения, необходимо настроить требование назначения пользователей. Чтобы узнать, как настроить требование назначения пользователей, см. статью [Azure AD и приложения: требование назначения пользователей](active-directory-applications-guiding-developers-requiring-user-assignment.md).
 
-В этой статье предполагается, что вы уже созданы группы в active directory hello, которая использовалась для этого приложения.
+В этой статье предполагается, что вы уже создали в Active Directory группу, которая используется для этого приложения.
 
-## <a name="assigning-groups-tooan-application"></a>Назначение tooan групп приложений
-1. Войдите в toohello портал Azure с учетной записью администратора.
-2. Щелкните hello **все элементы** элемента в главном меню hello.
-3. Выберите каталог hello, который вы используете для приложения hello.
-4. Щелкните hello **ПРИЛОЖЕНИЙ** вкладки.
-5. Выберите приложение hello hello список приложений, связанных с этим каталогом.
-6. Нажмите кнопку hello **пользователей и ГРУПП** вкладки.
-7. Список фильтров hello групп в active directory с помощью hello **группы** раскрывающегося списка.
-8. Выберите группу hello.
+## <a name="assigning-groups-to-an-application"></a>Назначение групп для приложения
+1. Войдите на портал Azure с учетной записью администратора.
+2. В главном меню выберите пункт **Все элементы** .
+3. Выберите каталог, который используете для приложения.
+4. Откройте вкладку **ПРИЛОЖЕНИЯ** .
+5. Выберите приложение из списка приложений, связанных с данным каталогом.
+6. Откройте вкладку **ПОЛЬЗОВАТЕЛИ И ГРУППЫ** .
+7. Отфильтруйте список групп в Active Directory с помощью раскрывающегося списка **Группы** .
+8. Выберите группу.
 9. Щелкните **НАЗНАЧИТЬ**.
 10. Щелкните **Да** при появлении запроса.
 

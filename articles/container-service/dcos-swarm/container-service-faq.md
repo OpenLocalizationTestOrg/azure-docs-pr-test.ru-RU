@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure служба контейнера — часто задаваемые вопросы | Документы Microsoft"
-description: "Ответы часто задаваемые вопросы о службе контейнера Azure, служба, которая упрощает создание hello, настройки и администрирования кластера виртуальных машин toorun Docker контейнера приложений."
+title: "Часто задаваемые вопросы о Службе контейнеров Azure | Документация Майкрософт"
+description: "Ответы на часто задаваемые вопросы о Службе контейнеров Azure — службе, которая упрощает создание и настройку кластера виртуальных машин, использующегося для запуска контейнерных приложений Docker, а также управления им."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eee3b2db2d837aa601f33135c7424735eb842bff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 95bd6478540683afa45da2159579171dbf76e665
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [container-service-faq.md](../../../includes/container-service-faq.md)]

@@ -1,6 +1,6 @@
 ---
-title: "кластер службы контейнера Azure aaaScale | Документы Microsoft"
-description: "Как tooscale агента узлов кластера DC/OS помощью Docker Swarm и Kubernetes в контейнере службы Azure с помощью hello Azure CLI или портал Azure."
+title: "Масштабирование кластера службы контейнеров Azure | Документация Майкрософт"
+description: "Масштабирование узлов агентов в кластере DC/OS, Docker Swarm или Kubernetes в Службе контейнеров Azure с помощью Azure CLI или портала Azure."
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 21e644bceee3c418e565323ab5f2484e3c565316
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cf04cc45bde16af54afdbb3fa01b7a8ad6ab141f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

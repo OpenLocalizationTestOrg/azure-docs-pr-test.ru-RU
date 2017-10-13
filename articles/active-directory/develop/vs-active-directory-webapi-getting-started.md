@@ -1,6 +1,6 @@
 ---
-title: "aaaGet работы с Azure AD в проектах Visual Studio WebApi | Документы Microsoft"
-description: "Запуск с помощью Azure Active Directory в проектах WebApi после подключения tooor создания Azure AD с помощью Visual Studio tooget подключенные службы"
+title: "Приступая к работе с Azure AD в проектах WebApi в Visual Studio | Документация Майкрософт"
+description: "Как начать использовать Azure Active Directory в проектах WebApi после подключения или создания Azure AD с помощью подключенных служб Visual Studio"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 21413a71a2fd61f31268bf6d5e4d86b8be5bd16a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a756316054dd3bb63f3b0a9f59621bb1345bc693
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>Начало работы с Azure Active Directory и подключенными службами Visual Studio (проекты WebApi)
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-## <a name="requiring-authentication-tooaccess-controllers"></a>Требование проверки подлинности tooaccess контроллеров
-Все контроллеры в проекте были снабженных hello **авторизовать** атрибута. Этот атрибут требуется hello toobe пользователя, доступ к API-интерфейсы hello определяются эти контроллеры только после проверки подлинности. tooallow hello контроллера toobe доступна анонимно, удалите этот атрибут из контроллера hello. Tooset hello разрешения на более детальном уровне, применить метод tooeach атрибут hello, требующей авторизации вместо применения его toohello класс контроллера.
+## <a name="requiring-authentication-to-access-controllers"></a>Требование проверки подлинности для доступа к контроллерам
+Ко всем контроллерам в проекте добавлен атрибут **Authorize** . Этот атрибут обеспечивает аутентификацию пользователей перед доступом к интерфейсам API, определяемым этими контроллерами. Для анонимного доступа к контроллеру удалить с него этот атрибут. Если необходимо задать разрешения на более детальном уровне, примените атрибут к каждому методу, требующему проверки подлинности, а не к классу контроллера.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Дополнительная информация о службе Azure Active Directory](https://azure.microsoft.com/services/active-directory/)

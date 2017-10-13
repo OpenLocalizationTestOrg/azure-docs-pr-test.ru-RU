@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с LearnUpon | Документы Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и LearnUpon."
+description: "Узнайте, как настроить единый вход Azure Active Directory в LearnUpon."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: fdb9c62172327a539f0459c98aa20e63fa441e4b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b6ac8acc244e9029be01ede5e0865c280171217d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Руководство. Интеграция Azure Active Directory с LearnUpon
 
-В этом учебнике вы узнаете, как toointegrate LearnUpon с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать LearnUpon с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD LearnUpon предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением LearnUpon обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooLearnUpon
-- Можно включить на пользователей tooautomatically get вошедшего tooLearnUpon (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к LearnUpon.
+- Вы можете включить автоматический вход пользователей в LearnUpon (единый вход) с учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с LearnUpon требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с LearnUpon, вам потребуется:
 
 - подписка Azure AD;
 - подписка LearnUpon с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление LearnUpon из галереи hello
+1. Добавление LearnUpon из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-learnupon-from-hello-gallery"></a>Добавление LearnUpon из галереи hello
-tooconfigure hello интеграции LearnUpon в Azure AD, вы должны tooadd LearnUpon из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-learnupon-from-the-gallery"></a>Добавление LearnUpon из коллекции
+Чтобы настроить интеграцию LearnUpon с Azure AD, необходимо добавить LearnUpon из коллекции в список управляемых приложений SaaS.
 
-**tooadd LearnUpon из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить LearnUpon из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **LearnUpon**.
+4. В поле поиска введите **LearnUpon**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_search.png)
 
-5. В панели результатов hello выберите **LearnUpon**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **LearnUpon** и нажмите кнопку **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в LearnUpon для тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в LearnUpon является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в LearnUpon должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в LearnUpon соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в LearnUpon.
 
-В LearnUpon, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в LearnUpon.
 
-tooconfigure и теста Azure AD единого входа с LearnUpon, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в LearnUpon, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя LearnUpon](#creating-a-learnupon-test-user)**  -toohave аналог Саймон Britta в LearnUpon, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя LearnUpon](#creating-a-learnupon-test-user)** требуется для создания в LearnUpon пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении LearnUpon.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении LearnUpon.
 
-**tooconfigure Azure AD единого входа с LearnUpon, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в LearnUpon, выполните следующие действия.**
 
-1. В hello в hello портала Azure **LearnUpon** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **LearnUpon** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_samlbase.png)
 
-3. На hello **URL-адреса и домена LearnUpon** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса LearnUpon** выполните следующие действия:
 
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_url.png)
 
-    В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.learnupon.com/saml/consumer`
+    В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<companyname>.learnupon.com/saml/consumer`.
 
     > [!NOTE] 
-    > Обратите внимание на то, что это не Вещественное значение hello. у вас есть tooupdate это значение с hello фактический URL-адрес ответа. обратитесь в службу tooget это значение [LearnUpon поддержки](https://www.learnupon.com/features/support/).
+    > Обратите внимание, что это значение используется только в качестве примера. Вместо него нужно указать фактический URL-адрес ответа. Чтобы получить это значение, обратитесь в [службу поддержки LearnUpon](https://www.learnupon.com/features/support/).
 
 
 
-4. На hello **сертификат подписи SAML** щелкните **сертификата (Raw)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Certificate (Raw)** (Сертификат (необработанный)), а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_certificate.png) 
 
@@ -125,21 +125,21 @@ tooconfigure и теста Azure AD единого входа с LearnUpon, тр
 
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации LearnUpon** щелкните **Настройка LearnUpon** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка LearnUpon** щелкните **Настроить LearnUpon**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_configure.png) 
 
 7. Откройте другую страницу браузера и войдите в LearnUpon с учетной записью администратора. 
 
-8. Нажмите кнопку hello **параметры** вкладки.
+8. Перейдите на вкладку **Settings** (Параметры).
    
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_06.png)
 
-9. Нажмите кнопку **Single Sign On - SAML**, а затем нажмите кнопку **Общие параметры** tooconfigure параметры SAML.
+9. Щелкните **Single Sign On - SAML** (Единый вход — SAML), а затем нажмите кнопку **General Settings** (Общие параметры) для настройки SAML.
    
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_07.png) 
 
-10. В hello **Общие параметры** выполните следующие шаги hello:
+10. В разделе **General Settings** (Общие параметры) выполните следующие действия.
    
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_08.png)  
   
@@ -149,85 +149,85 @@ tooconfigure и теста Azure AD единого входа с LearnUpon, тр
 
     c. Для параметра **Пропустить условия** установите значение **Нет**.
 
-    d. В hello **имя маркера блога SAML param** в текстовое поле имя типа hello запрос post параметр toohello вышеуказанных SAML потребителя URL-адрес, содержащий toobe утверждения SAML hello проверены и проверка подлинности — например  **SAMLResponse**.
+    г) В текстовое поле **SAML Token Post param name** (Имя параметра POST для токена SAML) введите имя параметра POST, передаваемого в запросе на указанный выше URL-адрес клиента SAML (в нем содержится требующее проверки и аутентификации утверждение SAML, например **SAMLResponse**).
 
-    д. В hello **формат идентификатора имени** текстовое значение hello типа, указывающее, где в пользователи hello утверждения SAML идентификатор (адрес электронной почты) находится — например **urn: oasis: имена: tc: SAML:1.1:nameid-формат: emailAddress**.
+    д. В текстовое поле **Name Identifier Format** (Формат идентификатора имени) введите значение, которое определяет позицию идентификатора пользователя (адрес электронной почты) в утверждении SAML (например, **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**).
   
-    f. В hello **определить расположение поставщика** текстового поля, типа hello значение, указывающее, где hello отправляются tooif пользователи они щелкнуть значок данного загруженного на экране входа Azure портала.
+    f. В текстовом поле **Расположение поставщика удостоверений** введите значение, которое определяет адрес, на который перенаправляются пользователи при щелчке по значку отправки на экране входа портала Azure.
   
-    ж. В hello **выход URL-адрес** текстовое поле, вставить hello **URL-адрес выхода** скопирован из hello портал Azure.
+    ж. В текстовом поле **URL-адрес выхода** вставьте значение **URL-адреса выхода**, скопированное на портале Azure.
     
-    h. Нажмите кнопку **управление отпечатков пальцев**и затем передать отпечаток пальца hello загруженного сертификата.
+    h. Щелкните **Manage finger prints**(Управление отпечатками) и отправьте отпечаток загруженного сертификата.
 
-11. Нажмите кнопку **параметры пользователя**, а затем выполните следующие шаги hello:
+11. Перейдите в раздел **User Settings**(Параметры пользователя) и выполните следующее.
    
      ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_11.png)  
  
-    а. В hello **формат идентификатора имени** в текстовое поле типа hello, сообщающего нам в вашей firstname пользователей hello утверждения SAML находится значение — например: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    а. В текстовом поле **Формат идентификатора имени** введите значение, которое обозначает расположение имени пользователя в утверждении SAML, например: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
   
-    b. В hello **последний формат идентификатора имени** в текстовое поле типа hello, сообщающего нам в вашей lastname пользователей hello утверждения SAML находится значение — например: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
+    b. В текстовом поле **Формат идентификатора фамилии** введите значение, которое обозначает расположение фамилии пользователя в утверждении SAML, например: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-learnupon-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-learnupon-test-user"></a>Создание тестового пользователя LearnUpon
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в LearnUpon. Приложение LearnUpon поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Цель этого раздела — создать пользователя с именем Britta Simon в LearnUpon. Приложение LearnUpon поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Если он еще не существует во время попытки tooaccess LearnUpon создается новый пользователь. [Настройка единого входа в Azure AD](#configuring-azure-ad-single-single-sign-on).
+В этом разделе никакие действия с вашей стороны не требуются. Пользователь будет создан при попытке получить доступ к приложению LearnUpon (если он еще не создан). [Настройка единого входа в Azure AD](#configuring-azure-ad-single-single-sign-on).
 
 >[!NOTE]
->Если требуется toocreate пользователя вручную, необходимо toocontact [LearnUpon поддержки](https://www.learnupon.com/features/support/). 
+>Если вам нужно создать пользователя вручную, обратитесь в [службу поддержки LearnUpon](https://www.learnupon.com/features/support/). 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooLearnUpon доступа.
+В этом разделе описано, как включить единый вход для пользователя Britta Simon, предоставив этому пользователю доступ к LearnUpon.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooLearnUpon Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в LearnUpon, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **LearnUpon**.
+2. В списке приложений выберите **LearnUpon**.
 
     ![Настройка единого входа](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -235,7 +235,7 @@ tooconfigure и теста Azure AD единого входа с LearnUpon, тр
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -243,14 +243,14 @@ tooconfigure и теста Azure AD единого входа с LearnUpon, тр
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello LearnUpon плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour LearnUpon приложения.
-Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
+Щелкнув элемент LearnUpon на панели доступа, вы автоматически войдете в приложение LearnUpon.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

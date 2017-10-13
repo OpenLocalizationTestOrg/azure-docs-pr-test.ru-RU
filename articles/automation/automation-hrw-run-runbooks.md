@@ -1,9 +1,9 @@
 ---
-title: "aaaRun Runbook на Azure Automation гибридной рабочей ролью Runbook | Документы Microsoft"
-description: "Также приводятся сведения о выполнении модулей Runbook на компьютерах в локальном центре обработки данных или поставщик облака hello гибридной рабочей роли Runbook."
+title: "Выполнение модулей runbook в гибридной рабочей роли Runbook в службе автоматизации Azure | Документация Майкрософт"
+description: "Эта статья содержит сведения о выполнении модулей runbook на компьютерах в локальном центре обработки данных или поставщике облачных решений с помощью гибридной рабочей роли Runbook."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: magoedte
-ms.openlocfilehash: 51961e02603e5690edd11e577594ad2ddea489a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d069b5040e0e280e54d4ffd8eccdacca302b7cc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Запуск модулей runbook в гибридной рабочей роли Runbook 
-Нет никаких различий в структуре hello модулей Runbook, которые запускаются в автоматизации Azure и те, которые работают на гибридную рабочую роль Runbook. Модули Runbook, которые можно использовать с каждым скорее существенно отличаются у менее так как модули Runbook, предназначенных для гибридной рабочей роли Runbook, обычно управлять ресурсами на локальном компьютере hello сам или к ресурсам в локальной среде hello, где он будет развернут, при модулей Runbook в службе автоматизации Azure обычно управлять ресурсами в облаке Azure hello.
+В структуре модулей Runbook, которые работают в службе автоматизации Azure, отсутствует разница между ними и теми модулями, которые работают в гибридном компоненте Runbook Worker. Модули runbook, которые используются в каждом из этих вариантов, скорее всего, будут значительно различаться. Причина — модули runbook для гибридной рабочей роли Runbook обычно управляют ресурсами на самом локальном компьютере или ресурсами в локальной среде, в которой они развернуты, а модули runbook в службе автоматизации Azure, как правило, управляют ресурсами в облаке Azure.
 
-Можно редактировать книгу для гибридной рабочей ролью Runbook в автоматизации Azure, но имеется трудности при попытке tootest hello runbook в редакторе hello.  модули PowerShell Hello, получающих доступ к локальным ресурсам hello может отсутствовать в среде автоматизации Azure в этом случае, произойдет сбой теста hello.  Если установить hello необходимые модули, то hello модуль runbook будет запущен, но он не будет возможности tooaccess локальных ресурсов для выполнения теста.
+Вы можете отредактировать модуль Runbook для гибридного компонента Runbook Worker в службе автоматизации Azure, однако вы можете столкнуться с трудностями при попытке тестирования модуля Runbook в редакторе.  Модули PowerShell, которые осуществляют доступ к локальным ресурсам, не могут устанавливаться в среде службы автоматизации Azure; если это будет сделано, успешное тестирование станет невозможным.  Если вы все же установите необходимые модули, то модуль Runbook будет запущен, однако он не сможет получить доступ к локальным ресурсам в степени, необходимой для завершения тестирования.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Запуск runbook в гибридной рабочей роли Runbook
-[Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md) описываются различные методы запуска модуля Runbook.  Добавляет гибридной рабочей ролью Runbook **RunOn** вариант, где можно указать имя группы гибридных рабочих ролей Runbook hello.  Если группа указана, hello runbook извлекается и выполнялись hello рабочих процессов в этой группе.  Если этот параметр не указан, то он будет запущен в службе автоматизации Azure в обычном режиме.
+[Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md) описываются различные методы запуска модуля Runbook.  Гибридный компонент Runbook Worker добавляет параметр **RunOn** , при помощи которого можно указать имя группы гибридных компонентов Runbook Worker.  При указании группы модуль Runbook извлекается и запускается компонентами Worker в этой группе.  Если этот параметр не указан, то он будет запущен в службе автоматизации Azure в обычном режиме.
 
-При запуске модуля runbook в hello портал Azure, вам предоставляется **проведение** параметр, в котором можно выбрать **Azure** или **гибридной рабочей роли**.  При выборе **гибридной рабочей роли**, а затем из раскрывающегося списка можно выбрать группу hello.
+При запуске модуля Runbook на портале Azure отображается запрос **Выполнить в**, где вы можете выбрать в качестве значения варианты **Azure** или **Гибридная рабочая роль**.  При выборе значения **Гибридный компонент Worker**можно выбрать группу из раскрывающегося списка.
 
-Используйте hello **RunOn** параметра.  Можно использовать hello, следующая команда toostart runbook с именем Test-Runbook в Runbook группу гибридных рабочих ролей с именем MyHybridGroup, с помощью Windows PowerShell.
+Используйте параметр **RunOn**.  Вы можете использовать следующую команду, чтобы с помощью Windows PowerShell запустить модуль runbook с названием Test-Runbook в группе гибридных рабочих ролей Runbook с именем MyHybridGroup.
 
     Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 
 > [!NOTE]
-> Hello **RunOn** toohello был добавлен параметр **Start-AzureAutomationRunbook** командлет в версии 0.9.1 Microsoft Azure PowerShell.  Вы должны [Загрузка последней версии hello](https://azure.microsoft.com/downloads/) при наличии более ранних один из уже установлен.  Требуется только tooinstall эту версию на рабочей станции, где hello runbook начиная с Windows PowerShell.  Нет необходимости tooinstall его на компьютере рабочей hello кроме случая, когда toostart модулей Runbook с этого компьютера.  Невозможно запустить в настоящее время книгу в гибридной рабочей роли Runbook из другого модуля runbook, так как это потребует hello последнюю версию Azure Powershell toobe установлен в вашей учетной записи автоматизации.  последнюю версию Hello автоматически обновляется в службе автоматизации Azure и автоматически сместить вниз работников toohello скоро.
+> Параметр **RunOn** был добавлен в командлет **Start-AzureAutomationRunbook** в Microsoft Azure PowerShell версии 0.9.1.  Если у вас установлена более ранняя версия, следует [загрузить последнюю версию](https://azure.microsoft.com/downloads/) .  Эту версию достаточно установить только на той рабочей станции, на которой вы будете запускать модуль runbook с помощью Windows PowerShell.  Вам не нужно устанавливать его на компьютер с компонентом Worker, если вы не собираетесь запускать модули Runbooks с этого компьютера.  В настоящий момент вы не можете запускать модуль Runbook в гибридном компоненте Runbook Worker из другого модуля Runbook, поскольку для этого потребуется установить последнюю версию Azure Powershell в учетной записи службы автоматизации.  При изменении версии она автоматически обновляется в службе автоматизации Azure и принудительно устанавливается в рабочих ролях.
 >
 >
 
 ## <a name="runbook-permissions"></a>Разрешения для модулей Runbook
-Модулей Runbook, запущенных на гибридную рабочую роль Runbook нельзя использовать hello же метод, который обычно используется для проверки подлинности tooAzure ресурсы, так как они получают доступ к ресурсам за пределами Azure модулей Runbook.  Hello runbook можно предоставить собственную проверку подлинности toolocal ресурсы или можно указать tooprovide учетная запись запуска от имени для всех модулей Runbook контекст пользователя.
+Так как модули runbook, запущенные в гибридной рабочей роли Runbook, будут обращаться к ресурсам за пределами Azure, они не смогут использовать стандартный метод аутентификации в Azure.  Модуль Runbook может предоставить собственную проверку подлинности для локальных ресурсов. Также можно указать учетную запись запуска от имени, чтобы предоставить контекст пользователя для всех модулей.
 
 ### <a name="runbook-authentication"></a>Проверка подлинности модуля Runbook
-По умолчанию модулей Runbook будет выполняться в контексте hello hello локальной системной учетной записи локального компьютера hello, поэтому они должны предоставить свои собственные tooresources проверки подлинности, который получит доступ к.  
+По умолчанию модули Runbook выполняются в контексте локальной системной учетной записи на локальном компьютере. Поэтому они должны предоставлять собственные средства аутентификации при доступе к требуемым ресурсам.  
 
-Можно использовать [учетные данные](http://msdn.microsoft.com/library/dn940015.aspx) и [сертификат](http://msdn.microsoft.com/library/dn940013.aspx) активы в модуле runbook с помощью командлетов, позволяющих toospecify учетные данные, вы можете проверять подлинность toodifferent ресурсов.  Hello следующем примере показан фрагмент runbook, который перезапускает компьютер.  Он получает имя актива и hello учетных данных компьютера hello из переменной активов учетные данные и затем использует эти значения с помощью командлета Restart-Computer hello.
+В модуле Runbook можно использовать ресурсы [учетных данных](http://msdn.microsoft.com/library/dn940015.aspx) и [сертификата](http://msdn.microsoft.com/library/dn940013.aspx) с командлетами, которые позволяют указывать такие данные для аутентификации доступа к разным ресурсам.  В следующем примере показана часть модуля Runbook, предназначенная для перезапуска компьютера.  Он извлекает учетные данные из набора учетных данных, а также имя компьютера из набора переменных, после чего использует эти значения в сочетании с командлетом Restart-Computer.
 
     $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
     $Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
 
     Restart-Computer -ComputerName $Computer -Credential $Cred
 
-Можно также использовать [InlineScript](automation-powershell-workflow.md#inlinescript), что позволяет toorun блоки кода на другом компьютере с учетными данными, указанными с hello [общий параметр PSCredential](http://technet.microsoft.com/library/jj129719.aspx).
+Вы можете также использовать [InlineScript](automation-powershell-workflow.md#inlinescript), что позволяет запускать блоки кода на другом компьютере с учетными данными, указанными в [общем параметре PSCredential](http://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="runas-account"></a>Учетная запись запуска от имени
-Вместо предоставления своей собственной проверки подлинности ресурсов toolocal модулей Runbook, можно указать **RunAs** учетной записи для группы гибридных рабочих ролей.  Указать [актива учетных данных](automation-credentials.md) с toolocal доступ к ресурсам, и все модули Runbook запускались эти учетные данные при работе в гибридной рабочей роли Runbook в группе hello.  
+Кроме варианта, когда модули Runbook выполняют собственную проверку подлинности на локальных ресурсах, вы можете указать для группы гибридных рабочих ролей учетную запись **Запуск от имени** .  Здесь вы можете указать [ресурс учетных данных](automation-credentials.md), который будет использоваться для доступа к локальным ресурсам всеми модулями runbook, которые выполняются гибридными рабочими ролями Runbook, входящими в эту группу.  
 
-имя пользователя Hello для hello учетных данных должен быть в одном из следующих форматов hello:
+Имя пользователя для учетных данных должно быть представлено в одном из следующих форматов:
 
 * домен\имя пользователя;
 * username@domain
-* имя пользователя (для учетных записей локального toohello на локальном компьютере)
+* имя пользователя (для локальных учетных записей на локальном компьютере).
 
-Используйте следующие процедуры toospecify учетную запись запуска от имени для группы гибридных рабочих ролей hello.
+Указать учетную запись запуска от имени для гибридной рабочей роли можно так.
 
-1. Создание [актива учетных данных](automation-credentials.md) с toolocal доступ к ресурсам.
-2. Откройте учетную запись автоматизации hello в hello портал Azure.
-3. Выберите hello **гибридных рабочих групп** плитку, а затем выберите группу hello.
+1. Создайте [ресурс учетных данных](automation-credentials.md) с доступом к локальным ресурсам.
+2. На портале Azure откройте учетную запись службы автоматизации.
+3. Щелкните плитку **Группы гибридных рабочих ролей** и выберите группу.
 4. Щелкните **Все параметры**, а затем — **Настройки группы гибридных рабочих ролей**.
-5. Изменение **запуска от имени** из **по умолчанию** слишком**настраиваемый**.
-6. Выберите учетные данные hello и нажмите кнопку **Сохранить**.
+5. Измените для параметра **Запуск от имени** значение **По умолчанию** на **Пользовательский**.
+6. Выберите учетные данные и нажмите кнопку **Сохранить**.
 
 ### <a name="automation-run-as-account"></a>Учетная запись запуска от имени службы автоматизации
-В рамках процесса автоматизированной сборки для развертывания ресурсов в Azure может потребоваться доступ tooon локальных систем toosupport одну или несколько шагов в последовательности развертывания.  toosupport проверки подлинности с помощью hello запуска от имени учетной записи Azure, вам понадобится tooinstall hello запуска от имени учетной записи сертификат.  
+В ходе автоматизированного процесса сборки для развертывания ресурсов в Azure вам может потребоваться доступ к локальным системам для выполнения задачи или набора действий, входящих в последовательность развертывания.  Чтобы использовать аутентификацию в Azure с использованием учетной записи запуска от имени, необходимо установить сертификат учетной записи запуска от имени.  
 
-Здравствуйте, следуя PowerShell runbook *RunAsCertificateToHybridWorker экспорта*, экспортирует hello запуска от имени сертификата из учетной записи службы автоматизации Azure и загрузку и импортирует его в хранилище сертификатов локального компьютера hello на Гибридная рабочая роль подключен toohello учетную запись.  После завершения этого шага, он проверяет, что работника hello прошедшего проверку подлинности tooAzure с помощью hello запуска от имени учетной записи.
+Модуль runbook PowerShell с именем *Export-RunAsCertificateToHybridWorker* экспортирует сертификат запуска от имени из учетной записи службы автоматизации Azure, а затем скачивает его и импортирует в хранилище сертификатов локального компьютера, относящемся к гибридной рабочей роли, подключенной к этой учетной записи.  После этого модуль проверяет, может ли рабочая роль успешно выполнить аутентификацию в Azure с использованием этой учетной записи запуска от имени.
 
     <#PSScriptInfo
     .VERSION 1.0
@@ -95,12 +95,12 @@ ms.lasthandoff: 10/06/2017
 
     <#  
     .SYNOPSIS  
-    Exports hello Run As certificate from an Azure Automation account tooa hybrid worker in that account. 
+    Exports the Run As certificate from an Azure Automation account to a hybrid worker in that account. 
   
     .DESCRIPTION  
-    This runbook exports hello Run As certificate from an Azure Automation account tooa hybrid worker in that account.
-    Run this runbook in hello hybrid worker where you want hello certificate installed.
-    This allows hello use of hello AzureRunAsConnection tooauthenticate tooAzure and manage Azure resources from runbooks running in hello hybrid worker.
+    This runbook exports the Run As certificate from an Azure Automation account to a hybrid worker in that account.
+    Run this runbook in the hybrid worker where you want the certificate installed.
+    This allows the use of the AzureRunAsConnection to authenticate to Azure and manage Azure resources from runbooks running in the hybrid worker.
 
     .EXAMPLE
     .\Export-RunAsCertificateToHybridWorker
@@ -112,19 +112,19 @@ ms.lasthandoff: 10/06/2017
 
     [OutputType([string])] 
 
-    # Set hello password used for this certificate
+    # Set the password used for this certificate
     $Password = "YourStrongPasswordForTheCert"
 
     # Stop on errors
     $ErrorActionPreference = 'stop'
 
-    # Get hello management certificate that will be used toomake calls into Azure Service Management resources
+    # Get the management certificate that will be used to make calls into Azure Service Management resources
     $RunAsCert = Get-AutomationCertificate -Name "AzureRunAsCertificate"
        
-    # location toostore temporary certificate in hello Automation service host
+    # location to store temporary certificate in the Automation service host
     $CertPath = Join-Path $env:temp  "AzureRunAsCertificate.pfx"
    
-    # Save hello certificate
+    # Save the certificate
     $Cert = $RunAsCert.Export("pfx",$Password)
     Set-Content -Value $Cert -Path $CertPath -Force -Encoding Byte | Write-Verbose 
 
@@ -132,7 +132,7 @@ ms.lasthandoff: 10/06/2017
     $SecurePassword = ConvertTo-SecureString $Password -AsPlainText -Force
     Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\My -Password $SecurePassword -Exportable | Write-Verbose
 
-    # Test that authentication tooAzure Resource Manager is working
+    # Test that authentication to Azure Resource Manager is working
     $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection" 
     
     Add-AzureRmAccount `
@@ -143,18 +143,18 @@ ms.lasthandoff: 10/06/2017
 
     Set-AzureRmContext -SubscriptionId $RunAsConnection.SubscriptionID | Write-Verbose
 
-    # List automation accounts tooconfirm Azure Resource Manager calls are working
+    # List automation accounts to confirm Azure Resource Manager calls are working
     Get-AzureRmAutomationAccount | Select AutomationAccountName
 
-Сохранить hello *экспорта RunAsCertificateToHybridWorker* runbook tooyour компьютер с `.ps1` расширения.  Импортировать его в учетную запись автоматизации и изменить модуль runbook hello, изменив значение переменной hello hello `$Password` с собственный пароль.  Публикации, а затем запустите runbook hello, предназначенных для hello группу гибридных рабочих ролей, запуска и проверки подлинности модулей Runbook с помощью hello запуска от имени учетной записи.  Hello задания поток отчеты hello попытки tooimport hello сертификат в хранилище локального компьютера hello и следующим с несколькими строками в зависимости от определенных сколько учетных записей автоматизации в подписке, и если проверка выполнена успешно.  
+Сохраните модуль runbook *Export-RunAsCertificateToHybridWorker* на компьютер с расширением `.ps1`.  Импортируйте модуль runbook в учетную запись автоматизации и замените значение переменной `$Password` своим паролем.  Опубликуйте и запустите модуль runbook для группы гибридных рабочих ролей, в которой для запуска и аутентификации модулей runbook применяется учетная запись запуска от имени.  Поток заданий сообщает о попытке импортировать сертификат в хранилище локального компьютера, а затем передает несколько строк с сообщениями в зависимости от числа учетных записей автоматизации, которые определены в подписке, и успешности аутентификации.  
 
 ## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Устранение неполадок с модулями Runbook в гибридном компоненте Runbook Worker
-Журналы сохраняются локально в каждом гибридном компоненте Worker по адресу C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.  Гибридная рабочая роль также записывает ошибки и события в журнале событий Windows hello под **приложения и службы Logs\Microsoft-SMA\Operational**.  События, связанные toorunbooks выполнения в рабочем процессе hello записываются слишком**приложения и службы Logs\Microsoft-Automation\Operational**.  Hello **Microsoft SMA** журнала включает в себя множество дополнительные события связанные toohello runbook задания занесенный в стек toohello рабочей роли и hello обработку hello модуля Runbook.  При hello **автоматизации Microsoft** журнала событий не имеет большое количество событий с подробными сведениями, помощь в устранении неполадок hello выполнения runbook, по крайней мере, вы найдете hello результатов задания runbook hello.  
+Журналы сохраняются локально в каждом гибридном компоненте Worker по адресу C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes.  Гибридная рабочая роль также записывает ошибки и события в журнал событий Windows, хранящийся в папке **Application and Services Logs\Microsoft-SMA\Operational**.  События, связанные с модулями runbook, выполненными в рабочей роли, записываются в журнал в папке **Application and Services Logs\Microsoft-Automation\Operational**.  Журнал **Microsoft-SMA** содержит многие дополнительные события, связанные с заданием runbook, помещенным в рабочую роль, и с обработкой runbook.  Хотя журнал событий **Microsoft-Automation** не содержит много событий с подробными сведениями, помогающими устранять неполадки при выполнении runbook, в нем вы найдете результаты задания runbook.  
 
-[Runbook, выходные и сообщений](automation-runbook-output-and-messages.md) отправляются tooAzure автоматизации из гибридные рабочие роли точно так же, как и задания runbook выполняются в облаке hello.  Можно также включить hello Verbose и hello потоков выполняется таким же способом, что и для других модулей Runbook.  
+[Выходные данные Runbook и сообщения](automation-runbook-output-and-messages.md) отправляются в службу автоматизации Azure из гибридных рабочих ролей точно так же, как задания Runbook, которые выполняются в облаке.  Потоки Verbose и Progress можно активировать точно так же, как и для других модулей Runbook.  
 
-Если модули Runbook не завершаются успешно, и состояние задания hello сводки **Suspended**, см. в статье hello статьи об устранении неполадок [гибридной рабочей роли Runbook: задание runbook завершается с состоянием Приостановить](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).   
+Если ваши модули runbook выполняются с ошибками, а сводка о задании отображает состояние **Приостановлено**, изучите инструкции по устранению неполадок в статье [Гибридная рабочая роль Runbook. Задание Runbook завершается с состоянием "Приостановлено"](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).   
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* toolearn Дополнительные сведения о hello различные методы, которые можно использовать toostart runbook, в разделе [запуск Runbook в автоматизации Azure](automation-starting-a-runbook.md).  
-* . в разделе toounderstand hello разные процедуры для работы с PowerShell и рабочий процесс PowerShell модули Runbook в автоматизации Azure с помощью текстового редактора hello, [редактирование Runbook в автоматизации Azure](automation-edit-textual-runbook.md)
+* Дополнительные сведения о разных методах запуска модуля см. в статье [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).  
+* Описание разных методов работы с модулями Runbook PowerShell и рабочими процессами PowerShell в службе автоматизации Azure с использованием текстового редактора см. в статье [Изменение текстовых модулей Runbook в службе автоматизации Azure](automation-edit-textual-runbook.md).

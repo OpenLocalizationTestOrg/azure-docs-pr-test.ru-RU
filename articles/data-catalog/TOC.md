@@ -14,13 +14,13 @@
 ## [Обнаружение источников данных](data-catalog-how-to-discover.md)
 ## [Комментарии к источникам данных](data-catalog-how-to-annotate.md)
 ## [Создание документации по источникам данных](data-catalog-how-to-documentation.md)
-## [Подключение источников toodata](data-catalog-how-to-connect.md)
+## [Подключение к источникам данных](data-catalog-how-to-connect.md)
 ## [Работа с источниками больших данных](data-catalog-how-to-big-data.md)
 ## [Источники данных профилей данных](data-catalog-how-to-data-profile.md)
 ## [Управление ресурсами-контейнерами данных](data-catalog-how-to-manage.md)
 ## [Сохранение результатов поиска и закрепление ресурсов-контейнеров данных](data-catalog-how-to-save-pin.md)
-## [Настройка hello бизнес-глоссарий](data-catalog-how-to-business-glossary.md)
-## [Каталог toodata безопасный доступ](data-catalog-how-to-secure-catalog.md)
+## [Настройка бизнес-глоссария](data-catalog-how-to-business-glossary.md)
+## [Безопасный доступ к каталогу данных](data-catalog-how-to-secure-catalog.md)
 ## [Просмотр связанных ресурсов данных](data-catalog-how-to-view-related-data-assets.md) 
 
 # Справочные материалы

@@ -1,6 +1,6 @@
 ---
-title: "контейнеры aaaDeploy с Helm в Azure Kubernetes | Документы Microsoft"
-description: "Используйте hello Helm упаковки средство toodeploy контейнеры в кластере Kubernetes в контейнере службы Azure"
+title: "Развертывание контейнеров с помощью Helm в Azure Kubernetes | Документы Майкрософт"
+description: "Использование средства упаковки Helm для развертывания контейнеров в кластере Kubernetes в Службе контейнеров Azure"
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -16,20 +16,20 @@ ms.workload: na
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: c7bd780afe00084ebe4e3a14873e1e340a29d144
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3cfcc5abbee03ca8fbbec4e4eae711e7c2d9deae
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="use-helm-toodeploy-containers-on-a-kubernetes-cluster"></a>Использование контейнеров toodeploy Helm в кластере Kubernetes 
+# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Использование Helm для развертывания контейнеров в кластере Kubernetes Helm 
 
-[Helm](https://github.com/kubernetes/helm/) — это средство упаковки с открытым исходным кодом, которое поможет вам установить и управление жизненным циклом hello Kubernetes приложений. Аналогичные tooLinux пакета диспетчерами, например Apt get и Yum, Helm — используется toomanage Kubernetes диаграммы, которые являются пакетами предварительно настроенных Kubernetes ресурсов. В этой статье показано, как toowork с Helm на кластере Kubernetes развертывание в службе контейнера Azure.
+[Helm](https://github.com/kubernetes/helm/) — это средство упаковки с открытым исходным кодом, которое помогает установить приложения Kubernetes и управлять их жизненным циклом. Аналогично диспетчерам пакетов Linux, таких как Apt-get и Yum, Helm используется для управления чартами Kubernetes, представляющими собой пакеты предварительно настроенных ресурсов Kubernetes. В этой статье показано, как работать с Helm в кластере Kubernetes, развернутом в Службе контейнеров Azure.
 
 Helm состоит из двух компонентов: 
-* Hello **Helm CLI** клиента, который работает на компьютере, локально или в облаке hello  
+* **Helm CLI** — клиент, который выполняется на компьютере локально или в облаке.  
 
-* **Tiller** — это сервер, работающий на кластере Kubernetes hello и управление жизненным циклом приложений Kubernetes hello 
+* **Tiller** — сервер, который выполняется в кластере Kubernetes и управляет жизненным циклом приложений Kubernetes. 
  
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -41,72 +41,72 @@ Helm состоит из двух компонентов:
 
 ## <a name="helm-basics"></a>Основы использования Helm 
 
-tooview сведения о hello Kubernetes кластера, установке Tiller и развертывания приложений введите hello следующую команду:
+Чтобы просмотреть сведения о кластере Kubernetes, где вы устанавливаете Tiller и развертываете приложения, введите следующую команду:
 
 ```bash
 kubectl cluster-info 
 ```
 ![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-После установки Helm установки Tiller в кластере Kubernetes введите hello следующую команду:
+После установки Helm установите Tiller в кластере Kubernetes, введя следующую команду:
 
 ```bash
 helm init --upgrade
 ```
-После успешного завершения, вывод имеет hello следующим образом:
+После успешного завершения команды выводятся сведения следующего вида:
 
 ![Установка Tiller](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-tooview все hello Helm диаграммы доступен в репозитории hello, тип hello следующих команд:
+Чтобы просмотреть все доступные чарты Helm в репозитории, введите следующую команду:
 
 ```bash 
 helm search 
 ```
 
-Вывод hello следующим образом:
+Выводятся сведения следующего вида:
 
 ![Поиск Helm](./media/container-service-kubernetes-helm/helm-search.png)
  
-tooupdate hello диаграммы tooget hello последние версии, введите следующую команду:
+Чтобы обновить чарты для использования актуальных версий, введите:
 
 ```bash 
 helm repo update 
 ```
 ## <a name="deploy-an-nginx-ingress-controller-chart"></a>Развертывание чарта входящего контроллера Nginx 
  
-toodeploy диаграммы контроллера входящих Nginx, введите одну команду:
+Чтобы развернуть чарт входящего контроллера Nginx, введите одну команду:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
 ![Развертывание входящего контроллера](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Если ввести `kubectl get svc` tooview всех служб, выполняющихся на кластере hello, вы видите, что IP-адрес назначается toohello входящих контроллера. (Hello назначения во время выполнения, вы видите `<pending>`. Она принимает ряд toocomplete мин.) 
+Если ввести `kubectl get svc` для просмотра всех служб, запущенных на кластере, вы увидите, что IP-адрес назначен входящему контроллеру. (Пока идет назначение, отображается `<pending>`. Для завершения операции требуется несколько минут.) 
 
-После назначения IP-адрес hello перейдите toohello значение hello внешнего IP адрес toosee hello Nginx серверной под управлением. 
+После назначения IP-адреса перейдите к значению внешнего IP-адреса, чтобы увидеть работу серверной части Nginx. 
  
 ![Входящий IP-адрес](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-toosee списка установлены в кластере типа диаграмм:
+Чтобы просмотреть список чартов, установленных в кластере, введите:
 
 ```bash
 helm list 
 ```
 
-Можно сократить команда hello слишком`helm ls`.
+Команду можно сократить до `helm ls`.
  
  
  
  
 ## <a name="deploy-a-mariadb-chart-and-client"></a>Развертывание клиента и чарта MariaDB
 
-Теперь можно разверните диаграмму MariaDB и tooconnect toohello MariaDB клиентской базе данных.
+Разверните чарт и клиент MariaDB для подключения к базе данных.
 
-Диаграмма MariaDB hello toodeploy, тип hello следующую команду:
+Чтобы развернуть чарт MariaDB, введите следующую команду:
 
 ```bash
 helm install --name v1 stable/mariadb
@@ -115,42 +115,42 @@ helm install --name v1 stable/mariadb
 здесь `--name` — тег, используемый для выпусков.
 
 > [!TIP]
-> Если происходит сбой развертывания hello, запустите `helm repo update` и повторите попытку.
+> Если развертывание завершается сбоем, запустите `helm repo update` и повторите попытку.
 >
  
  
-tooview развернуть все hello диаграммы кластера, тип:
+Для просмотра всех чартов, развернутых в кластере, введите:
 
 ```bash 
 helm list
 ```
  
-tooview всех развертываний, работающих в кластере, введите следующую команду:
+Для просмотра всех развертываний, запущенных в кластере, введите:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Наконец toorun клиент hello tooaccess pod, введите следующую команду:
+Наконец, чтобы запустить pod для доступа к клиенту, введите:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Клиент toohello tooconnect, тип hello следующую команду, заменив `v1-mariadb` с именем hello развертывания:
+Чтобы подключиться к клиенту, введите следующую команду, заменив `v1-mariadb` на имя развертывания:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-Теперь можно использовать обычные БД toocreate команды SQL, таблицы и т. д. Например, `Create DATABASE testdb1;` создает пустую базу данных. 
+Теперь можно использовать стандартные команды SQL для создания базы данных, таблиц и т. д. Например, `Create DATABASE testdb1;` создает пустую базу данных. 
  
  
  
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения об управлении Kubernetes диаграммы см. в разделе hello [Helm документации](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Дополнительные сведения об управлении чартами Kubernetes см. в [документации по Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

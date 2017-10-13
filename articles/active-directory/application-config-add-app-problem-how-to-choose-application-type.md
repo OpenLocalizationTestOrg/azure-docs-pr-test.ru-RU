@@ -1,6 +1,6 @@
 ---
-title: "приложение, в котором тип toouse при добавлении приложения toochoose aaaHow | Документы Microsoft"
-description: "Понимать типы hello поддерживается приложений можно интегрировать с Azure AD и их соответствующие параметры настройки"
+title: "Как выбрать нужный тип приложения при добавлении приложения | Документация Майкрософт"
+description: "Сведения о поддерживаемых типах приложений, которые можно интегрировать с Azure AD, и о вариантах их настройки"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,92 +13,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 46e3672e7f5048b0fa54171f0fc169362c9d5ac6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e0d41d1933531c2c633613bcbc1bbcbf075d6a69
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-toochoose-which-application-type-toouse-when-adding-an-application"></a>Как toochoose приложение, в котором тип toouse при добавлении приложения
+# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Как выбрать нужный тип приложения при добавлении приложения
 
-В этой статье, чтобы toounderstand hello четыре основных типа приложений, которые можно интегрировать с Azure AD:
+Из этой статьи вы узнаете о четырех основных типах приложений, которые можно интегрировать с Azure AD, а также:
 
 * что они поддерживают;
 * какой тип приложения следует выбирать;
-* Tooconfigure основные свойства этих приложений, как пользователи знакомы **подготовить**, или что **единого входа** toouse технологии.
+* как настроить основные свойства этих приложений, например **метод подготовки** пользователей или используемую технологию **единого входа**.
 
 ## <a name="supported-application-types-in-azure-ad"></a>Поддерживаемые типы приложений в Azure AD
 
-Здравствуйте, Azure AD поддерживает четыре основных типах приложений, которые можно добавить с помощью **добавить** вложенной функции **корпоративных приложений**. В частности, описаны такие возможности:
+Azure AD поддерживает четыре основных типа приложений, которые можно добавить с помощью команды **Добавить** в разделе **Корпоративные приложения**. В частности, описаны такие возможности:
 
 -   **Приложения из коллекции Azure AD** — это предварительно интегрированные приложения для единого входа через Azure AD.
 
--   **Прокси-сервер приложений-приложения** — приложения, работающего в локальной среде, которые должны tooprovide безопасный единый вход в tooexternally.
+-   **Приложения прокси приложения** — приложения, работающее в локальной среде, которым необходимо предоставить безопасный единый вход извне.
 
--   **Сторонних разрабатываемых приложений** — приложение, ваша организация хочет toodevelop на hello платформы разработки приложений Azure AD, но который еще не существует.
+-   **Специально разработанные приложения** — приложения, которые ваша организация намерена разработать на платформе разработки приложений Azure AD, но, возможно, они еще находятся на стадии обсуждения.
 
--   **Приложения не из коллекции** — собственные приложения. Любой веб-ссылка нужные или любого приложения, в которой отображается поле имени пользователя и пароля, поддерживает протокол SAML или OpenID Connect или поддерживает SCIM, который вы хотите toointegrate для единого входа в Azure AD.
+-   **Приложения не из коллекции** — собственные приложения. Сюда относится любая нужная веб-ссылка или любое приложение, отображающее поле имени пользователя и пароля и поддерживающее протоколы SAML, OpenID Connect или систему SCIM, которое нужно интегрировать для единого входа через Azure AD.
 
-## <a name="features-and-capabilities-supported-by-all-hello-above-application-types"></a>Функции и возможности, поддерживаемые все hello выше типы приложений
+## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>Функции и возможности, поддерживаемые приведенными выше типами приложений
 
-Hello поддерживаются следующие функции по любому hello выше 4 типа приложения в Azure AD:
+Следующие функции поддерживают приложения всех четырех типов в Azure AD:
 
 -   **Быстрый запуск.** Быстро приступите к работе с приложением, выполнив [простые шаги по развертыванию](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started).
 
--   **Общие свойства управления** — получить [прямой прямой ссылки](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) приложения tooan [Настройка фирменной символики hello](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) приложения, или [отключить приложение hello](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) для всех пользователей.
+-   **Управление общими свойствами.** Получите [прямую ссылку](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) на приложение, [настройте фирменную символику](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) приложения или [отключите приложение](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) для всех пользователей.
 
--   **Управление пользователями и группами** — [назначить](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) или [удалить](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) tooan приложения пользователям и группам и при необходимости назначить hello определенные роли приложения эти пользователи и группы имеют доступ к
+-   **Управление пользователями и группами.** [Назначьте](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) или [удалите](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) пользователей и группы в приложении и при необходимости назначьте им конкретные роли, к которым они будут иметь доступ.
 
--   **Доступ к приложению самообслуживания** — включить вашей toorequest пользователей [доступа к приложению самообслуживания](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) панелями tooan приложения из их доступа к приложениям, либо путем добавления приложения непосредственно или [ присоединение группы включена самообслуживания](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), при необходимости требования бизнеса утверждения вдоль hello способом
+-   **Самостоятельный доступ к приложениям.** Разрешите пользователям запрашивать [самостоятельный доступ к приложениям](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) с помощью панели доступа к приложениям. Для этого добавьте приложение напрямую или [присоедините группу с самостоятельным доступом](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), при необходимости настроив бизнес-утверждение.
 
--   **Журналы вход** — в разделе [все hello приложения tooan входа в систему](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins), или во всех приложениях
+-   **Журналы входа**. Просмотрите [все операции входа в приложение](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) или приложения.
 
--   **Журналы аудита** — в разделе [подробные журналы аудита о приложении tooan изменения](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), или tooall приложений
+-   **Журналы аудита.** Просмотрите [подробные журналы аудита изменений в приложении](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) или приложениях.
 
--   **Основе риска и условного доступа** — мощный задайте [правила доступа на основе условий](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) , применяются при обращении пользователей toosign в конкретном приложении tooa
+-   **Условный доступ и доступ на основе рисков.** Задайте эффективные [правила доступа на основе условия](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access), применяющиеся при попытке входа пользователей в конкретное приложение.
 
--   **Просмотр разрешений** — просматривать любые hello [разрешения OAuth2](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent) приложение имеет доступ tooin каталог из одного места
+-   **Представление разрешений.** Просмотрите все [разрешения OAuth2](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent), к которым приложение имеет доступ в вашем каталоге, из одного расположения.
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Режимы единого входа и подготовки, поддерживаемые конкретными типами приложений
 
-в следующей таблице Hello описывает hello различных единого входа и подготовки режимов, поддерживаемых каждым hello выше типов приложений. Можно использовать этот toohelp таблицы toounderstand приложение, в котором требуется tooadd toosupport определенную задачу.
+В следующей таблице описываются различные режимы единого входа и подготовки, поддерживаемые каждым из приведенных выше типов приложений. С ее помощью вы можете определить, какое приложение необходимо добавить для достижения конкретной цели.
 
   ![Таблица типов приложений](./media/application-tables/table1.png)
 
-## <a name="how-toochoose-a-single-sign-on-mode"></a>Как toochoose режима единого входа
+## <a name="how-to-choose-a-single-sign-on-mode"></a>Как выбрать режим единого входа
 
-Hello поддерживается **единого входа** режимы для приложения Azure AD, перечислены ниже.
+Ниже приведены поддерживаемые режимы **единого входа** для приложений Azure AD.
 
--   **Azure AD единый вход отключен** — выберите Azure AD единый вход отключен **режим-** Если вы еще не готова toointegrate это приложение с единым входом в Azure AD, или производится проверка только его
+-   **Единый вход Azure AD отключен.** Выберите **режим** "Единый вход Azure AD отключен", если вы еще не готовы к интеграции этого приложения с единым входом в Azure AD или просто его тестируете.
 
--   **Связанные входа** — выберите hello [входа на связанный](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **режим-** при наличии приложения, который уже связан с существующего единого входа для решения, или если необходимо просто toopublish простой ссылки для пользователей в их [панели доступа приложения](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) или [запуска приложений Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+-   **Вход по ссылке**. Выберите **режим** [Вход по ссылке](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) при наличии приложения, уже подключенного с использованием решения единого входа, или если требуется опубликовать простую ссылку для пользователей на [панели доступа к приложениям](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) или в [средстве запуска приложений Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none).
 
--   **Пароль входа на основе** — выберите hello [входа на базе пароля](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **режим-** Если приложение отображает HTML-поле имени пользователя и пароля и toostore, имя пользователя и пароль безопасно toobe в дополнительной воспроизведены toohello приложения позже
+-   **Вход по паролю**. Выберите **режим единого входа** [Вход по паролю](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work), если приложение отображает HTML-поле имени пользователя и пароля, а также если необходимо безопасно сохранить имя пользователя и пароль для их повторного использования в приложении.
 
--   **На основе SAML единого входа** — выберите hello [входа на базе SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) на основе ролей приложения toospecific единый вход в режим, если приложение поддерживает протокол SAML или OpenID Connect hello, или пользователи могут toomap toobe на правилах, определенных в вашей SAML утверждений *
-
-   >[!NOTE]
-   >Этот параметр недоступен при настройке прокси-сервера приложения hello для приложения.
-   >
-   >
-
--   **Заголовок входа на основе** — выберите этот параметр, [входа на базе заголовок](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) единого входа режим при наличии приложения с помощью PingAccess, которая поддерживает заголовок HTTP на основе проверки подлинности, на котором необходимо tooperform единого входа на слишком
+-   **Вход на основе SAML**. Выберите режим единого входа [Вход на основе SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work), если приложение поддерживает протоколы SAML или OpenID Connect или если вам нужно сопоставить пользователей с конкретными ролями приложений на основе правил, определенных в утверждениях SAML*.
 
    >[!NOTE]
-   >Этот параметр доступен только при настройке прокси-сервера приложения hello и PingAccess для приложения.
+   >Этот параметр недоступен, если для приложения настроен прокси приложения.
    >
    >
 
--   **Встроенная проверка подлинности Windows** — выберите hello [встроенная проверка подлинности Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) единый вход в режим при предоставлении WIA приложения локально, на котором необходимо tooperform единого входа на слишком
+-   **Вход на основе заголовков**. Выберите режим единого входа [Вход на основе заголовков](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad), если вам необходимо выполнить единый вход для приложения, использующего решение PingAccess с поддержкой проверки подлинности на основе HTTP-заголовка. 
 
    >[!NOTE]
-   >Этот параметр доступен только при настройке прокси-сервера приложения hello для приложения.
+   >Этот параметр доступен только, если для приложения настроен прокси приложения и PingAccess.
+   >
+   >
+
+-   **Интегрированная проверка подлинности Windows**. Выберите режим единого входа [Интегрированная проверка подлинности Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) при использовании локального приложения WIA, для которого необходимо выполнить единый вход. 
+
+   >[!NOTE]
+   >Этот параметр доступен, только если для приложения настроен прокси приложения.
    >
    >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Режимы единого входа для специально разработанных приложений
 
-Приложения имеют пользовательский при hello [приложения, разработанного](#_Custom-Developed_Applications) качества также поддерживают дополнительных единого входа режима не перечисленные выше. В частности, описаны такие возможности:
+[Специально разработанные приложения](#_Custom-Developed_Applications) также поддерживают дополнительные режимы единого входа, не указанные в списке выше. В частности, описаны такие возможности:
 
 -   единый вход на основе [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code);
 
@@ -108,67 +108,67 @@ Hello поддерживается **единого входа** режимы д
 
 -   единый вход на основе [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference).
 
-Чтение hello [руководство разработчика Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) toolearn Дополнительные сведения о как toocreate, разработанного приложения, который поддерживает эти единого входа режимов.
+Ознакомьтесь с [руководством разработчика по Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide), чтобы узнать больше о создании специально разработанного приложения, поддерживающего данные режимы единого входа.
 
-## <a name="how-tooset-an-applications-single-sign-on-mode"></a>Как tooset приложения одного режима входа
+## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Настройка режима единого входа для приложения
 
-tooset приложения **единого входа** режим, выполните приведенные ниже инструкции hello:
+Чтобы настроить режим **единого входа** для приложения, сделайте следующее:
 
-1.  Откройте hello [ **портала Azure** ](https://portal.azure.com/) и войдите как **глобального администратора** или **Co-администратору.**
+1.  Откройте [**портал Azure**](https://portal.azure.com/) и войдите в систему как **глобальный администратор** или **соадминистратор**.
 
-2.  Привет открыть **расширение Active Directory Azure** , щелкнув **дополнительные службы** hello нижней части меню навигации hello основной левой руки.
+2.  Откройте **расширение Azure Active Directory**, щелкнув **Больше служб** в нижней части расположенного слева главного меню навигации.
 
-3.  Введите в **«Azure Active Directory**» в поле поиска hello фильтр и выберите hello **Azure Active Directory** элемента.
+3.  В поле фильтра поиска введите **Azure Active Directory** и выберите элемент **Azure Active Directory**.
 
-4.  Нажмите кнопку **корпоративных приложений** из Azure Active Directory hello левого меню навигации.
+4.  В меню навигации Azure Active Directory слева щелкните **Корпоративные приложения**.
 
-5.  Нажмите кнопку **все приложения** tooview список всех приложений.
+5.  Щелкните **Все приложения**, чтобы открыть полный список приложений.
 
-  * Используйте hello, если нужно показать здесь приложения hello не отображается, **фильтра** управления вверху hello hello **список всех приложений** и набор hello **Показать** параметр слишком **Все приложения.**
+  * Если нужное приложение отсутствует в списке, воспользуйтесь элементом управления **Фильтр** в верхней части списка **Все приложения**, указав в нем для параметра **Показать** значение **Все приложения**.
 
-6.  Выберите приложение hello, для которого требуется tooconfigure единого входа.
+6.  Выберите приложение, для которого необходимо настроить единый вход.
 
-7.  После загрузки приложения hello щелкните **единого входа** из приложения hello левого меню навигации.
+7.  После загрузки приложения выберите для этого приложения пункт **Единый вход** в меню навигации слева.
 
-## <a name="how-toochoose-a-provisioning-mode"></a>Как toochoose режим подготовки
+## <a name="how-to-choose-a-provisioning-mode"></a>Как выбрать режим подготовки
 
--   **Идет подготовка вручную** — выберите hello [вручную](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) режима подготовки, если имеются существующие учетные записи, или если нужна toomanage учетных записей для этого приложения за пределами Azure AD.
+-   **Ручная подготовка.** Выберите режим подготовки [Вручную](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes), если у вас есть учетные записи или необходимо управлять учетными записями приложения за пределами Azure AD.
 
--   **Автоматическая подготовка** — выберите hello [автоматического](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **режим подготовки** Если tooenable инициализации автоматического на основе API и/или отменить подготовку учетных записей пользователей toothis приложения 
+-   **Автоматическая подготовка.** Выберите **режим подготовки** [Автоматически](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning), если необходимо включить автоматическую подготовку на основе API или отмену подготовки учетных записей пользователей для этого приложения. 
 
    >[!NOTE]
-   >Этот параметр доступен только для приложений в пределах hello **избранные** категории hello [коллекции приложений Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
+   >Этот параметр доступен только для приложений, находящихся в категории **избранных** [коллекции приложений Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
    >
    >
 
--   **На основе SCIM автоматическую подготовку** — использовать [на основе SCIM автоматическую подготовку](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) Если приложение поддерживает протокол SCIM hello обнаружения изменений toousers и групп, которые создаются автоматически для изменения tooany приложения, интегрированного с Azure AD 
+-   **Автоматическая подготовка на основе SCIM.** Выберите этот [режим подготовки](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning), если приложение поддерживает протокол SCIM для обнаружения изменений пользователей и групп, которые добавляются автоматически в любое приложение, интегрированное с Azure AD. 
 
    >[!NOTE]
    >Этот параметр не является определенным режимом подготовки, но он включен по умолчанию для всех приложений, интегрированных с Azure AD.
    >
    >
 
-## <a name="how-tooset-an-applications-provisioning-mode"></a>Способ подготовки режим tooset приложения
+## <a name="how-to-set-an-applications-provisioning-mode"></a>Как настроить режим подготовки для приложения
 
-tooset приложения **Подготовка** режиме, выполните приведенные ниже инструкции hello:
+Чтобы настроить режим **подготовки** для приложения,
 
-tooset приложения **единого входа** режим, выполните приведенные ниже инструкции hello:
+сделайте **следующее**:
 
-1.  Откройте hello [ **портала Azure** ](https://portal.azure.com/) и войдите как **глобального администратора** или **Co-администратору.**
+1.  Откройте [**портал Azure**](https://portal.azure.com/) и войдите в систему как **глобальный администратор** или **соадминистратор**.
 
-2.  Привет открыть **расширение Active Directory Azure** , щелкнув **дополнительные службы** hello нижней части меню навигации hello основной левой руки.
+2.  Откройте **расширение Azure Active Directory**, щелкнув **Больше служб** в нижней части расположенного слева главного меню навигации.
 
-3.  Введите в **«Azure Active Directory**» в поле поиска hello фильтр и выберите hello **Azure Active Directory** элемента.
+3.  В поле фильтра поиска введите **Azure Active Directory** и выберите элемент **Azure Active Directory**.
 
-4.  Нажмите кнопку **корпоративных приложений** из Azure Active Directory hello левого меню навигации.
+4.  В меню навигации Azure Active Directory слева щелкните **Корпоративные приложения**.
 
-5.  Нажмите кнопку **все приложения** tooview список всех приложений.
+5.  Щелкните **Все приложения**, чтобы открыть полный список приложений.
 
-  * Используйте hello, если нужно показать здесь приложения hello не отображается, **фильтра** управления вверху hello hello **список всех приложений** и набор hello **Показать** параметр слишком **Все приложения.**
+  * Если нужное приложение отсутствует в списке, воспользуйтесь элементом управления **Фильтр** в верхней части списка **Все приложения**, указав в нем для параметра **Показать** значение **Все приложения**.
 
-6.  Выберите приложение hello, для которого требуется tooconfigure подготовки.
+6.  Выберите приложение, для которого необходимо настроить подготовку.
 
-7.  После загрузки приложения hello щелкните **Provisioning** из приложения hello левого меню навигации.
+7.  После загрузки приложения щелкните **Подготовка** в меню навигации слева.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Управление приложениями с помощью Azure Active Directory](active-directory-enable-sso-scenario.md)

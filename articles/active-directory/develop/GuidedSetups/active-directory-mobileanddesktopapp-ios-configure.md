@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе aaaAzure AD v2 iOS — Настройка | Документы Microsoft"
+title: "Приступая к работе с Azure AD версии 2 для iOS. Настройка | Документация Майкрософт"
 description: "В этой статье описано, как приложения iOS (Swift) могут вызывать API, которому необходимы маркеры доступа, с помощью конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 537cc7f0de6cd947fe340566c9e93f8bb08d57a0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0ebca65585fc87bd4a85ba092cd423fce9540f58
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="create-an-application-express"></a>Создание приложения (экспресс)
-Теперь необходимо приложение hello tooregister *портала регистрации приложения Microsoft*:
-1. Зарегистрировать приложение через hello [портала регистрации приложения Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)
+Теперь вам необходимо зарегистрировать приложение на *портале регистрации приложений Майкрософт*:
+1. Зарегистрируйте свое приложение на [портале регистрации приложений Майкрософт](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure).
 2.  Введите имя для приложения и адрес электронной почты.
-3.  Убедитесь, что установлен параметр hello для интерактивной установки
-4.  Выполните код приложения hello tooobtain инструкции hello и вставьте его в коде
+3.  Выберите параметр Guided Setup (Пошаговая настройка).
+4.  Следуйте инструкциям, чтобы получить идентификатор приложения. Затем вставьте его в свой код.
 
-### <a name="add-your-application-registration-information-tooyour-solution-advanced"></a>Добавить решение tooyour сведения о регистрации приложения (Дополнительно)
+### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Добавление сведений о регистрации приложения в решение (дополнительно)
 
-1.  Go слишком[портала регистрации приложения Microsoft](https://apps.dev.microsoft.com/portal/register-app)
+1.  Перейдите на [портал регистрации приложений](https://apps.dev.microsoft.com/portal/register-app)
 2.  Введите имя для приложения и адрес электронной почты.
-3.  Убедитесь, что hello для интерактивной программы установки не установлен
+3.  Убедитесь, что параметр Guided Setup (Пошаговая настройка) не выбран.
 4.  Щелкните `Add Platform`, затем выберите `Native Application` и щелкните `Save`.
-5.  Вы можете вернуться tooXcode. В `ViewController.swift`, замените строку hello, начиная с "`let kClientID`" с Идентификатором приложения hello, только что зарегистрирован:
+5.  Вернитесь в Xcode. В `ViewController.swift` замените строку, начинающуюся с '`let kClientID`', на зарегистрированный идентификатор приложения:
 
 ```swift
 let kClientID = "Your_Application_Id_Here"
@@ -41,10 +41,10 @@ let kClientID = "Your_Application_Id_Here"
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-Щелкните, удерживая нажатой <code>Info.plist</code> toobring вверх hello контекстного меню и выберите: <code>Open As</code>> <code>Source Code</code>
-</li>
+Щелкните <code>Info.plist</code>, удерживая клавишу CTRL, чтобы открыть контекстное меню, затем щелкните <code>Open As</code> > <code>Source Code</code>
+.</li>
 <li>
-В разделе hello <code>dict</code> корневой узел, добавьте hello следующее:
+Добавьте следующий элемент в корневой узел <code>dict</code>:
 </li>
 </ol>
 
@@ -66,6 +66,6 @@ let kClientID = "Your_Application_Id_Here"
 ```
 <ol start="8">
 <li>
-Замените <i> <code>[Your_Application_Id_Here]</code> </i> с только что зарегистрирован идентификатор приложения hello
+Замените <i><code>[Your_Application_Id_Here]</code></i> зарегистрированным идентификатором приложения.
 </li>
 </ol>

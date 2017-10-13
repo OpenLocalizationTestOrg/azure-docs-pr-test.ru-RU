@@ -1,6 +1,6 @@
 ---
-title: "предварительно утверждены с помощью программы Microsoft Azure Certified hello aaaGet | Документы Microsoft"
-description: "Дополнительные сведения о Microsoft Azure Certified partner hello программы и как образ виртуальной машины, шаблоне решения, разработчик службы или данных службы на toosell tooget hello Azure Marketplace"
+title: "Предварительное утверждение с помощью программы сертификации Microsoft Azure | Документация Майкрософт"
+description: "Узнайте о партнерской программе сертификации Microsoft Azure и о том, как продать образ виртуальной машины, шаблон решения, службу разработчика или службу данных в Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: na
 author: HannibalSII
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: b5741b59435a24125f6ecd55c3e7d934fd012961
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-pre-approved-via-hello-microsoft-azure-certified-program"></a>Получение предварительно утверждены посредством программы Microsoft Azure Certified hello
-В этой статье содержатся инструкции по как Microsoft Azure Certified toobecome, чтобы вы могли публиковать решения в hello Azure Marketplace и оплачиваются маркетинговые преимущества. Подробный обзор программы Microsoft Azure Certified hello и ее преимущества посетите [http://azure.com/certified](http://azure.com/certified).
+# <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Предварительное утверждение с помощью программы сертификации Microsoft Azure
+В этой статье представлены инструкции о том, как пройти сертификацию Microsoft Azure, чтобы публиковать решение в Azure Marketplace и получать маркетинговые преимущества. Подробный обзор программы сертификации Microsoft Azure и ее преимуществ приведен на странице [http://azure.com/certified](http://azure.com/certified)
 
 > [!IMPORTANT]
-> Hello Azure сертификации применим только в том случае, если вы собираетесь toocreate виртуальной машины или шаблона решения для hello Azure Marketplace.
+> Сертификация Azure применяется только при создании виртуальных машин и шаблонов решения для Azure Marketplace.
 
 ## <a name="getting-started"></a>Приступая к работе
-1. Сертифицированные решения Hello первым шагом на пути toogetting hello и toohello выставленных Azure Marketplace — toofill форму приложения hello на hello [Microsoft Azure Certified](https://createopportunity.azurewebsites.net) веб-страницы.
-2. Если соответствует критериям hello и приложения утверждается, начнем работа с tooonboard вы toohello вашего решения Azure Marketplace.
-3. Если вы работаете с руководителем учетной записи участника или диспетчер DX партнера, попросите их toonominate решения для hello Azure Certified программы или посетите toohello [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) веб-страницы, заполните форму приложения hello и введите в поле Контакт главным Microsoft hello hello адреса электронной почты в диспетчер учетных записей партнера или DX партнера Manager.
+1. Первый шаг на пути к сертификации и принятию приложения в Azure Marketplace — заполнение формы приложения на веб-странице [Сертификация Microsoft Azure](https://createopportunity.azurewebsites.net).
+2. Если вы соответствуете основным критериям, мы начнем совместную работу с вами по адаптации решения в Azure Marketplace.
+3. Если вы работаете с менеджером PAM или менеджером партнеров DX, попросите, чтобы они представили ваше решение к участию в программе сертификации Azure или перейдите на веб-страницу [Сертификация Microsoft Azure](http://createopportunity.azurewebsites.net), заполните форму приложения и в поле "Контактное лицо" введите электронную почту менеджера PAM или менеджера партнера DX.
 
 > [!IMPORTANT]
-> **«Продажа от» стран** — в заказать toosell служб на hello Microsoft Azure Marketplace, зарегистрированных сущности должен toobe из одного из стран hello утверждения «Продажа от». Это ограничение связано с выплатами и налогообложением. Мы активно ищем tooexpand этот список стран в hello ближайшее будущее, поэтому следите за новостями. Hello полный список см. в разделе 1b раздел из hello [Azure Marketplace участие политики](http://go.microsoft.com/fwlink/?LinkID=526833).
+> **Допустимые страны продажи.** Для продажи своих услуг в Microsoft Azure Marketplace ваша учетная запись должна быть зарегистрирована для одной из утвержденных стран продажи. Это ограничение связано с выплатами и налогообложением. Мы активно стараемся расширить этот список стран, поэтому следите за новостями. Полный список см. в разделе 1b [политик участия в Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
 
 
 ## <a name="next-step"></a>Дальнейшие действия
-До утверждения, полученный от программы Microsoft Azure Certified hello, откройте слишком[зарегистрировать учетную запись Майкрософт как продаж Майкрософт](marketplace-publishing-accounts-creation-registration.md).
+Получив предварительное утверждение по программе сертификации Microsoft Azure, можно перейти к [ регистрации учетной записи Майкрософт в качестве продавца Майкрософт](marketplace-publishing-accounts-creation-registration.md).
 
-## <a name="see-also"></a>См. также
-* [Приступая к работе: как toopublish toohello предложение Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Дополнительные материалы
+* [Приступая к работе: как опубликовать предложение в Azure Marketplace](marketplace-publishing-getting-started.md)

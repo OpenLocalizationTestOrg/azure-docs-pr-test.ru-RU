@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooget работы с Visual Studio и хранилище таблиц подключенных служб (ASP.NET Core) | Документы Microsoft"
-description: "Как tooget к работе с хранилищем таблиц Azure в проекте ASP.NET Core в Visual Studio после подключения tooa учетной записи хранилища с помощью Visual Studio подключенные службы"
+title: "Как приступить к работе с хранилищем таблиц и подключенными службами Visual Studio (ASP.NET Core) | Документация Майкрософт"
+description: "Начало работы с хранилищем таблиц Azure в проекте ASP.NET Core в Visual Studio после подключения к учетной записи хранения с использованием подключенных служб Visual Studio."
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: e3eb3f3e65456108dd3cde7e3e470f98ba456e35
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8d05fe3ed9a5c66f186a930d4107162c1f322c05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooget-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Как tooget работу с Visual Studio и хранилище таблиц Azure подключенных служб
+# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Начало работы с табличным хранилищем Azure и подключенными службами Visual Studio
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Обзор
-В этой статье описывается, как получить работы с использованием таблиц Azure hello хранилища в Visual Studio после создания или ссылка на учетную запись хранилища Azure в проекте ASP.NET Core с помощью Visual Studio **Добавление подключенных служб** диалогового окна.
+В этой статье описывается, как приступить к использованию хранилища таблиц Azure в Visual Studio после создания учетной записи хранения Azure или указания ссылки на нее в проекте ASP.NET Core с помощью диалогового окна **Добавление подключенных служб** в Visual Studio.
 
-Hello службы хранилища таблиц Azure позволяет toostore больших объемов структурированных данных. Служба Hello является хранилищем данных NoSQL, принимающий вызовам c аутентификацией внутри и вне hello облако Azure. Таблицы Azure идеально подходят для хранения нереляционных структурированных данных.
+В службе хранилища таблиц Azure можно хранить большие объемы структурированных данных. Эта служба — хранилище данных NoSQL, которое принимает вызовы внутри и снаружи облака Azure с проверкой подлинности. Таблицы Azure идеально подходят для хранения нереляционных структурированных данных.
 
-Hello **Добавление подключенных служб** операция устанавливает пакеты tooaccess hello соответствующие NuGet хранилища Azure в проекте и добавляет строку hello подключения для hello учетную запись хранилища, tooyour файлы конфигурации проекта.
+Операция **Добавить подключенные службы** устанавливает соответствующие пакеты NuGet для доступа к службе хранилища Azure в вашем проекте и добавляет строку подключения для учетной записи хранения в файлы конфигурации проекта.
 
 Более общие сведения об использовании хранилища таблиц Azure см. в разделе [Приступая к работе с хранилищем таблиц Azure с помощью .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-tooget работы, необходимо сначала toocreate таблицу в учетной записи. Мы покажем, как toocreate Azure таблицу в коде. Мы также покажем, как базовая таблица tooperform и операции с сущностями, например добавление, изменение, чтение и чтение таблицу сущностей. Hello примеры на языке C\# кода и использовать hello клиентская библиотека хранилища Azure для .NET.
+Чтобы начать работу, сначала необходимо создать таблицу в учетной записи хранения. Мы покажем, как создать таблицу Azure в коде. Кроме того, мы покажем, как выполнять базовые операции с таблицами и сущностями, например добавлять, изменять и читать сущности таблицы. Примеры написаны на C\#, и в них используется библиотека клиента службы хранилища Azure для .NET.
 
-**Примечание** -некоторые интерфейсы API, которые выполняют вызовы out tooAzure хранилища в ASP.NET Core hello являются асинхронными. Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)). Приведенный ниже код Hello предполагается, что используются асинхронные методы программирования.
+**Примечание**. Некоторые интерфейсы API, которые выполняют вызовы к службе хранилища Azure в ASP.NET Core, являются асинхронными. Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)). В следующем примере кода предполагается, что используются асинхронные методы программирования.
 
 ## <a name="access-tables-in-code"></a>Доступ к таблицам в коде
-tooaccess таблицами в проектах ASP.NET Core, необходимо tooinclude hello следующие элементы tooany C# исходные файлы, доступ к хранилищу таблиц Azure.
+Для доступа к таблицам в проектах ASP.NET Core необходимо добавить следующие элементы во все файлы исходного кода C#, которые обращаются к хранилищу таблиц Azure.
 
-1. Убедитесь, что объявления пространств имен hello hello верхней части файла hello C# включить эти **с помощью** инструкции.
+1. Убедитесь, что объявления пространств имен в верхней части файла C# содержат указанные ниже выражения **using** .
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Table;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Hello используйте следующий код tooget hello хранения строки соединения и сведения об учетной записи хранилища из конфигурации службы Azure hello.
+2. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Используйте следующий код, чтобы получить строку подключения и сведения об учетной записи хранения из конфигурации службы Azure.
    
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
             CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
    
-    **Примечание** -используются hello над кодом перед кода hello из hello следующие примеры.
-3. Получить **CloudTableClient** объектов tooreference hello таблицы в учетной записи.  
+    **ПРИМЕЧАНИЕ.** Вставьте весь код, представленный выше, перед кодом в следующих примерах.
+3. Получите объект **CloudTableClient** , чтобы указать ссылку на объекты таблицы в своей учетной записи хранения.  
    
-        // Create hello table client.
+        // Create the table client.
         CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-4. Получить **CloudTable** ссылки на объект tooreference определенной таблицы и сущности.
+4. Получите объект ссылки **CloudTable** для указания ссылки на определенную таблицу и сущности.
    
-        // Get a reference tooa table named "peopleTable"
+        // Get a reference to a table named "peopleTable"
         CloudTable table = tableClient.GetTableReference("peopleTable");
 
 ## <a name="create-a-table-in-code"></a>Создание таблицы в коде
-hello toocreate таблицы Azure, просто добавьте вызов слишком**CreateIfNotExistsAsync()**.
+Чтобы создать таблицу Azure, просто добавьте вызов **CreateIfNotExistsAsync()**.
 
-    // Create hello CloudTable if it does not exist
+    // Create the CloudTable if it does not exist
     await table.CreateIfNotExistsAsync();
 
-## <a name="add-an-entity-tooa-table"></a>Добавьте таблицу tooa сущности
-tooadd tooa сущности таблицы, необходимо создать класс, который определяет hello свойства сущности. Hello следующий код определяет класс сущности с именем **CustomerEntity** , использует hello имени клиента в качестве ключа строку hello и фамилию в качестве ключа секции hello.
+## <a name="add-an-entity-to-a-table"></a>Добавление сущности в таблицу
+Чтобы добавить сущность в таблицу, создайте класс, который определяет свойства сущности. Следующий код определяет класс сущностей с именем **CustomerEntity** который использует имя клиента как ключ строки, а фамилию клиента — как ключ раздела.
 
     public class CustomerEntity : TableEntity
     {
@@ -85,49 +85,49 @@ tooadd tooa сущности таблицы, необходимо создать
         public string PhoneNumber { get; set; }
     }
 
-Операции с таблицей с использованием сущностей выполняются с помощью hello **CloudTable** объекта, созданного ранее в «Таблицы доступ в коде». Hello **TableOperation** toobe операции hello сделать представляет объект. Здравствуйте, следуя примере кода показано, как toocreate **CloudTable** объекта и **CustomerEntity** объекта. операции hello tooprepare **TableOperation** создается сущность customer tooinsert hello в таблицу hello. Наконец hello операция выполняется путем вызова CloudTable.ExecuteAsync.
+Операции с таблицами с участием сущностей выполняются с использованием объекта **CloudTable**. Его создание описано ранее в разделе "Доступ к таблицам в коде". Объект **TableOperation** представляет операции, которые необходимо выполнить. В следующем примере кода показано создание объектов **CloudTable** и **CustomerEntity**. Чтобы подготовить операцию, создается **TableOperation** для вставки сущности customer в таблицу. Наконец, эта операция выполняется путем вызова CloudTable.ExecuteAsync.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Create hello TableOperation that inserts hello customer entity.
+    // Create the TableOperation that inserts the customer entity.
     TableOperation insertOperation = TableOperation.Insert(customer1);
 
-    // Execute hello insert operation.
+    // Execute the insert operation.
     await peopleTable.ExecuteAsync(insertOperation);
 
 ## <a name="insert-a-batch-of-entities"></a>Вставка пакета сущностей
-В таблицу можно вставить несколько сущностей с помощью одной операции записи. Hello следующем примере кода создаются два объекта сущности («Джефф Smith» и «Ben Smith»), добавляет их tooa **TableBatchOperation** объекта с помощью hello **вставить** метода, а затем запускает операцию hello вызов CloudTable.ExecuteBatchAsync.
+В таблицу можно вставить несколько сущностей с помощью одной операции записи. Указанный ниже пример кода создает два объекта сущностей (Jeff Smith и Ben Smith), добавляет их в объект **TableBatchOperation** с помощью метода Insert и запускает операцию с помощью вызова **CloudTable.ExecuteBatchAsync**.
 
-    // Create hello batch operation.
+    // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a customer entity and add it toohello table.
+    // Create a customer entity and add it to the table.
     CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
     customer1.Email = "Jeff@contoso.com";
     customer1.PhoneNumber = "425-555-0104";
 
-    // Create another customer entity and add it toohello table.
+    // Create another customer entity and add it to the table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.Email = "Ben@contoso.com";
     customer2.PhoneNumber = "425-555-0102";
 
-    // Add both customer entities toohello batch insert operation.
+    // Add both customer entities to the batch insert operation.
     batchOperation.Insert(customer1);
     batchOperation.Insert(customer2);
 
-    // Execute hello batch operation.
+    // Execute the batch operation.
     await peopleTable.ExecuteBatchAsync(batchOperation);
 
-## <a name="get-all-of-hello-entities-in-a-partition"></a>Получить все сущности hello в секции
-таблицы для всех сущностей hello в секции, используйте tooquery **TableQuery** объекта. Hello следующий пример кода задает фильтр для сущности, где ключ раздела hello 'Smith'. Этот пример выводит hello поля в каждой сущности в консоли toohello результаты запроса hello.
+## <a name="get-all-of-the-entities-in-a-partition"></a>Получение всех сущностей в разделе
+Чтобы запросить все сущности из таблицы, используйте объект **TableQuery** . Следующий пример кода задает фильтр для сущностей с ключом раздела "Smith". Этот пример выводит на консоль поля каждой сущности в результатах запроса.
 
-    // Construct hello query operation for all customer entities where PartitionKey="Smith".
+    // Construct the query operation for all customer entities where PartitionKey="Smith".
     TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
 
-    // Print hello fields for each customer.
+    // Print the fields for each customer.
     TableContinuationToken token = null;
     do
     {
@@ -142,45 +142,45 @@ tooadd tooa сущности таблицы, необходимо создать
     } while (token != null);
 
 ## <a name="get-a-single-entity"></a>Получение одной сущности
-Можно написать tooget запроса конкретную сущность. Hello следующий код использует **TableOperation** объекта toospecify клиент с именем 'Ben Smith'. Этот метод возвращает только одну сущность, а не коллекцию и hello возвращаемое значение в **TableResult.Result** — **CustomerEntity** объекта. Указание ключи секций и строк в запросе является hello самый быстрый способ tooretrieve одной сущности из hello **таблицы** службы.
+Можно написать запрос для получения отдельной сущности. Следующий пример кода использует **TableOperation** для указания клиента "Ben Smith". Этот метод возвращает только одну сущность, а не коллекцию, и возвращаемое значение в **TableResult.Result** является объектом **CustomerEntity**. Указание ключа раздела и ключа строки в запросе — самый быстрый способ для получения одной сущности из службы **таблиц** .
 
     // Create a retrieve operation that takes a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute hello retrieve operation.
+    // Execute the retrieve operation.
     TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
 
-    // Print hello phone number of hello result.
+    // Print the phone number of the result.
     if (retrievedResult.Result != null)
        Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
     else
-       Console.WriteLine("hello phone number could not be retrieved.");
+       Console.WriteLine("The phone number could not be retrieved.");
 
 ## <a name="delete-an-entity"></a>Удаление сущности
-После нахождения сущности ее можно удалить. Hello следующий код ищет сущность «клиент» с именем «Ben Smith» и если она его находит, она удаляет.
+После нахождения сущности ее можно удалить. В следующем примере код выполняет поиск сущности с именем "Ben Smith" и при нахождении удаляет ее.
 
     // Create a retrieve operation that expects a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
 
-    // Execute hello operation.
+    // Execute the operation.
     TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
 
-    // Assign hello result tooa CustomerEntity object.
+    // Assign the result to a CustomerEntity object.
     CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
 
-    // Create hello Delete TableOperation and then execute it.
+    // Create the Delete TableOperation and then execute it.
     if (deleteEntity != null)
     {
        TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
 
-       // Execute hello operation.
+       // Execute the operation.
        await peopleTable.ExecuteAsync(deleteOperation);
 
        Console.WriteLine("Entity deleted.");
     }
 
     else
-       Console.WriteLine("Couldn't delete hello entity.");
+       Console.WriteLine("Couldn't delete the entity.");
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

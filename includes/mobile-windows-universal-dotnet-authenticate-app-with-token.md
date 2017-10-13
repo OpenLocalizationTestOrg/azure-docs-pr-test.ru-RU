@@ -1,25 +1,25 @@
 
-1. В файле проекта MainPage.xaml.cs hello, добавьте следующее hello **с помощью** инструкции:
+1. В файле проекта MainPage.xaml.cs добавьте следующие операторы **using** :
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Замените hello **AuthenticateAsync** метод с hello, следующий код:
+2. Замените метод **AuthenticateAsync** следующим кодом:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
             string message;
             bool success = false;
    
-            // This sample uses hello Facebook provider.
+            // This sample uses the Facebook provider.
             var provider = MobileServiceAuthenticationProvider.Facebook;
    
-            // Use hello PasswordVault toosecurely store and access credentials.
+            // Use the PasswordVault to securely store and access credentials.
             PasswordVault vault = new PasswordVault();
             PasswordCredential credential = null;
    
             try
             {
-                // Try tooget an existing credential from hello vault.
+                // Try to get an existing credential from the vault.
                 credential = vault.FindAllByResource(provider.ToString()).FirstOrDefault();
             }
             catch (Exception)
@@ -29,15 +29,15 @@
    
             if (credential != null)
             {
-                // Create a user from hello stored credentials.
+                // Create a user from the stored credentials.
                 user = new MobileServiceUser(credential.UserName);
                 credential.RetrievePassword();
                 user.MobileServiceAuthenticationToken = credential.Password;
    
-                // Set hello user from hello stored credentials.
+                // Set the user from the stored credentials.
                 App.MobileService.CurrentUser = user;
    
-                // Consider adding a check toodetermine if hello token is 
+                // Consider adding a check to determine if the token is 
                 // expired, as shown in this post: http://aka.ms/jww5vp.
    
                 success = true;
@@ -47,11 +47,11 @@
             {
                 try
                 {
-                    // Login with hello identity provider.
+                    // Login with the identity provider.
                     user = await App.MobileService
                         .LoginAsync(provider);
    
-                    // Create and store hello user credentials.
+                    // Create and store the user credentials.
                     credential = new PasswordCredential(provider.ToString(),
                         user.UserId, user.MobileServiceAuthenticationToken);
                     vault.Add(credential);
@@ -72,13 +72,13 @@
             return success;
         }
    
-    В этой версии **AuthenticateAsync**, приложение hello пытается toouse учетные данные, хранящиеся в hello **PasswordVault** tooaccess hello службы. Обычная попытка входа предпринимается и при отсутствии хранимых учетных данных.
+    В этой версии **AuthenticateAsync** приложение пытается использовать для доступа к службе учетные данные, хранимые в **PasswordVault**. Обычная попытка входа предпринимается и при отсутствии хранимых учетных данных.
    
    > [!NOTE]
-   > Возможно, истек срок действия кэшированного маркера и срока действия маркера может также возникнуть после проверки подлинности при использовании приложение hello. toodetermine если истек срок действия маркера. в статье toolearn [проверки маркеры с истекшим сроком действия проверки подлинности](http://aka.ms/jww5vp). Ошибки авторизации toohandling решения токены связанные tooexpiring. в разделе блога hello [кэширование и умение работать с истекшим сроком действия токенов в мобильных службах Azure управляемого пакета SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Срок действия кэшированного маркера может истечь до или после проверки подлинности, в процессе использования приложения. Чтобы узнать, как определить, истек ли срок действия маркера, см. сведения в [этой статье](http://aka.ms/jww5vp). Решение по обработке ошибок авторизации, связанных с просроченными маркерами, см. в записи [Caching and handling expired tokens in Azure Mobile Services managed SDK](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx) (Кэширование и обработка просроченных маркеров в SDK под управлением мобильных служб Azure). 
    > 
    > 
-3. Перезапустите приложение hello дважды.
+3. Дважды перезапустите приложение.
    
-    Обратите внимание, что при первом запуске hello, вход с помощью поставщика hello снова не требуется. Тем не менее на второй перезагрузки hello hello в кэше и используют учетные данные входа пропускается. 
+    Обратите внимание, что при первом перезапуске по-прежнему потребуется вход с использованием поставщика. При втором перезапуске будут использоваться кэшированные учетные данные и вход будет пропущен. 
 

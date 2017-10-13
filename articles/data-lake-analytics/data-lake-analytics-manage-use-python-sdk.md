@@ -1,6 +1,6 @@
 ---
-title: "aaaManage аналитики Озера данных Azure с помощью Python | Документы Microsoft"
-description: "Узнайте, как toouse Python toocreate Озера данных хранения учетную запись, а также отправки заданий. "
+title: "Управление Azure Data Lake Analytics с помощью Python | Документы Майкрософт"
+description: "Сведения о том, как создать учетную запись Data Lake Store и отправлять задания с помощью Python. "
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,31 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 3c0fff155db7c4fd4e84c2562816995eb156be16
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.custom: devcenter
+ms.openlocfilehash: 22b56e9569ac1fd2afe2c91013fa5605f9f3ef99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Управление Azure Data Lake Analytics с помощью Python
 
 ## <a name="python-versions"></a>Версии Python
 
 * Используйте 64-разрядную версию Python.
-* Можно использовать стандартные Python распространения hello в  **[загружает Python.org](https://www.python.org/downloads/)**. 
-* Многим разработчикам кажутся hello удобный toouse  **[распространения Anaconda Python](https://www.continuum.io/downloads)**.  
-* В этой статье было написано с помощью Python версии 3.6 от стандартного распределения Python hello
+* Можно использовать стандартную распространяемую версию Python, опубликованную в **[разделе загрузок на сайте Python.org](https://www.python.org/downloads/)**. 
+* Многим разработчикам удобнее использовать **[распространяемую версию Anaconda Python](https://www.continuum.io/downloads)**.  
+* При написании данной статьи использовалась версия 3.6 стандартного распространяемого пакета Python
 
 ## <a name="install-azure-python-sdk"></a>Установка пакета Azure SDK для Python
 
-Установите hello следующие модули:
+Установите следующие модули:
 
-* Hello **ресурсов azure-mgmt** модуль включает другие модули Azure Active Directory и т. д.
-* Hello **-mgmt-datalake хранилища azure** модуль включает операции управления учетной записи хранилища Озера данных Azure hello.
-* Hello **хранилища azure — datalake** модуль включает операции файловой системы hello хранилища Озера данных Azure. 
-* Hello **аналитики azure-datalake** модуль включает операции hello аналитики Озера данных Azure. 
+* Модуль **azure-mgmt-resource** содержит другие модули Azure для Active Directory и др.
+* Модуль **azure-mgmt-datalake-store** содержит операции по управлению учетной записью Azure Data Lake Store.
+* Модуль **azure-datalake-store** содержит операции файловой системы Azure Data Lake Store. 
+* Модуль **azure-datalake-analytics** содержит операции Azure Data Lake Analytics. 
 
-Во-первых, убедитесь, hello последней `pip` , выполнив следующую команду hello:
+Во-первых, убедитесь, что установлена актуальная версия компонента `pip`, выполнив следующую команду:
 
 ```
 python -m pip install --upgrade pip
@@ -46,7 +47,7 @@ python -m pip install --upgrade pip
 
 При написании этого документа использовался компонент `pip version 9.0.1`.
 
-Используйте следующие hello `pip` команды tooinstall hello модули из hello Командная строка:
+Чтобы установить модули, используйте следующие команды `pip` в командной строке.
 
 ```
 pip install azure-mgmt-resource
@@ -57,7 +58,7 @@ pip install azure-mgmt-datalake-analytics
 
 ## <a name="create-a-new-python-script"></a>Создание сценария Python
 
-Вставьте следующий код в скрипт hello hello:
+Скопируйте приведенный ниже код и вставьте его в сценарий.
 
 ```python
 ## Use this only for Azure AD service-to-service authentication
@@ -92,7 +93,7 @@ from azure.mgmt.datalake.analytics.catalog import DataLakeAnalyticsCatalogManage
 import logging, getpass, pprint, uuid, time
 ```
 
-Запустите этот скрипт tooverify приветствия, можно импортировать модули.
+Запустите этот сценарий, чтобы проверить, можно ли импортировать модули.
 
 ## <a name="authentication"></a>Аутентификация
 
@@ -103,7 +104,7 @@ import logging, getpass, pprint, uuid, time
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Интерактивная аутентификация пользователей с помощью кода устройства
 
 ```python
-user = input('Enter hello user tooauthenticate with that has permission toosubscription: ')
+user = input('Enter the user to authenticate with that has permission to subscription: ')
 password = getpass.getpass()
 credentials = UserPassCredentials(user, password)
 ```
@@ -120,7 +121,7 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 
 ## <a name="common-script-variables"></a>Общие переменные сценария
 
-Эти переменные используются в образцах hello.
+Эти переменные используются в примерах.
 
 ```python
 subid= '<Azure Subscription ID>'
@@ -130,7 +131,7 @@ adls = '<Azure Data Lake Store Account Name>'
 adla = '<Azure Data Lake Analytics Account Name>'
 ```
 
-## <a name="create-hello-clients"></a>Создание клиентов hello
+## <a name="create-the-clients"></a>Создание клиентов
 
 ```python
 resourceClient = ResourceManagementClient(credentials, subid)
@@ -185,7 +186,7 @@ script = """
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    too"/data.csv"
+    TO "/data.csv"
     USING Outputters.Csv();
 """
 
@@ -201,7 +202,7 @@ jobResult = adlaJobClient.job.create(
 )
 ```
 
-## <a name="wait-for-a-job-tooend"></a>Дождитесь tooend задания
+## <a name="wait-for-a-job-to-end"></a>Ожидание завершения задания
 
 ```python
 jobResult = adlaJobClient.job.get(adla, jobId)
@@ -228,11 +229,11 @@ for r in recurrences:
 
 ## <a name="manage-compute-policies"></a>Управление политиками вычислений
 
-Hello объекта DataLakeAnalyticsAccountManagementClient предоставляет методы для управления hello вычисления политики для учетной записи аналитики Озера данных.
+Объект DataLakeAnalyticsAccountManagementClient предоставляет методы для управления политиками вычислений для учетной записи Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Вывод списка политик вычислений
 
-Привет, следующий код извлекает список политик вычислений для учетной записи аналитики Озера данных.
+Следующий код извлекает список политик вычислений для учетной записи Data Lake Analytics.
 
 ```python
 policies = adlaAccountClient.computePolicies.listByAccount(rg, adla)
@@ -242,7 +243,7 @@ for p in policies:
 
 ### <a name="create-a-new-compute-policy"></a>Создание новой политики вычислений
 
-Привет, следующий код создает новую политику вычислений для учетной записи аналитики Озера данных, параметр hello максимальное Сиднейское доступных toohello указан too50 пользователя и too250 приоритет задания минимального hello.
+Следующий код создает новую политику вычислений для учетной записи Data Lake Analytics, задавая максимальное количество AU, доступных для указанного пользователя, равным 50 и минимальный приоритет задания равным 250.
 
 ```python
 userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde"
@@ -252,7 +253,7 @@ adlaAccountClient.computePolicies.createOrUpdate(rg, adla, "GaryMcDaniel", newPo
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- toosee hello же учебника при помощи других средств, щелкните селекторы вкладку hello на hello вверху страницы приветствия.
-- в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).
+- Для просмотра учебника с помощью других средств используйте вкладки-селекторы в верхней части страницы.
+- Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 - Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).
 

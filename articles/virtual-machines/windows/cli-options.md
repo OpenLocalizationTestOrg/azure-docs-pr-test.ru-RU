@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing hello Azure CLI в Windows | Документы Microsoft"
-description: "С помощью Azure CLI hello в Windows"
+title: "Использование Azure CLI в Windows | Документация Майкрософт"
+description: "Использование Azure CLI в Windows"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: edca4a2701a7dfc0fc54df5649e8a5e7afc95490
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-hello-azure-cli-on-windows"></a>С помощью Azure CLI hello в Windows
+# <a name="using-the-azure-cli-on-windows"></a>Использование Azure CLI в Windows
 
-Hello Azure интерфейс командной строки (CLI) предоставляет командной строки и среда сценариев для создания и управления ресурсами Azure. Hello Azure CLI доступна для операционных систем Windows, Linux и macOS. В этих операционных систем команды CLI hello идентичны, однако сценариев синтаксиса операционной системы может отличаться.
+Интерфейс командной строки Azure (CLI) представляет собой интерфейс командной строки и среду скриптов для создания ресурсов Azure и управления ими. Azure CLI доступен для операционных систем macOS, Linux и Windows. Для этих операционных систем команды CLI идентичны. Однако синтаксис конкретного скрипта операционной системы может отличаться.
 
-Этот документ сведения hello что образом hello Azure CLI могут устанавливаться и работать на Windows и сведения о синтаксических рекомендации для каждого. Подробную документацию по Azure CLI см. [здесь]( https://docs.microsoft.com/en-us/cli/azure/overview).
+В этом документе представлены сведения об установке Azure CLI и его запуске в Windows, а также сведения о синтаксисе для каждого сценария. Подробную документацию по Azure CLI см. [здесь]( https://docs.microsoft.com/en-us/cli/azure/overview).
 
 ## <a name="windows-subsystem-for-linux"></a>Подсистема Windows для Linux
 
-Hello подсистемы Windows для Linux (WSL) предоставляет среду Ubuntu Linux на годовщины Windows 10 и более поздней версии. Включив подсистему Windows для Linux, вы можете воспользоваться Bash для создания и выполнения сценариев Azure CLI. Благодаря этой возможности сценарии Azure CLI можно использовать в macOS, Linux и Windows, не изменяя их.
+Подсистема Windows для Linux предоставляет среду Ubuntu Linux для юбилейного выпуска Windows 10 и более поздних версий. Включив подсистему Windows для Linux, вы можете воспользоваться Bash для создания и выполнения сценариев Azure CLI. Благодаря этой возможности сценарии Azure CLI можно использовать в macOS, Linux и Windows, не изменяя их.
 
-toouse hello Azure CLI в WSL, выполните следующие hello.
+Чтобы использовать Azure CLI в подсистеме Windows для Linux, выполните следующие задания.
 
 |Задача | Указания |
 |---|---|
 | Включение подсистемы Windows для Linux | [Документация по установке подсистемы Windows для Linux](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) |
-| Установка hello Azure CLI |[Установите на WSL/Ubuntu 14.04 hello CLI](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#ubuntu)|
+| Установка Azure CLI |[Install the CLI on WSL/Ubuntu 14.04](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#ubuntu) (Установка интерфейса командной строки в подсистеме Windows для Linux или в Ubuntu 14.04)|
 
 ## <a name="powershell"></a>PowerShell
 
-Hello Azure CLI могут выполняться в собственном коде в Windows. В этой конфигурации hello Azure CLI пакет установлен в операционной системе Windows hello и команды, которые могут быть запущены из PowerShell. В такой конфигурации команды и скрипты Azure CLI можно выполнять в любой поддерживаемой версии Windows, но для этого потребуется синтаксис скрипта для конкретной платформы. Поэтому сценарии не обязательно совместно использовать в macOS, Linux и Windows, не изменяя их.
+Azure CLI можно запускать в собственном коде в Windows. В такой конфигурации пакет Azure CLI устанавливается в операционной системе Windows, а команды можно выполнять из PowerShell. В такой конфигурации команды и скрипты Azure CLI можно выполнять в любой поддерживаемой версии Windows, но для этого потребуется синтаксис скрипта для конкретной платформы. Поэтому сценарии не обязательно совместно использовать в macOS, Linux и Windows, не изменяя их.
 
-toouse hello Azure CLI в Windows, установите пакет hello, с помощью следующей процедуры [hello установить CLI в Windows](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#windows).
+[Установите Azure CLI в Windows](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#windows), следуя инструкциям, для использования Azure CLI в Windows.
 
 ## <a name="docker-image"></a>Образ Docker
 
-При использовании Docker для Windows, образ Docker можно запустить, включающий hello Azure CLI. Этот образ создан на основе Linux и позволяет работать с Bash.  При использовании Docker для Windows и hello Azure CLI изображения, toobe сценарии общим macOS, Linux и Windows. 
+При использовании Docker для Windows можно запустить образ Docker, содержащий Azure CLI. Этот образ создан на основе Linux и позволяет работать с Bash.  При использовании Docker для Windows и образа Azure CLI сценарии нужно совместно использовать в macOS, Linux и Windows. 
 
-toouse hello Azure CLI в Docker для Windows, убедитесь, что Docker для Windows работает и запустите следующую команду hello.
+Чтобы использовать Azure CLI на основе Docker для Windows, убедитесь, что Docker для Windows работает, и выполните следующую команду.
 
 ```bash
 docker run -it azuresdk/azure-cli-python:latest bash
 ```
 
-После завершения с помощью средств Azure CLI hello предварительно Bash, то есть начала сеанса.
+После завершения начнется сеанс Bash, в котором предварительно скачаны средства Azure CLI.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 [Примеры сценариев интерфейса командной строки для виртуальных машин Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Примеры сценариев интерфейса командной строки для веб-приложений Azure](../../app-service-web/app-service-cli-samples.md)
+[Примеры сценариев интерфейса командной строки для веб-приложений Azure](../../app-service/app-service-cli-samples.md)
 
 [Примеры сценариев интерфейса командной строки для SQL Azure](../../sql-database/sql-database-cli-samples.md)

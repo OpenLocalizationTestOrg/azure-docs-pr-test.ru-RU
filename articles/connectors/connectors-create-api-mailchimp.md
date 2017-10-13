@@ -1,6 +1,6 @@
 ---
-title: "Соединитель aaaMailChimp в приложения логики Azure | Документы Microsoft"
-description: "Создание приложений логики с помощью службы приложений Azure. MailChimp — службы SaaS, которая позволяет организациям toomanage и автоматизировать маркетинговой деятельности по электронной почте, включая отправку маркетинговых сообщений электронной почты, автоматических сообщений и целевые кампании."
+title: "Соединитель MailChimp в Azure Logic Apps | Документация Майкрософт"
+description: "Создание приложений логики с помощью службы приложений Azure. MailChimp — это служба SaaS, которая позволяет компаниям управлять маркетинговыми мероприятиями по электронной почте, включая отправку маркетинговых сообщений электронной почты, автоматических сообщений и целевых кампаний, и автоматизировать их."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0b2b4262c899c2aa56a727d29b8b158fcef9a539
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 46de91881f84183d0359755f49a115e712a7033b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-hello-mailchimp-connector"></a>Приступая к работе с hello соединитель MailChimp
-MailChimp — службы SaaS, которая позволяет организациям toomanage и автоматизировать маркетинговой деятельности по электронной почте, включая отправку маркетинговых сообщений электронной почты, автоматических сообщений и целевые кампании.
+# <a name="get-started-with-the-mailchimp-connector"></a>Начало работы с соединителем MailChimp
+MailChimp — это служба SaaS, которая позволяет компаниям управлять маркетинговыми мероприятиями по электронной почте, включая отправку маркетинговых сообщений электронной почты, автоматических сообщений и целевых кампаний, и автоматизировать их.
 
 Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toomailchimp"></a>Создание tooMailChimp подключения
-приложения логики toocreate с MailChimp, необходимо сначала создать **подключения** затем укажите подробности hello для hello следующие свойства:
+## <a name="create-a-connection-to-mailchimp"></a>Создание подключения к MailChimp
+Для создания приложений логики с помощью MailChimp необходимо создать **подключение**, а затем указать данные для следующих свойств.
 
 | Свойство | Обязательно | Description (Описание) |
 | --- | --- | --- |
 | Маркер |Да |Укажите учетные данные MailChimp |
 
-> [!INCLUDE [Steps toocreate a connection tooMailChimp](../../includes/connectors-create-api-mailchimp.md)]
+> [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 > 
 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/mailchimp/).
+Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/mailchimp/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
+Вы можете вернуться к [списку интерфейсов API](apis-list.md).

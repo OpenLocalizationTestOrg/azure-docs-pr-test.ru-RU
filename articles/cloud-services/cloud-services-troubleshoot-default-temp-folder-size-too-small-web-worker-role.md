@@ -1,6 +1,6 @@
 ---
-title: "размер папки TEMP aaaDefault слишком мал для роли | Документы Microsoft"
-description: "Роль облачной службы имеет ограниченный объем пространства для папки TEMP hello. Также приводятся советы о том, как tooavoid мало свободного места."
+title: "Недостаточный размер папки TEMP по умолчанию для роли | Документация Майкрософт"
+description: "Роль облачной службы располагает ограниченным объемом места в папке TEMP. Эта статья содержит советы о том, как предотвратить нехватку места."
 services: cloud-services
 documentationcenter: 
 author: simonxjx
@@ -10,32 +10,32 @@ tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.openlocfilehash: 307dc20f3264e29d122a6616be0028d2ec1282c2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 02a185fbe3603aa7f033ea3d50dc6ad36dd7f8f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Недостаточный размер стандартной папки TEMP для рабочей роли или веб-роли облачной службы
-временный каталог облачной службы рабочей или веб-роли не может превышать 100 МБ, что может привести к полной в определенный момент по умолчанию Hello. В этой статье описывается как tooavoid заканчивается место для hello временный каталог.
+Максимальный размер временного каталога по умолчанию рабочей роли или веб-роли облачной службы составляет 100 МБ, чего может оказаться недостаточно в определенный момент. В этой статье описано, как можно предотвратить нехватку места для временного каталога.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="why-do-i-run-out-of-space"></a>Почему мне не хватает свободного места?
-Hello стандартных Windows переменных среды TEMP и TMP, доступных toocode, на котором выполняется в приложении. TEMP и TMP точки tooa один каталог, который не может превышать 100 МБ. Все данные, хранящиеся в нем не сохраняются между жизненного цикла hello hello облачной службы; Если hello экземпляров ролей в облачной службе перезапускаются, каталог hello очищается.
+В выполняемом в вашей программе коде используются стандартные переменные среды Windows: TEMP и TMP. Переменные TEMP и TMP указывают на один каталог с максимальным размером в 100 МБ. Данные, хранящиеся в этом каталоге, не хранятся на протяжении жизненного цикла облачной службы; если экземпляры роли в облачной службе перезапускаются, этот каталог очищается.
 
-## <a name="suggestion-toofix-hello-problem"></a>Проблема hello toofix предложений
-Реализуйте один из следующих альтернативных hello:
+## <a name="suggestion-to-fix-the-problem"></a>Предложение по устранению проблемы
+Примените один из следующих альтернативных способов.
 
-* Настройте локальный ресурс хранилища и обращайтесь напрямую к нему, не используя TEMP или TMP. ресурс локального хранилища из кода, который выполняется в рамках приложение hello вызовов tooaccess [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) метод.
-* Настройка ресурсов локального хранилища и точки hello TEMP и TMP каталоги toopoint toohello путь hello локального ресурса хранилища. Это изменение должно выполняться в рамках hello [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) метод.
+* Настройте локальный ресурс хранилища и обращайтесь напрямую к нему, не используя TEMP или TMP. Чтобы получить доступ к локальному ресурсу хранилища из кода, запущенного в программе, вызовите метод [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) .
+* Настройте локальный ресурс хранилища и задайте каталоги TEMP и TMP, чтобы указать путь к этому локальному ресурсу хранилища. Это изменение следует выполнить внутри метода [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) .
 
-Hello следующем примере кода показано, как toomodify hello целевые каталоги TEMP и TMP из метода OnStart hello:
+В следующем примере кода показано, как изменить целевые каталоги TEMP и TMP из метода OnStart:
 
 ```csharp
 using System;
@@ -47,8 +47,8 @@ namespace WorkerRole1
     {
         public override bool OnStart()
         {
-            // hello local resource declaration must have been added toothe
-            // service definition file for hello role named WorkerRole1:
+            // The local resource declaration must have been added to the
+            // service definition file for the role named WorkerRole1:
             //
             // <LocalResources>
             //    <LocalStorage name="CustomTempLocalStore"
@@ -61,7 +61,7 @@ namespace WorkerRole1
             Environment.SetEnvironmentVariable("TMP", customTempLocalResourcePath);
             Environment.SetEnvironmentVariable("TEMP", customTempLocalResourcePath);
 
-            // hello rest of your startup code goes here…
+            // The rest of your startup code goes here…
 
             return base.OnStart();
         }
@@ -70,8 +70,8 @@ namespace WorkerRole1
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Прочитайте блог, который описывает [как tooincrease hello размер hello временной папки Azure веб-роли ASP.NET](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+См. блог, в котором описывается, [как увеличить размер временной папки ASP.NET веб-ролей Azure](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
 Просмотрите дополнительные [статьи об устранении неполадок](/?tag=top-support-issue&product=cloud-services) в облачных службах.
 
-toolearn как выдает tootroubleshoot роль облачной службы с помощью диагностические данные Azure PaaS компьютера, просмотреть [серии публикаций в блоге Kevin Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Чтобы узнать, как устранять неполадки ролей облачной службы с помощью диагностических данных компьютеров Azure PaaS, изучите [серию статей в блоге Кевина Уильямсона](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок: Отсутствующие данные в hello загрузить журналы действий Azure Active Directory | Документы Microsoft"
-description: "Предоставляет данные toomissing разрешения в загруженный журналы действий Azure Active Directory."
+title: "Устранение неполадок, связанных с отсутствием данных в скачанных журналах действий Azure Active Directory | Документация Майкрософт"
+description: "В этой статье описаны способы устранения неполадок, связанных с отсутствием данных в скачанных журналах действий."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,30 +15,30 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 027b70e6efc570f81d3c836f50ee52aaa89be71a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3d56f89035da4d1a0074256b165663f81fc2b01e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="i-cant-find-any-data-in-hello-azure-active-directory-activity-logs-i-have-downloaded"></a>Данные не найдены в журналы действий hello Azure Active Directory, я загрузил
+# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded"></a>Не удается найти данные в скачанном журнале действий Azure Active Directory
 
 
 ## <a name="symptoms"></a>Симптомы
 
-Я загрузил журналы действий hello (аудита или входа в систему), и я не вижу все записи hello для hello раз, когда я выбрал. Почему? 
+В скачанном журнале действий (аудита или входа) нет всех записей за выбранный период времени. Почему? 
 
  ![Отчеты](./media/active-directory-reporting-troubleshoot-missing-data-download/01.png)
  
 
 ## <a name="cause"></a>Причина:
 
-При загрузке журналы действий в hello портал Azure ограничена hello шкалы too120K записей, отсортированных по дате последней. 
+К журналам действий, скачиваемым на портале Azure, применяется ограничение в 120 тыс. последних записей. 
 
 ## <a name="resolution"></a>Способы устранения:
 
-Можно использовать [Azure AD API-интерфейсы отчетов](active-directory-reporting-api-getting-started.md) toofetch tooa миллионов записей в любой момент. Наш рекомендуется toorun сценария в соответствии с расписанием, вызывающий hello отчетов API-интерфейсы toofetch записывает в реальному за период времени (например, ежедневно или еженедельно).
+Вы можете в любой момент использовать [интерфейсы API отчетов Azure AD](active-directory-reporting-api-getting-started.md), чтобы извлечь до миллиона записей. Мы рекомендуем настроить расписание выполнения скрипта, который вызывает интерфейсы API отчетов для получения данных за определенный период времени (например, ежедневно или еженедельно).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В разделе hello [отчетов часто задаваемые вопросы об Azure Active Directory](active-directory-reporting-faq.md).
+См. сведения в статье [Часто задаваемые вопросы об отчетах Azure Active Directory](active-directory-reporting-faq.md).
 

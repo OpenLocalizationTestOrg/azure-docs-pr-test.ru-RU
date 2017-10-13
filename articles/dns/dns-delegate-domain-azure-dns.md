@@ -1,6 +1,6 @@
 ---
-title: "aaaDelegate tooAzure вашего домена DNS | Документы Microsoft"
-description: "Понять, как toochange делегирования домена и Azure DNS используйте имя размещение домена tooprovide серверов."
+title: "Делегирование домена в Azure DNS | Документация Майкрософт"
+description: "Узнайте, как изменить делегирование домена и использовать серверы имен Azure DNS для размещения домена."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,62 +13,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
-ms.openlocfilehash: f780bdaa416150e5e3afe6c6845dc75ba54b6203
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="delegate-a-domain-tooazure-dns"></a>Делегат tooAzure домена DNS
+# <a name="delegate-a-domain-to-azure-dns"></a>Делегирование домена в Azure DNS
 
-Azure DNS позволяет toohost зоны DNS и управлять hello записей DNS для домена в Azure. Чтобы запросы DNS для домена tooreach Azure DNS, hello домен имеет toobe делегировать tooAzure DNS из родительского домена hello. Имейте в виду Azure DNS не hello регистратора домена. В этой статье объясняется, как toodelegate tooAzure вашего домена DNS.
+Azure DNS позволяет размещать зону DNS и управлять записями DNS для домена в Azure. Чтобы запросы DNS для домена достигали Azure DNS, домен должен быть делегирован в Azure DNS из родительского домена. Помните, что Azure DNS — это не регистратор доменных имен. В этой статье описывается делегирование домена в Azure DNS.
 
-Для доменов, приобретенных у регистратора регистратор предлагает tooset параметр hello этих записей NS. У вас tooown домена toocreate зоны DNS с помощью этого доменного имени в Azure DNS. Тем не менее следует соблюдать tooset домена hello tooown копирование tooAzure hello делегирование DNS у регистратора hello.
+Для доменов, приобретенных у регистратора доменных имен, эти записи может настроить сам регистратор. Для создания зоны DNS с доменным именем в Azure DNS необязательно быть его владельцем. Однако вам необходимо быть владельцем домена, чтобы настроить делегирование в Azure DNS у регистратора доменных имен.
 
-Например предположим, вы приобрели hello домена «contoso.net» и создать зону с именем hello «contoso.net» в Azure DNS. Как владелец домена hello hello регистратор предлагает hello параметр tooconfigure hello имя адреса сервера (то есть записи hello NS) для своего домена. Эти записи NS сохраняет регистратора Hello в hello родительский домен, в данном случае «.net». Затем клиенты вокруг Здравствуй, мир! можно направленной tooyour домена в зоне Azure DNS при попытке tooresolve DNS-записи в «contoso.net».
+Предположим, например, что вы приобрели домен contoso.net и создали зону с именем contoso.net в Azure DNS. Регистратор предоставляет вам как владельцу домена возможность настройки адресов серверов имен (то есть записи NS) для домена. Регистратор будет хранить эти записи NS в родительском домене, в данном случае это .net. Клиенты по всему миру будут направляться в ваш домен в зоне Azure DNS при попытке разрешить записи DNS в contoso.net.
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-1. Войдите в toohello портал Azure
-1. Hello концентратора меню и нажмите кнопку **Создать > Сетевые подключения >** и нажмите кнопку **зоны DNS** tooopen hello создать DNS-зоны колонку.
+1. Выполните вход на портал Azure.
+1. В главном меню щелкните **Создать > Сети**, а затем щелкните **Зона DNS**, чтобы открыть колонку "Создать зону DNS".
 
     ![Зона DNS](./media/dns-domain-delegation/dns.png)
 
-1. На hello **создать DNS-зоны** колонки введите следующие значения hello, затем щелкните **создать**:
+1. В колонке **Создание зоны DNS** введите следующие значения, а затем щелкните **Создать**.
 
    | **Параметр** | **Значение** | **Дополнительные сведения** |
    |---|---|---|
-   |**Имя**|contoso.net|Имя зоны DNS hello Hello|
-   |**Подписка**|[Ваша подписка]|Выберите шлюз приложения hello toocreate подписки в.|
-   |**Группа ресурсов**|**Создать:** contosoRG|Создайте группу ресурсов. Имя группы ресурсов Hello должно быть уникальным в пределах hello подписки, выбранной. Дополнительные сведения о группах ресурсов, чтение hello toolearn [диспетчера ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) обзорную статью.|
+   |**Имя**|contoso.net|Имя зоны DNS.|
+   |**Подписка**|[Ваша подписка]|Выберите подписку для создания шлюза приложений.|
+   |**Группа ресурсов**|**Создать:** contosoRG|Создайте группу ресурсов. Имя группы ресурсов должно быть уникальным в пределах выбранной подписки. Дополнительные сведения о группах ресурсов см. в разделе [Группы ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) статьи "Общие сведения об Azure Resource Manager".|
    |**Расположение**|Запад США||
 
 > [!NOTE]
-> Группа ресурсов Hello относится toohello расположение группы ресурсов hello, а не оказывает влияния на hello зоны DNS. расположение зоны DNS Hello всегда «глобальные» и не отображается.
+> Этот параметр относится к расположению группы ресурсов и никак не влияет на расположение зоны DNS. Расположение зоны DNS всегда является "глобальным" и не отображается.
 
 ## <a name="retrieve-name-servers"></a>Получение серверов имен
 
-Прежде чем делегировать вашей tooAzure зоны DNS DNS, необходимо сначала tooknow hello имя сервера имен для зоны. Когда создается зона, служба DNS Azure выделяет серверы имен из пула.
+Прежде чем делегировать зоны DNS в службу DNS Azure, сначала необходимо знать имена серверов имен зоны. Когда создается зона, служба DNS Azure выделяет серверы имен из пула.
 
-1. С помощью зоны DNS hello, созданные в hello портал Azure **Избранное** области, нажмите кнопку **все ресурсы**. Нажмите кнопку hello **contoso.net** зоны DNS в hello **все ресурсы** колонку. Если подписка hello, уже содержит несколько ресурсов, можно ввести **contoso.net** в hello фильтр по имени... шлюз приложения hello доступа tooeasily поле. 
+1. Создав зону DNS, на портале Azure в области **Избранное** щелкните **Все ресурсы**. Щелкните зону DNS **contoso.net** в колонке **Все ресурсы**. Если выбранная подписка имеет несколько ресурсов, в поле "Фильтровать по имени..." введите **contoso.net**, чтобы быстро получить доступ к необходимому шлюзу приложений. 
 
-1. Получить серверы имен hello из колонки зоны DNS hello. В этом примере hello зоны «contoso.net» назначаемые серверы имен "ns1-01.azure-dns.com", «ns2-01.azure dns .net», "ns3-01.azure-dns.org", и "ns4-01.azure-dns.info":
+1. Получите серверы имен в колонке "Зона DNS". В этом примере зоне contoso.net назначены серверы доменных имен ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org и ns4-01.azure-dns.info.
 
  ![Сервер имен DNS](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS автоматически создает записи заслуживающих доверия NS в зоне содержащий hello, назначаемые серверы имен.  Имя сервера toosee hello имена через Azure PowerShell или Azure CLI, необходимо просто tooretrieve этих записей.
+Служба DNS Azure автоматически создает в вашей зоне заслуживающие доверия NS-записи, в которых указаны выделенные серверы имен.  Чтобы увидеть серверы имен через Azure PowerShell или интерфейс командной строки Azure, необходимо просто получить эти записи.
 
-Hello следующие примеры также предоставляют действия hello серверы имен hello tooretrieve для зоны DNS Azure с помощью PowerShell и Azure CLI.
+Ниже приведены примеры получения серверов имен для зоны в Azure DNS с помощью PowerShell и Azure CLI.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-# hello record name "@" is used toorefer toorecords at hello top of hello zone.
+# The record name "@" is used to refer to records at the top of the zone.
 $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
 ```
 
-Следующий пример Hello — ответ hello.
+Ниже приведен пример ответа.
 
 ```
 Name              : @
@@ -88,7 +88,7 @@ Metadata          :
 az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
 ```
 
-Следующий пример Hello — ответ hello.
+Ниже приведен пример ответа.
 
 ```json
 {
@@ -116,25 +116,25 @@ az network dns record-set show --resource-group contosoRG --zone-name contoso.ne
 }
 ```
 
-## <a name="delegate-hello-domain"></a>Делегат hello домена
+## <a name="delegate-the-domain"></a>Делегирование домена
 
-Теперь, когда создается зона DNS hello и у вас есть серверы имен hello, hello родительский домен должен toobe обновляется hello Azure DNS-серверами. Каждый регистратор имеет свои собственные управления средств toochange hello имя сервера записи DNS для домена. На странице управления hello регистратора DNS редактирования записей NS hello и замените записей NS hello hello из них созданы Azure DNS.
+Теперь, когда зона DNS создана и у вас есть серверы имен, необходимо обновить родительский домен с серверами имен Azure DNS. У каждого регистратора есть собственные средства управления DNS для изменения записей серверов имен домена. На странице управления DNS регистратора замените записи NS на созданные службой Azure DNS.
 
-При делегировании tooAzure домена DNS, необходимо использовать имена серверов имя hello, предоставляемые Azure DNS. Рекомендуется toouse все четыре имен сервера имен, независимо от того, hello имя вашего домена. Делегирование доменов не требует hello имя сервера имя toouse hello домену верхнего уровня, в домене.
+При делегировании домена службе Azure DNS вам необходимо использовать имена серверов доменных имен, предоставленные службой Azure DNS. Рекомендуется всегда использовать все четыре имени серверов доменных имен независимо от имени домена. Для делегирования домена не требуется, чтобы в имени сервера доменных имен и вашем домене содержался один и тот же домен верхнего уровня.
 
-Не следует использовать «делегирование» toopoint toohello Azure DNS имя сервера IP-адресов, так как эти IP-адреса может измениться в будущем. Делегирование с использованием имен серверов доменных имен в собственной зоне (также известны как серверы личных имен) в настоящее время не поддерживается в Azure DNS.
+Не используйте "связующие записи" для указания IP-адресов сервера доменных имен Azure DNS, поскольку эти IP-адреса в будущем могут измениться. Делегирование с использованием имен серверов доменных имен в собственной зоне (также известны как серверы личных имен) в настоящее время не поддерживается в Azure DNS.
 
 ## <a name="verify-name-resolution-is-working"></a>Проверка работы разрешения имен
 
-После завершения hello делегирование, можно проверить, что разрешение имен работает с помощью такого средства, как «nslookup» tooquery hello начальной записи для зоны (который также создается автоматически при создании зоны hello).
+По завершении делегирования можно проверить, работает ли разрешение имен. Это можно сделать с помощью такого средства, как nslookup, запросив запись типа SOA для своей зоны (также автоматически создается при создании зоны).
 
-Нет toospecify hello Azure DNS-серверами, если делегирование hello была настроена неправильно, hello обычный DNS процесс разрешения находит серверы приветствия имен автоматически.
+Вам не требуется указывать серверы имен Azure DNS, так как стандартный процесс разрешения DNS находит их автоматически, если делегирование настроено правильно.
 
 ```
 nslookup -type=SOA contoso.com
 ```
 
-Hello ниже приведен пример ответа от предшествующих команда hello.
+Ниже приведен пример ответа из предыдущей команды.
 
 ```
 Server: ns1-04.azure-dns.com
@@ -152,81 +152,81 @@ default TTL = 300 (5 mins)
 
 ## <a name="delegate-sub-domains-in-azure-dns"></a>Делегирование поддоменов в Azure DNS
 
-Если вы хотите tooset копирование отдельной дочерней зоне, вы можете делегировать дочерний домен в Azure DNS. Например, Настройка и делегированные «contoso.net» в Azure DNS, предположим, что хотелось бы tooset копирование отдельной дочерней зоне, «partners.contoso.net».
+Если нужно настроить отдельную дочернюю зону, можно делегировать поддомен в Azure DNS. Предположим, что после настройки и делегирования contoso.net в Azure DNS требуется настроить отдельную дочернюю зону partners.contoso.net.
 
-1. Создайте дочерние зоны hello «partners.contoso.net» в Azure DNS.
-2. Поиск записей заслуживающих доверия NS hello в hello дочерние зоны tooobtain hello серверы имен размещение hello дочерней зоны в Azure DNS.
-3. Настройка записей NS в родительской зоне hello, указывающий toohello дочерней зоны делегировать hello дочерней зоны.
+1. Создайте в Azure DNS дочернюю зону partners.contoso.net.
+2. Поищите заслуживающие доверия записи сервера имен в дочерней зоне, чтобы получить список серверов имен, в которых в Azure DNS размещена дочерняя зона.
+3. Выполните делегирование дочерней зоны. Для этого настройте записи сервера имен в родительской зоне, указывающей на дочернюю.
 
 ### <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-1. Войдите в toohello портал Azure
-1. Hello концентратора меню и нажмите кнопку **Создать > Сетевые подключения >** и нажмите кнопку **зоны DNS** tooopen hello создать DNS-зоны колонку.
+1. Выполните вход на портал Azure.
+1. В главном меню щелкните **Создать > Сети**, а затем щелкните **Зона DNS**, чтобы открыть колонку "Создать зону DNS".
 
     ![Зона DNS](./media/dns-domain-delegation/dns.png)
 
-1. На hello **создать DNS-зоны** колонки введите следующие значения hello, затем щелкните **создать**:
+1. В колонке **Создание зоны DNS** введите следующие значения, а затем щелкните **Создать**.
 
    | **Параметр** | **Значение** | **Дополнительные сведения** |
    |---|---|---|
-   |**Имя**|partners.contoso.net|Имя зоны DNS hello Hello|
-   |**Подписка**|[Ваша подписка]|Выберите шлюз приложения hello toocreate подписки в.|
-   |**Группа ресурсов**|**Использовать существующий:** contosoRG|Создайте группу ресурсов. Имя группы ресурсов Hello должно быть уникальным в пределах hello подписки, выбранной. Дополнительные сведения о группах ресурсов, чтение hello toolearn [диспетчера ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) обзорную статью.|
+   |**Имя**|partners.contoso.net|Имя зоны DNS.|
+   |**Подписка**|[Ваша подписка]|Выберите подписку для создания шлюза приложений.|
+   |**Группа ресурсов**|**Использовать существующий:** contosoRG|Создайте группу ресурсов. Имя группы ресурсов должно быть уникальным в пределах выбранной подписки. Дополнительные сведения о группах ресурсов см. в разделе [Группы ресурсов](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) статьи "Общие сведения об Azure Resource Manager".|
    |**Расположение**|Запад США||
 
 > [!NOTE]
-> Группа ресурсов Hello относится toohello расположение группы ресурсов hello, а не оказывает влияния на hello зоны DNS. расположение зоны DNS Hello всегда «глобальные» и не отображается.
+> Этот параметр относится к расположению группы ресурсов и никак не влияет на расположение зоны DNS. Расположение зоны DNS всегда является "глобальным" и не отображается.
 
 ### <a name="retrieve-name-servers"></a>Получение серверов имен
 
-1. С помощью зоны DNS hello, созданные в hello портал Azure **Избранное** области, нажмите кнопку **все ресурсы**. Нажмите кнопку hello **partners.contoso.net** зоны DNS в hello **все ресурсы** колонку. Если подписка hello, уже содержит несколько ресурсов, можно ввести **partners.contoso.net** в hello фильтр по имени... зона DNS hello доступа tooeasily поле.
+1. Создав зону DNS, на портале Azure в области **Избранное** щелкните **Все ресурсы**. Щелкните зону DNS **partners.contoso.net** в колонке **Все ресурсы**. Если выбранная подписка имеет несколько ресурсов, в поле "Фильтровать по имени..." введите **partners.contoso.net**, чтобы быстро получить доступ к необходимой зоне DNS.
 
-1. Получить серверы имен hello из колонки зоны DNS hello. В этом примере hello зоны «contoso.net» назначаемые серверы имен "ns1-01.azure-dns.com", «ns2-01.azure dns .net», "ns3-01.azure-dns.org", и "ns4-01.azure-dns.info":
+1. Получите серверы имен в колонке "Зона DNS". В этом примере зоне contoso.net назначены серверы доменных имен ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org и ns4-01.azure-dns.info.
 
  ![Сервер имен DNS](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS автоматически создает записи заслуживающих доверия NS в зоне содержащий hello, назначаемые серверы имен.  Имя сервера toosee hello имена через Azure PowerShell или Azure CLI, необходимо просто tooretrieve этих записей.
+Служба DNS Azure автоматически создает в вашей зоне заслуживающие доверия NS-записи, в которых указаны выделенные серверы имен.  Чтобы увидеть серверы имен через Azure PowerShell или интерфейс командной строки Azure, необходимо просто получить эти записи.
 
 ### <a name="create-name-server-record-in-parent-zone"></a>Создание записи сервера имен в родительской зоне
 
-1. Перейдите toohello **contoso.net** зоны DNS в hello портал Azure.
+1. На портале Azure перейдите к зоне DNS **contoso.net**.
 1. Щелкните **+ Record set** (+ Набор записей).
-1. На hello **добавить набор записей** колонки, введите следующие значения hello, затем щелкните **ОК**:
+1. В колонке **Добавление набора записей** введите приведенные ниже значения и нажмите кнопку **ОК**.
 
    | **Параметр** | **Значение** | **Дополнительные сведения** |
    |---|---|---|
-   |**Имя**|partners|Имя Hello hello дочерней зоны DNS|
+   |**Имя**|partners|Имя дочерней зоны DNS.|
    |**Тип**|NS|Используйте NS для записей серверов имен.|
-   |**Срок жизни**|1|Время toolive.|
-   |**Единица срока жизни**|Часы|Задает toohours toolive единица времени|
-   |**Сервер доменных имен**|{серверы доменных имен из зоны partners.contoso.net}|Введите все 4 hello серверы имен из partners.contoso.net зоны. |
+   |**Срок жизни**|1|Срок жизни.|
+   |**Единица срока жизни**|Часы|Указывает срок жизни в часах.|
+   |**Сервер доменных имен**|{серверы доменных имен из зоны partners.contoso.net}|Введите все 4 сервера доменных имен из зоны partners.contoso.net. |
 
    ![Сервер имен DNS](./media/dns-domain-delegation/partnerzone.png)
 
 
 ### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>Делегирование поддоменов в Azure DNS с помощью других средств
 
-Hello ниже приведены примеры hello действия toodelegate поддоменов в Azure DNS с помощью PowerShell и интерфейс командной строки:
+Ниже приведены примеры делегирования поддоменов в Azure DNS с помощью PowerShell и CLI:
 
 #### <a name="powershell"></a>PowerShell
 
-Следующий пример PowerShell Hello показано, как это работает. Здравствуйте, одну последовательность шагов может быть выполнен через портал Azure hello, или через hello кросс платформенных Azure CLI.
+Этот процесс продемонстрирован в приведенном ниже примере PowerShell. Эти же действия можно выполнить с помощью портала Azure или кроссплатформенного интерфейса командной строки Azure.
 
 ```powershell
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 $parent = New-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 $child = New-AzureRmDnsZone -Name partners.contoso.net -ResourceGroupName contosoRG
 
-# Retrieve hello authoritative NS records from hello child zone as shown in hello next example. This contains hello name servers assigned toohello child zone.
+# Retrieve the authoritative NS records from the child zone as shown in the next example. This contains the name servers assigned to the child zone.
 $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-# Create hello corresponding NS record set in hello parent zone toocomplete hello delegation. hello record set name in hello parent zone matches hello child zone name, in this case "partners".
+# Create the corresponding NS record set in the parent zone to complete the delegation. The record set name in the parent zone matches the child zone name, in this case "partners".
 $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
 $parent_ns_recordset.Records = $child_ns_recordset.Records
 Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 ```
 
-Используйте `nslookup` tooverify, все настроено правильно, произведя поиск hello начальной записи зоны дочерних hello.
+Используйте `nslookup`, чтобы убедиться в правильности настройки зоны, просмотрев запись типа SOA дочерней зоны.
 
 ```
 nslookup -type=SOA partners.contoso.com
@@ -251,12 +251,12 @@ partners.contoso.com
 ```azurecli
 #!/bin/bash
 
-# Create hello parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
+# Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
 az network dns zone create -g contosoRG -n contoso.net
 az network dns zone create -g contosoRG -n partners.contoso.net
 ```
 
-Получить hello серверы доменных имен для hello `partners.contoso.net` зоны hello в выходных данных.
+Получите серверы доменных имен для зоны `partners.contoso.net` из выходных данных.
 
 ```
 {
@@ -278,12 +278,12 @@ az network dns zone create -g contosoRG -n partners.contoso.net
 }
 ```
 
-Создайте набор записей hello и записи NS для каждого имени сервера.
+Создайте набор записей и записи NS для каждого сервера доменных имен.
 
 ```azurecli
 #!/bin/bash
 
-# Create hello record set
+# Create the record set
 az network dns record-set ns create --resource-group contosorg --zone-name contoso.net --name partners
 
 # Create a ns record for each name server.
@@ -295,11 +295,11 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 ## <a name="delete-all-resources"></a>Удаление всех ресурсов
 
-toodelete все ресурсы, которые созданы в этой статье завершения hello, следующие шаги:
+Чтобы удалить все ресурсы, созданные в этой статье, выполните следующие действия:
 
-1. В hello портал Azure **Избранное** области, нажмите кнопку **все ресурсы**. Нажмите кнопку hello **contosorg** группа ресурсов в hello все колонки ресурсов. Если подписка hello, уже содержит несколько ресурсов, можно ввести **contosorg** в hello **фильтрация по имени...** Группа ресурсов hello доступа tooeasily поле.
-1. В hello **contosorg** колонка, щелкните hello **удалить** кнопки.
-1. Hello портала требуется имя hello tootype tooconfirm группы ресурсов hello, что требуется toodelete его. Тип *contosorg* hello имя группы ресурсов, нажмите кнопку **удалить**. При удалении группы ресурсов будут удалены все ресурсы в группе ресурсов hello, поэтому всегда tooconfirm убедиться, что содержимое hello группу ресурсов перед его удалением. портал Hello удаляет все ресурсы, содержащиеся в группе ресурсов hello, а затем удаляет hello самой группе ресурсов. Этот процесс занимает несколько минут.
+1. На портале Azure в области **Избранное** щелкните **Все ресурсы**. Щелкните группу ресурсов **contosorg** в колонке "Все ресурсы". Если выбранная подписка имеет несколько ресурсов, в поле **Фильтровать по имени...** введите **contosorg**, чтобы быстро получить доступ к необходимой группе ресурсов.
+1. В колонке **contosorg** нажмите кнопку **Удалить**.
+1. На портале появится запрос на ввод имени группы ресурсов для подтверждения удаления. Введите *contosorg* для имени группы ресурсов, а затем щелкните **Удалить**. При удалении группы ресурсов удаляются все расположенные в ней ресурсы. Поэтому перед удалением группы ресурсов всегда проверяйте ее содержимое. Сначала портал удаляет все ресурсы, содержащиеся в группе ресурсов, а затем удаляет и саму группу. Этот процесс занимает несколько минут.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

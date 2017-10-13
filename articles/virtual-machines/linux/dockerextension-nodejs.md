@@ -1,6 +1,6 @@
 ---
-title: "hello aaaUse расширения виртуальной Машины Azure Docker с hello Azure CLI 1.0 | Документы Microsoft"
-description: "Узнайте, как toouse hello tooquickly расширение ВМ Docker и безопасного развертывания в среде Docker в Azure с помощью шаблонов диспетчера ресурсов."
+title: "Использование расширения виртуальной машины Docker для Azure с Azure CLI 1.0 | Документация Майкрософт"
+description: "Сведения об использовании расширения виртуальной машины Docker для быстрого и безопасного развертывания среды Docker в Azure с помощью шаблона Resource Manager."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 2133cdb1af741fe30093910fae5c3b2c91e8d5fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a3cbcf63533f4042dcd695e141655c5814bd7068
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-docker-environment-in-azure-using-hello-docker-vm-extension-with-hello-azure-cli-10"></a>Создание среды Docker в Azure с помощью расширения виртуальной Машины Docker hello с hello Azure CLI 1.0
-Docker — это популярный контейнер управления и работы с образами платформу, которая позволяет вам tooquickly работы с контейнерами Linux (а также Windows). В Azure существует несколько способов, которые можно развернуть в соответствии с потребностями tooyour Docker. В этой статье описывается использование расширение ВМ Docker hello и шаблоны Azure Resource Manager. 
+# <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension-with-the-azure-cli-10"></a>Создание среды Docker в Azure с использованием расширения виртуальной машины Docker посредством Azure CLI 1.0
+Docker — это популярная платформа управления контейнерами и работы с образами, которая позволяет быстро работать с контейнерами в Linux (а также в Windows). В Azure развертывание Docker можно выполнить несколькими разными способами в соответствии с конкретными потребностями. В этой статье рассматривается использование расширения виртуальной машины Docker и шаблонов Azure Resource Manager. 
 
-Дополнительные сведения о hello различных способов развертывания, включая использование машины Docker и контейнер служб Azure см. следующие статьи hello:
+Дополнительные сведения о различных методах развертывания, в том числе с помощью Docker Machine и служб контейнеров Azure, см. в следующих статьях:
 
-* прототип tooquickly приложения, можно создать с помощью одного узла Docker [машины Docker](docker-machine.md).
-* Для крупных и более стабильные средах, можно использовать расширения виртуальной Машины Azure Docker hello, которое также поддерживает [Docker Compose](https://docs.docker.com/compose/overview/) развертывания toogenerate согласованное контейнера. Этой статьи описаны с помощью расширения виртуальной Машины Azure Docker hello.
-* toobuild рабочей среде, масштабируемых средах, предоставляющих дополнительные средства планирования и управления развертыванием [кластера с помощью Docker Swarm на контейнер служб Azure](../../container-service/dcos-swarm/container-service-deployment.md).
+* Чтобы быстро создать прототип приложения, можно создать один узел Docker с помощью [машины Docker](docker-machine.md).
+* В более крупных стабильных средах можно использовать расширение виртуальной машины Docker для Azure, которое также поддерживает компонент [Docker Compose](https://docs.docker.com/compose/overview/), обеспечивающий согласованное развертывание контейнеров. В этой статье приведены подробные сведения об использовании расширения виртуальных машин Docker для Azure.
+* Чтобы создать готовые к работе, масштабируемые среды с дополнительными средствами планирования и управления, можно развернуть [кластер Docker Swarm в службах контейнеров Azure](../../container-service/dcos-swarm/container-service-deployment.md).
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello.
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки.
 
-- [Azure CLI 1.0](#azure-docker-vm-extension-overview) — нашей CLI для hello классический и ресурса управления развертывания моделей (в этой статье)
-- [Azure CLI 2.0](dockerextension.md) -нашей нового поколения CLI для модели развертывания hello ресурсов управления 
+- [Azure CLI 1.0](#azure-docker-vm-extension-overview) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager (в этой статье).
+- [Azure CLI 2.0](dockerextension.md) — интерфейс командной строки следующего поколения для модели развертывания с помощью Resource Manager. 
 
 ## <a name="azure-docker-vm-extension-overview"></a>Общие сведения о расширении виртуальных машин Docker для Azure
-Hello расширение ВМ Docker Azure устанавливает и настраивает управляющую программу Docker hello, клиент Docker и Docker Compose в Linux виртуальной машины (VM). С помощью расширения виртуальной Машины Azure Docker hello, имеют больший контроль и возможностей, чем просто с помощью машины Docker или создании узла Docker hello самостоятельно. Эти дополнительные возможности, например [Docker Compose](https://docs.docker.com/compose/overview/), подготовить расширение виртуальной Машины Azure Docker hello подходит для более надежной разработчика или рабочей среде.
+Расширение виртуальных машин Docker для Azure устанавливает и настраивает управляющую программу Docker, клиент Docker и Docker Compose на виртуальной машине Linux. В отличие от использования только машины Docker или самостоятельного создания узла Docker с этим расширением вы получаете дополнительные элементы управления и компоненты. Благодаря этим дополнительным компонентам, таким как [Docker Compose](https://docs.docker.com/compose/overview/), расширение виртуальных машин Docker для Azure подходит для более надежных сред разработки или рабочих сред.
 
-Шаблоны Azure Resource Manager определить структуру в целом hello среды. Шаблоны позволяют toocreate и настроить ресурсы, такие как узел Docker hello виртуальных машин, хранилища, средства управления доступом на основе ролей (RBAC) и диагностики. Можно повторно использовать эти шаблоны toocreate дополнительные развертывания согласованным образом. Дополнительные сведения об Azure Resource Manager и шаблонах см. в статье [Общие сведения об Azure Resource Manager ](../../azure-resource-manager/resource-group-overview.md). 
+Шаблоны Azure Resource Manager определяют структуру всей среды. Они позволяют создавать и настраивать ресурсы, такие как виртуальные машины узла Docker, хранилище, элементы управления доступом на основе ролей (RBAC) и службу диагностики. Эти шаблоны можно повторно использовать для создания дополнительных развертываний ресурсов в согласованном состоянии. Дополнительные сведения об Azure Resource Manager и шаблонах см. в статье [Общие сведения об Azure Resource Manager ](../../azure-resource-manager/resource-group-overview.md). 
 
-## <a name="deploy-a-template-with-hello-azure-docker-vm-extension"></a>Развертывание шаблона с hello расширения виртуальной Машины Azure Docker
-Позволяет использовать существующий шаблон краткого руководства toocreate Виртуальной машине Ubuntu, использующий tooinstall расширения виртуальной Машины Azure Docker hello и настройка узла Docker hello. Можно просмотреть здесь шаблон hello: [простое развертывание Виртуальной машине Ubuntu с помощью Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
+## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Развертывание шаблона с помощью расширения виртуальных машин Docker для Azure
+Чтобы создать виртуальную машину Ubuntu, на которой установлено расширение виртуальной машины Docker для Azure (для установки и настройки узла Docker), мы используем готовый шаблон быстрого запуска. Шаблон можно найти в разделе [Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)(Простое развертывание виртуальной машины Ubuntu с Docker). 
 
-Требуется hello [последние Azure CLI](../../cli-install-nodejs.md) установлен и вход с помощью режима диспетчера ресурсов hello следующим образом:
+Кроме того, потребуется установить [последнюю версию интерфейса командной строки Azure](../../cli-install-nodejs.md) и выполнить вход в систему в режиме Resource Manager, как показано ниже.
 
 ```azurecli
 azure config mode arm
 ```
 
-Развертывание шаблона hello, с помощью hello Azure CLI, указав hello шаблон URI. Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *westus* расположение. Укажите собственное имя группы ресурсов и расположение, как показано ниже.
+Разверните шаблон с помощью интерфейса командной строки Azure, указав универсальный код ресурса (URI) шаблона. В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *westus*. Укажите собственное имя группы ресурсов и расположение, как показано ниже.
 
 ```azurecli
 azure group create \
@@ -58,14 +58,14 @@ azure group create \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-Ответить на запрос tooname hello вашей учетной записи хранилища, укажите имя пользователя и пароль и укажите DNS-имя. Hello вывода будет примерно toohello следующий пример:
+В ответ на запросы укажите имя учетной записи хранения, имя пользователя и пароль, а также DNS-имя. Вы должны увидеть результат, аналогичный приведенному ниже.
 
 ```azurecli
 info:    Executing command group create
 + Getting resource group myResourceGroup
 + Updating resource group myResourceGroup
 info:    Updated resource group myResourceGroup
-info:    Supply values for hello following parameters
+info:    Supply values for the following parameters
 newStorageAccountName: mystorageaccount
 adminUsername: azureuser
 adminPassword: P@ssword!
@@ -82,21 +82,21 @@ data:
 info:    group create command OK
 ```
 
-Hello Azure CLI возвращает строки toohello только через несколько секунд, но узла Docker находится в процессе создания и настроить hello расширение ВМ Docker в Azure. Он занимает несколько минут для развертывания toofinish hello. Для просмотра сведений о состоянии узла Docker hello, с помощью hello `azure vm show` команды.
+Интерфейс командной строки Azure отобразит командную строку всего через несколько секунд, но создание и настройка узла Docker с помощью расширения виртуальных машин Docker для Azure еще не завершено. Подождите несколько минут до завершения развертывания. Сведения о состоянии узла Docker можно просмотреть с помощью команды `azure vm show`.
 
-Hello следующий пример проверяет состояние виртуальной Машины с именем hello hello *myDockerVM* (имя по умолчанию на основе шаблона hello hello — не изменять это имя) в группе ресурсов hello с именем *myResourceGroup*. Введите имя группы ресурсов hello, созданный на предыдущих шага hello hello:
+В следующем примере проверяется состояние виртуальной машины с именем *myDockerVM* (имя по умолчанию, указанное в шаблоне; не изменяйте его) в группе ресурсов *myResourceGroup*. Введите имя группы ресурсов, созданной на предыдущем шаге.
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myDockerVM
 ```
 
-Здравствуйте, выходные данные hello `azure vm show` команды будет примерно toohello следующий пример:
+После выполнения команды `azure vm show` вы должны увидеть результат, аналогичный приведенному ниже.
 
 ```azurecli
 info:    Executing command vm show
-+ Looking up hello VM "myDockerVM"
-+ Looking up hello NIC "myVMNicD"
-+ Looking up hello public ip "myPublicIPD"
++ Looking up the VM "myDockerVM"
++ Looking up the NIC "myVMNicD"
++ Looking up the public ip "myPublicIPD"
 data:    Id                              :/subscriptions/guid/resourceGroups/myresourcegroup/providers/Microsoft.Compute/virtualMachines/MyDockerVM
 data:    ProvisioningState               :Succeeded
 data:    Name                            :MyDockerVM
@@ -119,27 +119,27 @@ data:    Diagnostics Instance View:
 info:    vm show command OK
 ```
 
-Верхней hello hello выходных данных вы видите hello **ProvisioningState** из hello виртуальной Машины. При этом выводится *успешно*, завершения развертывания hello и вы можете toohello SSH виртуальной Машины.
+В начале выходных данных отображается состояние **ProvisioningState** виртуальной машины. Если отображается состояние *Succeeded*, значит, развертывание завершено, и вы можете подключиться к виртуальной машине по протоколу SSH.
 
-Концу hello вывода hello *полное доменное имя* отображает hello полное доменное имя узла Docker. Это полное доменное имя является то, что используется узел Docker tooyour tooSSH в hello, оставшиеся шаги.
+В конце выходных данных *FQDN* отображает полное доменное имя узла Docker. Это полное доменное имя будет использовано для подключения к узлу Docker по протоколу SSH на последующих шагах.
 
 ## <a name="deploy-your-first-nginx-container"></a>Развертывание первого контейнера nginx
-После завершения развертывания hello SSH tooyour новый узел Docker с локального компьютера. Введите собственное имя пользователя и полное доменное имя, как показано ниже.
+После завершения развертывания установите SSH-подключение к новому узлу Docker из локального компьютера. Введите собственное имя пользователя и полное доменное имя, как показано ниже.
 
 ```bash
 ssh ops@mypublicdns.westus.cloudapp.azure.com
 ```
 
-После входа в toohello узел Docker, запустим контейнер nginx:
+После входа в систему узла Docker запустите контейнер nginx.
 
 ```bash
 sudo docker run -d -p 80:80 nginx
 ```
 
-выходные данные Hello выглядят примерно toohello следующий пример, как загружается образ nginx hello и контейнер к работе:
+После скачивания образа nginx и запуска контейнера результаты должны выглядеть примерно так, как показано в следующем примере.
 
 ```bash
-Unable toofind image 'nginx:latest' locally
+Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 efd26ecc9548: Pull complete
 a3ed95caeb02: Pull complete
@@ -150,25 +150,25 @@ Status: Downloaded newer image for nginx:latest
 b6ed109fb743a762ff21a4606dd38d3e5d35aff43fa7f12e8d4ed1d920b0cd74
 ```
 
-Проверьте состояние hello hello контейнеров, работающих на узле Docker следующим образом:
+Проверьте состояние контейнеров, запущенных на узле Docker, следующим образом.
 
 ```bash
 sudo docker ps
 ```
 
-выходные данные Hello аналогичные toohello следующий пример, отображение этого контейнера nginx hello запущена и TCP-порты 80 и 443 и пересылки:
+Результаты должны выглядеть примерно так, как показано ниже. В них должно быть указано, что контейнер nginx запущен, а TCP-порты 80 и 443 перенаправлены.
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
 b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
 ```
 
-toosee контейнера в действие, откройте веб-обозреватель и введите полное ДОМЕННОЕ имя узла Docker hello:
+Чтобы увидеть контейнер в действии, откройте веб-браузер и введите полное доменное имя узла Docker.
 
 ![Запущенный контейнер nginx](./media/dockerextension/nginxrunning.png)
 
 ## <a name="azure-docker-vm-extension-template-reference"></a>Пример шаблона расширения виртуальной машины Docker для Azure
-Hello в предыдущем примере существующий шаблон краткого руководства. Можно также развернуть hello расширения виртуальной Машины Azure Docker с помощью собственных шаблонов диспетчера ресурсов. toodo таким образом, добавить hello следующие шаблоны диспетчера ресурсов tooyour, определение hello *vmName* вашей виртуальной машины соответствующим образом:
+В предыдущем примере использовался готовый шаблон быстрого запуска. Расширение виртуальной машины Docker для Azure можно также развернуть с помощью собственных шаблонов Resource Manager. Для этого добавьте следующий код в свои шаблоны Resource Manager, указав вместо *vmName* имя своей виртуальной машины.
 
 ```json
 {
@@ -193,11 +193,11 @@ Hello в предыдущем примере существующий шабло
 Подробное пошаговое руководство по использованию шаблонов Resource Manager см. в статье [Общие сведения об Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы можете слишком[настроить hello Docker daemon TCP-порт](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), понять [безопасности Docker](https://docs.docker.com/engine/security/security/), или развернуть контейнеры с помощью [Docker Compose](https://docs.docker.com/compose/overview/). Дополнительные сведения о hello расширение ВМ Docker Azure сама разделе hello [GitHub проекта](https://github.com/Azure/azure-docker-extension/).
+Возможно, вам потребуется [настроить TCP-порт управляющей программы Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket), [ознакомиться с параметрами безопасности Docker](https://docs.docker.com/engine/security/security/) или развернуть контейнеры с помощью [Docker Compose](https://docs.docker.com/compose/overview/). Дополнительные сведения о расширении виртуальных машин Docker для Azure см. в [репозитории GitHub](https://github.com/Azure/azure-docker-extension/).
 
-Прочтите Дополнительные сведения о дополнительных параметрах развертывания Docker hello в Azure:
+Дополнительные сведения о вариантах развертывания Docker в Azure см. в следующих источниках:
 
-* [Использовать компьютер Docker с hello Azure драйвера](docker-machine.md)  
-* [Начало работы с Docker и составлять toodefine и запустите приложение контейнера несколькими на виртуальной машине Azure](docker-compose-quickstart.md).
+* [Использование машины Docker с драйвером Azure](docker-machine.md)  
+* [Приступая к работе с решениями Docker и Compose для определения и запуска многоконтейнерного приложения на виртуальной машине Azure](docker-compose-quickstart.md)
 * [Развертывание кластера службы контейнеров Azure](../../container-service/dcos-swarm/container-service-deployment.md)
 

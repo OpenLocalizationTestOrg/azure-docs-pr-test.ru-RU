@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure Redis документации кэша - учебники, справочник по API | Документы Microsoft"
-description: "Узнайте, как toouse кэша Redis для Azure, защищенные данные кэша и брокера обмена сообщениями, приложениям предоставляется быстрый доступ к toodata. Руководства, справочники по API и другие документы."
+title: "Документация по кэш Redis для Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как использовать кэш Redis для Azure, защищенный кэш данных, и брокер обмена сообщениями, который обеспечивает быстрый доступ приложений к данным. Руководства, справочники по API и другие документы."
 services: redis-cache
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1344e242321b84fe2fbd3bc466a3cb82aba177f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6528d900ba3641189f8000db8d2535c9b215d148
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="redis-cache-documentation"></a>Документация по кэшу Redis
 
-Дополнительные сведения об использовании toouse кэша Redis для Azure, защиты данных кэша, а также брокера обмена сообщениями, который обеспечивает высокой пропускной способностью и малой задержкой доступа toodata приложений. Учебники, ссылки на API и другую документацию показывается, как toouse кэша Redis из любого приложения в Azure.
+Узнайте, как использовать кэш Redis для Azure, защищенный кэш данных, и брокер обмена сообщениями, который обеспечивает высокую пропускную способность и низкую задержку при обращении приложений к данным. Руководства, справочники по API и другая документация, в которой показано, как использовать кэш Redis из любого приложения в Azure.
 
 <ul class="panelContent cardsFTitle">
     <li>

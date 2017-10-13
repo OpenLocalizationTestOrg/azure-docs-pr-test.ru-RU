@@ -1,13 +1,13 @@
 
-1. Щелкните правой кнопкой мыши проект для магазина Windows hello, щелкните **Назначить запускаемым проектом**, нажмите клавишу hello F5 ключа toorun hello магазина Windows.
+1. Щелкните правой кнопкой мыши проект Магазина Windows, выберите пункт **Назначить запускаемым проектом**и нажмите клавишу F5, чтобы запустить приложение Магазина Windows.
    
-    После запуска приложение hello hello устройство регистрируется для push-уведомлений.
-2. Остановите приложение магазина Windows hello и повторите предыдущий шаг hello для приложения для магазина Windows Phone hello.
+    После запуска приложения выполняется регистрация устройства для получения push-уведомлений.
+2. Остановите приложение Магазина Windows и повторите предыдущий шаг для приложения Магазина Windows Phone.
    
-    На этом этапе оба устройства, зарегистрированные tooreceive push-уведомлений.
-3. Снова запустите приложение для магазина Windows hello и введите текст в **Insert a TodoItem**, а затем нажмите кнопку **Сохранить**.
+    Теперь оба устройства зарегистрированы для получения push-уведомлений.
+3. Запустите приложение Магазина Windows и введите текст в поле **Insert a TodoItem** (Вставить TodoItem), после чего нажмите кнопку **Сохранить**.
    
-       Note that after hello insert completes, both hello Windows Store and hello Windows Phone apps receive a push notification from WNS. hello notification is displayed on Windows Phone even when hello app isn't running.
+       Note that after the insert completes, both the Windows Store and the Windows Phone apps receive a push notification from WNS. The notification is displayed on Windows Phone even when the app isn't running.
    
        ![](./media/app-service-mobile-windows-universal-test-push/mobile-quickstart-push5-wp8.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "пакет поддержки StorSimple aaaCreate | Документы Microsoft"
-description: "Узнайте, как toocreate, расшифровки и изменить пакет поддержки для устройства StorSimple."
+title: "Создание пакета поддержки StorSimple | Документация Майкрософт"
+description: "Узнайте, как создавать, расшифровывать и изменять содержимое пакетов поддержки для устройства StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,134 +14,134 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 209aeee50e823fd2ca96ababd1d0cf3ea9cdad53
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 32d20e7a8adcfc646c592213fe7395b87a93c985
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-and-manage-a-storsimple-support-package"></a>Создание пакетов поддержки StorSimple и управление ими
 ## <a name="overview"></a>Обзор
-Пакет поддержки StorSimple — это простой в использовании механизм, который собирает все журналы tooassist технической поддержки Майкрософт с устранить любые проблемы устройства StorSimple. Hello собирать журналы зашифрованные и сжатые.
+Пакет поддержки StorSimple — это простой в использовании механизм, который собирает все соответствующие журналы, помогая службе технической поддержки Майкрософт устранять неполадки в работе устройства StorSimple. Собранные журналы шифруются и сжимаются.
 
-Этот учебник включает toocreate пошаговые инструкции и управление ими hello пакет поддержки.
+В этом руководстве содержатся пошаговые инструкции по созданию пакета поддержки и управлению им.
 
-## <a name="create-and-upload-a-support-package-in-hello-azure-classic-portal"></a>Создание и отправка пакета поддержки в hello классический портал Azure
-Можно создать и отправить узле поддержки toohello пакета поддержки корпорации Майкрософт с помощью hello **обслуживания** странице службы hello в hello классический портал Azure.
+## <a name="create-and-upload-a-support-package-in-the-azure-classic-portal"></a>Создание и отправка пакета поддержки на классическом портале Azure
+Можно создать и отправить пакет поддержки на сайт службы поддержки Майкрософт с помощью страницы **Обслуживание** для службы на классическом портале Azure.
 
 > [!NOTE]
-> Отправка Hello требуется ключ доступа поддержки. Специалисту службы поддержки должен предоставить этот tooyou по электронной почте.
+> Для отправки требуется ключ доступа к поддержке. Он должен быть предоставлен вам сотрудником службы поддержки по электронной почте.
 > 
 > 
 
-Пакет поддержки зашифрованные и сжатые (CAB-файл)-это созданный и загруженный toohello сайт технической поддержки. Сотрудник службы поддержки Hello может найти этот пакет с сайта поддержки hello для устранения проблемы hello.
+Зашифрованный и сжатый пакет поддержки (CAB-файл) создается и отправляется на сайт службы поддержки. Затем сотрудник службы поддержки может получить этот пакет с сайта технической поддержки для устранения неполадки.
 
-Выполнение инструкций из классического портала toocreate hello пакет поддержки hello.
+Чтобы создать пакет поддержки, выполните указанные ниже действия на классическом портале.
 
-#### <a name="toocreate-a-support-package-in-hello-azure-classic-portal"></a>toocreate пакета поддержки в hello классический портал Azure
+#### <a name="to-create-a-support-package-in-the-azure-classic-portal"></a>Создание пакета поддержки на классическом портале Azure
 1. Выберите **Устройства** > **Обслуживание**.
-2. В hello **пакет поддержки** выберите **Создание и отправка пакета поддержки**.
-3. В hello **Создание и отправка пакета поддержки** диалогового окна поле, hello следующие:
+2. В разделе **Пакет поддержки** щелкните **Создание и отправка пакета поддержки**.
+3. В окне **Создание и загрузка пакета поддержки** выполните следующие действия.
    
     ![Создание пакета поддержки](./media/storsimple-create-manage-support-package/IC740923.png)
    
-   * В hello **к поддержке** текста введите ключ доступа hello. Специалисту службы поддержки Майкрософт должна отправлять этот ключ доступа tooyou в сообщении электронной почты.
-   * Выберите hello флажок tooprovide согласия tooautomatically передачи поддержки hello пакета toohello сайт технической поддержки Майкрософт.
-   * Щелкните значок галочки hello ![значок с изображением флажка](./media/storsimple-create-manage-support-package/IC740895.png).
+   * В текстовое поле **Ключ доступа к поддержке** введите ключ доступа. Этот ключ должен быть отправлен вам сотрудником службы поддержки Майкрософт в сообщении электронной почты.
+   * Установите флажок, чтобы дать согласие на автоматическую отправку пакета поддержки на сайт службы поддержки Майкрософт.
+   * Щелкните значок галочки  ![значок с изображением флажка](./media/storsimple-create-manage-support-package/IC740895.png).
 
 ## <a name="manually-create-a-support-package"></a>Создание пакета поддержки вручную
-В некоторых случаях вам потребуется toomanually создать пакет поддержки hello через Windows PowerShell для StorSimple. Например:
+В некоторых случаях необходимо вручную создать пакет поддержки с помощью Windows PowerShell для StorSimple. Например:
 
-* Если необходимо tooremove конфиденциальные сведения из журналов файлы предыдущих toosharing со службой поддержки Майкрософт.
-* Если вам трудно Отправка hello пакета из-за проблем с tooconnectivity.
+* Если необходимо удалить конфиденциальную информацию из файлов журнала до их предоставления службе технической поддержки Майкрософт.
+* Если возникают сложности с отправкой пакета из-за проблем с подключением.
 
-Созданный вручную пакет поддержки можно предоставить службе технической поддержки Майкрософт по электронной почте. Выполните следующие шаги toocreate пакета поддержки в Windows PowerShell для StorSimple hello.
+Созданный вручную пакет поддержки можно предоставить службе технической поддержки Майкрософт по электронной почте. Для создания пакета поддержки в Windows PowerShell для StorSimple выполните следующие действия.
 
-#### <a name="toocreate-a-support-package-in-windows-powershell-for-storsimple"></a>toocreate пакета поддержки в Windows PowerShell для StorSimple
-1. toostart сеанс Windows PowerShell с правами администратора на удаленном компьютере hello, который использовал устройства StorSimple tooyour tooconnect, введите следующую команду hello:
+#### <a name="to-create-a-support-package-in-windows-powershell-for-storsimple"></a>Создание пакета поддержки в Windows PowerShell для StorSimple
+1. Для запуска сеанса Windows PowerShell с правами администратора на удаленном компьютере, используемом для подключения к устройству StorSimple, введите следующую команду:
    
     `Start PowerShell`
-2. В сеансе Windows PowerShell hello подключение toohello консоли SSAdmin на устройстве:
+2. В сеансе Windows PowerShell подключитесь к консоли SSAdmin устройства:
    
-   * Hello командной строки введите:
+   * В командной строке введите:
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   * В hello открывшемся диалоговом окне введите пароль администратора устройства. пароль по умолчанию Hello —:
+   * В открывшемся диалоговом окне введите пароль администратора устройства. Пароль по умолчанию:
      
       `Password1`
      
       ![Диалоговое окно с учетными данными PowerShell](./media/storsimple-create-manage-support-package/IC740962.png)
    * Нажмите кнопку **ОК**.
-   * Hello командной строки введите:
+   * В командной строке введите:
      
       `Enter-PSSession $MS`
-3. В открывшемся сеансе hello введите соответствующую команду hello.
+3. В открывшемся сеансе введите соответствующую команду.
    
    * Для сетевых ресурсов, которые защищены паролем, введите:
      
        `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
      
-       Вам будет выведен на пароль, путь toohello общую сетевую папку и парольную фразу для шифрования (поскольку hello пакет поддержки зашифрован). Затем создается пакет поддержки в указанную папку hello.
-   * Для общих папок, которые не защищен паролем, нет необходимости hello `-Credential` параметра. Введите hello следующие данные:
+       Будет предложено ввести пароль, путь к общей сетевой папке и парольную фразу для шифрования (поскольку пакет поддержки зашифрован). Затем будет создан пакет поддержки в указанной папке.
+   * Для общих папок, не защищенных паролем, указывать параметр `-Credential` не требуется. Заполните следующие поля:
      
        `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
      
-       для обоих контроллеров в hello указанной общей сетевой папке создается пакет поддержки Hello. Это зашифрованный, сжатый файл, который может быть отправлен tooMicrosoft поддержки для устранения неполадок. Дополнительные сведения см. в статье [Обращение в службу поддержки Майкрософт](storsimple-contact-microsoft-support.md).
+       Пакет поддержки создается для обоих контроллеров в указанной общей сетевой папке. Это зашифрованный сжатый файл, который можно отправить в службу поддержки Майкрософт для устранения неполадок. Дополнительные сведения см. в статье [Обращение в службу поддержки Майкрософт](storsimple-contact-microsoft-support.md).
 
-### <a name="hello-export-hcssupportpackage-cmdlet-parameters"></a>параметры командлета Export-HcsSupportPackage Hello
-Можно использовать следующие параметры с помощью командлета Export-HcsSupportPackage hello hello.
+### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Параметры командлета Export-HcsSupportPackage
+С командлетом Export-HcsSupportPackage можно использовать следующие параметры.
 
 | Параметр | Обязательный/необязательный | Description (Описание) |
 | --- | --- | --- |
-| `-Path` |Обязательно |Используйте расположение hello tooprovide hello общей сетевой папке в какой hello помещен пакет поддержки. |
-| `-EncryptionPassphrase` |Обязательно |Используйте tooprovide toohelp парольной фразы шифрования пакета поддержки hello. |
-| `-Credential` |Необязательно |Использование учетных данных доступа toosupply для hello общей сетевой папке. |
-| `-Force` |Необязательно |Используйте шага подтверждения парольной фразы шифрования tooskip hello. |
-| `-PackageTag` |Необязательно |Используйте в каталоге toospecify *путь* помещают пакет поддержки какие hello. по умолчанию Hello — [имя устройства]-[Текущая дата и время:ГГГГ-MM-дд-чч-мм-сс]. |
-| `-Scope` |Необязательно |Укажите в качестве **кластера** toocreate (по умолчанию) пакет поддержки для обоих контроллеров. Toocreate пакета только для текущего контроллера hello, укажите **контроллера**. |
+| `-Path` |Обязательно |Позволяет указать расположение общей сетевой папки, в которой будет расположен пакет поддержки. |
+| `-EncryptionPassphrase` |Обязательно |Позволяет указать парольную фразу для шифрования пакета поддержки. |
+| `-Credential` |Необязательно |Позволяет передать учетные данные для доступа к общей сетевой папке. |
+| `-Force` |Необязательно |Используется, чтобы пропустить шаг подтверждения парольной фразы шифрования. |
+| `-PackageTag` |Необязательно |Позволяет указать в поле *Путь* каталог, в котором будет размещен пакет поддержки. Значение по умолчанию — [имя устройства]-[текущая дата и время:гггг-ММ-дд-ЧЧ-мм-сс]. |
+| `-Scope` |Необязательно |Укажите в качестве значения **Cluster** (по умолчанию), чтобы создать пакет поддержки для обоих контроллеров. Если требуется создать пакет только для текущего контроллера, укажите значение **Controller**. |
 
 ## <a name="edit-a-support-package"></a>Изменение пакета поддержки
-После создания пакета поддержки может понадобиться tooedit hello tooremove конфиденциальных сведений о пакете. Это может включать имена томов, IP-адреса устройств и имена резервных копий из файлов журнала hello.
+Созданный пакет поддержки при необходимости можно изменить для удаления конфиденциальных сведений. К таким сведениям относится имена томов, IP-адреса устройств и имена резервных копий из файлов журнала.
 
 > [!IMPORTANT]
-> Изменить можно только пакет поддержки, который был создан через Windows PowerShell для StorSimple. Невозможно изменить пакет, созданный на hello классический портал Azure в службе StorSimple Manager.
+> Изменить можно только пакет поддержки, который был создан через Windows PowerShell для StorSimple. Пакет, созданный на классическом портале Azure в службе диспетчера StorSimple, изменить нельзя.
 > 
 > 
 
-tooedit пакет поддержки до отправки на сайт технической поддержки Microsoft hello, сначала расшифровать пакет поддержки hello, изменять файлы hello и повторно зашифровать. Выполните следующие шаги hello.
+Чтобы изменить пакет поддержки перед отправкой на сайт технической поддержки корпорации Майкрософт, сначала расшифруйте пакет поддержки, внесите изменения в файлы, а затем снова зашифруйте пакет. Выполните следующие действия.
 
-#### <a name="tooedit-a-support-package-in-windows-powershell-for-storsimple"></a>tooedit пакета поддержки в Windows PowerShell для StorSimple
-1. Создать пакет поддержки, как описано ранее в [toocreate пакет поддержки в Windows PowerShell для StorSimple](#to-create-a-support-package-in-windows-powershell-for-storsimple).
-2. [Загрузка скрипта hello](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) локально на клиентском компьютере.
-3. Импортируйте модуль Windows PowerShell hello. Укажите hello путь toohello локальной папке в которой был загружен скрипт hello. модуль hello tooimport, введите:
+#### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>Изменение пакета поддержки в Windows PowerShell для StorSimple
+1. Создайте пакет поддержки в соответствии с инструкциями в приведенном выше разделе [Создание пакета поддержки в Windows PowerShell для StorSimple](#to-create-a-support-package-in-windows-powershell-for-storsimple).
+2. [Загрузите скрипт](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) в локальную систему на клиентском компьютере.
+3. Импортируйте модуль Windows PowerShell. Укажите путь к локальной папке, в которую вы скачали скрипт. Для импорта модуля введите команду:
    
-    `Import-module <Path toohello folder that contains hello Windows PowerShell script>`
-4. Все файлы hello, *.aes* файлы, которые сжаты и зашифрованы. toodecompress и расшифровки файлов, введите:
+    `Import-module <Path to the folder that contains the Windows PowerShell script>`
+4. Все файлы имеют расширение *AES*. Они сжаты и зашифрованы. Для распаковки и расшифровки файлов введите:
    
-    `Open-HcsSupportPackage <Path toohello folder that contains support package files>`
+    `Open-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    Обратите внимание, для всех файлов hello теперь отображаются фактические расширения hello.
+    Обратите внимание, что теперь у всех файлов отображаются настоящие расширения.
    
     ![Изменение пакета поддержки](./media/storsimple-create-manage-support-package/IC750706.png)
-5. Когда появится для hello парольную фразу для шифрования, введите hello парольную фразу, которая использовалась при создании пакета поддержки hello.
+5. При появлении запроса введите парольную фразу, которая использовалась при создании пакета поддержки.
    
         cmdlet Open-HcsSupportPackage at command pipeline position 1
    
-        Supply values for hello following parameters:EncryptionPassphrase: ****
-6. Обзор toohello папки, содержащей файлы журналов hello. Поскольку файлы журнала hello распакованы и расшифрованы, это будет иметь исходное расширение файла. Изменять эти файлы tooremove сведений о конкретных клиентов, такие как имена томов и IP-адреса устройств и сохранять файлы hello.
-7. Закрыть hello файлы toocompress их с помощью gzip и их шифрования с помощью AES-256. Это необходимо для скорости и безопасности при передаче пакета поддержки hello по сети. toocompress и шифрование файлов, введите ниже hello:
+        Supply values for the following parameters:EncryptionPassphrase: ****
+6. Перейдите в папку с файлами журналов. Так как файлы журналов теперь распакованы и расшифрованы, у них будут исходные расширения. Измените эти файлы, удалив информацию о пользователе (например, имена томов и IP-адреса устройств), и сохраните файлы.
+7. Закройте файлы, чтобы сжать их с помощью средства gzip и зашифровать алгоритмом AES-256. Это выполняется из соображений безопасности, а также для ускорения передачи пакета поддержки по сети. Для сжатия и шифрования файлов введите следующее:
    
-    `Close-HcsSupportPackage <Path toohello folder that contains support package files>`
+    `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
     ![Изменение пакета поддержки](./media/storsimple-create-manage-support-package/IC750707.png)
-8. При появлении запроса введите парольную фразу для hello измененного пакета поддержки.
+8. По запросу введите парольную фразу для шифрования для измененного пакета поддержки.
    
         cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for hello following parameters:EncryptionPassphrase: ****
-9. Запишите hello новую парольную фразу, чтобы совместно использовать его службе технической поддержки Майкрософт по запросу.
+        Supply values for the following parameters:EncryptionPassphrase: ****
+9. Запишите новую парольную фразу, чтобы сообщить ее специалистам службы технической поддержки Майкрософт по запросу.
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Пример: изменение файлов в пакете поддержки на ресурсе, защищенном паролем
-Привет, в следующем примере показано, как toodecrypt, изменения и повторного шифрования пакета поддержки.
+Ниже приведен пример, демонстрирующий расшифровку, изменение и повторное шифрование пакета поддержки.
 
         PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
@@ -149,7 +149,7 @@ tooedit пакет поддержки до отправки на сайт тех
 
         cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for hello following parameters:
+        Supply values for the following parameters:
 
         EncryptionPassphrase: ****
 
@@ -157,13 +157,13 @@ tooedit пакет поддержки до отправки на сайт тех
 
         cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for hello following parameters:
+        Supply values for the following parameters:
 
         EncryptionPassphrase: ****
 
         PS C:\WINDOWS\system32>
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Узнайте, каким образом слишком[пакеты поддержки использования и устройства в журналах tootroubleshoot развертывания устройства](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
-* Узнайте, каким образом слишком[используйте hello tooadminister службы диспетчера StorSimple устройство StorSimple](storsimple-manager-service-administration.md).
+* Узнайте об [использовании пакетов поддержки и журналов устройства для устранения неполадок при его развертывании](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
+* Узнайте об [использовании службы диспетчера StorSimple для администрирования устройства StorSimple](storsimple-manager-service-administration.md).
 

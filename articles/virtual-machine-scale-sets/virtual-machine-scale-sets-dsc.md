@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing требуемого состояния конфигурации с наборы масштабирования виртуальных машин | Документы Microsoft"
-description: "С помощью набора масштабирования виртуальной машины с hello расширений Azure DSC"
+title: "Использование настройки требуемого состояния с масштабируемыми наборами виртуальных машин | Документация Майкрософт"
+description: "Использование наборов масштабирования виртуальных машин с помощью расширения Azure DSC"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: zjalexander
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: a35f1ca6700aa4889978032aa512882db50d6573
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b61b0acf3072569ab733a13defb465c921d26187
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="using-virtual-machine-scale-sets-with-hello-azure-dsc-extension"></a>С помощью набора масштабирования виртуальной машины с hello расширений Azure DSC
-[Наборы масштабирования виртуальных машин](virtual-machine-scale-sets-overview.md) может использоваться с hello [Azure требуемого состояния (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) обработчика расширений. Наборы масштабирования виртуальной машины предоставляют toodeploy способом и управлять большим количеством виртуальных машин и гибко можно свернуть или развернуть в tooload ответа. DSC — используется tooconfigure hello виртуальных машин, как они переходит в оперативный режим, они работают под управлением программного обеспечения производственного hello.
+# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Использование наборов масштабирования виртуальных машин с помощью расширения Azure DSC
+[Масштабируемые наборы виртуальных машин](virtual-machine-scale-sets-overview.md) могут использоваться с обработчиком расширения [Настройка требуемого состояния (DSC) Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Масштабируемые наборы виртуальных машин позволяют развертывать большое количество виртуальных машин и управлять ими, а также гибко масштабировать ресурсы согласно нагрузке. Расширение DSC используется для настройки виртуальных машин при их подключении для работы с программным обеспечением в рабочей среде.
 
-## <a name="differences-between-deploying-toovirtual-machines-and-virtual-machine-scale-sets"></a>Различия при развертывании машины tooVirtual и наборы масштабирования виртуальных машин
-Базовая структура шаблона Hello для набора масштабирования виртуальных машин немного отличается от одной виртуальной Машины. В частности в одной виртуальной Машины развертывает расширения в узле «virtualMachines» hello. Отсутствует запись типа «расширения», где DSC добавляется toohello шаблона
+## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Различия при развертывании на виртуальных машинах и в масштабируемых наборах виртуальных машин
+Базовая структура шаблона для масштабируемого набора виртуальных машин немного отличается от отдельной виртуальной машины. В частности, на одиночной виртуальной машине расширения развертываются в узле virtualMachines. Существует запись с типом extensions, где DSC добавляется в шаблон:
 
 ```
 "resources": [
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/06/2017
       ]
 ```
 
-Узел набора масштабирования виртуальной машины имеет раздел «свойства» с «ExtensionProfile» атрибута «VirtualMachineProfile» hello. DSC добавляется в раздел extensions:
+Узел масштабируемого набора виртуальных машин содержит раздел properties с атрибутами VirtualMachineProfile и extensionProfile. DSC добавляется в раздел extensions:
 
 ```
 "extensionProfile": {
@@ -97,14 +97,14 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="behavior-for-a-virtual-machine-scale-set"></a>Поведение для масштабируемого набора виртуальных машин
-поведение Hello для набора масштабирования виртуальной машины — это поведение идентичные toohello для одной виртуальной Машины. При создании новой виртуальной Машины, она автоматически снабжаются hello расширения DSC. Если более новая версия WMF требуется модулем hello приветствия hello ВМ перезагружает перед переходит в оперативный режим. Он находится в оперативном режиме, загружает .zip hello DSC конфигурации и инициализировать его на hello виртуальной Машины. Дополнительные сведения можно найти в [hello Обзор расширение Azure DSC](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Поведение при использовании масштабируемого набора виртуальных машин идентично поведению для отдельной виртуальной машины. При создании виртуальной машины она автоматически подготавливается с помощью расширения DSC. Если для расширения требуется новая версия WMF, то перед подключением виртуальная машина перезагружается. Когда виртуальная машина подключена, она загружает файл конфигурации DSC в формате ZIP и подготавливает его на виртуальной машине. Дополнительные сведения см. в статье [Общие сведения об обработчике расширения DSC в Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Изучите hello [шаблона Azure Resource Manager для расширения hello DSC](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Изучите [шаблон Azure Resource Manager для расширения DSC](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Узнайте, как hello [учетные данные безопасно обрабатываются расширение DSC](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Узнайте, как [расширение DSC безопасно обрабатывает учетные данные](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Дополнительные сведения о hello обработчик расширений Azure DSC см. в разделе [обработчик расширений Azure настройки требуемого состояния введение toohello](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Дополнительные сведения об обработчике расширений DSC см. в статье [Общие сведения об обработчике расширения для настройки требуемого состояния в Azure](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Дополнительные сведения о PowerShell DSC [посетите центр документации PowerShell hello](https://msdn.microsoft.com/powershell/dsc/overview). 
+Для получения дополнительных сведений о DSC PowerShell [посетите центр документации PowerShell](https://msdn.microsoft.com/powershell/dsc/overview). 
 

@@ -1,9 +1,9 @@
 
 
 ## <a name="overview-of-azure-resource-manager-templates"></a>Общие сведения о шаблонах диспетчера ресурсов Azure
-Шаблоны Azure Resource Manager позволяет toodeclaratively укажите инфраструктуры Azure IaaS hello языке JSON, определяя hello зависимости между ресурсами.
+Шаблон Azure Resource Manager позволяет декларативно задать инфраструктуру IaaS Azure на языке JSON, установив зависимости между ресурсами.
 
-В разделе [разработки шаблонов расширения](../articles/virtual-machines/windows/template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) toolearn больше о создании шаблонов для использования расширений.
+Дополнительные сведения о разработке шаблонов для использования расширений см. в [этой статье](../articles/virtual-machines/windows/template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-В этой статье мы сведения об устранении некоторых hello распространенные ошибки расширения виртуальной Машины.
+В этой статье вы узнаете, как устранять некоторые распространенные сбои в расширении виртуальной машины.
 

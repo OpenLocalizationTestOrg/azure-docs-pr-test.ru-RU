@@ -1,9 +1,9 @@
 ---
-title: "элемент пользовательского интерфейса FileUpload управляемого приложения aaaAzure | Документы Microsoft"
-description: "Описывает hello элемент пользовательского интерфейса Microsoft.Common.FileUpload для управляемых приложений Azure"
+title: "Элемент пользовательского интерфейса FileUpload управляемого приложения Azure | Документация Майкрософт"
+description: "Сведения об элементе пользовательского интерфейса Microsoft.Common.FileUpload управляемых приложений Azure"
 services: azure-resource-manager
 documentationcenter: na
-author: tabrezm
+author: tfitzmac
 manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
@@ -12,15 +12,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
-ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 7af5bec992e3f120afb1bdf56d8b4c19a8e5e834
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: tomfitz
+ms.openlocfilehash: bd5bae5678e2ec12fd1ddd2a81e63acca08da2c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Элемент пользовательского интерфейса Microsoft.Common.FileUpload
-Элемент управления, позволяющий toospecify пользователя один или несколько файлов tooupload. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
+Элемент управления, который позволяет пользователю указать один или несколько файлов для отправки. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
 
 ## <a name="ui-sample"></a>Пример элемента пользовательского интерфейса
 ![Элемент пользовательского интерфейса Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
@@ -47,21 +47,21 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="remarks"></a>Примечания
-- `constraints.accept`Указывает типы файлов, отображаемых в диалоговом окне браузера hello файл hello. В разделе hello [спецификации HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept) для допустимых значений. значение по умолчанию Hello — **null**.
-- Если `options.multiple` задано слишком**true**, tooselect более одного файла в диалоговом окне браузера hello файла разрешено пользователю hello. значение по умолчанию Hello — **false**.
-- Этот элемент поддерживает отправку файлов в двух режимах на основе значения hello `options.uploadMode`. Если **файл** указан, выходной hello содержит hello содержимое файла hello как большой двоичный объект. Если **URL-адрес** указан, то файл hello отправленного tooa временное расположение, и результат hello содержит URL-адрес hello hello большого двоичного объекта. Временные большие двоичные объекты очищаются через 24 часа. значение по умолчанию Hello — **файл**.
-- Здравствуйте, значение `options.openMode` определяет, как прочитать файл hello. Если файл hello ожидаемый toobe обычного текста, укажите **текст**; в противном случае, укажите **двоичных**. значение по умолчанию Hello — **текст**.
-- Если `options.uploadMode` задано слишком**файл** и `options.openMode` задано слишком**двоичных**, hello выходные данные в кодировке base64.
-- `options.encoding`Указывает кодировки toouse hello при чтении файла hello. значение по умолчанию Hello — **UTF-8**и используется только если `options.openMode` задано слишком**текст**.
+- `constraints.accept` — указывает типы файлов, которые отображаются в файловом диалоговом окне браузера. Сведения о допустимых значениях см. в [спецификации HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept). Значение по умолчанию — **null**.
+- Если `options.multiple` имеет значение **true**, пользователь может выбрать несколько файлов в файловом диалоговом окне браузера. Значение по умолчанию — **false**.
+- Этот элемент поддерживает отправку файлов в двух режимах, которые задаются в параметре `options.uploadMode`. Если указан **file**, тогда выходные данные предоставляют содержимое файла в виде большого двоичного объекта. Если указан **url**, тогда файл отравляется во временное расположение и выходные данные содержат URL-адрес большого двоичного объекта. Временные большие двоичные объекты очищаются через 24 часа. Значение по умолчанию — **file**.
+- Значение `options.openMode` определяет режим, в котором открывается файл. Если предполагается, что файл содержит обычный текст, укажите **text**. В противном случае укажите **binary**. Значение по умолчанию — **text**.
+- Если `options.uploadMode` имеет значение **file**, а `options.openMode` имеет значение **binary**, то выходные данные закодированы в формате Base64.
+- `options.encoding` — указывает кодирование, которое используется при чтении файла. Значение по умолчанию — **UTF-8**, которое используется только если для параметра `options.openMode` задано значение **text**.
 
 ## <a name="sample-output"></a>Пример выходных данных
-Если options.multiple имеет значение false и options.uploadMode — файл, выходные данные содержат hello содержимое файла hello как строка JSON:
+Если options.multiple имеет значение false и options.uploadMode — file, тогда выходные данные предоставляют содержимое файла в виде строки JSON:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Если истинно options.multiple and'options.uploadMode файлом, то выходные данные содержат hello содержимое файлов hello как массив JSON:
+Если options.multiple имеет значение true и options.uploadMode — file, тогда выходные данные предоставляют содержимое файла в виде массива JSON:
 
 ```json
 [
@@ -87,10 +87,10 @@ ms.lasthandoff: 10/06/2017
 ]
 ```
 
-При тестировании CreateUiDefinition, некоторые браузеры (например, Google Chrome) приводит к усечению URL-адреса, созданные элементом Microsoft.Common.FileUpload hello в консоли браузера hello. Может потребоваться tooright щелкните отдельные связи toocopy hello полные URL-адреса.
+При тестировании определения CreateUiDefinition некоторые браузеры (например, Google Chrome) обрезают ULR-адреса, созданные элементом Microsoft.Common.FileUpload, в консоли браузера. Чтобы скопировать полные URL-адреса, вам может потребоваться щелкнуть правой кнопкой мыши отдельные ссылки.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Введение toomanaged приложений, в разделе [Обзор управляемого приложения Azure](managed-application-overview.md).
-* Для определения пользовательского интерфейса toocreating Общие сведения см. в разделе [Приступая к работе с CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Общие сведения об управляемых приложениях Azure см. в [этой статье](managed-application-overview.md).
+* Общие сведения о создании определений пользовательского интерфейса см. в статье [Начало работы с CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Дополнительные сведения об общих свойствах элементов пользовательского интерфейса см. в статье [Элементы CreateUiDefinition](managed-application-createuidefinition-elements.md).

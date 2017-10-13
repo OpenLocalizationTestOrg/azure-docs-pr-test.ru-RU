@@ -1,6 +1,6 @@
 ---
-title: "ресурсы данных в каталоге данных Azure, связанных с aaaHow tooview | Документы Microsoft"
-description: "В этой статье объясняется, как tooview связанные ресурсы данных выбранные данные средства в каталоге данных Azure."
+title: "Как просматривать связанные ресурсы данных в каталоге данных Azure | Документация Майкрософт"
+description: "В этой статье объясняется, как просматривать связанные ресурсы данных в каталоге данных Azure."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/17/2017
 ms.author: maroche
-ms.openlocfilehash: b69686737070ac563a0318f48e693215c605f90b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d45f2cabe712a7982f99a9d280fed4494fc4d377
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="how-tooview-related-data-assets-in-azure-data-catalog"></a>Как tooview связаны ресурсов данных в каталоге данных Azure?
-Каталог данных Azure позволяет tooview данных активы связанные tooa выбранных данных активов и представления отношений между ними. 
+# <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Как просматривать связанные ресурсы данных в каталоге данных Azure
+Каталог данных Azure позволяет просматривать ресурсы данных, связанные с выбранным ресурсом, и связи между ними. 
 
 ## <a name="supported-data-sources"></a>Поддерживаемые источники данных 
-При регистрации ресурсов данных от hello следующие источники данных каталога данных Azure автоматически регистрирует метаданные о связи соединения между ресурсами hello выбранных данных. 
+При регистрации ресурсов данных из следующих источников данных каталог данных Azure автоматически регистрирует метаданные о связях соединения между выбранными ресурсами данных. 
 
 - SQL Server
 - База данных SQL Azure
@@ -32,23 +32,23 @@ ms.lasthandoff: 10/06/2017
 - Oracle
 
 ## <a name="view-related-data-assets"></a>Просмотр связанных ресурсов данных
-ресурсы данных tooview, связанные tooa выбранного набора данных, используйте hello **связи** вкладки, как показано в hello после изображения: 
+Для просмотра ресурсов данных, связанных с выбранным набором данных, используйте вкладку **Связи**, как показано на следующем рисунке: 
 
 ![Просмотр связанных ресурсов данных в каталоге данных Azure](media\data-catalog-how-to-view-related-data-assets\relationships-tab.png)
 
-В этом примере имеются два отношения для выбранных hello **ProductSubcategory** ресурса данных: 
+В этом примере у выбранного ресурса данных **ProductSubcategory** имеется две связи: 
 
-- ProductSubcategoryID столбец из таблицы Product hello имеет связь по внешнему ключу со столбцом ProductSubcategoryID hello выбранные таблицы ProductSubcategory. 
-- Столбец ProductCategoryID таблицы ProductSubCategory hello имеет связь по внешнему ключу со столбцом ProductCategoryID hello выбранные таблицы ProductCategory.
+- Столбец ProductSubcategoryID таблицы Product имеет связь по внешнему ключу со столбцом ProductSubcategoryID выбранной таблицы ProductSubcategory. 
+- Столбец ProductCategoryID таблицы ProductSubCategory имеет связь по внешнему ключу со столбцом ProductCategoryID выбранной таблицы ProductCategory.
 
 > [!NOTE]
-> Обратите внимание, hello направление стрелки hello в древовидном представлении связей hello.  
+> Обратите внимание на направление стрелки в древовидном представлении связей.  
 
-toosee Дополнительные сведения, такие как полное имя столбца hello hello наведите указатель мыши hello и вывести примерно toohello всплывающее окно, следуя образа: 
+Для получения дополнительных сведений, таких как полное имя столбца, наведите на него указатель мыши, и появится всплывающее окно, как на следующем рисунке: 
 
 ![Извлечение отношений в каталоге данных Azure](media\data-catalog-how-to-view-related-data-assets\relationship-popup.png)
 
-tooinclude связи между ресурсами, которые уже были зарегистрированы, повторите регистрацию этих ресурсов.
+Для включения связей между зарегистрированными ресурсами зарегистрируйте их повторно.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- [Как toomanage ресурсов данных](data-catalog-how-to-manage.md)
+- [Как управлять ресурсами данных](data-catalog-how-to-manage.md)

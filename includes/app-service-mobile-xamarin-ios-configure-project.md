@@ -1,27 +1,27 @@
-#### <a name="configure-hello-ios-project-in-xamarin-studio"></a>Настройка проекта iOS hello в Xamarin Studio
-1. В Xamarin.Studio, откройте **Info.plist**и обновление hello **идентификатор пакета** с hello объединить идентификатор, созданный ранее с свой новый идентификатор приложения.
+#### <a name="configure-the-ios-project-in-xamarin-studio"></a>Настройка проекта iOS в Xamarin Studio
+1. В Xamarin.Studio откройте **Info.plist** и обновите поле **Bundle Identifier** (Идентификатор пакета), указав идентификатор пакета, созданный ранее с помощью идентификатора нового приложения.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
-2. Прокрутите список вниз слишком**фоновые режимы**. Выберите hello **Включение фоновых режимов** поле и hello **удаленного уведомления** поле.
+2. Прокрутите вниз до раздела **Background Modes** (Фоновые режимы). Установите флажки **Enable Background Modes** (Разрешить фоновые режимы) и **Remote notifications** (Удаленные уведомления).
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-22.png)
-3. Дважды щелкните проект в tooopen панель решения hello **параметры проекта**.
-4. В разделе **построения**, выберите **подписывание пакета iOS**и выберите hello соответствующих идентификаторов и подготовительный профиль можно просто настроить для этого проекта.
+3. Дважды щелкните проект на панели решения, чтобы открыть **параметры проекта**.
+4. В разделе **Build** (Сборка) выберите **iOS Bundle Signing** (Подпись пакета iOS), а затем выберите нужное удостоверение и созданный для этого проекта профиль подготовки в соответствующих полях.
 
    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-20.png)
 
-   Это гарантирует, что этот проект hello использует hello новый профиль для подписи кода. Hello подготовки документации официальный устройств Xamarin, в разделе [Xamarin подготовки устройств].
+   Таким образом, проект будет использовать новый профиль для подписи кода. Официальную документацию по подготовке устройств Xamarin см. в статье [Device Provisioning] (Подготовка устройства).
 
-#### <a name="configure-hello-ios-project-in-visual-studio"></a>Настроить проект iOS hello в Visual Studio
-1. В Visual Studio, щелкните правой кнопкой мыши проект hello и нажмите кнопку **свойства**.
-2. На страницах свойств hello выберите hello **приложение iOS** вкладка и обновление hello **идентификатор** с Идентификатором hello, которое было создано ранее.
+#### <a name="configure-the-ios-project-in-visual-studio"></a>Настройка проекта iOS в Visual Studio
+1. В Visual Studio щелкните правой кнопкой мыши проект и выберите пункт **Свойства**.
+2. На страницах свойств щелкните вкладку **Приложение iOS** и обновите идентификатор в поле **Идентификатор**, указав свой ранее созданный ИД.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-23.png)
-3. В hello **подписывание пакета iOS** вкладке, выберите hello соответствующих идентификаторов и подготовки вы просто набор профилей вверх для этого проекта.
+3. На вкладке **iOS Bundle Signing** (Подпись пакета iOS) выберите нужное удостоверение и созданный для этого проекта профиль подготовки в соответствующих полях.
 
     ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-24.png)
 
-    Это гарантирует, что этот проект hello использует hello новый профиль для подписи кода. Hello подготовки документации официальный устройств Xamarin, в разделе [Xamarin подготовки устройств].
-4. Дважды щелкните Info.plist tooopen и затем включите **RemoteNotifications** под **фоновые режимы**.
+    Таким образом, проект будет использовать новый профиль для подписи кода. Официальную документацию по подготовке устройств Xamarin см. в статье [Device Provisioning] (Подготовка устройства).
+4. Дважды щелкните Info.plist, чтобы открыть этот элемент, а затем включите **RemoteNotifications** в разделе **Background Modes** (Фоновые режимы).
 
-[Xamarin подготовки устройств]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/ (Подготовка устройства)
+[Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/ (Подготовка устройства)

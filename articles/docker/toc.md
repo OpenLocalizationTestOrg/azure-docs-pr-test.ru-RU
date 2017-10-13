@@ -5,7 +5,7 @@
 ## [Веб-приложение Python и Docker, PostgreSQL](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app)
 ## [Непрерывная интеграция и доставка с помощью Docker Swarm и VSTS](/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine)
 ## [CI/CD и Docker, Jenkins, Linux](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
-# Как tooguides
+# Практические руководства
 ## [Расширение виртуальной машины Docker](/azure/virtual-machines/linux/dockerextension)
 ## [Виртуальная машина Docker](/azure/virtual-machines/linux/docker-machine)
 ## [Реестр контейнеров Docker](/azure/container-registry/container-registry-get-started-portal)

@@ -1,6 +1,6 @@
 ---
-title: "предложения подписки Azure aaaChange | Документы Microsoft"
-description: "Дополнительные сведения о как toochange обеспечивают использование вашей Azure подписки и коммутатор tooa другой портал управления hello подписки"
+title: "Изменение предложения подписки Azure | Документация Майкрософт"
+description: "Узнайте, как изменить подписку Azure и переключиться на другое предложение с помощью Центра управления учетной записью Azure."
 services: 
 documentationcenter: 
 author: genlin
@@ -12,29 +12,31 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2017
+ms.topic: troubleshooting
+ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 3bed1f270296ebeff70fa8d2e02c08ad6da27184
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 48f5f4db60c104778a6c391d254e0bc0c4c95cee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="switch-your-azure-subscription-tooanother-offer"></a>Переключение ваше предложение tooanother подписки Azure
+# <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Переход с подписки с оплатой по мере использования на другое предложение
 
-Как [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) клиента, ваше предложение tooanother подписки Azure можно переключиться в hello [центр учетных записей](https://account.windowsazure.com/Subscriptions). Например, можно использовать этот компонент tootake преимуществами hello [ежемесячные кредиты для подписчиков Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Если вы используете [бесплатной пробной версии](https://azure.microsoft.com/free/), узнайте, каким образом слишком[обновление tooPay как-то-Go](billing-upgrade-azure-subscription.md).
+Если вы клиент подписки [с оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/), вы можете переключить свою подписку Azure на другое предложение в [Центре управления учетной записью](https://account.windowsazure.com/Subscriptions). Например, с помощью этой функции вы можете воспользоваться преимуществами [ежемесячных кредитов для подписчиков Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). 
+
+**Просто хотите повысить уровень подписки с бесплатной пробной версии?** См. сведения о переходе [на подписку с оплатой по мере использования](billing-upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Поддерживаемые функции
 
-| Из | слишком|
+| Из | Кому |
 | --- | --- |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Разработка и тестирование с оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0023p/) |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/) |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |
-| [Оплата по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/) |[Visual Studio Enterprise (Bizspark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |
+| Оплата по мере использования |[Разработка и тестирование с оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0023p/) |
+| Оплата по мере использования |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
+| Оплата по мере использования |[Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |
+| Оплата по мере использования |[MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/) |
+| Оплата по мере использования |[Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |
+| Оплата по мере использования |[Visual Studio Enterprise (Bizspark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |
 
 > [!NOTE]
 > По вопросам других вариантов смены предложения [обращайтесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -48,83 +50,69 @@ ms.lasthandoff: 10/06/2017
 >
 
 1. Войдите в [Центр управления учетной записью Azure](https://account.windowsazure.com/Subscriptions).
-
 1. Выберите подписку с оплатой по мере использования
+1. Щелкните **Переключиться на другое предложение**. Эта кнопка доступна, только если вы оплачиваете услуги по мере использования, и ваш первый расчетный период закончился.
 
-1. Нажмите кнопку **tooanother предложение Switch**. Кнопка Hello только доступной в том случае, если вы используете оплату по мере использования и выполняются с вашего первого периода выставления счетов.
+   ![Обратите внимание на кнопку "Переключить предложение" в правой части страницы.](./media/billing-how-to-switch-azure-offer/switchbutton.png)
+1. **Выберите нужное предложение** в списке предложений, на которые можно переключить вашу подписку. Список доступных предложений будет зависеть от членства вашей учетной записи. Если список пуст, проверьте [список доступных предложений, на которые вы можете переключить подписку](#whats-supported), и убедитесь, что ваша учетная запись имеет правильное членство. 
 
-   ![Уведомление hello коммутатора предоставляют кнопку hello правой части страницы приветствия](./media/billing-how-to-switch-azure-offer/switchbutton.png)
+   ![Выберите предложение, на которое нужно переключиться.](./media/billing-how-to-switch-azure-offer/selectoffer.png)
+1. При переходе на некоторые предложения может появляться уведомление о последствиях перехода. Внимательно ознакомьтесь с этим списком и выполните указанные действия, прежде чем продолжить.
 
-1. **Предложение SELECT hello требуется** из hello список предложений можно переключить вашей подписки. Этот список различается в зависимости от членства hello, связанных с вашей учетной записи. Если ничего не доступна, проверьте hello [список доступных предложений, можно переключиться на](#whats-supported) и убедитесь, что правый членства hello. 
+   ![Просмотрите примечания.](./media/billing-how-to-switch-azure-offer/thingstonote.png)
+1. Вы можете переименовать подписку. По умолчанию ей присваивается имя нового предложения. Чтобы завершить процедуру, щелкните **Переключить предложение** .
 
-   ![Выберите предложение, требуется tooswitch для](./media/billing-how-to-switch-azure-offer/selectoffer.png)
+   ![Нажмите зеленую кнопку.](./media/billing-how-to-switch-azure-offer/confirmpage.png)
+1. Готово! Подписка переведена на новое предложение.
 
-1. В зависимости от hello предложение, чтобы перейти к может появиться Примечание о влиянии hello переключения. Тщательно проходить через этот список, а инструкции hello, прежде чем продолжить.
+## <a name="frequently-asked-questions"></a>Часто задаваемые вопросы
 
-   ![Ознакомьтесь с заметками о hello](./media/billing-how-to-switch-azure-offer/thingstonote.png)
+### <a name="what-is-an-azure-offer"></a>Что такое предложение Azure?
 
-1. Вы можете переименовать подписку. По умолчанию задается его новое предложение toohello имя. Нажмите кнопку **предложить коммутатора** toocomplete hello процесса.
+Предложение Azure — это *тип* имеющейся подписки Azure. Например, [подписка с оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure с открытой лицензией](https://azure.microsoft.com/offers/ms-azr-0111p/) и [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) — это предложения Azure. Для каждого предложения определены разные [условия](https://azure.microsoft.com/support/legal/offer-details/), а в некоторых предложениях предусмотрены особые преимущества. Предложение для подписки можно найти на странице подписки Центра управления учетной записью. Щелкните имя предложения, чтобы получить дополнительные сведения.
 
-   ![Нажмите кнопку с зеленой hello](./media/billing-how-to-switch-azure-offer/confirmpage.png)
+   ![Щелкните ссылку "Предложение" в Центре управления учетной записью, чтобы получить дополнительные сведения.](./media/billing-how-to-switch-azure-offer/offerlink.png)
 
-1. Готово! Подписки больше не коммутируемых toohello новое предложение.
+### <a name="why-dont-i-see-the-button"></a>Почему кнопка не отображается?
 
-## <a name="what-is-an-azure-offer"></a>Что такое предложение Azure?
+Кнопка **Переключиться на другое предложение** может не отображаться в перечисленных ниже случаях.
 
-Предложение Azure — hello *тип* из hello у вас есть подписка Azure. Например, [подписка с оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure с открытой лицензией](https://azure.microsoft.com/offers/ms-azr-0111p/) и [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) — это предложения Azure. Для каждого предложения определены разные [условия](https://azure.microsoft.com/support/legal/offer-details/), а в некоторых предложениях предусмотрены особые преимущества. Hello предложения подписки можно найти на странице подписки hello центр учетных записей. Щелкните имя tooget hello предложение Дополнительные сведения.
+* Вы не являетесь клиентом подписки с [оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/). Сейчас перейти на другое предложение можно только в подписках с оплатой по мере использования.
+  * Если вы используете [бесплатную пробную версию](https://azure.microsoft.com/free/), узнайте, как [перейти на предложение с оплатой по мере использования](billing-upgrade-azure-subscription.md).
+  * Чтобы переключить предложение из другой подписки, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Еще не завершился ваш первый расчетный период. Дождитесь его завершения и тогда вы сможете изменить предложение.
 
-   ![Щелкните ссылку предложение hello в центре учетных записей tooget Дополнительные сведения](./media/billing-how-to-switch-azure-offer/offerlink.png)
+### <a name="why-do-i-see-there-are-no-offers-available-in-your-region-or-country-at-this-time"></a>Почему отображается сообщение: "На данный момент предложения для вашей страны или вашего региона отсутствуют"?
 
-## <a name="why-cant-i-switch-offers"></a>Почему не удается переключать предложения?
-
-Можно не увидеть hello **tooanother предложение Switch** кнопку, если:
-
-* Вы не являетесь клиентом подписки с [оплатой по мере использования](https://azure.microsoft.com/offers/ms-azr-0003p/). В настоящее время только подписки с оплатой по мере использования может быть выключены tooanother предложения.
-
-  * Если вы используете [бесплатной пробной версии](https://azure.microsoft.com/free/), узнайте, каким образом слишком[обновление tooPay как-то-Go](billing-upgrade-azure-subscription.md).
-  * предложение tooswitch из другой подписки, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-* Вы по-прежнему на первого периода выставления счетов; необходимо дождаться вашего первого периода выставления счетов, предлагаемых tooend перед переключением.
-
-Вы можете увидеть сообщение **На данный момент предложения для вашей страны или вашего региона отсутствуют**. Сообщение появляется по следующим причинам.
-
-* У вас нет права на изменение предложения. Проверьте hello [список доступных предложений, можно переключиться на](#whats-supported).
-
+* Возможно, у вас нет права на изменение предложения. Проверьте [список доступных предложений, на которые можно перейти](#whats-supported), и убедитесь в том, что у вас активированы правильные преимущества в Visual Studio или BizSpark.
 * Некоторые предложения могут быть доступны не во всех странах.
 
-## <a name="what-does-switching-azure-offers-do-toomy-service-and-billing"></a>Что означает, что переключение toomy службы Azure предлагает и выставления счетов?
+### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Как переключение предложений Azure повлияет на мою службу и выставление счетов?
 
-Ниже приведены сведения hello того, что происходит при переключении Azure предлагает в hello центр учетных записей.
+Далее объяснятся, что произойдет, если вы измените предложения Azure в центре управления учетной записью.
 
-### <a name="no-service-downtime"></a>Нет простоя служб
+#### <a name="no-service-downtime"></a>Нет простоя служб
 
-Нет без простоя службы для всех пользователей, связанных с подпиской hello. Однако предложение hello переключении toomay имеют ограничения. Для экземпляра некоторые предложения запрещают использования в рабочей среде, для которого требуются ресурсы tooanother toomove производственной подписке.
+Для пользователей, связанных с подпиской, службы будут работать как обычно. Однако предложение, на которое вы переключаетесь, может включать ограничения, Например, некоторые предложения запрещают использование в рабочей среде, поэтому вам нужно будет переместить рабочие ресурсы в другую подписку.
 
-### <a name="quota-increases-are-reset"></a>Сбрасываются увеличения квот
+#### <a name="quota-increases-are-reset"></a>Сбрасываются увеличения квот
 
-При переключении предложения, все [ограничение или квота превышает ограничение по умолчанию hello](../azure-supportability/resource-manager-core-quotas-request.md) сбрасываются. Нет без простоя службы, даже если у вас больше ресурсов, которые превышают предел по умолчанию hello. Например вы используете 200 ядер в подписке, а затем переключение предложения сбрасывает квоты задней toohello ядер по умолчанию 20 ядер. Hello виртуальных машин, использующих 200 ядер hello не затрагиваются и продолжал бы toorun. Однако, если больше не запрашивать увеличение квоты, то вы не сможете подготовить больше ядер.
+При изменении предложений сбрасываются все [увеличения ограничений и квот, превышающие значения по умолчанию](../azure-supportability/resource-manager-core-quotas-request.md). При этом не возникает простой служб, даже если объем ресурсов превышает ограничение по умолчанию. Например, если вы используете в своей подписке 200 ядер, то в результате изменения предложения квота на ядра сбрасывается до значения по умолчанию (20 ядер). На работу виртуальных машин, использующих 200 ядер, это не повлияет. Они продолжат работать. Однако, если больше не запрашивать увеличение квоты, то вы не сможете подготовить больше ядер.
 
-### <a name="billing"></a>Выставление счетов
+#### <a name="billing"></a>Выставление счетов
 
-День hello переключиться накладной создается для всех задолженность. Затем согласно условиям ценообразования новое предложение hello оплачивается вашей подписки. Выставление счетов toohello срок окончания действия изменения, на котором были изменены предложения подписки. Использование и выставление счетов данных перед hello предложения изменение не сохраняется, поэтому рекомендуется загрузить копию перед переключением.
+В день смены предложения выставляется счет за все непогашенные задолженности. После этого счет за подписку будет выставляться по тарифам нового предложения. Дата взыскания годовой абонентской платы изменится в соответствии с датой смены предложения. Данные по платежам и использованию ресурсов до смены предложения не сохраняются, поэтому рекомендуем скачать их копию перед сменой тарифа.
 
-> [!NOTE]
-> Из-за ограничений, связанных с toobilling коммутаторы предложение невозможны в hello первого цикла выставления счетов, после создания подписки.
->
->
+### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Могу ли я переключить свою подписку с тарифного плата с оплатой по мере использования на [поставщик облачных решений](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) или [Соглашение Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
 
-## <a name="can-i-migrate-from-pay-as-you-go-toocloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Можно ли перенести с оплатой по мере использования слишком[поставщика облачных решений](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) или [соглашение Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
+* Как перейти на CSP см. в статье [Migrate Azure subscriptions from pay-as-you-go to Azure CSP](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/migration/migration-from-payg-to-csp) (Перенос подписки Azure из подписки с оплатой по мере использования в Azure CSP).
+* Чтобы перейти к предложению "Соглашение Enterprise", попросите своего администратора регистрации добавить вашу учетную запись в соглашение Enterprise. Следуйте инструкциям в электронном сообщении с приглашением, чтобы перевести подписки на регистрацию в соглашении Enterprise. Дополнительные сведения см. в статье [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Связывание имеющейся учетной записи) на портале EA.
 
-* toomigrate tooCSP разделе [tooCSP миграции подписки Azure](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/).
+### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Можно ли перенести данные и службы в новую подписку?
 
-* toomigrate tooEA регистрации администратору, чтобы добавить свою учетную запись в hello EA. Следуйте инструкциям в hello приглашение по электронной почте toohave перемещен EA регистрации подписки. toolearn более, в разделе [связать существующую учетную запись](https://ea.azure.com/helpdocs/associateExistingAccount) hello EA портала.
-
-## <a name="can-i-migrate-data-and-services-tooa-new-subscription"></a>Можно перенести данные и службы tooa новую подписку?
-
-* Можно переносить ресурсы hello непосредственно toohello новую подписку, в разделе [переместить группу ресурсов toonew ресурсов или подписку](../azure-resource-manager/resource-group-move-resources.md).
-
-* владение tootransfer подписка Azure и все, что в нем toosomeone else, см. [Передача владения подпиской Azure](billing-subscription-transfer.md)
+* Вы можете перенести ресурсы в новую подписку напрямую. Дополнительные сведения см. в статье [Перемещение ресурсов в новую группу ресурсов или подписку](../azure-resource-manager/resource-group-move-resources.md).
+* Чтобы передать права собственности на подписку Azure и на все ресурсы в ней другому пользователю, см. [эту статью](billing-subscription-transfer.md)
 
 ## <a name="need-help-contact-support"></a>Требуется помощь? Обратитесь в службу поддержки.
 
-Если у вас есть дополнительные вопросы, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget быстро устранить проблему.
+Если у вас есть дополнительные вопросы, [обратитесь в службу поддержки](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), которая поможет быстро устранить проблему.

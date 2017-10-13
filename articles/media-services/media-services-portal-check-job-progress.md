@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor кодировка ход выполнения задания с hello портал Azure"
-description: "Этот учебник поможет выполнить шаги hello мониторинга хода выполнения задания с помощью портала Azure hello."
+title: "Мониторинг выполнения задания кодирования с помощью портала Azure"
+description: "В этом учебнике описано, как отслеживать выполнение задания с помощью портала Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 4282553d5dbed65ea6427bcd6de778795f1ff9ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-encoding-job-progress-with-hello-azure-portal"></a>Монитор кодирования ход выполнения задания с hello портал Azure
+# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Мониторинг выполнения задания кодирования с помощью портала Azure
 > [!div class="op_single_selector"]
 > * [Портал](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -30,17 +30,17 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="overview"></a>Обзор
 > [!NOTE]
-> toocomplete этого учебника необходима учетная запись Azure. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> Для работы с этим учебником требуется учетная запись Azure. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-При выполнении заданий часто требуется ход выполнения задания tootrack способом. 
+При выполнении заданий часто требуется способ отслеживания хода выполнения задачи. 
 
-Щелкните toomonitor hello ход выполнения задания кодирования hello **параметры** (вверху hello hello страницы), а затем выберите **задания**.
+Чтобы отслеживать выполнение задания кодирования, в верхней части страницы щелкните элемент **Параметры**, а затем выберите пункт **Задания**.
 
 ![Задания](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Дополнительные сведения можно щелкнуть toosee задания hello.
+Можно щелкнуть задание для получения дополнительных сведений.
 
 ![Задания](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 

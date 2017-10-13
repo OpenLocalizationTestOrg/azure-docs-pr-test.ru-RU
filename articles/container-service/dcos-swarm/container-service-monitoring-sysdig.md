@@ -1,5 +1,5 @@
 ---
-title: "кластер aaaMonitor контейнера службы Azure с Sysdig | Документы Microsoft"
+title: "Мониторинг кластера службы контейнеров Azure с помощью Sysdig | Документация Майкрософт"
 description: "Мониторинг кластера службы контейнеров Azure с помощью Sysdig."
 services: container-service
 documentationcenter: 
@@ -16,42 +16,42 @@ ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 72f2d3d6f6885f9876fa158b88aae58b84a4610f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e61001161e632a5d2e513107e30f1eaf06103989
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Мониторинг кластера службы контейнеров Azure с помощью Sysdig
-В этой статье описывается развертывание узлов Sysdig агенты tooall hello агента в кластере службы контейнера Azure. Для работы с этой конфигурацией вам понадобится учетная запись с Sysdig. 
+В этой статье описывается развертывание агентов Sysdig на все узлы агента в кластере службы контейнеров Azure. Для работы с этой конфигурацией вам понадобится учетная запись с Sysdig. 
 
 ## <a name="prerequisites"></a>Предварительные требования
-[Разверните](container-service-deployment.md) и [подключите](../container-service-connect.md) кластер, настроенный службой контейнеров Azure. Просмотр hello [Marathon пользовательского интерфейса](container-service-mesos-marathon-ui.md). Go слишком[http://app.sysdigcloud.com](http://app.sysdigcloud.com) tooset Sysdig облачной учетной записи. 
+[Разверните](container-service-deployment.md) и [подключите](../container-service-connect.md) кластер, настроенный службой контейнеров Azure. Изучите [пользовательский интерфейс Marathon](container-service-mesos-marathon-ui.md). Настройте учетную запись Sysdig на странице [http://app.sysdigcloud.com](http://app.sysdigcloud.com) . 
 
 ## <a name="sysdig"></a>Sysdig
-Sysdig является службой мониторинга, которая позволяет вам toomonitor к контейнерам внутри кластера. Sysdig известен toohelp способы устранения неполадок, но также имеет базовые показатели мониторинга для ЦП, сети, памяти и ввода-вывода. Sysdig позволяет легко toosee работе какие контейнеры hello hardest или по существу, используя hello большинство памяти и ЦП. Это представление расположено hello раздела «Обзор», в котором в настоящее время находится в бета-версии. 
+Sysdig — это служба мониторинга, которая позволяет отслеживать контейнеры в пределах кластера. Sysdig используется для устранения неполадок, а также для отслеживания базовых метрик ЦП, сети, памяти и ввода-вывода. Sysdig позволяет легко определить, какие контейнеры потребляют больше всего ресурсов, включая память и ЦП. Это представление сейчас доступно в разделе "Обзор" в режиме бета-версии. 
 
 ![Sysdig: пользовательский интерфейс](./media/container-service-monitoring-sysdig/sysdig6.png) 
 
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Настройка развертывания Sysdig с помощью Marathon
-Эти действия демонстрируют, как tooconfigure и развернуть кластер tooyour Sysdig приложений с Marathon. 
+Ниже описано, как настраивать и развертывать в кластере приложения Sysdig с помощью Marathon. 
 
-Доступ к Интерфейсу DC/OS через [http://localhost: 80 /](http://localhost:80/) один раз в hello DC/OS пользовательского интерфейса выберите toohello «Среда», на hello вниз, влево и выполните поиск «Sysdig».
+Откройте пользовательский интерфейс DC/OS по адресу [http://localhost:80/](http://localhost:80/). Затем щелкните "Universe" (Вселенная) в левом нижнем углу и выполните поиск по запросу "Sysdig".
 
 ![Sysdig: раздел "Universe" (Вселенная) DC/OS](./media/container-service-monitoring-sysdig/sysdig1.png)
 
-Теперь конфигурация hello toocomplete необходимо Sysdig облачной учетной записи или бесплатную пробную учетную запись. После входа в toohello Sysdig облачные и веб-сайт, щелкните имя пользователя, и на странице приветствия вы увидите «Ключа доступа.» 
+Чтобы завершить настройку, вам понадобится облачная учетная запись Sysdig или бесплатная пробная учетная запись. Войдите на облачный сайт Sysdig, щелкните свое имя пользователя. На странице отобразится ваш ключ доступа. 
 
 ![Sysdig: ключ API](./media/container-service-monitoring-sysdig/sysdig2.png) 
 
-Далее введите ключ доступа в конфигурации Sysdig hello в hello вселенной DC/OS. 
+Затем введите ключ доступа в конфигурации Sysdig в разделе "Universe" (Вселенная) DC/OS. 
 
-![Конфигурация Sysdig в hello вселенной DC/OS](./media/container-service-monitoring-sysdig/sysdig3.png)
+![Sysdig: конфигурация в разделе "Universe" (Вселенная) DC/OS](./media/container-service-monitoring-sysdig/sysdig3.png)
 
-Теперь установите too10000000 экземпляров hello так, чтобы каждый раз при добавлении нового узла кластера toohello Sysdig будет автоматически развернуть агент toothat нового узла. Это промежуточное решение toomake том, что Sysdig развернет tooall новых агентов в пределах кластера hello. 
+Теперь укажите для экземпляров значение 10 000 000, чтобы при каждом добавлении узла в кластер в Sysdig автоматически выполнялось развертывание агента на этот новый узел. Это промежуточное решение помогает проверить, выполнит ли Sysdig развертывание на всех новых агентах в рамках кластера. 
 
-![Конфигурация Sysdig в hello контроллера домена, среда операционной системы-экземпляров](./media/container-service-monitoring-sysdig/sysdig4.png)
+![Sysdig: конфигурация в разделе "Universe" (Вселенная) DC/OS; экземпляры](./media/container-service-monitoring-sysdig/sysdig4.png)
 
-После установки пакета hello Перейдите назад toohello Sysdig пользовательского интерфейса, и вы будете может tooexplore hello различных показателями для контейнеров hello в пределах кластера. 
+Установите пакет, затем вернитесь в пользовательский интерфейс Sysdig. Там вы сможете просмотреть разные метрики использования ресурсов контейнерами в рамках кластера. 
 
 Вы также можете установить панели мониторинга Mesos и Marathon с помощью [мастера создания панелей мониторинга](https://app.sysdigcloud.com/#/dashboards/new).

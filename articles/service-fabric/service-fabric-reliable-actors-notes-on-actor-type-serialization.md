@@ -1,6 +1,6 @@
 ---
-title: "Примечания aaaReliable субъектов субъекта введите сериализации | Документы Microsoft"
-description: "Обсуждаются основные требования для определения сериализуемые классы, которые могут быть используется toodefine состояний службы Reliable Actor структуры службы и интерфейсы"
+title: "Reliable Actors: примечания о сериализации типов субъектов | Документация Майкрософт"
+description: "В этой статье приведены сведения о базовых требованиях к определению сериализуемых классов, которые можно использовать для определения интерфейсов и состояний Reliable Actors в Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: d8584e7d90fe1c68af38983e71e5d0a7554689bf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4b48b893e5a3bf5620f00a336576efe1ad63def8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Примечания о сериализации типов надежных субъектов Service Fabric
-аргументы Hello всех методов, типами результата задачи hello, возвращенные каждым методом в интерфейсе субъекта и объектов, хранящихся в диспетчер состояния субъекта должно быть [контракта данных, сериализуемые](https://msdn.microsoft.com/library/ms731923.aspx). Это также применимо аргументы toohello hello методов, определенных в [интерфейсах событий субъекта](service-fabric-reliable-actors-events.md). (Методы интерфейсов для событий субъектов всегда возвращают значение void.)
+Аргументы всех методов, типы результатов задач, возвращаемых каждым методом в интерфейсе субъекта, и объекты, хранящиеся в диспетчере состояния субъекта, должны быть [сериализуемыми в контракт данных](https://msdn.microsoft.com/library/ms731923.aspx). Это также относится к аргументам методов, определенных в [интерфейсах событий субъекта](service-fabric-reliable-actors-events.md). (Методы интерфейсов для событий субъектов всегда возвращают значение void.)
 
 ## <a name="custom-data-types"></a>Пользовательские типы данных
-В этом примере следующий интерфейс субъекта hello определяет метод, который возвращает тип пользовательских данных с именем `VoicemailBox`:
+В этом примере приведенный ниже интерфейс субъекта определяет метод, возвращающий пользовательский тип данных `VoicemailBox`.
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -40,7 +40,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-интерфейс Hello реализуется субъекта, использует диспетчер toostore hello состояние `VoicemailBox` объекта:
+Этот интерфейс реализован субъектом, который использует диспетчер состояния для хранения объекта `VoicemailBox`.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -76,12 +76,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-В этом примере hello `VoicemailBox` объект сериализуется при:
+В этом примере объект `VoicemailBox` сериализуется в следующих случаях.
 
-* Hello объекта передается между экземпляром субъекта и вызывающий объект.
-* Hello объекта сохраняется в диспетчер состояния hello месте сохраненного toodisk и реплицировать tooother узлов.
+* Объект передается между экземпляром субъекта и вызывающим объектом.
+* Объект сохраняется в диспетчере состояния, где он сохраняется на диске и реплицируется на другие узлы.
 
-Hello Reliable Actor платформа использует сериализации DataContract. Таким образом, hello пользовательских объектов данных и их члены, должен быть помечен hello **DataContract** и **DataMember** соответственно.
+Платформа Reliable Actors использует сериализацию DataContract. Поэтому пользовательские объекты данных и их элементы должны быть аннотированы атрибутами **DataContract** и **DataMember**, соответственно.
 
 ```csharp
 [DataContract]

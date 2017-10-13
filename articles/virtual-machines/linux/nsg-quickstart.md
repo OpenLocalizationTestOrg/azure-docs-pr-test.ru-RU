@@ -1,6 +1,6 @@
 ---
-title: "aaaOpen порты tooa виртуальных Машин Linux с помощью Azure CLI 2.0 | Документы Microsoft"
-description: "Узнайте, как tooopen порт / create tooyour конечной точки виртуальной Машины с Linux с помощью развертывания диспетчера ресурсов Azure hello модели и hello Azure CLI 2.0"
+title: "Открытие портов для виртуальной машины Linux с помощью интерфейса командной строки Azure 2.0 | Документация Майкрософт"
+description: "Узнайте, как открыть порт или создать конечную точку для виртуальной машины Linux, используя модель развертывания с помощью Azure Resource Manager и Azure CLI 2.0."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/21/2017
 ms.author: iainfou
-ms.openlocfilehash: c79b31206e97558171609cf033bb3cb3370777c7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d176187fe465264b5f433260de5178b48ca9dd4a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="open-ports-and-endpoints-tooa-linux-vm-with-hello-azure-cli"></a>Откройте порты и конечные точки tooa виртуальных Машин Linux с hello Azure CLI
-Открытие порта, или создайте конечную точку, tooa виртуальной машины (VM в Azure, создав фильтр сети для подсети или сетевому интерфейсу виртуальной Машины). Эти фильтры, которые позволяют управлять входящего и исходящего трафика, поместите на ресурсе toohello вложенные группы безопасности сети, который принимает трафик hello. Давайте используем распространенный пример веб-трафика через порт 80. В этой статье показано, как tooopen tooa порт виртуальной Машины с hello Azure CLI 2.0. Можно также выполнить следующие действия с hello [Azure CLI 1.0](nsg-quickstart-nodejs.md).
+# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Открытие портов и конечных точек для виртуальной машины Linux с помощью интерфейса командной строки Azure
+Чтобы открыть порт или создать конечную точку для виртуальной машины в Azure, создайте сетевой фильтр для подсети или сетевого интерфейса виртуальной машины. Эти фильтры, контролирующие входящий и исходящий трафик, добавляются в группу безопасности сети и присоединяются к ресурсу, который будет получать трафик. Давайте используем распространенный пример веб-трафика через порт 80. В этой статье показано, как открыть порт для виртуальной машины с помощью Azure CLI 2.0. Эти действия можно также выполнить с помощью [Azure CLI 1.0](nsg-quickstart-nodejs.md).
 
 
 ## <a name="quick-commands"></a>Быстрые команды
-Группы безопасности сети toocreate и правила, которые требуется последняя версия hello [Azure CLI 2.0](/cli/azure/install-az-cli2) установлен и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login).
+Для создания группы безопасности сети и правил необходимо установить [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в учетную запись Azure с помощью команды [az login](/cli/azure/#login).
 
-В hello следующих примерах замените примеры имен параметров собственные значения. Примеры имен параметров: *myResourceGroup*, *mystorageaccount* и *myVM*.
+В следующих примерах замените имена параметров собственными значениями. Примеры имен параметров: *myResourceGroup*, *mystorageaccount* и *myVM*.
 
-Создание группы безопасности сети hello с [создать az сети nsg](/cli/azure/network/nsg#create). Hello следующий пример создает группу безопасности сети с именем *myNetworkSecurityGroup* в hello *eastus* расположение:
+Создайте группу безопасности сети с помощью команды [az network nsg create](/cli/azure/network/nsg#create). В следующем примере создается группа безопасности сети *myNetworkSecurityGroup* в расположении *eastus*.
 
 ```azurecli
 az network nsg create \
@@ -38,7 +38,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Добавить правило с [создать правило nsg сети az](/cli/azure/network/nsg/rule#create) tooallow HTTP-трафик, tooyour веб-сервер (или настроить для собственных сценариев, например для подключения SSH access или базы данных). Hello следующий код создает правило с именем *myNetworkSecurityGroupRule* tooallow TCP-трафик через порт 80:
+С помощью команды [az network nsg rule create](/cli/azure/network/nsg/rule#create) добавьте правило, разрешающее HTTP-трафик к вашему веб-серверу (или настройте правило под собственные нужды, например доступ по протоколу SSH или подключение к базе данных). В следующем примере создается правило с именем *myNetworkSecurityGroupRule*. Это правило разрешает TCP-трафик через порт 80:
 
 ```azurecli
 az network nsg rule create \
@@ -50,7 +50,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-Связать hello сетевой группы безопасности с сетевым интерфейсом Виртуальной машины (NIC) с [обновления сетевого адаптера сети az](/cli/azure/network/nic#update). Hello следующий пример сопоставляет существующего сетевого Адаптера с именем *myNic* с hello сетевую группу безопасности с именем *myNetworkSecurityGroup*:
+Свяжите группу безопасности сети с сетевым интерфейсом виртуальной машины с помощью команды [az network nic update](/cli/azure/network/nic#update). В следующем примере существующий сетевой адаптер *myNic* связывается с группой безопасности сети *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \
@@ -59,7 +59,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Кроме того, можно поставить в вашей группе безопасности сети подсети виртуальной сети с [обновления подсети виртуальной сети сети az](/cli/azure/network/vnet/subnet#update) вместо просто toohello сетевого интерфейса на одной виртуальной Машины. Hello следующем примере производится связывание существующей подсети с именем *mySubnet* в hello *myVnet* виртуальную сеть с hello сетевую группу безопасности с именем *myNetworkSecurityGroup*:
+Кроме того, группу безопасности сети с помощью команды [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) можно связать с подсетью виртуальной сети, а не только с сетевым интерфейсом на отдельной виртуальной машине. В следующем примере существующий сетевой адаптер *myNic* в виртуальной сети *myVnet* связывается с группой безопасности сети *myNetworkSecurityGroup*:
 
 ```azurecli
 az network vnet subnet update \
@@ -70,12 +70,12 @@ az network vnet subnet update \
 ```
 
 ## <a name="more-information-on-network-security-groups"></a>Дополнительная информация о группах безопасности сети
-Hello здесь Быстрые команды позволяют tooget вверх и работает с tooyour передачу трафика виртуальных Машин. Сетевые группы безопасности предоставляют много замечательных функций и гранулярности для управления доступа к ресурсам tooyour. [Здесь](tutorial-virtual-network.md#secure-network-traffic)вы можете больше прочитать о создании группы безопасности сети и правил ACL.
+Приведенные здесь быстрые команды позволят настроить трафик, поступающий в виртуальную машину. Группы безопасности сети предоставляют множество полезных функций и всевозможные настройки для управления доступом к ресурсам. [Здесь](tutorial-virtual-network.md#secure-network-traffic)вы можете больше прочитать о создании группы безопасности сети и правил ACL.
 
-Для веб-приложений с высокой доступностью необходимо поместить виртуальную машину за Azure Load Balancer. Подсистема балансировки нагрузки Hello распределяет трафик tooVMs, с группой безопасности сети, которая обеспечивает фильтрацию трафика. Дополнительные сведения см. в разделе [как баланс tooload Linux виртуальных машин в Azure toocreate приложение с высокой доступностью](tutorial-load-balancer.md).
+Для веб-приложений с высокой доступностью необходимо поместить виртуальную машину за Azure Load Balancer. Балансировщик нагрузки распределяет трафик между виртуальными машинами с группой безопасности сети, обеспечивающей фильтрацию трафика. Подробные сведения см. в статье [Балансировка нагрузки виртуальных машин Windows в Azure для создания высокодоступного приложения](tutorial-load-balancer.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом примере вы создали трафика tooallow HTTP простое правило. Можно найти сведения о создании более подробные сред в hello в следующих статьях:
+В этом примере создано простое правило, разрешающее трафик HTTP. Информацию о создании более детализированных сред можно найти в следующих статьях.
 
 * [Общие сведения об Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 * [Группа безопасности сети](../../virtual-network/virtual-networks-nsg.md)

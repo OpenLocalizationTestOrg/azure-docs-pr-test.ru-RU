@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD v2.0 .NET, веб-приложение входа Приступая к работе | Документы Microsoft"
-description: "Как toobuild веб-приложение .NET MVC, подписывает пользователей обоих личную учетную запись Майкрософт и рабочих учетных записей."
+title: "Начало работы с веб-приложением Azure AD v2.0 .NET с поддержкой входа | Документация Майкрософт"
+description: "Как создать веб-приложение .NET MVC, которое поддерживает вход пользователей в систему с помощью личной, рабочей и учебной учетных записей Майкрософт."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 241e9c90bd752fbecc3696ce4f1bed3f9772189d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ba5bdf7daba6086b70aec54ebe25d4445fa708c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-sign-in-tooan-net-mvc-web-app"></a>Добавить веб-приложение .NET MVC tooan входа
-С конечной точкой v2.0 hello можно быстро добавлять проверки подлинности tooyour веб-приложений с помощью поддержки для обоих личные учетные записи Майкрософт и рабочих учетных записей.  В веб-приложениях ASP.NET это можно делать с помощью ПО промежуточного уровня OWIN корпорации Microsoft, включенного в .NET Framework 4.5.
+# <a name="add-sign-in-to-an-net-mvc-web-app"></a>Добавление функции входа в веб-приложение .NET MVC
+Конечная точка версии 2.0 позволяет быстро реализовать аутентификацию в веб-приложениях с поддержкой личных учетных записей Майкрософт, а также рабочих или учебных учетных записей.  В веб-приложениях ASP.NET это можно делать с помощью ПО промежуточного уровня OWIN корпорации Microsoft, включенного в .NET Framework 4.5.
 
 > [!NOTE]
-> Не все сценарии Azure Active Directory и возможности поддерживаются hello v2.0 конечной точкой.  toodetermine, если необходимо использовать конечную точку v2.0 hello, прочтите сведения о [ограничения v2.0](active-directory-v2-limitations.md).
+> Не все сценарии и компоненты Azure Active Directory поддерживаются конечной точкой версии 2.0.  Чтобы определить, следует ли вам использовать конечную точку версии 2.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
 >
 >
 
- Здесь мы выполним сборку веб-приложения, использующего пользователя hello toosign OWIN в отображаются некоторые сведения о пользователе hello и знак hello выход пользователя из приложения hello.
+ Здесь мы создадим веб-приложение, использующее OWIN для выполнения входа пользователя, отображения информации о нем и выполнения выхода пользователя из приложения.
 
 ## <a name="download"></a>Загрузить
-поддерживается Hello кода для этого учебника [на GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  можно toofollow вдоль [загрузить приложение hello основу как .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) или основу hello клона:
+Код в этом учебнике размещен на портале [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  Для понимания процесса можно [скачать основу приложения как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) или клонировать ее:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
-в конце hello в учебнике также предоставляется приложение Hello завершена.
+Готовое приложение также приводится в конце этого руководства.
 
 ## <a name="register-an-app"></a>регистрация приложения;
 Создайте приложение на странице [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) или выполните [эти подробные указания](active-directory-v2-app-registration.md).  Не забудьте:
 
-* Копировать вниз hello **идентификатор приложения** назначены tooyour приложения, оно понадобится скоро.
-* Добавить hello **Web** платформы для приложения.
-* Введите правильный hello **URI перенаправления**. Hello uri перенаправления указывает tooAzure AD, где следует направлять запросы проверки подлинности — по умолчанию hello в этом учебнике используется `https://localhost:44326/`.
+* Запишите назначенный вашему приложению **идентификатор приложения**. Он вскоре вам понадобится.
+* Добавьте **веб-платформу** для своего приложения.
+* Введите правильный **универсальный код ресурса (URI) перенаправления**. URI перенаправления сообщает Azure AD, куда следует направлять ответы проверки подлинности. Значение по умолчанию в этом руководстве — `https://localhost:44326/`.
 
 ## <a name="install--configure-owin-authentication"></a>Установка и настройка аутентификации OWIN
-Здесь мы настроим hello OWIN по промежуточного слоя toouse hello OpenID Connect протокол проверки подлинности.  OWIN быть используется tooissue запросы на вход и выход, управлять сеансом пользователя hello и получения сведений о пользователе hello, среди прочего.
+Здесь мы настроим промежуточный слой OWIN для использования протокола проверки подлинности OpenID Connect.  Кроме всего прочего, OWIN будет использоваться для выдачи запросов входа и выхода, управления сеансом пользователя и получения сведений о пользователе.
 
-1. toobegin Привет открыть `web.config` файл в корневом каталоге hello hello проекта и введите значения конфигурации приложения в hello `<appSettings>` раздела.
+1. Сначала откройте файл `web.config` в корневом каталоге проекта, а затем укажите параметры конфигурации приложения в разделе `<appSettings>`.
 
-  * Hello `ida:ClientId` — hello **идентификатор приложения** назначенный tooyour приложения на портале регистрации hello.
-  * Hello `ida:RedirectUri` — hello **Uri перенаправления** введенное на портале hello.
+  * `ida:ClientId` — это **идентификатор приложения** , присвоенный приложению на портале регистрации.
+  * `ida:RedirectUri` — это **универсальный код ресурса (URI) перенаправления** , который вы указали на портале.
 
-2. Затем добавьте hello OWIN по промежуточного слоя NuGet пакеты toohello проекта с помощью консоли диспетчера пакетов hello.
+2. Затем с помощью консоли диспетчера пакетов добавьте в проект пакеты NuGet ПО промежуточного слоя OWIN.
 
         ```
         PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -61,8 +61,8 @@ ms.lasthandoff: 10/06/2017
         PM> Install-Package Microsoft.Owin.Host.SystemWeb
         ```  
 
-3. Добавить проект toohello «Класс запуска OWIN» вызывается `Startup.cs` вправо, щелкните проект hello--> **добавить** --> **новый элемент** --> Поиск «OWIN».  по промежуточного слоя OWIN Hello будет вызывать hello `Configuration(...)` метод при запуске приложения.
-4. Измените объявление класса hello слишком`public partial class Startup` -мы уже реализовали часть этого класса для вас в другом файле.  В hello `Configuration(...)` метод, сделать tooset tooConfigureAuth(...) вызов проверку подлинности для веб-приложения  
+3. Добавьте класс запуска OWIN в проект с именем `Startup.cs`. Щелкните проект правой кнопкой мыши, выберите пункты **Добавить** --> **Новый элемент** и найдите "OWIN".  При запуске вашего приложения промежуточный слой OWIN вызовет метод `Configuration(...)` .
+4. Замените объявление класса на `public partial class Startup` — часть этого класса уже была реализована в другом файле.  В методе `Configuration(...)` вызовите метод ConfgureAuth(...), чтобы настроить аутентификацию для веб-приложения.  
 
         ```C#
         [assembly: OwinStartup(typeof(Startup))]
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/06/2017
         }
         ```
 
-5. Привет открыть файл `App_Start\Startup.Auth.cs` и реализовать hello `ConfigureAuth(...)` метод.  Здравствуйте, параметры, указываемые в `OpenIdConnectAuthenticationOptions` будет служить в качестве координат для toocommunicate вашего приложения в Azure AD.  Необходимо также tooset копирование файла Cookie проверки подлинности — hello OpenID Connect по промежуточного слоя использует файлы cookie под охватывает hello.
+5. Откройте файл `App_Start\Startup.Auth.cs` и реализуйте метод `ConfigureAuth(...)`.  Параметры, указанные в `OpenIdConnectAuthenticationOptions` , будут служить координатами приложения для взаимодействия с Azure AD.  Также будет необходимо настроить проверку подлинности для файлов Cookie — промежуточный слой OpenID Connect использует файлы cookie под обложками.
 
         ```C#
         public void ConfigureAuth(IAppBuilder app)
@@ -91,9 +91,9 @@ ms.lasthandoff: 10/06/2017
                              app.UseOpenIdConnectAuthentication(
                                      new OpenIdConnectAuthenticationOptions
                                      {
-                                             // hello `Authority` represents hello v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
-                                             // hello `Scope` describes hello permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
-                                             // In a real application you could use issuer validation for additional checks, like making sure hello user's organization has signed up for your app, for instance.
+                                             // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+                                             // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
+                                             // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
         
                                              ClientId = clientId,
                                              Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
@@ -114,9 +114,9 @@ ms.lasthandoff: 10/06/2017
         ```
 
 ## <a name="send-authentication-requests"></a>Отправка запросов проверки подлинности
-Приложение теперь будет правильно настроен toocommunicate с конечной точкой v2.0 hello, используя протокол проверки подлинности OpenID Connect hello.  OWIN Разобравшись все подробности сложный hello отправляемого сообщения проверки подлинности, проверки токенов из Azure AD и поддержания сеанса пользователя.  Все, что остается является toogive пользователей toosign способом в и выхода.
+Теперь приложение правильно настроено для взаимодействия с конечной точки версии 2.0 с использованием протокола проверки подлинности OpenID Connect.  OWIN полностью возьмет на себя выполнение процессов создания сообщений проверки подлинности, проверки маркеров из Azure AD и поддержки сеанса пользователя.  Остается лишь предоставить пользователям возможность выполнять вход и выход.
 
-- Можно использовать теги авторизации в вашей toorequire контроллеров входе перед обращением к определенной странице.  Откройте `Controllers\HomeController.cs`и добавить hello `[Authorize]` тега toohello о контроллере.
+- Вы можете использовать теги авторизации в своих контроллерах, чтобы обязать пользователя выполнять вход перед доступом к конкретной странице.  Откройте `Controllers\HomeController.cs` и добавьте тег `[Authorize]` в контроллер «О программе».
         
         ```C#
         [Authorize]
@@ -125,7 +125,7 @@ ms.lasthandoff: 10/06/2017
           ...
         ```
 
-- Также можно использовать запросов OWIN toodirectly проблема проверки подлинности из кода.  Откройте `Controllers\AccountController.cs`.  В hello SignIn() и SignOut() действия выполните запрос OpenID Connect и запросах на выход, соответственно.
+- Вы также можете использовать OWIN для выдачи запросов проверки подлинности прямо из своего кода.  Откройте `Controllers\AccountController.cs`.  В действиях SignIn() и SignOut() выдавайте соответственно запросы входа и выхода из OpenID Connect.
 
         ```C#
         public void SignIn()
@@ -137,7 +137,7 @@ ms.lasthandoff: 10/06/2017
             }
         }
         
-        // BUGBUG: Ending a session with hello v2.0 endpoint is not yet supported.  Here, we just end hello session with hello web app.  
+        // BUGBUG: Ending a session with the v2.0 endpoint is not yet supported.  Here, we just end the session with the web app.  
         public void SignOut()
         {
             // Send an OpenID Connect sign-out request.
@@ -146,7 +146,7 @@ ms.lasthandoff: 10/06/2017
         }
         ```
 
-- Теперь откройте `Views\Shared\_LoginPartial.cshtml`.  Это, где вы Показывать hello пользовательского приложения ссылки входа и выхода из системы, а также напечатать имя пользователя hello в представлении.
+- Теперь откройте `Views\Shared\_LoginPartial.cshtml`.  Здесь вы будете показывать пользователю ссылки для входа и выхода из приложения, а также выводить имя пользователя.
 
         ```HTML
         @if (Request.IsAuthenticated)
@@ -155,7 +155,7 @@ ms.lasthandoff: 10/06/2017
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-text">
         
-                        @*hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves.*@
+                        @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
         
                         Hello, @(System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value)!
                     </li>
@@ -174,9 +174,9 @@ ms.lasthandoff: 10/06/2017
         ```
 
 ## <a name="display-user-information"></a>Отображение сведений о пользователе
-При проверке подлинности пользователей с OpenID Connect, конечная точка v2.0 hello возвращает id_token toohello приложение, которое содержит утверждения или утверждения о пользователе hello.  Можно использовать эти утверждения toopersonalize приложения:
+При проверке подлинности пользователей с помощью OpenID Connect конечная точка версии 2.0 возвращает в приложение маркер идентификатора, который содержит утверждения о пользователе.  Эти утверждения можно использовать для настройки своего приложения:
 
-- Откройте hello `Controllers\HomeController.cs` файла.  Можно использовать утверждения пользователей hello в контроллерах через hello `ClaimsPrincipal.Current` объект субъекта безопасности.
+- Откройте файл `Controllers\HomeController.cs` .  Для доступа к утверждениям о пользователе в своих контроллерах можно использовать объект субъекта безопасности `ClaimsPrincipal.Current` .
 
         ```C#
         [Authorize]
@@ -184,14 +184,14 @@ ms.lasthandoff: 10/06/2017
         {
             ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;
         
-            // hello object ID claim will only be emitted for work or school accounts at this time.
+            // The object ID claim will only be emitted for work or school accounts at this time.
             Claim oid = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier");
             ViewBag.ObjectId = oid == null ? string.Empty : oid.Value;
         
-            // hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves
+            // The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves
             ViewBag.Username = ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
         
-            // hello subject or nameidentifier claim can be used toouniquely identify hello user
+            // The subject or nameidentifier claim can be used to uniquely identify the user
             ViewBag.Subject = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
         
             return View();
@@ -199,21 +199,21 @@ ms.lasthandoff: 10/06/2017
         ```
 
 ## <a name="run"></a>Выполнить
-Наконец, постройте и запустите свое приложение!   Войдите, используя личную учетную запись Майкрософт или рабочую учетную запись и обратите внимание на то, как удостоверение пользователя hello отражается hello верхней панели навигации.  Теперь у вас есть веб-приложение, защищенное с помощью стандартных отраслевых протоколов, которое может проверять подлинность пользователей с помощью личных, рабочих и учебных учетных записей.
+Наконец, постройте и запустите свое приложение!   Выполните вход с личной учетной записью Майкрософт, рабочей или учебной учетной записью и обратите внимание на то, как удостоверение пользователя отображается в верхней панели навигации.  Теперь у вас есть веб-приложение, защищенное с помощью стандартных отраслевых протоколов, которое может проверять подлинность пользователей с помощью личных, рабочих и учебных учетных записей.
 
-Справочник по hello выполнить пример (без настройки) [предоставляется как .zip здесь](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip), или вы можете клонировать из GitHub:
+Готовый пример (без ваших значений конфигурации) [можно скачать в виде ZIP-файла здесь](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip)или клонировать с портала GitHub.
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь можно перейти к более сложным темам.  Вы можете tootry:
+Теперь можно перейти к более сложным темам.  Можно попробовать:
 
-[Защита веб-API с конечной точкой v2.0 hello hello >>](active-directory-devquickstarts-webapi-dotnet.md)
+[Защита веб-API с помощью конечной точки версии 2.0 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 Дополнительные ресурсы:
 
-* [Руководство разработчика v2.0 Hello >>](active-directory-appmodel-v2-overview.md)
+* [Руководство разработчика версии 2.0 >>](active-directory-appmodel-v2-overview.md)
 * [Тег StackOverflow "azure-active-directory" >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Получение обновлений системы безопасности для наших продуктов
-Мы рекомендуем вам уведомления при возникновении события безопасности, посетив tooget [эту страницу](https://technet.microsoft.com/security/dd252948) и подписка tooSecurity рекомендация предупреждения.
+Рекомендуем вам настроить уведомления о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на [этой странице](https://technet.microsoft.com/security/dd252948).

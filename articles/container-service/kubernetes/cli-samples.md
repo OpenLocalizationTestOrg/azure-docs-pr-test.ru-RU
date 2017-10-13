@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure образцы скриптов контейнера службы | Документы Microsoft"
+title: "Примеры скриптов для службы контейнеров Azure | Документы Майкрософт"
 description: "Примеры скриптов для службы контейнеров Azure"
 services: container-service
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8c655a1c2a13c5636211ba8333c0e7a338b1e79a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b56c45fc711cc2831adde80617b14a82601b49e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-container-service"></a>Примеры Azure CLI для службы контейнеров Azure
 
-Hello следующей таблице представлены ссылки toobash сценариев, созданных с использованием hello Azure CLI.
+В следующей таблице содержатся ссылки на скрипты Bash, созданные с помощью Azure CLI.
 
 | | |
 |---|---|

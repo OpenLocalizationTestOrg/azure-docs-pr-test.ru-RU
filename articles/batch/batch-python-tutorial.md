@@ -1,6 +1,6 @@
 ---
-title: "aaaTutorial - использование hello Azure пакета SDK для Python | Документы Microsoft"
-description: "Изучите основные понятия hello пакетной службы Azure и создайте простое решение, с помощью Python."
+title: "Руководство по использованию пакета SDK пакетной службы Azure для Python | Документация Майкрософт"
+description: "Изучите основные принципы работы пакетной службы Azure и создайте простое решения с использованием Python."
 services: batch
 documentationcenter: python
 author: tamram
@@ -15,13 +15,13 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4d5152aeef31848c50a7f2aae5e7a7e0e1e9535
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="get-started-with-hello-batch-sdk-for-python"></a>Начало работы с hello пакета SDK для Python
+# <a name="get-started-with-the-batch-sdk-for-python"></a>Приступая к работе с пакетом SDK пакетной службы для Python
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Основы hello объекта [пакетной службы Azure] [ azure_batch] и hello [пакета Python] [ py_azure_sdk] клиента в обсуждении небольшой пакет приложения, написанного на Python. Рассматривается, как эти два примера скриптов используйте hello пакетной службы tooprocess параллельной рабочей нагрузки на виртуальных машинах Linux в облаке hello и их взаимодействие с [хранилища Azure](../storage/common/storage-introduction.md) для файла промежуточного хранения и извлечения. Будет узнать общий рабочий процесс приложения пакета и получить представление о базовых hello основных компонентов пакета, например заданий, задач, пулы и вычислительных узлов.
+Здесь представлены основные сведения о [пакетной службе Azure][azure_batch] и клиенте [Python пакетной службы][py_azure_sdk] в рамках обсуждения небольшого приложения пакетной службы Azure, написанного на языке Python. Мы рассмотрим, как в двух примерах скрипта используется пакетная служба для обработки параллельной рабочей нагрузки на виртуальных машинах Linux в облаке и происходит взаимодействие со [службой хранилища Azure](../storage/common/storage-introduction.md) при промежуточном хранении и извлечении файлов. Вы узнаете об общем рабочем процессе приложения пакетной службы и получите базовые знания о главных компонентах пакетной службы, например заданиях, задачах, пулах и вычислительных узлах.
 
 ![Рабочий процесс решения пакетной службы (основной)][11]<br/>
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что вы уже работали с Python и знаете, как работать в Linux. Также предполагается, что вы будете требования к создания может toosatisfy hello учетной записи, указанные ниже для Azure и пакета hello и служб хранилища.
+В этой статье предполагается, что вы уже работали с Python и знаете, как работать в Linux. Также предполагается, что вы можете выполнить требования к созданию учетной записи для службы хранилища и пакетной службы Azure. Эти требования перечислены ниже.
 
 ### <a name="accounts"></a>Учетные записи
 * **Учетная запись Azure.** Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure][azure_free_account].
@@ -43,16 +43,16 @@ ms.lasthandoff: 10/06/2017
 * **Учетная запись хранения**. См. раздел [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account) в статье [Об учетных записях хранения Azure](../storage/common/storage-create-storage-account.md).
 
 ### <a name="code-sample"></a>Пример кода
-Учебник Python Hello [образец кода] [ github_article_samples] является одним из hello найти множество образцов кода пакета в hello [образцы azure пакета] [ github_samples] репозитория на GitHub. Можно загрузить все образцы hello, щелкнув **клон или загрузки > загрузить ZIP** на домашней странице hello репозитория или щелкнув hello [azure пакета образцы master.zip] [ github_samples_zip]прямой ссылкой скачивания. Как только вы извлекли содержимое hello hello ZIP-файл, hello двух сценариев в этом учебнике можно найти на hello `article_samples` каталога:
+[Пример кода][github_article_samples] Python для руководства — это один из многих примеров кода пакетной службы в репозитории [azure-batch-samples][github_samples] на сайте GitHub. Чтобы скачать все примеры, на домашней странице репозитория щелкните **Clone or download > Download ZIP** (Клонировать или скачать > Скачать ZIP-файл) или щелкните ссылку [azure-batch-samples-master.zip][github_samples_zip] и скачайте их напрямую. После извлечения содержимого ZIP-файла оба сценария для этого руководства будут находиться в каталоге `article_samples` :
 
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_client.py`<br/>
 `/azure-batch-samples/Python/Batch/article_samples/python_tutorial_task.py`
 
 ### <a name="python-environment"></a>Среда Python
-toorun hello *python_tutorial_client.py* образец скрипта на локальной рабочей станции, необходимо **интерпретатор Python** совместим с версией **2.7** или **3.3 +**. Hello сценарий протестирован на Windows и Linux.
+Чтобы запустить пример скрипта *python_tutorial_client.py* на локальной рабочей станции, необходим **интерпретатор Python**, совместимый с версией **2.7** или **3.3+**. Сценарий прошел испытания в Linux и Windows.
 
 ### <a name="cryptography-dependencies"></a>Зависимости шифрования
-Необходимо установить зависимости hello для hello [криптографии] [ crypto] библиотеки, необходимые для hello `azure-batch` и `azure-storage` пакеты Python. Выполните одно из следующих операций, подходящих для вашей платформы hello, или ссылается toohello [установки криптографии] [ crypto_install] Дополнительные сведения:
+Для библиотеки [шифрования][crypto], которая требуется пакетам Python `azure-batch` и `azure-storage`, необходимо установить зависимости. Выполните одну из следующих операций, подходящих для вашей платформы, или ознакомьтесь с дополнительными сведениями об [установке шифрования][crypto_install]:
 
 * Ubuntu
 
@@ -68,61 +68,61 @@ toorun hello *python_tutorial_client.py* образец скрипта на ло
     `pip install cryptography`
 
 > [!NOTE]
-> При установке для Python 3.3 + в Linux, используйте hello python3 эквиваленты для hello Python зависимостей. Например, в Ubuntu: `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
+> При установке для версии Python 3.3+ в Linux используйте эквиваленты python3 для зависимостей Python. Например, в Ubuntu: `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
 >
 >
 
 ### <a name="azure-packages"></a>Пакеты Azure
-После этого установите hello **пакетной службы Azure** и **хранилища Azure** пакеты Python. Можно установить оба пакета с помощью **pip** и hello *requirements.txt* по следующему адресу:
+Далее установите пакеты Python **пакетной службы Azure** и **службы хранилища Azure**. Оба пакета можно установить, используя **pip** и *requirements.txt*, доступные здесь:
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
-Следующие проблемы **pip** команды tooinstall hello пакета и хранения пакетов:
+Выполните команду **pip** , чтобы установить пакеты службы хранения и пакетной службы.
 
 `pip install -r requirements.txt`
 
-Кроме того, можно установить hello [пакета azure] [ pypi_batch] и [хранилища azure] [ pypi_storage] Python пакетов вручную:
+Кроме того, пакеты Python [azure-batch][pypi_batch] и [azure-storage][pypi_storage] можно установить вручную.
 
 `pip install azure-batch`<br/>
 `pip install azure-storage`
 
 > [!TIP]
-> Если вы используете непривилегированной учетной записи, может потребоваться tooprefix команды с `sudo`. Например, `sudo pip install -r requirements.txt`. Дополнительные сведения об установке пакетов Python см. в статье [Installing Packages][pypi_install] (Установка пакетов) на сайте python.org.
+> Если вы используете непривилегированную учетную запись, может понадобиться добавить к команде префикс `sudo`. Например, `sudo pip install -r requirements.txt`. Дополнительные сведения об установке пакетов Python см. в статье [Installing Packages][pypi_install] (Установка пакетов) на сайте python.org.
 >
 >
 
 ## <a name="batch-python-tutorial-code-sample"></a>Пример кода Python для руководства по пакетной службе
-Образец учебника код пакета Python Hello состоит из двух сценариев Python и несколько файлов данных.
+Пример кода Python для руководства по пакетной службе состоит из двух сценариев Python и нескольких файлов данных:
 
-* **python_tutorial_client.py**: взаимодействует с tooexecute hello пакета и хранилище служб параллельной рабочей нагрузки на вычислительных узлов (виртуальных машин). Hello *python_tutorial_client.py* сценарий выполняется на локальной рабочей станции.
-* **python_tutorial_task.py**: hello сценарий, запускаемый на вычислительных узлов в Azure tooperform hello фактическую работу. В образце hello *python_tutorial_task.py* анализирует hello текст в файл, загруженный из хранилища Azure (hello входного файла). Затем он создает текстовый файл (hello выходной файл), содержащий список hello первых трех слов, которые содержатся во входном файле hello. После создания выходного файла hello, *python_tutorial_task.py* передач hello tooAzure файла хранилища. Это делает доступными для загрузки toohello клиента скрипт, выполняемый на рабочей станции. Hello *python_tutorial_task.py* сценарий выполняется параллельно на нескольких вычислительных узлов в hello пакетной службы.
-* **./Data/taskdata\*.txt**: эти три текстовых файлов ввода hello для hello задач, выполняемых на hello вычислительных узлов.
+* **python_tutorial_client.py** взаимодействует с пакетной службой и службой хранилища, чтобы выполнять параллельную рабочую нагрузку на вычислительных узлах (виртуальных машинах). Скрипт *python_tutorial_client.py* выполняется на локальной рабочей станции.
+* **python_tutorial_task.py** — это скрипт, который запускается на вычислительных узлах в Azure, чтобы выполнять фактическую работу. В этом примере *python_tutorial_task.py* анализирует текст во входном файле, скачанном из службы хранилища Azure. Затем он создает текстовый файл (выходной файл), который содержит список из трех наиболее часто употребляемых слов во входном файле. После создания выходного файла *python_tutorial_task.py* отправляет его в службу хранилища Azure. После этого он станет доступен для скачивания в сценарий клиента, запущенного на рабочей станции. Скрипт *python_tutorial_task.py* выполняется параллельно на нескольких вычислительных узлах в пакетной службе.
+* Три текстовых файла **./data/taskdata\*.txt** обеспечивают ввод данных для задач, которые выполняются на вычислительных узлах.
 
-Привет, следующая схема иллюстрирует hello основных операций, выполняемых скриптов клиента "и" задача hello. Этот основной рабочий процесс является типичным для многих вычислительных решений, созданных с помощью пакетной службы. Хотя здесь не показаны каждый компонент, доступный в hello пакетная служба, практически все пакета сценарий включает некоторые части этого рабочего процесса.
+На следующей схеме показаны основные операции, выполняемые с помощью сценариев клиента и задач. Этот основной рабочий процесс является типичным для многих вычислительных решений, созданных с помощью пакетной службы. Хотя он не демонстрирует все возможности, доступные в пакетной службе, почти все ее сценарии включают в себя части этого рабочего процесса.
 
 ![Пример рабочего процесса пакетной службы][8]<br/>
 
 [**Шаг 1.**](#step-1-create-storage-containers) Создайте **контейнеры** в хранилище BLOB-объектов Azure.<br/>
-[**Шаг 2.**](#step-2-upload-task-script-and-data-files) Отправьте toocontainers задачи скрипта и входные файлы.<br/>
+[**Шаг 2.**](#step-2-upload-task-script-and-data-files) Отправьте скрипт задач и входные файлы в контейнеры.<br/>
 [**Шаг 3.**](#step-3-create-batch-pool) Создайте **пул** пакетной службы.<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;**3a.** Здравствуйте, пул **StartTask** загрузки hello toonodes Задача сценария (python_tutorial_task.py), которые они присоединиться к пулу hello.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;**3a.** Задача **StartTask** пула скачивает скрипт задач (python_tutorial_task.py) на узлы во время их присоединения к пулу.<br/>
 [**Шаг 4.**](#step-4-create-batch-job) Создайте **задание** пакетной службы.<br/>
-[**Шаг 5.**](#step-5-add-tasks-to-job) Добавить **задачи** toohello задания.<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;**5a.** Hello задачи, запланированные tooexecute на узлах.<br/>
+[**Шаг 5.**](#step-5-add-tasks-to-job) Добавьте **задачи** в задание.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;**5a.** Планируется выполнение задач на узлах.<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Каждая задача скачивает свои входные данные из службы хранилища Azure, а затем начинает выполнение.<br/>
 [**Шаг 6.**](#step-6-monitor-tasks) Мониторинг задач.<br/>
-  &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Как выполнить действия, они отправляют их вывода данных tooAzure хранилища.<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Когда задачи выполнены, их выходные данные отправляются в службу хранилища Azure.<br/>
 [**Шаг 7.**](#step-7-download-task-output) Скачайте выходные данные задачи из службы хранилища.
 
 Как уже упоминалось, не каждое решение пакетной службы будет выполнять именно эти шаги. Некоторые решения могут выполнять больше действий, но этот пример демонстрирует общие процессы в решении пакетной службы.
 
 ## <a name="prepare-client-script"></a>Подготовка сценария клиента
-Перед запуском образца hello, необходимо добавить учетные данные учетной записи пакета и хранилища слишком*python_tutorial_client.py*. Если вы еще не сделали этого, откройте файл hello в вашей избранные редактор и обновление hello следующие строки с учетными данными.
+Прежде чем запустить пример, добавьте учетные данные учетных записей пакетной службы и службы хранилища в скрипт *python_tutorial_client.py*. Откройте файл в своем редакторе и обновите следующие строки, используя учетные данные, если еще не сделали этого.
 
 ```python
-# Update hello Batch and Storage account credential strings below with hello values
-# unique tooyour accounts. These are used when constructing connection strings
-# for hello Batch and Storage client objects.
+# Update the Batch and Storage account credential strings below with the values
+# unique to your accounts. These are used when constructing connection strings
+# for the Batch and Storage client objects.
 
 # Batch account credentials
 BATCH_ACCOUNT_NAME = ""
@@ -134,14 +134,14 @@ STORAGE_ACCOUNT_NAME = ""
 STORAGE_ACCOUNT_KEY = ""
 ```
 
-Пакет и хранения учетные данные учетной записи в колонке hello учетной записи каждой службы можно найти в hello [портал Azure][azure_portal]:
+Учетные данные учетных записей пакетной службы и службы хранилища можно найти в колонке учетной записи каждой службы на [портале Azure][azure_portal]:
 
-![Пакетное учетные данные на портале hello][9]
-![учетные данные хранилища на портале hello][10]<br/>
+![Учетные данные пакетной службы на портале][9]
+![Учетные данные службы хранилища на портале][10]<br/>
 
-В следующих разделах hello, анализируются hello шагов, используемых hello скрипты tooprocess рабочую нагрузку в hello пакетной службы. Мы рекомендуем вам регулярно toorefer toohello сценариев в редакторе, используемом во время продвигайтесь hello оставшейся части статьи hello.
+В следующих разделах мы проанализируем шаги, выполняемые в скриптах для обработки рабочей нагрузки в пакетной службе. Во время работы с оставшейся частью статьи рекомендуем регулярно просматривать сценарии в редакторе.
 
-Перейдите следующей строкой в toohello **python_tutorial_client.py** toostart с шага 1:
+Перейдите на следующую строку в скрипте **python_tutorial_client.py**, чтобы выполнить шаг 1:
 
 ```python
 if __name__ == '__main__':
@@ -151,24 +151,24 @@ if __name__ == '__main__':
 ![Создание контейнеров в службе хранилища Azure][1]
 <br/>
 
-Пакетная служба включает встроенную поддержку для взаимодействия со службой хранилища Azure. Контейнеры в учетной записи хранилища обеспечивают hello файлов, необходимых hello задач, которые выполняются в вашей учетной записи пакета. контейнеры Hello также обеспечивают месте toostore hello выходные данные задачи hello выдавать. Здравствуйте, первое, что hello *python_tutorial_client.py* сценарий выполняет создают три контейнера в [хранилища больших двоичных объектов](../storage/common/storage-introduction.md#blob-storage):
+Пакетная служба включает встроенную поддержку для взаимодействия со службой хранилища Azure. Контейнеры в учетной записи хранения предоставляют файлы, которые нужны для выполнения задач, запускаемых в вашей учетной записи пакетной службы. Контейнеры также предоставляют место для хранения выходных данных, создаваемых задачами. Сначала скрипт *python_tutorial_client.py* создает три контейнера в [хранилище BLOB-объектов Azure](../storage/common/storage-introduction.md#blob-storage):
 
-* **приложение**: этот контейнер будет хранить hello Python сценариев, запускаемых задач hello *python_tutorial_task.py*.
-* **входной**: задачи будут загружены файлы tooprocess hello данных с hello *ввода* контейнера.
-* **выходные данные**: после завершения выполнения задач обработки входных файлов они загрузит hello результаты toohello *вывода* контейнера.
+* **application**. В этом контейнере будет храниться скрипт Python *python_tutorial_task.py*, выполняемый задачами.
+* **input**— задачи будут скачивать файлы данных, которые они должны обрабатывать, из контейнера *input* .
+* **output**— после завершения обработки входных файлов задачи будут отправлять результаты обработки в контейнер *output* .
 
-В порядке toointeract с хранилищем учетной записи и создавать контейнеры, мы используем hello [хранилища azure] [ pypi_storage] пакета toocreate [BlockBlobService] [ py_blockblobservice] объект — hello «большой двоичный объект клиент». Затем создадим три контейнера в учетной записи хранения hello, с помощью клиента hello BLOB-объектов.
+Чтобы скрипт мог взаимодействовать с учетной записью службы хранилища и создавать контейнеры, мы используем пакет [azure-storage][pypi_storage] для создания объекта [BlockBlobService][py_blockblobservice], клиента службы BLOB-объектов. Затем с помощью клиента BLOB-объектов мы создадим три контейнера в учетной записи службы хранилища.
 
 ```python
 import azure.storage.blob as azureblob
 
-# Create hello blob client, for use in obtaining references to
-# blob storage containers and uploading files toocontainers.
+# Create the blob client, for use in obtaining references to
+# blob storage containers and uploading files to containers.
 blob_client = azureblob.BlockBlobService(
     account_name=STORAGE_ACCOUNT_NAME,
     account_key=STORAGE_ACCOUNT_KEY)
 
-# Use hello blob client toocreate hello containers in Azure Storage if they
+# Use the blob client to create the containers in Azure Storage if they
 # don't yet exist.
 APP_CONTAINER_NAME = 'application'
 INPUT_CONTAINER_NAME = 'input'
@@ -178,54 +178,54 @@ blob_client.create_container(INPUT_CONTAINER_NAME, fail_on_exist=False)
 blob_client.create_container(OUTPUT_CONTAINER_NAME, fail_on_exist=False)
 ```
 
-После создания контейнеров hello приложения hello, теперь можно отправить hello файлы, которые будут использоваться задачами hello.
+Когда контейнеры будут созданы, приложение сможет отправлять файлы, которые будут использоваться задачами.
 
 > [!TIP]
-> [Как toouse хранилища больших двоичных объектов Azure в Python](../storage/blobs/storage-python-how-to-use-blob-storage.md) хороший Обзор работы с контейнеров хранилища Azure и больших двоичных объектов. В начале работы с использованием пакета должно быть hello верхней части списка для чтения.
+> Статья [Использование хранилища больших двоичных объектов Azure из Python](../storage/blobs/storage-python-how-to-use-blob-storage.md) содержит хороший обзор работы с контейнерами службы хранилища Azure и большими двоичными объектами. Вы должны ознакомиться с этой статьей, прежде чем приступать к работе с пакетной службой.
 >
 >
 
 ## <a name="step-2-upload-task-script-and-data-files"></a>Шаг 2. Отправка сценария задач и файлов данных
-![Задача передачи приложения и ввода (данных) файлы toocontainers][2]
+![Отправка файлов приложения и входных данных в контейнеры][2]
 <br/>
 
-В файле hello операции, передачи *python_tutorial_client.py* сначала определяет коллекции **приложения** и **ввода** пути к файлам, в котором они хранятся на локальном компьютере hello. Затем он передает эти контейнеры toohello файлы, созданные на предыдущем шаге hello.
+Во время отправки файлов скрипт *python_tutorial_client.py* сначала определяет коллекции путей к файлам **application** и **input** на локальном компьютере. Затем оно отправляет эти файлы в контейнеры, созданные в рамках предыдущего шага.
 
 ```python
-# Paths toohello task script. This script will be executed by hello tasks that
-# run on hello compute nodes.
+# Paths to the task script. This script will be executed by the tasks that
+# run on the compute nodes.
 application_file_paths = [os.path.realpath('python_tutorial_task.py')]
 
-# hello collection of data files that are toobe processed by hello tasks.
+# The collection of data files that are to be processed by the tasks.
 input_file_paths = [os.path.realpath('./data/taskdata1.txt'),
                     os.path.realpath('./data/taskdata2.txt'),
                     os.path.realpath('./data/taskdata3.txt')]
 
-# Upload hello application script tooAzure Storage. This is hello script that
-# will process hello data files, and is executed by each of hello tasks on the
+# Upload the application script to Azure Storage. This is the script that
+# will process the data files, and is executed by each of the tasks on the
 # compute nodes.
 application_files = [
     upload_file_to_container(blob_client, APP_CONTAINER_NAME, file_path)
     for file_path in application_file_paths]
 
-# Upload hello data files. This is hello data that will be processed by each of
-# hello tasks executed on hello compute nodes in hello pool.
+# Upload the data files. This is the data that will be processed by each of
+# the tasks executed on the compute nodes in the pool.
 input_files = [
     upload_file_to_container(blob_client, INPUT_CONTAINER_NAME, file_path)
     for file_path in input_file_paths]
 ```
 
-Здравствуйте, используя охватом списка, `upload_file_to_container` функция вызывается для каждого файла в hello коллекций и двух [ResourceFile] [ py_resource_file] заполняются коллекций. Hello `upload_file_to_container` функция появляется ниже:
+Списковое выражение вызывает функцию `upload_file_to_container` для каждого файла в коллекциях, а затем заполняются две коллекции [ResourceFile][py_resource_file]. Функция `upload_file_to_container` показана ниже.
 
 ```python
 def upload_file_to_container(block_blob_client, container_name, path):
     """
-    Uploads a local file tooan Azure Blob storage container.
+    Uploads a local file to an Azure Blob storage container.
 
     :param block_blob_client: A blob service client.
     :type block_blob_client: `azure.storage.blob.BlockBlobService`
-    :param str container_name: hello name of hello Azure Blob storage container.
-    :param str file_path: hello local path toohello file.
+    :param str container_name: The name of the Azure Blob storage container.
+    :param str file_path: The local path to the file.
     :rtype: `azure.batch.models.ResourceFile`
     :return: A ResourceFile initialized with a SAS URL appropriate for Batch
     tasks.
@@ -237,7 +237,7 @@ def upload_file_to_container(block_blob_client, container_name, path):
 
     blob_name = os.path.basename(path)
 
-    print('Uploading file {} toocontainer [{}]...'.format(path,
+    print('Uploading file {} to container [{}]...'.format(path,
                                                           container_name))
 
     block_blob_client.create_blob_from_path(container_name,
@@ -259,23 +259,23 @@ def upload_file_to_container(block_blob_client, container_name, path):
 ```
 
 ### <a name="resourcefiles"></a>ResourceFiles
-Объект [ResourceFile] [ py_resource_file] предоставляет задачи в пакете с файлом tooa hello URL-адрес в службе хранилища Azure, загруженные tooa вычислительный узел перед запуском этой задачи. Hello [ResourceFile][py_resource_file]. **blob_source** свойство указывает hello полный URL-адрес файла hello, которое существовало в хранилище Azure. Hello URL-адрес может также включать подписанного URL-адреса (SAS), предоставляющий безопасный доступ toohello файла. Большинство типов задач в пакетной службе, в том числе перечисленные ниже, содержат свойство *ResourceFiles* .
+Объект [ResourceFile][py_resource_file] передает задачи в пакетную службу с URL-адресом файла в службе хранилища Azure, который будет скачан на вычислительный узел перед выполнением этой задачи. Свойство [ResourceFile][py_resource_file].**blob_source** указывает полный URL-адрес файла, по которому его можно найти в службе хранилища Azure. URL-адрес может также включать подписанный URL-адрес (SAS), который обеспечивает безопасный доступ к файлу. Большинство типов задач в пакетной службе, в том числе перечисленные ниже, содержат свойство *ResourceFiles* .
 
 * [CloudTask][py_task]
 * [StartTask][py_starttask]
 * [JobPreparationTask][py_jobpreptask]
 * [JobReleaseTask][py_jobreltask]
 
-Этот образец не использует hello JobPreparationTask или JobReleaseTask типы задач, но вы можете прочитать больше о них в [выполнения задания Подготовка и выполнение задач в пакете Azure вычислительные узлы](batch-job-prep-release.md).
+В этом примере не используются типы задач JobPreparationTask или JobReleaseTask, но о них можно узнать больше из статьи [Выполнение задач подготовки и завершения заданий на вычислительных узлах пакетной службы Azure](batch-job-prep-release.md).
 
 ### <a name="shared-access-signature-sas"></a>Подписанный URL-адрес (SAS)
-Подписи общего доступа являются строки, которые обеспечивают безопасный доступ toocontainers и больших двоичных объектов в хранилище Azure. Hello *python_tutorial_client.py* скрипт использует оба большого двоичного объекта и контейнера подписи коллективного доступа, а также показано, как эти общие tooobtain доступ к строки подписи из hello службы хранилища.
+Подписанные URL-адреса — это строки, которые предоставляют безопасный доступ к контейнерам и большим двоичным объектам в службе хранилища Azure. Скрипт *python_tutorial_client.py* использует подписанные URL-адреса как контейнеров, так и больших двоичных объектов. Он демонстрирует, как получить эти строки подписанных URL-адресов из службы хранилища.
 
-* **BLOB-объектов подписи коллективного доступа**: hello пула StartTask использует BLOB-объектов подписи коллективного доступа при загрузке hello задачи скрипта и входные файлы данных из хранилища (в разделе [шаг 3](#step-3-create-batch-pool) ниже). Hello `upload_file_to_container` функционировать в *python_tutorial_client.py* содержит hello код, который получает подпись общего доступа для каждого большого двоичного объекта. Это достигается путем вызова [BlockBlobService.make_blob_url] [ py_make_blob_url] в модуле хранения hello.
-* **Подписанный URL-адрес контейнера**: как каждая задача завершит свою работу на вычислительном узле hello, передает его выходной файл toohello *вывода* контейнера в хранилище Azure. toodo таким образом, *python_tutorial_task.py* используется подпись общего доступа контейнера, которая предоставляет доступ на запись toohello контейнера. Hello `get_container_sas_token` функционировать в *python_tutorial_client.py* получает hello контейнер подписанный URL-адрес, который затем передается как аргумент командной строки toohello задачи. Шаг #5 [добавить задачи tooa задания](#step-5-add-tasks-to-job), рассматривается использование hello hello SAS контейнера.
+* **Подписанные URL-адреса больших двоичных объектов**. Задача StartTask пула использует подписанные URL-адреса больших двоичных объектов во время скачивания скрипта заданий и файлов входных данных из службы хранилища (см. [шаг 3](#step-3-create-batch-pool) ниже). Функция `upload_file_to_container` в *python_tutorial_client.py* содержит код, который получает подписанный URL-адрес каждого большого двоичного объекта. Для этого в модуле службы хранилища вызывается [BlockBlobService.make_blob_url][py_make_blob_url].
+* **Подписанный URL-адрес контейнера**. Когда каждая задача завершает работу на вычислительном узле, она отправляет свой выходной файл в контейнер *output* в службе хранилища Azure. Для этого *python_tutorial_task.py* использует подписанный URL-адрес контейнера, который предоставляет доступ на запись в контейнер. Функция `get_container_sas_token` в *python_tutorial_client.py* получает подписанный URL-адрес контейнера, который затем передается в задачи в качестве аргумента командной строки. На шаге 5 [Добавление задач в задание](#step-5-add-tasks-to-job) описывается использование SAS контейнера.
 
 > [!TIP]
-> Извлечение серии из двух частей hello подписей общего доступа [часть 1: Общие сведения о модели SAS hello](../storage/common/storage-dotnet-shared-access-signature-part-1.md) и [часть 2: создать и использовать SAS с hello службы BLOB-объектов](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md), toolearn Дополнительные сведения о предоставления безопасного доступа toodata вашей учетной записи хранилища.
+> Дополнительные сведения о предоставлении безопасного доступа к данным в своей учетной записи службы хранилища см. в серии из двух статей о подписанных URL-адресах: [Часть 1: общие сведения о модели SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) и [Часть 2: создание и использование подписанного URL-адреса в службе BLOB-объектов](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md).
 >
 >
 
@@ -285,11 +285,11 @@ def upload_file_to_container(block_blob_client, container_name, path):
 
 **Пул** пакетной службы — это коллекция вычислительных узлов (виртуальных машин), на которых пакетная служба выполняет задачи задания.
 
-После передает hello задач сценариев и данных файлов toohello учетной записи хранилища, *python_tutorial_client.py* запускает его взаимодействия с hello пакетной службы с помощью модуля hello пакета Python. toodo таким образом, [BatchServiceClient] [ py_batchserviceclient] создается:
+После отправки скрипта задач и файлов данных в учетную запись службы хранилища *python_tutorial_client.py* начинает взаимодействие с пакетной службой, используя ее модуль Python. Для этого создается [BatchServiceClient][py_batchserviceclient].
 
 ```python
-# Create a Batch service client. We'll now be interacting with hello Batch
-# service in addition tooStorage.
+# Create a Batch service client. We'll now be interacting with the Batch
+# service in addition to Storage.
 credentials = batchauth.SharedKeyCredentials(BATCH_ACCOUNT_NAME,
                                              BATCH_ACCOUNT_KEY)
 
@@ -298,18 +298,18 @@ batch_client = batch.BatchServiceClient(
     base_url=BATCH_ACCOUNT_URL)
 ```
 
-Далее пул вычислительных узлов создается в hello пакетной учетной записи с помощью вызова слишком`create_pool`.
+Затем в учетной записи пакетной службы создается пул вычислительных узлов с помощью вызова `create_pool`.
 
 ```python
 def create_pool(batch_service_client, pool_id,
                 resource_files, publisher, offer, sku):
     """
-    Creates a pool of compute nodes with hello specified OS settings.
+    Creates a pool of compute nodes with the specified OS settings.
 
     :param batch_service_client: A Batch service client.
     :type batch_service_client: `azure.batch.BatchServiceClient`
-    :param str pool_id: An ID for hello new pool.
-    :param list resource_files: A collection of resource files for hello pool's
+    :param str pool_id: An ID for the new pool.
+    :param list resource_files: A collection of resource files for the pool's
     start task.
     :param str publisher: Marketplace image publisher
     :param str offer: Marketplace image offer
@@ -322,24 +322,24 @@ def create_pool(batch_service_client, pool_id,
     # nodes, see:
     # https://azure.microsoft.com/documentation/articles/batch-linux-nodes/
 
-    # Specify hello commands for hello pool's start task. hello start task is run
-    # on each node as it joins hello pool, and when it's rebooted or re-imaged.
-    # We use hello start task tooprep hello node for running our task script.
+    # Specify the commands for the pool's start task. The start task is run
+    # on each node as it joins the pool, and when it's rebooted or re-imaged.
+    # We use the start task to prep the node for running our task script.
     task_commands = [
-        # Copy hello python_tutorial_task.py script toohello "shared" directory
-        # that all tasks that run on hello node have access to.
+        # Copy the python_tutorial_task.py script to the "shared" directory
+        # that all tasks that run on the node have access to.
         'cp -r $AZ_BATCH_TASK_WORKING_DIR/* $AZ_BATCH_NODE_SHARED_DIR',
-        # Install pip and hello dependencies for cryptography
+        # Install pip and the dependencies for cryptography
         'apt-get update',
         'apt-get -y install python-pip',
         'apt-get -y install build-essential libssl-dev libffi-dev python-dev',
-        # Install hello azure-storage module so that hello task script can access
+        # Install the azure-storage module so that the task script can access
         # Azure Blob storage
         'pip install azure-storage']
 
-    # Get hello node agent SKU and image reference for hello virtual machine
+    # Get the node agent SKU and image reference for the virtual machine
     # configuration.
-    # For more information about hello virtual machine configuration, see:
+    # For more information about the virtual machine configuration, see:
     # https://azure.microsoft.com/documentation/articles/batch-linux-nodes/
     sku_to_use, image_ref_to_use = \
         common.helpers.select_latest_verified_vm_image_with_node_agent_sku(
@@ -367,41 +367,41 @@ def create_pool(batch_service_client, pool_id,
         raise
 ```
 
-При создании пула определяется [PoolAddParameter] [ py_pooladdparam] , указывающий несколько свойств пула hello:
+Во время создания пула необходимо определить [PoolAddParameter][py_pooladdparam], который указывает несколько свойств пула:
 
-* **Идентификатор** hello пула (*идентификатор* — требуется)<p/>Как и у большинства сущностей в пакетной службе, у нового пула должен быть идентификатор, уникальный в учетной записи этой службы. Ваш код ссылается с помощью его идентификатора пула toothis, и именно вы идентифицируете пула hello в hello Azure [портала][azure_portal].
-* **Количество вычислительных узлов** (*target_dedicated*, обязательное).<p/>Это свойство определяет, сколько виртуальных машин должны развертываться в пуле hello. Является важным toonote, что все учетные записи пакетного имеют значение по умолчанию **квоты** hello, ограничения числа **ядер** (и, таким образом, вычислительных узлов) в учетной записи пакета. Можно найти квот по умолчанию hello и инструкции о том, как слишком[увеличить квоту](batch-quota-limit.md#increase-a-quota) (таких как максимальное количество ядер в вашей учетной записи пакетного hello) в [квоты и лимиты для пакетной службы Azure hello](batch-quota-limit.md). Если возник вопрос о том, почему пул не использует больше определенного количества узлов, Эта квота ядра может быть причиной hello.
-* **Операционная система** для узлов (*virtual_machine_configuration* **или** *cloud_service_configuration*, обязательное).<p/>В *python_tutorial_client.py* мы создаем пул узлов Linux с использованием [VirtualMachineConfiguration][py_vm_config]. Hello `select_latest_verified_vm_image_with_node_agent_sku` функционировать в `common.helpers` упрощает работу с [виртуальных машин Azure Marketplace] [ vm_marketplace] изображения. Дополнительные сведения об использовании образов из магазина см. в статье [Подготовка вычислительных узлов Linux в пулах пакетной службы Azure](batch-linux-nodes.md).
+* **Идентификатор** пула (*id*, обязательное).<p/>Как и у большинства сущностей в пакетной службе, у нового пула должен быть идентификатор, уникальный в учетной записи этой службы. Код ссылается на этот пул, используя его идентификатор, по которому пул также можно найти на [портале Azure][azure_portal].
+* **Количество вычислительных узлов** (*target_dedicated*, обязательное).<p/>Указывает, сколько виртуальных машин следует развернуть в пуле. Стоит отметить, что для всех учетных записей пакетной службы установлена **квота** по умолчанию, которая ограничивает количество **ядер** (и, следовательно, вычислительных узлов) в учетной записи. Дополнительные сведения о квотах по умолчанию и инструкцию по [увеличению квоты](batch-quota-limit.md#increase-a-quota) (например, максимального количества ядер в учетной записи пакетной службы) см. в статье [Квоты и ограничения пакетной службы Azure](batch-quota-limit.md). Если возник вопрос о том, почему пул не использует больше определенного количества узлов, Если возник вопрос о том, почему пул не использует больше определенного количества узлов, причиной может быть квота на ядра.
+* **Операционная система** для узлов (*virtual_machine_configuration* **или** *cloud_service_configuration*, обязательное).<p/>В *python_tutorial_client.py* мы создаем пул узлов Linux с использованием [VirtualMachineConfiguration][py_vm_config]. Функция `select_latest_verified_vm_image_with_node_agent_sku` в `common.helpers` упрощает работу с образами из [магазина виртуальных машин Azure][vm_marketplace]. Дополнительные сведения об использовании образов из магазина см. в статье [Подготовка вычислительных узлов Linux в пулах пакетной службы Azure](batch-linux-nodes.md).
 * **Размер вычислительных узлов** (*vm_size*, обязательное).<p/>Так как мы указываем узлы Linux для [VirtualMachineConfiguration][py_vm_config], необходимо указать их размер (в этом примере — `STANDARD_A1`), как описано в статье [Размеры виртуальных машин в Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Дополнительные сведения см. в статье [Подготовка вычислительных узлов Linux в пулах пакетной службы Azure](batch-linux-nodes.md).
-* **Задача запуска** (*start_task*, не обязательное).<p/>Вместе с hello выше свойства физического узла, можно также указать [StartTask] [ py_starttask] для пула hello (не требуется). Hello StartTask выполняет на каждом узле, как этот узел соединяет hello пул, и каждый раз при перезапуске узла. Hello StartTask особенно полезна для подготовки вычислительных узлов для выполнения задач, таких как установка приложения hello, выполняющиеся задачи hello.<p/>В этом образце приложения hello StartTask копирует hello файлы, загружаемые из хранилища (которые указываются с помощью hello StartTask **resource_files** свойство) из hello StartTask *рабочий каталог* toohello *общего* каталог, в котором доступны все задачи, выполняемые на узле hello. По сути, это копирует `python_tutorial_task.py` toohello каталог общих на каждый узел при присоединении узла hello пула hello доступа к ней все задачи, выполняемых в узле hello.
+* **Задача запуска** (*start_task*, не обязательное).<p/>Вместе со свойствами физических узлов выше можно также указать [StartTask][py_starttask] для пула (необязательно). Задача StartTask выполняется на каждом узле по мере его присоединения к пулу, а также при каждом перезапуске узла. Она особенно полезна для подготовки вычислительных узлов к выполнению таких операций, как установка приложений, которые будут использовать задачи.<p/>В этом примере приложения задача StartTask копирует файлы, которые она загружает из рабочего каталога StartTask службы хранилища (эти файлы указаны в свойстве **resource_files** задачи *StartTask*) в *общий* каталог, к которому имеют доступ все задачи, выполняемые на узле. По сути, это обеспечивает копирование `python_tutorial_task.py` в общий каталог на каждом узле, когда узел присоединяется к пулу, чтобы к нему был доступ у всех задач, запускаемых на узле.
 
-Вы можете заметить hello вызовов toohello `wrap_commands_in_shell` вспомогательную функцию. Она использует коллекцию отдельных команд и создает одну соответствующую командную строку для свойства командной строки задачи.
+Вы могли заметить вызов вспомогательной функции `wrap_commands_in_shell` . Она использует коллекцию отдельных команд и создает одну соответствующую командную строку для свойства командной строки задачи.
 
-Также значительным в приведенном выше фрагменте кода hello используется hello двух переменных среды в hello **командная_строка** свойство hello StartTask: `AZ_BATCH_TASK_WORKING_DIR` и `AZ_BATCH_NODE_SHARED_DIR`. Несколько переменных среды, которые являются определенной tooBatch автоматически настраивается каждом вычислительном узле в пуле пакета. Любой процесс, выполняемый задачей имеет доступ к переменным среды toothese.
+Обратите также внимание, что во фрагменте кода выше в свойстве **command_line** задачи StartTask используются две переменные среды: `AZ_BATCH_TASK_WORKING_DIR` и `AZ_BATCH_NODE_SHARED_DIR`. На каждом вычислительном узле в пуле пакетной службы автоматически настраивается несколько переменных среды, характерных для пакетной службы. Любой процесс, выполняемый задачей, имеет доступ к этим переменным среды.
 
 > [!TIP]
-> toofind Дополнительные сведения о переменных среды hello, доступные на вычислительных узлах пула, а также сведения о задаче рабочие каталоги, в разделе **параметры среды для задачи** и **файлов и каталогов**  в hello [Обзор возможностей пакетной службы Azure](batch-api-basics.md).
+> Дополнительные сведения о переменных среды, доступных на вычислительных узлах в пуле пакетной службы, а также сведения о рабочих каталогах задач см. в разделах **Параметры среды для задач** и **Файлы и каталоги** статьи с [обзором функций пакетной службы Azure](batch-api-basics.md).
 >
 >
 
 ## <a name="step-4-create-batch-job"></a>Шаг 4. Создание задания пакетной службы
 ![Создание задания пакетной службы][4]<br/>
 
-**Задание** пакетной службы — это коллекция задач, связанных с пулом вычислительных узлов. Hello задачи в задании, выполняются в hello связанный пул вычислительных узлов.
+**Задание** пакетной службы — это коллекция задач, связанных с пулом вычислительных узлов. Задачи задания выполняются на вычислительных узлах связанного пула.
 
-Задания можно использовать не только для упорядочивания и отслеживания задач в связанных рабочих нагрузок, но также и для налагающий определенные ограничения, например hello максимального времени для задания hello (и по расширению, его задачи) и приоритет задания в заданиях tooother отношения в hello пакетной учетной записи. В этом примере задание hello связаны только с пулом hello, который был создан на шаге #3. Дополнительные свойства не настроены.
+Вы можете использовать задание не только для упорядочивания и отслеживания задач в соответствующих рабочих нагрузках, но и для установления определенных ограничений, включая максимальное время выполнения задания (а следовательно, и его задач). При этом назначается приоритет задания относительно других заданий в учетной записи пакетной службы. Но в этом примере задание связано только с пулом, который был создан на шаге 3. Дополнительные свойства не настроены.
 
-Все задания пакетной службы связаны с конкретным пулом. Эта связь указывает, какие задачи hello задания выполняются в узлы. Укажите hello пула с помощью hello [PoolInformation] [ py_poolinfo] свойства, как показано в приведенном ниже фрагменте кода hello.
+Все задания пакетной службы связаны с конкретным пулом. Эта связь указывает, в каких узлах выполняются задачи задания. Вам необходимо указать пул, используя свойство [PoolInformation][py_poolinfo], как показано в следующем фрагменте кода.
 
 ```python
 def create_job(batch_service_client, job_id, pool_id):
     """
-    Creates a job with hello specified ID, associated with hello specified pool.
+    Creates a job with the specified ID, associated with the specified pool.
 
     :param batch_service_client: A Batch service client.
     :type batch_service_client: `azure.batch.BatchServiceClient`
-    :param str job_id: hello ID for hello job.
-    :param str pool_id: hello ID for hello pool.
+    :param str job_id: The ID for the job.
+    :param str pool_id: The ID for the pool.
     """
     print('Creating job [{}]...'.format(job_id))
 
@@ -416,34 +416,34 @@ def create_job(batch_service_client, job_id, pool_id):
         raise
 ```
 
-После создания задания задачи добавляются рабочие tooperform hello.
+В созданное задание добавляются задачи для выполнения работы.
 
-## <a name="step-5-add-tasks-toojob"></a>Шаг 5: Добавление toojob задачи
-![Добавление задачи toojob][5]<br/>
-*(1) задачи добавляются toohello задания, (2) hello задачи, запланированные toorun на узлах и (3) hello задачи загрузки tooprocess файлы данных hello*
+## <a name="step-5-add-tasks-to-job"></a>Шаг 5. Добавление задач в задание
+![Добавление задач в задание][5]<br/>
+*(1) Задачи добавляются в задание, (2) планируется запуск задач на узлах, (3) задачи скачивают файлы данных для обработки*
 
-Пакет **задачи** являются hello отдельных рабочих элементов, выполните на hello вычислительных узлов. Задача имеет командную строку и выполняется hello сценарии или исполняемые файлы, укажите в этой командной строке.
+**Задачи** пакетной службы представляют собой отдельные рабочие единицы, выполняемые на вычислительных узлах. У задачи есть командная строка, она запускает сценарии или исполняемые файлы, указанные в этой строке.
 
-tooactually выполнения работы, задачи должны быть добавлены tooa задания. Каждый [CloudTask] [ py_task] настраивается с помощью свойства командной строки и [ResourceFiles] [ py_resource_file] (как в случае с StartTask hello пула), hello Задача загружает toohello узла перед его командной строки выполняется автоматически. В образце hello каждая задача обрабатывает только один файл. Поэтому его коллекция ResourceFiles содержит один элемент.
+Для фактического выполнения работы необходимо добавить задачи в задание. Каждая задача [CloudTask][py_task] (как и задача StartTask пула) настраивается с помощью свойства командной строки и объекта [ResourceFiles][py_resource_file], который она скачивает на узел до автоматического выполнения ее командной строки. В этом примере каждая задача обрабатывает только один файл. Поэтому его коллекция ResourceFiles содержит один элемент.
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
               output_container_name, output_container_sas_token):
     """
-    Adds a task for each input file in hello collection toohello specified job.
+    Adds a task for each input file in the collection to the specified job.
 
     :param batch_service_client: A Batch service client.
     :type batch_service_client: `azure.batch.BatchServiceClient`
-    :param str job_id: hello ID of hello job toowhich tooadd hello tasks.
+    :param str job_id: The ID of the job to which to add the tasks.
     :param list input_files: A collection of input files. One task will be
      created for each input file.
-    :param output_container_name: hello ID of an Azure Blob storage container to
-    which hello tasks will upload their results.
+    :param output_container_name: The ID of an Azure Blob storage container to
+    which the tasks will upload their results.
     :param output_container_sas_token: A SAS token granting write access to
-    hello specified Azure Blob storage container.
+    the specified Azure Blob storage container.
     """
 
-    print('Adding {} tasks toojob [{}]...'.format(len(input_files), job_id))
+    print('Adding {} tasks to job [{}]...'.format(len(input_files), job_id))
 
     tasks = list()
 
@@ -469,46 +469,46 @@ def add_tasks(batch_service_client, job_id, input_files,
 ```
 
 > [!IMPORTANT]
-> При доступе переменные среды, такие как `$AZ_BATCH_NODE_SHARED_DIR` или выполнить приложение не найдено в узле hello `PATH`, задача командные строки необходимо вызвать hello оболочки явно, такие как с `/bin/sh -c MyTaskApplication $MY_ENV_VAR`. Это требование не требуется, если задачи Выполнение приложения в узле hello `PATH` и не ссылаться на переменные среды.
+> При получении доступа к переменным среды, таким как `$AZ_BATCH_NODE_SHARED_DIR`, или выполнении приложения, которое не находится в `PATH` на узле, командные строки задачи должны явным образом вызвать оболочку, например с помощью `/bin/sh -c MyTaskApplication $MY_ENV_VAR`. Это требование не является обязательным, если задачи выполняют приложение в `PATH` и не ссылаются на переменные среды.
 >
 >
 
-В рамках hello `for` цикла в приведенном выше фрагменте кода hello, можно увидеть, что hello командной строки для задачи «hello» создается пять аргументов командной строки, которые передаются слишком*python_tutorial_task.py*:
+В пределах цикла `for` в приведенном выше фрагменте кода видно, что командная строка задачи построена с использованием пяти аргументов командной строки, передаваемых в *python_tutorial_task.py*:
 
-1. **FILEPATH**: это файл toohello hello локальный путь, поскольку она существует на узле hello. Когда hello объекта ResourceFile в `upload_file_to_container` был создан на шаге 2 выше, имя файла hello был использован для этого свойства (hello `file_path` параметра в конструктор ResourceFile hello). Это означает, что этот файл hello можно найти в hello же каталог на узле hello в виде *python_tutorial_task.py*.
-2. **NUMWORDS**: hello верхней *N* слова должны быть написаны toohello выходного файла.
-3. **storageaccount**: hello имя учетной записи хранилища, которому принадлежит выходные данные задачи hello контейнера toowhich hello hello должна быть загружена.
-4. **storagecontainer**: hello имя контейнера toowhich hello хранилища hello вывода файлов должна быть загружена.
-5. **sastoken**: hello подписанного URL-адреса (SAS), предоставляющий доступ на запись toohello **вывода** контейнера в хранилище Azure. Hello *python_tutorial_task.py* скрипт использует подписанный URL-адрес при создает его BlockBlobService ссылку. Это обеспечивает доступ для записи toohello контейнера без использования клавиши доступа для учетной записи хранения hello.
+1. **filepath**— это локальный путь к файлу, по которому его можно найти на узле. Когда объект ResourceFile создавался в `upload_file_to_container` на шаге 2 выше, для этого свойства использовалось имя файла (в конструкторе ResourceFile в параметре `file_path`). Это значит, что файл находится в том же каталоге на узле, что и *python_tutorial_task.py*.
+2. **numwords**указывает *N* наиболее часто используемых слов, которые должны быть записаны в выходной файл.
+3. **storageaccount**— имя учетной записи службы хранилища, которой принадлежит контейнер, куда следует передать выходные данные задач.
+4. **storagecontainer**— имя контейнера службы хранилища, в который следует передать выходные файлы.
+5. **sastoken** — это подписанный URL-адрес (SAS), который предоставляет доступ на запись в контейнер **output** в службе хранилища Azure. Скрипт *python_tutorial_task.py* использует подписанный URL-адрес при создании ссылки на BlockBlobService. Это обеспечивает доступ на запись в контейнер без ключа доступа к учетной записи хранения.
 
 ```python
 # NOTE: Taken from python_tutorial_task.py
 
-# Create hello blob client using hello container's SAS token.
-# This allows us toocreate a client that provides write
-# access only toohello container.
+# Create the blob client using the container's SAS token.
+# This allows us to create a client that provides write
+# access only to the container.
 blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
                                          sas_token=args.sastoken)
 ```
 
 ## <a name="step-6-monitor-tasks"></a>Шаг 6. Мониторинг задач
 ![Мониторинг задач][6]<br/>
-*Здравствуйте, (1) мониторы hello задачи состояние завершения, а задачи hello (2) добавьте tooAzure результат данных хранилища*
+*Скрипт (1) выполняет мониторинг задач и состояния их выполнения, а задачи (2) отправляют данные результатов в службу хранилища Azure*
 
-При добавлении задачи задания tooa они автоматически в очередь и запланировать выполнение на вычислительных узлах пула hello, связанный с заданием hello. В зависимости от настройки hello пакета обрабатывает все очереди задач, планирования, повтор и другие задачи администрирования обязанностей.
+Добавленные в задание задачи автоматически выстраиваются в очередь и планируются для выполнения на вычислительных узлах пула, связанного с заданием. Пакетная служба обрабатывает постановку задач в очередь, их планирование извлечение и другие задачи администрирования с учетом указанных вами параметров.
 
-Существует множество подходов toomonitoring выполнения задачи. Hello `wait_for_tasks_to_complete` функционировать в *python_tutorial_client.py* предоставляет простой пример задач наблюдения для определенного состояния, в данном случае hello [завершения] [ py_taskstate] состояние.
+Есть несколько подходов к отслеживанию выполнения задач. Функция `wait_for_tasks_to_complete` в *python_tutorial_client.py* является простым примером мониторинга определенного состояния задач, в этом случае — [выполненного][py_taskstate] состояния.
 
 ```python
 def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
     """
-    Returns when all tasks in hello specified job reach hello Completed state.
+    Returns when all tasks in the specified job reach the Completed state.
 
     :param batch_service_client: A Batch service client.
     :type batch_service_client: `azure.batch.BatchServiceClient`
-    :param str job_id: hello id of hello job whose tasks should be toomonitored.
-    :param timedelta timeout: hello duration toowait for task completion. If all
-    tasks in hello specified job do not reach Completed state within this time
+    :param str job_id: The id of the job whose tasks should be to monitored.
+    :param timedelta timeout: The duration to wait for task completion. If all
+    tasks in the specified job do not reach Completed state within this time
     period, an exception will be raised.
     """
     timeout_expiration = datetime.datetime.now() + timeout
@@ -537,19 +537,19 @@ def wait_for_tasks_to_complete(batch_service_client, job_id, timeout):
 ## <a name="step-7-download-task-output"></a>Шаг 7. Загрузка выходных данных задачи
 ![Загрузка выходных данных задачи из службы хранилища][7]<br/>
 
-Теперь, когда hello работа завершена, hello выходные данные задач hello можно загрузить из хранилища Azure. Это делается с помощью вызова слишком`download_blobs_from_container` в *python_tutorial_client.py*:
+Теперь, когда задание выполнено, можно загрузить выходные данные задач из службы хранилища Azure. Для этого нужно вызвать `download_blobs_from_container` в *python_tutorial_client.py*:
 
 ```python
 def download_blobs_from_container(block_blob_client,
                                   container_name, directory_path):
     """
-    Downloads all blobs from hello specified Azure Blob storage container.
+    Downloads all blobs from the specified Azure Blob storage container.
 
     :param block_blob_client: A blob service client.
     :type block_blob_client: `azure.storage.blob.BlockBlobService`
-    :param container_name: hello Azure Blob storage container from which to
+    :param container_name: The Azure Blob storage container from which to
      download files.
-    :param directory_path: hello local directory toowhich toodownload hello files.
+    :param directory_path: The local directory to which to download the files.
     """
     print('Downloading all files from container [{}]...'.format(
         container_name))
@@ -563,7 +563,7 @@ def download_blobs_from_container(block_blob_client,
                                            blob.name,
                                            destination_file_path)
 
-        print('  Downloaded blob [{}] from container [{}] too{}'.format(
+        print('  Downloaded blob [{}] from container [{}] to {}'.format(
             blob.name,
             container_name,
             destination_file_path))
@@ -572,12 +572,12 @@ def download_blobs_from_container(block_blob_client,
 ```
 
 > [!NOTE]
-> Здравствуйте вызов слишком`download_blobs_from_container` в *python_tutorial_client.py* указывает, hello файлы должны быть загруженного tooyour домашнего каталога. Свободное toomodify считаете это расположение выходных данных.
+> При вызове `download_blobs_from_container` в *python_tutorial_client.py* указывается, что файлы необходимо скачивать в корневой каталог. Вы можете изменить это расположение выходных данных.
 >
 >
 
 ## <a name="step-8-delete-containers"></a>Шаг 8. Удаление контейнеров
-Поскольку плата взимается для данных, которые хранятся в хранилище Azure, это всегда tooremove рекомендуется, когда все большие двоичные объекты, которые больше не нужен для пакетных заданий. В *python_tutorial_client.py*, это делается с помощью трех вызовов слишком[BlockBlobService.delete_container][py_delete_container]:
+Так как вы платите за данные, которые находятся в службе хранилища Azure, рекомендуется всегда удалять все большие двоичные объекты, которые больше не нужны для выполнения заданий пакетной службы. В *python_tutorial_client.py* это можно сделать, вызвав [BlockBlobService.delete_container][py_delete_container] трижды:
 
 ```python
 # Clean up storage resources
@@ -587,13 +587,13 @@ blob_client.delete_container(input_container_name)
 blob_client.delete_container(output_container_name)
 ```
 
-## <a name="step-9-delete-hello-job-and-hello-pool"></a>Шаг 9: Удалить задание hello и hello пула
-В последнем шаге hello, запрашиваемые toodelete hello задания и hello пула, созданных по hello *python_tutorial_client.py* сценария. Хотя вы и не платите за задания и задачи, *взимается* плата за используемые вычислительные узлы. Поэтому рекомендуется выделять узлы только при необходимости. Удаление неиспользуемых пулов может быть частью процесса обслуживания.
+## <a name="step-9-delete-the-job-and-the-pool"></a>Шаг 9. Удаление задания и пула
+На последнем шаге появляется запрос на удаление пула и задания, созданных скриптом *python_tutorial_client.py*. Хотя вы и не платите за задания и задачи, *взимается* плата за используемые вычислительные узлы. Поэтому рекомендуется выделять узлы только при необходимости. Удаление неиспользуемых пулов может быть частью процесса обслуживания.
 
-Hello BatchServiceClient [JobOperations] [ py_job] и [PoolOperations] [ py_pool] имеют соответствующих методов удаления, которые являются вызывается, если подтверждение удаления:
+Свойства [JobOperations][py_job] и [PoolOperations BatchServiceClient][py_pool] предусматривают соответствующие методы удаления, которые вызываются, если подтвердить удаление.
 
 ```python
-# Clean up Batch resources (if hello user so chooses).
+# Clean up Batch resources (if the user so chooses).
 if query_yes_no('Delete job?') == 'yes':
     batch_client.job.delete(_JOB_ID)
 
@@ -602,36 +602,36 @@ if query_yes_no('Delete pool?') == 'yes':
 ```
 
 > [!IMPORTANT]
-> Помните, что вы платите за использование вычислительных ресурсов, поэтому удаление неиспользуемых пулов позволит сократить затраты. Кроме того помните, что при удалении пула удаляются все вычислительные узлы этого пула, и все данные на узлах hello будет неустранимой после удаления пула hello.
+> Помните, что вы платите за использование вычислительных ресурсов, поэтому удаление неиспользуемых пулов позволит сократить затраты. Также не забывайте, что при удалении пула удаляются все вычислительные узлы этого пула, после чего все данные на узлах уже нельзя будет восстановить.
 >
 >
 
-## <a name="run-hello-sample-script"></a>Запустите сценарий образец hello
-При запуске hello *python_tutorial_client.py* сценарий из учебника hello [образец кода][github_article_samples], вывод на консоль hello — примерно следующие toohello. Нет приостановит `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` пока hello пула вычислительные узлы создаются, запущена, и выполняются команды hello в задачу запуска пула hello. Используйте hello [портал Azure] [ azure_portal] toomonitor пула, вычислительные узлы, заданий и задач во время и после выполнения. Используйте hello [портал Azure] [ azure_portal] или hello [Microsoft Azure Storage Explorer] [ storage_explorer] tooview ресурсов хранилища hello (контейнеров и больших двоичных объектов) созданные приложения hello.
+## <a name="run-the-sample-script"></a>Запуск примера сценария
+При запуске скрипта *python_tutorial_client.py* из [примера кода][github_article_samples] в руководстве консоль будет выглядеть следующим образом. Во время создания и запуска вычислительных узлов пула, а также выполнения команд в рамках его задачи запуска выполнение приостанавливается на `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` . Используйте [портал Azure][azure_portal] для мониторинга пула, вычислительных узлов, заданий и задач во время и после выполнения. Используйте [портал Azure][azure_portal] или [обозреватель службы хранилища Microsoft Azure][storage_explorer], чтобы просматривать ресурсы службы хранилища (контейнеры и большие двоичные объекты), созданные приложением.
 
 > [!TIP]
-> Запустите hello *python_tutorial_client.py* сценарий из внутри hello `azure-batch-samples/Python/Batch/article_samples` каталога. Он использует относительный путь для hello `common.helpers` импорт модуля, чтобы можно было увидеть `ImportError: No module named 'common'` Если не выполнить скрипт hello из этого каталога.
+> Выполните скрипт *python_tutorial_client.py* в каталоге `azure-batch-samples/Python/Batch/article_samples`. Он использует относительный путь для импорта модуля `common.helpers`, поэтому, если не выполнить скрипт в этом каталоге, может возникнуть ошибка `ImportError: No module named 'common'`.
 >
 >
 
-Обычно время выполнения равно **приблизительно 5 – 7 минут** при запуске образца hello в конфигурации по умолчанию.
+Обычное время выполнения — **примерно 5–7 минут** , если для примера задана конфигурация по умолчанию.
 
 ```
 Sample start: 2016-05-20 22:47:10
 
-Uploading file /home/user/py_tutorial/python_tutorial_task.py toocontainer [application]...
-Uploading file /home/user/py_tutorial/data/taskdata1.txt toocontainer [input]...
-Uploading file /home/user/py_tutorial/data/taskdata2.txt toocontainer [input]...
-Uploading file /home/user/py_tutorial/data/taskdata3.txt toocontainer [input]...
+Uploading file /home/user/py_tutorial/python_tutorial_task.py to container [application]...
+Uploading file /home/user/py_tutorial/data/taskdata1.txt to container [input]...
+Uploading file /home/user/py_tutorial/data/taskdata2.txt to container [input]...
+Uploading file /home/user/py_tutorial/data/taskdata3.txt to container [input]...
 Creating pool [PythonTutorialPool]...
 Creating job [PythonTutorialJob]...
-Adding 3 tasks toojob [PythonTutorialJob]...
+Adding 3 tasks to job [PythonTutorialJob]...
 Monitoring all tasks for 'Completed' state, timeout in 0:20:00..........................................................................
-  Success! All tasks reached hello 'Completed' state within hello specified timeout period.
+  Success! All tasks reached the 'Completed' state within the specified timeout period.
 Downloading all files from container [output]...
-  Downloaded blob [taskdata1_OUTPUT.txt] from container [output] too/home/user/taskdata1_OUTPUT.txt
-  Downloaded blob [taskdata2_OUTPUT.txt] from container [output] too/home/user/taskdata2_OUTPUT.txt
-  Downloaded blob [taskdata3_OUTPUT.txt] from container [output] too/home/user/taskdata3_OUTPUT.txt
+  Downloaded blob [taskdata1_OUTPUT.txt] from container [output] to /home/user/taskdata1_OUTPUT.txt
+  Downloaded blob [taskdata2_OUTPUT.txt] from container [output] to /home/user/taskdata2_OUTPUT.txt
+  Downloaded blob [taskdata3_OUTPUT.txt] from container [output] to /home/user/taskdata3_OUTPUT.txt
   Download complete!
 Deleting containers...
 
@@ -641,17 +641,17 @@ Elapsed time: 0:06:02
 Delete job? [Y/n]
 Delete pool? [Y/n]
 
-Press ENTER tooexit...
+Press ENTER to exit...
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Чувствовать себя свободного toomake изменения слишком*python_tutorial_client.py* и *python_tutorial_task.py* tooexperiment с различными вычислений сценариев. Например, попробуйте добавить задержки выполнения слишком*python_tutorial_task.py* toosimulate длительные задачи, а также отслеживать их на портале hello. Попробуйте установить дополнительные задачи или изменить hello количество вычислительных узлов. Добавьте toocheck логику для и разрешить использование hello существующих времени выполнения toospeed пула.
+Вы можете внести изменения в *python_tutorial_client.py* и *python_tutorial_task.py*, чтобы поэкспериментировать с различными вычислительными сценариями. Например, попробуйте добавить задержку выполнения в *python_tutorial_task.py*, чтобы сымитировать длительно выполняемые задачи и следить за ними на портале. Попробуйте добавить дополнительные задачи или изменить количество вычислительных узлов. Добавьте логику для проверки и разрешите использование существующего пула, чтобы сократить время выполнения.
 
-Теперь, когда вы знакомы с hello базовый рабочий процесс пакета решения, это время toodig в дополнительные возможности toohello hello пакетной службы.
+Теперь, когда вы знакомы с основным рабочим процессом решения пакетной службы, пришло время подробно изучить дополнительные возможности пакетной службы.
 
-* Просмотрите hello [возможности пакетной обработки Обзор Azure](batch-api-basics.md) статьи, которая рекомендуется, если вы новую службу toohello.
-* Здравствуйте, запуска на другие статьи по разработке пакета в списке **разработки подробные** в hello [план обучения пакета][batch_learning_path].
-* Извлечение другой реализации обработки hello «N основных слова» рабочей нагрузки с использованием пакета в hello [TopNWords] [ github_topnwords] образца.
+* Если вы недавно используете пакетную службу, рекомендуем прочитать статью [с обзором функций пакетной службы Azure](batch-api-basics.md) .
+* Ознакомьтесь с другими статьями на тему разработки в пакетной службе в разделе **Подробные сведения о разработке** на [схеме обучения "Пакетная служба"][batch_learning_path].
+* Ознакомьтесь с другими способами обработки рабочей нагрузки "N часто употребляемых слов" с помощью пакетной службы на примере [TopNWords][github_topnwords].
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
@@ -705,10 +705,10 @@ Press ENTER tooexit...
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
 [1]: ./media/batch-python-tutorial/batch_workflow_01_sm.png "Создание контейнеров в службе хранилища Azure"
-[2]: ./media/batch-python-tutorial/batch_workflow_02_sm.png "Задача передачи приложения и ввода (данных) файлы toocontainers"
+[2]: ./media/batch-python-tutorial/batch_workflow_02_sm.png "Отправка файлов приложения и входных данных в контейнеры"
 [3]: ./media/batch-python-tutorial/batch_workflow_03_sm.png "Создание пула пакетной службы"
 [4]: ./media/batch-python-tutorial/batch_workflow_04_sm.png "Создание задания пакетной службы"
-[5]: ./media/batch-python-tutorial/batch_workflow_05_sm.png "Добавление задачи toojob"
+[5]: ./media/batch-python-tutorial/batch_workflow_05_sm.png "Добавление задач в задание"
 [6]: ./media/batch-python-tutorial/batch_workflow_06_sm.png "Мониторинг задач"
 [7]: ./media/batch-python-tutorial/batch_workflow_07_sm.png "Скачивание выходных данных задачи из службы хранилища"
 [8]: ./media/batch-python-tutorial/batch_workflow_sm.png "Рабочий процесс решения пакетной службы (полная схема)"

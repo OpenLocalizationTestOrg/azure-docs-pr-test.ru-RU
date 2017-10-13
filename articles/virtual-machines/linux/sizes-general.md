@@ -1,6 +1,6 @@
 ---
-title: "размеры виртуальных Машин Linux aaaAzure - общего назначения | Документы Microsoft"
-description: "Перечисляет размеры hello различных общего назначения, доступные для виртуальных машин Linux в Azure."
+title: "Размеры виртуальных машин Linux общего назначения в Azure | Документация Майкрософт"
+description: "Список различных размеров виртуальных машин Linux общего назначения в Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 09/07/2017
 ms.author: jonbeck
-ms.openlocfilehash: b94680d416d4ca5c911937878c907a9ed4d1d37f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e23d96574afb9a8c60f88a2d6ff02fbb587f3f00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="general-purpose-linux-vm-sizes"></a>Размеры виртуальных машин Linux общего назначения
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-general.md)]
-
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -39,3 +38,4 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Узнайте больше о том, как с помощью [единиц вычислений Azure (ACU)](../windows/acu.md) сравнить производительность вычислений для различных номеров SKU Azure.
+

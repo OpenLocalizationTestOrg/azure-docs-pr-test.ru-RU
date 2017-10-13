@@ -1,6 +1,6 @@
 ---
-title: "hello aaaExpand диска операционной системы виртуальной машины Windows в Azure | Документы Microsoft"
-description: "Разверните hello размер диска операционной системы виртуальной машины с помощью Azure Powershell в модели развертывания диспетчера ресурсов hello hello."
+title: "Расширение диска операционной системы виртуальной машины Windows в Azure | Документация Майкрософт"
+description: "Увеличение размера диска ОС виртуальной машины с использованием Azure PowerShell в модели развертывания с помощью Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: kirpasingh
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: kirpas
-ms.openlocfilehash: 07d29e63a43af2839dbb38e572c4634417922676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 31c300d0ff39853a5d2d995d00e578bb1838e4cc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooexpand-hello-os-drive-of-a-virtual-machine-in-an-azure-resource-group"></a>Как tooexpand hello диска операционной системы виртуальной машины в группу ресурсов Azure
+# <a name="how-to-expand-the-os-drive-of-a-virtual-machine-in-an-azure-resource-group"></a>Как расширить диск ОС виртуальной машины в группе ресурсов Azure
 [!INCLUDE [virtual-machine-common-expand-os-disk](../../../includes/virtual-machines-common-expand-os-disk.md)]
 

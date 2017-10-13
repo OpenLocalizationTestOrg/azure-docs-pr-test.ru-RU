@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документации выставления счетов - учебники, справочник по API | Документы Microsoft"
-description: "Узнайте, как toounderstand Azure выставления счетов, также как управлять и отслеживать использование и затраты. Руководства, часто задаваемые вопросы, справочники по API и другие документы."
+title: "Документация по выставлению счетов Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как расшифровывать счета Azure, а также как отслеживать и контролировать использование и расходы. Руководства, часто задаваемые вопросы, справочники по API и другие документы."
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 663ea1a4526ed897e963d3daa9ed41a7bdbabef0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 70aac3b0544e652ca92219fba9e6bfb405c2eadc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-billing-documentation"></a>Документация по выставлению счетов Azure
 
-Узнайте, как toounderstand оплаты, Azure и наблюдение за использованием и затраты. Учебники, часто задаваемые вопросы, ссылки на API, и другую документацию показывается, как toomanage вашей учетной записи.
+Узнайте, как расшифровывать счета Azure, а также как отслеживать использование и расходы. В руководствах, часто задаваемых вопросах, справочниках по API и других документах объясняется, как управлять своей учетной записью.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,7 +125,7 @@ ms.lasthandoff: 10/06/2017
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Дополнительные сведения hello toouse API-интерфейсы</h3>
+                        <h3>Сведения об использовании API-интерфейсов</h3>
                         <p><a href="/azure/billing-usage-rate-card-overview">Обзор API</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Партнерское решение: Cloud Cruiser</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudyn">Партнерское решение: Cloudyn</a></p>

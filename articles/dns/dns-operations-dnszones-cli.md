@@ -1,6 +1,6 @@
 ---
-title: "aaaManage DNS-зоны в DNS Azure - CLI Azure 2.0 | Документы Microsoft"
-description: "Зонами DNS можно управлять с помощью Azure CLI 2.0. В этой статье показано, как tooupdate, удалите и создайте зон DNS на Azure DNS."
+title: "Управление зонами DNS в службе DNS Azure (Azure CLI 2.0) | Документация Майкрософт"
+description: "Зонами DNS можно управлять с помощью Azure CLI 2.0. В этой статье показано, как обновлять, удалять и создавать зоны DNS в службе DNS Azure."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: gwallace
-ms.openlocfilehash: 3945a558b2db3490e50678d8395a47e55a85c8fc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1414baf9e51d648cc3a46c4f8635040b4d276910
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-dns-zones-in-azure-dns-using-hello-azure-cli-20"></a>Как toomanage зоны DNS в Azure DNS с помощью hello Azure CLI 2.0
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Как управлять зонами DNS в службе DNS Azure с помощью Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > * [Портал](dns-operations-dnszones-portal.md)
@@ -28,14 +28,14 @@ ms.lasthandoff: 10/06/2017
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 
-В этом руководстве показано, как toomanage DNS-зоны с помощью hello кросс платформенных Azure CLI, который доступен для Windows, Mac и Linux. Также можно управлять с помощью зон DNS [Azure PowerShell](dns-operations-dnszones.md) или hello портал Azure.
+В этом руководстве показано, как управлять зонами DNS с помощью кроссплатформенного интерфейса командной строки Azure, доступного для Windows, Mac и Linux. Зонами DNS также можно управлять с помощью [Azure PowerShell](dns-operations-dnszones.md) или портала Azure.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи
 
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello.
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки.
 
-* [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md) -нашей CLI для hello классический и ресурса управления развертывания моделей.
-* [Azure CLI 2.0](dns-operations-dnszones-cli.md) -нашей нового поколения CLI для модели развертывания hello ресурса управления.
+* [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md) — это интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager.
+* [Azure CLI 2.0](dns-operations-dnszones-cli.md) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager.
 
 ## <a name="introduction"></a>Введение
 
@@ -45,29 +45,29 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="before-you-begin"></a>Перед началом работы
 
-Проверьте наличие следующих элементов перед началом настройки hello.
+Перед началом настройки убедитесь, что у вас есть следующие компоненты.
 
 * Подписка Azure. Если у вас нет подписки Azure, вы можете [активировать преимущества для подписчиков MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) или [зарегистрировать бесплатную учетную запись](https://azure.microsoft.com/pricing/free-trial/).
 
-* Установить последнюю версию hello hello Azure 2.0 CLI, доступные для Windows, Linux или MAC. Дополнительные сведения можно найти по адресу [Install hello Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+* Установите последнюю версию Azure CLI 2.0 для Windows, Linux или Mac. Дополнительные сведения см. в статье [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2) (Установка Azure CLI 2.0).
 
-### <a name="sign-in-tooyour-azure-account"></a>Войдите в tooyour учетная запись Azure
+### <a name="sign-in-to-your-azure-account"></a>Вход в учетную запись Azure
 
-Откройте окно консоли и пройдите проверку подлинности с помощью своих учетных данных. Дополнительные сведения см. в журнале в tooAzure из hello Azure CLI
+Откройте окно консоли и пройдите проверку подлинности с помощью своих учетных данных. Дополнительные сведения см. в статье "Вход в Azure из командной строки Azure".
 
 ```
 az login
 ```
 
-### <a name="select-hello-subscription"></a>Выберите подписку hello
+### <a name="select-the-subscription"></a>Выбор подписки
 
-Проверьте hello подписки для учетной записи hello.
+Просмотрите подписки учетной записи.
 
 ```
 az account list
 ```
 
-Выберите, какие toouse вашей подписки Azure.
+Выберите подписку Azure.
 
 ```azurecli
 az account set --subscription "subscription name"
@@ -75,7 +75,7 @@ az account set --subscription "subscription name"
 
 ### <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Используется как расположение по умолчанию hello для ресурсов в этой группе ресурсов. Тем не менее так как все ресурсы DNS глобального, не язык, выбор hello расположение группы ресурсов не оказывает влияния на Azure DNS.
+В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Оно используется в качестве расположения по умолчанию для всех ресурсов данной группы. Но так как все ресурсы DNS глобальные, а не региональные, выбор расположения группы ресурсов не влияет на Azure DNS.
 
 Если используется существующая группа ресурсов, можно пропустить этот шаг.
 
@@ -85,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Получение справки
 
-Все команды CLI 2.0, относящихся tooAzure DNS начинаются с `az network dns`. Справка доступна для каждой команды, с помощью hello `--help` параметр (Краткая форма `-h`).  Например:
+Все команды CLI 2.0 для Azure DNS начинаются с `az network dns`. Справку для каждой команды можно отобразить с помощью параметра `--help` (краткая форма: `-h`).  Например:
 
 ```azurecli
 az network dns --help
@@ -95,17 +95,17 @@ az network dns zone create --help
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-Зоны DNS создается с помощью hello `az network dns zone create` команды. Чтобы получить справку, см. `az network dns zone create -h`.
+Зона DNS создается с помощью команды `az network dns zone create`. Чтобы получить справку, см. `az network dns zone create -h`.
 
-Hello следующий пример создает зоны DNS, которая называется *contoso.com* в группе ресурсов hello вызывается *MyResourceGroup*:
+В следующем примере создается зона DNS *contoso.com* в группе ресурсов *MyResourceGroup*:
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="toocreate-a-dns-zone-with-tags"></a>toocreate зоны DNS с тегами
+### <a name="to-create-a-dns-zone-with-tags"></a>Создание зоны DNS с тегами
 
-Hello следующем примере показано, как toocreate DNS зоны с двумя [диспетчера ресурсов Azure теги](dns-zones-records.md#tags), *проекта = Демонстрация* и *env = test*, с помощью hello `--tags` параметр (Краткая форма `-t`):
+В следующем примере демонстрируется создание зоны DNS с двумя [тегами Azure Resource Manager](dns-zones-records.md#tags) (*project = demo* и *env = test*) с помощью параметра `--tags` (краткая форма: `-t`):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
@@ -113,15 +113,15 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 ## <a name="get-a-dns-zone"></a>Получение зоны DNS
 
-использовать tooretrieve зону DNS `az network dns zone show`. Чтобы получить справку, см. `az network dns zone show --help`.
+Чтобы получить зону DNS, используйте команду `az network dns zone show`. Чтобы получить справку, см. `az network dns zone show --help`.
 
-Hello следующий пример возвращает зоны DNS hello *contoso.com* и связанные с ним данные из группы ресурсов *MyResourceGroup*. 
+В следующем примере возвращается зона DNS *contoso.com* и связанные с ней данные из группы ресурсов *MyResourceGroup*. 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
 ```
 
-Следующий пример Hello — ответ hello.
+Ниже приведен пример ответа.
 
 ```json
 {
@@ -143,20 +143,20 @@ az network dns zone show --resource-group myresourcegroup --name contoso.com
 }
 ```
 
-Обратите внимание, что записи DNS не возвращаются командой `az network dns zone show`. toolist DNS-записи, используйте `az network dns record-set list`.
+Обратите внимание, что записи DNS не возвращаются командой `az network dns zone show`. Для вывода списка записей DNS используйте `az network dns record-set list`.
 
 
 ## <a name="list-dns-zones"></a>Перечисление зон DNS
 
-использовать tooenumerate зон DNS, `az network dns zone list`. Чтобы получить справку, см. `az network dns zone list --help`.
+Чтобы перечислить зоны DNS, используйте `az network dns zone list`. Чтобы получить справку, см. `az network dns zone list --help`.
 
-Указание группы ресурсов hello перечислены только те зоны в группе ресурсов hello.
+Если указать группу ресурсов, то будут перечислены только зоны в этой группе ресурсов.
 
 ```azurecli
 az network dns zone list --resource-group MyResourceGroup
 ```
 
-Пропуск группы ресурсов hello список всех зон в подписке hello:
+Если не указать группу ресурсов, то будут перечислены все зоны в подписке.
 
 ```azurecli
 az network dns zone list 
@@ -164,11 +164,11 @@ az network dns zone list
 
 ## <a name="update-a-dns-zone"></a>Обновление зоны DNS
 
-Изменения tooa ресурсов зоны DNS можно при помощи `az network dns zone update`. Чтобы получить справку, см. `az network dns zone update --help`.
+Изменить ресурс зоны DNS можно с помощью командлета `az network dns zone update`. Чтобы получить справку, см. `az network dns zone update --help`.
 
-Эта команда не обновляет hello наборы записей DNS в зоне hello (см. [как DNS-записи tooManage](dns-operations-recordsets-cli.md)). Это свойства только используемые tooupdate сам ресурс hello зоны. Эти свойства доступны в настоящее время составляет toohello [диспетчера ресурсов Azure «теги»](dns-zones-records.md#tags) для ресурса зоны hello.
+Это команда не обновляет ни один набор записей DNS в пределах зоны (прочитайте статью [Управление записями и наборами записей DNS с помощью PowerShell](dns-operations-recordsets-cli.md)). Эта команда используется только для обновления свойств самого ресурса зоны. В настоящее время к этим свойствам относятся только [теги Azure Resource Manager](dns-zones-records.md#tags) для ресурса зоны.
 
-Hello следующем примере показано, как tooupdate hello тегов в зоне DNS. существующие теги Hello заменяются указано значение hello.
+В приведенном ниже примере показано, как обновить теги для зоны DNS. Существующие теги заменяются указанным значением.
 
 ```azurecli
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
@@ -179,13 +179,13 @@ az network dns zone update --resource-group myresourcegroup --name contoso.com -
 Зоны DNS можно удалить с помощью команды `az network dns zone delete`. Чтобы получить справку, см. `az network dns zone delete --help`.
 
 > [!NOTE]
-> Зоны DNS при удалении также удаляются все записи DNS в зоне hello. Эту операцию нельзя отменить. Если зона DNS hello, службы, используя зоны hello сможет hello зона удаляется.
+> При удалении зоны DNS также удаляются все записи DNS в этой зоне. Эту операцию нельзя отменить. Если зона DNS используется, то после ее удаления произойдет сбой служб, которые ее используют.
 >
->tooprotect от зоны случайного удаления, в разделе [как tooprotect DNS-зоны и записывает](dns-protect-zones-recordsets.md).
+>Сведения о защите от случайного зоны удаления см. в разделе [How to protect DNS zones and records](dns-protect-zones-recordsets.md) (Как защитить зоны и записи DNS).
 
-Эта команда запрашивает подтверждение. Необязательный Hello `--yes` подавляет этот запрос.
+Эта команда запрашивает подтверждение. Необязательный параметр `--yes` позволяет отключить этот запрос.
 
-Hello следующем примере показано, как toodelete hello зоны *contoso.com* из группы ресурсов *MyResourceGroup*.
+В следующем примере показано, как удалить зону *contoso.com* из группы ресурсов *MyResourceGroup*.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -193,7 +193,7 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, каким образом слишком[управления наборов записей и записи](dns-getstarted-create-recordset-cli.md) в зоне DNS.
+Узнайте, как [управлять наборами записей и записями](dns-getstarted-create-recordset-cli.md) в зоне DNS.
 
-Узнайте, каким образом слишком[делегировать tooAzure вашего домена DNS](dns-domain-delegation.md).
+Узнайте, как [делегировать свой домен в Azure DNS](dns-domain-delegation.md).
 

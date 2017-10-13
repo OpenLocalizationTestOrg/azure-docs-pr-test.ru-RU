@@ -1,6 +1,6 @@
 ---
-title: "aaaCopy или переместите tooAzure данные хранилища с помощью AzCopy в Windows | Документы Microsoft"
-description: "Используйте hello AzCopy Windows программа toomove или копирования данных tooor из больших двоичных объектов, таблиц и содержимое файла. Копирование данных tooAzure хранилища из локальных файлов или копирования данных в пределах или между учетными записями хранения. Легко перенесите на tooAzure данных хранилища."
+title: "Копирование или перемещение данных в службу хранилища Azure с помощью AzCopy для Windows | Документация Майкрософт"
+description: "Утилита AzCopy для Windows позволяет копировать и перемещать данные в содержимое BLOB-объектов, таблиц и файлов и из него. Копируйте данные в хранилище Azure из локальных файлов, а также внутри учетной записи хранения и из одной такой учетной записи в другую. Легко переносите данные в хранилище Azure."
 services: storage
 documentationcenter: 
 author: seguler
@@ -14,57 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
-ms.openlocfilehash: a063a0380b7b8e6b212d0cec276f7d0f421936ac
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="transfer-data-with-hello-azcopy-on-windows"></a>Перенесите данные с помощью hello AzCopy в Windows
-AzCopy является командной строки служебная программа, разработанная для копирования данных tooand из хранилища больших двоичных объектов Microsoft Azure, таблицы и файла с помощью простой команды с оптимальной производительностью. Можно скопировать данные из одного объекта tooanother в вашей учетной записи хранения или между учетными записями хранения.
+# <a name="transfer-data-with-the-azcopy-on-windows"></a>Перенос данных с помощью AzCopy для Windows
+AzCopy — это служебная программа командной строки. Она предназначена для копирования данных из хранилища BLOB-объектов, хранилища файлов и хранилища таблиц Microsoft Azure (и обратно) с помощью простых команд, обеспечивающих оптимальную производительность. Кроме того, она позволяет копировать данные из одного объекта в другой в пределах одной учетной записи хранения или из одной такой записи в другую.
 
 Существуют две версии AzCopy, которые можно скачать. Служебная программа AzCopy для Windows основана на платформе .NET Framework и использует параметры командной строки в формате Windows. Служебная программа [AzCopy для Linux](storage-use-azcopy-linux.md) основана на платформе .NET Core, которая нацелена на платформы Linux, использующие параметры командной строки в формате POSIX. В этой статье рассматривается AzCopy для Windows.
 
-## <a name="download-and-install-azcopy"></a>Скачивание и установка AzCopy
-### <a name="azcopy-on-windows"></a>AzCopy для Windows
-Загрузите hello [последнюю версию AzCopy в Windows](http://aka.ms/downloadazcopy).
+## <a name="download-and-install-azcopy-on-windows"></a>Скачивание и установка AzCopy для Windows
 
-#### <a name="installation-on-windows"></a>Установка в Windows
-После установки AzCopy в Windows, с помощью установщика hello, откройте окно командной строки и перейдите toohello AzCopy установочный каталог на компьютере -, где hello `AzCopy.exe` исполняемый файл находится. При желании можно добавить hello AzCopy tooyour системы путь установки. По умолчанию AzCopy установлен слишком`%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` или `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy`.
+Скачайте [последнюю версию AzCopy для Windows](http://aka.ms/downloadazcopy).
+
+После установки AzCopy для Windows с помощью установщика откройте командное окно и перейдите к каталогу установки AzCopy на компьютере, где располагается исполняемый файл `AzCopy.exe`. При необходимости можно добавить место установки AzCopy к системному пути. По умолчанию инструмент AzCopy установлен в `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` или `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy`.
 
 ## <a name="writing-your-first-azcopy-command"></a>Написание первой команды AzCopy
-Базовый синтаксис команды AzCopy Hello таков:
+
+В командах AzCopy используется следующий базовый синтаксис:
 
 ```azcopy
 AzCopy /Source:<source> /Dest:<destination> [Options]
 ```
 
-Hello следующие примеры демонстрируют различные сценарии для копирования данных tooand из BLOB-объектов Microsoft Azure, файлы и таблицы. См. toohello [AzCopy параметры](#azcopy-parameters) раздел подробное описание параметров hello, используемых в каждой выборке.
+В приведенных ниже примерах описаны разные сценарии копирования данных из хранилища больших двоичных объектов, файлов и таблиц Microsoft Azure (и обратно). Подробное объяснение параметров, используемых в каждом примере, см. в разделе [Общие сведения о параметрах](#azcopy-parameters).
 
-## <a name="blob-download"></a>Большой двоичный объект: скачивание
-### <a name="download-single-blob"></a>Скачивание одного большого двоичного объекта
+## <a name="download-blobs-from-blob-storage"></a>Скачивание больших двоичных объектов из хранилища BLOB-объектов
+
+Рассмотрим несколько способов скачивания больших двоичных объектов с помощью AzCopy.
+
+### <a name="download-a-single-blob"></a>Скачивание одного большого двоичного объекта
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
-Обратите внимание, что если папка hello `C:\myfolder` не существует, AzCopy создает его и загрузки `abc.txt ` в новую папку hello.
+Обратите внимание: если папка `C:\myfolder` не существует, AzCopy создаст ее и скачает `abc.txt ` в эту новую папку.
 
-### <a name="download-single-blob-from-secondary-region"></a>Скачивание большого двоичного объекта из дополнительного региона
+### <a name="download-a-single-blob-from-the-secondary-region"></a>Скачивание одного большого двоичного объекта из дополнительного региона
 
 ```azcopy
 AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 ```
 
-Обратите внимание: должно быть включено геоизбыточное хранилище с доступом только для чтения.
+Обратите внимание, что для доступа к дополнительному региону необходимо включить геоизбыточное хранилище с доступом только для чтения.
 
-### <a name="download-all-blobs"></a>Скачивание всех больших двоичных объектов
+### <a name="download-all-blobs-in-a-container"></a>Скачивание всех больших двоичных объектов в контейнере
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /S
 ```
 
-Предположим следующее hello большие двоичные объекты находятся в указанном контейнере hello:  
+Предположим, что в указанном контейнере находятся следующие BLOB-объекты:  
 
     abc.txt
     abc1.txt
@@ -72,7 +75,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
     vd1\a.txt
     vd1\abcd.txt
 
-После завершения операции загрузки hello hello каталог `C:\myfolder` включает hello следующие файлы:
+После скачивания в каталог `C:\myfolder` будут помещены следующие файлы:
 
     C:\myfolder\abc.txt
     C:\myfolder\abc1.txt
@@ -82,13 +85,13 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
 
 Если не задать параметр `/S`, большие двоичные объекты не будут скачаны.
 
-### <a name="download-blobs-with-specified-prefix"></a>Скачивание больших двоичных объектов с указанным префиксом
+### <a name="download-blobs-with-a-specific-prefix"></a>Скачивание больших двоичных объектов с определенным префиксом
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:a /S
 ```
 
-Предположим следующее hello большие двоичные объекты находятся в указанном контейнере hello. Все большие двоичные объекты, начинающиеся с префикса hello `a` загружаются:
+Предположим, что в указанном контейнере находятся следующие BLOB-объекты: Будут скачаны все большие двоичные объекты, имя которых начинается с префикса `a`:
 
     abc.txt
     abc1.txt
@@ -97,56 +100,59 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
     vd1\a.txt
     vd1\abcd.txt
 
-После завершения операции загрузки hello hello папку `C:\myfolder` включает hello следующие файлы:
+После скачивания в папку `C:\myfolder` будут помещены следующие файлы:
 
     C:\myfolder\abc.txt
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-префикс Hello применяется toohello виртуальному каталогу, который формирует первую часть имени большого двоичного объекта hello hello. В приведенном выше примере hello hello виртуального каталога не соответствует hello указанного префикса, поэтому оно не загружается. Кроме того, если hello параметр `\S` не указан, AzCopy не загружать все большие двоичные объекты.
+Префикс применяется к виртуальному каталогу, который формирует первую часть имени большого двоичного объекта. В указанном выше примере виртуальный каталог не соответствует заданному префиксу и поэтому не скачивается. Кроме того, если не задан параметр `\S`, то AzCopy не скачивает большие двоичные объекты.
 
-### <a name="set-hello-last-modified-time-of-exported-files-toobe-same-as-hello-source-blobs"></a>Задать время последнего изменения hello toobe экспортированные файлы так же, как hello исходный BLOB-объект
+### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Установка одинакового времени последнего изменения для экспортированных файлов и исходных больших двоичных объектов
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT
 ```
 
-Большие двоичные объекты можно также исключить из операции загрузки hello, на основе их времени последнего изменения. Например, большие двоичные объекты tooexclude, время последнего изменения — hello же или более новая, чем конечный файл hello, добавить hello `/XN` параметр:
+Исключить большие двоичные объекты из операции скачивания вы можете также на основе времени их последнего изменения. Например, если нужно исключить большие двоичные объекты, измененные в то же время, что и конечный файл, или позднее, добавьте параметр `/XN`:
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
 ```
 
-Или если вы хотите tooexclude BLOB-объектов, время последнего изменения — hello же или более ранней, чем конечный файл hello, добавьте hello `/XO` параметр:
+Если нужно исключить большие двоичные объекты, измененные в то же время, что и конечный файл, или раньше, добавьте параметр `/XO`:
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
 ```
 
-## <a name="blob-upload"></a>Большой двоичный объект: отправка
-### <a name="upload-single-file"></a>Отправка одного файла
+## <a name="upload-blobs-to-blob-storage"></a>Отправка больших двоичных объектов в хранилище BLOB-объектов
+
+Рассмотрим несколько способов отправки больших двоичных объектов с помощью AzCopy.
+
+### <a name="upload-a-single-blob"></a>Отправка одного большого двоичного объекта
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
 ```
 
-Если hello указанный контейнер не существует, AzCopy создает эту службу и передачи файла hello в него.
+Если указанный контейнер назначения не существует, AzCopy создаст его и передаст в него файл.
 
-### <a name="upload-single-file-toovirtual-directory"></a>Отправка одного файла каталога toovirtual
+### <a name="upload-a-single-blob-to-a-virtual-directory"></a>Отправка одного большого двоичного объекта в виртуальный каталог
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
-Если hello указанный виртуальный каталог не существует, AzCopy передает hello файл tooinclude hello виртуального каталога в имени (*например*, `vd/abc.txt` в приведенном выше примере hello).
+Если указанный виртуальный каталог не существует, AzCopy скачает файл и включит имя виртуального каталога в его имя (*например*, `vd/abc.txt` в указанном выше примере).
 
-### <a name="upload-all-files"></a>Отправка всех файлов
+### <a name="upload-all-blobs-in-a-folder"></a>Отправка всех больших двоичных объектов в папке
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /S
 ```
 
-Задание параметра `/S` содержимое передачи hello hello указано рекурсивно хранилища tooBlob каталога, то есть также загрузить свои файлы и все вложенные папки. Например, предположим, hello следующие файлы размещаются в папке `C:\myfolder`:
+Выбор параметра `/S` обеспечивает рекурсивную передачу указанного каталога в хранилище BLOB-объектов. Это означает, что передаются также все вложенные папки и файлы. Например, предположим, что следующие файлы находятся в папке `C:\myfolder`:
 
     C:\myfolder\abc.txt
     C:\myfolder\abc1.txt
@@ -154,7 +160,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
     C:\myfolder\subfolder\a.txt
     C:\myfolder\subfolder\abcd.txt
 
-После завершения операции отправки hello hello контейнер содержит hello следующие файлы:
+Когда передача завершится, в контейнер будут помещены следующие файлы:
 
     abc.txt
     abc1.txt
@@ -162,19 +168,19 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
     subfolder\a.txt
     subfolder\abcd.txt
 
-Если вы не укажете параметр `/S`, программа AzCopy не выполнит отправку рекурсивно. После завершения операции отправки hello hello контейнер содержит hello следующие файлы:
+Если вы не укажете параметр `/S`, программа AzCopy не выполнит отправку рекурсивно. Когда передача завершится, в контейнер будут помещены следующие файлы:
 
     abc.txt
     abc1.txt
     abc2.txt
 
-### <a name="upload-files-matching-specified-pattern"></a>Отправка файлов, соответствующих указанному шаблону
+### <a name="upload-blobs-matching-a-specific-pattern"></a>Отправка больших двоичных объектов, соответствующих определенному шаблону
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:a* /S
 ```
 
-Предполагается hello следующие файлы размещаются в папке `C:\myfolder`:
+Предположим, что следующие файлы размещены в папке `C:\myfolder`:
 
     C:\myfolder\abc.txt
     C:\myfolder\abc1.txt
@@ -183,7 +189,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
     C:\myfolder\subfolder\a.txt
     C:\myfolder\subfolder\abcd.txt
 
-После завершения операции отправки hello hello контейнер содержит hello следующие файлы:
+Когда передача завершится, в контейнер будут помещены следующие файлы:
 
     abc.txt
     abc1.txt
@@ -197,21 +203,25 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-### <a name="specify-hello-mime-content-type-of-a-destination-blob"></a>Укажите hello MIME-тип содержимого большого двоичного объекта назначения
-По умолчанию AzCopy задает тип содержимого hello BLOB-объект назначения, слишком`application/octet-stream`. Начиная с версии 3.1.0, можно явно указать тип содержимого hello через параметр hello `/SetContentType:[content-type]`. Этот синтаксис задает hello-тип содержимого для всех больших двоичных объектов в операции передачи.
+### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>Задание типа содержимого MIME целевого большого двоичного объекта
+
+По умолчанию AzCopy задает для типа содержимого целевого большого двоичного объекта значение `application/octet-stream`. Начиная с версии 3.1.0 вы можете задать тип содержимого с помощью параметра `/SetContentType:[content-type]`. Этот синтаксис задает тип содержимого для всех больших двоичных объектов в операции отправки.
 
 ```azcopy
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType:video/mp4
 ```
 
-При указании `/SetContentType` без указания значения AzCopy задает каждый BLOB-объект или тип содержимого файла, в соответствии с tooits расширение файла.
+Если вы задали параметр `/SetContentType`, не указав значения, AzCopy задаст тип содержимого для каждого большого двоичного объекта или файла в соответствии с расширением файла.
 
 ```azcopy
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType
 ```
 
-## <a name="blob-copy"></a>Большой двоичный объект: копирование
-### <a name="copy-single-blob-within-storage-account"></a>Копирование большого двоичного объекта в пределах учетной записи хранения
+## <a name="copy-blobs-in-blob-storage"></a>Копирование больших двоичных объектов в хранилище BLOB-объектов
+
+Рассмотрим несколько способов копирования больших двоичных объектов из одного расположения в другое с помощью AzCopy.
+
+### <a name="copy-a-single-blob-from-one-container-to-another-within-the-same-storage-account"></a>Копирование одного большого двоичного объекта из одного контейнера в другой в одной учетной записи хранения 
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
@@ -219,7 +229,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https:
 
 При копировании большого двоичного объекта в пределах учетной записи хранения выполняется [операция копирования на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) .
 
-### <a name="copy-single-blob-across-storage-accounts"></a>Копирование большого двоичного объекта между различными учетными записями хранения
+### <a name="copy-a-single-blob-from-one-storage-account-to-another"></a>Копирование одного большого двоичного объекта из одной учетной записи хранения в другую
 
 ```azcopy
 AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
@@ -227,47 +237,60 @@ AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:ht
 
 При копировании большого двоичного объекта между различными учетными записями хранения выполняется [операция копирования на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) .
 
-### <a name="copy-single-blob-from-secondary-region-tooprimary-region"></a>Копирование одного большого двоичного объекта из области tooprimary дополнительный регион
+### <a name="copy-a-single-blob-from-the-secondary-region-to-the-primary-region"></a>Копирование одного большого двоичного объекта из дополнительного региона в основной
 
 ```azcopy
 AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 /Dest:https://myaccount2.blob.core.windows.net/mynewcontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
 ```
 
-Обратите внимание: должно быть включено геоизбыточное хранилище с доступом только для чтения.
+Обратите внимание, что для доступа к дополнительному хранилищу необходимо включить геоизбыточное хранилище с доступом только для чтения.
 
-### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>Копирование большого двоичного объекта и его моментальных снимков между различными учетными записями хранения
+### <a name="copy-a-single-blob-and-its-snapshots-from-one-storage-account-to-another"></a>Копирование одного большого двоичного объекта и его моментальных снимков из одной учетной записи хранения в другую
 
 ```azcopy
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt /Snapshot
+AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt /Snapshot
 ```
 
-После завершения операции копирования hello hello целевой контейнер включает hello большого двоичного объекта и его моментальные снимки. При условии, что большой двоичный объект hello в приведенном выше примере hello имеются два моментальные снимки, hello контейнер включает в себя следующие hello больших двоичных объектов и моментальных снимков:
+После выполнения копирования целевой контейнер будет содержать большой двоичный объект и его моментальные снимки. Предположим, что большой двоичный объект в приведенном выше примере имеет два моментальных снимка, тогда контейнер будет содержать следующий большой двоичный объект и моментальные снимки:
 
     abc.txt
     abc (2013-02-25 080757).txt
     abc (2014-02-21 150331).txt
 
-### <a name="synchronously-copy-blobs-across-storage-accounts"></a>Синхронное копирование больших двоичных объектов между учетными записями хранения
-По умолчанию AzCopy выполняет асинхронное копирование данных между двумя конечными точками хранилища. Таким образом выполняется операция копирования hello в фоновом режиме hello, используя запасную пропускную способность емкости, которая имеет нет соглашения об уровне ОБСЛУЖИВАНИЯ с точки зрения быстродействия большой двоичный объект копируется и AzCopy периодически проверяет состояние копирования hello до завершения или не удалось выполнить копирование hello.
+### <a name="copy-all-blobs-in-a-container-to-another-storage-account"></a>Копирование всех больших двоичных объектов в контейнере в другую учетную запись хранения 
 
-Hello `/SyncCopy` параметр гарантирует, что операция копирования hello возвращает согласованные скорость. AzCopy выполняет копирование синхронной hello по загрузке больших двоичных объектов hello toocopy из hello указан источник toolocal памяти и передача их toohello местом назначения хранилища больших двоичных объектов.
+```azcopy
+AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 
+/Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /S
+```
+
+Если задать параметр /S, содержимое указанного контейнера отправится рекурсивно. Дополнительные сведения и пример см. в разделе [Отправка всех больших двоичных объектов в папке](#upload-all-blobs-in-a-folder).
+
+### <a name="synchronously-copy-blobs-from-one-storage-account-to-another"></a>Синхронное копирование больших двоичных объектов из одной учетной записи хранения в другую
+
+По умолчанию AzCopy выполняет асинхронное копирование данных между двумя конечными точками хранилища. Таким образом, операция копирования выполняется в фоновом режиме, используя свободную пропускную способность, для которой не предусмотрено соглашение об уровне обслуживания касательно скорости копирования большого двоичного объекта, и AzCopy будет периодически проверять состояние операции копирования до ее завершения или сбоя.
+
+Параметр `/SyncCopy` обеспечивает постоянную скорость операции копирования. AzCopy выполняет синхронное копирование, при котором большие двоичные объекты копируются из указанного источника в локальную память путем скачивания, а затем загружаются в целевое хранилище больших двоичных объектов.
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 ```
 
-`/SyncCopy`может создавать дополнительные исходящих стоимости копирования сравниваемых tooasynchronous hello рекомендованный подход является toouse этот параметр на виртуальной Машине Azure, hello же регионе, что ваш источник учетной записи tooavoid исходящих затраты на хранение.
+Использование параметра `/SyncCopy` может повлечь дополнительные затраты на исходящие данные по сравнению с асинхронным копированием. Во избежание таких затрат мы советуем использовать этот параметр в виртуальных машинах Azure, которые находятся в одном регионе с вашей учетной записью хранения.
 
-## <a name="file-download"></a>Файл: скачивание
-### <a name="download-single-file"></a>Скачивание одного файла
+## <a name="download-files-from-file-storage"></a>Скачивание файлов из хранилища файлов
+
+Рассмотрим несколько способов скачивания файлов с помощью AzCopy.
+
+### <a name="download-a-single-file"></a>Скачивание одного файла
 
 ```azcopy
 AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 ```
 
-Если источником является Azure файловый ресурс, то необходимо указать hello точное имя файла, hello (*например* `abc.txt`) toodownload один файл, или задайте параметр `/S` toodownload все файлы в папке hello рекурсивно. Попытка toospecify и шаблону файла и параметр `/S` вместе приведет к ошибке.
+Если исходный файл для копирования находится в общей папке Azure, необходимо указать либо точное имя файла (*например*, `abc.txt`) для скачивания одного файла, либо параметр `/S` для рекурсивного скачивания всех файлов в общей папке. Попытка одновременно задать шаблон файла и параметр `/S` приводит к ошибке.
 
-### <a name="download-all-files"></a>Скачивание всех файлов
+### <a name="download-all-files-in-a-directory"></a>Скачивание всех файлов в каталоге
 
 ```azcopy
 AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myfolder /SourceKey:key /S
@@ -275,103 +298,113 @@ AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myf
 
 Обратите внимание на то, что пустые папки не скачиваются.
 
-## <a name="file-upload"></a>Файл: отправка
-### <a name="upload-single-file"></a>Отправка одного файла
+## <a name="upload-files-to-an-azure-file-share"></a>Отправка файлов в общую папку файлов Azure
+
+Рассмотрим несколько способов отправки файлов с помощью AzCopy.
+
+### <a name="upload-a-single-file"></a>Отправка одного файла
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:abc.txt
 ```
 
-### <a name="upload-all-files"></a>Отправка всех файлов
+### <a name="upload-all-files-in-a-folder"></a>Отправка всех файлов в папке
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /S
 ```
 
-Обратите внимание на то, что пустые папки не передаются.
+Обратите внимание на то, что пустые папки не отправляются.
 
-### <a name="upload-files-matching-specified-pattern"></a>Отправка файлов, соответствующих указанному шаблону
+### <a name="upload-files-matching-a-specific-pattern"></a>Отправка файлов, соответствующих определенному шаблону
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
 ```
 
-## <a name="file-copy"></a>Файл: копирование
-### <a name="copy-across-file-shares"></a>Копирование общих файловых ресурсов
+## <a name="copy-files-in-file-storage"></a>Копирование файлов в хранилище файлов
+
+Рассмотрим несколько способов копирования файлов в общую папку Azure с помощью AzCopy.
+
+### <a name="copy-from-one-file-share-to-another"></a>Копирование из одной общей папки в другую
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
 ```
 При копировании файла между файловыми ресурсами выполняется [операция копирования на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).
 
-### <a name="copy-from-file-share-tooblob"></a>Копирование из файла tooblob общей папки
+### <a name="copy-from-an-azure-file-share-to-blob-storage"></a>Копирование из общей папки Azure в хранилище BLOB-объектов
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
 ```
-При копировании файла из файла tooblob общего ресурса, [копирование на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) выполняется операция.
+При копировании файла из файлового ресурса в большой двоичный объект выполняется [операция копирования на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).
 
-
-### <a name="copy-from-blob-toofile-share"></a>Скопируйте из папки toofile больших двоичных объектов
+### <a name="copy-a-blob-from-blob-storage-to-an-azure-file-share"></a>Копирование большого двоичного объекта из хранилища BLOB-объектов в общую папку Azure
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
 ```
-При копировании файлов из папки toofile больших двоичных объектов, [копирование на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) выполняется операция.
+При копировании файла из большого двоичного объекта в общую папку выполняется операция [копирования на стороне сервера](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx).
 
 ### <a name="synchronously-copy-files"></a>Синхронное копирование файлов
-Можно указать hello `/SyncCopy` toocopy данные из хранилища файлов tooFile хранилище, из хранилища файлов tooBlob хранилища, а из хранилища больших двоичных объектов tooFile хранилища синхронно, AzCopy происходит загрузка hello источника данных toolocal памяти и отправьте его снова toodestination. Взимается стандартная плата за исходящий трафик.
+
+Пользователь также может указать параметр `/SyncCopy` для синхронного копирования данных из хранилища файлов в хранилище файлов, из хранилища файлов в хранилище BLOB-объектов, а также из хранилища BLOB-объектов в хранилище файлов. AzCopy сделает это, скачивая данные источника в локальную память и отправляя их в место назначения. Взимается стандартная плата за исходящий трафик.
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
 ```
 
-При копировании из хранилища файлов tooBlob хранения типа больших двоичных объектов по умолчанию hello блочного BLOB-объекта, пользователь может указать параметр `/BlobType:page` toochange hello конечного большого двоичного объекта типа.
+При копировании из хранилища файлов в хранилище BLOB-объектов пользователь может указать параметр `/BlobType:page` для изменения типа большого двоичного объекта назначения. По умолчанию используется блочный BLOB-объект.
 
-Обратите внимание, что `/SyncCopy` может создавать дополнительных исходящих стоимости сравнение копирования tooasynchronous, hello рекомендуется toouse виртуальную Машину Azure, которая находится в hello hello этот параметр в одном регионе вашей исходной учетной записи tooavoid исходящих затраты на хранение.
+Обратите внимание на то, что параметр `/SyncCopy` может повлечь дополнительные затраты на исходящий трафик по сравнению с асинхронным копированием. Во избежание таких затрат мы советуем использовать этот режим на виртуальных машинах Azure, которые находятся в одном регионе с исходной учетной записью хранения.
 
-## <a name="table-export"></a>Таблица: экспорт
-### <a name="export-table"></a>Экспорт таблицы
+## <a name="export-data-from-table-storage"></a>Экспорт данных из хранилища таблиц
+
+Рассмотрим пример экспорта данных из хранилища таблиц Azure с помощью AzCopy.
+
+### <a name="export-a-table"></a>Экспорт таблицы
 
 ```azcopy
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key
 ```
 
-AzCopy записывает файл манифеста toohello указанную папку. файл манифеста Hello используется в файлах hello импорта процесса toolocate hello необходимые данные и выполнить проверку данных. файл манифеста Hello используется следующее соглашение об именовании по умолчанию hello:
+AzCopy создает файл манифеста в заданной целевой папке. Файл манифеста используется в ходе операции для обнаружения нужных файлов и проверки данных. В файле описания по умолчанию используется следующее соглашение о наименовании:
 
     <account name>_<table name>_<timestamp>.manifest
 
-Пользователь также может указать параметр hello `/Manifest:<manifest file name>` имя файла манифеста tooset hello.
+Пользователь может также указать имя файла описания в параметре `/Manifest:<manifest file name>`.
 
 ```azcopy
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /Manifest:abc.manifest
 ```
 
-### <a name="split-export-into-multiple-files"></a>Разбивка экспорта на несколько файлов
+### <a name="split-an-export-from-table-storage-into-multiple-files"></a>Разделение на несколько файлов для экспорта из хранилища таблиц
 
 ```azcopy
 AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
 ```
 
-Использует AzCopy *индекса объема* в hello разбиение данных имена файлов toodistinguish несколько файлов. индекс объема Hello состоит из двух частей, *индекс диапазона ключа секции* и *индекс разбиение файлов*. Оба индекса отсчитываются, начиная с нуля.
+AzCopy использует *индекс тома* в именах разделенных файлов для того, чтобы отличить один файл от другого. Индекс тома состоит из двух частей: *индекс диапазонов ключей секций* и *индекс разделенного файла*. Оба индекса отсчитываются, начиная с нуля.
 
-индекс диапазона ключа секции Hello равно 0, если параметр не указан пользователь hello `/PKRS`.
+Индекс диапазонов ключей разделов равен 0, если пользователь не укажет параметр `/PKRS`.
 
-Например, предположим, что после hello пользователь указывает параметр AzCopy создает два файла данных `/SplitSize`. Привет, возникающие в имена файлов данных, может быть:
+Предположим, например, что AzCopy создает два файла данных после того, как пользователь задал значение параметра `/SplitSize`. В таком случае конечные имена файлов могут выглядеть следующим образом:
 
     myaccount_mytable_20140903T051850.8128447Z_0_0_C3040FE8.json
     myaccount_mytable_20140903T051850.8128447Z_0_1_0AB9AC20.json
 
-Обратите внимание, что hello минимально возможное значение для параметра `/SplitSize` — 32 МБ. Если hello указан назначения хранилища больших двоичных объектов, AzCopy разделяет hello файла данных, его размеры при достижении ограничений размера большого двоичного объекта hello (200 ГБ), независимо от того, параметр `/SplitSize` был указан пользователем hello.
+Обратите внимание, что минимальное возможное значение для `/SplitSize` составляет 32 МБ. Если в качестве назначения задано хранилище BLOB-объектов, AzCopy разделит файл данных, как только размер файла достигнет предельного значения (200 ГБ), вне зависимости от того, задал ли пользователь параметр `/SplitSize`.
 
-### <a name="export-table-toojson-or-csv-data-file-format"></a>Экспорт таблицы tooJSON или CSV-файл данных
-AzCopy по умолчанию экспортирует файлы данных tooJSON таблиц. Можно указать параметр hello `/PayloadFormat:JSON|CSV` tooexport hello таблиц в формате JSON или CSV.
+### <a name="export-a-table-to-json-or-csv-data-file-format"></a>Экспорт таблицы в файл данных формата JSON или CSV
+
+По умолчанию AzCopy экспортирует таблицы в файлы данных в формате JSON. Чтобы экспортировать таблицы в формате JSON или CSV, вы можете задать параметр `/PayloadFormat:JSON|CSV`.
 
 ```azcopy
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
 ```
 
-При указании формат полезных данных CSV hello, AzCopy также создает файл схемы с расширением файла `.schema.csv` для каждого файла данных.
+При указании формата полезных данных CSV программа AzCopy создает файл схемы с расширением `.schema.csv` для каждого файла данных.
 
 ### <a name="export-table-entities-concurrently"></a>Экспорт объектов таблицы в несколько потоков
 
@@ -379,56 +412,64 @@ AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfold
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
 ```
 
-AzCopy начинается сущностей tooexport параллельных операций, когда пользователь hello указывает параметр `/PKRS`. Каждая операция экспортирует объем данных равный значению объема, указанного в индексе диапазонов ключей секций.
+Если пользователь задал параметр `/PKRS`, AzCopy начнет выполнение параллельных операций для экспорта сущностей. Каждая операция экспортирует объем данных равный значению объема, указанного в индексе диапазонов ключей секций.
 
-Обратите внимание, hello числом одновременных операций также определяется параметром `/NC`. AzCopy использует hello число процессоров core как значение по умолчанию hello `/NC` при копировании сущностей таблицы, даже если `/NC` не указан. Когда пользователь hello указывает параметр `/PKRS`, AzCopy использует hello меньшего количества hello двух значений — раздел диапазонов ключей и явно или неявно заданного параллельных операций - toodetermine hello toostart параллельных операций. Для получения дополнительных сведений введите `AzCopy /?:NC` hello командной строки.
+Обратите внимание на то, что количество одновременных операций можно контролировать с помощью параметра `/NC`. При копировании сущностей таблиц AzCopy использует информацию о количестве основных процессоров в качестве значения `/NC` по умолчанию для параметра `/NC`, даже если параметр не задан. Если пользователь задал параметр `/PKRS`, AzCopy использует меньшее из двух значений (индекса диапазонов ключей разделов и явно или неявно заданный параметр количества одновременных операций), чтобы определить количество одновременных операций, которые можно запустить. Для получения более подробной информации введите в командной строке `AzCopy /?:NC` .
 
-### <a name="export-table-tooblob"></a>Экспорт таблицы tooblob
+### <a name="export-a-table-to-blob-storage"></a>Экспорт таблицы в хранилище BLOB-объектов
 
 ```azcopy
 AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:https://myaccount.blob.core.windows.net/mycontainer/ /SourceKey:key1 /Destkey:key2
 ```
 
-AzCopy создает файл данных JSON в контейнер больших двоичных объектов hello следующее соглашение об именовании:
+AzCopy создает файл данных в формате JSON в контейнере больших двоичных объектов в соответствии с соглашением об именовании:
 
     <account name>_<table name>_<timestamp>_<volume index>_<CRC>.json
 
-файл данных создан Hello JSON hello формат полезных данных для минимальные метаданные: За более подробной информацией о формате полезных данных обратитесь к разделу [Формат полезных данных для служб работы с таблицами](http://msdn.microsoft.com/library/azure/dn535600.aspx).
+Созданный JSON-файл следует формату полезных метаданных. За более подробной информацией о формате полезных данных обратитесь к разделу [Формат полезных данных для служб работы с таблицами](http://msdn.microsoft.com/library/azure/dn535600.aspx).
 
-Обратите внимание, что при экспорте таблицы tooblobs, AzCopy загружает hello таблицы сущности toolocal временных файлов данных затем загружает blob toohello этих сущностей. Эти временные файлы данных помещаются в папку файла журнала hello hello пути по умолчанию «<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>», можно указать параметр / [папка журнала файла] toochange Z: hello расположение папки для файла журнала и таким образом изменить расположение файлов hello временных данных. Hello временных данных, размер файлов определяется по сущностей таблицы и размеров hello, указанным в /SplitSize параметр hello, несмотря на то, что файл временные данные hello в локальном диске удаляется сразу после ее отправлены toohello больших двоичных объектов, убедитесь в том, что у вас есть Недостаточно локальной на диске места toostore эти временные файлы данных до их удаления.
+Обратите внимание: при экспорте таблиц в большие двоичные объекты программа AzCopy скачивает объекты таблицы в локальные временные файлы данных и отправляет эти объекты в большой двоичный объект. Эти временные файлы данных помещаются в папку с файлами журнала с путем по умолчанию "<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>". Вы можете указать параметр /Z:[journal-file-folder], чтобы изменить расположение папки файлов журнала и таким образом изменить расположение временных файлов данных. Размер временных файлов данных определяется по размеру сущностей таблицы и размеру, указанному в параметре /SplitSize. Хотя временный файл данных на локальном диске будет немедленно удален после передачи в большой двоичный объект, убедитесь, что на диске достаточно места для хранения этих временных файлов данных до удаления.
 
-## <a name="table-import"></a>Таблица: импорт
-### <a name="import-table"></a>Импорт таблиц
+## <a name="import-data-into-table-storage"></a>Импорт данных в хранилище таблиц
+
+Рассмотрим пример импорта данных в хранилище таблиц Azure с помощью AzCopy.
+
+### <a name="import-a-table"></a>Импорт таблицы
 
 ```azcopy
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
-Здравствуйте, параметр `/EntityOperation` показывает, как tooinsert сущностей в hello таблицы. Возможные значения:
+Параметр `/EntityOperation` определяет способ размещения данных в таблице. Возможные значения:
 
-* `InsertOrSkip`: Пропускает существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
-* `InsertOrMerge`: Объединяет существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
-* `InsertOrReplace`: Заменяет существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
+* `InsertOrSkip`: пропускает существующую сущность или вставляет новую, если сущности нет в таблице.
+* `InsertOrMerge`: объединяет существующую сущность или вставляет новую, если сущности нет в таблице.
+* `InsertOrReplace`: заменяет существующую сущность или вставляет новую, если сущности нет в таблице.
 
-Обратите внимание, что нельзя задать параметр `/PKRS` в случае импорта hello. В отличие от сценария экспорта hello, в котором необходимо указать параметр `/PKRS` toostart параллельных операций, AzCopy параллельных операций по умолчанию включается при импорте таблицы. количество параллельных операций запуска по умолчанию Hello равно toohello равно числу процессоров core; Тем не менее, можно указать другое количество одновременных с параметром `/NC`. Для получения дополнительных сведений введите `AzCopy /?:NC` hello командной строки.
+Обратите внимание на то, что вы не можете задать значение параметра `/PKRS` в сценарии импорта данных. В отличие от сценария экспорта данных, в котором необходимо задавать параметр `/PKRS` для начала параллельных операций, при импорте таблиц программа AzCopy задает параметр параллельных операций по умолчанию. Количество потоков по умолчанию соответствует количеству основных процессоров. Однако вы можете задать свое значение с помощью параметра `/NC`. Для получения более подробной информации введите в командной строке `AzCopy /?:NC` .
 
-Обратите внимание, что программа AzCopy поддерживает импорт только для формата JSON, но не для формата CSV. AzCopy не поддерживает импорт таблиц из созданных пользователями JSON-файла и файла манифеста. Оба файла должны поступить в результате экспорта таблицы AzCopy. ошибки tooavoid, не изменяйте hello экспортируются JSON или файл манифеста.
+Обратите внимание, что программа AzCopy поддерживает импорт только для формата JSON, но не для формата CSV. AzCopy не поддерживает импорт таблиц из созданных пользователями JSON-файла и файла манифеста. Оба файла должны поступить в результате экспорта таблицы AzCopy. Чтобы избежать ошибок, не изменяйте экспортированный JSON-файл и файл манифеста.
 
-### <a name="import-entities-tootable-using-blobs"></a>Импорт сущностей tootable использование больших двоичных объектов
-Предположим, контейнер больших двоичных объектов содержит следующие hello: JSON-файл, представляющий таблиц Azure и сопутствующий файл манифеста.
+### <a name="import-entities-into-a-table-from-blob-storage"></a>Импорт сущностей в таблицу из хранилища BLOB-объектов
+
+Предположим, контейнер больших двоичных объектов содержит следующее: JSON-файл, представляющий таблицу Azure, и сопутствующий файл манифеста.
 
     myaccount_mytable_20140103T112020.manifest
     myaccount_mytable_20140103T112020_0_0_0AF395F1DC42E952.json
 
-Можно запустить hello, следующая команда tooimport сущностей в таблицу с использованием файла манифеста hello в этом контейнере BLOB-объектов:
+Чтобы импортировать объекты в таблицу с помощью файла манифеста в контейнере больших двоичных объектов, вы можете выполнить такие команды:
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:https://myaccount.table.core.windows.net/mytable /SourceKey:key1 /DestKey:key2 /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:"InsertOrReplace"
 ```
 
 ## <a name="other-azcopy-features"></a>Другие функции AzCopy
-### <a name="only-copy-data-that-doesnt-exist-in-hello-destination"></a>Копирование данных, не существует в месте назначения hello
-Hello `/XO` и `/XN` параметры позволяют ресурсы старого или более нового источника tooexclude копируются, соответственно. Если требуется только ресурсы toocopy источника, которые не существуют в конечном hello, можно указать оба параметра в hello команды AzCopy:
+
+Давайте рассмотрим некоторые другие функции AzCopy.
+
+### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>Копирование только тех данных, которых нет в целевой папке
+
+Предотвратить копирование старого или нового ресурса позволяют параметры `/XO` и `/XN` соответственно. Если нужно скопировать только те исходные ресурсы, которых нет в целевой папке, в команде AzCopy вы можете указать оба параметра:
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /XO /XN
 
@@ -436,17 +477,17 @@ Hello `/XO` и `/XN` параметры позволяют ресурсы ста
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:http://myaccount.blob.core.windows.net/mycontainer1 /SourceKey:<sourcekey> /DestKey:<destkey> /S /XO /XN
 
-Обратите внимание, что это не поддерживается при hello исходной или целевой таблицы.
+Обратите внимание, что эта функция не поддерживается, если источником или местом назначения является таблица.
 
-### <a name="use-a-response-file-toospecify-command-line-parameters"></a>Использование параметра командной строки toospecify файл ответа
+### <a name="use-a-response-file-to-specify-command-line-parameters"></a>Использование файла ответа для задания параметров командной строки
 
 ```azcopy
 AzCopy /@:"C:\responsefiles\copyoperation.txt"
 ```
 
-В файл ответа можно включить параметры командной строки AzCopy. AzCopy процессы hello параметры в файле hello, как если бы они были указаны в командной строке hello, выполнение прямых подстановки с hello содержимое файла hello.
+В файл ответа можно включить параметры командной строки AzCopy. AzCopy обрабатывает параметры в файле, как если бы он были заданы в командной строке, выполняя прямую замену содержимого файла.
 
-Предположим, файл ответов с именем `copyoperation.txt`, содержащий следующие строки hello. Каждый параметр AzCopy можно указать как в одной строке,
+Предположим, у нас имеется файл ответа с именем `copyoperation.txt`, содержащий следующие строки: Каждый параметр AzCopy можно указать как в одной строке,
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
 
@@ -458,7 +499,7 @@ AzCopy /@:"C:\responsefiles\copyoperation.txt"
     /S
     /Y
 
-AzCopy завершается неудачей, если параметр hello разбиты на две строки, как показано ниже для hello `/sourcekey` параметр:
+При выполнении AzCopy возникнет ошибка, если разделить параметр на две строки, как показано ниже на примере параметра `/sourcekey`.
 
     http://myaccount.blob.core.windows.net/mycontainer
      C:\myfolder
@@ -467,12 +508,13 @@ AzCopy завершается неудачей, если параметр hello 
     /S
     /Y
 
-### <a name="use-multiple-response-files-toospecify-command-line-parameters"></a>Использовать несколько ответа файлы toospecify параметры командной строки
+### <a name="use-multiple-response-files-to-specify-command-line-parameters"></a>Использование нескольких файлов ответа для выбора параметров командной строки
+
 Предположим, что у нас имеется файл ответа с именем `source.txt`, который указывает исходный контейнер:
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer
 
-И файл ответов с именем `dest.txt` задает целевую папку в файловой системе hello:
+И файл ответа с именем `dest.txt`, который указывает папку назначения в файловой системе:
 
     /Dest:C:\myfolder
 
@@ -480,13 +522,13 @@ AzCopy завершается неудачей, если параметр hello 
 
     /S /Y
 
-toocall AzCopy с этими файлами ответа, все они находятся в каталоге `C:\responsefiles`, используйте следующую команду:
+Чтобы вызвать AzCopy с этими файлами ответов, размещенными в каталоге `C:\responsefiles`, используйте команду:
 
 ```azcopy
 AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:<sourcekey> /@:"C:\responsefiles\options.txt"   
 ```
 
-AzCopy обрабатывает эта команда также, как если бы вы все hello отдельных параметров в командной строке hello.
+AzCopy обрабатывает эту команду, как если бы все индивидуальные параметры были включены в командную строку:
 
 ```azcopy
 AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
@@ -498,40 +540,41 @@ AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfol
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceSAS:SAS1 /DestSAS:SAS2 /Pattern:abc.txt
 ```
 
-Можно также задать SAS для контейнера hello URI:
+Кроме того, вы можете указать SAS в коде URI контейнера:
 
 ```azcopy
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1/?SourceSASToken /Dest:C:\myfolder /S
 ```
 
 ### <a name="journal-file-folder"></a>Папка файлов журнала
-Каждый раз, когда выдачи команды tooAzCopy, он проверяет, существует ли файл журнала в папке по умолчанию hello, или существует ли в папке, указанного с помощью этого параметра. Если файл журнала hello не существует в любом месте, AzCopy считает новые операции hello и создает новый файл журнала.
 
-Если существует файл журнала hello, AzCopy проверяет, соответствует ли hello командной строки, что вы ввод hello командной строки в файле журнала hello. Если две командные строки hello совпадают, AzCopy возобновляет hello незавершенные операции. Если они не совпадают, не запрошенные tooeither перезаписать hello журнала файла toostart новую операцию или toocancel hello текущей операции.
+При каждом вводе команды для AzCopy выполняется проверка на наличие файла журнала в папке по умолчанию или в папке, которая была задана с помощью данного параметра. Если в обоих местах файл журнала отсутствует, AzCopy воспринимает операцию как новую и создает новый файл журнала.
 
-Если необходимо использовать расположение по умолчанию hello toouse для файла журнала hello:
+Если файл журнала существует, AzCopy проверяет, соответствует ли введенная командная строка командной строке в файле журнала. Если две командные строки совпадают, AzCopy возобновляет незавершенную операцию. Если они не совпадают, вам будет предложено либо перезаписать файл журнала, чтобы начать новую операцию, либо отменить текущую операцию.
+
+Использование расположения по умолчанию для файла журнала.
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
 ```
 
-Если параметр опущен `/Z`, или задайте параметр `/Z` без hello путь к папке, как показано выше, AzCopy создает файл журнала hello в расположении по умолчанию hello, а именно `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`. Если уже существует файл журнала hello AzCopy возобновляет hello операции на основе файла журнала hello.
+Если опустить параметр`/Z` или задать параметр `/Z` без пути папки, как указано выше, AzCopy создает файл журнала в расположении по умолчанию: `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`. Если файл журнала уже существует, то AzCopy возобновляет операцию на основе файла журнала.
 
-Если нужно toospecify пользовательское расположение для файла журнала hello:
+Использование настраиваемого расположения для файла журнала.
 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z:C:\journalfolder\
 ```
 
-Этот пример создает файл журнала hello, если он еще не существует. Если он существует, AzCopy возобновляет hello операции на основе файла журнала hello.
+В этом примере создается файл журнала, если он еще не существует. Если такой файл существует, то AzCopy возобновляет операцию на основе файла журнала.
 
-Если нужно tooresume операции AzCopy:
+Возобновление операции AzCopy.
 
 ```azcopy
 AzCopy /Z:C:\journalfolder\
 ```
 
-В этом примере возобновляется hello последней операции, которая может не toocomplete.
+В этом примере возобновляется последняя операция, при завершении которой произошел сбой.
 
 ### <a name="generate-a-log-file"></a>Создание файла журнала
 
@@ -539,7 +582,7 @@ AzCopy /Z:C:\journalfolder\
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
 ```
 
-При указании параметра `/V` без указания пути файла toohello подробный журнал, AzCopy создает файл журнала hello в расположении по умолчанию hello, т. е `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`.
+Если задать параметр `/V` без указания пути файла к журналу с подробными данными, AzCopy создает файл журнала в расположении по умолчанию: `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`.
 
 В противном случае можно создать файл журнала в настраиваемом расположении:
 
@@ -547,185 +590,208 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/myconta
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V:C:\myfolder\azcopy1.log
 ```
 
-Обратите внимание, что при указании относительного пути, после параметра `/V`, такие как `/V:test/azcopy1.log`, то hello подробного журнала создается в текущем рабочем каталоге hello в вложенную папку с именем `test`.
+Обратите внимание, что если задать относительный путь после параметра `/V`, например `/V:test/azcopy1.log`, то журнал с подробными данными создается в текущем рабочем каталоге в подпапке с именем `test`.
 
-### <a name="specify-hello-number-of-concurrent-operations-toostart"></a>Укажите число hello toostart параллельных операций
-Параметр `/NC` указывает hello количество параллельных копирования операций. По умолчанию AzCopy запускается определенное число передачи пропускная способность hello tooincrease параллельных операций. Для операций с таблицами hello числом одновременных операций — равно toohello количество процессоров, к которым у вас есть. Для больших двоичных объектов и файла операций hello числом одновременных операций — равно 8 раз hello число процессоров, к которым у вас есть. При выполнении AzCopy в сети с низкой пропускной способностью, можно указать меньшее число /NC tooavoid сбоя, причиной конкуренции ресурсов.
+### <a name="specify-the-number-of-concurrent-operations-to-start"></a>Задание количества одновременных операций для запуска
 
-### <a name="run-azcopy-against-azure-storage-emulator"></a>Запуск AzCopy с использованием эмулятора службы хранилища Azure
-Вы можете выполнить AzCopy для hello [эмулятор хранилища Azure](storage-use-emulator.md) для больших двоичных объектов:
+Параметр `/NC` задает количество одновременных операций копирования. По умолчанию AzCopy запускает несколько одновременных операций для увеличения скорости передачи данных. При работе с таблицами количество одновременных операций равно количеству процессоров. При работе с большими двоичными объектами и файлами количество одновременных операций в восемь раз превышает количество процессоров. При выполнении AzCopy в сети с низкой пропускной способностью можно задать меньшее количество для этого параметра (/NC), чтобы избежать сбоев, вызванных конкуренцией за ресурсы.
+
+### <a name="run-azcopy-against-the-azure-storage-emulator"></a>Запуск AzCopy с использованием эмулятора хранения Azure
+
+Вы можете запустить программу AzCopy с использованием [эмулятора хранения Azure](storage-use-emulator.md) для больших двоичных объектов.
 
 ```azcopy
 AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
 ```
 
-и таблиц:
+Вы также можете запустить ее для таблиц.
 
 ```azcopy
 AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
 ```
 
 ## <a name="azcopy-parameters"></a>Параметры AzCopy
-Параметры для AzCopy описаны ниже. Можно также ввести один из следующих команд из командной строки hello для получения справки по использованию AzCopy hello:
+
+Параметры для AzCopy описаны ниже. Вы можете использовать одну из следующих команд для получения справки во время работы с AzCopy:
 
 * Подробная справка по командной строке AzCopy: `AzCopy /?`
 * Подробная справка по параметрам AzCopy: `AzCopy /?:SourceKey`
 * Примеры командной строки: `AzCopy /?:Samples`
 
 ### <a name="sourcesource"></a>/Source:"source"
-Задает hello источник данных, из которого toocopy. Hello источник может быть каталог файловой системы, контейнер больших двоичных объектов, виртуальный каталог больших двоичных объектов, общей папки хранилища, каталог файлов хранения или таблицы Azure.
+
+Параметр определяет исходные данные для копирования. Источником может быть каталог файловой системы, контейнер BLOB-объектов, виртуальный каталог BLOB-объектов, общая папка файлового хранилища, каталог файлового хранилища или таблица Azure.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="destdestination"></a>/Dest:"destination"
-Указывает toocopy hello назначения для. Hello назначения может быть каталог файловой системы, контейнер больших двоичных объектов, виртуальный каталог больших двоичных объектов, общей папки хранилища, каталог файлов хранения или таблицы Azure.
+
+Параметр определяет целевую директорию копирования. Целевой директорией может быть каталог файловой системы, контейнер BLOB-объектов, виртуальный каталог BLOB-объектов, общая папка файлового хранилища, каталог файлового хранилища и таблица Azure.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="patternfile-pattern"></a>/Pattern:"file-pattern"
-Указывает шаблон файла, указывающее, какие файлы toocopy. поведение Hello hello /Pattern параметра определяется расположение hello hello исходных данных, а также наличие hello hello рекурсивный режим. Рекурсивный режим задается с помощью параметра "/S.".
 
-Если hello указанный исходный каталог в файловой системе hello, то действуют стандартные подстановочные знаки, и предоставлен шаблон файла hello противопоставляется файлов в каталоге hello. Если параметр задан, затем AzCopy также соответствует указанному шаблону hello все файлы в подкаталогах, каталоге hello.
+Параметр определяет шаблон файла, который указывает, какие именно файлы нужно копировать. Поведение дополнительного параметра "/Pattern" определяется местоположением исходных данных, а также наличием параметра "рекурсивный режим". Рекурсивный режим задается с помощью параметра "/S.".
 
-Если указанный источник hello контейнер больших двоичных объектов или виртуального каталога, подстановочные знаки не применяются. Если параметр задан, затем AzCopy интерпретирует шаблон hello указанный файл как префикс большого двоичного объекта. Если параметр /S не указан, затем AzCopy соответствует шаблону файла hello с именами требуемый BLOB-объект.
+Если определенный источник представляет собой каталог в файловой системе, то используются стандартные подстановочные знаки, и предоставленный шаблон файла сравнивается с файлами в каталоге. При задании параметра "/S." AzCopy также выполняет сравнение определенного шаблона со всеми файлами в любых подпапках каталога.
 
-Если источником является Azure файловый ресурс, то необходимо указать hello точное имя файла, (например abc.txt) hello toocopy один файл, или укажите параметр /S toocopy все файлы в общей папки рекурсивно hello. Предпринята попытка toospecify оба файла шаблону и параметру /S вместе приведет к ошибке.
+Если определенный источник представляет собой контейнер BLOB-объектов или виртуальный каталог, то подстановочные знаки не используются. Если задан параметр "/S", то AzCopy интерпретирует заданный шаблон файла как префикс большого двоичного объекта. Если параметр "/S" не задан, то AzCopy выполняет сопоставление шаблона файла с точными именами больших двоичных объектов.
 
-AzCopy использует сопоставление с учетом регистра, когда hello/source — это контейнер больших двоичных объектов или виртуальный каталог больших двоичных объектов и Здравствуйте, используются без учета регистра, сопоставления во всех других случаях.
+Если исходный файл для копирования находится в общей папке Azure, вам необходимо либо уточнить имя файла (например, abc.txt), либо указать в "/S" параметр рекурсивного копирования всего содержания общей папки. Попытка одновременно задать шаблон файла и параметр /S приводит к ошибке.
 
-Hello файл шаблон по умолчанию, используемый, когда указан шаблон нет файла является *.* для расположения файловой системы или пустой префикс для расположения службы хранилища Azure. Задание нескольких шаблонов не поддерживается.
+В AzCopy используется сопоставление с учетом регистра, в котором /Source представляет собой контейнер больших двоичных объектов или виртуальный каталог больших двоичных объектов, а также сопоставление без учета регистра во всех остальных случаях.
+
+Если шаблон файла не указан, по умолчанию используется шаблон файла *.* для расположения файловой системы или пустой префикс для расположения службы хранилища Azure. Задание нескольких шаблонов не поддерживается.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="destkeystorage-key"></a>/DestKey:"storage-key"
-Указывает ключ учетной записи хранения hello для hello конечного ресурса.
+
+Задает ключ учетной записи хранения для ресурса в месте назначения.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="destsassas-token"></a>/DestSAS:"sas-token"
-Задает подпись общего доступа (SAS) с разрешениями на чтение и запись для назначения hello (если применимо). Заключение hello SAS в двойные кавычки, он может содержит специальные знаки командной строки.
 
-Если ресурсы назначения hello контейнер больших двоичных объектов, общей папки или таблицу, можно либо указать этот параметр, следуют маркер SAS hello или hello SAS можно указать как часть hello конечный контейнер больших двоичных объектов, общая папка или URI таблицы без этого параметра.
+Задает подпись общего доступа (SAS) с правами ЧТЕНИЯ и ЗАПИСИ для контейнера назначения (если применяется). Поместите SAS в двойные кавычки, так как подпись может содержать специальные символы командной строки.
 
-Если hello источником и назначением является обоих больших двоичных объектов, то hello целевой большой двоичный объект должен находиться на hello же учетной записи хранилища BLOB-объект источника hello.
+Если ресурс места назначения представляет собой контейнер BLOB-объекта, общую папку или таблицу, можно либо указать эту опцию перед маркером SAS, либо указать SAS как часть пути контейнера BLOB-объекта места назначения, общей папки или URI таблицы, не указывая этой опции.
+
+Если исходное место копирования и место назначения копирования являются BLOB-объектами, то BLOB-объект места назначения должен находиться в той же учетной записи хранилища, что и BLOB-объект исходного места копирования.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="sourcekeystorage-key"></a>/SourceKey:"storage-key"
-Указывает ключ учетной записи хранения hello для hello исходного ресурса.
+
+Задает ключ учетной записи хранения для исходного ресурса.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="sourcesassas-token"></a>/SourceSAS:"sas-token"
-Задает подпись общего доступа с разрешениями чтения и список для источника hello (если применимо). Заключение hello SAS в двойные кавычки, он может содержит специальные знаки командной строки.
 
-Если hello источника ресурсов — это контейнер больших двоичных объектов и подписанный URL-адрес, ни ключ предоставляется, контейнер больших двоичных объектов hello считывается через анонимный доступ.
+Задает подпись общего доступа (SAS) с правами ЧТЕНИЯ и СОЗДАНИЯ СПИСКА для исходного ресурса (если применяется). Поместите SAS в двойные кавычки, так как подпись может содержать специальные символы командной строки.
 
-Если источник hello в общей папке или таблицу, необходимо указать ключ или SAS.
+Если исходный ресурс для копирования является большим двоичным объектом и не предоставляется ни ключ, ни SAS, то контейнер считывается через анонимный доступ.
+
+Если исходный ресурс для копирования является общей папкой или таблицей, необходимо указать ключ или SAS.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="s"></a>/S
-Задает рекурсивный режим для операций копирования. В режиме рекурсивные AzCopy копирует все BLOB-объектов или файлов, соответствующих шаблону hello указанного файла, включая файлы во вложенных папках.
+
+Задает рекурсивный режим для операций копирования. В рекурсивном режиме AzCopy копирует все большие двоичные объекты или файлы, соответствующие определенному шаблону файла, в том числе файлы из подпапок.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="blobtypeblock--page--append"></a>/BlobType:"block" | "page" | "append"
-Указывает, является ли BLOB-объект назначения hello блочный BLOB-объект, большой двоичный объект страницы или добавочный большой двоичный объект. Этот параметр применяется только при передаче большого двоичного объекта. В противном случае возникает ошибка. Если целевой hello является большой двоичный объект, и этот параметр не указан, по умолчанию AzCopy создает большой двоичный объект блока.
+
+Определяет, является ли большой двоичный объект места назначения блочным, страничным или расширенным. Этот параметр применяется только при передаче большого двоичного объекта. В противном случае возникает ошибка. Если в качестве места назначения выступает большой двоичный объект и этот параметр не указан, то по умолчанию AzCopy создает блочный BLOB-объект.
 
 **Применимо к** большим двоичным объектам.
 
 ### <a name="checkmd5"></a>/CheckMD5
-Вычисляет хэш MD5 для загруженных данных и проверяет, что хэш MD5 hello хранимых в большом двоичном объекте hello или свойства Content-MD5 файла соответствует hello вычислить хэш. Проверка Hello MD5 отключена по умолчанию, поэтому эта проверка MD5 hello tooperform параметра необходимо указать при загрузке данных.
 
-Обратите внимание, что хранилище Azure не гарантирует, что hello хэш MD5, сохраненное для большого двоичного объекта hello, или файл актуален. Это клиента ответственности tooupdate hello MD5 при каждом изменении hello большого двоичного объекта или файла.
+Вычисляет хэш MD5 для загруженных данных и проверяет соответствие хэша MD5, сохраненного в BLOB-объекте, или свойства Content-MD5 файла вычисленному хэшу. Проверка MD5 выключена по умолчанию. Чтобы выполнить проверку MD5 при загрузке данных, необходимо задать этот параметр.
 
-AzCopy всегда задает hello свойства Content-MD5 для BLOB-объектов Azure или файл после его отправки toohello службы.  
+Обратите внимание, что хранилище Azure не гарантирует актуальность хэша MD5, сохраненного для BLOB-объекта или файла. Клиент несет ответственность за обновление MD5 при каждом изменении BLOB-объекта или файла.
+
+AzCopy всегда задает свойство Content-MD5 для BLOB-объекта или файла Azure после отправки его в службу.  
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="snapshot"></a>/Snapshot
-Указывает, является ли tootransfer моментальные снимки. Этот параметр допустим, только когда источник hello большого двоичного объекта.
 
-Hello моментальные снимки переносятся большого двоичного объекта переименовываются в следующем формате: .extension blob-name (время создания моментального снимка)
+Указывает, передаются ли моментальные снимки. Это параметр действителен только, если в качестве источника используется BLOB-объект.
+
+Передаваемые моментальные снимки BLOB-объекта переименовываются в следующем формате: имя BLOB-объекта (время моментального снимка).расширение.
 
 По умолчанию моментальные снимки не копируются.
 
 **Применимо к** большим двоичным объектам.
 
 ### <a name="vverbose-log-file"></a>/V:[verbose-log-file]
+
 Выводит сообщения с подробным состоянием в файл журнала.
 
-По умолчанию hello подробный файл журнала называется AzCopyVerbose.log в `%LocalAppData%\Microsoft\Azure\AzCopy`. Если указать расположение существующих файлов, для этого параметра hello подробный журнал — toothat добавленный файл.  
+По умолчанию файлу журнала с подробными данными в каталоге `%LocalAppData%\Microsoft\Azure\AzCopy` присваивается имя AzCopyVerbose.log. При указании имеющегося местоположения файла для этого параметра подробный журнал добавляется к этому файлу.  
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="zjournal-file-folder"></a>/Z:[journal-file-folder]
+
 Задает папку файла журнала для возобновления операции.
 
 AzCopy всегда поддерживает возобновление, если операция была прервана.
 
-Если этот параметр не указан или указан без путь к папке, AzCopy создает файл журнала hello в расположении по умолчанию hello, а именно % LocalAppData%\Microsoft\Azure\AzCopy.
+Если этот параметр не указан или указан без пути к папке, AzCopy создает файл журнала в папке по умолчанию, которой является папка %LocalAppData%\Microsoft\Azure\AzCopy.
 
-Каждый раз, когда выдачи команды tooAzCopy, он проверяет, существует ли файл журнала в папке по умолчанию hello, или существует ли в папке, указанного с помощью этого параметра. Если файл журнала hello не существует в любом месте, AzCopy считает новые операции hello и создает новый файл журнала.
+При каждом вводе команды для AzCopy выполняется проверка на наличие файла журнала в папке по умолчанию или в папке, которая была задана с помощью данного параметра. Если в обоих местах файл журнала отсутствует, AzCopy воспринимает операцию как новую и создает новый файл журнала.
 
-Если существует файл журнала hello, AzCopy проверяет, соответствует ли hello командной строки, что вы ввод hello командной строки в файле журнала hello. Если две командные строки hello совпадают, AzCopy возобновляет hello незавершенные операции. Если они не совпадают, не запрошенные tooeither перезаписать hello журнала файла toostart новую операцию или toocancel hello текущей операции.
+Если файл журнала существует, AzCopy проверяет, соответствует ли введенная командная строка командной строке в файле журнала. Если две командные строки совпадают, AzCopy возобновляет незавершенную операцию. Если они не совпадают, вам будет предложено либо перезаписать файл журнала, чтобы начать новую операцию, либо отменить текущую операцию.
 
-файл журнала Hello удаляется после успешного завершения операции hello.
+После успешного завершения операции файл журнала удаляется.
 
 Обратите внимание, что возобновление операции из файла журнала, созданного предыдущей версией AzCopy, не поддерживается.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="parameter-file"></a>/@:"parameter-file"
-Задает файл, который содержит параметры. AzCopy процессы hello параметры в файле hello, как если бы они были указаны в командной строке hello.
+
+Задает файл, который содержит параметры. AzCopy обрабатывает параметры в файле, как если бы они были заданы в командной строке.
 
 В файле ответа можно либо задать несколько параметров в одной строке, либо задать каждый параметр в отдельной строке. Обратите внимание, что отдельный параметр не может занимать несколько строк.
 
-Файлы ответа могут содержать комментарии строки, начинающиеся с символа # hello.
+Файлы ответа могут включать строки комментариев, начинающиеся с символа #.
 
 Можно задать несколько файлов ответов. Однако, следует иметь в виду, что AzCopy не поддерживает вложенных фалов ответов.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="y"></a>/Y
+
 Скрывает все запросы на подтверждение AzCopy.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="l"></a>/L
+
 Задает только операцию перечисления, данные не копируются.
 
-AzCopy интерпретирует hello, используя для этого параметра моделирования для выполнения командной строки hello без этого параметра/l, а также счетчики, сколько объектов будут скопированы, можно указать параметр /V во же время toocheck объектов, которые копируются в подробный журнал hello hello.
+AzCopy интерпретирует использование этого параметра как моделирование запуска команды без параметра /L и подсчитает количество копируемых объектов. Одновременно можно указать параметр /V для вывода подробной информации о копируемых объектах.
 
-Hello поведение этого параметра также определяется наличие hello hello рекурсивные параметр /S и файл шаблона режим /Pattern и расположение hello hello исходных данных.
+Поведение этого параметра также определяется местоположением исходных данных и наличием параметра рекурсивного режима /S и параметра шаблона файла /Pattern.
 
 При использовании этого параметра AzCopy необходимы права на ЧТЕНИЕ и СОЗДАНИЕ СПИСКА для местоположения исходных данных.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="mt"></a>/MT
-Задает время последнего изменения hello загруженный файл toobe Здравствуйте таким же, как hello исходного большого двоичного объекта или файла.
+
+Задает такое же время последнего изменения загруженного файла, как в исходном BLOB-объекте или файле.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="xn"></a>/XN
-Исключает более новый исходный ресурс. Hello ресурсов не копируются в случае hello время последнего изменения источника hello hello же или более новая, чем назначения.
+
+Исключает более новый исходный ресурс. Ресурс не будет копироваться, если исходный файл был изменен в то же время, что и конечный файл, или позднее.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="xo"></a>/XO
-Исключает более старый исходный ресурс. Hello ресурсов не копируется в случае hello время последнего изменения источника hello hello же или более ранней, чем назначения.
+Исключает более старый исходный ресурс. Ресурс не будет копироваться, если исходный файл был изменен в то же время, что и конечный файл, или раньше.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="a"></a>/A
-Отправляет только файлы, имеющие атрибут "архивный" hello набор.
+
+Отправляет только файлы с установленным атрибутом "Архивный".
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
-Передачи только файлы, содержащие любое hello указанный набор атрибутов.
+
+Передает файлы, содержащие любой из следующих заданных атрибутов.
 
 Доступные атрибуты:
 
@@ -743,7 +809,8 @@ Hello поведение этого параметра также определ
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="xarashcnetoi"></a>/XA:[RASHCNETOI]
-Исключает файлы, содержащие любое hello указанный набор атрибутов.
+
+Исключает файлы с любым из следующих установленных атрибутов.
 
 Доступные атрибуты:
 
@@ -761,37 +828,42 @@ Hello поведение этого параметра также определ
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="delimiterdelimiter"></a>/Delimiter:"delimiter"
-Указывает, что символ-разделитель hello использовать toodelimit виртуальные каталоги в имени большого двоичного объекта.
 
-По умолчанию использует AzCopy / как символ-разделитель hello. Однако, AzCopy поддерживает любой общий символ (например, @, # или %) в качестве разделителя. Если вам требуется один из этих специальных символов в командной строке hello tooinclude, заключите имя файла hello в двойные кавычки.
+Указывает разделитель, используемый для разделения виртуальных каталогов в имени большого двоичного объекта.
+
+По умолчанию AzCopy использует / как разделитель. Однако, AzCopy поддерживает любой общий символ (например, @, # или %) в качестве разделителя. Если необходимо ввести любой из этих специальных символов в командную строку следует заключить имя файла в двойные кавычки.
 
 Этот параметр применяется только для загрузки BLOB-объектов.
 
 **Применимо к** большим двоичным объектам.
 
 ### <a name="ncnumber-of-concurrent-operations"></a>/NC:"number-of-concurrent-operations"
-Указывает номер hello одновременных операций.
 
-AzCopy по умолчанию запускается определенное число передачи пропускная способность hello tooincrease параллельных операций. Обратите внимание, что большое количество параллельных операций в среде с низкой пропускной способностью может произойти переполнение hello сетевое подключение предотвращают hello операции полностью завершить. Регулируйте количество одновременных операций в зависимости от фактической доступной пропускной способности сети.
+Задает количество одновременных операций.
 
-Hello верхний предел для одновременных операций — 512.
+По умолчанию AzCopy запускает несколько одновременных операций для увеличения скорости передачи данных. Обратите внимание, что большое количество одновременных операций в среде с низкой пропускной способностью может переполнить сетевое подключение и помешать полному завершению операций. Регулируйте количество одновременных операций в зависимости от фактической доступной пропускной способности сети.
+
+Верхний лимит количества одновременно выполняемых операций составляет 512.
 
 **Применимо к** большим двоичным объектам, файлам, таблицам.
 
 ### <a name="sourcetypeblob--table"></a>/SourceType:"Blob" | "Table"
-Указывает, что hello `source` ресурсом является большой двоичный объект в hello локальной среде разработки, работающее в эмуляторе хранилища hello.
+
+Указывает, что ресурс `source` — это большой двоичный объект, доступный в локальной среде разработки, которая запущена в эмуляторе хранения.
 
 **Применимо к** большим двоичным объектам и таблицам.
 
 ### <a name="desttypeblob--table"></a>/DestType:"Blob" | "Table"
-Указывает, что hello `destination` ресурсом является большой двоичный объект в hello локальной среде разработки, работающее в эмуляторе хранилища hello.
+
+Указывает, что ресурс `destination` — это большой двоичный объект, доступный в локальной среде разработки, которая запущена в эмуляторе хранения.
 
 **Применимо к** большим двоичным объектам и таблицам.
 
 ### <a name="pkrskey1key2key3"></a>/PKRS:"key1#key2#key3#..."
-Разбиений hello секции диапазона ключей tooenable Экспорт таблицы данных в параллельном режиме, что повышает скорость hello hello операции экспорта.
 
-Если этот параметр не указан, AzCopy использует один поток tooexport таблицы сущности. Например, если hello пользователь указывает /PKRS: «aa #bb», а затем AzCopy запускает три параллельных операций.
+Разбивает диапазоны ключей секций для обеспечения параллельной передачи данных с целью увеличения скорости экспорта данных.
+
+Если параметр не задан, то AzCopy будет использовать одиночный поток для экспорта данных таблицы. Например, если пользователем задан параметр /PKRS:"aa#bb", то AzCopy начинает три одновременных операции передачи.
 
 Каждая операция экспортирует один из диапазонов ключей секций, как это показано на примере ниже:
 
@@ -804,68 +876,80 @@ Hello верхний предел для одновременных операц
 **Применимо к** таблицам.
 
 ### <a name="splitsizefile-size"></a>/SplitSize:"file-size"
-Указывает Здравствуйте экспортированный файл разделить размер в МБ, hello допустимое минимальное значение — 32.
 
-Если этот параметр не указан, AzCopy экспортирует tooa таблицы данных одного файла.
+Указывает размер разбитого экспортированного файла в МБ, минимальное допустимое значение — 32.
 
-Если hello таблица содержит данные BLOB-объект экспортированного tooa hello экспортированный файл достигает размера 200 hello ГБ для размера большого двоичного объекта, AzCopy разделяет hello экспортированного файла, даже если этот параметр не указан.
+Если этот параметр не задан, то AzCopy поместит экспортированные данные таблицы в один файл.
+
+Если данные таблицы экспортируются в большой двоичный объект и размер экспортированного файла достигает 200 ГБ для большого двоичного объекта, то AzCopy разделяет экспортированный файл, даже если такой параметр не задан.
 
 **Применимо к** таблицам.
 
 ### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/EntityOperation:"InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
-Задает поведение при импорте данных таблицы hello.
 
-* InsertOrSkip - пропускает существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
-* InsertOrMerge - объединяет существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
-* InsertOrReplace - заменяет существующую сущность или вставляет новую сущность, если она не существует в таблице hello.
+Задает поведение импортированных данных таблиц.
+
+* InsertOrSkip — Пропускает существующий объект или вставляет новый, если объект не существует в таблице.
+* InsertOrMerg — Объединяет существующий объект или вставляет новый, если объект не существует в таблице.
+* InsertOrReplace — Заменяет существующий объект или вставляет новый, если объект не существует в таблице.
 
 **Применимо к** таблицам.
 
 ### <a name="manifestmanifest-file"></a>/Manifest:"manifest-file"
-Указывает файл манифеста hello hello таблицы экспорта и импорта операции.
 
-Этот параметр является необязательным, во время операции экспорта hello, AzCopy создает файл манифеста с предопределенным именем, если этот параметр не указан.
+Задает файл описания для операций экспорта и импорта таблицы.
 
-Этот параметр является обязательным, во время операции импорта hello поиска файлов данных hello.
+Во время операции экспорта этот параметр является необязательным. Если он не указан, AzCopy создаст файл манифеста с предварительно определенным именем.
+
+Этот параметр является обязательным во время операции импорта для обнаружения файлов данных.
 
 **Применимо к** таблицам.
 
 ### <a name="synccopy"></a>/SyncCopy
-Указывает ли toosynchronously копирование больших двоичных объектов или файлов между двумя конечными точками службы хранилища Azure.
 
-По умолчанию AzCopy использует серверное асинхронное копирование. Укажите этот параметр tooperform синхронного копирования, который загружает большие двоичные объекты или файлы памяти toolocal и отправляет их tooAzure хранилища.
+Указывает, копируются ли большие двоичные объекты или файлы синхронно между двумя конечными точками службы хранилища Azure.
 
-Этот параметр можно использовать при копировании файлов в хранилище больших двоичных объектов в хранилище файлов или из большого двоичного объекта хранилища tooFile хранилища, и наоборот.
+По умолчанию AzCopy использует серверное асинхронное копирование. Задайте этот параметр, чтобы выполнить синхронное копирование, при котором большие двоичные объекты или файлы скачиваются в локальную память, а затем передаются в службу хранилища Azure.
+
+Вы можете использовать этот параметр для копирования файлов в хранилище больших двоичных объектов и хранилище файлов или из хранилища больших двоичных объектов в хранилище файлов и наоборот.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="setcontenttypecontent-type"></a>/SetContentType:"content-type"
-Задает тип содержимого MIME hello для целевых больших двоичных объектов или файлов.
 
-Наборы AzCopy hello тип содержимого большого двоичного объекта или файла tooapplication/octet-stream по умолчанию. Можно задать тип содержимого hello для всех больших двоичных объектов или файлы, явно указав значение для этого параметра.
+Задает тип содержимого MIME для целевых больших двоичных объектов или файлов.
 
-При указании этого параметра без указания значения AzCopy задает каждый BLOB-объект или тип содержимого файла, в соответствии с tooits расширение файла.
+AzCopy по умолчанию задает тип содержимого для большого двоичного объекта или файла application/octet-stream. Вы можете задать тип содержимого для всех больших двоичных объектов или файлов, указав значение для этого параметра.
+
+Если вы задали этот параметр, не указав значения, AzCopy установит тип содержимого для каждого большого двоичного объекта или содержимого файла в соответствии с расширением файла.
 
 **Применимо к** большим двоичным объектам и файлам.
 
 ### <a name="payloadformatjson--csv"></a>/PayloadFormat:"JSON" | "CSV"
-Задает формат hello hello таблицы экспортированного файла данных.
+
+Указывает формат файла экспортируемых данных таблицы.
 
 Если этот параметр не указан, по умолчанию AzCopy экспортирует файл данных таблицы в формате JSON.
 
 **Применимо к** таблицам.
 
 ## <a name="known-issues-and-best-practices"></a>Известные проблемы и рекомендации
-### <a name="limit-concurrent-writes-while-copying-data"></a>Ограничение одновременных операций записи при копировании данных
-При копировании больших двоичных объектов или файлов с помощью AzCopy, имейте в виду, возможно, изменение другое приложение hello данных при копировании его. Если это возможно убедитесь, hello данных при копировании не изменяется во время операции копирования hello. Например при копировании виртуальный жесткий ДИСК, связанный с виртуальной машины Azure, убедитесь, что нет других приложений в настоящее время пишете toohello виртуального жесткого диска. Toodo хорошим способом это по аренде toobe ресурсов hello копируются. Кроме того можно сначала создать моментальный снимок виртуального жесткого диска hello и скопируйте hello моментального снимка.
 
-Если не может помешать записи tooblobs или файлы, пока они копируются, то следует помнить, заданием hello hello время завершения работы других приложений, hello скопированных ресурсов может больше нет полной четности с ресурсами источника hello.
+Давайте рассмотрим некоторые известные проблемы и рекомендации.
+
+### <a name="limit-concurrent-writes-while-copying-data"></a>Ограничение одновременных операций записи при копировании данных
+
+При копировании BLOB-объектов или файлов с помощью AzCopy следует иметь в виду, что другое приложение может изменять данные в то время, когда они копируются. Если это возможно, обеспечьте, чтобы во время операции копирования не происходило изменение копируемых данных. Например, при копировании VHD, связанного с виртуальной машиной Azure, убедитесь в том, что никакое другое приложение в это время не записывает данные на VHD. Для этого рекомендуется сдать ресурс, который нужно скопировать, в аренду. В качестве альтернативы можно сначала создать моментальный снимок VHD, а затем скопировать его.
+
+Если не удается предотвратить запись в BLOB-объекты или файлы во время их копирования со стороны других приложений, следует иметь в виду, что к моменту завершения задания скопированные ресурсы могут больше не иметь полного соответствия с исходными ресурсами.
 
 ### <a name="run-one-azcopy-instance-on-one-machine"></a>Запускайте один экземпляр AzCopy на одном компьютере.
-AzCopy является использование hello спроектированный toomaximize скорость передачи данных ресурсов tooaccelerate машины hello, мы рекомендуем запустить только один экземпляр AzCopy на одном компьютере и укажите параметр hello `/NC` при необходимости несколько параллельных операций. Для получения дополнительных сведений введите `AzCopy /?:NC` hello командной строки.
+
+AzCopy предназначен для максимального использования ресурсов компьютера для ускорения передачи данных. Рекомендуется запускать только один экземпляр AzCopy на одном компьютере и указать параметр `/NC`, если требуется несколько параллельных операций. Для получения более подробной информации введите в командной строке `AzCopy /?:NC` .
 
 ### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>Включайте FIPS-совместимые алгоритмы MD5 для AzCopy при использовании FIPS-совместимых алгоритмов для шифрования, хэширования и подписывания.
-AzCopy по умолчанию использует .NET MD5 реализацию toocalculate hello MD5 при копировании объектов, но существуют некоторые требования безопасности, которым требуется параметром совместимости MD5 AzCopy tooenable FIPS.
+
+По умолчанию в AzCopy используется реализация .NET MD5 для вычисления MD5 при копировании объектов, но существует ряд требований безопасности, при которых в AzCopy необходимо включать FIPS-совместимую реализацию MD5.
 
 Для этого можно создать файл app.config `AzCopy.exe.config` со свойством `AzureStorageUseV1MD5` и поместить его в папку с файлом AzCopy.exe.
 
@@ -876,20 +960,23 @@ AzCopy по умолчанию использует .NET MD5 реализаци�
       </appSettings>
     </configuration>
 
-Для свойства «AzureStorageUseV1MD5» • True: значение по умолчанию hello, AzCopy использует реализацию .NET MD5.
-• False — AzCopy использует FIPS-совместимый алгоритм MD5.
+Для свойства AzureStorageUseV1MD5 задайте одно из следующих значений:
 
-Обратите внимание, что по умолчанию на компьютере Windows FIPS-совместимые алгоритмы отключены. Эту настройку можно изменить, набрав в окне запуска команд "secpol.msc" и выбрав "Настройки безопасности -> Локальные политики -> Параметры безопасности -> Системная криптография: Использовать FIPS-совместимые алгоритмы для шифрования, хеширования и подписывания".
+* True — значение по умолчанию, AzCopy использует реализацию .NET MD5.
+* False — AzCopy использует FIPS-совместимый алгоритм MD5.
+
+По умолчанию FIPS-совместимые алгоритмы отключены для Windows. Вы можете изменить этот параметр политики на своем компьютере. В окне запуска команд (Windows+R) введите secpol.msc, чтобы открыть окно **Локальная политика безопасности**. В окне **настроек безопасности** выберите **Параметры безопасности** > **Локальные политики** > **Параметры безопасности**. Найдите политику **Системная криптография: использовать FIPS-совместимые алгоритмы для шифрования, хэширования и подписывания**. Дважды щелкните ее, чтобы в столбце **Параметр безопасности** отобразилось значение.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о хранилище Azure и AzCopy см. в разделе hello следующие ресурсы:
+
+Для получения дополнительной информации о службе хранилища Azure и AzCopy ознакомьтесь со следующими ресурсами.
 
 ### <a name="azure-storage-documentation"></a>Документация по хранилищу Azure:
-* [Введение tooAzure хранилища](../storage-introduction.md)
-* [Как toouse хранилища BLOB-объектов из .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [Как toouse хранения файлов из .NET](../storage-dotnet-how-to-use-files.md)
-* [Как toouse хранилище таблиц из .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Как управлять toocreate, или удалить учетную запись хранения](../storage-create-storage-account.md)
+* [Введение в хранилище Azure](../storage-introduction.md)
+* [Использование хранилища BLOB-объектов из .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [Использование хранилища файлов из .NET](../storage-dotnet-how-to-use-files.md)
+* [Использование табличного хранилища из .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
+* [Создание и удаление учетной записи хранения, а также управление ею](../storage-create-storage-account.md)
 * [Перенос данных с помощью AzCopy для Linux](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Записи блога по хранилищу Azure:
@@ -898,7 +985,6 @@ AzCopy по умолчанию использует .NET MD5 реализаци�
 * [AzCopy: выпуск общедоступной версии AzCopy 3.0 и предварительной версии AzCopy 4.0 с поддержкой таблиц и файлов](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 * [AzCopy: оптимизированные сценарии для крупномасштабного копирования](http://go.microsoft.com/fwlink/?LinkId=507682)
 * [AzCopy: поддержка геоизбыточного хранилища для доступа с правом чтения](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy: передача данных с использованием перезапускаемого режима и маркера SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy – Transfer data with re-startable mode and SAS Token](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx) (AzCopy: передача данных с использованием перезапускаемого режима и маркера SAS)
 * [AzCopy: использование копирования больших двоичных объектов между разными учетными записями](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: отправка и скачивание файлов для больших двоичных объектов Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

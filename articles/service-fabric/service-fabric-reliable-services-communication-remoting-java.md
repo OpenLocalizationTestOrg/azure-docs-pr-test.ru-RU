@@ -1,6 +1,6 @@
 ---
-title: "aaaService удаленного взаимодействия в Azure Service Fabric | Документы Microsoft"
-description: "Remoting Service Fabric позволяет клиентам и службам toocommunicate при помощи служб с помощью удаленного вызова процедуры."
+title: "Удаленное управление службой в Azure Service Fabric | Документация Майкрософт"
+description: "Удаленное взаимодействие Service Fabric позволяет осуществлять обмен данными между клиентами и службами с помощью удаленного вызова процедур."
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1177a5ede91352dc61422f2df7424b0d5645147d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc4a362b5737bb424ca2c196c85f4c51b6ee5e30
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Удаленное взаимодействие службы с Reliable Services
 > [!div class="op_single_selector"]
@@ -26,15 +26,15 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Платформа надежного обмена Hello предоставляет tooquickly механизм удаленного взаимодействия и легко настроить удаленного вызова процедур для службы.
+Платформа Reliable Services предоставляет механизм удаленного взаимодействия для быстрой и простой настройки удаленного вызова процедур.
 
 ## <a name="set-up-remoting-on-a-service"></a>Настройка удаленного доступа в службе
 Процесс настройки удаленного доступа для службы состоит из двух простых этапов.
 
-1. Создайте интерфейс для tooimplement вашей службы. Этот интерфейс определяет hello методы, которые доступны для удаленного вызова процедур для службы. Hello методы должны быть возвращающий задачу асинхронный метод. должен быть реализован интерфейс Hello `microsoft.serviceFabric.services.remoting.Service` toosignal, hello службы имеет интерфейс удаленного взаимодействия.
-2. Используйте прослушиватель удаленного взаимодействия в службе. Это реализация `CommunicationListener` , которая предоставляет возможности удаленного взаимодействия. `FabricTransportServiceRemotingListener`можно использовать toocreate прослушивателя удаленного взаимодействия, используя протокол удаленного доступа по умолчанию hello.
+1. Создание интерфейса для реализации в службе. Этот интерфейс определяет методы, которые будут доступны для удаленного вызова процедур в службе. Эти методы должны быть асинхронными методами, возвращающими задачи. Интерфейс должен реализовать `microsoft.serviceFabric.services.remoting.Service` , чтобы показать, что служба имеет интерфейс удаленного взаимодействия.
+2. Используйте прослушиватель удаленного взаимодействия в службе. Это реализация `CommunicationListener` , которая предоставляет возможности удаленного взаимодействия. `FabricTransportServiceRemotingListener` можно использовать, чтобы создать прослушиватель удаленного взаимодействия с использованием транспортного протокола удаленного взаимодействия по умолчанию.
 
-Например hello следующей без сохранения состояния службы предоставляет один метод tooget «Hello World», через удаленный вызов процедуры.
+Например, приведенная ниже служба без отслеживания состояния предоставляет один метод для получения "Hello World" посредством удаленного вызова процедуры.
 
 ```java
 import java.util.ArrayList;
@@ -69,12 +69,12 @@ class MyServiceImpl extends StatelessService implements MyService {
 ```
 
 > [!NOTE]
-> аргументы Hello и hello возвращают типы в интерфейс hello службы может быть любой простой, сложных или пользовательских типов, но они должны быть сериализуемыми.
+> Аргументы и возвращаемые данные в интерфейсе службы могут иметь простые, сложные или настраиваемые типы, но они должны быть сериализуемыми.
 >
 >
 
 ## <a name="call-remote-service-methods"></a>Вызов удаленных методов службы
-Вызов методов службы с помощью удаленного взаимодействия стека hello делается с помощью toohello локальный прокси-службы через hello `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` класса. Hello `ServiceProxyBase` метод создает локальный прокси-сервер, используя же интерфейс, hello службы реализует hello. С прокси-сервера можно просто вызвать методы интерфейса hello удаленно.
+Вызов методов в службе с помощью стека удаленного взаимодействия осуществляется с помощью локального прокси-сервера для службы через класс `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` . Метод `ServiceProxyBase` создает локальный прокси-сервер, используя тот же интерфейс, который реализует служба. С помощью этого прокси можно без труда удаленно вызвать методы в интерфейсе.
 
 ```java
 
@@ -84,24 +84,24 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 
 ```
 
-Hello удаленного взаимодействия framework распространяет исключения на клиенте toohello hello службы. Поэтому обработка исключений логику на приветствия клиента с помощью `ServiceProxyBase` может напрямую обрабатывать исключения, которые hello служба вызывает исключение.
+Платформа удаленного взаимодействия распространяет исключения, созданные в службе, на клиент. Поэтому логика обработки исключений на стороне клиента с использованием `ServiceProxyBase` может напрямую обрабатывать порождаемые службой исключения.
 
 ## <a name="service-proxy-lifetime"></a>Время существования ServiceProxy
-Создание ServiceProxy — упрощенная операция, поэтому пользователь может создать столько прокси-серверов, сколько нужно. Прокси-сервер службы можно использовать повторно, если он нужен пользователю. Пользователь может повторно использовать hello один прокси-сервер при возникновении исключения. Каждый ServiceProxy содержит сообщения toosend клиентом обмена данными по сети hello. При вызове API, у нас есть внутренняя проверка toosee Если связи клиента является допустимым. На основании этого результата, создаются заново hello связи клиента. Поэтому пользователь не обязательно serviceproxy toorecreate при возникновении исключения.
+Создание ServiceProxy — упрощенная операция, поэтому пользователь может создать столько прокси-серверов, сколько нужно. Прокси-сервер службы можно использовать повторно, если он нужен пользователю. Пользователь может повторно использовать один и тот же прокси-сервер при возникновении исключения. Каждый ServiceProxy содержит клиент обмена данными, используемый для отправки сообщений по сети. При вызове API выполняется внутренняя проверка допустимости клиента обмена данными. В зависимости от ее результата можно будет повторно создать клиент обмена данными. Поэтому пользователю не требуется заново создавать ServiceProxy при возникновении исключения.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Время существования ServiceProxyFactory
 [FabricServiceProxyFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) — это фабрика, которая создает прокси-сервер для различных интерфейсов удаленного взаимодействия. Если вы используете API `ServiceProxyBase.create` для создания прокси-сервера, то платформа создает `FabricServiceProxyFactory`.
-Это полезно toocreate один вручную при необходимости toooverride [ServiceRemotingClientFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) свойства.
+При необходимости переопределить свойства [ServiceRemotingClientFactory](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) имеет смысл создать фабрику вручную.
 Создание фабрики — ресурсоемкая операция. `FabricServiceProxyFactory` хранит кэш клиента обмена данными.
-Лучший способ — toocache `FabricServiceProxyFactory` то же время.
+Рекомендуется кэшировать `FabricServiceProxyFactory` на как можно больший период времени.
 
 ## <a name="remoting-exception-handling"></a>Обработка исключений удаленного взаимодействия
-Все hello удаленного исключение, созданное API службы, как RuntimeException или FabricException отправляются назад toohello клиента.
+Все исключения удаленного взаимодействия, порождаемые API службы, отправляются обратно в клиент как RuntimeException или FabricException.
 
-ServiceProxy обрабатывать все исключения отработки отказа для раздела службы hello она создана для. Повторно разрешает hello конечных точек, если имеется вызов hello Exceptions(Non-Transient Exceptions) отработки отказа и повторные попытки с hello правильную конечную точку. Число повторных попыток для исключения отработки отказа не ограничено.
-В случае TransientExceptions только повторяет вызов hello.
+ServiceProxy обрабатывает все исключения отработки отказа для секции службы, для которого он создан. Он повторно разрешает конечные точки в случае исключений отработки отказа (повторяющихся исключений) и повторяет вызов к правильной конечной точке. Число повторных попыток для исключения отработки отказа не ограничено.
+В случае исключений TransientException только повторяется попытка вызова.
 
-Параметры повтора по умолчанию определяются [OperationRetrySettings] (https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Пользователь может настроить эти значения, передав конструктору tooServiceProxyFactory OperationRetrySettings объекта.
+Параметры повтора по умолчанию определяются [OperationRetrySettings] (https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings). Пользователь может настроить эти значения, передав объект OperationRetrySettings в конструктор ServiceProxyFactory.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Защита обмена данными для Reliable Services](service-fabric-reliable-services-secure-communication.md)

@@ -1,6 +1,6 @@
 ---
-title: "Источник OpenShift tooAzure aaaDeploy | Документы Microsoft"
-description: "Узнайте toodeploy OpenShift источника tooAzure виртуальных машин."
+title: "Развертывание OpenShift Origin в Azure | Документация Майкрософт"
+description: "Узнайте, как развернуть OpenShift Origin на виртуальных машинах Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: jbinder
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: jbinder
-ms.openlocfilehash: a67450c46da41134a5f6c669a9e54e14773ac5b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e03da05625e440eab29ccc28a2343d3433fc7607
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-openshift-origin-tooazure-virtual-machines"></a>Развертывание источника OpenShift tooAzure виртуальные машины 
+# <a name="deploy-openshift-origin-to-azure-virtual-machines"></a>Развертывание OpenShift Origin на виртуальных машинах Azure 
 
-[OpenShift Origin](https://www.openshift.org/) — это платформа контейнера с открытым исходным кодом, созданная на основе [Kubernetes](https://kubernetes.io/). Он упрощает процесс hello развертывания, масштабирование и эксплуатации приложения с несколькими клиентами. 
+[OpenShift Origin](https://www.openshift.org/) — это платформа контейнера с открытым исходным кодом, созданная на основе [Kubernetes](https://kubernetes.io/). Она упрощает развертывание, масштабирование и эксплуатацию приложений с несколькими клиентами. 
 
-В этом руководстве описывается, как hello toodeploy OpenShift источника на виртуальных машинах Azure с помощью Azure CLI и шаблоны Azure Resource Manager. Из этого руководства вы узнаете, как выполнить следующие задачи:
+В этом руководстве описывается развертывание OpenShift Origin на виртуальных машинах Azure с помощью шаблонов Azure CLI и Azure Resource Manager. Из этого руководства вы узнаете, как выполнять следующие задачи:
 
 > [!div class="checklist"]
-> * Создание ключей SSH для кластера hello OpenShift KeyVault toomanage.
+> * создать хранилище ключей KeyVault, чтобы управлять ключами SSH для кластера OpenShift;
 > * развернуть кластер OpenShift на виртуальных машинах Azure; 
-> * Установка и настройка hello [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) toomanage hello кластера.
-> * Настройка развертывания OpenShift hello.
+> * установить и настроить [интерфейс командной строки OpenShift](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) для управления кластером;
+> * настроить развертывание OpenShift.
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
 
-В этом кратком руководстве требует hello Azure CLI версии 2.0.8 или более поздней версии. версия toofind hello, запустите `az --version`. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
+Для работы с этим кратким руководством требуется Azure CLI версии не ниже 2.0.8. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-tooazure"></a>Войдите в tooAzure 
-Войдите в подписку Azure совместно с hello tooyour [входа az](/cli/azure/#login) команды и выполните hello на экране инструкции или нажмите кнопку **опробовать** toouse оболочки облака.
+## <a name="log-in-to-azure"></a>Вход в Azure 
+Войдите в подписку Azure с помощью команды [az login](/cli/azure/#login) и следуйте инструкциям на экране или щелкните **Попробовать**, чтобы использовать Cloud Shell.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
+Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение.
+В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
 
 ```azurecli 
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>создать хранилище ключей;
-Создать ключи SSH для кластера hello hello toostore KeyVault hello [az keyvault создать](/cli/azure/keyvault#create) команды.  
+Создайте хранилище ключей KeyVault, где будут храниться ключи SSH для кластера, с помощью команды [az keyvault create](/cli/azure/keyvault#create).  
 
 ```azurecli 
 az keyvault create --resource-group myResourceGroup --name myKeyVault \
@@ -65,19 +65,19 @@ az keyvault create --resource-group myResourceGroup --name myKeyVault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Создание ключа SSH 
-SSH-ключ является toohello доступа необходимые toosecure источника OpenShift кластера. Создать пару ключей SSH с помощью hello `ssh-keygen` команды. 
+Ключ SSH необходим для обеспечения безопасного доступа к кластеру OpenShift Origin. Создайте пару ключей SSH с помощью команды `ssh-keygen`. 
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Hello пару ключей SSH, создаваемые вами, не должны иметь парольную фразу.
+> Создаваемая пара ключей SSH не должна содержать парольную фразу.
 
-Дополнительные сведения о ключах SSH в Windows [как ключи toocreate SSH в Windows](/azure/virtual-machines/linux/ssh-from-windows).
+Дополнительные сведения о ключах SSH в Windows см. в статье [Использование ключей SSH с Windows в Azure](/azure/virtual-machines/linux/ssh-from-windows).
 
 ## <a name="store-ssh-private-key-in-key-vault"></a>Сохранение закрытого ключа SSH в Key Vault
-Hello OpenShift развертывания использует hello SSH-ключ создан доступа toosecure toohello OpenShift master. Развертывание toosecurely tooenable hello извлечь ключ SSH hello, hello ключ хранится в хранилище ключей с помощью hello следующую команду.
+Развертывание OpenShift использует созданный ключ SSH, чтобы защитить доступ к основному кластеру OpenShift. Чтобы обеспечить для развертывания безопасное извлечение ключа SSH, сохраните ключ в Key Vault с помощью команды ниже:
 
 # <a name="enabled-for-template-deployment"></a>Включение для развертывания шаблона
 ```azurecli
@@ -85,16 +85,16 @@ az keyvault secret set --vault-name KeyVaultName --name OpenShiftKey --file ~/.s
 ```
 
 ## <a name="create-a-service-principal"></a>Создание субъекта-службы 
-OpenShift взаимодействует с Azure, используя имя пользователя и пароль или субъект-службу. Субъект-служба Azure является удостоверением безопасности, которое можно использовать с приложениями, службами и инструментами автоматизации, такими как OpenShift. Управление и определить hello разрешения участника службы hello toowhat операции можно выполнять в Azure. безопасность tooimprove просто задать имя пользователя и пароль, этот пример создает базовую службу участника.
+OpenShift взаимодействует с Azure, используя имя пользователя и пароль или субъект-службу. Субъект-служба Azure является удостоверением безопасности, которое можно использовать с приложениями, службами и инструментами автоматизации, такими как OpenShift. Вы можете управлять разрешениями на то, какие операции может выполнять субъект-служба в Azure, и определять их. Для обеспечения более высокого уровня безопасности, чем при предоставлении имени пользователя и пароля, в этом примере создается базовая субъект-служба.
 
-Создание службы с основной [az ad sp создать для rbac](/cli/azure/ad/sp#create-for-rbac) и hello учетные данные, которые требуется OpenShift выходные данные:
+Создайте субъект-службу с помощью команды [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) и выведите учетные данные, необходимые для OpenShift:
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
           --role Contributor --password {strong password} \
           --scopes $(az group show --name myResourceGroup --query id)
 ```
-Запишите команда hello возвращать свойство appId hello.
+Запишите свойство appId, возвращенное из команды.
 ```json
 {
   "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
@@ -109,13 +109,13 @@ az ad sp create-for-rbac --name openshiftsp \
 
 Дополнительные сведения о субъект-службе см. в статье [Создание субъекта-службы Azure с помощью Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-## <a name="deploy-hello-openshift-origin-template"></a>Развертывание hello OpenShift источника шаблона
+## <a name="deploy-the-openshift-origin-template"></a>Развертывание шаблона OpenShift Origin
 Далее развернем OpenShift Origin с помощью шаблона Azure Resource Manager. 
 
 > [!NOTE] 
-> Hello следующая команда требует az CLI 2.0.8 или более поздней версии. Вы можете проверить hello az CLI версии с hello `az --version` команды. hello tooupdate версии CLI. в разделе [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).
+> Для выполнения следующей команды необходим интерфейс командной строки версии не ниже 2.0.8. Узнать свою версию CLI вы можете с помощью команды `az --version`. Чтобы обновить версию CLI, ознакомьтесь со статьей [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-Используйте hello `appId` значение из hello участника службы, созданные ранее для hello `aadClientId` параметра.
+Используйте значение `appId` созданной ранее субъект-службы для параметра `aadClientId`.
 
 ```azurecli 
 az group deployment create --name myOpenShiftCluster \
@@ -131,7 +131,7 @@ az group deployment create --name myOpenShiftCluster \
         aadClientId={appId} \
         aadClientSecret={strong password} 
 ```
-Hello развертывания может занять до минуты toocomplete too20. Hello URL-адрес консоли OpenShift hello и DNS-имя hello OpenShift мастер находится на печать toohello терминалов после завершения развертывания hello.
+Развертывание может занять до 20 минут. После завершения развертывания в терминале появятся сведения об URL-адресе консоли OpenShift, а также DNS-имя основного кластера OpenShift.
 
 ```json
 {
@@ -139,15 +139,15 @@ Hello развертывания может занять до минуты tooco
   "OpenShift Master SSH": "ocpadmin@myopenshiftmaster.cloudapp.azure.com"
 }
 ```
-## <a name="connect-toohello-openshift-cluster"></a>Подключите кластер OpenShift toohello
-После завершения развертывания hello подключения консоли OpenShift toohello, с помощью браузера hello, с помощью hello `OpenShift Console Uri`. Кроме того можно подключаться toohello OpenShift master с помощью hello следующую команду.
+## <a name="connect-to-the-openshift-cluster"></a>Подключение к кластеру OpenShift
+После завершения развертывания подключитесь к консоли OpenShift через браузер с помощью `OpenShift Console Uri`. Кроме того, вы можете подключиться к основному кластеру OpenShift, используя команду ниже:
 
 ```bash
 $ ssh ocpadmin@myopenshiftmaster.cloudapp.azure.com
 ```
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
-Если больше не нужны, можно использовать hello [удаление группы az](/cli/azure/group#delete) команд группы ресурсов tooremove hello, OpenShift кластера и все связанные ресурсы.
+Вы можете удалить ставшие ненужными группу ресурсов, кластер OpenShift и все связанные с ним ресурсы, выполнив команду [az group delete](/cli/azure/group#delete).
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -157,8 +157,8 @@ az group delete --name myResourceGroup
 
 В рамках этого руководства вы узнали, как выполнять следующие задачи:
 > [!div class="checklist"]
-> * Создание ключей SSH для кластера hello OpenShift KeyVault toomanage.
+> * создать хранилище ключей KeyVault, чтобы управлять ключами SSH для кластера OpenShift;
 > * развернуть кластер OpenShift на виртуальных машинах Azure; 
-> * Установка и настройка hello [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) toomanage hello кластера.
+> * установить и настроить [интерфейс командной строки OpenShift](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) для управления кластером.
 
-Теперь, когда вы развернули кластер OpenShift Origin, Можно выполнить как toolearn OpenShift учебники toodeploy первого приложения и используйте hello OpenShift средства. В разделе [Приступая к работе с источником OpenShift](https://docs.openshift.org/latest/getting_started/index.html) tooget работы. 
+Теперь, когда вы развернули кластер OpenShift Origin, можно ознакомиться со следующими руководствами, чтобы узнать, как развернуть свое первое приложение, а также как использовать инструменты OpenShift. Ознакомьтесь с [обзором OpenShift Origin](https://docs.openshift.org/latest/getting_started/index.html). 

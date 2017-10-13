@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с OfficeSpace Software | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и OfficeSpace Software."
+description: "Узнайте, как настроить единый вход Azure Active Directory в OfficeSpace Software."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: b53afb648b8a6057c32c782d857e34c06e152c67
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43d2ecfe851d8f6c43cd4ce7fc4bd872818f4137
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Учебник. Интеграция Azure Active Directory с OfficeSpace Software
 
-В этом учебнике вы узнаете, как toointegrate OfficeSpace Software с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать OfficeSpace Software с Azure Active Directory (Azure AD).
 
-Интеграция OfficeSpace Software с Azure AD предоставляет hello следующие преимущества:
+Интеграция OfficeSpace Software с Azure AD обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooOfficeSpace программного обеспечения.
-- Можно включить на пользователей tooautomatically get вошедшего tooOfficeSpace программного обеспечения (Single Sign-On) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
+- С помощью Azure AD вы можете контролировать доступ к OfficeSpace Software.
+- Вы можете включить автоматический вход пользователей в OfficeSpace Software (единый вход) с учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с OfficeSpace Software необходимо hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с OfficeSpace Software, вам потребуется следующее.
 
 - подписка Azure AD;
 - подписка OfficeSpace Software с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление OfficeSpace Software из галереи hello
+1. Добавление OfficeSpace Software из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-officespace-software-from-hello-gallery"></a>Добавление OfficeSpace Software из галереи hello
-tooconfigure hello интеграции OfficeSpace Software в Azure AD, вы должны tooadd OfficeSpace Software из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-officespace-software-from-the-gallery"></a>Добавление OfficeSpace Software из коллекции
+Чтобы настроить интеграцию OfficeSpace Software с Azure AD, необходимо добавить OfficeSpace Software из коллекции в список управляемых приложений SaaS.
 
-**tooadd OfficeSpace Software из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить OfficeSpace Software из коллекции, выполните следующее.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **OfficeSpace Software**выберите **OfficeSpace Software** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
+4. В поле поиска введите **OfficeSpace Software**, выберите **OfficeSpace Software** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![Список результатов OfficeSpace Software в hello](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_addfromgallery.png)
+    ![OfficeSpace Software в списке результатов](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в OfficeSpace Software с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в OfficeSpace Software является tooa в Azure AD. Иными словами связи между пользователя Azure AD и связанных пользователей hello в OfficeSpace Software необходимо установить toobe.
+Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь в OfficeSpace Software соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в OfficeSpace Software.
 
-В OfficeSpace Software, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в OfficeSpace Software.
 
-tooconfigure и теста Azure AD единого входа с OfficeSpace Software, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход в Azure AD в OfficeSpace Software, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя OfficeSpace Software](#create-a-officespace-software-test-user)**  -toohave аналог Саймон Britta в OfficeSpace Software, представление связанных toohello Azure AD пользователя.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя OfficeSpace Software](#create-a-officespace-software-test-user)** требуется для создания в OfficeSpace Software пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложение OfficeSpace Software.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении OfficeSpace Software.
 
-**tooconfigure Azure AD единого входа с OfficeSpace Software, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в OfficeSpace Software, выполните следующее.**
 
-1. В hello в hello портала Azure **OfficeSpace Software** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **OfficeSpace Software** щелкните **Единый вход**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_samlbase.png)
 
-3. На hello **URL-адреса и домена программного обеспечения OfficeSpace** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения OfficeSpace Software** сделайте следующее.
 
     ![Сведения о домене и URL-адресах единого входа для приложения OfficeSpace Software](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`<company name>.officespacesoftware.com`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `<company name>.officespacesoftware.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [OfficeSpace клиентское программное обеспечение поддержки](mailto:support@officespacesoftware.com) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Обратитесь в [службу поддержки клиентов OfficeSpace Software](mailto:support@officespacesoftware.com), чтобы получить эти значения. 
 
-4. Приложение OfficeSpace Software ожидает утверждения SAML hello в определенном формате. Выполните настройку следующих утверждений для этого приложения hello. Вы можете управлять hello значения этих атрибутов из hello»**атрибуты пользователя**» на странице интеграции приложения. пример Hello следующий снимок экрана для этого.
+4. Приложение OfficeSpace Software ожидает утверждения SAML в определенном формате. Настройте следующие утверждения для этого приложения. Управлять значениями этих атрибутов можно в разделе **Атрибуты пользователя** на странице интеграции приложения. На следующем снимке экрана приведен пример.
     
     ![Настройка атрибута](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_attribute.png)
 
-5. В hello **атрибуты пользователя** раздела, посвященного hello **единого входа** диалогового окна выберите **user.mail** как **идентификатор пользователя** и для каждой строки показано в следующей таблице hello выполните следующие шаги hello.
+5. В разделе **Атрибуты пользователя** диалогового окна **Единый вход** выберите значение **user.mail** для параметра **Идентификатор пользователя**, а в каждой строке в таблице ниже выполните следующие действия:
     
     | Имя атрибута | Значение атрибута |
     | --- | --- |    
@@ -128,33 +128,33 @@ tooconfigure и теста Azure AD единого входа с OfficeSpace Sof
     | first_name | user.givenname |
     | last_name | user.surname |
 
-    а. Нажмите кнопку **добавить атрибут** tooopen hello **Добавление атрибута** диалогового окна.
+    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно **Добавление атрибута**.
 
     ![Настройка при добавлении ](./media/active-directory-saas-officespace-tutorial/tutorial_attribute_04.png)
 
     ![Настройка атрибута](./media/active-directory-saas-officespace-tutorial/tutorial_attribute_05.png)
     
-    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
+    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
     
-    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
+    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
     
     d. Нажмите кнопку **ОК**.
  
-6. На hello **сертификат подписи SAML** раздел, hello копирования **ОТПЕЧАТОК** значение hello сертификата.
+6. В разделе **Сертификат подписи SAML** скопируйте значение **Отпечаток** для сертификата.
 
-    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_certificate.png) 
+    ![Ссылка для скачивания сертификата](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_certificate.png) 
 
 7. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
 
-8. На hello **конфигурации программного обеспечения OfficeSpace** щелкните **Настройка OfficeSpace Software** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+8. В разделе **OfficeSpace Software Configuration** (Конфигурация OfficeSpace Software) щелкните **Configure OfficeSpace Software** (Настройка OfficeSpace Software), чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Quick Reference** (Краткий справочник).
 
     ![Конфигурация OfficeSpace Software](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_configure.png) 
 
 9. В другом окне веб-браузера войдите в свой клиент OfficeSpace Software в качестве администратора.
 
-10. Go слишком**параметры** и нажмите кнопку **соединители**.
+10. Выберите **Settings** (Параметры) и щелкните **Connectors** (Соединители).
 
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
@@ -162,89 +162,89 @@ tooconfigure и теста Azure AD единого входа с OfficeSpace Sof
 
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_003.png)
 
-12. В hello **проверку подлинности SAML** выполните следующие шаги hello:
+12. В разделе **Проверка подлинности SAML** сделайте следующее:
 
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 
-    а. В hello **URL-адрес выхода поставщика** текстовое значение hello вставить **URL-адрес выхода** скопирован из портала Azure.
+    а. В текстовое поле **Logout provider url** (URL-адрес поставщика для выхода) вставьте значение **URL-адреса выхода**, скопированное с портала Azure.
 
-    b. В hello **URL-адрес назначения idp клиента** текстовое значение hello вставить **SAML единого входа URL-адрес службы** скопирован из портала Azure.
+    b. В текстовое поле **Client idp target url** (Целевой URL-адрес IDP клиента) вставьте значение **URL-адреса службы единого входа SAML**, скопированное с портала Azure.
 
-    c. Вставить hello **отпечаток** значение, которое было скопировано из портала Azure в hello **отпечаток сертификата IDP клиента** текстового поля. 
+    c. В текстовое поле **Client IDP certificate fingerprint** (Отпечаток сертификата IDP клиента) вставьте значение **отпечатка**, скопированное с портала Azure. 
 
     d. Нажмите кнопку **Сохранить параметры**.
 
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-officespace-tutorial/create_aaduser_01.png)
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-officespace-tutorial/create_aaduser_01.png)
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
 
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-officespace-tutorial/create_aaduser_02.png)
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-officespace-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
 
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-officespace-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-officespace-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-officespace-tutorial/create_aaduser_04.png)
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-officespace-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
  
 ### <a name="create-a-officespace-software-test-user"></a>Создание тестового пользователя OfficeSpace Software
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в OfficeSpace Software. Приложение OfficeSpace Software поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Цель этого раздела — создать пользователя Britta Simon в OfficeSpace Software. Приложение OfficeSpace Software поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь создается во время попытки tooaccess OfficeSpace Software, если он еще не существует.
+В этом разделе никакие действия с вашей стороны не требуются. Пользователь будет создан при попытке получить доступ к OfficeSpace Software (если он еще не создан).
 
 > [!NOTE]
-> Если требуется toocreate пользователя вручную, необходимо tooContact [OfficeSpace Software поддержки](mailto:support@officespacesoftware.com).
+> Чтобы создать пользователя вручную, необходимо обратиться к [группе поддержки OfficeSpace Software](mailto:support@officespacesoftware.com).
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooOfficeSpace программного обеспечения.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к OfficeSpace Software.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign tooOfficeSpace Britta Simon программное обеспечение, выполните hello следующие шаги.**
+**Чтобы назначить Britta Simon в OfficeSpace Software, выполните следующее.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **OfficeSpace Software**.
+2. Из списка приложений выберите **OfficeSpace Software**.
 
-    ![Hello OfficeSpace Software ссылку в списке приложений hello](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_app.png)  
+    ![Ссылка на OfficeSpace Software в списке "Приложения"](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202]
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -252,13 +252,13 @@ tooconfigure и теста Azure AD единого входа с OfficeSpace Sof
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки OfficeSpace Software плитки в панели доступа hello hello, вы должны получить tooyour автоматически подписан в приложение OfficeSpace Software.
+Щелкнув элемент "OfficeSpace Software" на панели доступа, вы автоматически войдете в приложение OfficeSpace Software.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

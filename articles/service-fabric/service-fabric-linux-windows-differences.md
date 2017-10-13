@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Service Fabric различия между Windows и Linux | Документы Microsoft"
-description: "Различия между hello структуры предварительной версии службы Azure для Linux и Azure Service Fabric на Windows."
+title: "Azure Service Fabric: различия между версиями для Linux и Windows | Документация Майкрософт"
+description: "Различия между Azure Service Fabric для Linux и Azure Service Fabric для Windows."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,33 +12,25 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/19/2017
 ms.author: subramar
-ms.openlocfilehash: 7a16a440dfc8d9006e274f46951be1562e6f10d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="differences-between-service-fabric-on-linux-preview-and-windows-generally-available"></a>Различия между Service Fabric для Linux (предварительная версия) и Windows (общедоступная версия)
+# <a name="differences-between-service-fabric-on-linux-and-windows"></a>Различия между Service Fabric для Linux и для Windows
 
-Так как платформа Service Fabric для Linux доступна в предварительной версии, некоторые ее функции поддерживаются в Windows, но не в Linux. Со временем наборы функций hello будут с контролем четности, когда Service Fabric в Linux станет общедоступной. В последующих выпусках это различие между наборами функций будет минимизировано. Hello следующие существуют различия между hello последние доступные выпуски (то есть, между версии 5.6 в Windows и версии 5.5 в Linux): 
+Некоторые функции Service Fabric поддерживаются в Windows, но пока не поддерживаются в Linux. Со временем наборы функций будут одинаковыми, и с каждом выпуском это различие между функциями будет уменьшаться. Между последними доступными версиями (то есть между версией 6.0 для Windows и версией 6.0 для Linux) существуют различия в следующих компонентах: 
 
-* надежные коллекции (и надежные службы с отслеживанием состояния); 
-* обратный прокси-сервер; 
-* автономный установщик; 
-* проверка схемы XML для файлов манифеста; 
-* перенаправление консоли; 
-* Hello ошибки Analysis Service (FAS)
-* драйверы Docker Compose, а также драйверы томов и ведения журнала для контейнеров; 
-* управление ресурсами для контейнеров и служб; 
-* Служба DNS
-* поддержка Azure Active Directory;
-* команды интерфейса командной строки, эквивалентные некоторым командам PowerShell. 
-* Для кластеров Linux (как в развернутом в следующем разделе hello) можно запустить только часть команды Powershell.
-
->[!NOTE]
->Перенаправление консоли не поддерживается в рабочих кластерах, даже в Windows.
+* все модели программирования находятся в предварительной версии (Reliable Actors, Reliable Services без отслеживания состояния и Reliable Services с отслеживанием состояния для Java и C#);
+* Envoy (ReverseProxy) для Linux находится в предварительной версии;
+* автономный установщик для Linux пока недоступен в Linux;
+* перенаправление консоли (не поддерживается в рабочих кластерах Linux и Windows);
+* служба анализа сбоев (FAS) в Linux;
+* служба DNS для служб Service Fabric (служба DNS поддерживается для контейнеров в Linux);
+* команды интерфейса командной строки, эквивалентные некоторым командам PowerShell (большинство из перечисленных ниже команд применяются только к изолированным кластерам).
 
 Средства разработки в Windows и Linux также отличаются. В Windows используются Visual Studio, PowerShell, VSTS и трассировка событий Windows, а в Linux — Yeoman, Eclipse, Jenkins и LTTng.
 
@@ -66,7 +58,6 @@ ms.lasthandoff: 10/06/2017
 * Start-ServiceFabricPartitionRestart
 * Stop-ServiceFabricChaos
 * Stop-ServiceFabricTestCommand
-* Cmd
 * Get-ServiceFabricNodeConfiguration
 * Get-ServiceFabricClusterConfiguration
 * Get-ServiceFabricClusterConfigurationUpgradeStatus
@@ -106,4 +97,4 @@ ms.lasthandoff: 10/06/2017
 * [Создание первого приложения Azure Service Fabric](service-fabric-create-your-first-linux-application-with-java.md)
 * [Getting started with Eclipse Plugin for Service Fabric Java application development](service-fabric-get-started-eclipse.md) (Начало работы с подключаемым модулем Eclipse для разработки приложения Service Fabric на Java)
 * [Создание первого приложения Azure Service Fabric](service-fabric-create-your-first-linux-application-with-csharp.md)
-* [Использовать toomanage hello CLI структуры службы приложения](service-fabric-application-lifecycle-sfctl.md)
+* [Manage an Azure Service Fabric application by using Azure Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md) (Управление приложением Azure Service Fabric с помощью интерфейса командной строки Azure Service Fabric)

@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с LinkedIn Learning | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и LinkedIn обучения."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и LinkedIn Learning."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,124 +13,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 14610a25132ed0ccf5892cad6ccc4e1ef03ff280
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6ad28cb3adaa63ddc3d3769a650d26ca6a7e2695
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Руководство по интеграции Azure Active Directory с LinkedIn Learning
 
-В этом учебнике вы узнаете, как toointegrate обучения LinkedIn с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение LinkedIn Learning с Azure Active Directory (Azure AD).
 
-Интеграция обучения LinkedIn с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с LinkedIn Learning обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooLinkedIn обучения
-- Можно включить на пользователей tooautomatically get вошедшего tooLinkedIn обучения (Single Sign-On) с использованием их учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к LinkedIn Learning.
+- Вы можете включить автоматический вход пользователей в LinkedIn Learning (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с LinkedIn обучения необходимо hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с LinkedIn Learning, вам потребуется:
 
 - подписка Azure AD;
 - подписка LinkedIn Learning с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление LinkedIn обучения из галереи hello
+1. Добавление LinkedIn Learning из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-linkedin-learning-from-hello-gallery"></a>Добавление LinkedIn обучения из галереи hello
-tooconfigure hello интеграции LinkedIn обучения в Azure AD, вы должны tooadd LinkedIn обучения из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-linkedin-learning-from-the-gallery"></a>Добавление LinkedIn Learning из коллекции
+Чтобы настроить интеграцию LinkedIn Learning с Azure AD, необходимо добавить LinkedIn Learning из коллекции в список управляемых приложений SaaS.
 
-**tooadd LinkedIn обучения из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить LinkedIn Learning из коллекции, выполните следующие действия:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **обучения LinkedIn**. На панели результатов щелкните **обучения LinkedIn** tooadd приложения hello.
+4. В поле поиска введите **LinkedIn Learning**. На панели результатов щелкните **LinkedIn Learning**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение LinkedIn Learning с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в обучении LinkedIn является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в обучении LinkedIn должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в LinkedIn Learning соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в LinkedIn Learning.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в обучении LinkedIn.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в LinkedIn Learning.
 
-tooconfigure и теста Azure AD единого входа с LinkedIn обучения, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в LinkedIn Learning, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя LinkedIn обучения](#creating-a-linkedin-learning-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя LinkedIn Learning](#creating-a-linkedin-learning-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении LinkedIn обучения.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении LinkedIn Learning.
 
-**tooconfigure Azure AD единого входа с помощью LinkedIn обучения, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в LinkedIn Learning, выполните следующие действия:**
 
-1. В hello в hello портала Azure **обучения LinkedIn** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **LinkedIn Learning** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. В другом окне браузера, клиент LinkedIn обучения tooyour входа от имени администратора.
+3. В другом окне веб-браузера войдите в свой клиент LinkedIn Learning с правами администратора.
 
-4. В **Account Center** (Центр учетных записей) в разделе **Settings** (Параметры) щелкните **Global Settings** (Глобальные параметры). Кроме того, установите **обучения - по умолчанию** hello в раскрывающемся списке.
+4. В **Account Center** (Центр учетных записей) в разделе **Settings** (Параметры) щелкните **Global Settings** (Глобальные параметры). Также выберите **Learning - Default** в раскрывающемся списке.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Нажмите кнопку **или щелкните здесь tooload и скопируйте отдельные поля из формы hello** и скопируйте **идентификатор сущности** и **URL-адрес утверждение потребителя доступа (ACS)**
+5. Щелкните **OR Click Here to load and copy individual fields from the form** (Или щелкните здесь, чтобы загрузить и скопировать отдельные поля из формы) и скопируйте значения **Entity Id** (Идентификатор сущности) и **Assertion Consumer Service (ACS) Url** (URL-адрес службы обработчика утверждений (ACS)).
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. На портале Azure в разделе **URL-адреса и домена обучения LinkedIn**, выполнять hello, выполнив действия, если требуется, чтобы tooconfigure единого входа в **инициированный IdP** режим
+6. Если вы хотите настроить единый вход в режиме, **инициированном поставщиком удостоверений**, то на портале Azure в разделе **Домены и URL-адреса приложения LinkedIn Learning** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
-    а. В hello **идентификатор** текстовом поле введите hello **идентификатор сущности** копируются LinkedIn портала 
+    а. В текстовом поле **Идентификатор** введите **идентификатор сущности**, скопированный с портала LinkedIn. 
 
-    b. В hello **URL-адрес ответа** текстовом поле введите hello **утверждение потребителя доступа (ACS) URL-адрес** копируются LinkedIn портала
+    b. В текстовом поле **URL-адрес ответа** введите **URL-адрес службы обработчика утверждений (ACS)**, скопированный с портала LinkedIn.
 
-7. Если требуется, чтобы tooconfigure единого входа в **, инициируемая SP**, затем щелкните URL-адрес Advanced Показать параметр в разделе конфигурации hello и настройте hello URL-адрес входа с hello следующий шаблон:
+7. Если вы хотите настроить единый вход в режиме, **инициированном поставщиком услуг**, то установите флажок "Показать дополнительные параметры URL-адресов" в разделе настроек и настройте URL-адрес входа в таком формате:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
-8. Приложение обучения LinkedIn ожидает утверждения SAML hello в определенном формате, требующий вы tooadd настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. пример Hello следующий снимок экрана для этого. значение по умолчанию Hello **идентификатор пользователя** — **user.userprincipalname** , но это toobe, сопоставленный с адресом электронной почты пользователя hello ожидает LinkedIn обучения. Для этого можно использовать **user.mail** атрибут из списка hello, или используйте hello соответствующее значение атрибута на основе конфигурации в организации. 
+8. Приложение LinkedIn Learning ожидает утверждения SAML в определенном формате, который требует добавить настраиваемые сопоставления атрибутов в конфигурацию атрибутов токена SAML. На следующем снимке экрана приведен пример. По умолчанию **идентификатор пользователя** имеет значение **user.userprincipalname**, но для LinkedIn Learning требуется сопоставить это значение с адресом электронной почты пользователя. Для этого можно использовать атрибут **user.mail** из списка или соответствующее значение атрибута, основанное на конфигурации организации. 
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/updateusermail.png)
     
-9. В **атрибуты пользователя** щелкните **представление и редактировать все остальные атрибуты пользователя** и задавать атрибуты hello. Hello пользователь должен tooadd четыре утверждения с именем **электронной почты**, **отдел**, **firstname**, и **lastname** и hello значение — toobe сопоставлено с **user.mail**, **user.department**, **user.givenname**, и **user.surname** соответственно
+9. В разделе **Атрибуты пользователя** установите флажок **Просмотреть и изменить все другие атрибуты пользователей** и задайте эти атрибуты. Пользователь должен добавить четыре утверждения — **email**, **department**, **firstname** и **lastname**, а их значения должны быть сопоставлены с **user.mail**, **user.department**, **user.givenname** и **user.surname**, соответственно
 
     | Имя атрибута | Значение атрибута |
     | --- | --- |
@@ -141,29 +141,29 @@ tooconfigure и теста Azure AD единого входа с LinkedIn обу
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
     
-    а. Нажмите кнопку **Добавление атрибута** tooopen hello атрибута, диалоговое окно.
+    а. Щелкните **Добавить атрибут**, чтобы открыть диалоговое окно атрибута.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinLearning-tutorial/tutorial_attribute_04.png)
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinLearning-tutorial/tutorial_attribute_05.png)
     
-    b. В hello **имя** в текстовое поле имя атрибута типа hello, показанный для этой строки.
+    b. В текстовом поле **Имя** введите имя атрибута, отображаемое для этой строки.
     
-    c. Из hello **значение** списка значение атрибута типа hello, показанный для этой строки.
+    c. В списке **Значение** выберите значение атрибута, отображаемое для этой строки.
     
     d. Нажмите кнопку **ОК**.
 
-10. Выполните следующие действия на hello hello **имя** атрибута -
+10. Выполните следующие действия с атрибутом **name**.
 
-    а. Щелкните hello атрибут tooopen hello **изменение атрибута** окна.
+    а. Щелкните атрибут, чтобы открыть окно **Изменить атрибут**.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinLearning-tutorial/url_update.png)
 
-    b. Удалить значение URL-адрес hello из hello **пространства имен**.
+    b. Удалите значение URL-адреса из **пространства имен**.
     
-    c. Нажмите кнопку **ОК** toosave приветствия.
+    c. Нажмите кнопку **ОК**, чтобы сохранить настройки.
 
-11. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
+11. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png) 
 
@@ -171,68 +171,68 @@ tooconfigure и теста Azure AD единого входа с LinkedIn обу
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_general_400.png)
 
-13. Go слишком**параметры администрирования LinkedIn** раздела. Отправьте hello XML-файл, загруженный с портала Azure hello, щелкнув hello отправить файл в формат XML.
+13. Перейдите в раздел **LinkedIn Admin Settings** (Параметры администратора LinkedIn). Отправьте XML-файл, скачанный с портала Azure. Для этого нажмите кнопку "Отправить XML-файл".
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Нажмите кнопку **на** tooenable единого входа. Изменение состояния единого входа с **не подключены** слишком**подключено**
+14. Нажмите кнопку **On** (Включить), чтобы включить единый вход. Состояние единого входа изменяется с **Not Connected** (Не подключено) на **Connected** (Подключено.)
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**. 
 
 ### <a name="creating-a-linkedin-learning-test-user"></a>Создание тестового пользователя LinkedIn Learning
 
-Приложение Linked Learning поддерживает Только время подготовки пользователей и после проверки подлинности пользователей автоматически создаются в приложение hello. На странице параметров администрирования hello на коммутаторе портала зеркало hello обучения LinkedIn hello **автоматически назначать лицензии** tooenable tooactive непосредственно в момент подготовки и это также назначить лицензию пользователя toohello.
+Приложение Linked Learning поддерживает своевременную подготовку (JIT-подготовку) пользователей, поэтому после проверки подлинности пользователи будут созданы в приложении автоматически. На странице параметров администратора на портале LinkedIn Learning включите параметр **Automatically assign licenses** (Автоматически назначать лицензии), чтобы активировать JIT-подготовку. При этом пользователю будет также назначена лицензия.
    
    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinLearning-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooLinkedIn обучения.
+В этом разделе описано, как предоставить пользователю Britta Simon доступ к LinkedIn Learning, чтобы он мог использовать единый вход Azure.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooLinkedIn Britta Simon обучения, выполните следующие шаги hello:**
+**Чтобы назначить пользователя Britta Simon в LinkedIn Learning, выполните следующие действия:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **обучения LinkedIn**.
+2. В списке приложений выберите **LinkedIn Learning**.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -240,7 +240,7 @@ tooconfigure и теста Azure AD единого входа с LinkedIn обу
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -248,13 +248,13 @@ tooconfigure и теста Azure AD единого входа с LinkedIn обу
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При выборе плитки обучения LinkedIn hello в hello панели доступа, вы должны получить страницу hello Azure входа и на после успешного входа, должно появиться в приложение LinkedIn обучения.
+Щелкнув элемент LinkedIn Learning на панели доступа, вы перейдете на страницу входа Azure и, успешного выполнив вход, войдете в приложение LinkedIn Learning.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

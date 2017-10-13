@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing castLabs toodeliver Widevine лицензий tooAzure Media Services | Документы Microsoft"
-description: "В этой статье описывается, как можно использовать toodeliver служб мультимедиа Azure (AMS) поток, который зашифрован динамически AMS с помощью PlayReady и Widevine DRMs. лицензии PlayReady Hello поступают из сервера лицензий PlayReady служб мультимедиа и лицензии Widevine доставляется сервером лицензирования castLabs."
+title: "Использование castLabs для предоставления лицензий Widevine для служб мультимедиа Azure | Документация Майкрософт"
+description: "В этой статье описывается использование служб мультимедиа Azure (AMS) для доставки потока, который зашифрован динамически службой AMS, с помощью лицензий DRM PlayReady и Widevine. Лицензию PlayReady выдает сервер лицензирования служб мультимедиа PlayReady, а лицензию Widevine — сервер лицензирования castLabs."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 80d2778fb283a96361e7e511990a36c2f551a310
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5b69e804809f834e81221fb2787a997a52dbe286
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-castlabs-toodeliver-widevine-licenses-tooazure-media-services"></a>С помощью castLabs toodeliver Widevine лицензий tooAzure служб мультимедиа
+# <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>Использование castLabs для доставки лицензий Widevine для служб мультимедиа Azure
 > [!div class="op_single_selector"]
 > * [Axinom](media-services-axinom-integration.md)
 > * [castLabs](media-services-castlabs-integration.md)
@@ -28,83 +28,83 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Обзор
-В этой статье описывается, как можно использовать toodeliver служб мультимедиа Azure (AMS) поток, который зашифрован динамически AMS с помощью PlayReady и Widevine DRMs. лицензии PlayReady Hello поступают из сервера лицензий PlayReady служб мультимедиа и лицензии Widevine доставляется по **castLabs** сервера лицензирования.
+В этой статье описывается использование служб мультимедиа Azure (AMS) для доставки потока, который зашифрован динамически службой AMS, с помощью лицензий DRM PlayReady и Widevine. Лицензию PlayReady выдает сервер лицензирования служб мультимедиа PlayReady, а лицензию Widevine — сервер лицензирования **castLabs** .
 
-tooplayback потоковой передачи содержимого, защищенного с CENC (PlayReady или Widevine), можно использовать [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Подробные сведения см. в [документе по AMP](http://amp.azure.net/libs/amp/latest/docs/).
+Чтобы воспроизвести потоковое содержимое, защищенное с помощью CENC (PlayReady или Widevine), используйте [Проигрыватель мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Подробные сведения см. в [документе по AMP](http://amp.azure.net/libs/amp/latest/docs/).
 
-Здравствуй, следующая диаграмма демонстрирует высокоуровневая архитектура Azure Media Services и castLabs интеграции.
+На схеме показана высокоуровневая архитектура служб мультимедиа Azure и интеграция castLabs.
 
 ![интеграция](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
 ## <a name="typical-system-set-up"></a>Настройка типичной системы
 * Мультимедийное содержимое хранится в AMS.
 * Идентификаторы ключей содержимого хранятся в castLabs и AMS.
-* CastLabs и AMS имеют встроенную проверку подлинности маркеров. Привет, в следующих разделах рассматриваются токены проверки подлинности. 
-* Когда клиент запрашивает видео toostream hello, содержимое hello динамически шифруется с **общее шифрование** (CENC) и динамического упаковать с AMS tooSmooth, потоковая передача и ТИРЕ. Для протокола потоковой передачи HLS предлагается также шифрование элементарного потока PlayReady M2TS.
+* CastLabs и AMS имеют встроенную проверку подлинности маркеров. В следующих разделах рассматриваются маркеры проверки подлинности. 
+* Когда клиент запрашивает потоковую передачу видео, содержимое динамически шифруется с помощью **стандартного шифрования** (CENC) и динамически упаковывается сервером AMS для передачи по протоколах Smooth Streaming и DASH. Для протокола потоковой передачи HLS предлагается также шифрование элементарного потока PlayReady M2TS.
 * Лицензию PlayReady выдает сервер лицензирования AMS, а лицензию Widevine — сервер лицензирования castLabs. 
-* Проигрыватель автоматически определяет, какие toofetch лицензии основании возможностей платформы клиента hello. 
+* Проигрыватель мультимедиа автоматически выбирает нужную лицензию в соответствии с возможностями платформы клиента. 
 
 ## <a name="authentication-token-generation-for-getting-a-license"></a>Создания маркеров проверки подлинности для получения лицензии
-CastLabs и AMS поддерживает tooauthorize используется формат маркера JWT (веб-маркера JSON) лицензию. 
+CastLabs и AMS поддерживают формат маркера JWT (веб-маркера JSON), который используется для авторизации лицензии. 
 
 ### <a name="jwt-token-in-ams"></a>Маркер JWT в AMS
-Привет, в следующей таблице описываются маркера JWT в AMS. 
+В приведенной ниже таблице описан маркер JWT в AMS. 
 
-| Издатель | Строка поставщика из hello выбранной службы токенов безопасности (STS) |
+| Издатель | Строка издателя из выбранной службы маркеров безопасности |
 | --- | --- |
-| Аудитория |Строка аудитории из hello используется служба маркеров безопасности |
+| Аудитория |Строка аудитории из используемой службы маркеров безопасности |
 | Claims |Набор утверждений |
-| NotBefore |Начало действия маркера hello |
-| Expires |Окончания действия маркера hello |
-| SigningCredentials |Hello ключ, который является общим для сервера лицензирования PlayReady, castLabs сервером лицензирования и STS, он может быть либо симметричный или асимметричный ключ. |
+| NotBefore |Начало действия маркера |
+| Expires |Конец действия маркера |
+| SigningCredentials |Общий ключ для сервера лицензирования PlayReady, castLabs и службы маркеров безопасности. Он может быть симметричным или асимметричным. |
 
 ### <a name="jwt-token-in-castlabs"></a>Маркер JWT в castLabs
-Привет, в следующей таблице описываются маркера JWT в castLabs. 
+В приведенной ниже таблице описан маркер JWT в castLabs. 
 
 | Имя | Описание |
 | --- | --- |
 | optData |Строка JSON со сведениями о вас. |
-| crt |Строка JSON, содержащий сведения о средстве hello, его лицензионных прав сведения и воспроизведения. |
-| iat |Hello текущую дату и время в начала эпохи. |
-| jti |Уникальный идентификатор о этот токен (каждый маркер может использоваться только один раз в системе castLabs hello). |
+| crt |Строка JSON со сведениями о файле, лицензии на него и правах на его воспроизведение. |
+| iat |Текущая дата и время в Unix-времени. |
+| jti |Уникальный идентификатор этого маркера (каждый маркер может использоваться в системе castLabs только один раз). |
 
 ## <a name="sample-solution-set-up"></a>Настройка образца решения
-Hello [образец решения](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) состоит из двух проектов:
+[Образец решения](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) состоит из двух проектов.
 
-* Консольное приложение, которое может быть используется tooset ограничения актива уже полученный DRM PlayReady и Widevine.
+* Консольное приложение, которое можно использовать для задания ограничений DRM на уже существующий файл для PlayReady и Widevine.
 * Веб-приложение, которое передает маркеры, которые можно рассматривать как ОЧЕНЬ УПРОЩЕННУЮ версию службы маркеров безопасности.
 
-Консольное приложение hello toouse:
+Чтобы использовать консольное приложение, сделайте следующее.
 
-1. Изменить учетные данные toosetup AMS app.config hello, castLabs учетные данные, конфигурации STS и общего ключа.
+1. Измените файл app.config для настройки учетных данных для серверов AMS, castLabs, настройки службы маркеров безопасности и общего ключа.
 2. Отправьте файл в AMS.
-3. Get hello UUID из hello отправлен активов и измените 32 строки в файл Program.cs hello.
+3. Получите UUID отправленного файла и измените строку 32 в файле Program.cs:
    
       var objIAsset = _context.Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf").FirstOrDefault();
-4. Используйте AssetId для hello активов в системе castLabs hello (44 строки в файл Program.cs hello).
+4. Используйте AssetId для именования файла в системе castLabs (строка 44 в файле Program.cs).
    
-   Необходимо задать AssetId для **castLabs**; он должен toobe уникальный буквенно-цифровую строку.
-5. Запустите программу hello.
+   Необходимо задать AssetId в **castLabs**; это должна быть уникальная буквенно-цифровая строка.
+5. Запустите программу.
 
-hello toouse веб-приложения (STS):
+Чтобы использовать веб-приложение (служба маркеров безопасности), сделайте следующее.
 
-1. Изменение hello web.config toosetup castlabs merchant ID, конфигурации STS hello и hello общего ключа.
-2. Развертывание tooAzure веб-сайтов.
-3. Перейдите toohello веб-сайта.
+1. Измените файл web.config для настройки идентификатора подразделения castlabs, службы маркеров безопасности и общего ключа.
+2. Разверните приложение на веб-сайтах Azure.
+3. Перейдите на веб-сайт.
 
 ## <a name="playing-back-a-video"></a>Воспроизведение видео
-tooplayback видео зашифрован общее шифрование (PlayReady или Widevine), вы можете использовать hello [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). При запуске консольного приложения hello, передаются hello идентификатор ключа содержимого и hello URL-адрес манифеста.
+Чтобы воспроизвести видео со стандартным шифрованием (PlayReady и/или Widevine), можно использовать [Проигрыватель мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html). При запуске консольного приложения выводится идентификатор ключа содержимого и URL-адрес манифеста.
 
 1. Откройте новую вкладку и запустите службу маркеров безопасности: http://[имя_службы_маркеров_безопасности].azurewebsites.net/api/token/assetid/[ваш_AssetId_в_CastLabs]/contentkeyid/[идентификатор_ключа_содержимого].
-2. Go слишком[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
-3. Вставьте URL-адрес потоковой передачи hello.
-4. Нажмите кнопку hello **Дополнительно** флажок.
-5. В hello **защиты** раскрывающийся список, выберите PlayReady и/или Widevine.
-6. Вставьте токен hello, полученного от STS в текстовом поле токен hello. 
+2. Перейдите к [Проигрывателю мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+3. Вставьте URL-адрес для потоковой передачи.
+4. Установите флажок **Дополнительные параметры** .
+5. В раскрывающемся списке **Защита** выберите PlayReady и/или Widevine.
+6. Вставьте маркер, полученный от службы маркеров безопасности в текстовом поле маркера. 
    
-   сервер лицензирования castLab Hello не обязательно hello» носителя =» префикс перед маркером hello. Поэтому удалите, перед отправкой маркера hello.
-7. Обновление проигрывателя hello.
-8. должны играть Hello видео.
+   Сервер лицензирования CastLab не использует префикс "Bearer=" перед маркером. Поэтому удалите его перед отправкой маркера.
+7. Обновите проигрыватель.
+8. Видео должно воспроизводиться.
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

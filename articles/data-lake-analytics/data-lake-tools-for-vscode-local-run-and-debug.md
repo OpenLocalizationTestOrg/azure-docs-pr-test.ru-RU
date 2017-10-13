@@ -1,7 +1,7 @@
 ---
 title: "Средства Azure Data Lake — локальный запуск и локальная отладка U-SQL в Visual Studio Code | Документация Майкрософт"
-description: "Узнайте, как отлаживать toouse средства Озера данных Azure для Visual Studio Code toolocal выполнения и локальные."
-Keywords: "VScode, средства Озера данных Azure, локального выполнения файла хранилища предварительного просмотра локальной отладки, локальной отладки, отправьте toostorage путь"
+description: "Узнайте, как выполнять локальную отладку и локальный запуск с помощью средств Azure Data Lake для Visual Studio Code."
+Keywords: "VScode,средства Azure Data Lake,локальный запуск,локальная отладка,предварительный просмотр файла хранилища,отправка по пути хранилища"
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -16,75 +16,75 @@ ms.tgt_pltfrm:
 ms.workload: big-data
 ms.date: 07/14/2017
 ms.author: jejiang
-ms.openlocfilehash: fb152f07fe8c4b03dde8fb8e62c7475eccda0578
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 367e4ba792f83d6ee246208306e4c09b69cb49ef
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="u-sql-local-run-and-local-debug-with-visual-studio-code"></a>Локальный запуск и локальная отладка U-SQL в Visual Studio Code
 
 ## <a name="prerequisites"></a>Предварительные требования
-Убедитесь, что у вас есть следующие необходимые условия, прежде чем начать эти процедуры hello:
+Прежде чем приступить к работе, убедитесь, что у вас есть следующие необходимые компоненты.
 - Средства Azure Data Lake для Visual Studio Code. Инструкции см. в статье [Использование средств Azure Data Lake для Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
-- C# для кода на Visual Studio (если локальной отладки tooperform U-SQL).
+- C# для Visual Studio Code (для локальной отладки U-SQL).
 
    ![Установка C# в средствах Data Lake для Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-install-ms-vscodecsharp.png)
    
    > [!NOTE]
-   > Здравствуйте, локального запуска U-SQL и средств отладки в настоящее время поддерживается только пользователей Windows. 
+   > Функции локального запуска и отладки U-SQL сейчас поддерживаются только для пользователей Windows. 
 
 
-## <a name="set-up-hello-u-sql-local-run-environment"></a>Настройка среды локального выполнения U-SQL hello
+## <a name="set-up-the-u-sql-local-run-environment"></a>Настройка среды для локального запуска U-SQL
 
-1. Выберите палитру команд hello tooopen Ctrl + Shift + P, а затем введите **ADL: загрузить зависимостей LocalRun** toodownload hello пакетов.  
+1. Откройте палитру команд, нажав клавиши CTRL+SHIFT+P, и введите **ADL: Download LocalRun Dependency** (ADL: скачать зависимости для локального запуска), чтобы скачать пакеты.  
 
-   ![Загрузить пакеты зависимостей LocalRun ADL hello](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![Скачивание пакетов зависимостей для локального запуска ADL](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
 
-2. Найдите пакеты зависимостей hello из путь hello hello **выходные данные** области и установите BuildTools и Win10SDK 10240. Пример пути:  
+2. Найдите пакеты зависимостей по пути, показанному на панели **вывода**, затем установите BuildTools и Win10SDK 10240. Пример пути:  
 `C:\Users\xxx\.vscode\extensions\usqlextpublisher.usql-vscode-ext-x.x.x\LocalRunDependency
 `  
-  ![Найдите пакеты зависимостей hello](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
+  ![Поиск пакетов зависимостей](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   а. tooinstall BuildTools, следуйте инструкциям мастера hello.   
+   а. Следуйте инструкциям мастера, чтобы установить BuildTools.   
 
   ![Установка BuildTools](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   b. tooinstall Win10SDK 10240, следуйте инструкциям мастера hello.  
+   b. Следуйте инструкциям мастера, чтобы установить Win10SDK 10240.  
 
   ![Установка Win10SDK 10240](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
-3. Настройте переменную среды hello. Набор hello **SCOPE_CPP_SDK** переменной среды:  
+3. Настройте переменную среды. Установите для переменной среды **SCOPE_CPP_SDK** значение:  
 `C:\Users\xxx\.vscode\extensions\usqlextpublisher.usql-vscode-ext-x.x.x\LocalRunDependency\CppSDK_3rdparty
 `  
-4. Перезапустите hello ОС toomake убедиться, что hello параметров переменных среды вступили в силу.  
+4. Перезапустите ОС, чтобы убедиться, что изменения переменных среды вступили в силу.  
 
-   ![Убедитесь, что устанавливается переменная среды SCOPE_CPP_SDK hello](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/ConfigScopeCppSDk.png)
+   ![Проверка установки переменной среды SCOPE_CPP_SDK](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/ConfigScopeCppSDk.png)
 
-## <a name="start-hello-local-run-service-and-submit-hello-u-sql-job-tooa-local-account"></a>Запуск службы локального выполнения hello и отправьте hello U-SQL задания tooa локальной учетной записи 
-Hello первом входе в систему, не запрошенные toodownload hello ADL: загрузить LocalRun зависимостей пакетов, если они еще не установлены.
-1. Выберите палитру команд hello tooopen Ctrl + Shift + P, а затем введите **ADL: запуск службы локального запуска**.
-2. Выберите **Accept** tooaccept hello лицензионного соглашения Майкрософт для hello первый раз. 
+## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Локальный запуск службы и отправка задания U-SQL в локальную учетную запись 
+Для новых пользователей будет предложено установить пакеты "ADL: скачать зависимости для локального запуска", если они еще не установлены.
+1. Нажмите клавиши CTRL+SHIFT+P, чтобы открыть палитру команд, и введите **ADL: Start Local Run Service** (ADL: скачать зависимости для локального запуска).
+2. Выберите **Принять**, чтобы принять условия лицензионного соглашения об использовании программного обеспечения Майкрософт в первый раз. 
 
-   ![Примите условия лицензии программного обеспечения Microsoft hello](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Откроется консоль cmd Hello. Для пользователей, впервые, необходимо tooenter **3**, а затем найдите hello локальный путь к папке для входных и выходных данных. Чтобы задать другие параметры можно использовать значения по умолчанию hello. 
+   ![Принятие условий лицензионного соглашения об использовании программного обеспечения Майкрософт](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
+3. Откроется консоль команд. Для новых пользователей введите **3**, а затем найдите локальную папку для входных и выходных данных. Для остальных параметров можно использовать значения по умолчанию. 
 
    ![Локальный запуск команд в средствах Data Lake для Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. Выберите палитру команд hello tooopen Ctrl + Shift + P, введите **ADL: отправить задание**и выберите **локального** toosubmit hello задания tooyour локальной учетной записи.
+4. Нажмите клавиши CTRL+SHIFT+P, чтобы открыть палитру команд, введите **ADL: Submit Job** (ADL: отправить задание) и выберите **Локальный**, чтобы отправить задание в локальную учетную запись.
 
    ![Выбор локальной учетной записи в средствах Data Lake для Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
-5. После отправки задания hello, можно просмотреть сведения об отправке hello. tooview hello отправки сведений выберите **jobUrl** в hello **вывода** окна. Можно также просмотреть состояние отправки задания hello из консоли cmd hello. Введите **7** в консоли cmd hello Если tooknow Дополнительные сведения о задании.
+5. После отправки задания можно просмотреть сведения об отправке. Чтобы просмотреть сведения об отправке, выберите **jobUrl** в окне **вывода**. Вы также можете просмотреть состояние отправки задания в консоли команд. Для просмотра сведений о задании в консоли команд введите **7**.
 
    ![Результат локального запуска для средств Data Lake в Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
    ![Состояние локального запуска команды для средств Data Lake в Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
-## <a name="start-a-local-debug-for-hello-u-sql-job"></a>Запуск локальной отладки для задания hello U-SQL  
-Hello первом входе в систему, не запрошенные toodownload hello ADL: загрузить LocalRun зависимостей пакетов, если они еще не установлены.
+## <a name="start-a-local-debug-for-the-u-sql-job"></a>Запуск локальной отладки для задания U-SQL  
+Для новых пользователей будет предложено установить пакеты "ADL: скачать зависимости для локального запуска", если они еще не установлены.
   
-1. Выберите палитру команд hello tooopen Ctrl + Shift + P, а затем введите **ADL: запуск службы локального запуска**. Откроется консоль cmd Hello. Убедитесь в том, что hello **DataRoot** имеет значение.
+1. Нажмите клавиши CTRL+SHIFT+P, чтобы открыть палитру команд, и введите **ADL: Start Local Run Service** (ADL: скачать зависимости для локального запуска). Откроется консоль команд. Убедитесь, что установлено значение параметра **DataRoot**.
 3. Установите точку останова в коде программной части C#.
-4. Вернитесь в редакторе сценариев hello, выберите сочетание клавиш Ctrl + Shift + P tooopen hello командной консоли, а затем введите **локальной отладки** toostart локальной отладки службы.
+4. Вернитесь в редактор скриптов, нажмите клавиши CTRL+SHIFT+P, чтобы открыть командную консоль, а затем введите **Local Debug** (Локальная отладка) для запуска службы локальной отладки.
 
 ![Результат локальной отладки в средствах Data Lake для Visual Studio Code](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 
@@ -93,4 +93,4 @@ Hello первом входе в систему, не запрошенные too
 - Сведения об использовании средств Azure Data Lake для Visual Studio Code см. в статье [Использование средств Azure Data Lake для Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
 - Дополнительные сведения о начале работы с Data Lake Analytics см. в статье [Начало работы с Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-get-started-portal.md).
 - Дополнительные сведения об использовании средств Data Lake для U-SQL см. в статье [Разработка скриптов U-SQL с помощью средств Data Lake для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-- Hello сведения о разработке сборок см. в разделе [сборки разрабатывать U-SQL для задания аналитики Озера данных Azure](data-lake-analytics-u-sql-develop-assemblies.md).
+- Сведения о разработке сборок см. в статье [Разработка сборок U-SQL для заданий Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md).

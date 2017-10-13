@@ -1,6 +1,6 @@
 ---
-title: "размеры виртуальных Машин Linux aaaAzure - GPU | Документы Microsoft"
-description: "Список hello разных GPU оптимизированными размеры, доступные для виртуальных машин Linux в Azure."
+title: "Размеры виртуальных машин Linux в Azure, оптимизированных для GPU | Документация Майкрософт"
+description: "Список различных размеров виртуальных машин Linux в Azure, оптимизированных для GPU."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: e98f720499be37df4048aeb513aa4f6b187b7335
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5c9bf89feba519147b07f2810fe4da882664e89e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="gpu-linux-vm-sizes"></a>Размеры виртуальных машин Linux, оптимизированных для GPU
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Не рекомендуется устанавливать X server или другими системами, использующие драйвер nouveau hello на виртуальных машинах Ubuntu NC. Перед установкой драйверов GPU, NVIDIA, необходим драйвер nouveau toodisable hello.  
+* Мы не рекомендуем устанавливать X server или другие системы, использующие драйвер nouveau, на виртуальные машины NC под управлением Ubuntu. Перед установкой драйверов NVIDIA GPU необходимо отключить драйвер nouveau.  
 
 ## <a name="other-sizes"></a>Остальные размеры
 - [Универсальные](sizes-general.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaPrerequisites внедрения Azure ExpressRoute | Документы Microsoft"
-description: "Эта страница содержит перечень toobe требования выполнены, прежде чем вы можете заказать канал Azure ExpressRoute."
+title: "Предварительные требования к использованию Azure ExpressRoute | Документация Майкрософт"
+description: "На этой странице приведен список требований, которые необходимо выполнить, прежде чем заказать канал ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/30/2017
 ms.author: cherylmc
-ms.openlocfilehash: 524c86f6570dc6e6505fe55323b8508e8eeff791
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8629235511e0dda149ceef6a9c834c3042f64f90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Предварительные требования и контрольный список для ExpressRoute
-выполнены tooconnect tooMicrosoft облачных служб с помощью ExpressRoute, необходимо tooverify hello, что следующие требования, перечисленные в следующих разделах hello.
+Чтобы подключиться к службам Microsoft Cloud через ExpressRoute, вам нужно выполнить условия в следующих разделах.
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Учетная запись Azure
-* Наличие действительной и активной учетной записи Microsoft Azure. Эта учетная запись является обязательным tooset копирование hello канал ExpressRoute. Каналы ExpressRoute являются ресурсами в подписках Azure. Подписка Azure — это требование, даже если подключение к ограниченной toonon Azure облачные службы Майкрософт, таких как службы Office 365 и Dynamics 365.
-* Активная подписка на Office 365 (при использовании служб Office 365). Дополнительные сведения см. в разделе hello [требований для Office 365](#office-365-specific-requirements) этой статьи.
+* Наличие действительной и активной учетной записи Microsoft Azure. Она необходима для организации канала ExpressRoute. Каналы ExpressRoute являются ресурсами в подписках Azure. Подписка Azure обязательна, даже если будет выполняться только подключение к облачным службам (Майкрософт), отличным от Azure, например Office 365 и Dynamics 365.
+* Активная подписка на Office 365 (при использовании служб Office 365). Дополнительные сведения об определенных требованиях к Office 365 см. в [соответствующем разделе](#office-365-specific-requirements) этой статьи.
 
 ## <a name="connectivity-provider"></a>Поставщик услуг подключения
 
-* Вы можете работать с [партнера подключение ExpressRoute](expressroute-locations.md#partners) tooconnect toohello Microsoft cloud. Подключение между локальной сетью и Майкрософт можно настроить [тремя различными способами](expressroute-introduction.md).
-* Если поставщик не партнера подключение ExpressRoute, вы можете подключаться Microsoft cloud toohello через [поставщика exchange облака](expressroute-locations.md#connectivity-through-exchange-providers).
+* Чтобы подключиться к Microsoft Cloud, можно работать с [партнером по подключению ExpressRoute](expressroute-locations.md#partners) . Подключение между локальной сетью и Майкрософт можно настроить [тремя различными способами](expressroute-introduction.md).
+* Если ваш поставщик не является партнером по подключению ExpressRoute, вы можете подключиться к Microsoft Cloud через [поставщика облачных служб Exchange](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>Требования к сети
-* **Избыточное подключение.** Для физического соединения между вами и поставщиком услуг отсутствуют требования к избыточности. Необходимо избыточных BGP сеансы, toobe Настройка между маршрутизаторами и маршрутизаторами пиринга hello, корпорации Майкрософт даже в том случае, если у вас есть только [exchange облака tooa одного физического соединения](expressroute-faqs.md#onep2plink).
-* **Маршрутизация**: в зависимости от способа подключения toohello облака Майкрософт, вы или ваш поставщик требуется tooset копирование сеансов и управления ими hello BGP для [доменов маршрутизации](expressroute-circuit-peerings.md). Некоторые поставщики подключений Ethernet или облачных услуг Exchange могут предлагать управление BGP в качестве услуги с добавленной стоимостью.
-* **Преобразование сетевых адресов (NAT).** Майкрософт принимает только общедоступные IP-адреса через пиринг. При использовании частных IP-адресов в вашей локальной сети вы или ваш поставщик необходимость tootranslate hello частного IP-адреса toohello общих IP-адресов [с помощью hello NAT](expressroute-nat.md).
-* **Качество обслуживания.** Skype для бизнеса предоставляет различные услуги (например, передача голоса, видео, текста), которые требуют дифференцированного подхода к качеству обслуживания. Вы и поставщиком должны следовать hello [требования к QoS](expressroute-qos.md).
-* **Сетевая безопасность**: рассмотрите возможность [Сетевая безопасность](../best-practices-network-security.md) при подключении toohello Microsoft Cloud через ExpressRoute.
+* **Избыточное подключение.** Для физического соединения между вами и поставщиком услуг отсутствуют требования к избыточности. Майкрософт требует устанавливать избыточные сеансы BGP между маршрутизаторами Майкрософт и маршрутизаторами одноранговых участников, даже если у вас есть только [одно физическое подключение к облачной службе Exchange](expressroute-faqs.md#onep2plink).
+* **Маршрутизация.** В зависимости от способа подключения к Microsoft Cloud вам или вашему поставщику необходимо настроить сеансы BGP для [доменов маршрутизации](expressroute-circuit-peerings.md) и управлять этими сеансами. Некоторые поставщики подключений Ethernet или облачных услуг Exchange могут предлагать управление BGP в качестве услуги с добавленной стоимостью.
+* **Преобразование сетевых адресов (NAT).** Майкрософт принимает только общедоступные IP-адреса через пиринг. Если в локальной сети используются частные IP-адреса, вам или вашему поставщику услуг необходимо преобразовать их в общедоступные IP-адреса [с помощью NAT](expressroute-nat.md).
+* **Качество обслуживания.** Skype для бизнеса предоставляет различные услуги (например, передача голоса, видео, текста), которые требуют дифференцированного подхода к качеству обслуживания. Вам и вашему поставщику услуг необходимо соблюдать [требования к качеству обслуживания](expressroute-qos.md).
+* **Сетевая безопасность.** При подключении к Microsoft Cloud через ExpressRoute необходимо помнить о [сетевой безопасности](../best-practices-network-security.md).
 
 ## <a name="office-365"></a>Office 365
-Если вы планируете ExpressRoute tooenable Office 365, просмотрите следующие документы Дополнительные сведения о требованиях к Office 365 hello.
+Если вы планируете включить Office 365 через ExpressRoute, просмотрите следующие документы для получения дополнительных сведений о требованиях к Office 365.
 
 * [Azure ExpressRoute для Office 365](https://support.office.com/en-us/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
 * [Маршрутизация с помощью ExpressRoute для Office 365](https://support.office.com/en-us/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
@@ -53,16 +53,16 @@ ms.lasthandoff: 10/06/2017
 * [Расширенные учебные видеоматериалы об использовании ExpressRoute в Office 365](https://channel9.msdn.com/series/aer/)
 
 ## <a name="dynamics-365"></a>Dynamics 365
-Если вы планируете ExpressRoute tooenable Dynamics 365, просмотрите следующие документы Дополнительные сведения о Dynamics 365 hello
+Если вы планируете включить Dynamics 365 через ExpressRoute, просмотрите следующие документы для получения дополнительных сведений о требованиях к Dynamics 365.
 
 * [Документация по Dynamics 365 и ExpressRoute](http://download.microsoft.com/download/B/2/8/B2896B38-9832-417B-9836-9EF240C0A212/Microsoft%20Dynamics%20365%20and%20ExpressRoute.pdf)
 * [URL-адреса Dynamics 365](https://support.microsoft.com/kb/2655102) и [Диапазоны IP-адресов](https://support.microsoft.com/kb/2728473)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения об ExpressRoute см. в разделе hello [часто задаваемые вопросы о ExpressRoute](expressroute-faqs.md).
+* Дополнительные сведения об ExpressRoute см. в статье [Вопросы и ответы по ExpressRoute](expressroute-faqs.md).
 * Найдите поставщика услуг подключения ExpressRoute. См. статью [Партнеры и одноранговые расположения ExpressRoute](expressroute-locations.md).
-* Ссылки toorequirements для [маршрутизации](expressroute-routing.md), [NAT](expressroute-nat.md), и [QoS](expressroute-qos.md).
+* Ознакомьтесь с требованиями к [маршрутизации](expressroute-routing.md), [NAT](expressroute-nat.md) и [качеству обслуживания](expressroute-qos.md).
 * Настройте подключение ExpressRoute.
   * [Создайте канал ExpressRoute.](expressroute-howto-circuit-classic.md)
   * [Настройка маршрутизации](expressroute-howto-routing-classic.md)
-  * [Связывание виртуальной сети tooan канал ExpressRoute](expressroute-howto-linkvnet-classic.md)
+  * [Связывание виртуальной сети с каналом ExpressRoute](expressroute-howto-linkvnet-classic.md)

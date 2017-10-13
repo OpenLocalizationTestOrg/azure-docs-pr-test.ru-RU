@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate и отправка виртуального жесткого диска SUSE Linux в Azure"
-description: "Узнайте toocreate и отправить в Azure виртуального жесткого диска (VHD), содержащий операционной системы SUSE Linux."
+title: "Создание и передача виртуального жесткого диска с операционной системой SUSE Linux в Azure"
+description: "Узнайте, как создать и передать виртуальный жесткий диск (VHD-файл) Azure, содержащий операционную систему SUSE Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,58 +15,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
-ms.openlocfilehash: 9185c7e67279357f00db0f43e944e96c58f0dd60
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c829f5d9a90b4260c6f41b2d9e511a0c6cb48f18
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Подготовка виртуальной машины SLES или openSUSE для Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что вы уже установили SUSE или openSUSE Linux tooa виртуального жесткого диска операционной системы. Существуют несколько средства toocreate VHD-файлы, например решение виртуализации, таких как Hyper-V. Инструкции см. в разделе [Установка hello роль Hyper-V и настройка виртуальной машины](http://technet.microsoft.com/library/hh846766.aspx).
+В этой статье предполагается, что вы уже установили операционную систему SUSE или openSUSE Linux на виртуальный жесткий диск. Существует несколько средств для создания VHD-файлов, например решение для виртуализации, такое как Hyper-V. Инструкции см. в разделе [Установка роли Hyper-V и настройка виртуальной машины](http://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="sles--opensuse-installation-notes"></a>Замечания по установке SLES и openSUSE
 * Дополнительные сведения о подготовке Linux для Azure см. в разделе [Общие замечания по установке Linux](create-upload-generic.md#general-linux-installation-notes).
-* Hello формат VHDX не поддерживается только в Azure, **фиксированный VHD**.  Можно преобразовать формат tooVHD hello диска, с помощью диспетчера Hyper-V или hello командлет convert-vhd.
-* При установке системы Linux hello рекомендуется использовать стандартный секции, а не LVM (часто hello по умолчанию для многих установок). Это позволит избежать конфликтов имен LVM с клонированные виртуальные машины, особенно в том случае, если на диске ОС никогда не требуется tooanother toobe присоединенного виртуальной Машины для устранения неполадок. Для дисков данных можно использовать [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Не настраивайте переключения секции на диске ОС hello. агент Linux Hello может быть настроенный toocreate файл подкачки на диске временного ресурса hello.  Дополнительные сведения об этом можно найти в hello описанные ниже действия.
-* Все виртуальные жесткие диски hello должны иметь размеры, кратные 1 МБ.
+* Формат VHDX не поддерживается в Azure, поддерживается только **фиксированный VHD**.  Можно преобразовать диск в формат VHD с помощью диспетчера Hyper-V или командлета convert-vhd.
+* При установке системы Linux рекомендуется использовать стандартные разделы, а не LVM (как правило, значение по умолчанию во многих дистрибутивах). Это позволит избежать конфликта имен LVM при клонировании виртуальных машин, особенно если диск с OC может быть подключен к другой ВМ в целях устранения неполадок. Для дисков данных можно использовать [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Не настраивайте раздел подкачки на диске с ОС. Можно настроить агент Linux для создания файла подкачки на временном диске ресурсов.  Дополнительные сведения описаны далее.
+* Все VHD-диски должны иметь размер, кратный 1 МБ.
 
 ## <a name="use-suse-studio"></a>Использование SUSE Studio
-[SUSE Studio](http://www.susestudio.com) можно с легкостью использовать для создания образов SLES и openSUSE для Azure и Hyper-V, а также для управления этими образами. Это рекомендованный подход для настройки свои собственные образы SLES и openSUSE hello.
+[SUSE Studio](http://www.susestudio.com) можно с легкостью использовать для создания образов SLES и openSUSE для Azure и Hyper-V, а также для управления этими образами. Этот подход рекомендуется для настройки собственных образов SLES и openSUSE.
 
-Как альтернативный toobuilding собственного виртуального жесткого диска, SUSE также публикует изображения BYOS (переведите свои собственные подписки) для SLES на [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
+Вместо того чтобы создать собственный виртуальный жесткий диск, SUSE публикует образы BYOS (использование собственной подписки) для SLES в каталоге [VM Depot](https://vmdepot.msopentech.com/User/Show?user=1007).
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Подготовка SUSE Linux Enterprise Server 11 с пакетом обновления 4 (SP4)
-1. Hello центральной панели диспетчера Hyper-V выберите виртуальную машину hello.
-2. Нажмите кнопку **Connect** окна hello tooopen для hello виртуальной машины.
-3. Регистрация вашего tooallow системы SUSE Linux Enterprise его toodownload обновления и пакеты установки.
-4. Обновите систему hello hello последние обновления системы:
+1. На центральной панели диспетчера Hyper-V выберите виртуальную машину.
+2. Щелкните **Подключение** , чтобы открыть окно виртуальной машины.
+3. Зарегистрируйте систему SUSE Linux Enterprise, чтобы позволить ей скачивать обновления и устанавливать пакеты.
+4. Установите в системе последние исправления:
    
         # sudo zypper update
-5. Установите агент Azure Linux hello из репозитория SLES hello:
+5. Установите агент Linux для Azure из репозитория SLES:
    
         # sudo zypper install WALinuxAgent
-6. Проверьте Если запущена команда waagent задано слишком «on» в chkconfig и если нет, включить его для автоматического запуска:
+6. Убедитесь, что waagent в chkconfig имеет значение on. Если указано другое значение, включите для службы waagent автоматический запуск.
    
         # sudo chkconfig waagent on
 7. Убедитесь, что служба waagent работает. Если она не работает, запустите ее: 
    
         # sudo service waagent start
-8. Измените строку загрузки ядра hello в параметры grub tooinclude дополнительные ядра для Azure. toodo этом откройте «/ boot/grub/menu.lst» в текстовом редакторе, убедитесь, что ядра по умолчанию hello включает hello следующие параметры:
+8. Измените строку загрузки ядра в конфигурации grub, чтобы включить дополнительные параметры ядра для Azure. Для этого откройте файл "/boot/grub/menu.lst" в текстовом редакторе и убедитесь, что ядро по умолчанию включает следующие параметры:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-    Это обеспечит все консоли сообщения отправляются toohello первый последовательный порт, который может помочь Azure поддержка с помощью отладки проблем.
-9. Убедитесь, что /boot/grub/menu.lst и/etc/fstab оба диска hello ссылка, с помощью его идентификатора UUID (с uuid) вместо диска с Идентификатором hello (по идентификатору). 
+    Это гарантирует отправку всех сообщений консоли на первый последовательный порт, что может помочь технической поддержке Azure в плане отладки.
+9. Убедитесь, что файлы /boot/grub/menu.lst и /etc/fstab ссылаются на диск с помощью его UUID (by-uuid), а не с помощью идентификатора диска (by-id). 
    
     Получение UUID диска
    
         # ls /dev/disk/by-uuid/
    
-    Если /dev/disk/by-id / — используется, обновления /boot/grub/menu.lst и/etc/fstab правильную uuid по значению hello
+    Если используется /dev/disk/by-id, обновите файлы /boot/grub/menu.lst и /etc/fstab правильным значением uuid.
    
     Перед изменением
    
@@ -75,34 +75,34 @@ ms.lasthandoff: 10/06/2017
     После изменения
    
         root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-10. Измените tooavoid правила udev создания статические правила для hello интерфейсы Ethernet. Эти правила приводят к появлению проблем при клонировании виртуальной машины в Microsoft Azure или Hyper-V:
+10. Переместите или удалите правила udev, чтобы не создавать статические правила для интерфейса Ethernet. Эти правила приводят к появлению проблем при клонировании виртуальной машины в Microsoft Azure или Hyper-V:
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Рекомендуется tooedit hello файл «/ и т. д/sysconfig/сети и dhcp» и измените hello `DHCLIENT_SET_HOSTNAME` toohello следующий параметр:
+11. Рекомендуется отредактировать файл /etc/sysconfig/network/dhcp и изменить параметр `DHCLIENT_SET_HOSTNAME` следующим образом:
     
      DHCLIENT_SET_HOSTNAME="no"
-12. В «/ etc/sudoers» закомментируйте или удалите следующие строки, если они существуют hello:
+12. В "/etc/sudoers" закомментируйте или удалите следующие строки, если они существуют:
     
-     По умолчанию targetpw # запрашивать пароль hello hello целевого пользователя, т. е. все ALL=(ALL) всех корневых # предупреждение! Используйте только вместе с Defaults targetpw!
-13. Убедитесь, что hello SSH сервер установлен и настроен toostart во время загрузки.  Обычно это происходит по умолчанию hello.
-14. Не создавайте подкачки на диске ОС hello.
+     Defaults targetpw   # ask for the password of the target user i.e. root ALL    ALL=(ALL) ALL   # WARNING! Используйте только вместе с Defaults targetpw!
+13. Убедитесь, что SSH-сервер установлен и настроен для включения во время загрузки.  Обычно это сделано по умолчанию.
+14. Не создавайте пространство подкачки на диске с ОС.
     
-    Hello Azure Linux Agent может автоматически настроить подкачки с помощью hello локальный диск ресурсов, toohello подключенных виртуальных Машин после подготовки в Azure. Обратите внимание, что hello локальный диск ресурсов *временные* диск, а также может очищаться при отмененной подготовкой hello виртуальной Машины. После установки hello Azure Linux Agent (см. выше), измените соответствующим образом следующие параметры в /etc/waagent.conf hello:
+    Агент Linux для Azure может автоматически настраивать пространство подкачки с использованием диска на локальном ресурсе, подключенном к виртуальной машине после подготовки для работы в среде Azure. Следует отметить, что локальный диск ресурсов является *временным* диском и должен быть очищен при отмене подготовки виртуальной машины. После установки агента Linux для Azure (см. предыдущий шаг) измените следующие параметры в /etc/waagent.conf соответствующим образом:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=&#2048;# Примечание: задать этот toowhatever он нужен toobe.
-15. Запустите следующие команды toodeprovision hello виртуальной машины hello и подготовить его для подготовки в Azure:
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+15. Выполните следующие команды, чтобы отменить подготовку виртуальной машины и подготовить ее в Azure:
     
     # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
     # <a name="export-histsize0"></a>export HISTSIZE=0
     # <a name="logout"></a>logout
-16. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. ДИСК Linux имеет теперь готовы toobe отправлен tooAzure.
+16. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. Виртуальный жесткий диск Linux готов к передаче в Azure.
 
 - - -
 ## <a name="prepare-opensuse-131"></a>Подготовка openSUSE 13.1+
-1. Hello центральной панели диспетчера Hyper-V выберите виртуальную машину hello.
-2. Нажмите кнопку **Connect** окна hello tooopen для hello виртуальной машины.
-3. Оболочка hello, запустите команду hello "`zypper lr`". Если эта команда возвращает выходные данные примерно следующие, репозиториев hello настроены должным образом--каких-либо корректировок необходимы toohello (Обратите внимание, что номера версий могут различаться):
+1. На центральной панели диспетчера Hyper-V выберите виртуальную машину.
+2. Щелкните **Подключение** , чтобы открыть окно виртуальной машины.
+3. В консоли оболочки выполните команду`zypper lr`. Если эта команда возвращает результат следующего вида, то репозитории настроены надлежащим образом, и никаких изменений не требуется (обратите внимание, что номера версий могут отличаться):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -110,54 +110,54 @@ ms.lasthandoff: 10/06/2017
         2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Yes     | Yes
         3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Yes     | Yes
    
-    Если hello команда возвращает «Нет репозиториев определенные...» выполните следующие команды tooadd hello эти репозиториев.
+    Если команда возвращает сообщение "No repositories defined..." (Репозитории не определены...), используйте следующие команды для добавления этих репозиториев:
    
         # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
         # sudo zypper ar -f http://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Затем можно проверить, были добавлены репозиториев hello, выполнив команду hello "`zypper lr`" еще раз. В случае, если один из репозиториев существенные обновления hello не включена, включите его с помощью следующей команды:
+    Чтобы убедиться, что репозитории добавлены, можно еще раз выполнить команду`zypper lr`. Если один из соответствующих репозиториев обновлений не включен, включите его, выполнив следующую команду:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
-4. Обновление hello ядра toohello последней доступной версии:
+4. Обновите ядро до последней доступной версии:
    
         # sudo zypper up kernel-default
    
-    Или системы hello tooupdate все последние обновления системы hello:
+    Либо установите в системе все последние исправления:
    
         # sudo zypper update
-5. Установите агент Azure Linux hello.
+5. Установите агент Linux для Azure.
    
    # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper install WALinuxAgent
-6. Измените строку загрузки ядра hello в параметры grub tooinclude дополнительные ядра для Azure. toodo, откройте «/ boot/grub/menu.lst» в текстовом редакторе, убедитесь, что ядра по умолчанию hello включает hello следующие параметры:
+6. Измените строку загрузки ядра в конфигурации grub, чтобы включить дополнительные параметры ядра для Azure. Для этого откройте файл /boot/grub/menu.lst в текстовом редакторе и убедитесь, что ядро по умолчанию включает следующие параметры:
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Это обеспечит все консоли сообщения отправляются toohello первый последовательный порт, который может помочь Azure поддержка с помощью отладки проблем. Кроме того удалите hello следующие параметры из строки загрузки ядра hello, если они существуют.
+   Это гарантирует отправку всех сообщений консоли на первый последовательный порт, что может помочь технической поддержке Azure в плане отладки. Кроме того, удалите следующие параметры из строки загрузки ядра, если таковые существуют:
    
      libata.atapi_enabled=0 reserve=0x1f0,0x8
-7. Рекомендуется tooedit hello файл «/ и т. д/sysconfig/сети и dhcp» и измените hello `DHCLIENT_SET_HOSTNAME` toohello следующий параметр:
+7. Рекомендуется отредактировать файл /etc/sysconfig/network/dhcp и изменить параметр `DHCLIENT_SET_HOSTNAME` следующим образом:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Важно:** в «/ etc/sudoers», закомментируйте или удалите следующие строки, если они существуют hello:
+8. **Внимание!** В файле /etc/sudoers закомментируйте или удалите следующие строки, если они существуют:
    
-     По умолчанию targetpw # запрашивать пароль hello hello целевого пользователя, т. е. все ALL=(ALL) всех корневых # предупреждение! Используйте только вместе с Defaults targetpw!
-9. Убедитесь, что hello SSH сервер установлен и настроен toostart во время загрузки.  Обычно это происходит по умолчанию hello.
-10. Не создавайте подкачки на диске ОС hello.
+     Defaults targetpw   # ask for the password of the target user i.e. root ALL    ALL=(ALL) ALL   # WARNING! Используйте только вместе с Defaults targetpw!
+9. Убедитесь, что SSH-сервер установлен и настроен для включения во время загрузки.  Обычно это сделано по умолчанию.
+10. Не создавайте пространство подкачки на диске с ОС.
     
-    Hello Azure Linux Agent может автоматически настроить подкачки с помощью hello локальный диск ресурсов, toohello подключенных виртуальных Машин после подготовки в Azure. Обратите внимание, что hello локальный диск ресурсов *временные* диск, а также может очищаться при отмененной подготовкой hello виртуальной Машины. После установки hello Azure Linux Agent (см. выше), измените соответствующим образом следующие параметры в /etc/waagent.conf hello:
+    Агент Linux для Azure может автоматически настраивать пространство подкачки с использованием диска на локальном ресурсе, подключенном к виртуальной машине после подготовки для работы в среде Azure. Следует отметить, что локальный диск ресурсов является *временным* диском и должен быть очищен при отмене подготовки виртуальной машины. После установки агента Linux для Azure (см. предыдущий шаг) измените следующие параметры в /etc/waagent.conf соответствующим образом:
     
-     ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=&#2048;# Примечание: задать этот toowhatever он нужен toobe.
-11. Запустите следующие команды toodeprovision hello виртуальной машины hello и подготовить его для подготовки в Azure:
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+11. Выполните следующие команды, чтобы отменить подготовку виртуальной машины и подготовить ее в Azure:
     
     # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
     # <a name="export-histsize0"></a>export HISTSIZE=0
     # <a name="logout"></a>logout
-12. Убедитесь, приветствия запускается агент Azure Linux при загрузке:
+12. Убедитесь, что агент Linux для Azure запускается при загрузке:
     
         # sudo systemctl enable waagent.service
-13. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. ДИСК Linux имеет теперь готовы toobe отправлен tooAzure.
+13. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. Виртуальный жесткий диск Linux готов к передаче в Azure.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы являетесь теперь готовы toouse SUSE Linux виртуальный жесткий диск toocreate новых виртуальных машин в Azure. Если это первый раз, что идет Отправка tooAzure файл .vhd hello hello см. шаги 2 и 3 в [Создание и передача виртуального жесткого диска, который содержит операционную систему Linux hello](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Теперь виртуальный жесткий диск SUSE Linux можно использовать для создания новых виртуальных машин Azure. Если вы загружаете VHD-файл в Azure впервые, обратитесь к шагам 2 и 3 в статье [Создание и загрузка виртуального жесткого диска, содержащего операционную систему Linux](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooUse iOS SDK для мобильных приложений Azure"
-description: "Как tooUse iOS SDK для мобильных приложений Azure"
+title: "Использование пакета iOS SDK для мобильных приложений Azure"
+description: "Использование пакета iOS SDK для мобильных приложений Azure"
 services: app-service\mobile
 documentationcenter: ios
 author: ysxu
@@ -14,31 +14,31 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-ms.openlocfilehash: fa299ab3f152bad12d821832fa9fb5495d1fa296
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bd5e2fce31ae597f8ce48fb8f5492e280cbbf28f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-ios-client-library-for-azure-mobile-apps"></a>Как tooUse iOS клиентскую библиотеку для мобильных приложений Azure
+# <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Использование клиентской библиотеки iOS для мобильных приложений Azure
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Это руководство поможет tooperform распространенные сценарии, с помощью hello последней [пакет SDK для iOS мобильные приложения Azure][1]. Если новый tooAzure мобильные приложения, сначала завершите [быстрого запуска Azure мобильных приложений] toocreate серверной части, создайте таблицу и загрузить проект Xcode готовые iOS. В этом руководстве сосредоточиться на стороне клиента hello iOS SDK. Дополнительные сведения о toolearn Здравствуйте серверные SDK для hello внутреннего, см. инструкции пакета SDK сервера hello.
+В данном руководстве показано, как реализовать типичные сценарии с использованием последней версии [пакета SDK iOS для мобильных приложений Azure][1]. Если вы не знакомы с мобильными приложениями Azure, изучите статью [Быстрый запуск мобильного приложения Azure], чтобы создать серверную часть и таблицу, а также скачать предварительно собранный проект Xcode для iOS. В данном руководстве мы сосредоточимся на клиентской части пакета iOS SDK. Дополнительные сведения о серверном пакете SDK для внутреннего сервера см. практических руководствах по пакету SDK для сервера.
 
 ## <a name="reference-documentation"></a>Справочная документация
-Hello справочная документация для клиента hello iOS SDK находится здесь: [мобильных приложений Azure iOS Справочник по клиентским][2].
+Справочная документация по пакету SDK для клиента iOS находится здесь: [Справочник по клиенту iOS мобильных приложений Azure][2].
 
 ## <a name="supported-platforms"></a>Поддерживаемые платформы
-пакет SDK для iOS Hello поддерживает проекты Objective-C, Swift 2.2 проектов и проектов Swift 2.3 для iOS версии 8.0 или более поздней версии.
+Пакет SDK для iOS поддерживает проекты Objective-C, проекты Swift 2.2 и проекты Swift 2.3 для iOS 8.0 или более поздней версии.
 
-Проверка подлинности «сервер потока» Hello использует WebView для hello, представленных пользовательского интерфейса.  Если устройство hello не может toopresent пользовательского интерфейса и веб-представление, другой метод проверки подлинности не требуются это внешнюю область hello hello продукта.  
+"Серверная" аутентификация использует WebView для представляемого пользовательского интерфейса.  Если устройство не может представить пользовательский интерфейс WebView, потребуется применить другие способы аутентификации, которые выходят за рамки данного продукта.  
 Поэтому данный пакет SDK не подходит для различного рода часов и других устройств с аналогичными ограничениями.
 
 ## <a name="Setup"></a>Настройка и необходимые компоненты
-В данном руководстве предполагается, что вы уже создали серверную часть с таблицей. В этом руководстве предполагается, что этой таблицы hello имеет ту же схему, как таблицы hello в этих учебниках. Кроме того, в данном руководстве предполагается, что в коде можно ссылаться на `MicrosoftAzureMobile.framework` и импортировать `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
+В данном руководстве предполагается, что вы уже создали серверную часть с таблицей. В этом руководстве предполагается, что в таблице используется та же схему, что и в таблицах, приведенных в этих учебниках. Кроме того, в данном руководстве предполагается, что в коде можно ссылаться на `MicrosoftAzureMobile.framework` и импортировать `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
 
 ## <a name="create-client"></a>Создание клиента
-Создание tooaccess серверной части мобильных приложений Azure в проекте `MSClient`. Замените `AppUrl` с URL-адреса приложения hello. Параметры `gatewayURLString` и `applicationKey` можно оставить пустыми. Если вы настроили шлюз для проверки подлинности, заполнение `gatewayURLString` с URL-адресом шлюза hello.
+Чтобы получить доступ к серверной части мобильных приложений Azure в вашем проекте, создайте `MSClient`. Замените `AppUrl` на URL-адрес приложения. Параметры `gatewayURLString` и `applicationKey` можно оставить пустыми. Если вы настроите шлюз для проверки подлинности, укажите в параметре `gatewayURLString` его URL-адрес.
 
 **Objective-C**:
 
@@ -54,7 +54,7 @@ let client = MSClient(applicationURLString: "AppUrl")
 
 
 ## <a name="table-reference"></a>Практическое руководство. Создание ссылки на таблицу
-tooaccess или обновления данных, создать таблицу внутренних toohello ссылки. Замените `TodoItem` с именем hello таблицы
+Для доступа к данным или их обновления создайте ссылку на таблицу серверной части. Замените `TodoItem` на имя таблицы.
 
 **Objective-C**:
 
@@ -70,7 +70,7 @@ let table = client.tableWithName("TodoItem")
 
 
 ## <a name="querying"></a>Практическое руководство. Запрос данных
-toocreate запроса к базе данных, запрос hello `MSTable` объекта. Hello следующий запрос возвращает все элементы hello в `TodoItem` и журналы hello текст каждого элемента.
+Чтобы создать запрос к базе данных, отправьте запрос объекта `MSTable` . Следующий запрос возвращает все элементы в `TodoItem` и регистрирует в журнале текст каждого из них.
 
 **Objective-C**:
 
@@ -101,16 +101,16 @@ table.readWithCompletion { (result, error) in
 ```
 
 ## <a name="filtering"></a>Практическое руководство. Фильтрация возвращаемых данных
-результаты toofilter существует много доступных параметров.
+Есть множество способов фильтрации результатов.
 
-с помощью предиката, используйте toofilter `NSPredicate` и `readWithPredicate`. возвращаемые данные toofind только неполные Todo элементы фильтруются следующие Hello.
+Для фильтрации данных с использованием предиката используйте `NSPredicate` и `readWithPredicate`. Следующие фильтры позволяют возвращать только незавершенные элементы Todo.
 
 **Objective-C**:
 
 ```
 // Create a predicate that finds items where complete is false
 NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
-// Query hello TodoItem table
+// Query the TodoItem table
 [table readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
         if(error) {
                 NSLog(@"ERROR %@", error);
@@ -127,7 +127,7 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 ```
 // Create a predicate that finds items where complete is false
 let predicate =  NSPredicate(format: "complete == NO")
-// Query hello TodoItem table
+// Query the TodoItem table
 table.readWithPredicate(predicate) { (result, error) in
     if let err = error {
         print("ERROR ", err)
@@ -140,7 +140,7 @@ table.readWithPredicate(predicate) { (result, error) in
 ```
 
 ## <a name="query-object"></a>Практическое руководство. Использование MSQuery
-tooperform сложного запроса (включая сортировку и разбиение по страницам), создание `MSQuery` объекта напрямую или с помощью предиката:
+Чтобы выполнить сложный запрос (в том числе на сортировку и подкачку), создайте объект `MSQuery` непосредственно или с помощью предиката:
 
 **Objective-C**:
 
@@ -159,16 +159,16 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 `MSQuery` позволяет контролировать некоторые настройки запросов.
 
 * Задание порядка результатов
-* Ограничить tooreturn какие поля
-* Ограничить число записей, tooreturn
+* Ограничение возвращаемых полей
+* Ограничение количества возвращаемых записей
 * Указание общего количества в ответе
 * Указание в запросе настраиваемых параметров строки запроса
 * Применение дополнительных функций
 
-Выполнение `MSQuery` запроса путем вызова `readWithCompletion` hello объекта.
+Выполнение `MSQuery` запроса путем вызова `readWithCompletion` для объекта.
 
 ## <a name="sorting"></a>Практическое руководство. Сортировка данных с помощью MSQuery
-результаты toosort, давайте рассмотрим пример. вызов toosort по возрастанию поле «текст», а затем по убыванию «полный» `MSQuery` следующим образом:
+На примере ниже показано, как сортировать результаты. Для сортировки по возрастанию значений поля text, а затем по убыванию по значению complete, вызовите `MSQuery` следующим образом.
 
 **Objective-C**:
 
@@ -204,7 +204,7 @@ query.readWithCompletion { (result, error) in
 
 
 ## <a name="selecting"></a><a name="parameters"></a>Практическое руководство. Ограничение возвращаемых полей и развертывание строковых параметров запроса с помощью MSQuery
-toobe toolimit полей, возвращаемых в запросе, укажите имена hello hello полей в hello **selectFields** свойство. Этот пример возвращает только текст hello и завершенных поля:
+Чтобы ограничить поля, возвращаемые в запросе, укажите имена полей в свойстве **selectFields** . Данный пример возвращает только текст и заполненные поля.
 
 **Objective-C**:
 
@@ -218,7 +218,7 @@ query.selectFields = @[@"text", @"complete"];
 query.selectFields = ["text", "complete"]
 ```
 
-tooinclude Дополнительные параметры строк запроса в hello server запроса (например, так как пользовательский серверный сценарий использует их), заполнение `query.parameters` следующим образом:
+Чтобы включить дополнительные строковые параметры в запрос сервера (например, так как они используются в настраиваемом серверном скрипте), заполните `query.parameters` следующим образом:
 
 **Objective-C**:
 
@@ -236,17 +236,17 @@ query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
 ## <a name="paging"></a>Практическое руководство. Настройка размера страницы
-С помощью мобильных приложений Azure элементы управления размер страницы приветствия hello количество записей, которые извлекаются из внутренних таблиц hello одновременно. Вызов слишком`pull` данных может затем выполнить пакетное копирование данных, на основе этого размера страницы, пока они не дополнительные toopull записей.
+При использовании мобильных приложений Azure размер страницы определяет количество записей, одновременно извлекаемых из таблиц серверной части. Вызов данных `pull` приведет к пакетному извлечению данных на основе этого размера страницы до тех пор, пока не будут извлечены все соответствующие записи.
 
-Это возможно tooconfigure размер страницы с помощью **MSPullSettings** как показано ниже. размер страницы по умолчанию Hello равно 50 и hello приведенном ниже примере изменяется too3.
+Можно настроить размер страницы с помощью **MSPullSettings**, как показано ниже. Размер страницы по умолчанию равен 50, а в приведенном ниже примере он изменен на 3.
 
-Можно изменить размер страницы для повышения производительности. Если имеется большое количество записей данных небольшого размера высокого уровня страницы уменьшает hello число проходов сигнала сервера.
+Можно изменить размер страницы для повышения производительности. Если имеется большое количество записей данных небольшого размера, то большой размер страницы уменьшит число круговых путей сервера.
 
-Этот параметр управляет hello размер страницы на стороне клиента hello. Если hello клиент запрашивает больший размер страницы, чем поддерживается серверной мобильные приложения hello, размер страницы приветствия — повысить производительность hello максимальное hello серверной — настроенное toosupport.
+Этот параметр определяет размер страницы только на стороне клиента. Если клиент запрашивает больший размер страницы, чем поддерживает серверная часть мобильных приложений, то используется максимальный размер страницы, допускаемый серверной частью.
 
-Этот параметр также находится hello *номер* записей данных не hello *размер в байтах*.
+Этот параметр также определяет *число* записей данных, а не *размер в байтах*.
 
-При увеличении размера страницы приветствия клиента, следует также увеличить размер страницы приветствия на сервере hello. В разделе [» как: размер подкачки hello таблицы»](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) hello шагов toodo это.
+Если увеличить размер страницы клиента, также следует увеличить размер страницы на сервере. Инструкции см. в статье [Работа с пакетом SDK для внутреннего сервера .NET для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 **Objective-C**:
 
@@ -273,11 +273,11 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 ```
 
 ## <a name="inserting"></a>Практическое руководство. Вставка данных
-Создание новой строки, tooinsert `NSDictionary` и вызова `table insert`. Если [Динамическая схема] — включена, hello мобильной службы приложений Azure серверной части. автоматически формирует новые столбцы на основании hello `NSDictionary`.
+Чтобы вставить новую строку таблицы, создайте `NSDictionary` и вызовите `table insert`. Если включена [динамическая схема], то серверная часть мобильной службы службы приложений Azure автоматически создает столбцы на основе `NSDictionary`.
 
-Если `id` не указан, серверной hello автоматически создает новый уникальный идентификатор. Предоставить свой собственный `id` toouse электронной почты адреса, имена пользователей или пользовательские значения как идентификатор. Наличие собственного идентификатора может упростить операции соединения и бизнес-логику базы данных.
+Если не указано значение параметра `id` , на внутреннем сервере автоматически создается уникальный идентификатор. Укажите собственное значение параметра `id` , чтобы в качестве идентификатора использовать адреса электронной почты, имена пользователей или настраиваемые значения. Наличие собственного идентификатора может упростить операции соединения и бизнес-логику базы данных.
 
-Hello `result` содержит hello новый элемент, который был вставлен. В зависимости от логики сервера может иметь дополнительные или измененных данных по сравнению toowhat был передан toohello сервера.
+`result` содержит новый элемент, который был вставлен. В зависимости от логики вашего сервера он может иметь дополнительные или измененные данные, по сравнению с теми, которые были переданы на сервер.
 
 **Objective-C**:
 
@@ -306,7 +306,7 @@ table.insert(newItem) { (result, error) in
 ```
 
 ## <a name="modifying"></a>Практическое руководство. Изменение данных
-tooupdate существующей строки, измените элемент и вызова `update`:
+Чтобы обновить существующую строку, измените элемент и вызовите `update`:
 
 **Objective-C**:
 
@@ -337,7 +337,7 @@ if let newItem = oldItem.mutableCopy() as? NSMutableDictionary {
 }
 ```
 
-Кроме того можно укажите идентификатор строки hello и hello обновить поля:
+Можно также указать идентификатор строки и обновляемое поле:
 
 **Objective-C**:
 
@@ -363,10 +363,10 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 }
 ```
 
-Как минимум, hello `id` атрибут должен быть задан при выполнении обновлений.
+При обновлении необходимо по крайней мере задать атрибут `id` .
 
 ## <a name="deleting"></a>Практическое руководство. Удаление данных
-вызов toodelete элемент, `delete` с элементом hello:
+Чтобы удалить элемент, вызовите `delete` с элементом:
 
 **Objective-C**:
 
@@ -418,12 +418,12 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 }
 ```
 
-Как минимум, hello `id` атрибут должен быть задан при внесении удаляет.
+При удалении необходимо по крайней мере задать атрибут `id` .
 
 ## <a name="customapi"></a>Практическое руководство. Вызов настраиваемого интерфейса API
-С помощью настраиваемого API можно включить любые функциональные возможности серверной части. Это не обязательно toomap tooa табличной операции. Не только получить больший контроль над обмена сообщениями, можно даже чтения и set заголовки и изменить формат текста ответа hello. как считывать toocreate пользовательского API на серверной hello toolearn [пользовательских API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
+С помощью настраиваемого API можно включить любые функциональные возможности серверной части. Они не должны совпадать с операциями с таблицами. Вы не только расширяете контроль над процессом обмена сообщениями, но также получаете возможность читать и задавать заголовки и изменять формат текста ответа. Сведения о создании настраиваемого API в серверной части см. в разделе [Настраиваемые интерфейсы API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis).
 
-вызов пользовательского API toocall `MSClient.invokeAPI`. содержимого Hello запроса и ответа, рассматриваются как JSON. toouse другие типы носителей [используйте hello другая перегрузка метода `invokeAPI` ] [ 5].  toomake `GET` запроса вместо `POST` запрос, параметр набора `HTTPMethod` слишком`"GET"` и параметр `body` слишком`nil` (поскольку запросы GET не имеют тел сообщений.) Если настраиваемый API поддерживает другие команды HTTP, измените `HTTPMethod` соответствующим образом.
+Для вызова настраиваемого API вызовите `MSClient.invokeAPI`. Содержимое запроса и ответа содержимого рассматривается как JSON. Чтобы использовать другие типы носителей, [воспользуйтесь другой перегрузкой `invokeAPI`][5].  Чтобы вместо запроса `POST` выполнить запрос `GET`, задайте параметру `HTTPMethod` значение `"GET"`, а параметру `body` — значение `nil` (поскольку запросы GET не имеют текста сообщений). Если настраиваемый API поддерживает другие команды HTTP, измените `HTTPMethod` соответствующим образом.
 
 **Objective-C**:
 
@@ -460,8 +460,8 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Как: Register извещающих шаблоны toosend кросс платформенных уведомлений
-шаблоны tooregister передать шаблоны с вашего **client.push registerDeviceToken** метод в клиентское приложение.
+## <a name="templates"></a>Использование шаблонов для отправки кроссплатформенных push- уведомлений
+Чтобы зарегистрировать шаблоны, передайте их с помощью метода **client.push registerDeviceToken** в свое клиентское приложение.
 
 **Objective-C**:
 
@@ -483,7 +483,7 @@ client.invokeAPI("sendEmail",
     })
 ```
 
-Шаблоны относятся к типу NSDictionary и может содержать несколько шаблонов в hello следующий формат:
+Шаблоны относятся к типу NSDictionary и могут содержать несколько шаблонов в следующем формате.
 
 **Objective-C**:
 
@@ -497,12 +497,12 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-Все теги будут удалены из hello запрос безопасности.  теги tooadd tooinstallations или шаблоны в установках см. в разделе [работать с сервера базы данных hello .NET SDK для мобильных приложений Azure][4].  toosend уведомления с помощью этих зарегистрированных шаблонов, работать с [API-интерфейсов концентраторы уведомлений][3].
+Все теги будут удалены из запроса в целях безопасности.  В статье [Работа с пакетом SDK для внутреннего сервера .NET для мобильных приложений Azure][4] показано, как добавлять теги для установки или шаблоны в пределах установки.  Для отправки уведомлений с использованием зарегистрированных шаблонов используйте [API центров уведомлений][3].
 
 ## <a name="errors"></a>Практическое руководство. Обработка ошибок
-При вызове службы приложений Azure мобильной серверной части, содержит блок завершения hello `NSError` параметра. Если возникает ошибка, этот параметр не является пустым. В коде необходимо проверить этот параметр и обрабатывать ошибки hello, при необходимости, как показано в предшествующих фрагменты кода hello.
+При вызове серверной части мобильной службы службы приложений Azure блок завершения содержит параметр `NSError`. Если возникает ошибка, этот параметр не является пустым. В коде необходимо проверить этот параметр и обработать ошибку по мере необходимости, как показано во фрагментах кода выше.
 
-файл Hello [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] определяет константы hello `MSErrorResponseKey`, `MSErrorRequestKey`, и `MSErrorServerItemKey`. tooget дополнительные данные, связанные ошибки toohello:
+Файл [`<WindowsAzureMobileServices/MSError.h>`][6] определяет константы `MSErrorResponseKey`, `MSErrorRequestKey` и `MSErrorServerItemKey`. Вот как можно получить дополнительные данные об ошибке.
 
 **Objective-C**:
 
@@ -516,7 +516,7 @@ NSDictionary *serverItem = [error.userInfo objectForKey:MSErrorServerItemKey];
 let serverItem = error.userInfo[MSErrorServerItemKey]
 ```
 
-Кроме того файл hello определяет константы для каждого кода ошибки.
+Кроме того, этот файл определяет константы для каждого кода ошибки.
 
 **Objective-C**:
 
@@ -530,26 +530,26 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Как: проверять подлинность пользователей с hello библиотеку аутентификации Active Directory
-Пользователи toosign hello библиотеку проверки подлинности Active Directory (ADAL) можно использовать в приложении с помощью Azure Active Directory. Поток проверки подлинности клиента, с помощью пакета SDK поставщика удостоверений является более предпочтительным, чем toousing hello `loginWithProvider:completion:` метод.  Клиентский поток аутентификации обеспечивает более удобный пользовательский интерфейс входа и позволяет выполнять дополнительную настройку.
+## <a name="adal"></a>Практическое руководство. Проверка подлинности пользователей с помощью библиотеки проверки подлинности Active Directory
+Библиотеку проверки подлинности Active Directory (ADAL) можно использовать для входа пользователей в приложение с помощью Azure Active Directory. Клиентский поток аутентификации с использованием пакета SDK поставщика удостоверений предпочтительнее использования метода `loginWithProvider:completion:` .  Клиентский поток аутентификации обеспечивает более удобный пользовательский интерфейс входа и позволяет выполнять дополнительную настройку.
 
-1. Настройте внутренний сервер мобильных приложений для входа в AAD, следующие hello [как tooconfigure приложения службы для имени входа Active Directory] [ 7] учебника. Убедитесь, что необязательный шаг toocomplete hello регистрации собственного клиентского приложения. Для iOS, мы рекомендуем перенаправления, hello, URI имеет вид hello `<app-scheme>://<bundle-id>`. Дополнительные сведения см. в разделе hello [ADAL iOS краткое руководство][8].
-2. Установите ADAL с помощью Cocoapods. Изменить ваш hello tooinclude Podfile следующие определения, заменив **ВАШ ПРОЕКТ** с именем hello проекта Xcode:
+1. Настройте серверную часть мобильного приложения для входа с помощью AAD, следуя указаниям в руководстве [Настройка приложения службы приложений для использования службы входа Azure Active Directory][7]. Обязательно выполните дополнительный этап регистрации собственного клиентского приложения. Для iOS мы рекомендуем использовать универсальный код ресурса (URI) перенаправления следующего вида: `<app-scheme>://<bundle-id>`. Чтобы узнать больше, ознакомьтесь с [кратким руководством по ADAL для iOS][8].
+2. Установите ADAL с помощью Cocoapods. Измените файл Podfile: добавьте в него следующее определение, заменив **YOUR-PROJECT** именем проекта Xcode.
 
         source 'https://github.com/CocoaPods/Specs.git'
         link_with ['YOUR-PROJECT']
         xcodeproj 'YOUR-PROJECT'
 
-   и hello Pod.
+   и Pod:
 
         pod 'ADALiOS'
-3. С помощью hello терминалов, запустите `pod install` из каталога hello, содержащее проект, а затем откройте созданный hello рабочей области Xcode (не проект hello).
-4. Добавьте hello следующие приложения tooyour кода, в соответствии с toohello язык, который вы используете. Выполните следующие замены:
+3. С помощью приложения Terminal запустите `pod install` из каталога, содержащего проект, а затем откройте созданную рабочую область Xcode (не проект).
+4. Добавьте в приложение приведенный ниже код, соответствующий используемому языку. Выполните следующие замены:
 
-   * Замените **вставки ЦЕНТРА здесь** hello имя клиента hello, в котором подготовлено приложения. Формат должен быть следующим: https://login.microsoftonline.com/contoso.onmicrosoft.com. Это значение можно скопировать с вкладки hello домена в Azure Active Directory в hello [классический портал Azure].
-   * Замените **вставки РЕСУРСОВ-идентификатор здесь** с Идентификатором hello клиент для мобильного приложения серверной части. Идентификатор клиента можно получить из hello **Дополнительно** в разделе **параметры Azure Active Directory** hello портала.
-   * Замените **вставки КЛИЕНТА-идентификатор здесь** с Идентификатором клиента hello, скопированные из собственного клиентского приложения hello.
-   * Замените **вставки ПЕРЕНАПРАВЛЕНИЯ-URI здесь** с веб-узла */.auth/login/done* конечную точку, используя hello схему HTTPS. Это значение должно быть примерно слишком*https://contoso.azurewebsites.net/.auth/login/done*.
+   * Замените строку **INSERT-AUTHORITY-HERE** именем клиента, в котором подготовлено приложение. Формат должен быть следующим: https://login.microsoftonline.com/contoso.onmicrosoft.com. Это значение можно скопировать на вкладке "Домен" в разделе Azure Active Directory на [классическом портале Azure].
+   * Замените текст **INSERT-RESOURCE-ID-HERE** идентификатором клиента для серверной части мобильного приложения. Идентификатор клиента можно скопировать на портале в разделе **Настройки Azure Active Directory** на вкладке **Дополнительно**.
+   * Замените текст **INSERT-CLIENT-ID-HERE** идентификатором клиента, скопированным из собственного клиентского приложения.
+   * Замените текст **INSERT-REDIRECT-URI-HERE** конечной точкой сайта */.auth/login/done* , используя схему HTTPS. Это значение должно быть похоже на *https://contoso.azurewebsites.net/.auth/login/done*.
 
 **Objective-C**:
 
@@ -588,7 +588,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 **Swift**:
 
-    // add hello following imports tooyour bridging header:
+    // add the following imports to your bridging header:
     //        #import <ADALiOS/ADAuthenticationContext.h>
     //        #import <ADALiOS/ADAuthenticationSettings.h>
 
@@ -612,14 +612,14 @@ if (error.code == MSErrorPreconditionFailed) {
             }
     }
 
-## <a name="facebook-sdk"></a>Как: проверять подлинность пользователей с hello Facebook SDK для iOS
-Hello Facebook SDK для пользователей iOS toosign можно использовать в приложении с помощью Facebook.  Использование потока проверки подлинности клиента является более предпочтительным, чем toousing hello `loginWithProvider:completion:` метод.  Проверка подлинности для потока клиента Hello обеспечивает более естественным согласованность UX и обеспечивает дополнительные настройки.
+## <a name="facebook-sdk"></a>Практическое руководство: проверка подлинности пользователей с помощью пакета SDK Facebook для iOS
+Пакет SDK Facebook для iOS можно использовать для входа пользователей в приложение с помощью Facebook.  Использование клиентского потока аутентификации предпочтительнее использования метода `loginWithProvider:completion:` .  Клиентский поток аутентификации обеспечивает более удобный пользовательский интерфейс входа и позволяет выполнять дополнительную настройку.
 
-1. Настройте внутренний сервер мобильных приложений для входа в Facebook, следуя [как tooconfigure приложения службы для имени входа Facebook] [ 9] учебника.
-2. Установка hello Facebook SDK для iOS, следующие hello [Facebook SDK для iOS — начало работы] [ 10] документации. Вместо того чтобы создавать приложения, можно добавить существующую регистрацию платформы iOS tooyour hello.
-3. Facebook Документация включает код Objective-C в делегат приложения hello. Если вы используете **Swift**, можно использовать следующие преобразования для AppDelegate.swift hello:
+1. Настройте серверную часть мобильного приложения для входа с помощью Facebook, следуя указаниям в руководстве [Как настроить приложение службы приложений для использования имени для входа Facebook][9].
+2. Установите пакет SDK Facebook для iOS, как описано в документе [Facebook SDK for iOS - Getting Started][10] (Пакет SDK Facebook для iOS. Приступая к работе). Вместо создания приложения можно добавить платформу iOS в имеющуюся регистрацию.
+3. Документация Facebook содержит код Objective-C в делегате приложения. При использовании **Swift** можно использовать следующие переводы для AppDelegate.swift.
 
-        // Add hello following import tooyour bridging header:
+        // Add the following import to your bridging header:
         //        #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
         func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -633,8 +633,8 @@ Hello Facebook SDK для пользователей iOS toosign можно ис
             // Add any custom logic here.
             return handled
         }
-4. В дополнение tooadding `FBSDKCoreKit.framework` tooyour проекта, добавьте ссылку слишком`FBSDKLoginKit.framework` в hello таким же образом.
-5. Добавьте hello следующие приложения tooyour кода, в соответствии с toohello язык, который вы используете.
+4. Кроме добавления в проект `FBSDKCoreKit.framework` необходимо таким же образом добавить ссылку на `FBSDKLoginKit.framework`.
+5. Добавьте в приложение приведенный ниже код, соответствующий используемому языку.
 
 **Objective-C**:
 
@@ -664,7 +664,7 @@ Hello Facebook SDK для пользователей iOS toosign можно ис
 
 **Swift**:
 
-    // Add hello following imports tooyour bridging header:
+    // Add the following imports to your bridging header:
     //        #import <FBSDKLoginKit/FBSDKLoginKit.h>
     //        #import <FBSDKCoreKit/FBSDKAccessToken.h>
 
@@ -685,17 +685,17 @@ Hello Facebook SDK для пользователей iOS toosign можно ис
     }
 
 ## <a name="twitter-fabric"></a>Практическое руководство: проверка подлинности пользователей с помощью структуры Twitter для iOS
-Для пользователей iOS toosign можно использовать структуры в приложение с помощью Twitter. Проверка подлинности клиента потока является более предпочтительным, чем toousing hello `loginWithProvider:completion:` метода, как он обеспечивает более естественным согласованность UX и обеспечивает дополнительные настройки.
+Структуру для iOS можно использовать для входа пользователей в приложение с помощью Twitter. Использование клиентского потока аутентификации является более предпочтительным, чем использование метода `loginWithProvider:completion:` , так как он обеспечивает более удобный пользовательский интерфейс входа и позволяет выполнять дополнительную настройку.
 
-1. Настройте внутренний сервер мобильных приложений для входа в Twitter, следуя hello [как tooconfigure приложения службы для имени входа Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) учебника.
-2. Добавление проекта tooyour структуры по следующей hello [структуры для iOS — начало работы] документация и настройка TwitterKit.
+1. Настройте серверную часть мобильного приложения для входа с помощью Twitter, следуя указаниям в учебнике [Как настроить приложение службы приложений для использования имени для входа Twitter](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) .
+2. Добавьте структуру в проект, как описано в документе [Fabric for iOS - Getting Started] (Структура для iOS. Приступая к работе), а также установите TwitterKit.
 
    > [!NOTE]
-   > По умолчанию структура создаст приложение Twitter. Можно избежать создания приложения путем регистрации hello ключ клиента и секрет пользователя, созданной ранее с помощью hello следующие фрагменты кода.    Кроме того, можно заменить hello ключ потребителя и предоставить значения tooApp службы с hello значения секрет пользователя см. в hello [панель структуры]. Если этот параметр выбран, быть убедиться, что tooset hello обратного вызова URL-адрес tooa заполнитель значения, такие как `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
+   > По умолчанию структура создаст приложение Twitter. Чтобы избежать создания этого приложения, можно зарегистрировать ключ клиента и секрет клиента, которые вы создали ранее, с помощью фрагментов кода ниже.    Кроме того, можно заменить значения ключа клиента и секрета клиента, которые предоставляются службе приложений, на значения, отображаемые на [панели мониторинга структуры]. Если выбран этот параметр, не забудьте задать URL-адрес обратного вызова для значения заполнителя, например `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
    >
    >
 
-    При выборе toouse секреты hello, созданную ранее, добавьте следующий код tooyour делегат приложения hello:
+    Если вы решили использовать ранее созданные секреты, добавьте в делегат приложения следующий фрагмент кода.
 
     **Objective-C**:
 
@@ -721,7 +721,7 @@ Hello Facebook SDK для пользователей iOS toosign можно ис
             // Add any custom logic here.
             return true
         }
-3. Добавьте hello следующие приложения tooyour кода, в соответствии с toohello язык, который вы используете.
+3. Добавьте в приложение приведенный ниже код, соответствующий используемому языку.
 
 **Objective-C**:
 
@@ -758,12 +758,12 @@ Hello Facebook SDK для пользователей iOS toosign можно ис
         }
     }
 
-## <a name="google-sdk"></a>Как: проверять подлинность пользователей с hello Google входа в пакет SDK для iOS
-Hello Google вход SDK можно использовать для пользователей iOS toosign в приложение с помощью учетной записи Google.  Google недавно объявила о политики безопасности изменения tootheir OAuth.  Эти изменения политики будет необходимо использовать пакет SDK для Google в будущем hello hello.
+## <a name="google-sdk"></a>Практическое руководство: проверка подлинности пользователей с помощью пакета SDK Google Sign-In для iOS
+Пакет SDK Google Sign-In для iOS можно использовать для входа пользователей в приложение с помощью учетной записи Google.  Недавно компания Google объявила о внесении изменений в свои политики безопасности OAuth.  Эти изменения политик в дальнейшем потребуют использовать пакет SDK для Google.
 
-1. Настройте внутренний сервер мобильных приложений для входа в Google, следующие hello [как tooconfigure приложения службы для имени входа Google](app-service-mobile-how-to-configure-google-authentication.md) учебника.
-2. Установка hello Google SDK для iOS, следующие hello [Google вход для iOS — интеграцией](https://developers.google.com/identity/sign-in/ios/start-integrating) документации. Раздел «Проверка подлинности с сервером» hello, можно пропустить.
-3. Добавьте следующие tooyour делегат hello `signIn:didSignInForUser:withError:` метода, в соответствии с toohello языка.
+1. Настройте серверную часть мобильного приложения для входа с помощью Google Sign-In, следуя указаниям в руководстве [Как настроить приложение службы приложений для использования имени для входа Google](../app-service/app-service-mobile-how-to-configure-google-authentication.md) .
+2. Установите пакет SDK Google для iOS, следуя инструкциям в статье [Google Sign-In for iOS - Start integrating](https://developers.google.com/identity/sign-in/ios/start-integrating) (Google Sign-In для iOS — начало интеграции). Раздел "Authenticate with a Backend Server" (Аутентификация на внутреннем сервере) можно пропустить.
+3. Добавьте в метод `signIn:didSignInForUser:withError:` делегата код, приведенный ниже (в соответствии с используемым языком).
 
 **Objective-C**:
 
@@ -783,7 +783,7 @@ Hello Google вход SDK можно использовать для польз�
             // ...
         }
 
-1. Убедитесь, что также добавить hello следующие слишком`application:didFinishLaunchingWithOptions:` в вашем приложении делегат, заменив «SERVER_CLIENT_ID» hello таким же ИДЕНТИФИКАТОРОМ, вы использовали tooconfigure приложения службы на шаге 1.
+1. Добавьте также показанный ниже код в `application:didFinishLaunchingWithOptions:` в делегате приложения, заменив SERVER_CLIENT_ID тем же идентификатором, с помощью которого вы настроили службу приложений на этапе 1.
 
 **Objective-C**:
 
@@ -794,7 +794,7 @@ Hello Google вход SDK можно использовать для польз�
         GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
 
 
-1. Добавьте следующий код приложения tooyour в UIViewController, который реализует hello hello `GIDSignInUIDelegate` протокола, используемого языка toohello в соответствии с.  Прежде чем снова вход выхода и несмотря на то, что вам не требуется tooenter учетные данные снова, появится диалоговое окно согласия.  Этот метод следует вызывайте только при истечении срока действия маркера сеанса hello.
+1. Добавьте приведенный ниже код в приложение в UIViewController, который реализует протокол `GIDSignInUIDelegate` (в соответствии с используемым языком).  Вы вышли перед повторным входом, и хотя вам не нужно повторно вводить учетные данные, вы увидите диалоговое окно согласия.  Вызывайте этот метод, только когда истек срок маркера сеанса.
 
    **Objective-C**:
 
@@ -821,14 +821,14 @@ Hello Google вход SDK можно использовать для польз�
 [What is Mobile Services]: #what-is
 [Concepts]: #concepts
 [Setup and Prerequisites]: #Setup
-[How to: Create hello Mobile Services client]: #create-client
+[How to: Create the Mobile Services client]: #create-client
 [How to: Create a table reference]: #table-reference
 [How to: Query data from a mobile service]: #querying
 [Filter returned data]: #filtering
 [Sort returned data]: #sorting
 [Return data in pages]: #paging
 [Select specific columns]: #selecting
-[How to: Bind data toohello user interface]: #binding
+[How to: Bind data to the user interface]: #binding
 [How to: Insert data into a mobile service]: #inserting
 [How to: Modify data in a mobile service]: #modifying
 [How to: Authenticate users]: #authentication
@@ -836,7 +836,7 @@ Hello Google вход SDK можно использовать для польз�
 [How to: Upload images and large files]: #blobs
 [How to: Handle errors]: #errors
 [How to: Design unit tests]: #unit-testing
-[How to: Customize hello client]: #customizing
+[How to: Customize the client]: #customizing
 [Customize request headers]: #custom-headers
 [Customize data type serialization]: #custom-serialization
 [Next Steps]: #next-steps
@@ -845,9 +845,9 @@ Hello Google вход SDK можно использовать для польз�
 <!-- Images. -->
 
 <!-- URLs. -->
-[быстрого запуска Azure мобильных приложений]: app-service-mobile-ios-get-started.md
+[Быстрый запуск мобильного приложения Azure]: app-service-mobile-ios-get-started.md
 
-[Add Mobile Services tooExisting App]: /develop/mobile/tutorials/get-started-data
+[Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
 [Validate and modify data in Mobile Services by using server scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-ios
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
@@ -858,24 +858,24 @@ Hello Google вход SDK можно использовать для польз�
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
-[Use scripts tooauthorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Динамическая схема]: http://go.microsoft.com/fwlink/p/?LinkId=296271
+[Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
+[динамическая схема]: http://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[CLI toomanage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
+[CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-[панель структуры]: https://www.fabric.io/home
-[структуры для iOS — начало работы]: https://docs.fabric.io/ios/fabric/getting-started.html
+[панели мониторинга структуры]: https://www.fabric.io/home
+[Fabric for iOS - Getting Started]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
 [2]: http://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
 [5]: http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
-[7]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 [8]: ../active-directory/active-directory-devquickstarts-ios.md
-[9]: app-service-mobile-how-to-configure-facebook-authentication.md
+[9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

@@ -1,6 +1,6 @@
 ---
-title: "Фильтры aaaCreating с Azure Media Services .NET SDK"
-description: "Описывается, как фильтры toocreate, поэтому клиент может их использовать toostream определенных разделов потока. Службы мультимедиа создает динамические манифесты tooachieve Выборочный streaming."
+title: "Создание фильтров с помощью пакета SDK для .NET служб мультимедиа Azure"
+description: "В этом разделе описывается создание фильтров, с помощью которых клиент может передавать определенные секции потока. Для достижения такой выборочной потоковой передачи службы мультимедиа создают динамические манифесты."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 16d9497d48ab1d3f841dd97efb0f66016a2435c5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6c43473b86c14679ace558de478bd95f41d476da
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Создание фильтров с помощью пакета SDK для .NET служб мультимедиа Azure
 > [!div class="op_single_selector"]
@@ -27,24 +27,24 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Начиная с выпуска 2.11, службы мультимедиа позволяют фильтры toodefine средств. Эти фильтры являются правила стороне сервера, позволяющие клиентам toochoose toodo таких вещей, как: воспроизведения только части видео (вместо воспроизведение hello всего видео), или укажите только набор представлений аудио и видео обработки (устройства клиента вместо всех hello представлений, которые связаны с активом hello). Такая фильтрация ресурсов достигается за счет **динамического манифеста**, созданных после toostream запрос клиента видео на основе указанного фильтров.
+Начиная с версии 2.11, службы мультимедиа позволяют определять фильтры для активов. Эти фильтры представляют собой правила на стороне сервера, позволяющие пользователям выполнять следующие действия: воспроизведение только части видео (вместо целого) или указание подмножества представлений аудио и видео, которые может обрабатывать устройство клиента (вместо всех представлений, связанных с активом). Такая фильтрация активов достигается с помощью **динамических манифестов**, которые создаются по запросу клиента для потоковой передачи видео на основе указанных фильтров.
 
-Для получения дополнительных сведений см связанные toofilters и динамические манифеста [динамической манифесты Обзор](media-services-dynamic-manifest-overview.md).
+Подробные сведения о фильтрах и динамическом манифесте см. в статье [Фильтры и динамические манифесты](media-services-dynamic-manifest-overview.md).
 
-В этом разделе показано, как toocreate toouse Media Services .NET SDK, обновления и удаления фильтров. 
+В этом разделе показано, как использовать пакет SDK .NET служб мультимедиа для создания, обновления и удаления фильтров. 
 
-Обратите внимание, если обновить фильтр может занять too2 минут для потоковой передачи конечной точки toorefresh hello правила. Если содержимое hello был обработан с помощью этого фильтра (и кэширования в прокси-серверы и CDN кэши), обновление этого фильтра может привести к проигрывателя сбоев. Рекомендуется tooclear hello кэша после обновления hello фильтра. Если такой вариант невозможен, рассмотрите возможность использования другого фильтра. 
+Обратите внимание, что при обновлении фильтра может понадобиться до 2 минут на обновление правил конечной точкой потоковой передачи. Если содержимое было обработано с помощью данного фильтра (и кэшировано на прокси-серверах и в кэшах CDN), обновление этого фильтра может привести к сбоям проигрывателя. Рекомендуется очистить кэш после обновления фильтра. Если такой вариант невозможен, рассмотрите возможность использования другого фильтра. 
 
-## <a name="types-used-toocreate-filters"></a>Использовать фильтры toocreate типы
-Hello используются следующие типы при создании фильтров: 
+## <a name="types-used-to-create-filters"></a>Типы, используемые для создания фильтров
+При создании фильтров используются следующие типы: 
 
-* **IStreamingFilter**.  Этот тип основан на следующих API-интерфейса REST hello [фильтра](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Этот тип основан на следующих API-интерфейса REST hello [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Этот тип основан на следующих API-интерфейса REST hello [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** и **IFilterTrackPropertyCondition**. Эти типы основаны на следующих API-интерфейсов REST hello [FilterTrackSelect и FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  В основе этого типа лежит следующий интерфейс API REST: [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. В основе этого типа лежит следующий интерфейс API REST: [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. В основе этого типа лежит следующий интерфейс API REST: [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** и **IFilterTrackPropertyCondition**. В основе этих типов лежат следующие интерфейсы API REST: [FilterTrackSelect и FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Создание, обновление, чтение и удаление глобальных фильтров
-Hello следующий код показывает, как toouse .NET toocreate, обновления, чтения и удаления фильтров активов.
+Следующий код демонстрирует, как использовать .NET для создания, обновления, чтения и удаления фильтров ресурсов-контейнеров.
 
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
@@ -73,7 +73,7 @@ Hello следующий код показывает, как toouse .NET toocrea
 
 
 ## <a name="createupdatereaddelete-asset-filters"></a>Создание, обновление, чтение и удаление фильтров ресурсов-контейнеров
-Hello следующий код показывает, как toouse .NET toocreate, обновления, чтения и удаления фильтров активов.
+Следующий код демонстрирует, как использовать .NET для создания, обновления, чтения и удаления фильтров ресурсов-контейнеров.
 
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
@@ -104,9 +104,9 @@ Hello следующий код показывает, как toouse .NET toocrea
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Построение URL-адресов потоковой передачи с использованием фильтров
-Сведения о toopublish и предоставления имеющихся ресурсов. в статье [доставки содержимого tooCustomers Обзор](media-services-deliver-content-overview.md).
+Сведения о публикации и доставке ресурсов см. в статье [Доставка содержимого клиентам](media-services-deliver-content-overview.md).
 
-Hello следующих примерах показано, как tooadd фильтрует tooyour URL-адреса потоковой передачи.
+Следующие примеры показывают, как добавлять фильтры к URL-адресам потоковой передачи.
 
 **MPEG DASH** 
 

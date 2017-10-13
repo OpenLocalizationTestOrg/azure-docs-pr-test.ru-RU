@@ -1,6 +1,6 @@
 ---
-title: "определяемые пользователем операторы aaaDevelop U-SQL (определяемые пользователем операторы) | Документы Microsoft"
-description: "Узнайте, как использовать toobe toodevelop определяемые пользователем операторы и повторно использовать в аналитике Озера данных задания. "
+title: "Разработка определяемых пользователем операторов U-SQLU (UDO) | Документы Майкрософт"
+description: "Узнайте, как разрабатывать определяемые пользователем операторы (с возможностью повторного использования) для заданий Data Lake Analytics. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: 6b86618efd3751cd9a5e91875879d7dd6d6a7b02
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Разработка определяемых пользователем операторов U-SQLU (UDO)
-Узнайте, как toodevelop определяемые пользователем операторы tooprocess данных в задание U-SQL.
+Узнайте, как разрабатывать определяемые пользователем операторы для обработки данных в задании U-SQL.
 
 Инструкции по разработке сборок общего назначения для U-SQL см. в статье [Разработка сборок U-SQL для заданий Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md).
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Определение и использование определяемых пользователем операторов в U-SQL
-**toocreate и отправить задание U-SQL**
+**Создание и отправка задания U-SQL**
 
-1. Hello Visual Studio выберите **файл > Создать > проект > проект U-SQL**.
+1. В Visual Studio выберите **Файл > Создать > Проект > Проект U-SQL**.
 2. Нажмите кнопку **ОК**. Visual Studio создаст решение с помощью файла Script.usql.
 3. В **обозревателе решений** разверните узел Script.usql и дважды щелкните файл **Script.usql.cs**.
-4. Вставьте следующий код в файл hello hello:
+4. Скопируйте приведенный ниже код и вставьте его в файл.
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/06/2017
                 }
             }
         }
-6. Откройте **Script.usql**, и hello вставьте следующий скрипт U-SQL:
+6. Откройте файл **Script.usql** и вставьте следующий сценарий U-SQL:
 
         @drivers =
             EXTRACT UserID      string,
@@ -115,21 +115,21 @@ ms.lasthandoff: 10/06/2017
             USING new USQL_UDO.CountryName();    
 
         OUTPUT @drivers_CountryName
-            too"/Samples/Outputs/Drivers.csv"
+            TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. Укажите учетную запись аналитики Озера данных hello, базы данных и схемы.
+7. Укажите учетную запись аналитики озера данных, базу данных и схему.
 8. В **обозревателе решений** щелкните правой кнопкой мыши файл **Script.usql** и выберите команду **Создать сценарий**.
 9. В **обозревателе решений** щелкните правой кнопкой мыши файл **Script.usql** и выберите команду **Отправить сценарий**.
-10. Если вы еще не подключены tooyour подписки Azure, будет иметь tooenter запрашиваемые учетные данные учетной записи Azure.
-11. Нажмите кнопку **Submit**(Отправить). Отправка результатов и ссылку на задание доступны в окне "Результаты" hello после завершения отправки hello.
-12. Щелкните hello **обновление** кнопку toosee hello последние задания состояния и обновить hello экрана.
+10. Если вы еще не подключились к своей подписке Azure, вам будет предложено ввести учетные данные Azure.
+11. Нажмите кнопку **Submit**(Отправить). Итоги отправки и ссылка на задание появятся в окне результатов, когда операция отправки будет завершена.
+12. Чтобы увидеть последнее состояние задания, нажмите кнопку **Обновить**.
 
-**выходные данные toosee hello**
+**Просмотр выходных данных**
 
-1. Из **обозревателя серверов**, разверните **Azure**, разверните **аналитики Озера данных**разверните учетной записи аналитики Озера данных, разверните **учетных записей хранилища**, щелкните правой кнопкой мыши hello хранилища по умолчанию и нажмите кнопку **Explorer**.
+1. В **обозревателе сервера** разверните узлы **Azure**, **Data Lake Analytics**, а также учетную запись Data Lake Analytics. Затем разверните узел **Учетные записи хранения**, щелкните хранилище по умолчанию правой кнопкой мыши и выберите **Обозреватель**.
 2. Разверните узлы «Примеры» и «Выходные данные», а затем дважды щелкните **Drivers.csv**.
 
 ## <a name="see-also"></a>Дополнительные материалы
 * [Приступая к работе с аналитикой озера данных с помощью PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Приступая к работе с hello портал Azure с помощью аналитики Озера данных](data-lake-analytics-get-started-portal.md)
+* [Приступая к работе с аналитикой озера данных с помощью портала Azure](data-lake-analytics-get-started-portal.md)
 * [Использование инструментов озера данных для Visual Studio для разработки приложений U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

@@ -5,6 +5,7 @@
 ## Руководство по модулям Runbook
 ### [Создание графического модуля Runbook](automation-first-runbook-graphical.md)
 ### [Создание модуля Runbook PowerShell](automation-first-runbook-textual-powershell.md)
+### [Первый модуль Runbook Python](automation-first-runbook-textual-python2.md)
 ### [Создание модуля Runbook рабочего процесса PowerShell](automation-first-runbook-textual.md)
 # Практическое руководство
 ## Проверка подлинности и безопасность
@@ -34,17 +35,21 @@
 ### [Изменение параметров Runbook](automation-runbook-settings.md)
 ### [Управление данными службы автоматизации Azure](automation-managing-data.md)
 ### [Вызов модуля Runbook службы автоматизации Azure из оповещения Log Analytics](automation-invoke-runbook-from-omsla-alert.md)
-### [Передайте объект JSON tooan модуля runbook службы автоматизации Azure](automation-pass-json-string.md)
+### [Передача объекта JSON в модуль runbook службы автоматизации Azure](automation-pass-json-string.md)
 ## гибридный компонент Runbook Worker
 ### [Развертывание гибридной рабочей роли Runbook](automation-hybrid-runbook-worker.md)
+### [Гибридные рабочие роли Runbook службы автоматизации Azure для Windows](automation-windows-hrw-install.md)
+### [Гибридные рабочие роли Runbook службы автоматизации Azure для Linux](automation-linux-hrw-install.md)
 ### [Запуск модулей Runbook в рабочей роли](automation-hrw-run-runbooks.md)
+### [Удаление гибридных рабочих ролей Runbook в службе автоматизации Azure](automation-remove-hrw.md)
 ## Развертывание управления конфигурацией (DSC)
 ### [Общие сведения о настройке требуемого состояния (DSC)](automation-dsc-overview.md)
 ### [Приступая к работе](automation-dsc-getting-started.md)
+### [Настройка требуемого состояния серверов и управление смещением с помощью службы автоматизации Azure](tutorial-configure-servers-desired-state.md)
 ### [Подключение виртуальных машин для управления](automation-dsc-onboarding.md)
 ### [Компиляция конфигураций DSC](automation-dsc-compile.md)
 ### [Непрерывное развертывание с помощью Chocolatey](automation-dsc-cd-chocolatey.md)
-### [Пересылка отчетов tooOMS данных анализа журналов Azure Automation DSC](automation-dsc-diagnostics.md)
+### [Пересылка данных отчетов Azure Automation DSC в OMS Log Analytics](automation-dsc-diagnostics.md)
 ## Управление активами
 ### [Сертификаты](automation-certificates.md)
 ### [Подключения](automation-connections.md)
@@ -64,11 +69,15 @@
 ### [Вызов модуля Runbook службы автоматизации Azure из оповещения Log Analytics](automation-invoke-runbook-from-omsla-alert.md)
 ### [Развертывание шаблона Azure Resource Manager в модуле Runbook PowerShell в службе автоматизации Azure](automation-deploy-template-runbook.md)
 ## Решения
-### [Отслеживание изменений](../log-analytics/log-analytics-change-tracking.md)
 ### [Управление обновлениями](../operations-management-suite/oms-solution-update-management.md)
+#### [Управление обновлениями для нескольких виртуальных машин](manage-update-multi.md)
+#### [Интеграция SCCMr со службой управления обновлениями OMS](oms-solution-updatemgmt-sccmintegration.md)
+### [отслеживание изменений;](../log-analytics/log-analytics-change-tracking.md)
+### [Отслеживание изменений в виртуальных машинах](automation-vm-change-tracking.md)
+### [Управление виртуальной машиной с помощью сбора данных инвентаризации](automation-vm-inventory.md)
 ### [Запуск и остановка виртуальных машин в нерабочее время](automation-solution-vm-management.md)
 ## Монитор
-### [Прямой tooLog данных задания службы автоматизации Azure Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [Пересылка данных задания службы автоматизации Azure в Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Отмена привязки учетной записи службы автоматизации Azure к Log Analytics](automation-unlink-from-log-analytics.md)
 ## Миграция
 ### [Перенос из Orchestrator](automation-orchestrator-migration.md)
@@ -77,8 +86,8 @@
 ### [Устранение распространенных ошибок](automation-troubleshooting-automation-errors.md)
 ### [Устранение неполадок в гибридной рабочей роли Runbook](automation-troubleshooting-hybrid-runbook-worker.md)
 # Справочные материалы
-## [PowerShell](/powershell/module/azurerm.automation)
-## [PowerShell (классическая модель)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell](/powershell/module/azurerm.automation)
+## [Azure PowerShell (классическая модель)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (классическая модель)](https://msdn.microsoft.com/library/azure/mt163781)

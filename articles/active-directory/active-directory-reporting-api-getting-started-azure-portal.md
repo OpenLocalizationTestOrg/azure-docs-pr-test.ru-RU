@@ -1,6 +1,6 @@
 ---
-title: "aaaGetting к работе с API отчетов Azure AD hello | Документы Microsoft"
-description: "Как tooget работу с hello API отчетов Azure Active Directory"
+title: "Начало работы с API отчетов Azure AD | Документация Майкрософт"
+description: "Как начать работу с API отчетов Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,32 +15,32 @@ ms.workload: identity
 ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bb7d72ba445daa367d7502889c38a605a16f26d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started-with-hello-azure-active-directory-reporting-api"></a>Приступая к работе с API отчетов Azure Active Directory "hello"
+# <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Приступая к работе с API отчетов Azure Active Directory
 
-Azure Active Directory предоставляет разнообразные отчеты. Hello данные этих отчетов могут быть очень полезным tooyour приложения, такие как системы SIEM, аудита и средства бизнес-аналитики. Hello Azure AD сообщивший об API обеспечивают программный доступ к данным toohello через набор API на основе REST. Эти интерфейсы API можно вызвать, используя различные языки и инструменты программирования.
+Azure Active Directory предоставляет разнообразные отчеты. Данные этих отчетов могут быть очень полезными для приложений, например систем SIEM, а также инструментов аудита и бизнес-аналитики. Интерфейсы API отчетов Azure AD предоставляют программный доступ к данным с помощью набора интерфейсов API на базе REST. Эти интерфейсы API можно вызвать, используя различные языки и инструменты программирования.
 
-В этой статье приводятся hello информацию, необходимую tooget работы с отчетами hello Azure AD API-интерфейсы.
-В следующем разделе hello можно найти дополнительные сведения об использовании hello аудита и входа в API-интерфейсы. 
+В этой статье содержатся сведения, необходимые для начала работы с интерфейсами API отчетов Azure AD.
+В следующем разделе представлены дополнительные сведения об использовании интерфейсов API аудита и входа. 
 
 Ответы на вопросы см. в разделе [Часто задаваемые вопросы](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-faq). При возникновении проблем [создайте запрос в службу поддержки](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)
 
 ## <a name="learning-map"></a>Карта обучения
-1. **Подготовка** -перед тестированием ваших примеров API необходимо toocomplete hello [API отчетов hello Azure AD tooaccess необходимых компонентов](active-directory-reporting-api-prerequisites-azure-portal.md).
-2. **Просмотр** -получить первое впечатление hello reporting API-интерфейсы:
+1. **Подготовка.** Перед тестированием примеров API нужно выполнить [предварительные требования для доступа к API отчетов Azure AD](active-directory-reporting-api-prerequisites-azure-portal.md).
+2. **Изучение.** Ознакомьтесь с интерфейсами API отчетов:
    
-   * [С помощью hello образцы для аудита hello API](active-directory-reporting-api-audit-samples.md) 
-   * [С помощью hello образцы для API отчетов hello действия при входе](active-directory-reporting-api-sign-in-activity-samples.md)
+   * [Использование примеров для API аудита](active-directory-reporting-api-audit-samples.md) 
+   * [Использование примеров для API отчетов о действиях при входе](active-directory-reporting-api-sign-in-activity-samples.md)
 3. **Настройка.** Создайте свое решение: 
    
-   * [Справочник по API hello аудита с помощью](active-directory-reporting-api-audit-reference.md) 
-   * [С помощью отчетов действия при входе hello Справочник](active-directory-reporting-api-sign-in-activity-reference.md)
+   * [Справочник по использованию API аудита](active-directory-reporting-api-audit-reference.md) 
+   * [Справочник по использованию API отчетов о действиях при входе](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если вы хотите toosee все доступные API Azure AD Graph конечные точки, используйте эту ссылку: [https://graph.windows.net/tenant-name/activities/$ метаданных? api-version = beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta).
+Если вы хотите ознакомиться со всеми доступными конечными точками API Graph Azure AD, воспользуйтесь этой ссылкой: [https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta).
 

@@ -1,6 +1,6 @@
 ---
-title: "AAA» запроса индекса (портал - поиска Azure) | Документы Microsoft»"
-description: "Выполните запрос поиска в портале Azure hello поиск в обозревателе."
+title: "Отправка запросов в индекс службы поиска Azure с помощью портала | Документация Майкрософт"
+description: "Создайте поисковый запрос в проводнике поиска на портале Azure."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 07/10/2017
 ms.author: ashmaka
-ms.openlocfilehash: 56bab3ef8a66eeb053fbbeb6d322acb6824fb34b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dd68d8ed073bf7b8666ddef35a2f1f84df690b4b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="query-an-azure-search-index-using-search-explorer-in-hello-azure-portal"></a>Запрос с помощью обозревателя поиска в портале Azure hello индекс поиска Azure
+# <a name="query-an-azure-search-index-using-search-explorer-in-the-azure-portal"></a>Отправка запросов в индекс службы поиска Azure с использованием обозревателя поиска на портале Azure
 > [!div class="op_single_selector"]
 > * [Обзор](search-query-overview.md)
 > * [Портал](search-explorer.md)
@@ -28,41 +28,41 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-В этой статье показано, как tooquery поиска Azure индекс с помощью **обозреватель поиска** в hello портал Azure. Поиск в обозревателе toosubmit простого или полного Lucene строки tooany существующий индекс запросов можно использовать в службе.
+В этой статье показано, как отправлять запросы в индекс службы поиска Azure с помощью **обозревателя поиска** на портале Azure. Используйте обозреватель поиска, чтобы отправить простые строки запросов или расширенные строки запросов Lucene в любой имеющийся индекс в службе.
 
-## <a name="open-hello-service-dashboard"></a>Привет открыть панель мониторинга службы
-1. Нажмите кнопку **все ресурсы** полосы перехода hello в hello слева от оператора hello [портал Azure](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+## <a name="open-the-service-dashboard"></a>Открытие панели мониторинга службы
+1. Щелкните **Все ресурсы** на панели переходов слева на [портале Azure](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 2. Выберите службу поиска Azure.
 
 ## <a name="select-an-index"></a>Выбор индекса
 
-Выберите hello индекс хотелось бы toosearch из hello **индексы** плитки.
+Выберите индекс, в котором нужно выполнить поиск, на плитке **Индексы**.
 
    ![](./media/search-explorer/pick-index.png)
 
 ## <a name="open-search-explorer"></a>Открытие обозревателя поиска
 
-Щелкните панель поиска откройте hello tooslide плитки обозреватель поиска hello и панель результатов.
+Щелкните плитку обозревателя поиска, чтобы открыть панель поиска и область результатов.
 
    ![](./media/search-explorer/search-explorer-tile.png)
 
 ## <a name="start-searching"></a>Начните поиск.
 
-При использовании hello обозреватель поиска, можно указать [параметров запроса](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) запроса tooformulate hello.
+При использовании обозревателя поиска можно указать [параметры запроса](https://docs.microsoft.com/rest/api/searchservice/Search-Documents), чтобы сформировать запрос.
 
 1. В **строке запроса** введите запрос и нажмите кнопку **Поиск**. 
 
-   Строка запроса Hello автоматически разбивается на правильный запрос hello toosubmit URL-адрес HTTP-запроса по hello REST API поиска Azure.   
+   Строка запроса автоматически преобразуется в правильный URL-адрес запроса для отправки HTTP-запроса в REST API службы поиска Azure.   
    
-   Можно использовать любой допустимый простого или полного Lucene синтаксис toocreate hello запроса. Hello `*` символ является поиск пуст или не задан эквивалентный tooan, который возвращает все документы в произвольном порядке.
+   Используйте любой допустимый простой синтаксис запросов или синтаксис расширенных запросов Lucene, чтобы создать запрос. Знак `*` эквивалентен пустому полю поиска или неуказанным условиям поиска, который возвращает все документы в произвольном порядке.
 
-2. В **результатов**, результаты запроса должны быть представлены в необработанный JSON, идентичные toohello полезные данные возвращаются в текст ответа HTTP при выдаче запросов программными средствами.
+2. В области **результатов** результаты запроса будут представлены в необработанном формате JSON аналогично полезным данным, возвращенным в тексте HTTP-ответа при программной отправке запросов.
 
    ![](./media/search-explorer/search-bar.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Hello следующие ресурсы предоставляют дополнительные сведения о синтаксисе и примеры.
+Дополнительные сведения о синтаксисе запросов и примеры см. в следующих ресурсах.
 
  + [Простой синтаксис запросов](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
  + [Синтаксис запросов Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 

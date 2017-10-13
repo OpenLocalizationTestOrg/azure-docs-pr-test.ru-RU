@@ -1,6 +1,6 @@
 ---
-title: "aaaManage сетевых групп безопасности - CLI Azure 2.0 | Документы Microsoft"
-description: "Узнайте, как с помощью групп безопасности сети toomanage hello Azure командной строки (CLI) 2.0."
+title: "Управление группами безопасности сети (Azure CLI 2.0) | Документация Майкрософт"
+description: "Узнайте, как управлять группами безопасности сети с помощью интерфейса командной строки Azure (CLI) версии 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,38 +16,38 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3036b465e1e4049cba00e5e13ce1b479a2301d3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="manage-network-security-groups-using-hello-azure-cli-20"></a>Управление группами безопасности сети с помощью Azure CLI 2.0 hello
+# <a name="manage-network-security-groups-using-the-azure-cli-20"></a>Управление группами безопасности сети с помощью Azure CLI 2.0
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI 
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи 
 
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello. 
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки. 
 
-- [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md) — нашей CLI для hello классический и ресурсов развертывания модели управления 
-- [Azure CLI 2.0](#View-existing-NSGs) -нашей нового поколения CLI для модели развертывания управления hello ресурсов (в этой статье)
+- [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager. 
+- [Azure CLI 2.0](#View-existing-NSGs) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager (описывается в этой статье).
 
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md). В этой статье описан с помощью модели развертывания диспетчера ресурсов hello, который рекомендуется в большинстве случаев новый вместо hello классической модели развертывания.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md). В этой статье описывается использование модели развертывания c помощью Resource Manager. Для большинства новых развертываний мы рекомендуем использовать эту модель вместо классической.
 > 
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="prerequisite"></a>Предварительные требования
-Если еще не еще, установить и настроить hello последней [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login). 
+Установите и настройте последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) (если вы еще этого не сделали), а затем войдите с использованием учетной записи Azure, выполнив команду [az login](/cli/azure/#login). 
 
 
 ## <a name="view-existing-nsgs"></a>Просмотр существующих групп безопасности сети
-tooview списка Nsg hello в определенной группе ресурсов, запустите hello [az сетевой nsg список](/cli/azure/network/nsg#list) с `-o table` формат вывода:
+Чтобы просмотреть список групп безопасности сети в определенной группе ресурсов, выполните команду [az network nsg list](/cli/azure/network/nsg#list) с форматом выходных данных `-o table`:
 
 ```azurecli
 az network nsg list -g RG-NSG -o table
@@ -61,7 +61,7 @@ az network nsg list -g RG-NSG -o table
     centralus   NSG-FrontEnd  Succeeded            RG-NSG           <guid>
 
 ## <a name="list-all-rules-for-an-nsg"></a>Перечисление всех правил для группы безопасности сети
-tooview hello правила NSG с именем **NSG-FrontEnd**, запустите hello [nsg Показать az сети](/cli/azure/network/nsg#show) команду с помощью [фильтр запроса JMESPATH](/cli/azure/query-az-cli2) и hello `-o table` формат вывода:
+Чтобы просмотреть группу безопасности сети **NSG-FrontEnd**, выполните команду [az network nsg show](/cli/azure/network/nsg#show), используя [фильтр запроса JMESPATH](/cli/azure/query-az-cli2) и формат выходных данных `-o table`:
 
 ```azurecli
     az network nsg show \
@@ -78,24 +78,24 @@ tooview hello правила NSG с именем **NSG-FrontEnd**, запуст�
     AllowVnetInBound               Allow inbound traffic from all VMs in VNET              Allow     Inbound      *                VirtualNetwork    *               VirtualNetwork
     AllowAzureLoadBalancerInBound  Allow inbound traffic from azure load balancer          Allow     Inbound      *                *                 *               AzureLoadBalancer
     DenyAllInBound                 Deny all inbound traffic                                Deny      Inbound      *                *                 *               *
-    AllowVnetOutBound              Allow outbound traffic from all VMs tooall VMs in VNET  Allow     Outbound     *                VirtualNetwork    *               VirtualNetwork
-    AllowInternetOutBound          Allow outbound traffic from all VMs tooInternet         Allow     Outbound     *                Internet          *               *
+    AllowVnetOutBound              Allow outbound traffic from all VMs to all VMs in VNET  Allow     Outbound     *                VirtualNetwork    *               VirtualNetwork
+    AllowInternetOutBound          Allow outbound traffic from all VMs to Internet         Allow     Outbound     *                Internet          *               *
     DenyAllOutBound                Deny all outbound traffic                               Deny      Outbound     *                *                 *               *
     rdp-rule                                                                               Allow     Inbound      3389             *                 *               Internet
     web-rule                                                                               Allow     Inbound      80               *                 *               Internet
 > [!NOTE]
-> Можно также использовать [список правил az сети nsg](/cli/azure/network/nsg/rule#list) toolist только hello настраиваемые правила из NSG.
+> Кроме того, можно выполнить команду [az network nsg rule list](/cli/azure/network/nsg/rule#list), чтобы вывести список только пользовательских правил из группы безопасности сети.
 >
 
 ## <a name="view-nsg-associations"></a>Просмотр связей для группы безопасности сети
 
-tooview какие ресурсы hello **NSG-FrontEnd** NSG — hello связан с, запустите `az network nsg show` команды, как показано ниже. 
+Чтобы просмотреть, с какими ресурсами связана группа безопасности сети **NSG-FrontEnd`az network nsg show`, выполните команду** , как показано ниже. 
 
 ```azurecli
 az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterfaces]'
 ```
 
-Найдите hello **сетевых интерфейсов** и **подсети** свойства, как показано ниже:
+Найдите свойства **networkInterfaces** и **subnets**, как показано ниже.
 
 ```json
 [
@@ -117,17 +117,17 @@ az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterface
 ]
 ```
 
-В приведенном выше примере hello, hello NSG не связан tooany сетевых интерфейсов (NIC), и это связанный tooa подсеть с именем **переднего плана**.
+В приведенном выше примере группа безопасности сети не связана с сетевыми адаптерами, но связана с подсетью **FrontEnd**.
 
 ## <a name="add-a-rule"></a>Добавление правила
-tooadd правило, что позволяет **входящий** tooport трафика **443** с любого компьютера toohello **NSG-FrontEnd** NSG, введите следующую команду hello:
+Чтобы добавить правило, разрешающее **входящий** трафик через порт **443** с любого компьютера в группу безопасности сети **NSG-FrontEnd**, выполните следующую команду:
 
 ```azurecli
 az network nsg rule create  \
 --resource-group RG-NSG \
 --nsg-name NSG-FrontEnd  \
 --name allow-https \
---description "Allow access tooport 443 for HTTPS" \
+--description "Allow access to port 443 for HTTPS" \
 --access Allow \
 --protocol Tcp  \
 --direction Inbound \
@@ -143,7 +143,7 @@ az network nsg rule create  \
 ```json
 {
   "access": "Allow",
-  "description": "Allow access tooport 443 for HTTPS",
+  "description": "Allow access to port 443 for HTTPS",
   "destinationAddressPrefix": "*",
   "destinationPortRange": "443",
   "direction": "Inbound",
@@ -160,7 +160,7 @@ az network nsg rule create  \
 ```
 
 ## <a name="change-a-rule"></a>Изменение правила
-правило toochange hello, созданной ранее tooallow входящий трафик от hello **Internet** выполняться hello [обновления правила nsg сети az](/cli/azure/network/nsg/rule#update) команды:
+Чтобы изменить ранее созданное правило, разрешающее входящий трафик только из **Интернета**, выполните команду [az network nsg rule update](/cli/azure/network/nsg/rule#update):
 
 ```azurecli
 az network nsg rule update \
@@ -175,7 +175,7 @@ az network nsg rule update \
 ```json
 {
 "access": "Allow",
-"description": "Allow access tooport 443 for HTTPS",
+"description": "Allow access to port 443 for HTTPS",
 "destinationAddressPrefix": "*",
 "destinationPortRange": "443",
 "direction": "Inbound",
@@ -192,7 +192,7 @@ az network nsg rule update \
 ```
 
 ## <a name="delete-a-rule"></a>Удаление правила
-toodelete hello создано правило выше, запустите hello следующую команду:
+Чтобы удалить созданное ранее правило, выполните следующую команду:
 
 ```azurecli
 az network nsg rule delete \
@@ -202,8 +202,8 @@ az network nsg rule delete \
 ```
 
 
-## <a name="associate-an-nsg-tooa-nic"></a>Связывание NSG tooa сетевого Адаптера
-tooassociate hello **NSG-FrontEnd** NSG toohello **TestNICWeb1** сетевого Адаптера, используйте hello [обновления сетевого адаптера сети az](/cli/azure/network/nic#update) команды:
+## <a name="associate-an-nsg-to-a-nic"></a>Связывание группы безопасности сети с сетевым адаптером
+Чтобы связать группу безопасности сети **NSG-FrontEnd** с сетевой картой **TestNICWeb1**, выполните команду [az network nic update](/cli/azure/network/nic#update):
 
 ```azurecli
 az network nic update \
@@ -286,16 +286,16 @@ az network nic update \
 
 ## <a name="dissociate-an-nsg-from-a-nic"></a>Отмена связи с сетевым адаптером для группы безопасности сети
 
-toodissociate hello **NSG-FrontEnd** NSG из hello **TestNICWeb1** сетевого Адаптера, запустите hello [обновления правила nsg сети az](/cli/azure/network/nsg/rule#update) еще раз, но заменить hello `--network-security-group` аргумент с пустой строкой (`""`).
+Чтобы удалить связь между группой безопасности сети **NSG-FrontEnd** и сетевой картой **TestNICWeb1**, выполните команду [az network nsg rule update](/cli/azure/network/nsg/rule#update) еще раз, но замените аргумент `--network-security-group` пустой строкой (`""`).
 
 ```azurecli
 az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-security-group ""
 ```
 
-В выходных данных hello hello `networkSecurityGroup` toonull задан ключ.
+В выходных данных для ключа `networkSecurityGroup` задано значение null.
 
 ## <a name="dissociate-an-nsg-from-a-subnet"></a>Отмена связи с подсетью для группы безопасности сети
-toodissociate hello **NSG-FrontEnd** NSG из hello **переднего плана** подсети, снова запустите hello [обновления правила nsg сети az](/cli/azure/network/nsg/rule#update) еще раз, но заменить hello `--network-security-group` аргумент с пустой строкой (`""`).
+Чтобы удалить связь между группой безопасности сети **NSG-FrontEnd** и подсетью **FrontEnd**, выполните команду [az network nsg rule update](/cli/azure/network/nsg/rule#update) еще раз, но замените аргумент `--network-security-group` пустой строкой (`""`).
 
 ```azurecli
 az network vnet subnet update \
@@ -305,10 +305,10 @@ az network vnet subnet update \
 --network-security-group ""
 ```
 
-В выходных данных hello hello `networkSecurityGroup` toonull задан ключ.
+В выходных данных для ключа `networkSecurityGroup` задано значение null.
 
-## <a name="associate-an-nsg-tooa-subnet"></a>Связывание NSG tooa подсети
-tooassociate hello **NSG-FrontEnd** NSG toohello **переднего плана** подсети опять-таки выполняются hello следующую команду:
+## <a name="associate-an-nsg-to-a-subnet"></a>Связывание группы NSG с подсетью
+Чтобы снова связать группу безопасности сети **NSG-FrontEnd** с подсетью **FrontEnd**, выполните следующую команду:
 
 ```azurecli
 az network vnet subnet update \
@@ -318,7 +318,7 @@ az network vnet subnet update \
 --network-security-group NSG-FrontEnd
 ```
 
-В выходных данных hello hello `networkSecurityGroup` ключ имеет аналогичную для hello значения:
+В выходных данных для ключа `networkSecurityGroup` задано значение, подобное следующему:
 
 ```json
 "networkSecurityGroup": {
@@ -339,12 +339,12 @@ az network vnet subnet update \
   ```
 
 ## <a name="delete-an-nsg"></a>Удаление группы NSG
-NSG можно удалить только в том случае, если она не сопоставлена tooany ресурсов. toodelete NSG, выполните следующие действия hello.
+Группу безопасности сети можно удалить только в том случае, если она не связана с ресурсами. Чтобы удалить группу безопасности сети, выполните следующие действия.
 
-1. ресурсы hello toocheck связанные tooan NSG, запустите hello `azure network nsg show` как показано в [связи Nsg представление](#View-NSGs-associations).
-2. Если hello NSG связанные tooany сетевых адаптеров, запустите hello `azure network nic set` как показано в [связь между Сетевыми NSG](#Dissociate-an-NSG-from-a-NIC) для каждого сетевого адаптера. 
-3. Если hello NSG связанные tooany подсети, запустите hello `azure network vnet subnet set` как показано в [связь NSG из подсети](#Dissociate-an-NSG-from-a-subnet) для каждой подсети.
-4. hello toodelete NSG, запустите hello следующую команду:
+1. Чтобы проверить ресурсы, связанные с группой, выполните команду `azure network nsg show` , как показано в разделе [Просмотр связей для группы безопасности сети](#View-NSGs-associations).
+2. Если группа связана с сетевыми адаптерами, выполните `azure network nic set` , как показано в разделе [Отмена связи с сетевым адаптером для группы безопасности сети](#Dissociate-an-NSG-from-a-NIC) , для каждого сетевого адаптера. 
+3. Если группа связана с подсетью, выполните `azure network vnet subnet set` , как показано в разделе [Отмена связи с подсетью для группы безопасности сети](#Dissociate-an-NSG-from-a-subnet) , для каждой подсети.
+4. Чтобы удалить группу безопасности сети, выполните следующую команду:
 
     ```azurecli
     az network nsg delete --resource-group RG-NSG --name NSG-FrontEnd

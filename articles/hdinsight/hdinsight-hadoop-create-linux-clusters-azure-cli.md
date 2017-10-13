@@ -1,6 +1,6 @@
 ---
-title: "с помощью командной строки - hello Azure HDInsight кластеров Hadoop aaaCreate | Документы Microsoft"
-description: "Узнайте, как с помощью кластеров HDInsight toocreate hello кросс платформенных Azure CLI 1.0."
+title: "Создание кластеров Hadoop с помощью командной строки в Azure HDInsight | Документы Майкрософт"
+description: "Узнайте, как создавать кластеры HDInsight с кроссплатформенного Azure CLI 1.0."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 09/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 5295b01054b8c23df0e3b75a3e0e8c933ac48b3c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 791edd4e56c7957458d49f6f3bd87b67e96db7a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-hdinsight-clusters-using-hello-azure-cli"></a>Создать кластеры HDInsight с помощью hello Azure CLI
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Создание кластеров HDInsight с помощью интерфейса командной строки Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Hello шагов этого пошагового руководства документа, для создания кластера HDInsight 3.5 с помощью hello Azure CLI 1.0.
+Это пошаговое руководство содержит инструкции по созданию кластера HDInsight 3.5 с помощью Azure CLI 1.0.
 
 > [!IMPORTANT]
-> Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 
 ## <a name="prerequisites"></a>Предварительные требования
@@ -38,90 +38,90 @@ Hello шагов этого пошагового руководства доку
 
 * **Подписка Azure**. См. страницу [бесплатной пробной версии Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure CLI**. Hello в данном пошаговом руководстве последнего были протестированы с Azure CLI версии 0.10.14.
+* **Azure CLI**. Действия, описанные в этом документе, проверены с помощью Azure CLI версии 0.10.14.
 
     > [!IMPORTANT]
-    > Hello в данном пошаговом руководстве не работают с Azure CLI версии 2.0. Azure CLI 2.0 не поддерживает создание кластера HDInsight.
+    > Инструкции, приведенные в этом документе, не подходят для Azure CLI 2.0. Azure CLI 2.0 не поддерживает создание кластера HDInsight.
 
-## <a name="log-in-tooyour-azure-subscription"></a>Войдите в tooyour подписки Azure
+## <a name="log-in-to-your-azure-subscription"></a>Вход в подписку Azure
 
-Выполните hello шагов, описанных в [подключение tooan подписки Azure из hello Azure командной строки (CLI Azure)](../xplat-cli-connect.md) и подключите tooyour подписку, используя hello **входа** метод.
+Выполните действия, описанные в статье [Подключение к среде Azure с использованием интерфейса командной строки Azure (Azure CLI)](../xplat-cli-connect.md) , и подключитесь к подписке с помощью метода **login** .
 
 ## <a name="create-a-cluster"></a>Создание кластера
 
-Привет, следующие шаги необходимо выполнить из командной строки, например PowerShell или Bash.
+Описанные ниже действия следует выполнять в командной строке, например PowerShell или Bash.
 
-1. Используйте hello следующая команда tooauthenticate tooyour подписки Azure:
+1. Выполните следующую команду для аутентификации в подписке Azure.
 
         azure login
 
-    Вы являются запрашиваемые tooprovide свое имя и пароль. Если у вас несколько подписок Azure, используйте `azure account set <subscriptionname>` tooset hello подписку, которая hello Azure CLI команды используют.
+    Вам будет предложено указать имя пользователя и пароль. Если подписок Azure несколько, укажите, какую подписку должны использовать команды Azure CLI, с помощью метода `azure account set <subscriptionname>` .
 
-2. Переключение режима tooAzure диспетчера ресурсов, с помощью hello следующую команду:
+2. Переключитесь в режим диспетчера ресурсов Azure с помощью следующей команды:
 
         azure config mode arm
 
-3. Создайте группу ресурсов. Эта группа ресурсов содержит кластер HDInsight hello и соответствующие учетной записи хранилища.
+3. Создайте группу ресурсов. Эта группа ресурсов будет содержать кластер HDInsight и соответствующую учетную запись хранения.
 
         azure group create groupname location
 
-    * Замените `groupname` уникальное имя для группы hello.
+    * Замените `groupname` на уникальное имя группы.
 
-    * Замените `location` с hello географический регион, вы должны быть toocreate hello группы.
+    * Замените `location` на географический регион, в котором нужно создать группу.
 
-       Список допустимых местах, использовать hello `azure location list` команды, а затем использовать одно из местоположений hello из hello `Name` столбца.
+       Для получения списка допустимых расположений выполните команду `azure location list`, а затем воспользуйтесь одним из расположений из столбца `Name`.
 
-4. Создайте учетную запись хранения. Эта учетная запись хранения служит hello хранилища по умолчанию для кластера HDInsight hello.
+4. Создайте учетную запись хранения. Эта учетная запись хранения будет использоваться как хранилище по умолчанию для кластера HDInsight.
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
 
-    * Замените `groupname` с именем hello hello группы, созданной в предыдущем шаге hello.
+    * Замените `groupname` на имя группы, созданной на предыдущем этапе.
 
-    * Замените `location` с hello местоположения, используемый в предыдущем шаге hello.
+    * Замените `location` на расположение, которое использовалось на предыдущем этапе.
 
-    * Замените `storagename` уникальное имя для учетной записи хранения hello.
+    * Замените `storagename` на уникальное имя учетной записи хранения.
 
         > [!NOTE]
-        > Дополнительные сведения о параметрах hello, использованный в этой команде используется `azure storage account create -h` tooview справку для этой команды.
+        > Дополнительные сведения о параметрах, используемых в этой команде, используйте `azure storage account create -h`, чтобы открыть справку по этой команде.
 
-5. Получить учетную запись хранения hello ключа используется tooaccess hello.
+5. Извлеките ключ для доступа к учетной записи хранения.
 
         azure storage account keys list -g groupname storagename
 
-    * Замените `groupname` с hello имя группы ресурсов.
-    * Замените `storagename` с именем hello hello учетной записи хранения.
+    * Замените `groupname` на имя группы ресурсов.
+    * Замените `storagename` на имя учетной записи хранения.
 
-     В возвращаемых данных hello, сохранить hello `key` значение `key1`.
+     Из полученных данных сохраните значение `key` параметра `key1`.
 
 6. Создание кластера HDInsight.
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * Замените `groupname` с hello имя группы ресурсов.
+    * Замените `groupname` на имя группы ресурсов.
 
-    * Замените `Hadoop` с типом кластера hello, что вы хотите toocreate. Примеры: `Hadoop`, `HBase`, `Kafka`, `Spark` или `Storm`.
+    * Замените `Hadoop` типом кластера, который хотите создать. Примеры: `Hadoop`, `HBase`, `Kafka`, `Spark` или `Storm`.
 
      > [!IMPORTANT]
-     > HDInsight кластеров поставляются в различных типов, которые соответствуют toohello рабочей нагрузки или технология, которая hello кластера настроена для работы. Нет не поддерживаемый метод toocreate кластера, которая объединяет несколько типов, таких как Storm и HBase на один кластер.
+     > Кластеры HDInsight бывают разных типов, которые соответствуют рабочей нагрузке или технологии, для которой предназначен кластер. Создать кластер, в котором бы объединились несколько типов, например Storm и HBase, нельзя.
 
-    * Замените `location` с hello местоположения, используемый в предыдущих шагах.
+    * Замените `location` на расположение, которое использовалось на предыдущих этапах.
 
-    * Замените `storagename` на имя учетной записи хранения hello.
+    * Замените `storagename` на имя учетной записи хранения.
 
-    * Замените `storagekey` с hello ключ, полученный в предыдущем шаге hello.
+    * Замените `storagekey` на ключ, полученный на предыдущем этапе.
 
-    * Для hello `--defaultStorageContainer` параметр, используйте hello точно такое же имя, как вы используете для кластера hello.
+    * Для параметра `--defaultStorageContainer` используйте то же имя, что и для кластера.
 
-    * Замените `admin` и `httppassword` hello имя и пароль вы хотите toouse при доступе к hello кластера по протоколу HTTPS.
+    * Замените `admin` и `httppassword` именем и паролем, которые нужно использовать для доступа к кластеру по протоколу HTTPS.
 
-    * Замените `sshuser` и `sshuserpassword` hello имя пользователя и пароль при доступе к hello кластера с помощью SSH требуется toouse
+    * Замените `sshuser` и `sshuserpassword` именем пользователя и паролем, которые нужно использовать для доступа к кластеру по протоколу SSH.
 
     > [!IMPORTANT]
-    > Этот пример создает кластер с 2 рабочими узлами. После создания кластера можно также изменить hello число рабочих узлов, выполняя операции масштабирования. Если вы планируете использовать более 32 рабочих узлов, для головного узла необходимо выбрать по крайней мере 8-ядерный процессор и 14 ГБ ОЗУ. Можно задать размер hello головного узла с помощью hello `--headNodeSize` параметра во время создания кластера.
+    > Этот пример создает кластер с 2 рабочими узлами. После создания кластера можно изменить число рабочих узлов, выполнив операцию масштабирования. Если вы планируете использовать более 32 рабочих узлов, для головного узла необходимо выбрать по крайней мере 8-ядерный процессор и 14 ГБ ОЗУ. Настроить размер головного узла можно с помощью параметра `--headNodeSize` во время создания кластера.
     >
     > Дополнительные сведения о размерах узлов и их стоимости см. на странице с [ценами на HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-    Он может занять несколько минут для toofinish процесса создания кластера hello. обычно около 15 минут.
+    Создание кластера требует времени, обычно около 15 минут.
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
@@ -129,7 +129,7 @@ Hello шагов этого пошагового руководства доку
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь, когда кластер HDInsight с помощью Azure CLI hello успешно создана, использовать как следующая toolearn hello toowork с кластером:
+Теперь, когда вы успешно создали кластер HDInsight с помощью интерфейса командной строки Azure, обратитесь к следующим статьям, чтобы научиться работать с кластером:
 
 ### <a name="hadoop-clusters"></a>Кластеры Hadoop
 

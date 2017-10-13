@@ -1,6 +1,6 @@
 ---
-title: "aaaReliable субъекты таймеров и напоминания | Документы Microsoft"
-description: "Введение tootimers и напоминания о Service Fabric службы Reliable Actor."
+title: "Таймеры и напоминания Reliable Actors | Документация Майкрософт"
+description: "Общие сведения о таймерах и напоминаниях для надежных субъектов Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: c5116ec1923014e131130b9f4e86dd1e133bbf7e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06b026ce06e0f16a77ac238de0af2263f272933c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="actor-timers-and-reminders"></a>Таймеры и напоминания субъекта
-Субъекты могут планировать для себя периодические операции, регистрируя таймеры или напоминания. В этой статье показано, как toouse таймеров и напоминания описаны hello различия между ними.
+Субъекты могут планировать для себя периодические операции, регистрируя таймеры или напоминания. В этой статье показано, как использовать таймеры и напоминания, а также объясняются различия между ними.
 
 ## <a name="actor-timers"></a>Таймеры субъектов
-Субъект таймеров обеспечивают Простая оболочка tooensure таймера .NET или Java, методы обратного вызова hello учитывают гарантирует параллелизма, основанного на включение hello, hello субъекты, среда выполнения предоставляет.
+Таймеры субъекта обеспечивают простую оболочку для таймера .NET или Java, чтобы методы обратного вызова учитывали гарантии пошагового параллелизма, предоставляемые средой выполнения Actors.
 
-Субъекты можно использовать hello `RegisterTimer`(C#) или `registerTimer`(Java) и `UnregisterTimer`(C#) или `unregisterTimer`методы (Java) на своей основы класса tooregister и отменять регистрацию их таймеров. Hello приведенном ниже примере показано использование hello API таймера. Hello API-интерфейсы, схожий таймера toohello .NET или Java таймера. В этом примере при hello таймера истекает, hello субъекты среда выполнения будет вызывать метод hello `MoveObject`(C#) или `moveObject`метод (Java). метод Hello гарантируется toorespect hello основанных параллелизма. Это означает, что никакие другие методы субъектов или обратные вызовы таймеров или напоминаний не будут выполняться до завершения этого обратного вызова.
+Субъекты могут использовать методы `RegisterTimer`(C#) или `registerTimer`(Java) и `UnregisterTimer`(C#) или `unregisterTimer`(Java) в своем базовом классе для регистрации и отмены регистрации своих таймеров. В приведенном ниже примере показано использование интерфейсов API таймера. Эти интерфейсы API очень похожи на таймер .NET или Java. В этом примере при срабатывании таймера среда выполнения Actors вызовет метод `MoveObject`(C#) или `moveObject`(Java). Этот метод гарантированно учитывает пошаговый параллелизм. Это означает, что никакие другие методы субъектов или обратные вызовы таймеров или напоминаний не будут выполняться до завершения этого обратного вызова.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -44,9 +44,9 @@ class VisualObjectActor : Actor, IVisualObject
 
         _updateTimer = RegisterTimer(
             MoveObject,                     // Callback method
-            null,                           // Parameter toopass toohello callback method
-            TimeSpan.FromMilliseconds(15),  // Amount of time toodelay before hello callback is invoked
-            TimeSpan.FromMilliseconds(15)); // Time interval between invocations of hello callback method
+            null,                           // Parameter to pass to the callback method
+            TimeSpan.FromMilliseconds(15),  // Amount of time to delay before the callback is invoked
+            TimeSpan.FromMilliseconds(15)); // Time interval between invocations of the callback method
 
         return base.OnActivateAsync();
     }
@@ -93,9 +93,9 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
                     this.registerTimer(
                             (o) -> this.moveObject(o),                        // Callback method
                             "moveObject",
-                            null,                                             // Parameter toopass toohello callback method
-                            Duration.ofMillis(10),                            // Amount of time toodelay before hello callback is invoked
-                            Duration.ofMillis(timerIntervalInMilliSeconds));  // Time interval between invocations of hello callback method
+                            null,                                             // Parameter to pass to the callback method
+                            Duration.ofMillis(10),                            // Amount of time to delay before the callback is invoked
+                            Duration.ofMillis(timerIntervalInMilliSeconds));  // Time interval between invocations of the callback method
                     return null;
                 });
     }
@@ -126,16 +126,16 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 }
 ```
 
-Hello следующего периода hello таймера запускается после выполнения завершения обратного вызова hello. Это означает, что в этом hello таймер останавливается во время обратного вызова hello выполняется и запускается при завершении обратного вызова hello.
+Следующий период таймера начинается после завершения выполнения обратного вызова. Это подразумевает, что таймер останавливается во время выполнения обратного вызова и запускается по завершении обратного вызова.
 
-Среда выполнения субъекты Hello сохраняет изменения, внесенные toohello субъекта диспетчер состояния при завершении обратного вызова hello. Если произошла ошибка при сохранении состояния hello, этот объект субъекта, будут отключены и новый экземпляр будет активирована.
+Среда выполнения субъектов сохраняет изменения, внесенные в диспетчере состояния субъекта, по завершении обратного вызова. В случае ошибки при сохранении состояния объект данного субъекта отключается и активным становится новый экземпляр.
 
-Все таймеры, останавливаются при отключении hello субъекта в процессе сборки мусора. После этого обратные вызовы таймеров не выполняются. Кроме того среда выполнения субъекты hello не сохраняют никакой информации о hello таймеры, которые запущены, прежде чем деактивации. Он работает tooregister субъекта toohello все таймеры, которые ему необходимы при повторной активации в будущем hello. Дополнительные сведения см в подразделе hello о [субъекта мусора](service-fabric-reliable-actors-lifecycle.md).
+При отключении субъекта в процессе сборки мусора все таймеры останавливаются. После этого обратные вызовы таймеров не выполняются. Кроме того, среда выполнения Actors не сохраняет никаких сведений о таймерах, запущенных до отключения. Регистрация таймеров, которые понадобятся субъекту при повторной активации в будущем, возлагается на субъект. Дополнительные сведения см. в статье [Сборка мусора и субъекты](service-fabric-reliable-actors-lifecycle.md).
 
 ## <a name="actor-reminders"></a>Напоминания для субъекта
-Напоминания, tootrigger механизм постоянные обратные вызовы на субъекта в определенное время. Их функциональные возможности, аналогичные tootimers. Но в отличие от таймеры, напоминания активируются при всех обстоятельствах до субъекта hello явно отменяет регистрацию их или hello субъекта явно удалены. В частности напоминания активируются по субъекта деактивации и отработки отказа из-за выполнения субъекты hello сохраняет сведения о напоминаниях hello субъекта.
+Напоминания — это механизм для срабатывания постоянных обратных вызовов по субъекту в заданные моменты времени. Их функциональные возможности аналогичны таймерам. В отличие от таймеров, напоминания активируются при любых обстоятельствах, пока субъект явно не отменит их регистрацию или не удалит их. В частности, напоминания срабатывают независимо от отключения субъектов и отработки отказов, так как в среде выполнения Actors сохраняются сведения о напоминаниях субъекта.
 
-tooregister напоминание субъект вызывает hello `RegisterReminderAsync` метод в базовом классе, hello, как показано в следующий пример hello:
+Чтобы зарегистрировать напоминание, субъект вызывает метод `RegisterReminderAsync` , предоставленный в базовом классе, как показано в примере ниже.
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -161,14 +161,14 @@ protected CompletableFuture onActivateAsync()
     ActorReminder reminderRegistration = this.registerReminderAsync(
             reminderName,
             state,
-            dueTime,    //hello amount of time toodelay before firing hello reminder
-            period);    //hello time interval between firing of reminders
+            dueTime,    //The amount of time to delay before firing the reminder
+            period);    //The time interval between firing of reminders
 }
 ```
 
-В этом примере `"Pay cell phone bill"` является именем напоминание hello. Это строка, которая использует субъекта hello toouniquely идентификации напоминание. `BitConverter.GetBytes(amountInDollars)`(C#) — hello контекст, который связан с напоминанием hello. Оно передается назад toohello субъекта как обратный напоминание toohello аргумент, т. е. `IRemindable.ReceiveReminderAsync`(C#) или `Remindable.receiveReminderAsync`(Java).
+В этом примере `"Pay cell phone bill"` — имя напоминания. Это строка, которую субъект использует для уникальной идентификации напоминания. `BitConverter.GetBytes(amountInDollars)`(C#) — контекст, связанный с напоминанием. Он будет передан обратно субъекту в качестве аргумента обратного вызова напоминания, т. е. `IRemindable.ReceiveReminderAsync`(C#) или `Remindable.receiveReminderAsync`(Java).
 
-Субъектов, использующих напоминания должен реализовывать hello `IRemindable` интерфейс, как показано в приведенном ниже примере hello.
+Субъекты, использующие напоминания, должны реализовать интерфейс `IRemindable` (см. пример ниже).
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -209,11 +209,11 @@ public class ToDoListActorImpl extends FabricActor implements ToDoListActor, Rem
 
 ```
 
-Если оповещение инициируется, среда выполнения службы Reliable Actor hello будут вызывать hello `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java) метод для hello субъекта. Субъект можно зарегистрировать несколько напоминаний и hello `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java) метод вызывается, если любой из этих напоминания инициируется. Hello субъекта можно использовать имя напоминание hello, которое передается в toohello `ReceiveReminderAsync`(C#) или `receiveReminderAsync`toofigure метод (Java), какие сработало оповещение.
+При активации напоминания среда выполнения Reliable Actors вызовет метод субъекта `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java). Субъект может зарегистрировать несколько напоминаний, и метод `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java) будет вызываться при активации любого из них. Субъект с помощью имени напоминания, переданного методу `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java), может выяснить, какое напоминание сработало.
 
-Hello субъекты среда выполнения сохраняет состояние hello субъекта при hello `ReceiveReminderAsync`(C#) или `receiveReminderAsync`завершения вызова (Java). Если произошла ошибка при сохранении состояния hello, этот объект субъекта, будут отключены и новый экземпляр будет активирована.
+Когда вызов `ReceiveReminderAsync`(C#) или `receiveReminderAsync`(Java) будет завершен, среда выполнения Actors сохранит состояние субъекта. В случае ошибки при сохранении состояния объект данного субъекта отключается и активным становится новый экземпляр.
 
-toounregister напоминание субъект вызывает hello `UnregisterReminderAsync`(C#) или `unregisterReminderAsync`(Java) метода, как показано в следующих примерах hello.
+Чтобы отменить регистрацию напоминания, субъект вызывает метод `UnregisterReminderAsync`(C#) или `unregisterReminderAsync`(Java) (см. пример ниже).
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
@@ -224,7 +224,7 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-Здравствуйте, как показано выше, `UnregisterReminderAsync`(C#) или `unregisterReminderAsync`(Java) метод принимает `IActorReminder`(C#) или `ActorReminder`(Java) интерфейса. Здравствуйте поддерживает базовый класс субъекта `GetReminder`(C#) или `getReminder`метод (Java), который может быть hello используется tooretrieve `IActorReminder`(C#) или `ActorReminder`интерфейса (Java), передав имя напоминание hello. Это удобно, так как субъект hello не обязательно toopersist hello `IActorReminder`(C#) или `ActorReminder`интерфейс (Java), который был возвращен из hello `RegisterReminder`(C#) или `registerReminder`вызова метода (Java).
+Как показано выше, метод `UnregisterReminderAsync`(C#) или `unregisterReminderAsync`(Java) принимает интерфейс `IActorReminder`(C#) или `ActorReminder`(Java) Базовый класс субъекта поддерживает метод `GetReminder`(C#) или `getReminder`(Java), с помощью которого можно получить интерфейс `IActorReminder`(C#) или `ActorReminder`(Java), передав имя напоминания. Это удобно, так как субъекту не требуется сохранять интерфейс `IActorReminder`(C#) или `ActorReminder`(Java), возвращенный вызовом метода `RegisterReminder`(C#) или `registerReminder`(Java).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Ознакомьтесь с событиями Reliable Actors и повторным входом:

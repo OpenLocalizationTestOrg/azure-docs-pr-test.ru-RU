@@ -1,6 +1,6 @@
 ---
-title: "aaaMove tooAzure виртуальных машин Windows AWS | Документы Microsoft"
-description: "Переместите tooAzure экземпляр Windows EC2 Amazon Web Services (AWS) виртуальных машин с помощью Azure PowerShell."
+title: "Перемещение виртуальных машин Windows из AWS в Azure | Документация Майкрософт"
+description: "В этой статье описывается перемещение экземпляра виртуальной машины Windows EC2 из Amazon Web Services (AWS) в службу виртуальных машин Azure с помощью Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.openlocfilehash: f912c28d3ffe585162c3add715a1318ac3cd4643
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d2b498d3f84c4fd6cccf97c6d7781f293f5b395
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-tooazure-using-powershell"></a>Перемещение виртуальной Машины Windows с tooAzure Amazon Web Services (AWS), с помощью PowerShell
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Перемещение виртуальной машины Windows из Amazon Web Services (AWS) в Azure с помощью PowerShell
 
-При оценке виртуальных машин Azure для размещения рабочих нагрузок, можно экспортировать существующий экземпляр виртуальной Машины Windows EC2 Amazon Web Services (AWS) и отправка виртуального жесткого диска (VHD) tooAzure hello. Один раз hello, переданный виртуальный жесткий ДИСК, можно создать новую виртуальную Машину в Azure из hello виртуального жесткого диска. 
+При оценке виртуальных машин Azure для размещения рабочих нагрузок можно экспортировать существующий экземпляр виртуальной машины Windows EC2 из Amazon Web Services (AWS) и передать виртуальный жесткий диск (VHD) в Azure. После передачи VHD вы можете создать на его основе виртуальную машину в Azure. 
 
-В этом разделе описывается перемещение одной виртуальной Машины из AWS tooAzure. Виртуальные машины toomove из tooAzure AWS в масштабе см [перенос виртуальных машин в tooAzure Amazon Web Services (AWS) с Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+В этой статье описывается перемещение одной виртуальной машины из AWS в Azure. Сведения о том, как переместить масштабируемые виртуальные машины из AWS в Azure, см. в статье [Перенос виртуальных машин из Amazon Web Services (AWS) в Azure с помощью Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
-## <a name="prepare-hello-vm"></a>Подготовка виртуальной Машины hello 
+## <a name="prepare-the-vm"></a>Подготовка виртуальной машины 
  
-Можно передать обобщенной и специализированные tooAzure виртуальных жестких дисков. Для каждого типа требуется подготовить hello виртуальной Машины, прежде чем экспортировать из AWS. 
+В Azure можно передавать как универсальные, так и специализированные виртуальные жесткие диски. Для обоих типов требуется предварительная подготовка виртуальной машины к экспорту из AWS. 
 
-- **Универсальный виртуальный жесткий диск**. С универсального VHD с помощью Sysprep удалены все сведения вашей личной учетной записи. Если предполагается toouse hello VHD как toocreate изображения следует новые виртуальные машины из: 
+- **Универсальный виртуальный жесткий диск**. С универсального VHD с помощью Sysprep удалены все сведения вашей личной учетной записи. Если вы планируете использовать виртуальный жесткий диск в качестве образа для создания виртуальных машин, то выполните следующие действия: 
  
     * [Подготовьте виртуальную машину Windows](prepare-for-upload-vhd-image.md).  
-    * Обобщить hello виртуальной машины с помощью программы Sysprep.  
+    * Сделайте виртуальную машину универсальной с помощью Sysprep.  
 
  
-- **Специализированные VHD** -специализированные виртуальный жесткий ДИСК поддерживает учетные записи пользователей hello, приложений и других данных о состоянии из исходной виртуальной Машины. Если предполагается toouse hello VHD как-является toocreate новой виртуальной Машины, убедитесь, выполняются следующие шаги hello.  
-    * [Подготовка виртуального жесткого диска Windows tooupload tooAzure](prepare-for-upload-vhd-image.md). **Нет** generalize hello виртуальную Машину с помощью Sysprep. 
-    * Удалите все гостевой средств виртуализации и агентов, установленных на hello виртуальной Машины (т. е. средства VMware). 
-    * Обеспечить hello виртуальной Машины является настроенным toopull его IP-адрес и параметры DNS через DHCP. Это гарантирует, что этот сервер hello получает IP-адрес в пределах hello виртуальной сети при запуске.  
+- **Специализированный виртуальный жесткий диск**. На специализированном VHD сохраняются учетные записи пользователей, приложения и другие данные о состоянии исходной виртуальной машины. Если вы планируете использовать виртуальный жесткий диск "как есть" для создания виртуальной машины, то необходимо выполнить следующие действия:  
+    * [Подготовьте виртуальный жесткий диск Windows к передаче в Azure](prepare-for-upload-vhd-image.md). **Не выполняйте** подготовку виртуальной машины к использованию с помощью Sysprep. 
+    * Удалите все гостевые инструменты и агенты виртуализации, которые установлены на виртуальной машине (т. е. инструменты VMware). 
+    * Убедитесь, что виртуальная машина настроена на получение IP-адреса и параметров DNS через DHCP. Таким образом, сервер будет получать IP-адрес в виртуальной сети при запуске.  
 
 
-## <a name="export-and-download-hello-vhd"></a>Экспорт и загрузка виртуального жесткого диска hello 
+## <a name="export-and-download-the-vhd"></a>Экспорт и скачивание VHD-файла 
 
-Экспорт hello EC2 экземпляр tooa виртуального жесткого диска в сегмент Amazon S3. Выполните hello действия, описанные в разделе документации Amazon hello [Экспорт экземпляр как виртуальной Машины с помощью виртуальной Машины импорта и экспорта](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) и выполнения hello [создания экземпляра export задач](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) команда tooexport hello EC2 экземпляр tooa VHD-файл. 
+Экспортируйте экземпляр EC2 на VHD в контейнере Amazon S3. Выполните действия, описанные в документации по Amazon в разделе об [экспорте экземпляра виртуальной машины с помощью импорта и экспорта](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html), и выполните команду [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html), чтобы экспортировать экземпляр EC2 в VHD-файл. 
 
-Hello экспортированный файл виртуального жесткого диска сохраняется в контейнере hello Amazon S3, указываемые. Hello базовый синтаксис для экспорта hello виртуального жесткого диска является ниже, просто замените замещающий текст hello в <brackets> с собственными данными.
+Экспортированный VHD-файл сохраняется в указанном контейнере Amazon S3. Базовый синтаксис для экспорта VHD приведен ниже. Просто замените замещающий текст в <brackets> собственными данными.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-После экспорта hello виртуального жесткого диска, следуйте инструкциям hello [как загрузить объект с сегмент S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) toodownload hello VHD файлов из контейнеров hello S3. 
+По завершении экспорта VHD следуйте инструкциям в разделе о [How Do I Download an Object from an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) (Как скачать объект из контейнера S3?), чтобы скачать VHD-файл из контейнера S3. 
 
 > [!IMPORTANT]
-> AWS оплата сборов передачи данных по загрузке hello виртуального жесткого диска. Дополнительные сведения см. на странице [Цены на Amazon S3](https://aws.amazon.com/s3/pricing/).
+> В AWS взимается плата за передачу данных при скачивании VHD-файла. Дополнительные сведения см. на странице [Цены на Amazon S3](https://aws.amazon.com/s3/pricing/).
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь можно загрузить hello VHD tooAzure и создания новой виртуальной Машины. 
+Теперь можно передать VHD в Azure и создать виртуальную машину. 
 
-- При запуске средства Sysprep в источнике слишком**generalize** его перед экспортом. в разделе [Отправка обобщенный виртуальный жесткий ДИСК и использовать toocreate новые виртуальные машины в Azure](upload-generalized-managed.md)
-- Если вы не запускали Sysprep перед экспортом, hello VHD считается **специализированные**, в разделе [передача специализированные tooAzure виртуального жесткого диска и создание новой виртуальной Машины](create-vm-specialized.md)
+- Если вы запустили Sysprep на исходной виртуальной машине, чтобы **сделать ее универсальной** перед экспортом, см. статью о [передаче универсального виртуального жесткого диска и его использовании для создания виртуальных машин в Azure](upload-generalized-managed.md)
+- Если вы не запускали Sysprep перед экспортом, VHD считается **специализированным**. См. статью [Создание виртуальной машины из специализированного диска](create-vm-specialized.md).
 
  

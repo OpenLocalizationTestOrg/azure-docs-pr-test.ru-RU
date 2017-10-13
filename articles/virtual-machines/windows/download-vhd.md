@@ -1,6 +1,6 @@
 ---
-title: "aaaDownload виртуального жесткого диска Windows из Azure | Документы Microsoft"
-description: "Загрузка виртуального жесткого диска в Windows с помощью портала Azure hello."
+title: "Скачивание виртуального жесткого диска Windows из Azure | Документация Майкрософт"
+description: "Скачайте виртуальный жесткий диск Windows с помощью портала Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,68 +15,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: d0ca8842db98f22751f01648c0ba4e5cde090043
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Скачивание виртуального жесткого диска Windows из Azure
 
-В этой статье вы узнаете, как toodownload [Windows виртуального жесткого диска (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) файл из Azure с помощью hello портал Azure. 
+В этой статье описано, как скачать файл [виртуального жесткого диска (VHD) Windows](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) из Azure, используя портал Azure. 
 
-Виртуальные машины (VM Azure используется) [дисков](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) toostore месте операционной системы, приложений и данных. Все виртуальные машины Azure имеют как минимум два диска — диск операционной системы Windows и временный диск. диск операционной системы Hello изначально создается из образа, а hello диска операционной системы и образа hello, виртуальные жесткие диски хранятся в учетной записи хранилища Azure. Кроме того, виртуальные машины могут иметь один или несколько дисков данных, которые также хранятся на виртуальных жестких дисках.
+Виртуальные машины в Azure используют [диски](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) как место хранения операционной системы, приложений и данных. Все виртуальные машины Azure имеют как минимум два диска — диск операционной системы Windows и временный диск. Диск операционной системы изначально создается из образа, при этом и диск операционной системы, и образ являются виртуальными жесткими дисками (VHD), расположенными в учетной записи хранения Azure. Кроме того, виртуальные машины могут иметь один или несколько дисков данных, которые также хранятся на виртуальных жестких дисках.
 
-## <a name="stop-hello-vm"></a>Остановить hello виртуальной Машины
+## <a name="stop-the-vm"></a>Остановка виртуальной машины
 
-Не удается загрузить виртуальный жесткий ДИСК из Azure, если он подключен tooa запуск виртуальной Машины. Необходимо toostop hello toodownload виртуального жесткого диска для виртуальной Машины. Если требуется VHD как toouse [изображения](tutorial-custom-images.md) toocreate использовать другие виртуальные машины с помощью новых дисков [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) toogeneralize hello операционной системы, содержащихся в файле hello и затем остановить hello виртуальной Машины. hello toouse виртуальный жесткий ДИСК как диск для нового экземпляра существующей ВМ или диск данных, нужно только toostop, а освобождать hello виртуальной Машины.
+VHD невозможно скачать из Azure, если он подключен к запущенной виртуальной машине. Для скачивания VHD необходимо остановить виртуальную машину. Чтобы использовать VHD в качестве [образа](tutorial-custom-images.md) для создания других виртуальных машин с помощью новых дисков, необходимо воспользоваться [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) для подготовки к использованию операционной системы, которая содержится в файле, а затем остановить виртуальную машину. Для использования VHD в качестве диска для нового экземпляра существующей виртуальной машины или диска данных необходимо просто остановить виртуальную машину и отменить ее выделение.
 
-toouse hello VHD как toocreate изображения других виртуальных машин, выполните следующие действия:
+Чтобы использовать VHD как образ для создания других виртуальных машин, выполните следующие действия:
 
-1.  Если это еще не сделано, войдите в toohello [портал Azure](https://portal.azure.com/).
-2.  [Подключение виртуальной Машины toohello](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-3.  На hello виртуальной Машины откройте окно командной строки hello с правами администратора.
-4.  Измените каталог hello слишком*%windir%\system32\sysprep* и запустите sysprep.exe.
-5.  В средство подготовки системы диалоговое окно «hello», выберите **Enter System Out-of-Box Experience (OOBE)**и убедитесь, что **Generalize** выбран.
+1.  Перейдите на [портал Azure](https://portal.azure.com/), если вы еще этого не сделали.
+2.  [Подключитесь к виртуальной машине](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+3.  На виртуальной машине откройте окно командной строки с правами администратора.
+4.  Измените каталог на *%windir%\system32\sysprep* и запустите файл sysprep.exe.
+5.  В диалоговом окне "Программа подготовки системы" выберите **Переход в окно приветствия системы (OOBE)** и убедитесь, что установлен флажок **Подготовка к использованию**.
 6.  В разделе "Параметры завершения работы" выберите **Завершение работы** и нажмите кнопку **ОК**. 
 
-hello toouse виртуальный жесткий ДИСК как диск для нового экземпляра существующей ВМ или диск данных, выполните следующие действия.
+Для использования VHD в качестве диска для нового экземпляра существующей виртуальной машины или диска данных выполните следующие действия:
 
-1.  Hello концентратора в hello портала Azure выберите команду меню **виртуальные машины**.
-2.  Выберите hello виртуальной Машины из списка hello.
-3.  В колонке hello для hello виртуальной Машины, нажмите кнопку **остановить**.
+1.  В главном меню на портале Azure и щелкните **Виртуальные машины**.
+2.  Выберите виртуальную машину из списка.
+3.  В колонке виртуальной машины нажмите кнопку **Остановить**.
 
     ![Остановка виртуальной машины](./media/download-vhd/export-stop.png)
 
 ## <a name="generate-sas-url"></a>Создание URL-адреса SAS
 
-toodownload hello VHD-файл, необходимо toogenerate [подписанного URL-адреса (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL-адрес. При формировании URL-адрес hello срок его действия назначается toohello URL-адрес.
+Чтобы скачать VHD-файл, необходимо создать [подписанный URL-адрес (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Когда этот URL-адрес создан, ему назначается срок действия.
 
-1.  Hello колонка hello для hello виртуальной Машины в меню **дисков**.
-2.  Выберите диск операционной системы hello для hello виртуальной Машины и нажмите кнопку **Экспорт**.
-3.  Задайте время истечения срока действия hello hello URL-адрес слишком*36000*.
+1.  В меню колонки виртуальной машины щелкните **Диски**.
+2.  Выберите диск операционной системы для виртуальной машины и щелкните **Экспорт**.
+3.  Задайте срок действия URL-адреса *36000*.
 4.  Нажмите кнопку **Создать URL-адрес**.
 
     ![Создание URL-адреса](./media/download-vhd/export-generate.png)
 
 > [!NOTE]
-> время истечения срока действия Hello увеличено с tooprovide по умолчанию hello достаточное количество времени, toodownload hello большой VHD-файл для операционной системы Windows Server. Можно ожидать VHD-файл, содержащий несколько toodownload часов в зависимости от подключения к tootake операционной системы Windows Server hello. Если вы загружаете VHD для диска с данными, достаточно времени по умолчанию hello. 
+> Заданное по умолчанию значение срока действия увеличивается, чтобы предоставить достаточно времени на скачивание большого VHD-файл для операционной системы Windows Server. Скачивание VHD-файл, содержащего операционную систему Windows Server, может занять несколько часов в зависимости от качества подключения. Если вы скачиваете VHD для диска данных, то время, заданное по умолчанию, является достаточным. 
 > 
 > 
 
 ## <a name="download-vhd"></a>Скачивание VHD
 
-1.  В группе hello URL-адрес, созданный выберите загруженный файл VHD hello.
+1.  Под созданным URL-адресом щелкните ссылку "Скачать VHD-файл".
 
     ![Скачивание VHD](./media/download-vhd/export-download.png)
 
-2.  Может потребоваться tooclick **Сохранить** в браузере toostart hello hello для загрузки. имя по умолчанию Hello hello VHD-файл — *abcd*.
+2.  Чтобы начать скачивание, может потребоваться нажать кнопку **Сохранить** в браузере. По умолчанию VHD-файлу присваивается имя *abcd*.
 
-    ![Нажмите кнопку "Сохранить" в браузере hello](./media/download-vhd/export-save.png)
+    ![Нажатие кнопки "Сохранить" в браузере](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Узнайте, каким образом слишком[передать файл виртуального жесткого диска tooAzure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+- Узнайте, как [передать VHD-файл в Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Создание управляемых дисков из неуправляемых дисков в учетной записи хранения](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - [Управление дисками Azure с помощью PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

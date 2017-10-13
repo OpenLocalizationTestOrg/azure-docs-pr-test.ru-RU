@@ -1,5 +1,5 @@
 ---
-title: "aaaAutomate аналитики приложения Azure с помощью PowerShell | Документы Microsoft"
+title: "Автоматизация Azure Application Insights с помощью PowerShell | Документация Майкрософт"
 description: "Автоматизация создания ресурсов, оповещений и тестов доступности в PowerShell с помощью шаблона Azure Resource Manager."
 services: application-insights
 documentationcenter: 
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: bwren
-ms.openlocfilehash: ebd336eafba58a690a0e8ffbd1c74f7e93dbb682
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 88dbb9515300f847789bc889911cdeff5f5bdb53
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Создание ресурсов Application Insights с помощью PowerShell
-В этой статье показано, как tooautomate hello, создание и обновление [Application Insights](app-insights-overview.md) ресурсы автоматически с помощью управления ресурсами Azure. Эту функцию можно использовать, например, в процессе сборки. Вместе с hello основные ресурс Application Insights, можно создать [доступности веб-тесты](app-insights-monitor-web-app-availability.md)настройте [оповещения](app-insights-alerts.md), задайте hello [цены схему](app-insights-pricing.md)и создать другой Azure ресурсы.
+В этой статье показано, как автоматизировать создание и обновление ресурсов [Application Insights](app-insights-overview.md) с помощью управления ресурсами Azure. Эту функцию можно использовать, например, в процессе сборки. Наряду с базовым ресурсом Application Insights можно создавать [веб-тесты доступности](app-insights-monitor-web-app-availability.md) и другие ресурсы Azure, а также настраивать [оповещения](app-insights-alerts.md) и [схему цен](app-insights-pricing.md).
 
-Здравствуйте ключа toocreating эти ресурсы — шаблоны JSON для [диспетчера ресурсов Azure](../azure-resource-manager/powershell-azure-resource-manager.md). По сути, является процедуры hello: загрузить определения JSON hello имеющихся ресурсов; параметризация определенные значения, например имена; затем снова запустите шаблона hello всякий раз, когда требуется toocreate новый ресурс. Вы можете компоновать несколько ресурсы вместе, toocreate их все в одном откройте - например, монитор приложения с тестов доступности, оповещения и хранилище для непрерывного экспорта. Существуют некоторые toosome тонкостей для параметризации hello, которые будут описаны ниже.
+Ключ к созданию этих ресурсов — шаблоны JSON для [диспетчера ресурсов Azure](../azure-resource-manager/powershell-azure-resource-manager.md). Порядок действий выглядит следующим образом: загрузить JSON-определения существующих ресурсов, параметризовать определенные значения как имена и выполнить шаблон, когда возникнет необходимость в создании нового ресурса. Несколько ресурсов можно объединить, чтобы создавать их одновременно, например, объединить монитор приложений с тестами доступности, оповещениями и хранилищем для непрерывного экспорта. С параметризацией некоторых значений связаны определенные тонкости, которые мы рассмотрим позднее.
 
 ## <a name="one-time-setup"></a>Однократная настройка
 Если вы ранее не использовали PowerShell для подписки Azure:
 
-Установка модуля Azure Powershell hello на hello компьютер, где toorun hello сценариев:
+Установите модуль Azure Powershell на компьютере, где требуется выполнять сценарии.
 
 1. Установите [установщик веб-платформы Майкрософт (версии 5 или более поздней)](http://www.microsoft.com/web/downloads/platform.aspx).
-2. Используйте tooinstall Microsoft Azure Powershell.
+2. Используйте его для установки Microsoft Azure PowerShell.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Создание шаблона Azure Resource Manager
 Создайте новый файл JSON — в данном примере назовем его `template1.json` . Скопируйте в него следующее содержимое:
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/06/2017
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter hello application name."
+                    "description": "Enter the application name."
                 }
             },
             "appType": {
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/06/2017
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter hello application type."
+                    "description": "Enter the application type."
                 }
             },
             "appLocation": {
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/06/2017
                     "North Europe"
                 ],
                 "metadata": {
-                    "description": "Enter hello application location."
+                    "description": "Enter the application location."
                 }
             },
             "priceCode": {
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/06/2017
                 "type": "int",
                 "defaultValue": 24,
                 "metadata": {
-                    "description": "Enter daily quota reset hour in UTC (0 too23). Values outside hello range will get a random reset hour."
+                    "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
             },
             "warningThreshold": {
@@ -104,7 +104,7 @@ ms.lasthandoff: 10/06/2017
                 "minValue": 1,
                 "maxValue": 100,
                 "metadata": {
-                    "description": "Enter hello % value of daily quota after which warning mail toobe sent. "
+                    "description": "Enter the % value of daily quota after which warning mail to be sent. "
                 }
             }
         },
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="create-application-insights-resources"></a>Создание ресурсов Application Insights
-1. В PowerShell войдите в tooAzure:
+1. В PowerShell войдите в Azure:
    
     `Login-AzureRmAccount`
 2. Выполните следующую команду:
@@ -166,14 +166,14 @@ ms.lasthandoff: 10/06/2017
 
     ``` 
    
-   * `-ResourceGroupName`— hello группы, которую toocreate hello новые ресурсы.
-   * `-TemplateFile`должна предшествовать hello настраиваемых параметров.
-   * `-appName`Имя ресурса toocreate hello Hello.
+   * `-ResourceGroupName` — группа, в которой необходимо создать ресурсы.
+   * Параметр `-TemplateFile` должен предшествовать пользовательским параметрам.
+   * `-appName` — имя создаваемого ресурса.
 
-Можно добавить другие параметры - вы найдете в разделе параметров hello шаблона hello их описания.
+Можно добавить другие параметры. Их описание доступно в разделе параметров шаблона.
 
-## <a name="tooget-hello-instrumentation-key"></a>ключ инструментирования tooget hello
-После создания ресурса приложения, потребуется ключ инструментирования hello: 
+## <a name="to-get-the-instrumentation-key"></a>Получение ключа инструментирования
+После создания ресурса приложения вам понадобится ключ инструментирования. 
 
 ```PS
     $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
@@ -183,11 +183,11 @@ ms.lasthandoff: 10/06/2017
 
 
 <a id="price"></a>
-## <a name="set-hello-price-plan"></a>Набор hello цена плана
+## <a name="set-the-price-plan"></a>Настройка тарифного плана
 
-Можно задать hello [цена плана](app-insights-pricing.md).
+Вы можете настроить [тарифный план](app-insights-pricing.md).
 
-toocreate ресурс приложения с планом цены Enterprise hello, с помощью шаблона hello выше:
+Для создания ресурса приложения с тарифным планом "Корпоративный" с помощью приведенного выше шаблона, выполните следующую команду:
 
 ```PS
         New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -201,16 +201,16 @@ toocreate ресурс приложения с планом цены Enterprise 
 |1|базовая;|
 |2|Enterprise|
 
-* Требуется только план базовой цены по умолчанию hello toouse можно опустить hello CurrentBillingFeatures ресурсов на основе шаблона hello.
-* Если требуется toochange hello цена плана после создания ресурса компонента hello, можно использовать шаблон, который опускает hello ресурсов «Microsoft.Insights/Components.». Кроме того, пропустите hello `dependsOn` узел из hello выставления счетов ресурсов. 
+* Если вы хотите использовать только тарифный план по умолчанию "Базовый", то можете не указывать в шаблоне ресурс CurrentBillingFeatures.
+* Если вы хотите изменить ценовой план после создания ресурса компонента, можно использовать шаблон, пропускающий ресурс microsoft.insights/components. Кроме того, опустите узел `dependsOn` из ресурса выставления счетов. 
 
-tooverify Здравствуйте плана обновленная цена, просмотрите колонку hello «Компоненты + цены» в браузере hello. **Обновите представление браузера hello** toomake убедиться, что вы видите hello последнее состояние.
+Чтобы проверить обновленный ценовой план, просмотрите колонку Features+pricing (Компоненты и цены) в браузере. **Обновите окно браузера**, чтобы убедиться, что отображается последнее состояние.
 
 
 
 ## <a name="add-a-metric-alert"></a>Добавление оповещения метрики
 
-tooset копирование метрики предупреждение в hello одновременную как ресурс приложения, слияния следующий код в файл шаблона hello:
+Чтобы настроить оповещение метрики одновременно с ресурсом приложения, добавьте следующий код в файл шаблона:
 
 ```JSON
 {
@@ -236,7 +236,7 @@ tooset копирование метрики предупреждение в hel
       "type": "Microsoft.Insights/alertrules",
       "apiVersion": "2014-04-01",
       "location": "[parameters('appLocation')]",
-      // Ensure this resource is created after hello app resource:
+      // Ensure this resource is created after the app resource:
       "dependsOn": [
         "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
       ],
@@ -272,22 +272,22 @@ tooset копирование метрики предупреждение в hel
 }
 ```
 
-При вызове шаблона hello, при необходимости можно добавить следующий параметр:
+При вызове шаблона можно также добавить этот параметр (при необходимости):
 
     `-responseTime 2`
 
 Вы можете также выполнить параметризацию других полей. 
 
-toofind имена типов hello и сведения о конфигурации других правил оповещения вручную создать правило, а затем проверьте его на [диспетчера ресурсов Azure](https://resources.azure.com/). 
+Чтобы узнать имена типов и сведения о настройке других правил оповещения, создайте правило вручную и проверьте его в [Azure Resource Manager](https://resources.azure.com/). 
 
 
 ## <a name="add-an-availability-test"></a>Добавление теста доступности
 
-Этот пример предназначен для проверки связи (tootest отдельную страницу).  
+Этот пример предназначен для проверки связи (проверки одной страницы).  
 
-**Состоит из двух частей** в тест доступности: hello тест и hello оповещения, уведомляющее о сбоев.
+Тест доступности **состоит из двух частей**: самого теста и оповещения, сообщающего об ошибках.
 
-Слияние hello, следующий код в файл шаблона hello, которое создает приложение hello.
+Добавьте следующий код в файл шаблона, из которого создается приложение:
 
 ```JSON
 {
@@ -301,13 +301,13 @@ toofind имена типов hello и сведения о конфигурац�
     },
     resources: { ... // existing resources here ...
     { //
-      // Availability test: part 1 configures hello test
+      // Availability test: part 1 configures the test
       //
       "name": "[variables('pingTestName')]",
       "type": "Microsoft.Insights/webtests",
       "apiVersion": "2014-04-01",
       "location": "[parameters('appLocation')]",
-      // Ensure this is created after hello app resource:
+      // Ensure this is created after the app resource:
       "dependsOn": [
         "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
       ],
@@ -334,7 +334,7 @@ toofind имена типов hello и сведения о конфигурац�
           }
         ],
         "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies hello existence of hello specified text in hello response.\"         Level=\"High\"  ExectuionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
+          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExectuionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
         },
         "SyntheticMonitorId": "[variables('pingTestName')]"
       }
@@ -342,7 +342,7 @@ toofind имена типов hello и сведения о конфигурац�
 
     {
       //
-      // Availability test: part 2, hello alert rule
+      // Availability test: part 2, the alert rule
       //
       "name": "[variables('pingAlertRuleName')]",
       "type": "Microsoft.Insights/alertrules",
@@ -384,39 +384,39 @@ toofind имена типов hello и сведения о конфигурац�
 }
 ```
 
-коды hello toodiscover для других расположений теста или tooautomate hello создания более сложных веб-тестов, необходимо вручную создать пример и затем параметризовать кода hello из [диспетчера ресурсов Azure](https://resources.azure.com/).
+Чтобы получить коды для других расположений тестирования или автоматизировать создание более сложных веб-тестов, создайте пример вручную, а затем выполните параметризацию кода из [Azure Resource Manager](https://resources.azure.com/).
 
 ## <a name="add-more-resources"></a>Добавление дополнительных ресурсов
 
-создания hello tooautomate любого рода, любой другой ресурс вручную, создать пример, затем скопируйте и параметризовать свой код из [диспетчера ресурсов Azure](https://resources.azure.com/). 
+Чтобы автоматизировать создание любого другого ресурса любого типа, создайте пример вручную, а затем скопируйте его код и выполните его параметризацию из [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Откройте [диспетчер ресурсов Azure](https://resources.azure.com/). Перейдите вниз до `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, tooyour ресурса приложения. 
+1. Откройте [диспетчер ресурсов Azure](https://resources.azure.com/). Перейдите в `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` к своему ресурсу приложения. 
    
     ![Навигация в обозревателе ресурсов Azure](./media/app-insights-powershell/01.png)
    
-    *Компоненты* являются hello основные ресурсы Application Insights для отображения приложений. Существуют отдельные ресурсы для hello связанные правила оповещения и доступности веб-тестов.
-2. Копировать hello JSON компонента hello в соответствующее место hello в `template1.json`.
+    *Компоненты* — это основные ресурсы Application Insights для отображения приложений. Для соответствующих правил оповещения и веб-тестов доступности имеются отдельные ресурсы.
+2. Скопируйте JSON компонента в соответствующее место в файле `template1.json`.
 3. Удалите следующие свойства:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Откройте разделы webtests и alertrules hello и скопируйте hello JSON для отдельных элементов в шаблон. (Не копировать с hello webtests или alertrules узлов: перейдите в элементы hello, находящихся на них.)
+4. Откройте разделы webtests и alertrules и скопируйте JSON для отдельных элементов в шаблон. (Не копируйте содержимое узлов webtests или alertrules, перейдите в элементы под ними.)
    
-    Каждой веб-теста имеет соответствующее правило генерации оповещений, поэтому у вас есть toocopy оба из них.
+    С каждым веб-тестом связано правило оповещения, поэтому скопировать необходимо оба элемента.
    
     Можно также добавить оповещения для метрик. [Имена метрик](app-insights-powershell-alerts.md#metric-names).
 5. Вставьте в каждый ресурс следующую строку.
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-hello-template"></a>Параметризация hello шаблона
-Теперь у вас tooreplace hello конкретных имен параметров. слишком[параметризовать шаблона](../azure-resource-manager/resource-group-authoring-templates.md), запись выражениях, использующих [набор вспомогательных функций](../azure-resource-manager/resource-group-template-functions.md). 
+### <a name="parameterize-the-template"></a>Параметризация шаблона
+Теперь отдельные имена необходимо заменить параметрами. Для [параметризации шаблона](../azure-resource-manager/resource-group-authoring-templates.md) необходимо записать выражения, используя [набор вспомогательных функций](../azure-resource-manager/resource-group-template-functions.md). 
 
-Не удается параметризировать только часть строки, поэтому следует использовать `concat()` toobuild строки.
+Параметризовать только часть строки нельзя, поэтому для формирования строки используйте `concat()` .
 
-Ниже приведены примеры подстановок hello нужно toomake. Каждая замена используется несколько раз. В вашем шаблоне могут потребоваться другие замены. Эти примеры используйте hello параметров и переменных, который мы определили вверху hello hello шаблона.
+Вот примеры возможных замен: Каждая замена используется несколько раз. В вашем шаблоне могут потребоваться другие замены. В данных примерах используются параметры и переменные, определенные в верхней части шаблона.
 
 | поиск | заменить на |
 | --- | --- |
@@ -429,13 +429,13 @@ toofind имена типов hello и сведения о конфигурац�
 | `"myappname"` (строчная) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Удалите GUID и идентификатор. |
 
-### <a name="set-dependencies-between-hello-resources"></a>Набор зависимостей между ресурсами hello
-Azure следует настроить ресурсы hello в строгом порядке. том, что был задан завершения перед выполнением hello рядом toomake добавьте строки зависимостей:
+### <a name="set-dependencies-between-the-resources"></a>Установка зависимостей между ресурсами
+Служба Azure должна настраивать ресурсы в строгом порядке. Чтобы одна процедура настройки не начиналась прежде, чем завершится предыдущая, добавьте строки зависимости:
 
-* В доступности hello проверку ресурсов:
+* В ресурсе теста доступности:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* В ресурсе предупреждения hello для тест доступности:
+* В ресурсе оповещения для теста доступности:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
@@ -447,7 +447,7 @@ Azure следует настроить ресурсы hello в строгом �
 * [Создание ресурса Application Insights](app-insights-powershell-script-create-resource.md) — быстрый метод без использования шаблона.
 * [Настройка оповещений](app-insights-powershell-alerts.md)
 * [Creating an Application Insights Web Test and Alert Programmatically](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Отправить аналитики tooApplication диагностики Azure](app-insights-powershell-azure-diagnostics.md)
-* [Развертывание tooAzure из GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Отправка данных системы диагностики Azure в Application Insights](app-insights-powershell-azure-diagnostics.md)
+* [Развертывание в Azure из GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Создание заметок выпуска](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

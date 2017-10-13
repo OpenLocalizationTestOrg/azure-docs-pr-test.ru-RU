@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Clarizen | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Clarizen."
+description: "Узнайте, как настроить единый вход Azure Active Directory в Clarizen."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f24ccda3b90e5df9a203a444dfda905043b30276
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 574c6877bddac8be7d6d541bfabbdc10f6be3101
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Руководство. Интеграция Azure Active Directory с Clarizen
 
-В этом учебнике вы узнаете, как toointegrate Azure Active Directory (Azure AD) с Clarizen. Это интеграция дает hello следующие преимущества:
+В этом руководстве описано, как интегрировать Azure Active Directory (Azure AD) с Clarizen. Эта интеграция дает следующие преимущества.
 
-- Можно управлять, в Azure AD, кто имеет доступ tooClarizen.
-- Вы можете включить вашей toobe пользователям автоматически входить в tooClarizen (единый вход) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте hello портал Azure.
+- С помощью Azure AD вы можете контролировать доступ к Clarizen.
+- Вы можете включить автоматический вход пользователей в Clarizen (единый вход) с помощью учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно, через портал Azure.
 
-сценарий Hello в этом учебнике состоит из двух основных задач.
+Сценарий, описанный в этом руководстве, состоит из двух основных задач.
 
-1. Добавление Clarizen из коллекции hello.
+1. Добавление Clarizen из коллекции.
 2. Настройка и проверка единого входа в Azure AD.
 
 Дополнительные сведения об интеграции приложений SaaS с Azure AD см. в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-tooconfigure интеграция Azure AD с Clarizen, необходимо hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Clarizen, вам потребуется:
 
 - подписка Azure AD;
 - подписка Clarizen с поддержкой единого входа.
 
-tootest hello шаги в этом учебнике, придерживайтесь следующих рекомендаций:
+При проверке действий в этом руководстве соблюдайте следующие рекомендации:
 
 - Проверьте единый вход Azure AD в тестовой среде. Не используйте рабочую среду без необходимости.
 - Если у вас нет тестовой среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="add-clarizen-from-hello-gallery"></a>Добавление Clarizen из коллекции hello
-tooconfigure интеграция Clarizen hello в Azure AD, добавить Clarizen из hello коллекции tooyour список управляемых приложений SaaS.
+## <a name="add-clarizen-from-the-gallery"></a>Добавление Clarizen из коллекции
+Чтобы настроить интеграцию Clarizen с Azure AD, добавьте Clarizen из коллекции в список управляемых приложений SaaS.
 
-1. В hello [портал Azure](https://portal.azure.com)в левой области hello, щелкнув hello **Azure Active Directory** значок.
+1. На [портале Azure](https://portal.azure.com) в области слева щелкните значок **Azure Active Directory**.
 
     ![Значок Azure Active Directory][1]
 
@@ -56,138 +56,138 @@ tooconfigure интеграция Clarizen hello в Azure AD, добавить C
 
     ![Выбор пунктов "Корпоративные приложения" и "Все приложения".][2]
 
-3. Нажмите кнопку hello **добавить** кнопку вверху hello диалоговое окно «hello».
+3. В верхней части диалогового окна нажмите кнопку **Добавить**.
 
-    ![Кнопка «Добавить» Hello][3]
+    ![Кнопка "Добавить"][3]
 
-4. Введите в поле поиска hello **Clarizen**.
+4. В поле поиска введите **Clarizen**.
 
-    ![Введя «Clarizen» в поле поиска hello](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_000.png)
+    ![Ввод Clarizen в поле поиска](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. В области результатов hello, выберите **Clarizen**, а затем нажмите кнопку **добавить** tooadd приложения hello.
+5. В области результатов выберите **Clarizen** и нажмите кнопку **Добавить**, чтобы добавить приложение.
 
-    ![При выборе Clarizen в области результатов hello](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_0001.png)
+    ![Выбор Clarizen в области результатов](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_0001.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
-В следующих разделах hello Настройка и тестирование Azure AD единого входа на основе пользовательского теста hello Саймон Britta Clarizen.
+В следующих разделах описана настройка и проверка единого входа Azure AD в Clarizen с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Clarizen является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в Clarizen должен установить toobe. Установления этой связи, назначив значение hello **имя пользователя** в Azure AD в качестве значения hello **Username** в Clarizen.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в Clarizen соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Clarizen. Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Clarizen.
 
-tooconfigure и теста Azure AD единого входа с Clarizen завершения hello следующие стандартные блоки:
+Чтобы настроить и проверить единый вход Azure AD в Clarizen, выполните инструкции ниже.
 
-1. **[Настройка Azure AD единого входа](#configure-azure-ad-single-sign-on)**  tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя Clarizen](#create-a-clarizen-test-user)**  toohave аналог Саймон Britta в Clarizen, представление связанных toohello Azure AD ей.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on)**  tooverify ли hello works конфигурации.
+1. **[Настройте единый вход в Azure AD](#configure-azure-ad-single-sign-on)**, чтобы пользователи могли использовать эту функцию.
+2. **[Создайте тестового пользователя Azure AD](#create-an-azure-ad-test-user)** для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создайте тестового пользователя Clarizen](#create-a-clarizen-test-user)**, чтобы в Clarizen был тестовый пользователь Britta Simon, связанный с соответствующим представлением в Azure AD.
+4. **[Назначьте тестового пользователя Azure AD](#assign-the-azure-ad-test-user)**, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Проверьте единый вход](#test-single-sign-on)**, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
-Включите Azure AD единым входом в портал Azure hello и настройки единого входа в вашем приложении Clarizen.
+Включите единый вход Azure AD на портале Azure и настройте его в приложении Clarizen.
 
-1. В hello в hello портала Azure **Clarizen** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **Clarizen** щелкните **Единый вход**.
 
     ![Выбор пункта "Единый вход"][4]
 
-2. В hello **единого входа** диалоговом для **режим**выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
 
     ![Выбор параметра "Единый вход на основе SAML"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. В hello **URL-адреса и домена Clarizen** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения Clarizen** сделайте следующее.
 
     ![Поля идентификатора и URL-адреса ответа](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_02.png)
 
-    а. В hello **идентификатор** поле типа значение hello в виде: **Clarizen**
+    а. В поле **Идентификатор** введите значение **Clarizen**.
 
-    b. В hello **URL-адрес ответа** введите URL-адрес, используя следующий шаблон hello: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
+    b. В поле **URL-адрес ответа** введите URL-адрес, используя следующий шаблон: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 
     > [!NOTE]
-    > Они не hello реальные значения. Фактический идентификатор toouse hello и URL-адрес ответа. Здесь мы рекомендуем использовать hello уникальное значение строки, так как идентификатор hello. фактические значения, обратитесь в службу hello hello tooget [Clarizen поддержки](https://success.clarizen.com/hc/en-us/requests/new).
+    > Значения, указанные выше, приведены в качестве примера. Используйте фактические значения идентификатора и URL-адреса ответа. Мы рекомендуем использовать уникальное значение строки идентификатора. Чтобы получить фактические значения, обратитесь в [техническую поддержку Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
 
-4. На hello **сертификат подписи SAML** щелкните **Создание нового сертификата**.
+4. В разделе **Сертификат подписи SAML** щелкните **Создание нового сертификата**.
 
     ![Нажатие кнопки "Создать новый сертификат"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)  
 
-5. В hello **создать новый сертификат** диалоговое окно, щелкните значок календаря hello и выберите дату окончания действия. Нажмите кнопку **Сохранить**.
+5. В диалоговом окне **Создание нового сертификата** щелкните значок календаря и выберите дату окончания срока действия. Нажмите кнопку **Сохранить**.
 
     ![Выбор и сохранение даты окончания действия](./media/active-directory-saas-clarizen-tutorial/tutorial_general_300.png)
 
-6. В hello **сертификат подписи SAML** выберите **активировать новый сертификат**, а затем нажмите кнопку **Сохранить**.
+6. В разделе **Сертификат подписи SAML** поставьте флажок **Сделать новый сертификат активным** и нажмите кнопку **Сохранить**.
 
-    ![Установка флажка hello для создания нового сертификата hello active](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_04.png)
+    ![Установка флажка для активации нового сертификата](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. В hello **сертификат продолжения** диалоговое окно, нажмите кнопку **ОК**.
+7. В диалоговом окне **Сертификат возобновления** нажмите кнопку **ОК**.
 
-    ![Нажмите кнопку «ОК» tooconfirm требуется сертификат hello toomake active](./media/active-directory-saas-clarizen-tutorial/tutorial_general_400.png)
+    ![Нажатие кнопки "ОК" для подтверждения активации сертификата](./media/active-directory-saas-clarizen-tutorial/tutorial_general_400.png)
 
-8. В hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+8. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
-    ![Нажав кнопку загрузки hello toostart «Сертификат (Base64)»](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_05.png)
+    ![Нажатие кнопки "Сертификат (Base64)" для начала загрузки](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. В hello **конфигурации Clarizen** щелкните **Настройка Clarizen** tooopen hello **Настройка входа** окна.
+9. В разделе **Конфигурация Clarizen** нажмите кнопку **Настроить Clarizen**, чтобы открыть окно **Настройка единого входа**.
 
     ![Нажатие кнопки "Настроить Clarizen"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_06.png)
 
     ![Окно "Настройка единого входа" с файлами и URL-адресами](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. В другом окне браузера Войдите на сайте компании tooyour Clarizen с правами администратора.
+10. В другом окне веб-браузера войдите на корпоративный сайт Clarizen в качестве администратора.
 
 11. Щелкните свое имя пользователя и выберите пункт **Settings** (Параметры).
 
     ![Выбор пункта "Параметры" по именем пользователя](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "Параметры")
 
-12. Нажмите кнопку hello **глобальные параметры** вкладки. Затем Далее слишком**федеративной проверки подлинности**, нажмите кнопку **изменить**.
+12. Откройте вкладку **Global Settings** (Глобальные параметры). Рядом с параметром **Federated Authentication** (Федеративная проверка подлинности) нажмите кнопку **edit** (изменить).
 
     ![Вкладка "Глобальные параметры"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_002.png "Глобальные параметры")
 
-13. В hello **федеративной проверки подлинности** диалогового окна выполните следующие шаги hello:
+13. В диалоговом окне **Federated Authentication** (Федеративная проверка подлинности) выполните следующие действия.
 
     ![Диалоговое окно "Федеративная проверка подлинности"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_003.png "Федеративная проверка подлинности")
 
     а. Выберите **Enable Federated Authentication** (Включить федеративную проверку подлинности).
 
-    b. Нажмите кнопку **отправить** tooupload загруженный сертификат.
+    b. Чтобы отправить загруженный сертификат, нажмите кнопку **Отправить** .
 
-    c. В hello **URL-адрес входа** введите значение hello **SAML единого входа URL-адрес службы** из окна конфигурации приложения hello Azure AD.
+    c. В текстовом поле **Sign-in URL** (URL-адрес входа) введите значение **URL-адреса службы единого входа SAML** из окна настройки приложения Azure AD.
 
-    d. В hello **URL-адрес выхода** введите значение hello **URL-адрес выхода** из окна конфигурации приложения hello Azure AD.
+    d. В текстовом поле **Sign-out URL** (URL-адрес выхода) введите значение **URL-адреса выхода** из окна настройки приложения Azure AD.
 
     д. Установите флаг **Использовать POST**.
 
     Е. Щелкните **Сохранить**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-В hello портал Azure Создание тестового пользователя вызывается Саймон Britta.
+На портале Azure создайте тестового пользователя с именем Britta Simon.
 
-![Имя и адрес электронной почты пользователя теста hello Azure AD][100]
+![Имя и адрес электронной почты тестового пользователя Azure AD][100]
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** значок.
+1. На портале Azure в области слева щелкните значок **Azure Active Directory**.
 
     ![Значок Azure Active Directory](./media/active-directory-saas-clarizen-tutorial/create_aaduser_01.png)
 
-2. Нажмите кнопку **пользователей и групп**, а затем нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Откройте раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
 
     ![Выбор разделов "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_02.png)
 
-3. Вверху hello диалоговое окно «hello», нажмите кнопку **добавить** tooopen hello **пользователя** диалоговое окно.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
 
-    ![Кнопка «Добавить» Hello](./media/active-directory-saas-clarizen-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
     ![Диалоговое окно "Пользователь" с заполненными полями "Имя", "Адрес электронной почты" и "Пароль"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле введите адрес электронной почты hello hello Саймон Britta учетной записи.
+    b. В поле **Имя пользователя** введите адрес электронной почты учетной записи Britta Simon.
 
-    c. Выберите **Показать пароль** и запишите значение hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
 
 ### <a name="create-a-clarizen-test-user"></a>Создание тестового пользователя Clarizen
-tooenable toosign пользователей Azure AD в tooClarizen, необходимо подготовить учетные записи пользователей. В случае hello объекта Clarizen Подготовка осуществляется вручную.
+Чтобы пользователи Azure AD могли входить в приложение Clarizen, необходимо подготовить учетные записи пользователей. В случае с Clarizen подготовка выполняется вручную.
 
-1. Войдите в tooyour Clarizen корпоративный сайт с правами администратора.
+1. Войдите на корпоративный сайт Clarizen в качестве администратора.
 
 2. Выберите параметр **Пользователи**.
 
@@ -197,52 +197,52 @@ tooenable toosign пользователей Azure AD в tooClarizen, необх
 
     ![Кнопка Invite User](./media/active-directory-saas-clarizen-tutorial/create_aaduser_002.png "Пригласить пользователя")
 
-4. В hello **пригласить пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Invite People** (Приглашение пользователей) выполните следующие действия.
 
     ![Диалоговое окно Invite People](./media/active-directory-saas-clarizen-tutorial/create_aaduser_003.png "Приглашение пользователей")
 
-    а. В hello **электронной почты** поле введите адрес электронной почты hello hello Саймон Britta учетной записи.
+    а. В текстовом поле **Email** (Электронная почта) введите адрес электронной почты учетной записи Britta Simon.
 
     b. Нажмите кнопку **Пригласить**.
 
     > [!NOTE]
-    > Hello владельцем учетной записи Azure Active Directory получит сообщение электронной почты и выполните их учетных записей tooconfirm ссылку, чтобы она стала активной.
+    > Владелец учетной записи Azure Active Directory получит по электронной почте сообщение со ссылкой для активации учетной записи.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
-Включите toouse Britta Simon Azure единого входа путем предоставления ее tooClarizen доступа.
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+Разрешите пользователю Britta Simon применять единый вход Azure, предоставив доступ к Clarizen.
 
 ![Назначение тестового пользователя][200]
 
-1. На hello портал Azure, откройте представление приложения hello, Обзор toohello представления каталога, **корпоративных приложений**, а затем нажмите кнопку **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Выбор пунктов "Корпоративные приложения" и "Все приложения".][201]
 
-2. В списке приложений hello выберите **Clarizen**.
+2. В списке приложений выберите **Clarizen**.
 
-    ![При выборе Clarizen в списке hello](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_50.png)
+    ![Выбор Clarizen в списке](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. Hello левой панели щелкните **пользователей и групп**.
+3. В области слева выберите **Пользователи и группы**.
 
     ![Выбор пункта "Пользователи и группы"][202]
 
-4. Нажмите кнопку hello **добавить** кнопки. Затем в hello **добавить назначение** выберите **пользователей и групп**.
+4. Нажмите кнопку **Add** (Добавить). Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Кнопка «Добавить» Hello и диалоговое окно «Добавление назначения» hello][203]
+    ![Нажатие кнопки "Добавить" и диалоговое окно "Добавление назначения"][203]
 
-5. В hello **пользователей и групп** выберите **Britta Simon** hello списка пользователей.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
-6. В hello **пользователей и групп** диалоговое окно, нажмите кнопку hello **выберите** кнопки.
+6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
-7. В hello **добавить назначение** диалоговое окно, нажмите кнопку hello **назначить** кнопки.
+7. В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.
 
 ### <a name="test-single-sign-on"></a>Проверка единого входа
-Тестирование конфигурации Azure AD единого входа с помощью панели доступа hello.
+Проверьте конфигурацию единого входа Azure AD с помощью панели доступа.
 
-Если щелкнуть плитку Clarizen hello в hello панели доступа, вы должны автоматически входить в tooyour Clarizen приложения.
+Щелкнув элемент Clarizen на панели доступа, вы автоматически войдете в приложение Clarizen.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по toointegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

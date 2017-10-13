@@ -1,6 +1,6 @@
 ---
-title: "aaaTroubleshoot StorSimple Virtual Array | Документы Microsoft"
-description: "Описывает hello устройства StorSimple возможности диагностики и объясняется, как toouse его tootroubleshoot виртуального массива StorSimple."
+title: "Устранение неполадок виртуального массива StorSimple | Документация Майкрософт"
+description: "В статье описываются возможности диагностики диспетчера устройств StorSimple и способы его использования для устранения неполадок в виртуальном массиве StorSimple."
 services: storsimple
 documentationcenter: 
 author: manuaery
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 5b8e05d5ce6000424830059db450a0e662d19238
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-hello-storsimple-device-manager-service-tootroubleshoot-hello-storsimple-virtual-array"></a>Использовать hello tootroubleshoot службы hello диспетчера StorSimple устройство StorSimple Virtual Array
+# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Устранение неполадок виртуального массива StorSimple с помощью диспетчера устройств StorSimple
 ## <a name="overview"></a>Обзор
 
-Hello устройства StorSimple предоставляет **диагностики и устранения неполадок** параметр в колонке сводки hello службы которой выделены hello часто встречающиеся проблемы, которые могут возникать с виртуального массива и как toosolve их. В этом учебнике рассказывается hello самостоятельного устранения неполадок возможность в службе диспетчера StorSimple устройство hello.
+В колонке сводных данных о службе диспетчера устройств StorSimple находится область **Диагностика и решение проблем**, где приведены некоторые часто встречающиеся проблемы, которые могут возникнуть в виртуальном массиве, и способы их устранения. В этом руководстве описаны возможности самостоятельного устранения неполадок с помощью службы диспетчера устройств StorSimple.
 
 ![Диагностика и решение проблем](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
 ## <a name="diagnose-and-solve-issues"></a>Диагностика и устранения неполадок
 
-Можно просматривать hello часто встречающихся проблем с hello StorSimple Virtual Array и анализировать проблемы toothose решений hello прямо из колонки сводки вашего устройства StorSimple службы.
+Некоторые распространенные проблемы виртуального массива StorSimple и способы их решения можно просмотреть прямо в колонке сводных данных о службе диспетчера устройств StorSimple.
 
-#### <a name="toodiagnose-an-issue-with-your-virtual-array"></a>toodiagnose проблемы с виртуального массива
+#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>Диагностика проблемы виртуального массива
 
-1. Нажмите кнопку **диагностики и устранения неполадок** параметр в hello левой панели для вашего устройства StorSimple службы сводки колонке tooview список распространенных проблем.
+1. Чтобы просмотреть список распространенных проблем, щелкните параметр **Диагностика и решение проблем** в левой части колонки сводных данных о службе диспетчера устройств StorSimple.
 
-2. **Разверните** на hello признаком проблемы hello появляются tooreview **рекомендуемые действия** tooaid вам в устранении проблемы hello. При желании также можно оценить hello подробную документацию по ссылкам для дальнейшего использования.
+2. Чтобы получить помощь в устранении неполадки, **разверните** симптом возникшей проблемы и просмотрите **Рекомендуемые действия**. Под ними также приведены ссылки на дополнительную документацию.
    
     ![Устранение проблемы](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. При невозможно toofind проблемой tooyour ссылка или ее устранения, направляться tooMicrosoft поддержки для получения дополнительной помощи.
+3. Если не удается найти справочные материалы о проблеме и ее устранении, обратитесь за помощью в службу технической поддержки Майкрософт.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Узнайте, каким образом слишком[входа в службу поддержки](storsimple-virtual-array-log-support-ticket.md)
+[Инструкции по регистрации запроса в службу поддержки](storsimple-virtual-array-log-support-ticket.md)
 

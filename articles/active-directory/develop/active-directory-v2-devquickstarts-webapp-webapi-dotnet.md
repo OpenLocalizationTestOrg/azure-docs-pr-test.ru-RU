@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD v2.0 .NET, веб-приложения вызовах API Приступая к работе | Документы Microsoft"
-description: "Как toobuild веб-приложение .NET MVC, который вызывает веб-службы с помощью Microsoft личных учетных записей и работы или учебы учетные записи для входа в систему."
+title: "Начало работы с веб-приложением Azure AD v2.0 .NET с поддержкой вызова API | Документация Майкрософт"
+description: "Как создать веб-приложение .NET MVC, вызывающее веб-службы, используя личные учетные записи Майкрософт, а также рабочие и учебные учетные записи для входа."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1a70791418bc2a7d1fdfbafb9b5126a033a32292
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc3162ae8e6ce622139125c2e78fa45d2e90d534
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>Вызов веб-API из веб-приложения .NET
-С конечной точкой v2.0 hello можно быстро добавлять проверки подлинности tooyour веб-приложений и веб-API с поддержки для обоих личных учетных записей Майкрософт и рабочих учетных записей.  Мы создадим веб-приложение MVC, которое поддерживает вход пользователей с помощью OpenID Connect с использованием ПО промежуточного слоя OWIN Майкрософт.  Hello веб-приложения получение маркера доступа OAuth 2.0 для веб-api, защищенного OAuth 2.0, которая позволяет создавать, читать и delete для данного пользователя «список дел».
+Конечная точка версии 2.0 позволяет быстро реализовать в веб-приложениях и веб-API аутентификацию с поддержкой личных учетных записей Майкрософт, а также рабочих и учебных учетных записей.  Мы создадим веб-приложение MVC, которое поддерживает вход пользователей с помощью OpenID Connect с использованием ПО промежуточного слоя OWIN Майкрософт.  Веб-приложение будет получать маркеры доступа OAuth 2.0 для веб-API, защищенного OAuth 2.0, который позволяет создавать, читать и удалять элементы "списка дел" данного пользователя.
 
-Этот учебник будет связана главным образом с использованием MSAL tooacquire и использовать токены доступа в веб-приложения, описанные в полном объеме [здесь](active-directory-v2-flows.md#web-apps).  В качестве необходимых компонентов, вы можете toofirst Узнайте, каким образом слишком[добавить основные tooa веб-приложения](active-directory-v2-devquickstarts-dotnet-web.md) или как слишком[правильно обеспечить безопасность веб-API](active-directory-v2-devquickstarts-dotnet-api.md).
+Этот учебник в основном посвящен применению MSAL для получения и использования маркеров доступа в веб-приложении, что полностью описано [здесь](active-directory-v2-flows.md#web-apps).  Для начала вам может потребоваться изучить, как [добавить базовые возможности входа в веб-приложение](active-directory-v2-devquickstarts-dotnet-web.md) или как [правильно защитить веб-API](active-directory-v2-devquickstarts-dotnet-api.md).
 
 > [!NOTE]
-> Не все сценарии Azure Active Directory и возможности поддерживаются hello v2.0 конечной точкой.  toodetermine, если необходимо использовать конечную точку v2.0 hello, прочтите сведения о [ограничения v2.0](active-directory-v2-limitations.md).
+> Не все сценарии и компоненты Azure Active Directory поддерживаются конечной точкой версии 2.0.  Чтобы определить, следует ли вам использовать конечную точку версии 2.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
 > 
 > 
 
 ## <a name="download-sample-code"></a>Скачивание примера кода
-поддерживается Hello кода для этого учебника [на GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet).  можно toofollow вдоль [загрузить приложение hello основу как .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/skeleton.zip) или основу hello клона:
+Код в этом учебнике размещен на портале [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet).  Для понимания процесса можно [скачать основу приложения как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/skeleton.zip) или клонировать ее:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
-Кроме того, можно [загрузить приложение hello завершена как .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip) или hello выполнить клонирование приложений:
+Кроме того, можно [скачать завершенное приложение как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip) или клонировать его.
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
 ## <a name="register-an-app"></a>регистрация приложения;
 Создайте приложение на странице [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) или выполните [эти подробные указания](active-directory-v2-app-registration.md).  Не забудьте:
 
-* Копировать вниз hello **идентификатор приложения** назначены tooyour приложения, оно понадобится скоро.
-* Создание **секрет приложения** из hello **пароль** тип и копирования вниз его значение на более поздний срок
-* Добавить hello **Web** платформы для приложения.
-* Введите правильный hello **URI перенаправления**. Hello uri перенаправления указывает tooAzure AD, где следует направлять запросы проверки подлинности — по умолчанию hello в этом учебнике используется `https://localhost:44326/`.
+* Запишите назначенный вашему приложению **идентификатор приложения**. Он вскоре вам понадобится.
+* Создайте **секрет приложения** типа **Пароль** и скопируйте его для дальнейшего использования.
+* Добавьте **веб-платформу** для своего приложения.
+* Введите правильный **универсальный код ресурса (URI) перенаправления**. URI перенаправления сообщает Azure AD, куда следует направлять ответы проверки подлинности. Значение по умолчанию в этом руководстве — `https://localhost:44326/`.
 
 ## <a name="install-owin"></a>Установка OWIN
-Добавление пакетов NuGet toohello для hello OWIN по промежуточного слоя `TodoList-WebApp` проектов с помощью консоли диспетчера пакетов "hello".  по промежуточного слоя OWIN Hello быть используется tooissue запросы на вход и выход, управлять сеансом пользователя hello и получения сведений о пользователе hello, среди прочего.
+Добавьте пакеты NuGet для ПО промежуточного слоя OWIN в проект `TodoList-WebApp` с помощью консоли диспетчера пакетов.  Кроме прочего, ПО промежуточного слоя OWIN будет использоваться для выдачи запросов входа и выхода, управления сеансом пользователя и получения сведений о пользователе.
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect -ProjectName TodoList-WebApp
@@ -57,16 +57,16 @@ PM> Install-Package Microsoft.Owin.Security.Cookies -ProjectName TodoList-WebApp
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoList-WebApp
 ```
 
-## <a name="sign-hello-user-in"></a>Вход пользователя hello в
-Теперь настройка hello toouse по промежуточного слоя OWIN hello [протокол проверки подлинности OpenID Connect](active-directory-v2-protocols.md).  
+## <a name="sign-the-user-in"></a>Вход пользователя
+Теперь настройте ПО промежуточного слоя OWIN для использования [протокола аутентификации OpenID Connect](active-directory-v2-protocols.md).  
 
-* Откройте hello `web.config` файл в корне hello hello `TodoList-WebApp` проекта, а затем введите значения конфигурации приложения в hello `<appSettings>` раздела.
-  * Hello `ida:ClientId` — hello **идентификатор приложения** назначенный tooyour приложения на портале регистрации hello.
-  * Hello `ida:ClientSecret` — hello **секрет приложения** вы создали на портале регистрации hello.
-  * Hello `ida:RedirectUri` — hello **Uri перенаправления** введенное на портале hello.
-* Откройте hello `web.config` файл в корне hello hello `TodoList-Service` проекта, а hello `ida:Audience` с hello же **идентификатор приложения** как описано выше.
-* Привет открыть файл `App_Start\Startup.Auth.cs` и добавьте `using` инструкций для библиотек hello выше.
-* В hello того же файла, реализовать hello `ConfigureAuth(...)` метод.  Здравствуйте, параметры, указываемые в `OpenIDConnectAuthenticationOptions` будет служить в качестве координат для toocommunicate вашего приложения в Azure AD.
+* Откройте файл `web.config` в корне проекта `TodoList-WebApp` и введите значения конфигурации приложения в разделе `<appSettings>`.
+  * `ida:ClientId` — это **идентификатор приложения** , присвоенный приложению на портале регистрации.
+  * `ida:ClientSecret` — это **секрет приложения** , созданный на портале регистрации.
+  * `ida:RedirectUri` — это **универсальный код ресурса (URI) перенаправления** , который вы указали на портале.
+* Откройте файл `web.config` в корневом каталоге проекта `TodoList-Service` и замените `ida:Audience` **идентификатором приложения**, указанным выше.
+* Откройте файл `App_Start\Startup.Auth.cs` и добавьте операторы `using` для библиотек, указанных выше.
+* В том же файле реализуйте метод `ConfigureAuth(...)` .  Параметры, указанные в `OpenIDConnectAuthenticationOptions` , будут служить координатами приложения для взаимодействия с Azure AD.
 
 ```C#
 public void ConfigureAuth(IAppBuilder app)
@@ -79,9 +79,9 @@ public void ConfigureAuth(IAppBuilder app)
         new OpenIdConnectAuthenticationOptions
         {
 
-                    // hello `Authority` represents hello v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
-                    // hello `Scope` describes hello permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
-                    // In a real application you could use issuer validation for additional checks, like making sure hello user's organization has signed up for your app, for instance.
+                    // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+                    // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
+                    // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
 
                     ClientId = clientId,
                     Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0 "),
@@ -93,7 +93,7 @@ public void ConfigureAuth(IAppBuilder app)
                         ValidateIssuer = false,
                     },
 
-                    // hello `AuthorizationCodeReceived` notification is used toocapture and redeem hello authorization_code that hello v2.0 endpoint returns tooyour app.
+                    // The `AuthorizationCodeReceived` notification is used to capture and redeem the authorization_code that the v2.0 endpoint returns to your app.
 
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
@@ -106,15 +106,15 @@ public void ConfigureAuth(IAppBuilder app)
 // ...
 ```
 
-## <a name="use-msal-tooget-access-tokens"></a>Использование маркера доступа tooget MSAL
-В hello `AuthorizationCodeReceived` уведомления, мы хотим toouse [OAuth 2.0 в сочетании с OpenID Connect](active-directory-v2-protocols.md) значение authorization_code hello tooredeem для токена toohello доступ службы списка задач.  MSAL может упростить этот процесс.
+## <a name="use-msal-to-get-access-tokens"></a>Использование MSAL для получения маркеров доступа
+В уведомлении `AuthorizationCodeReceived` мы будем использовать [OAuth 2.0 вместе с OpenID Connect](active-directory-v2-protocols.md), чтобы использовать код авторизации маркера доступа для службы списка дел.  MSAL может упростить этот процесс.
 
-* Во-первых установите предварительную версию hello MSAL:
+* Сначала установите предварительную версию MSAL:
 
 ```PM> Install-Package Microsoft.Identity.Client -ProjectName TodoList-WebApp -IncludePrerelease```
 
-* И добавьте еще один `using` toohello инструкции `App_Start\Startup.Auth.cs` файл для MSAL.
-* Теперь добавьте новый метод hello `OnAuthorizationCodeReceived` обработчика событий.  Этот обработчик будет использовать MSAL tooacquire toohello токена доступа к API список дел и сохранит hello маркера в кэше токенов MSAL на более поздний срок:
+* Добавьте еще один оператор `using` в файл `App_Start\Startup.Auth.cs` для MSAL.
+* Теперь добавьте новый метод `OnAuthorizationCodeReceived` обработчика событий.  Этот обработчик обращается к MSAL для получения маркера доступа к API списка дел и сохраняет этот маркер в кэше маркеров MSAL для последующего использования.
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
@@ -124,25 +124,25 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
         string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenantID, string.Empty);
         ClientCredential cred = new ClientCredential(clientId, clientSecret);
 
-        // Here you ask for a token using hello web app's clientId as hello scope, since hello web app and service share hello same clientId.
+        // Here you ask for a token using the web app's clientId as the scope, since the web app and service share the same clientId.
         app = new ConfidentialClientApplication(Startup.clientId, redirectUri, cred, new NaiveSessionCache(userObjectId, notification.OwinContext.Environment["System.Web.HttpContextBase"] as HttpContextBase)) {};
         var authResult = await app.AcquireTokenByAuthorizationCodeAsync(new string[] { clientId }, notification.Code);
 }
 // ...
 ```
 
-* В веб-приложениях MSAL имеет расширяемый кэш токена, может быть используется toostore маркеры.  В этом примере реализуется hello `NaiveSessionCache` с использованием маркеров toocache хранилища сеансов http.
+* В веб-приложениях MSAL использует расширяемый кэш маркеров, который можно применять для хранения маркеров.  В этом примере реализуется `NaiveSessionCache` , использующий хранилище сеансов HTTP для кэширования маркеров.
 
 <!-- TODO: Token Cache article -->
 
 
-## <a name="call-hello-web-api"></a>Hello вызовов веб-API
-Теперь пора tooactually использовать access_token hello, полученного в шаге 3.  Привет открыть веб-приложение `Controllers\TodoListController.cs` файл, который делает все hello CRUD запросы toohello API список дел.
+## <a name="call-the-web-api"></a>Вызов веб-API
+Теперь настало время использовать маркер доступа, полученный на шаге 3.  Откройте файл `Controllers\TodoListController.cs` веб-приложения, который выполняет все запросы CRUD к интерфейсу API списка дел.
 
-* Можно использовать MSAL попытку здесь access_tokens toofetch из hello MSAL кэша.  Сначала добавьте `using` инструкции для MSAL toothis файла.
+* Здесь снова можно использовать MSAL маркеров доступа из кэша MSAL.  Сначала добавьте оператор `using` для MSAL в этот файл.
   
     `using Microsoft.Identity.Client;`
-* В hello `Index` действия, используйте MSAL `AcquireTokenSilentAsync` tooget метод access_token, может быть используется tooread данные из hello список дел службы:
+* В действии `Index` используйте метод `AcquireTokenSilentAsync` MSAL, чтобы получить маркер доступа, который может использоваться для чтения данных из службы списка дел.
 
 ```C#
 // ...
@@ -151,52 +151,52 @@ string tenantID = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.co
 string authority = String.Format(CultureInfo.InvariantCulture, Startup.aadInstance, tenantID, string.Empty);
 ClientCredential credential = new ClientCredential(Startup.clientId, Startup.clientSecret);
 
-// Here you ask for a token using hello web app's clientId as hello scope, since hello web app and service share hello same clientId.
+// Here you ask for a token using the web app's clientId as the scope, since the web app and service share the same clientId.
 app = new ConfidentialClientApplication(Startup.clientId, redirectUri, credential, new NaiveSessionCache(userObjectID, this.HttpContext)){};
 result = await app.AcquireTokenSilentAsync(new string[] { Startup.clientId });
 // ...
 ```
 
-* Hello образец добавляет hello полученный маркер toohello запроса HTTP GET на составляющие hello `Authorization` заголовок, какая служба список дел hello использует запрос tooauthenticate hello.
-* Возвращает список дел службы hello `401 Unauthorized` ответ access_tokens hello в MSAL ставшие недействительными для какой-либо причине.  В этом случае необходимо удалить все access_tokens из кэша MSAL hello и показывать hello пользовательского сообщения, может возникнуть необходимость toosign в снова, которой будет перезагружен hello получения маркера потока.
+* Затем пример добавляет полученный маркер в запрос HTTP GET в качестве заголовка `Authorization`, который служба списка дел использует для проверки подлинности запроса.
+* Если служба списка дел возвращает ответ `401 Unauthorized`, это значит, что по какой-то причине маркеры доступа в MSAL стали недействительными.  В этом случае следует удалить все маркеры доступа из кэша MSAL и показать пользователю сообщение о том, что требуется снова войти в систему. После этого входа перезапускается поток получения маркера.
 
 ```C#
 // ...
-// If hello call failed with access denied, then drop hello current access token from hello cache,
-// and show hello user an error indicating they might need toosign-in again.
+// If the call failed with access denied, then drop the current access token from the cache,
+// and show the user an error indicating they might need to sign-in again.
 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 {
         app.AppTokenCache.Clear(Startup.clientId);
 
-        return new RedirectResult("/Error?message=Error: " + response.ReasonPhrase + " You might need toosign in again.");
+        return new RedirectResult("/Error?message=Error: " + response.ReasonPhrase + " You might need to sign in again.");
 }
 // ...
 ```
 
-* Аналогично Если не удается tooreturn access_token MSAL по любой причине, toosign пользователя hello в следует поручить еще раз.  Для этого нужно всего лишь перехватить любой `MSALException`:
+* Аналогично, если MSAL не удалось вернуть маркер доступа по какой-либо причине, следует сообщить пользователю о необходимости повторного входа.  Для этого нужно всего лишь перехватить любой `MSALException`:
 
 ```C#
 // ...
 catch (MsalException ee)
 {
-        // If MSAL could not get a token silently, show hello user an error indicating they might need toosign in again.
-        return new RedirectResult("/Error?message=An Error Occurred Reading tooDo List: " + ee.Message + " You might need toolog out and log back in.");
+        // If MSAL could not get a token silently, show the user an error indicating they might need to sign in again.
+        return new RedirectResult("/Error?message=An Error Occurred Reading To Do List: " + ee.Message + " You might need to log out and log back in.");
 }
 // ...
 ```
 
-* Hello точного же `AcquireTokenSilentAsync` вызывается implementd в hello `Create` и `Delete` действия.  В веб-приложениях можно использовать этот access_tokens tooget метод MSAL всякий раз, когда они нужны в приложении.  MSAL получает, кэширует и обновляет маркеры для вас.
+* Такой же вызов `AcquireTokenSilentAsync` реализован в действиях `Create` и `Delete`.  В веб-приложениях этот метод MSAL можно использовать для получения маркеров доступа, когда они требуются в приложении.  MSAL получает, кэширует и обновляет маркеры для вас.
 
-Наконец, постройте и запустите свое приложение!  Войдите, используя учетную запись Майкрософт или учетной записи Azure AD и обратите внимание на то, как удостоверение пользователя hello отражается hello верхней панели навигации.  Добавлять и удалять некоторые элементы из списка дел hello пользователь вызывает hello toosee прощелкать OAuth 2.0 API в действии.  Теперь у вас есть веб-приложение и веб-API, защищенные с помощью стандартных отраслевых протоколов, которые могут проверять подлинность пользователей с помощью личных, рабочих и учебных учетных записей.
+Наконец, постройте и запустите свое приложение!  Выполните вход с учетной записью Майкрософт или учетной записью Azure AD и обратите внимание на то, как удостоверение пользователя отображается в верхней панели навигации.  Добавьте и удалите несколько элементов из списка дел пользователя, чтобы увидеть защищенные с помощью OAuth 2.0 вызовы API в действии.  Теперь у вас есть веб-приложение и веб-API, защищенные с помощью стандартных отраслевых протоколов, которые могут проверять подлинность пользователей с помощью личных, рабочих и учебных учетных записей.
 
-Справочник по hello выполнить пример (без настройки) [представлена ниже](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip).  
+Для справки следует отметить, что готовый пример (без ваших значений конфигурации) находится [здесь](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip).  
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные ресурсы:
 
-* [Руководство разработчика v2.0 Hello >>](active-directory-appmodel-v2-overview.md)
+* [Руководство разработчика версии 2.0 >>](active-directory-appmodel-v2-overview.md)
 * [Тег StackOverflow "azure-active-directory" >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Получение обновлений системы безопасности для наших продуктов
-Мы рекомендуем вам уведомления при возникновении события безопасности, посетив tooget [эту страницу](https://technet.microsoft.com/security/dd252948) и подписка tooSecurity рекомендация предупреждения.
+Рекомендуем вам настроить уведомления о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на [этой странице](https://technet.microsoft.com/security/dd252948).
 

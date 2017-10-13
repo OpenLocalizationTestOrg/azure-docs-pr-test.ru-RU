@@ -1,6 +1,6 @@
 ---
-title: "Соединитель aaaTrello в приложения логики Azure | Документы Microsoft"
-description: "Создание приложений логики с помощью службы приложений Azure. Trello позволяет отслеживать все ваши проекты как на работе, так и дома.  Он toomanage способом простой, бесплатные, гибкий и visual проектов и организовать ничего.  Соединение tooTrello toomanage платы, списки и карты"
+title: "Соединитель Trello в Azure Logic Apps | Документация Майкрософт"
+description: "Создание приложений логики с помощью службы приложений Azure. Trello позволяет отслеживать все ваши проекты как на работе, так и дома.  Это простое, бесплатное, гибкое и наглядное средство организации данных и управления проектами.  Подключитесь к Trello для управления досками, списками и карточками."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 08aaea394c790ac41632490b7bbc84dcdfbab9da
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 526a14710f24ee4a4b61a11873aa6caa0b47dc10
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-trello-connector"></a>Приступая к работе с Trello соединитель hello
-Trello позволяет отслеживать все ваши проекты как на работе, так и дома.  Он toomanage способом простой, бесплатные, гибкий и visual проектов и организовать ничего.  Подключение tooTrello toomanage вашего ПК, списки и карты.
+# <a name="get-started-with-the-trello-connector"></a>Начало работы с соединителем Trello
+Trello позволяет отслеживать все ваши проекты как на работе, так и дома.  Это простое, бесплатное, гибкое и наглядное средство организации данных и управления проектами.  Подключитесь к Trello для управления досками, списками и карточками.
 
 Для начала создайте приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-tootrello"></a>Создание tooTrello подключения
-приложения логики toocreate с Trello, сначала создайте **подключения**и ввести данные hello hello следующие свойства:
+## <a name="create-a-connection-to-trello"></a>Создание подключения к Trello
+Для создания приложения логики с Trello сначала нужно создать **подключение**, а затем указать данные для следующих свойств:
 
 | Свойство | Обязательно | Description (Описание) |
 | --- | --- | --- |
 | Маркер |Да |Укажите учетные данные Trello |
 
-После создания подключения hello, можно использовать его действия tooexecute hello и прослушивать hello триггеры.
+Созданное подключение можно использовать для выполнения действий и прослушивания триггеров.
 
-> [!INCLUDE [Steps toocreate a connection tooTrello](../../includes/connectors-create-api-trello.md)]
+> [!INCLUDE [Steps to create a connection to Trello](../../includes/connectors-create-api-trello.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/trello/).
+Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/trello/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
+Вы можете вернуться к [списку интерфейсов API](apis-list.md).

@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB. Руководство по началу работы с API DocumentDB с помощью .NET Core | Документация Майкрософт"
-description: "Учебник, в котором создает консольное приложение на C#, с помощью hello Azure Cosmos DB DocumentDB API .NET Core SDK и оперативной базы данных."
+description: "В этом руководстве описано создание консольного приложения C# и оперативной базы данных с помощью пакета SDK для .NET Core для API DocumentDB в службе Azure Cosmos DB."
 services: cosmos-db
 documentationcenter: .net
 author: arramac
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
-ms.openlocfilehash: 5e7efb327252e9e73e9b2a340820eeecc6937fa5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f39d732325d171b30de3b86e0c96be0ce77c66a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-getting-started-with-hello-documentdb-api-and-net-core"></a>Azure Cosmos DB: Приступая к работе с DocumentDB API hello и .NET Core
+# <a name="azure-cosmos-db-getting-started-with-the-documentdb-api-and-net-core"></a>Azure Cosmos DB. Приступая к работе с API DocumentDB и .NET Core
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -31,68 +31,70 @@ ms.lasthandoff: 10/06/2017
 >  
 > 
 
-Вас приветствует toohello API DocumentDB для Приступая к работе с учебником .NET Core DB Cosmos Azure! После изучения этого руководства у вас будет консольное приложение, которое создает ресурсы Azure Cosmos DB и отправляет запросы к ним.
+Добро пожаловать в руководство по началу работы с Azure Cosmos DB с помощью .NET Core! После изучения этого руководства у вас будет консольное приложение, которое создает ресурсы Azure Cosmos DB и отправляет запросы к ним.
 
 Мы рассмотрим следующие вопросы:
 
-* Создание и подключение учетной записи Azure Cosmos DB tooan
+* создание учетной записи Azure Cosmos DB и подключение к ней;
 * настройка решения Visual Studio;
 * Создание оперативной базы данных
 * создание коллекции;
 * создание документов JSON;
-* Запрос к коллекции hello
+* выполнение запросов к коллекции;
 * замена документа;
 * удаление документа;
-* Удаление базы данных hello
+* удаление базы данных.
 
-У вас нет времени? Не беспокойтесь! законченное решение Hello можно найти в [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). Переход toohello [Получает раздел законченное решение hello](#GetSolution) быстрого инструкции.
+У вас нет времени? Не беспокойтесь! Полное решение доступно на [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). Краткие инструкции см. в разделе [Получение полного решения NoSQL для этого руководства](#GetSolution).
 
-Хотите toobuild Xamarin iOS, Android или формы с помощью приложения hello DocumentDB API и пакета SDK для .NET Core? См. [Создание мобильных приложений с помощью Xamarin и Azure Cosmos DB](mobile-apps-with-xamarin.md).
+Хотите создать приложение Xamarin iOS, Android или Forms с помощью API DocumentDB и пакета SDK для .NET Core? См. [Создание мобильных приложений с помощью Xamarin и Azure Cosmos DB](mobile-apps-with-xamarin.md).
 
 > [!NOTE]
-> Hello Azure Cosmos DB .NET Core SDK используемые в этом учебнике не совместим с приложениями универсальной платформы Windows (UWP). Для предварительной версии hello .NET Core SDK, который поддерживает приложения UWP, отправки электронной почты слишком[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+> Пакет SDK .NET Core для Azure Cosmos DB, используемый в этом руководстве, не совместим с приложениями универсальной платформы Windows (UWP). Чтобы получить предварительную версию пакета SDK для .NET Core, которая поддерживает приложения UWP, отправьте сообщение по адресу [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 А теперь приступим к работе!
 
 ## <a name="prerequisites"></a>Предварительные требования
-Убедитесь, что у вас есть следующие hello:
+Убедитесь, что у вас есть указанные ниже компоненты.
 
 * Активная учетная запись Azure. Если у вас ее нет, зарегистрируйте [бесплатную учетную запись](https://azure.microsoft.com/free/). 
-    * Кроме того, можно использовать hello [DB эмулятор Azure Cosmos](local-emulator.md) для этого учебника.
-* [Visual Studio 2017](https://www.visualstudio.com/vs/) 
-    * При работе на MacOS или Linux, можно разрабатывать приложения .NET Core из командной строки hello, установив hello [пакета SDK для .NET Core](https://www.microsoft.com/net/core#macos) для hello платформы по своему усмотрению. 
-    * При работе в Windows, можно разрабатывать приложения .NET Core из командной строки hello, установив hello [пакета SDK для .NET Core](https://www.microsoft.com/net/core#windows). 
+
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)] 
+    * Если вы работаете в MacOS или Linux, вы можете разрабатывать приложения .NET Core с помощью командной строки, установив для этого пакет [SDK для .NET Core ](https://www.microsoft.com/net/core#macos) с учетом платформы. 
+    * Если вы работаете в Windows, приложения .NET Core можно разрабатывать с помощью командной строки, установив для этого пакет [SDK для .NET Core](https://www.microsoft.com/net/core#windows). 
     * Можно использовать свой редактор или скачать бесплатный [Visual Studio Code](https://code.visualstudio.com/), который работает в Windows, Linux и MacOS. 
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Шаг 1. Создание учетной записи Azure Cosmos DB
-Давайте создадим учетную запись Azure Cosmos DB. При наличии учетной записи требуется toouse можно сразу перейти слишком[установки решения Visual Studio](#SetupVS). Если вы используете hello Azure Cosmos DB эмулятор, выполните действия hello в [DB эмулятор Azure Cosmos](local-emulator.md) toosetup hello эмулятора и пропускать слишком[установки решения Visual Studio](#SetupVS).
+Давайте создадим учетную запись Azure Cosmos DB. Если у вас уже есть учетная запись, которую вы собираетесь использовать, можно перейти к шагу [Настройка решения Visual Studio](#SetupVS). Если вы используете эмулятор Azure Cosmos DB, выполните действия, описанные в статье об [эмуляторе Azure Cosmos DB](local-emulator.md), чтобы его настроить и сразу перейти к [настройке решения Visual Studio](#SetupVS).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupVS"></a> Шаг 2. Настройка решения Visual Studio
 1. Откройте **Visual Studio 2017** у себя на компьютере.
-2. На hello **файл** последовательно выберите пункты **New**и нажмите кнопку **проекта**.
-3. В hello **новый проект** диалогового окна выберите **шаблоны** / **Visual C#** / **.NET Core** / **Консольного приложения (.NET Core)**, присвойте проекту имя **DocumentDBGettingStarted**, а затем нажмите кнопку **ОК**.
+2. В меню **Файл** выберите пункт **Создать**, а затем — **Проект**.
+3. В диалоговом окне **Новый проект** выберите **Шаблоны** / **Visual C#** / **.NET Core**/**Console Application (.NET Core)** (Консольное приложение (.NET Core)), а затем присвойте проекту имя **DocumentDBGettingStarted** и нажмите кнопку **ОК**.
 
-   ![Снимок экрана: hello окно нового проекта](./media/documentdb-dotnetcore-get-started/nosql-tutorial-new-project-2.png)
-4. В hello **обозревателе решений**, щелкните правой кнопкой мыши **DocumentDBGettingStarted**.
-5. Не выходя из меню hello, щелкните **управление пакетами NuGet...** .
+   ![Снимок экрана: диалоговое окно «Новый проект»](./media/documentdb-dotnetcore-get-started/nosql-tutorial-new-project-2.png)
+4. В **обозревателе решений** щелкните правой кнопкой мыши **DocumentDBGettingStarted**.
+5. Не выходя из меню, щелкните элемент **Управление пакетами NuGet…**.
 
-   ![Снимок hello справа щелчок меню для проекта hello](./media/documentdb-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-6. В hello **NuGet** щелкните **Обзор** hello верхней части окна hello и тип **azure documentdb** в поле поиска hello.
-7. В результатах поиска hello, найти **Microsoft.Azure.DocumentDB.Core** и нажмите кнопку **установить**.
-   Идентификатор пакета Hello hello DocumentDB клиентская библиотека для .NET Core [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core). Если используется версия .NET Framework (например, net461), которая не поддерживается для этого пакета .NET Core NuGet, используйте [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB), поддерживающую все версии .NET Framework, начиная с .NET Framework 4.5.
-8. На экране приветствия принятие установки пакета NuGet hello и hello лицензионное соглашение.
+   ![Снимок экрана: меню «Проект», вызванное щелчком правой кнопки мыши](./media/documentdb-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+6. На вкладке **NuGet** в верхней части окна щелкните **Обзор** и в поле поиска введите **azure documentdb**.
+7. В результатах найдите **Microsoft.Azure.DocumentDB.Core** и нажмите кнопку **Установить**.
+   Идентификатором пакета для клиентской библиотеки DocumentDB для .NET Core является [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core). Если используется версия .NET Framework (например, net461), которая не поддерживается для этого пакета .NET Core NuGet, используйте [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB), поддерживающую все версии .NET Framework, начиная с .NET Framework 4.5.
+8. При появлении запросов подтвердите установку пакета NuGet и примите условия лицензионного соглашения.
 
-Отлично! Теперь, когда мы hello Настройка завершена, давайте начнем написания кода. Вы можете найти проект готового кода для этого руководства в [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started).
+Отлично! Теперь, когда мы завершили настройку, начнем писать код. Вы можете найти проект готового кода для этого руководства в [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started).
 
-## <a id="Connect"></a>Шаг 3: Учетная запись Azure Cosmos DB tooan подключения
-Во-первых, добавьте эти ссылается на начало toohello приложение C# в файле Program.cs hello:
+## <a id="Connect"></a>Шаг 3. Подключение к учетной записи Azure Cosmos DB
+Во-первых, добавьте эти ссылки в начало приложения C# в файле Program.cs:
 
 ```csharp
 using System;
 
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -102,49 +104,49 @@ using Newtonsoft.Json;
 ```
 
 > [!IMPORTANT]
-> В заказ toocomplete этого учебника, убедитесь, что Добавление зависимостей hello выше.
+> Чтобы завершить работу с этим руководством, добавьте приведенные выше зависимости.
 
 Теперь добавьте эти две константы и переменную *client* в открытый класс *Program*.
 
 ```csharp
 class Program
 {
-    // ADD THIS PART tooYOUR CODE
+    // ADD THIS PART TO YOUR CODE
     private const string EndpointUri = "<your endpoint URI>";
     private const string PrimaryKey = "<your key>";
     private DocumentClient client;
 ```
 
-Далее head toohello [портала Azure](https://portal.azure.com) tooretrieve URI и первичный ключ. Hello Azure Cosmos DB URI и первичный ключ, необходимые для вашего приложения toounderstand где tooconnect, а для Azure Cosmos DB tootrust подключения вашего приложения.
+Затем войдите на [портал Azure](https://portal.azure.com), чтобы получить URI и первичный ключ. URI и первичный ключ Azure Cosmos DB позволяют приложению предоставлять данные о расположении, в котором будет устанавливаться подключение, делая подключение вашего приложения доверенным для Azure Cosmos DB.
 
-В hello портал Azure, перейдите учетная запись Azure Cosmos DB tooyour и нажмите кнопку **ключей**.
+На портале Azure перейдите к учетной записи Azure Cosmos DB, а затем щелкните **Ключи**.
 
-Скопируйте hello URI с портала hello и вставьте его в `<your endpoint URI>` в файле program.cs hello. Затем копировать hello первичный ключ с портала hello и вставьте его в `<your key>`. При использовании hello DB эмулятор Azure Cosmos используйте `https://localhost:8081` как конечная точка hello и hello четко определенных авторизации ключа из [как с помощью toodevelop hello DB эмулятор Azure Cosmos](local-emulator.md). Убедитесь, что hello tooremove < и >, но оставьте hello двойные кавычки вокруг конечную точку и ключ.
+Скопируйте универсальный код ресурса (URI) с портала и вставьте его в параметр `<your endpoint URI>` в файле program.cs. Затем скопируйте на портале значение поля "Первичный ключ" и вставьте его в параметр `<your key>`. Если вы используете эмулятор Azure Cosmos DB, укажите `https://localhost:8081` как конечную точку, а также примените четко определенный ключ авторизации, описанный в статье об [использовании эмулятора Azure Cosmos DB для разработки](local-emulator.md). Не забудьте удалить символы "<" и ">", но оставьте двойные кавычки, в которые заключены конечная точка и ключ.
 
-![Снимок экрана: hello портал Azure hello NoSQL учебника toocreate консольное приложение C#. Показывает Cosmos Azure DB учетной записи, с hello общаются выделен, hello выделенной колонке учетная запись Azure Cosmos DB hello кнопкой ключи и значения URI, первичный ключ и ВТОРИЧНЫЙ ключ hello выделены на hello колонке ключей][keys]
+![Снимок экрана портала Azure в ходе работы с руководством по NoSQL при создании консольного приложения C#. Отображается учетная запись Azure Cosmos DB со следующими выделенными элементами: активный концентратор, кнопка "Ключи" в колонке учетной записи Azure Cosmos DB, а также значение универсального кода ресурса (URI), первичный и вторичный ключи в колонке "Ключи".][keys]
 
-Мы начнем началу работы приложения hello, создав новый экземпляр hello **DocumentClient**.
+Мы запустим ознакомительное приложение, создав экземпляр **DocumentClient**.
 
-Ниже hello **Main** метод, добавить эту новую асинхронную задачу, которая вызывается **GetStartedDemo**, который будет создан экземпляр наш новый **DocumentClient**.
+В методе **Main** добавьте эту новую асинхронную задачу с именем **GetStartedDemo**, которая создает экземпляр **DocumentClient**.
 
 ```csharp
 static void Main(string[] args)
 {
 }
 
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private async Task GetStartedDemo()
 {
     this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 }
 ```
 
-Добавьте следующий hello кода toorun асинхронную задачу из вашего **Main** метод. Hello **Main** метод будет перехватывать исключения и записывать их toohello консоли.
+Добавьте указанный далее код, чтобы запустить асинхронную задачу из метода **Main** . Метод **Main** будет перехватывать исключения и записывать их в консоли.
 
 ```csharp
 static void Main(string[] args)
 {
-        // ADD THIS PART tooYOUR CODE
+        // ADD THIS PART TO YOUR CODE
         try
         {
                 Program p = new Program();
@@ -162,44 +164,44 @@ static void Main(string[] args)
         }
         finally
         {
-                Console.WriteLine("End of demo, press any key tooexit.");
+                Console.WriteLine("End of demo, press any key to exit.");
                 Console.ReadKey();
         }
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toobuild и запустите приложение hello.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы создать и запустить приложение.
 
-Поздравляем! Учетная запись Azure Cosmos DB tooan успешно подключились, теперь давайте рассмотрим работы с ресурсами Azure Cosmos DB.  
+Поздравляем! Вы успешно подключились к учетной записи Azure Cosmos DB. Давайте теперь рассмотрим принципы работы с ресурсами Azure Cosmos DB.  
 
 ## <a name="step-4-create-a-database"></a>Этап 4: создание базы данных
-Перед добавлением hello код для создания базы данных, добавьте вспомогательный метод для записи toohello консоли.
+Прежде чем добавлять код для создания базы данных, добавьте вспомогательный метод для записи на консоль.
 
-Скопируйте и вставьте hello **WriteToConsoleAndPromptToContinue** под hello **GetStartedDemo** метод.
+Скопируйте и вставьте метод **WriteToConsoleAndPromptToContinue** под кодом метода **GetStartedDemo**.
 
 ```csharp
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
 {
         Console.WriteLine(format, args);
-        Console.WriteLine("Press any key toocontinue ...");
+        Console.WriteLine("Press any key to continue ...");
         Console.ReadKey();
 }
 ```
 
-Базы данных Azure Cosmos [базы данных](documentdb-resources.md#databases) могут быть созданы с помощью hello [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) метод hello **DocumentClient** класса. База данных находится hello логический контейнер для хранения документов JSON, секционированный по коллекциям.
+[Базу данных](documentdb-resources.md#databases) Azure Cosmos DB можно создать с помощью метода [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) класса **DocumentClient**. База данных представляет собой логический контейнер для хранения документов JSON, разделенных между коллекциями.
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** под hello создания клиента. Будет создана база данных с именем *FamilyDB*.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом создания клиента. Будет создана база данных с именем *FamilyDB*.
 
 ```csharp
 private async Task GetStartedDemo()
 {
     this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
-    // ADD THIS PART tooYOUR CODE
+    // ADD THIS PART TO YOUR CODE
     await this.client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB_oa" });
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно создали базу данных Azure Cosmos DB.  
 
@@ -207,39 +209,39 @@ private async Task GetStartedDemo()
 > [!WARNING]
 > С использованием элемента **CreateDocumentCollectionAsync** можно создать новую коллекцию с зарезервированной пропускной способностью и соответствующей ценой. Дополнительные сведения см. на нашей [странице цен](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-Объект [коллекции](documentdb-resources.md#collections) могут быть созданы с помощью hello [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) метод hello **DocumentClient** класса. Коллекция представляет собой контейнер документов JSON и связанную с ними логику в виде приложения JavaScript.
+Вы можете создать [коллекцию](documentdb-resources.md#collections), используя метод [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) класса **DocumentClient**. Коллекция представляет собой контейнер документов JSON и связанную с ними логику в виде приложения JavaScript.
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** под hello создания базы данных. Будет создана коллекция документов с именем *FamilyCollection_oa*.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом создания базы данных. Будет создана коллекция документов с именем *FamilyCollection_oa*.
 
 ```csharp
     this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
     await this.client.CreateDatabaseIfNotExists("FamilyDB_oa");
 
-    // ADD THIS PART tooYOUR CODE
+    // ADD THIS PART TO YOUR CODE
     await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"), new DocumentCollection { Id = "FamilyCollection_oa" });
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно создали коллекцию документов Azure Cosmos DB.  
 
 ## <a id="CreateDoc"></a>Шаг 6. Создание документов JSON
-Объект [документа](documentdb-resources.md#documents) могут быть созданы с помощью hello [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) метод hello **DocumentClient** класса. Документы относятся к пользовательскому (произвольному) содержимому JSON. Теперь мы можем добавить один или несколько документов. При наличии данных, отсылаемых toostore в базе данных можно использовать базу данных Cosmos Azure [средство переноса данных](import-data.md).
+Вы можете создать [документ](documentdb-resources.md#documents) с помощью метода [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx), который относится к классу **DocumentClient**. Документы относятся к пользовательскому (произвольному) содержимому JSON. Теперь мы можем добавить один или несколько документов. Если у вас уже есть данные, которые необходимо хранить в базе данных, можно использовать [средство миграции данных](import-data.md)в Azure Cosmos DB.
 
-Во-первых, мы должны toocreate **семейства** класс, представляющий объекты в базе данных Azure Cosmos в этом образце. Мы также создадим подклассы **Parent**, **Child**, **Pet** и **Address**, используемые в классе **Family**. Обратите внимание, документы должны иметь свойство **Id**, сериализуемое как **id** в файле JSON. Эти классы можно создать, добавив следующие внутренние вложенные классы после hello hello **GetStartedDemo** метод.
+Сначала необходимо создать класс **Family**, который будет представлять объекты, хранящиеся в Azure Cosmos DB в этом примере. Мы также создадим подклассы **Parent**, **Child**, **Pet** и **Address**, используемые в классе **Family**. Обратите внимание, документы должны иметь свойство **Id**, сериализуемое как **id** в файле JSON. Для этого после метода **GetStartedDemo** необходимо добавить следующие подклассы.
 
-Скопируйте и вставьте hello **семейства**, **родительского**, **дочерних**, **Pet**, и **адрес** классы под Hello **WriteToConsoleAndPromptToContinue** метод.
+Скопируйте и вставьте классы **Family**, **Parent**, **Child**, **Pet** и **Address** под кодом метода **WriteToConsoleAndPromptToContinue**.
 
 ```csharp
 private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
 {
     Console.WriteLine(format, args);
-    Console.WriteLine("Press any key toocontinue ...");
+    Console.WriteLine("Press any key to continue ...");
     Console.ReadKey();
 }
 
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 public class Family
 {
     [JsonProperty(PropertyName = "id")]
@@ -283,10 +285,10 @@ public class Address
 }
 ```
 
-Скопируйте и вставьте hello **CreateFamilyDocumentIfNotExists** под вашей **CreateDocumentCollectionIfNotExists** метод.
+Скопируйте и вставьте метод **CreateFamilyDocumentIfNotExists** под кодом метода **CreateDocumentCollectionIfNotExists**.
 
 ```csharp
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
 {
     try
@@ -309,16 +311,16 @@ private async Task CreateFamilyDocumentIfNotExists(string databaseName, string c
 }
 ```
 
-Добавьте два документа, одному для каждого семейства Андерсен hello и hello Wakefield семейства.
+Затем вставьте два документа, один для семьи Андерсен и один для семьи Вейкфилд.
 
-Скопируйте и вставьте код hello, следующий за `// ADD THIS PART tooYOUR CODE` tooyour **GetStartedDemo** под создание коллекции hello документа.
+Скопируйте и вставьте код после `// ADD THIS PART TO YOUR CODE` в метод **GetStartedDemo** под кодом создания коллекции документов.
 
 ```csharp
 await this.CreateDatabaseIfNotExists("FamilyDB_oa");
 
 await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
 
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 Family andersenFamily = new Family
 {
         Id = "Andersen.1",
@@ -385,37 +387,37 @@ Family wakefieldFamily = new Family
 await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно создали два документа Azure Cosmos DB.  
 
-![Схема, иллюстрирующая hello иерархическую связь между hello учетной записи, hello оперативную базу данных, коллекции hello и hello документов, созданных hello NoSQL учебника toocreate консольное приложение C#](./media/documentdb-dotnetcore-get-started/nosql-tutorial-account-database.png)
+![На схеме представлены иерархические отношения между учетной записью, оперативной базой данных, коллекцией и документами, используемыми в руководстве по NoSQL при создании консольного приложения C#.](./media/documentdb-dotnetcore-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>Шаг 7. Запрос ресурсов Azure Cosmos DB
-Azure Cosmos DB поддерживает [полнофункциональные запросы](documentdb-sql-query.md) к документам JSON, хранящимся в каждой коллекции.  Hello следующий образец кода показывает различные запросы — оба SQL Azure Cosmos базы данных с помощью синтаксиса, а также LINQ - что мы может выполняться hello документов, над которыми мы вставлены в предыдущем шаге hello.
+Azure Cosmos DB поддерживает [полнофункциональные запросы](documentdb-sql-query.md) к документам JSON, хранящимся в каждой коллекции.  Ниже приведены примеры кода разнообразных запросов с использованием как синтаксиса SQL в Azure Cosmos DB, так и LINQ, которые можно запускать для добавленных на предыдущем шаге документов.
 
-Скопируйте и вставьте hello **ExecuteSimpleQuery** под вашей **CreateFamilyDocumentIfNotExists** метод.
+Скопируйте и вставьте метод **ExecuteSimpleQuery** под кодом метода **CreateFamilyDocumentIfNotExists**.
 
 ```csharp
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private void ExecuteSimpleQuery(string databaseName, string collectionName)
 {
     // Set some common query options
     FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
 
-        // Here we find hello Andersen family via its LastName
+        // Here we find the Andersen family via its LastName
         IQueryable<Family> familyQuery = this.client.CreateDocumentQuery<Family>(
                 UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
                 .Where(f => f.LastName == "Andersen");
 
-        // hello query is executed synchronously here, but can also be executed asynchronously via hello IDocumentQuery<T> interface
+        // The query is executed synchronously here, but can also be executed asynchronously via the IDocumentQuery<T> interface
         Console.WriteLine("Running LINQ query...");
         foreach (Family family in familyQuery)
         {
             Console.WriteLine("\tRead {0}", family);
         }
 
-        // Now execute hello same query via direct SQL
+        // Now execute the same query via direct SQL
         IQueryable<Family> familyQueryInSql = this.client.CreateDocumentQuery<Family>(
                 UriFactory.CreateDocumentCollectionUri(databaseName, collectionName),
                 "SELECT * FROM Family WHERE Family.LastName = 'Andersen'",
@@ -427,37 +429,37 @@ private void ExecuteSimpleQuery(string databaseName, string collectionName)
                 Console.WriteLine("\tRead {0}", family);
         }
 
-        Console.WriteLine("Press any key toocontinue ...");
+        Console.WriteLine("Press any key to continue ...");
         Console.ReadKey();
 }
 ```
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** под hello второй создания документа.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом создания второго документа.
 
 ```csharp
 await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно выполнили запрос коллекции Azure Cosmos DB.
 
-Hello следующей схеме показано, как hello базы данных SQL Azure Cosmos синтаксис называется с коллекцией hello созданный запрос и hello же принцип применяется также toohello запроса LINQ.
+На схеме ниже показано, как для созданной коллекции вызывается синтаксис запроса SQL для Azure Cosmos DB. Та же логика применяется и к запросам LINQ.
 
-![Диаграмму, демонстрирующая области hello и это означает hello запроса используется hello NoSQL учебника toocreate консольное приложение C#](./media/documentdb-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
+![На схеме представлен масштаб и значение запроса, используемого в руководстве по NoSQL при создании консольного приложения C#.](./media/documentdb-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
 
-Hello [FROM](documentdb-sql-query.md#FromClause) ключевое слово является необязательным в hello запроса, так как запросы Azure Cosmos DB уже области tooa одну коллекцию. Поэтому слова "FROM Families f" можно заменить на "FROM root r" или любое другое имя переменной. DocumentDB будет построена, семейств, корень или имя переменной hello выбранные, ссылка hello текущей коллекции по умолчанию.
+Ключевое слово [FROM](documentdb-sql-query.md#FromClause) использовать в запросе необязательно, так как запросы Azure Cosmos DB привязаны только к одной коллекции. Поэтому слова "FROM Families f" можно заменить на "FROM root r" или любое другое имя переменной. Поведение службы DocumentDB будет таким, будто Families, root или любая другая переменная указывает на текущую коллекцию по умолчанию.
 
 ## <a id="ReplaceDocument"></a>Шаг 8. Замена документа JSON
 Azure Cosmos DB поддерживает замену документов JSON.  
 
-Скопируйте и вставьте hello **ReplaceFamilyDocument** под вашей **ExecuteSimpleQuery** метод.
+Скопируйте и вставьте метод **ReplaceFamilyDocument** под кодом метода **ExecuteSimpleQuery**.
 
 ```csharp
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
 {
     try
@@ -472,15 +474,15 @@ private async Task ReplaceFamilyDocument(string databaseName, string collectionN
 }
 ```
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** под hello выполнения запроса. После замены hello документа, это будет выполняться hello же попытку запроса tooview hello изменения документа.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом выполнения запроса. После замены документа тот же запрос будет запущен повторно, чтобы вы могли просмотреть измененный документ.
 
 ```csharp
 await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
 
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
-// ADD THIS PART tooYOUR CODE
-// Update hello Grade of hello Andersen Family child
+// ADD THIS PART TO YOUR CODE
+// Update the Grade of the Andersen Family child
 andersenFamily.Children[0].Grade = 6;
 
 await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
@@ -488,17 +490,17 @@ await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно заменили документ Azure Cosmos DB.
 
 ## <a id="DeleteDocument"></a>Шаг 9. Удаление документа JSON
 Azure Cosmos DB поддерживает удаление документов JSON.  
 
-Скопируйте и вставьте hello **DeleteFamilyDocument** под вашей **ReplaceFamilyDocument** метод.
+Скопируйте и вставьте метод **DeleteFamilyDocument** под кодом метода **ReplaceFamilyDocument**.
 
 ```csharp
-// ADD THIS PART tooYOUR CODE
+// ADD THIS PART TO YOUR CODE
 private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
 {
     try
@@ -513,86 +515,86 @@ private async Task DeleteFamilyDocument(string databaseName, string collectionNa
 }
 ```
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** под hello второго выполнения запроса.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом выполнения второго запроса.
 
 ```csharp
 await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
 
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
-// ADD THIS PART tooCODE
+// ADD THIS PART TO CODE
 await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно удалили документ Azure Cosmos DB.
 
-## <a id="DeleteDatabase"></a>Шаг 10: Удаление hello базы данных
-Идет удаление hello создана база данных приведет к удалению hello базы данных и все дочерние ресурсы (коллекции, документы, и т. д.).
+## <a id="DeleteDatabase"></a>Шаг 10. Удаление базы данных
+Удаление созданной базы данных приведет к удалению базы данных и всех дочерних ресурсов (коллекций, документов и т. д.).
 
-Копировать и вставить hello следующий код tooyour **GetStartedDemo** метод под hello документа удалить toodelete hello всю базу данных и все дочерние ресурсы.
+Скопируйте и вставьте приведенный код в метод **GetStartedDemo** под кодом удаления документа, чтобы удалить всю базу данных и все дочерние ресурсы.
 
 ```csharp
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
 await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
 
-// ADD THIS PART tooCODE
-// Clean up/delete hello database
+// ADD THIS PART TO CODE
+// Clean up/delete the database
 await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"));
 ```
 
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку toorun приложения.
+Нажмите кнопку **DocumentDBGettingStarted**, чтобы запустить приложение.
 
 Поздравляем! Вы успешно удалили базу данных Azure Cosmos DB.
 
 ## <a id="Run"></a>Шаг 11. Запуск консольного приложения C#
-Нажмите клавишу hello **DocumentDBGettingStarted** кнопку в приложение hello toobuild Visual Studio в режиме отладки.
+В Visual Studio нажмите кнопку **DocumentDBGettingStarted**, чтобы создать приложение в режиме отладки.
 
-Вы увидите выходные данные get работы приложения в окне консоли hello hello. выходные данные Hello покажет результаты hello hello запросов мы добавлен и должен соответствовать hello пример текста ниже.
+В окне консоли должны отобразиться выходные данные вашего приложения. Они должны содержать результаты обработки добавленных запросов. При этом выглядеть они должны примерно так, как показано в примере ниже.
 
 ```
 Created FamilyDB_oa
-Press any key toocontinue ...
+Press any key to continue ...
 Created FamilyCollection_oa
-Press any key toocontinue ...
+Press any key to continue ...
 Created Family Andersen.1
-Press any key toocontinue ...
+Press any key to continue ...
 Created Family Wakefield.7
-Press any key toocontinue ...
+Press any key to continue ...
 Running LINQ query...
     Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
 Running direct SQL query...
     Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
 Replaced Family Andersen.1
-Press any key toocontinue ...
+Press any key to continue ...
 Running LINQ query...
     Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
 Running direct SQL query...
     Read {"id":"Andersen.1","LastName":"Andersen","District":"WA5","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
 Deleted Family Andersen.1
-End of demo, press any key tooexit.
+End of demo, press any key to exit.
 ```
 
-Поздравляем! После завершения учебника hello и иметь работу консольного приложения C#!
+Поздравляем! Вы завершили работу с этим руководством, и теперь у вас есть работающее консольное приложение C#.
 
-## <a id="GetSolution"></a>Получить комплексное решение учебника hello
-решение GetStarted toobuild hello, содержащий все образцы hello в этой статье, вам потребуется hello следующее:
+## <a id="GetSolution"></a>Получение готового решения для этого руководства
+Чтобы собрать решение GetStarted, которое содержит все примеры из данной статьи, вам понадобится следующее:
 
 * Активная учетная запись Azure. Если у вас ее нет, зарегистрируйте [бесплатную учетную запись](https://azure.microsoft.com/free/).
 * [Учетная запись Azure Cosmos DB][create-documentdb-dotnet.md#create-account]
-* Hello [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started) решения на сайте GitHub.
+* решение [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started) , доступное в GitHub.
 
-toohello ссылки toorestore hello API DocumentDB для Azure Cosmos DB .NET Core SDK в Visual Studio щелкните правой кнопкой мыши hello **GetStarted** решения в обозревателе решений, а затем выберите **включите восстановление пакетов NuGet**. Затем в файле Program.cs hello, обновите значения EndpointUrl и AuthorizationKey hello как описано в [подключить учетную запись Azure Cosmos DB tooan](#Connect).
+Чтобы в Visual Studio восстановить ссылки на API DocumentDB для пакета SDK .NET Core для Azure Cosmos DB, в обозревателе решений щелкните правой кнопкой мыши решение **GetStarted**, а затем выберите пункт **Enable NuGet Package Restore** (Включить восстановление пакета NuGet). Затем в файле Program.cs обновите значения EndpointUrl и AuthorizationKey согласно инструкциям в разделе о [подключении к учетной записи Azure Cosmos DB](#Connect).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Требуется более подробное руководство по ASP.NET MVC? См. [Руководство по ASP.NET MVC. Разработка веб-приложений в Azure Cosmos DB](documentdb-dotnet-application.md).
-* Хотите toodevelop Xamarin iOS, Android или формы с помощью приложения hello DocumentDB API для пакета SDK для Azure Cosmos DB .NET Core? См. [Создание мобильных приложений с помощью Xamarin и Azure Cosmos DB](mobile-apps-with-xamarin.md).
-* Требуется tooperform масштаб и производительность, тестирование с помощью Azure Cosmos DB? См. [Проверка производительности и масштабирования с помощью Azure Cosmos DB](performance-testing.md)
-* Узнайте, каким образом слишком[DB Cosmos Azure монитор запросов, использования и хранения](monitor-accounts.md).
-* Выполнять запросы к нашей образец набора данных в hello [площадку запросов](https://www.documentdb.com/sql/demo).
-* в разделе toolearn Дополнительные сведения о модели программирования hello, [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+* Хотите разработать приложение Xamarin iOS, Android или Forms с помощью API DocumentDB для пакета SDK .NET Core для Azure Cosmos DB? См. [Создание мобильных приложений с помощью Xamarin и Azure Cosmos DB](mobile-apps-with-xamarin.md).
+* Хотите выполнять проверку масштабирования и производительности с помощью Azure Cosmos DB? См. [Проверка производительности и масштабирования с помощью Azure Cosmos DB](performance-testing.md)
+* Узнайте, как организовать [мониторинг запросов, использования и хранилища Azure Cosmos DB](monitor-accounts.md).
+* Отправьте запросы образцу набора данных в [Площадке для запросов](https://www.documentdb.com/sql/demo).
+* Дополнительные сведения о модели программирования см. в статье [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 [create-documentdb-dotnet.md#create-account]: create-documentdb-dotnet.md#create-account
 [keys]: media/documentdb-dotnetcore-get-started/nosql-tutorial-keys.png

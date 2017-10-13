@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toocreate API в службе управления API Azure"
-description: "Узнайте, как toocreate и настройки API-интерфейсов в API управления Azure."
+title: "Как создавать интерфейсы API в Azure API Management"
+description: "Сведения о создании и настройке API в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 48ed8d93947253aa1e67ad995927ed6101cac072
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ab08256fbc3caca05bf23a12016ad2acf4fc7412
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-apis-in-azure-api-management"></a>Как toocreate API в службе управления API Azure
-API в API Management представляет набор операций, которые могут быть вызваны клиентскими приложениями. Новые интерфейсы API, создаются в портал издателя hello, а затем hello требуемого операции добавляются. После добавления операций hello hello API добавляется tooa продукта и могут быть опубликованы. После публикации API-Интерфейс может быть подписанным tooand используется разработчиками.
+# <a name="how-to-create-apis-in-azure-api-management"></a>Как создавать интерфейсы API в Azure API Management
+API в API Management представляет набор операций, которые могут быть вызваны клиентскими приложениями. Новые интерфейсы API создаются на портале издателя, после чего добавляются требуемые операции. После добавления операций интерфейс API добавляется к продукту и может быть опубликован. После публикации API на него могут подписаться разработчики для дальнейшего использования.
 
-В этом руководстве показано hello первым шагом в процессе hello: как toocreate и настройте новый интерфейс API в службе управления API. Дополнительные сведения о добавлении операций и публикация продукта см. в разделе [как tooan tooadd операций API] [ How tooadd operations tooan API] и [как toocreate и публикация продукта] [ How toocreate and publish a product].
+В этом руководстве описывается первый этап в процессе создания и настройки нового интерфейса API в управлении API. Дополнительные сведения о добавлении операций и публикации продукта см. в статьях [Добавление операций в API в Azure API Management][How to add operations to an API] и [Создание и публикация продукта в службе управления API Azure][How to create and publish a product].
 
 ## <a name="create-new-api"> </a>Создание нового API
-API-интерфейсы создаются и настраиваются на портале hello издателя. tooaccess hello издателя, щелкните **портал издателя** в hello портала Azure для службы управления API.
+API создаются и настраиваются на портале издателя. Чтобы перейти на портал издателя, на портале Azure щелкните **Publisher portal** (Портал издателя) для службы управления API.
 
 ![Портал издателя][api-management-management-console]
 
-> Если вы еще не создали экземпляра службы управления API, см. раздел [создания экземпляра службы управления API] [ Create an API Management service instance] в hello [приступить к работе со службой управления API Azure] [ Get started with Azure API Management] учебника.
+> Если экземпляр службы управления API еще не создан, см. раздел [Создание экземпляра управления API][Create an API Management service instance] в руководстве [Начало работы со службой управления Azure API][Get started with Azure API Management].
 > 
 > 
 
-Нажмите кнопку **API-интерфейсы** из hello **API управления** меню hello слева, а затем нажмите **добавить API**.
+Щелкните **API** в расположенном слева меню **Управление API**, а затем щелкните **Добавить API**.
 
 ![Создание API][api-management-create-api]
 
-Используйте hello **добавьте новый интерфейс API** tooconfigure окно hello новый API.
+Для настройки нового API используйте окно **Добавление нового API** .
 
 ![Добавление нового API][api-management-add-new-api]
 
-Hello следующие поля, используемые tooconfigure hello новый API.
+Следующие поля используются для настройки нового API.
 
-* **Имя веб-API** предоставляет уникальное и описательное имя для hello API. Он отображается в порталах hello разработчиком и издателем.
-* **URL-адрес службы веб-** ссылки hello реализации hello API службы HTTP. API управления перенаправляет запросы toothis адрес.
-* **Суффикс URL-адреса API Web** — присоединенных toohello базовый URL-адрес для службы управления hello API. Hello базовый URL-адрес является общим для всех интерфейсов API, расположенных в экземпляре службы управления API. API управления API-интерфейсы отличает их суффикс и таким образом суффикс hello должно быть уникальным для каждого API для данного издателя.
-* **Схема URL-адреса API Web** определяет, какие протоколы могут быть используется tooaccess hello API. По умолчанию указан протокол HTTPs.
-* toooptionally добавить этот новый продукт tooa API, нажмите кнопку hello **продуктов (необязательно)** раскрывающийся список и выберите продукт. Этот шаг может быть повторяющихся несколько раз tooadd hello API toomultiple продуктов.
+* **Название веб-API** представляет собой уникальное описательное имя для API. Оно выводится на порталах разработчика и издателя.
+* **URL-адрес веб-службы** ссылается на реализующую API HTTP-службу. Портал управления API направит запросы по этому адресу.
+* **Суффикс URL-адреса веб-API** добавляется к основному URL-адресу для службы управления API. Основной URL-адрес является общим для всех интерфейсов API, размещенных в экземпляре службы API Management. API Management отличает интерфейсы API по их суффиксу. Следовательно, суффикс должен быть уникальным для каждого API для заданного издателя.
+* **Схема URL-адреса веб-API** определяет, какой протокол будет использоваться для доступа к API. По умолчанию указан протокол HTTPs.
+* Чтобы при необходимости добавить этот новый API в продукт, в раскрывающемся списке **Продукты (необязательно)** выберите продукт. Этот шаг можно повторить несколько раз, чтобы добавить API в несколько продуктов.
 
-После hello требуемого значения настроены, нажмите кнопку **Сохранить**. После создания нового API hello hello сводной страницы для hello API отображается в портал издателя hello.
+После настройки нужных значений нажмите кнопку **Сохранить**. После создания нового API на портале издателя выводится страница сводных данных для API.
 
 ![Сводные данные API][api-management-api-summary]
 
 ## <a name="configure-api-settings"> </a>Настройка параметров API
-Можно использовать hello **параметры** tooverify и измените конфигурацию hello API. **Имя веб-API**, **веб-URL-адрес службы**, и **суффикс URL-адрес API** изначально устанавливаются при создании hello API и можно изменить здесь. **Описание** предоставляет дополнительное описание, и **схему URL-адрес API** определяет, какие протоколы могут быть используется tooaccess hello API.
+Для проверки и изменения конфигурации для API можно использовать вкладку **Параметры** . **Имя веб-API**, **URL-адрес веб-службы** и **суффикс URL-адреса веб-API** изначально настраиваются при создании интерфейса API и могут быть изменены здесь. Параметр **Описание** содержит необязательное описание, а параметр **Схема URL-адреса веб-API** определяет, какие протоколы будут использоваться для доступа к API.
 
 ![Параметры API][api-management-api-settings]
 
-Проверка подлинности шлюза tooconfigure hello серверной реализации hello API службы, рекомендуется выбрать hello **безопасности** hello вкладку **с учетными данными** раскрывающегося списка можно использовать tooconfigure **HTTP Основные** или **клиентские сертификаты** проверки подлинности. Обычная проверка подлинности toouse HTTP, просто введите учетные данные требуемого hello. Сведения об использовании проверки подлинности сертификата клиента см. в разделе [как toosecure серверными службами с помощью клиента сертификат проверки подлинности в Azure API Management][How toosecure back-end services using client certificate authentication in Azure API Management].
+Чтобы настроить проверку подлинности шлюза для серверной службы, реализующей API, перейдите на вкладку **Безопасность**. Для настройки **обычной проверки подлинности HTTP** или проверки подлинности с помощью **сертификатов клиента** можно использовать раскрывающийся список **С учетными данными**. Чтобы использовать обычную проверку подлинности HTTP, просто введите нужные учетные данные. Сведения об использовании аутентификации с помощью сертификатов клиента см. в статье [Защита фоновых служб посредством проверки подлинности с помощью сертификата клиента в службе Azure API Management][How to secure back-end services using client certificate authentication in Azure API Management].
 
-Hello **безопасности** вкладке также можно использовать tooconfigure **авторизации пользователей** с помощью OAuth 2.0. Дополнительные сведения см. в разделе [как разработчик tooauthorize учетных записей с помощью OAuth 2.0 в Azure API Management][How tooauthorize developer accounts using OAuth 2.0 in Azure API Management].
+На вкладке **Безопасность** также можно настроить **авторизацию пользователя** с помощью OAuth 2.0. Дополнительные сведения см. в статье [Авторизация учетных записей разработчиков с помощью протокола OAuth 2.0 в службе управления Azure API][How to authorize developer accounts using OAuth 2.0 in Azure API Management].
 
 ![Параметры базовой проверки подлинности][api-management-api-settings-credentials]
 
-Нажмите кнопку **Сохранить** toosave можно производить любые изменения toohello параметры API.
+Щелкните **Сохранить** для сохранения любых изменений, внесенных в параметры API.
 
 ## <a name="next-steps"> </a>Дальнейшие действия
-После создания API и заданы параметры hello, следующие действия hello, tooadd hello операций toohello API, добавьте hello API tooa продукта и опубликовать его, чтобы он был доступен для разработчиков. Дополнительные сведения см. следующие статьи hello.
+После того, как API создан, и параметры настроены, следует добавить операции в API, добавить API к продукту и опубликовать его, чтобы данный интерфейс стал доступен для разработчиков. Дополнительные сведения см. в следующих руководствах.
 
-* [Как tooan tooadd операций API][How tooadd operations tooan API]
-* [Как toocreate и публикация продукта][How toocreate and publish a product]
+* [Добавление операций в API в Azure API Management][How to add operations to an API]
+* [Создание и публикация продукта в службе управления API Azure][How to create and publish a product]
 
 [api-management-create-api]: ./media/api-management-howto-create-apis/api-management-create-api.png
 [api-management-management-console]: ./media/api-management-howto-create-apis/api-management-management-console.png
@@ -87,10 +87,10 @@ Hello **безопасности** вкладке также можно испо
 [Configure API operations]: #configure-api-operations
 [Next steps]: #next-steps
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How toocreate and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
 
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
-[How toosecure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
-[How tooauthorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
+[How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
+[How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md

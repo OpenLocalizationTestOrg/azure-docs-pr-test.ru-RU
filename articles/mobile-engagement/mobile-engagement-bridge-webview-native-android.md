@@ -1,6 +1,6 @@
 ---
-title: "aaaBridge Android WebView с Android SDK собственного Mobile Engagement"
-description: "Описывает способ toocreate мост между WebView выполнение кода Javascript и hello собственного Android пакет SDK Mobile Engagement"
+title: "Создание моста между Android WebView и собственным пакетом SDK Android для Служб мобильного взаимодействия"
+description: "Описывает, как создать мост между WebView с Javascript и собственным пакетом SDK Android для Служб мобильного взаимодействия"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7a09bcc156490fe69ad29a67809745dcfc22da6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>Создание моста между Android WebView и собственным пакетом SDK Android для Служб мобильного взаимодействия
 > [!div class="op_single_selector"]
@@ -27,9 +27,9 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Некоторые мобильные приложения представляют собой гибридного приложения, когда само приложение hello разработано на основе собственной разработки Android, но некоторые или даже все экраны hello подготавливаются к просмотру в Android веб-представление. Пакет SDK Mobile Engagement Android по-прежнему можно использовать в такие приложения, и в данном учебнике как toogo об этом. Hello пример кода основан на hello Android документации [здесь](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript). Он описывает, как может использовать этот подход документированные tooimplement hello одинаково для Mobile Engagement Android SDK часто используемых методов, таким образом, что Webview из гибридного приложения можно также запустить запросы tootrack события, заданий, ошибок, информация приложения при их по конвейеру Наш пакета SDK для Android. 
+Некоторые мобильные приложения представляют собой гибридные приложения. В этом случае само приложение разрабатывается на основе Android, но некоторые или даже все окна отображаются с помощью Android WebView. Тем не менее, пакет SDK Android для Служб мобильного взаимодействия можно использовать в таких приложениях, и в этом руководстве описывается, как это сделать. Следующий пример кода основан на документации по Android, с которой можно ознакомиться [здесь](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript). Он описывает, как с помощью этого задокументированного подхода можно реализовать то же самое для часто используемых методов пакета SDK Android для Служб мобильного взаимодействия, чтобы Webview из гибридного приложения также могло инициировать запросы на отслеживание событий, заданий, ошибок и информации о приложении во время их передачи через пакет SDK для Android. 
 
-1. Во-первых, необходимо, проверены tooensure наших [учебник по началу работы](mobile-engagement-android-get-started.md) hello toointegrate Mobile Engagement Android SDK гибридного приложения. После этого, ваш `OnCreate` должен выглядеть hello следующим образом.  
+1. Во-первых, полностью изучите наш [Учебник "Приступая к работе"](mobile-engagement-android-get-started.md) для интеграции пакета SDK Android для Служб мобильного взаимодействия в свое гибридное приложение. После этого ваш метод `OnCreate` будет выглядеть следующим образом.  
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/06/2017
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. Теперь убедитесь, что в гибридном приложении есть окно с веб-представлением. Hello код для него будет примерно следующее toohello которую загружен в локальный файл HTML **Sample.html** в hello Webview в hello `onCreate` метод экрана. 
+2. Теперь убедитесь, что в гибридном приложении есть окно с веб-представлением. Его код будет похож на следующий код, в котором мы загружаем локальный файл HTML **Sample.html** в Webview в методе `onCreate` вашего окна. 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/06/2017
             ...
             SetWebView();
         }
-3. Теперь создайте моста файл с именем **WebAppInterface** которого создает обертку некоторые часто используемые методы Mobile Engagement для Android SDK, с помощью hello `@JavascriptInterface` подход, описанный в hello [Android документации ](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript):
+3. Теперь создайте файл моста с именем **WebAppInterface**, который создает оболочку для некоторых часто используемых методов пакета SDK Android для Служб мобильного взаимодействия с помощью подхода `@JavascriptInterface`, описанного в [документации Android](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript):
    
         import android.content.Context;
         import android.os.Bundle;
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/06/2017
         public class WebAppInterface {
             Context mContext;
    
-            /** Instantiate hello interface and set hello context */
+            /** Instantiate the interface and set the context */
             WebAppInterface(Context c) {
                 mContext = c;
             }
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/06/2017
                 return extras;
             }
         }  
-4. После создания hello выше моста файла нужно tooensure, что он связан с нашей Webview. Для этого toohappen необходим tooedit вашей `SetWebview` метода, которая выглядит hello следующим образом:
+4. После создания указанного выше файла моста необходимо убедиться, что он связан с нашим веб-представлением. Чтобы это сделать, нужно изменить ваш метод `SetWebview` , так чтобы он выглядел следующим образом:
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -119,8 +119,8 @@ ms.lasthandoff: 10/06/2017
             webSettings.setJavaScriptEnabled(true);
             myWebView.addJavascriptInterface(new WebAppInterface(this), "EngagementJs");
         }
-5. В hello выше фрагменте кода вызывается `addJavascriptInterface` tooassociate нашей моста класса с нашей Webview и также создается дескриптор вызывается **EngagementJs** toocall hello методы из файла моста hello. 
-6. Теперь создайте следующий файл с именем hello **Sample.html** в свой проект в папку с именем **активы** которого загружается в hello Webview и где будет вызывать методы hello из файла моста hello.
+5. В приведенном выше фрагменте кода мы вызвали метод `addJavascriptInterface` , чтобы связать наш класс моста с веб-представлением, а также создали дескриптор **EngagementJs** для вызова методов из файла моста. 
+6. Теперь создайте следующий файл с именем **Sample.html** в своем проекте в папке с именем **assets**, которая загружается в Webview. В этом файле мы будем вызывать методы из файла моста.
    
         <!doctype html>
         <html>
@@ -144,7 +144,7 @@ ms.lasthandoff: 10/06/2017
                         if(input)
                         {
                             var value = input.value;
-                            // Example of how extras info can be passed with hello Engagement logs
+                            // Example of how extras info can be passed with the Engagement logs
                             var extras = '{"CustomerId":"MS290011"}';
    
                             if(value && value.length > 0)
@@ -197,16 +197,16 @@ ms.lasthandoff: 10/06/2017
                 </div>
             </body>
         </html>
-7. Hello следующих Примечание точки о выше hello HTML-файл:
+7. Обратите внимание на следующие моменты, касающиеся файла HTML выше:
    
-   * Он содержит набор полей ввода, где можно ввести toobe данных использовать в качестве имен для событий, задания, ошибка, AppInfo. При щелчке hello кнопку Далее tooit выполняется вызов toohello Javascript, который в конечном итоге вызывает методы hello из файла toopass hello моста этот вызов toohello SDK Mobile Engagement для Android. 
-   * Мы тегов в некоторые события toohello статические сведения о дополнительном, заданий и даже toodemonstrate ошибок, как это можно сделать. Эти дополнительные сведения об отправляется как строка JSON, который, если искать в hello `WebAppInterface` файла, анализируется и поместить в Android `Bundle` и передается вместе с событий задания, ошибки отправки. 
-   * Задание Mobile Engagement запущена с именем hello, укажите в поле ввода hello, запустите на 10 секунд и завершить работу. 
-   * Appinfo мобильного охвата или тег с «customer_name» передается как статический ключ hello и hello значение, введенное во входном файле hello как значение hello для тега hello. 
-8. Приложение hello выполнения, чтобы просмотреть следующие hello. Теперь укажите некоторые имя тестового события как следующие hello и нажмите кнопку **отправки** под ней. 
+   * Он содержит набор полей ввода, в которые можно ввести данные для использования в качестве имен для событий, заданий, ошибок и информации о приложении. При нажатии на кнопку рядом с ним выполняется вызов Javascript, который в конечном итоге вызывает методы из файла моста, чтобы передать этот вызов пакету SDK Android для Служб мобильного взаимодействия. 
+   * Мы добавляем теги для указания дополнительной статической информации для событий, заданий и даже ошибок, чтобы показать, как это можно сделать. Эти дополнительные сведения отправляются в виде строки JSON, которая, если заглянуть в файл `WebAppInterface`, анализируется, помещается в Android `Bundle` и передается вместе с отправкой событий, заданий и ошибок. 
+   * Задание Служб мобильного взаимодействия запускается под именем, указанным в поле ввода, работает в течение 10 секунд и завершается. 
+   * Информация о приложении Служб мобильного взаимодействия или тег передаются с "customer_name" в виде статического ключа и значения, введенных в поле ввода в качестве значения тега. 
+8. Запустите приложение и вы увидите следующее. Теперь укажите какое-нибудь имя для тестового события (например такое, как указано ниже) и щелкните **Отправить** под ним. 
    
     ![][1]
-9. Теперь, если вы переходите toohello **монитор** вкладка приложения и раскройте категорию **событий -> сведения о**, вы увидите это событие отображаются вместе с hello статических app-info, мы отправляете. 
+9. Если теперь перейти на вкладку **Мониторинг** своего приложения и раскрыть категорию **События -> Сведения**, вы увидите, что это событие отображается вместе со статическими сведениями о приложении, которые мы отправляем. 
    
    ![][2]
 

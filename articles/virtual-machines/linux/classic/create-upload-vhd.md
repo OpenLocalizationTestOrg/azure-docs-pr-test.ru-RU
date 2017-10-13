@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate и отправка tooAzure виртуального жесткого диска Linux | Документы Microsoft"
-description: "Создание и отправка в Azure виртуального жесткого диска (VHD), содержащий hello Linux операционной системы с помощью hello классической модели развертывания"
+title: "Создание и передача виртуального жесткого диска Linux в Azure | Документация Майкрософт"
+description: "Создание и передача виртуального жесткого диска Azure, содержащего операционную систему Linux, с использованием классической модели развертывания."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
-ms.openlocfilehash: 77b01316386c4a6eb68c129fa68d42f0a8996edc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 23c30c954875598ce3e01db137b0ef8cda9779f4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-hello-linux-operating-system"></a>Создание и загрузка виртуального жесткого диска, который содержит hello операционной системы Linux
+# <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Создание и передача виртуального жесткого диска с операционной системой Linux
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Вы можете также [передать пользовательский образ с помощью Azure Resource Manager](../upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Вы можете также [передать пользовательский образ с помощью Azure Resource Manager](../upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-В этой статье показано, как toocreate и передача виртуального жесткого диска (VHD), поэтому ее можно использовать в качестве собственного образа toocreate виртуальных машин в Azure. Узнайте, как tooprepare hello операционной системы, чтобы вы могли использовать toocreate нескольких виртуальных машин на основе этого образа. 
+В этой статье показано, как создать и передать виртуальный жесткий диск (VHD-файл), чтобы использовать его в качестве образа для создания виртуальных машин в Azure. Узнайте, как подготовить операционную систему, чтобы использовать ее в качестве образа для создания нескольких виртуальных машин. 
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что hello следующих элементов:
+В данной статье предполагается, что у вас есть следующие элементы:
 
-* **Операционной системы Linux в VHD-файла** -установки [дистрибутив Linux в одобренных Azure](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (или в разделе [сведения для распределений, отличных от одобренных](../create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) tooa виртуального диска в формате VHD hello. Несколько средств существует toocreate виртуальной Машины и виртуального жесткого диска:
-  * Установка и настройка [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) или [KVM](http://www.linux-kvm.org/page/RunningKVM), отвечающий за toouse виртуальный жесткий ДИСК в формате изображения. При необходимости вы можете [преобразовать образ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) с помощью `qemu-img convert`.
+* **Операционная система Linux, установленная в VHD-файле**. Вы установили [рекомендуемый для Azure дистрибутив Linux](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (или ознакомьтесь с [информацией о нерекомендованных дистрибутивах](../create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) на виртуальный диск в формате VHD. Для создания VHD-файлов существует несколько средств.
+  * Установите и настройте [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) или [KVM](http://www.linux-kvm.org/page/RunningKVM), используя VHD в качестве формата образа. При необходимости вы можете [преобразовать образ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) с помощью `qemu-img convert`.
   * Кроме того, можно использовать Hyper-V [в Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) или [Windows Server 2012 и 2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
-> Hello более новый формат VHDX не поддерживается в Azure. При создании виртуальной Машины, задайте hello формат виртуального жесткого диска. При необходимости можно преобразовать tooVHD диски VHDX с помощью [ `qemu-img convert` ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) или hello [ `Convert-VHD` ](https://technet.microsoft.com/library/hh848454.aspx) командлета PowerShell. Кроме того Azure не поддерживает передачи динамических виртуальных жестких дисков, поэтому требуется tooconvert toostatic такие диски VHD перед отправкой. Можно использовать средства, такие как [утилиты Azure виртуального жесткого диска для GO](https://github.com/Microsoft/azure-vhd-utils-for-go) tooconvert динамических дисков во время процесса hello передачи tooAzure.
+> Более новый формат VHDX не поддерживается в Azure. При создании виртуальной машины укажите формат VHD. При необходимости можно преобразовать диски VHDX в диски VHD с помощью командлета PowerShell [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) или [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx). Кроме того, Azure не поддерживает отправку динамических дисков VHD, поэтому перед отправкой необходимо преобразовать такие диски в статические диски VHD. Для преобразования динамических дисков во время передачи в Azure можно использовать [служебные программы Azure VHD для GO](https://github.com/Microsoft/azure-vhd-utils-for-go) .
 
-* **Интерфейс командной строки Azure** -последние hello установки [интерфейса командной строки Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) tooupload hello виртуального жесткого диска.
+* **Интерфейс командной строки Azure**. Установите последнюю версию [интерфейса командной строки Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) для передачи VHD-файлов.
 
 <a id="prepimage"> </a>
 
-## <a name="step-1-prepare-hello-image-toobe-uploaded"></a>Шаг 1: Подготовка отправлен toobe изображения hello
-Azure поддерживает различные дистрибутивы Linux (см. раздел [Рекомендованные дистрибутивы](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). следующие статьи Hello начнется как tooprepare hello различных дистрибутивов Linux, которые поддерживаются в Azure. После выполнения шагов hello в следующие руководства hello, могут быть вернитесь сюда, получив файл виртуального жесткого диска, готовы tooupload tooAzure:
+## <a name="step-1-prepare-the-image-to-be-uploaded"></a>Шаг 1. Подготовка образа для передачи
+Azure поддерживает различные дистрибутивы Linux (см. раздел [Рекомендованные дистрибутивы](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). В следующих статьях описывается подготовка различных дистрибутивов Linux, которые поддерживаются в Azure. После выполнения указаний, описанных в приведенных ниже руководствах, вернитесь сюда. У вас уже будет VHD-файл для передачи в Azure.
 
 * **[Дистрибутивы на основе CentOS](../create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](../debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -54,16 +54,16 @@ Azure поддерживает различные дистрибутивы Linux
 * **[Прочее — нерекомендованные дистрибутивы](../create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 > [!NOTE]
-> Hello соглашения об уровне ОБСЛУЖИВАНИЯ платформы Azure применяется toovirtual компьютеров под управлением ОС Linux только в том случае, если один из hello одобренных распределения используется с hello сведения о конфигурации, как указано в списке поддерживаемых версиях hello [Linux в распределениях Azure-Endorsed ](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Все дистрибутивы Linux в коллекции образов Azure hello являются индоссированный распределения с требуемой конфигурацией hello.
+> Соглашение об уровне обслуживания платформы Azure применяется к виртуальным машинам, работающим под управлением Linux, только если используется один из рекомендуемых дистрибутивов с конфигурацией, указанной в разделе "Поддерживаемые дистрибутивы и версии" статьи [Linux в Azure — рекомендованные дистрибутивы](../endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Все дистрибутивы Linux в коллекции образов Azure — это рекомендуемые дистрибутивы, уже имеющие необходимую конфигурацию.
 > 
 > 
 
-См. также hello  **[замечания по установке Linux](../create-upload-generic.md#general-linux-installation-notes)**  Общие рекомендации по подготовке образов Linux для Azure.
+Другие общие советы по подготовке образов Linux для Azure см. в разделе **[Общие замечания по установке Linux](../create-upload-generic.md#general-linux-installation-notes)**.
 
 <a id="connect"> </a>
 
-## <a name="step-2-prepare-hello-connection-tooazure"></a>Шаг 2: Подготовка tooAzure подключения hello
-Убедитесь, что вы используете hello Azure CLI в hello классической модели развертывания (`azure config mode asm`), затем войдите в учетную запись tooyour:
+## <a name="step-2-prepare-the-connection-to-azure"></a>Шаг 2. Подготовка подключения к Azure
+Убедитесь, что вы используете интерфейс командной строки Azure в классической модели развертывания (`azure config mode asm`), а затем войдите со своей учетной записью.
 
 ```azurecli
 azure login
@@ -72,10 +72,10 @@ azure login
 
 <a id="upload"> </a>
 
-## <a name="step-3-upload-hello-image-tooazure"></a>Шаг 3: Отправка tooAzure изображения hello
-Необходимо tooupload учетной записи хранения файла виртуального жесткого диска. Можно выбрать существующую учетную запись хранения или [создать новую](../../../storage/common/storage-create-storage-account.md).
+## <a name="step-3-upload-the-image-to-azure"></a>Шаг 3. Передача образа в Azure
+Для передачи VHD-файла нужна учетная запись хранения. Можно выбрать существующую учетную запись хранения или [создать новую](../../../storage/common/storage-create-storage-account.md).
 
-Используйте hello Azure CLI tooupload hello образ с помощью hello следующую команду:
+Для передачи образа выполните следующую команду в командной строке Azure:
 
 ```azurecli
 azure vm image create <ImageName> `
@@ -83,14 +83,14 @@ azure vm image create <ImageName> `
     --os Linux <PathToVHDFile>
 ```
 
-В предыдущем примере hello:
+В предыдущем примере:
 
-* **BlobStorageURL** hello URL-адрес для учетной записи хранения hello планирование toouse
-* **YourImagesFolder** — контейнер hello в хранилище больших двоичных объектов, место toostore изображений
-* **VHDName** — hello метка, которая отображается в портале tooidentify hello виртуального жесткого диска.
-* **PathToVHDFile** hello полный путь и имя hello VHD-файл на компьютере.
+* **BlobStorageURL** — URL-адрес для учетной записи хранения, которую вы планируете использовать.
+* **YourImagesFolder** — контейнер внутри хранилища BLOB-объектов, где будут храниться образы.
+* **VHDName** — метка, которая отображается на портале для идентификации виртуального жесткого диска.
+* **PathToVHDFile** — полный путь и имя VHD-файла на вашем компьютере.
 
-Следующая команда Hello приведен пример:
+В следующей команде представлен полный пример:
 
 ```azurecli
 azure vm image create myImage `
@@ -98,19 +98,19 @@ azure vm image create myImage `
     --os Linux /home/ahmet/myimage.vhd
 ```
 
-## <a name="step-4-create-a-vm-from-hello-image"></a>Шаг 4: Создайте виртуальную Машину из образа hello
-Создание виртуальной Машины с помощью `azure vm create` в hello так же, как обычный виртуальной Машины. Укажите имя hello Вы дали образа на предыдущем шаге hello. В следующем примере hello, мы используем hello **myImage** имя изображения, указанного в предыдущем шаге hello:
+## <a name="step-4-create-a-vm-from-the-image"></a>Шаг 4. Создание виртуальной машины из образа
+Создайте обычную виртуальную машину с помощью команды `azure vm create`. Укажите имя, присвоенное образу на предыдущем шаге. В следующем примере мы используем имя образа **myImage**, присвоенное на предыдущем шаге:
 
 ```azurecli
 azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
     --location "West US" "myDeployedVM" myImage
 ```
 
-toocreate собственные виртуальные машины предоставляют свои собственные пользователя + пароль, расположение, DNS-имя и имя образа.
+Для создания виртуальной машины следует указать свои имя пользователя и пароль, расположение, DNS-имя и имя образа.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения см. в разделе [ссылку Azure CLI для hello Azure классической модели развертывания](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Дополнительные сведения см. в [справочнике по Azure CLI для классической модели развертывания Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-[Step 1: Prepare hello image toobe uploaded]:#prepimage
-[Step 2: Prepare hello connection tooAzure]:#connect
-[Step 3: Upload hello image tooAzure]:#upload
+[Step 1: Prepare the image to be uploaded]:#prepimage
+[Step 2: Prepare the connection to Azure]:#connect
+[Step 3: Upload the image to Azure]:#upload

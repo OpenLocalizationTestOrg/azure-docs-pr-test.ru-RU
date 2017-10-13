@@ -1,6 +1,6 @@
 ---
-title: "aaaFilter телеметрии Azure Application Insights в веб-приложения Java | Документы Microsoft"
-description: "Уменьшить трафик телеметрии, отфильтровывая hello событий не требуется toomonitor."
+title: "Фильтрация данных телеметрии Azure Application Insights в веб-приложении Java | Документация Майкрософт"
+description: "Уменьшите трафик телеметрии с помощью фильтрации событий, которые не нужно отслеживать."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Фильтрация данных телеметрии в веб-приложении Java
 
-Фильтры предоставляют способ tooselect hello телеметрии вашего [веб-приложение Java отправляет аналитики tooApplication](app-insights-java-get-started.md). Имеется несколько готовых фильтров, которые можно использовать. Можно также создать собственные пользовательские фильтры.
+Фильтры позволяют выбрать данные телеметрии, которые [веб-приложение Java отправляет в Application Insights](app-insights-java-get-started.md). Имеется несколько готовых фильтров, которые можно использовать. Можно также создать собственные пользовательские фильтры.
 
-доступны следующие фильтры Hello out of box:
+В готовых фильтры используется следующее:
 
 * уровень серьезности трассировки;
 * определенные URL-адреса, ключевые слова или коды ответов;
-* Быстрый ответ — то есть запросах toowhich tooquickly ответа приложения
+* быстрые ответы — запросы, на которые приложение отвечает быстро;
 * имена определенных событий.
 
 > [!NOTE]
-> Фильтры исказить hello метрик вашего приложения. Например можно решить, что в порядке toodiagnose замедление отклика, будут установлены фильтра toodiscard быстрого отклика. Однако следует иметь в виду hello среднего времени отклика сообщили Application Insights будет медленнее, чем скорость true hello, что счетчик hello запросов будет меньше, чем число реальные hello.
+> Фильтры искажают значения метрик приложения. Например, вы можете задать фильтр для отклонения небольших значений времени ответа, чтобы диагностировать медленные ответы. Однако необходимо иметь в виду, что в этом случае среднее время ответа, отображаемое Application Insights, будет медленнее, а количество запросов — меньше, чем на самом деле.
 > Если это представляет собой проблему, то используйте [выборки](app-insights-sampling.md).
 
 ## <a name="setting-filters"></a>Задание фильтров
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/06/2017
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want toosee -->
+                  <!-- Names of events we don't want to see -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/06/2017
 
 
 
-[Проверять hello полный набор встроенных процессоров](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Просмотрите полный набор встроенных обработчиков](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Встроенные фильтры
 
@@ -115,9 +115,9 @@ ms.lasthandoff: 10/06/2017
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Длительность ссылается время toohello tooload страницы приветствия. Если он установлен, то страницы, которые загружаются быстрее, чем это значение, не учитываются.
+* `DurationThresholdInMS` — длительность означает время, необходимое для загрузки страницы. Если он установлен, то страницы, которые загружаются быстрее, чем это значение, не учитываются.
 * `NotNeededNames` — разделенный запятыми список имен страниц.
-* `NotNeededUrls` — разделенный запятыми список фрагментов URL-адресов. Например `"home"` отфильтровывает все страницы, которые имеют «Главная» в URL-АДРЕСЕ hello.
+* `NotNeededUrls` — разделенный запятыми список фрагментов URL-адресов. Например, `"home"` отфильтровывает все страницы, которые содержат в URL-адресе слово "home".
 
 
 ### <a name="request-telemetry-filter"></a>Фильтр телеметрии запросов
@@ -136,7 +136,7 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="synthetic-source-filter"></a>Фильтр искусственных источников
 
-Отфильтровывает все данные телеметрии, которые имеют значения в свойство SyntheticSource hello. К ним относятся запросы от программ-роботов, программ-обходчиков и тестов доступности.
+Отфильтровывает все данные телеметрии, имеющие значение в свойстве SyntheticSource. К ним относятся запросы от программ-роботов, программ-обходчиков и тестов доступности.
 
 Фильтрация данных телеметрии для всех запросов от искусственных источников:
 
@@ -187,7 +187,7 @@ ms.lasthandoff: 10/06/2017
 
 * Допустимые значения `FromSeverityLevel`:
  *  OFF — отфильтровывание ВСЕХ трассировок;
- *  TRACE — фильтрация отключена; уровень tooTrace Equals
+ *  TRACE — фильтрация отключена; соответствует уровню трассировки (TRACE);
  *  INFO — отфильтровывание уровня TRACE;
  *  WARN — отфильтровывание уровней TRACE и INFO;
  *  ERROR — отфильтровывание уровней WARN, INFO и TRACE;
@@ -208,18 +208,18 @@ ms.lasthandoff: 10/06/2017
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required toosupport hello filter.*/
+       /* Any parameters that are required to support the filter.*/
        private final String successful;
 
-       /* Initializers for hello parameters, named "setParameterName" */
+       /* Initializers for the parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry toobe sent.
-          Return false toodiscard it.
-          Return true tooallow other processors tooinspect it. */
+       /* This method is called for each item of telemetry to be sent.
+          Return false to discard it.
+          Return true to allow other processors to inspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,7 +235,7 @@ ms.lasthandoff: 10/06/2017
 ```
 
 
-### <a name="2-invoke-your-filter-in-hello-configuration-file"></a>2. Вызова фильтра, в файле конфигурации hello
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2) Вызов фильтра в файле конфигурации
 
 В файле ApplicationInsights.xml:
 
@@ -258,7 +258,7 @@ ms.lasthandoff: 10/06/2017
 
 *Мой фильтр не работает.*
 
-* Убедитесь, что для параметров указаны допустимые значения. Например, значения длительности должны быть целыми числами. Недопустимые значения вызовет toobe фильтра hello игнорируются. Если пользовательский фильтр породит исключение из конструктора или метода set, он будет проигнорирован.
+* Убедитесь, что для параметров указаны допустимые значения. Например, значения длительности должны быть целыми числами. Недопустимые значения приведут к тому, что фильтр будет проигнорирован. Если пользовательский фильтр породит исключение из конструктора или метода set, он будет проигнорирован.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

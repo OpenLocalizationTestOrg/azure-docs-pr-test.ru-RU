@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Role-Based ролей (RBAC) с помощью Azure PowerShell | Документы Microsoft"
-description: "Как toomanage RBAC с помощью Azure PowerShell, включая список ролей, назначение ролей и удаление назначений ролей."
+title: "Управление доступом на основе ролей (RBAC) с помощью Azure PowerShell | Документация Майкрософт"
+description: "Узнайте, как осуществлять управление доступом на основе ролей (RBAC) с помощью Azure PowerShell, включая вывод списка ролей, назначение ролей и удаление назначений ролей."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: fa44991113e75b345177867b0bede38de4373e04
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d7b11df21650b5cb27f9c3dd8306f8d12664185e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Управление доступом на основе ролей с помощью Azure PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Интерфейс командной строки Azure](role-based-access-control-manage-access-azure-cli.md)
-> * [REST API](role-based-access-control-manage-access-rest.md)
+> * [ИНТЕРФЕЙС REST API](role-based-access-control-manage-access-rest.md)
 
-Управление доступом на основе ролей (RBAC) можно использовать в hello портал Azure и API управления Azure ресурсов toomanage доступа tooyour подписки детально уровне. С помощью этой функции можно предоставить доступ для пользователей, группы или субъекты-службы Active Directory путем назначения некоторых ролей toothem на определенную область.
+Функция управления доступом на основе ролей (RBAC) на портале Azure и в API управления ресурсами Azure позволяет управлять доступом к подписке с высокой точностью. С ее помощью вы можете предоставлять доступ пользователям, группам и субъектам-службам Active Directory, назначая им роли с определенной областью.
 
-Прежде чем использовать PowerShell toomanage RBAC, требуется hello следующие предварительные требования:
+Чтобы использовать PowerShell для управления RBAC, необходимы следующие компоненты:
 
-* Azure PowerShell версии 0.8.8 или выше. последнюю версию tooinstall hello и связывание его с подпиской Azure. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
-* Командлеты Azure Resource Manager. Установка hello [командлеты диспетчера ресурсов Azure](/powershell/azure/overview) в PowerShell.
+* Azure PowerShell версии 0.8.8 или выше. Чтобы установить последнюю версию и связать ее со своей подпиской Azure, см. раздел об [установке и настройке Azure PowerShell](/powershell/azure/overview).
+* Командлеты Azure Resource Manager. Установите [командлеты Azure Resource Manager](/powershell/azure/overview) в PowerShell.
 
 ## <a name="list-roles"></a>Вывод списка ролей
 ### <a name="list-all-available-roles"></a>Вывод списка всех доступных ролей
-toolist RBAC ролей, доступных для назначения и tooinspect hello операций toowhich они предоставлять доступ, используйте `Get-AzureRmRoleDefinition`.
+Для вывода списка доступных для назначения ролей RBAC и для просмотра операций, к которым они предоставляют доступ, воспользуйтесь командой `Get-AzureRmRoleDefinition`.
 
 ```
 Get-AzureRmRoleDefinition | FT Name, Description
@@ -44,7 +44,7 @@ Get-AzureRmRoleDefinition | FT Name, Description
 ![RBAC PowerShell — Get-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition1.png)
 
 ### <a name="list-actions-of-a-role"></a>Вывод списка действий роли
-Используйте действия hello toolist для определенной роли, `Get-AzureRmRoleDefinition <role name>`.
+Для вывода списка действий для определенной роли воспользуйтесь командой `Get-AzureRmRoleDefinition <role name>`.
 
 ```
 Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
@@ -55,10 +55,10 @@ Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
 ![RBAC PowerShell — Get-AzureRmRoleDefinition для конкретной роли — снимок экрана](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition2.png)
 
 ## <a name="see-who-has-access"></a>Увидеть, у кого есть доступ
-назначения доступа RBAC toolist, используют `Get-AzureRmRoleAssignment`.
+Чтобы вывести список назначений доступа RBAC, используйте команду `Get-AzureRmRoleAssignment`.
 
 ### <a name="list-role-assignments-at-a-specific-scope"></a>Вывод списка назначений ролей в конкретной области
-Вы увидите все назначения hello доступа для указанной подписки, группы ресурсов или ресурсов. Например, toosee hello все назначения hello активные группы ресурсов, используйте `Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>`.
+Можно вывести список назначений доступа, действующих для указанной подписки, группы ресурсов или отдельного ресурса. Например, чтобы просмотреть все активные назначения для группы ресурсов, используйте команду `Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>`.
 
 ```
 Get-AzureRmRoleAssignment -ResourceGroupName Pharma-Sales-ProjectForcast | FL DisplayName, RoleDefinitionName, Scope
@@ -66,8 +66,8 @@ Get-AzureRmRoleAssignment -ResourceGroupName Pharma-Sales-ProjectForcast | FL Di
 
 ![RBAC PowerShell — Get-AzureRmRoleAssignment для группы ресурсов — снимок экрана](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
-### <a name="list-roles-assigned-tooa-user"></a>Список ролей, назначенный пользователь tooa
-все роли hello, назначенных tooa указанного пользователя и роли hello, которые назначаются toohello группам принадлежит пользователь toowhich hello, toolist используйте `Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups`.
+### <a name="list-roles-assigned-to-a-user"></a>Вывод списка ролей, назначенных пользователю
+Чтобы вывести список всех ролей, назначенных пользователю, включая роли, назначенные группам, в которые он входит, используйте команду `Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups`.
 
 ```
 Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com | FL DisplayName, RoleDefinitionName, Scope
@@ -78,68 +78,68 @@ Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com -ExpandPrincipalGroups
 ![RBAC PowerShell — Get-AzureRmRoleAssignment — для пользователя — снимок экрана](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment2.png)
 
 ### <a name="list-classic-service-administrator-and-coadmin-role-assignments"></a>Вывод списка назначений ролей классического администратора службы и соадминистратора
-назначения toolist доступ для администратора классическую подписку hello и coadministrators, используйте:
+Для вывода списка назначений доступа для классического администратора подписки и соадминистраторов воспользуйтесь следующей командой:
 
     Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="grant-access"></a>Предоставление доступа
 ### <a name="search-for-object-ids"></a>Поиск идентификаторов объектов
-tooassign роли необходимо tooidentify hello объекта (пользователя, группы или приложения) и область hello.
+Чтобы назначить роль, необходимо определить объект (пользователя, группу или приложение) и область.
 
-Если вы не знаете идентификатор подписки hello, его можно найти в hello **подписки** колонка на hello портал Azure. статье tooquery для подписки с Идентификатором hello, toolearn [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) на сайте MSDN.
+Если вам неизвестен идентификатор подписки, его можно найти в колонке **Подписки** на портале Azure. Узнайте на сайте MSDN, как запросить идентификатор подписки с помощью [Get-AzureSubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) .
 
-Используйте идентификатор объекта hello tooget для группы Azure AD:
+Для поиска идентификатора объекта для группы Azure AD воспользуйтесь следующей командой:
 
     Get-AzureRmADGroup -SearchString <group name in quotes>
 
-Идентификатор объекта tooget hello Azure AD участника-службы или приложения, используйте:
+Чтобы получить идентификатор объекта для субъекта-службы Azure AD или приложения, воспользуйтесь следующей командой:
 
     Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 
-### <a name="assign-a-role-tooan-application-at-hello-subscription-scope"></a>Назначение роли приложения tooan в области видимости hello подписки
-приложение tooan toogrant доступ в области hello подписки, используйте:
+### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>Назначение роли для приложения в области действия подписки
+Чтобы предоставить доступ к приложению в области действия подписки, воспользуйтесь следующей командой:
 
     New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
 
 ![RBAC PowerShell — New-AzureRmRoleAssignment — снимок экрана](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
-### <a name="assign-a-role-tooa-user-at-hello-resource-group-scope"></a>Назначить пользователя роли tooa в области группы ресурсов hello
-доступ к toogrant tooa пользователю в области группы ресурсов hello, используйте:
+### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>Назначение роли пользователю в области действия группы ресурсов
+Для предоставления доступа пользователю в области действия группы ресурсов воспользуйтесь следующей командой:
 
     New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
 
 ![RBAC PowerShell — New-AzureRmRoleAssignment — снимок экрана](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment3.png)
 
-### <a name="assign-a-role-tooa-group-at-hello-resource-scope"></a>Назначение роли tooa группы в области видимости ресурса hello
-Группа tooa toogrant доступ в области видимости ресурса hello, используйте:
+### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>Назначение роли для группы в области действия ресурса
+Для предоставления доступа группе в области действия ресурса воспользуйтесь следующей командой:
 
     New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
 
 ![RBAC PowerShell — New-AzureRmRoleAssignment — снимок экрана](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment4.png)
 
 ## <a name="remove-access"></a>Запрет доступа
-tooremove доступ для пользователей, групп и приложений, используйте:
+Чтобы запретить доступ для пользователей, групп и приложений, воспользуйтесь следующей командой:
 
     Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
 
 ![RBAC PowerShell — Remove-AzureRmRoleAssignment — снимок экрана](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>Создание настраиваемой роли
-toocreate пользовательской роли, используйте hello ```New-AzureRmRoleDefinition``` команды. Существует два способа структурирования hello роли, с помощью шаблона JSON или PSRoleDefinitionObject. 
+Чтобы создать настраиваемую роль, используйте команду ```New-AzureRmRoleDefinition``` . Существует два способа структурирования роли: с помощью PSRoleDefinitionObject и с помощью шаблона JSON. 
 
 ## <a name="get-actions-for-a-resource-provider"></a>Получение действий для поставщика ресурсов
-При создании пользовательских ролей с нуля, является важным tooknow все hello возможных операций из поставщиков ресурсов hello.
-Используйте hello ```Get-AzureRMProviderOperation``` команды tooget эти сведения.
-Например если требуется, чтобы toocheck всех доступных операций hello для виртуальной машины используйте следующую команду:
+При создании пользовательских ролей с нуля важно знать все возможные операции поставщиков ресурсов.
+Используйте команду ```Get-AzureRMProviderOperation``` для получения этих сведений.
+Например, если вы хотите проверить все доступные операции для виртуальной машины, то используйте эту команду:
 
 ```
 Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize
 ```
 
 ### <a name="create-role-with-psroledefinitionobject"></a>Создание роли с помощью PSRoleDefinitionObject
-При использовании PowerShell toocreate пользовательской роли, можно запустить с нуля или использовать один из hello [встроенные роли](role-based-access-built-in-roles.md) отправной точки. пример Hello в этом разделе начинается с встроенной роли и затем настраивает его с больше прав доступа. Изменить hello атрибуты tooadd hello *действия*, *notActions*, или *областей* , а затем сохранить hello в качестве новой роли.
+При создании пользовательской роли с помощью PowerShell можно начать с нуля или использовать одну из [встроенных ролей](role-based-access-built-in-roles.md) в качестве отправной точки. В этом разделе приводится пример, в котором встроенная роль берется за основу, а затем настраивается с помощью дополнительных привилегий. Измените атрибуты и добавьте необходимые действия *Actions*, *notActions* и области *scopes*, а затем сохраните изменения как новую роль.
 
-Hello следующий пример начинается с hello *участника виртуальной машины* вызывается роли и использование этой пользовательской роли toocreate *оператор виртуальной машины*. предоставляет новую роль Hello считываемых доступа tooall *Microsoft.Compute*, *хранилища Майкрософт*, и *Microsoft.Network* поставщиков и предоставляет доступ к ресурсам toostart, перезапуска и мониторинга виртуальных машин. Hello пользовательской роли можно использовать в две подписки.
+Следующий пример начинается с роли *Участник виртуальной машины*, с помощью которой создается настраиваемая роль *Оператор виртуальной машины*. Новая роль предоставляет доступ ко всем операциям чтения поставщиков ресурсов *Microsoft.Compute*, *Microsoft.Storage* и *Microsoft.Network*, а также доступ для запуска, перезапуска и мониторинга виртуальных машин. Настраиваемую роль можно использовать в двух подписках.
 
 ```
 $role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
@@ -165,14 +165,14 @@ New-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell — Get-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ### <a name="create-role-with-json-template"></a>Создание роли с помощью шаблона JSON
-Можно использовать шаблон JSON как определение источника hello для hello пользовательской роли. Hello следующий пример создает пользовательскую роль, который позволяет toostorage доступ для чтения и вычислительные ресурсы, доступ к toosupport и добавляет этой роли tootwo подписки. Создайте новый файл `C:\CustomRoles\customrole1.json` с hello в следующем примере. Hello Id должно быть установлено слишком`null` на создание начальной роли как новый идентификатор создается автоматически. 
+Шаблон JSON может использоваться в качестве определения источника для пользовательской роли. В следующем примере создается пользовательская роль, которая разрешает доступ на чтение к хранилищу и вычислительным ресурсам, доступ для поддержки, и добавляет эту роль к двум подпискам. Создайте файл `C:\CustomRoles\customrole1.json` с приведенным ниже содержимым. При первичном создании роли идентификатору должно быть присвоено значение `null`, так как новый идентификатор создается автоматически. 
 
 ```
 {
   "Name": "Custom Role 1",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read access tooAzure storage and compute resources and access toosupport",
+  "Description": "Allows for read access to Azure storage and compute resources and access to support",
   "Actions": [
     "Microsoft.Compute/*/read",
     "Microsoft.Storage/*/read",
@@ -186,18 +186,18 @@ New-AzureRmRoleDefinition -Role $role
   ]
 }
 ```
-tooadd hello роли toohello подписки, запустите следующую команду PowerShell hello:
+Чтобы добавить роль к подпискам, выполните следующую команду PowerShell.
 ```
 New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="modify-a-custom-role"></a>Изменение настраиваемой роли
-Аналогичные toocreating пользовательской роли, можно изменить существующие пользовательской роли, с помощью hello PSRoleDefinitionObject или шаблон JSON.
+Аналогично созданию пользовательской роли вы можете изменить существующую пользовательскую роль с помощью PSRoleDefinitionObject или шаблона JSON.
 
 ### <a name="modify-role-with-psroledefinitionobject"></a>Изменение роли с помощью PSRoleDefinitionObject
-toomodify пользовательской роли, во-первых, используйте hello `Get-AzureRmRoleDefinition` определение роли hello tooretrieve команды. Во-вторых измените hello требуемого toohello определения роли. Наконец, используйте hello `Set-AzureRmRoleDefinition` команда toosave hello изменения определения роли.
+Чтобы изменить настраиваемую роль, сначала используйте команду `Get-AzureRmRoleDefinition` для получения определения роли. Затем внесите необходимые изменения в определение роли. Наконец, с помощью команды `Set-AzureRmRoleDefinition` сохраните измененное определение роли.
 
-Hello следующий пример добавляет hello `Microsoft.Insights/diagnosticSettings/*` toohello операции *оператор виртуальной машины* пользовательской роли.
+В следующем примере показано добавление операции `Microsoft.Insights/diagnosticSettings/*` к настраиваемой роли *Оператор виртуальной машины* .
 
 ```
 $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
@@ -207,7 +207,7 @@ Set-AzureRmRoleDefinition -Role $role
 
 ![RBAC PowerShell — Set-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-1.png)
 
-Hello пример добавления подписки Azure toohello назначаемых областей из hello *оператор виртуальной машины* пользовательской роли.
+В следующем примере показано добавление подписки Azure в назначаемые области настраиваемой роли *Оператор виртуальной машины* .
 
 ```
 Get-AzureRmSubscription - SubscriptionName Production3
@@ -220,14 +220,14 @@ Set-AzureRmRoleDefinition -Role $role
 ![RBAC PowerShell — Set-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
 ### <a name="modify-role-with-json-template"></a>Изменение роли с помощью шаблона JSON
-С помощью предыдущего шаблона JSON hello, можно легко изменить существующий tooadd пользовательской роли или удалить действия. Обновление шаблона JSON hello и добавить действие чтения hello для работы в сети, как показано в следующий пример hello. Hello определений, перечисленных в шаблоне hello не Суммарно примененных tooan существующее определение, это означает, что эта роль hello отображается точно так, как указать в шаблоне hello. Необходимо также поле Id hello tooupdate с Идентификатором hello hello роли. Если вы не уверены, что это значение равно, можно использовать hello `Get-AzureRmRoleDefinition` tooget командлет эти сведения.
+С помощью предыдущего шаблона JSON можно легко изменить существующую пользовательскую роль, чтобы добавить или удалить действия. Обновите шаблон JSON и добавьте действие чтения для сетевых подключений, как показано в следующем примере. Определения, перечисленные в шаблоне, не применяются все вместе к существующему определению. Это означает, что роль отображается так, как указано в шаблоне. Кроме того, необходимо обновить поле идентификатора с помощью идентификатора роли. Если вы не уверены, каким является это значение, для получения этой информации можно использовать командлет `Get-AzureRmRoleDefinition`.
 
 ```
 {
   "Name": "Custom Role 1",
   "Id": "acce7ded-2559-449d-bcd5-e9604e50bad1",
   "IsCustom": true,
-  "Description": "Allows for read access tooAzure storage and compute resources and access toosupport",
+  "Description": "Allows for read access to Azure storage and compute resources and access to support",
   "Actions": [
     "Microsoft.Compute/*/read",
     "Microsoft.Storage/*/read",
@@ -243,15 +243,15 @@ Set-AzureRmRoleDefinition -Role $role
 }
 ```
 
-существующие роли hello tooupdate, запустите следующую команду PowerShell hello:
+Чтобы обновить существующую роль, выполните следующую команду PowerShell.
 ```
 Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="delete-a-custom-role"></a>Удаление настраиваемой роли
-toodelete пользовательской роли, используйте hello `Remove-AzureRmRoleDefinition` команды.
+Чтобы удалить настраиваемую роль, используйте команду `Remove-AzureRmRoleDefinition` .
 
-Hello следующий пример удаляет hello *оператор виртуальной машины* пользовательской роли.
+В следующем примере показано удаление настраиваемой роли *Оператор виртуальной машины* .
 
 ```
 Get-AzureRmRoleDefinition "Virtual Machine Operator"
@@ -262,9 +262,9 @@ Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinit
 ![RBAC PowerShell — Remove-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/4-remove-azurermroledefinition.png)
 
 ## <a name="list-custom-roles"></a>Вывод списка настраиваемых ролей
-toolist hello ролей, доступных для назначения в области, используйте hello `Get-AzureRmRoleDefinition` команды.
+Чтобы получить список ролей, доступных для назначения в области, используйте команду `Get-AzureRmRoleDefinition` .
 
-Следующий пример Hello список всех ролей, доступных для назначения в подписке hello выбран.
+В следующем примере перечисляются все роли, доступные для назначения в выбранной подписке.
 
 ```
 Get-AzureRmRoleDefinition | FT Name, IsCustom
@@ -272,7 +272,7 @@ Get-AzureRmRoleDefinition | FT Name, IsCustom
 
 ![RBAC PowerShell — Get-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition-1.png)
 
-В следующем примере hello, hello *оператор виртуальной машины* пользовательской роли не предусмотрена в hello *Production4* подписки, так как ее нет в hello  **AssignableScopes** hello роли.
+В следующем примере настраиваемая роль *Оператор виртуальной машины* не доступна в подписке *Production4*, так как эта подписка не входит в **AssignableScopes** роли.
 
 ![RBAC PowerShell — Get-AzureRmRoleDefinition — снимок экрана](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 

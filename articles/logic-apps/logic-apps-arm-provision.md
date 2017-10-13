@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate логику приложения, с помощью шаблона в Azure | Документы Microsoft"
-description: "Используйте toodeploy шаблона диспетчера ресурсов Azure приложение логики для определения рабочих процессов."
+title: "Создание приложения логики с помощью шаблона в Azure | Документация Майкрософт"
+description: "Узнайте, как с помощью шаблона Azure Resource Manager развернуть приложение логики для определения рабочих процессов."
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: efbacb534fc7f11e9b593aae4383480ce3a1752f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>Создание приложения логики с помощью шаблона
-Шаблоны предоставляют toouse быстро разные соединители внутри приложения логики. Логику приложений включает шаблоны Azure Resource Manager для toocreate приложения логики, который можно использовать toodefine бизнес-процессов. Можно определить, какие ресурсы развернуты и как параметры toodefine при развертывании приложения логики. Можно использовать этот шаблон для собственных бизнес-сценариев, или настроить его toomeet вашим требованиям.
+Шаблоны предоставляют быстрый способ применения различных соединителей в приложении логики. Logic Apps включает в себя шаблоны Azure Resource Manager для создания приложения логики, которое можно использовать для определения бизнес-процессов. При развертывании приложения логики можно указать, какие ресурсы развертывать и как определять параметры. Вы можете использовать этот шаблон для собственных бизнес-сценариев или настроить его в соответствии с вашими требованиями.
 
-Дополнительные сведения о свойствах приложения hello логику в разделе [логику приложения рабочего процесса управления API](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
+Дополнительные сведения о свойствах приложения логики см. в статье [Logic App Workflow Management API](https://msdn.microsoft.com/library/azure/mt643788.aspx) (API управления рабочим процессом приложения логики). 
 
-Примеры само определение hello см. в разделе [Автор приложения логики определения](logic-apps-author-definitions.md). 
+Примеры определения см. в статье [Создание определений приложений логики](logic-apps-author-definitions.md). 
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Полный шаблон hello, см. [шаблон приложения логики](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
+Полный шаблон см. [здесь](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
 
 ## <a name="what-you-deploy"></a>Что будет развернуто?
 С помощью этого шаблона развертывается приложение логики.
 
-Развертывание hello toorun автоматически, выберите hello следующие кнопки:  
+Чтобы выполнить развертывание автоматически, нажмите следующую кнопку.  
 
-[![Развертывание tooAzure](media/logic-apps-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Развертывание в Azure](media/logic-apps-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Параметры
 [!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
@@ -47,13 +47,13 @@ ms.lasthandoff: 10/06/2017
         "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
       }
 
-## <a name="resources-toodeploy"></a>Toodeploy ресурсы
+## <a name="resources-to-deploy"></a>Развертываемые ресурсы
 ### <a name="logic-app"></a>Приложение логики
-Создание приложения hello логики.
+Создает приложение логики.
 
-шаблоны Hello использует значение параметра для имени приложения hello логику. Задает расположение hello hello логику приложения toohello же расположении, что группа ресурсов hello. 
+В шаблонах используется значение параметра для имени приложения логики. Параметр задает в качестве расположения приложения логики то же расположение, что и у группы ресурсов. 
 
-Это конкретное определение выполняется один раз в час, а команды ping hello в расположении, указанном в hello **testUri** параметра. 
+Это определение будет выполняться один раз в час, проверяя расположение, указанное в параметре **testUri** . 
 
     {
       "type": "Microsoft.Logic/workflows",
@@ -99,7 +99,7 @@ ms.lasthandoff: 10/06/2017
     }
 
 
-## <a name="commands-toorun-deployment"></a>Команды toorun развертывания
+## <a name="commands-to-run-deployment"></a>Команды для выполнения развертывания
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

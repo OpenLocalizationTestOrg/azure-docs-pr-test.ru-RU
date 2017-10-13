@@ -1,6 +1,6 @@
 ---
 title: "Приступая к работе с устройством SensorTag и шлюзом Интернета вещей Azure. Урок 1. Настройка Intel NUC | Документация Майкрософт"
-description: "Настройка toowork Intel NUC виде шлюза IoT между датчика и данных датчика toocollect центр IoT Azure и отправить его tooIoT концентратора."
+description: "Настройка Intel NUC в качестве шлюза Интернета вещей, который собирает данные из датчиков и передает их в Центр Интернета вещей Azure."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 7c3ab3b014713c7facb86b8e8622d70e60a960e6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1a3a92ab8d08c6ed6f047208217c46022027157e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="set-up-intel-nuc-as-an-iot-gateway"></a>Настройка Intel NUC в качестве шлюза Интернета вещей
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -27,22 +27,22 @@ ms.lasthandoff: 10/06/2017
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
 - Настройте Intel NUC в качестве шлюза Интернета вещей.
-- Установите пакет Azure IoT Edge hello на hello Intel NUC.
-- Запустите пример приложения «hello_world» на hello функциональность шлюза hello tooverify Intel NUC.
+- Установите пакет Edge Интернета вещей Azure на Intel NUC.
+- Запустите пример приложения hello_world на Intel NUC для проверки работоспособности шлюза.
 
-  > Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-troubleshooting.md).
+  > Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
 Из этого урока вы узнаете:
 
-- Как tooconnect Intel NUC с периферийные устройства.
-- Как пакеты hello необходимые tooinstall и обновления на использование Intel NUC hello смарт-диспетчера пакетов.
-- Как toorun hello» hello_world» образец функциональность шлюза hello tooverify приложения.
+- как подключить периферийные устройства к Intel NUC;
+- как установить и обновить требуемые пакеты на Intel NUC с помощью Smart Package Manager;
+- как запустить пример приложения hello_world на Intel NUC для проверки работоспособности шлюза.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
-- DE3815TYKE комплект Intel NUC с hello шлюза программного обеспечения Intel IoT Suite (р. воздушного Linux * 7.0.0.13) предварительно. [Щелкните здесь toopurchase Grove IoT коммерческих шлюза комплект](https://www.seeedstudio.com/Grove-IoT-Commercial-Gateway-Kit-p-2724.html).
+- Предварительно установленный пакет DE3815TYKE для Intel NUC с набором программного обеспечения Intel для шлюза Интернета вещей (Wind River Linux *7.0.0.13). [Щелкните здесь, чтобы приобрести набор для создания коммерческого шлюза Интернета вещей Grove](https://www.seeedstudio.com/Grove-IoT-Commercial-Gateway-Kit-p-2724.html).
 - Кабель Ethernet.
 - Клавиатура.
 - Кабель HDMI или VGA.
@@ -51,50 +51,50 @@ ms.lasthandoff: 10/06/2017
 
 ![Комплект для шлюза](media/iot-hub-gateway-kit-lessons/lesson1/kit.png)
 
-## <a name="connect-intel-nuc-with-hello-peripherals"></a>Подключения Intel NUC hello периферийных устройств
+## <a name="connect-intel-nuc-with-the-peripherals"></a>Подключение периферийных устройств к Intel NUC
 
-изображение Hello ниже приведен пример NUC Intel, который связан с различными периферийные устройства:
+На следующем рисунке показана конфигурация Intel NUC с подключением к разным периферийным устройствам.
 
-1. Подключенный tooa клавиатуры.
-2. Подключен монитор tooa кабель VGA или HDMI кабель.
-3. Подключенный tooa проводной сети с помощью кабеля Ethernet.
-4. Источник питания подключенных tooa кабеля питания.
+1. Подключение к клавиатуре.
+2. Подключение к монитору через кабель VGA или HDMI.
+3. Подключение к проводной сети с помощью кабеля Ethernet.
+4. Подключение питания с помощью кабеля питания.
 
-![Tooperipherals подключен NUC Intel](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
+![Intel NUC с подключением к периферийным устройствам](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## <a name="connect-toohello-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Подключение системы Intel NUC toohello от главного компьютера через Secure Shell (SSH)
+## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Подключение к системе Intel NUC с главного компьютера через Secure Shell (SSH)
 
-Необходимо будет клавиатуру и монитор tooget hello IP-адрес устройства Intel NUC. Если вы уже знаете hello IP адрес, можно пропустить упреждающего toostep 3 в этом разделе.
+Вам потребуются клавиатура и монитор, чтобы узнать IP-адрес устройства Intel NUC. Если вы уже знаете IP-адрес, можете сразу перейти к шагу 3 в этом разделе.
 
-1. Включите hello Intel NUC, нажав кнопку питания hello и войдите в систему.
+1. Включите Intel NUC, нажав кнопку питания, и войдите в систему.
 
-   имя пользователя по умолчанию Hello и пароль указаны оба `root`.
+   По умолчанию имя пользователя и пароль имеют одинаковые значения: `root`.
 
-       > Hit hello enter key on your keyboard if you see either of hello following errors when you boot: 'A TPM error (7) occurred attempting tooread a pcr value.' or 'Timeout, No TPM chip found, activating TPM-bypass!'
+       > Hit the enter key on your keyboard if you see either of the following errors when you boot: 'A TPM error (7) occurred attempting to read a pcr value.' or 'Timeout, No TPM chip found, activating TPM-bypass!'
 
-2. Получить IP-адрес hello hello Intel NUC, выполнив hello `ifconfig` команду на устройстве Intel NUC hello.
+2. Получите IP-адрес Intel NUC, выполнив команду `ifconfig` на устройстве Intel NUC.
 
-   Ниже приведен пример выходных данных команды hello.
+   Вот пример результата выполнения такой команды:
 
    ![Выходные данные ifconfig с IP-адресом Intel NUC](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
 
-   В этом примере hello значение, следующее за `inet addr:` hello IP-адрес, необходимый при подключении toohello Intel NUC от главного компьютера.
+   В этом примере значение IP-адреса указано после символов `inet addr:`. Этот адрес понадобится вам для удаленного подключения к Intel NUC с главного компьютера.
 
-3. Используйте одну из следующую SSH клиентов из вашего узла компьютера tooconnect tooIntel NUC hello.
+3. Используйте один из следующих SSH-клиентов для подключения к Intel NUC с главного компьютера.
 
     - [PuTTY](http://www.putty.org/) для Windows.
-    - Hello встроенный клиент SSH на Ubuntu или macOS.
+    - Встроенный SSH-клиент ОС Ubuntu или macOS.
 
-   Это обеспечивает более эффективное и продуктивную toooperate NUC Intel от главного компьютера. Будет необходимо hello Intel NUC IP-адрес, пользователь имя и пароль tooit tooconnect через клиент SSH. Ниже приведен пример использования SSH-клиента в macOS.
+   Работа с Intel NUC будет более эффективной, если подключиться к нему через SSH-клиент с главного компьютера. Для этого вам нужны IP-адрес Intel NUC, имя пользователя и пароль. Ниже приведен пример использования SSH-клиента в macOS.
    ![SSH-клиент, запущенный на macOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
-## <a name="install-hello-azure-iot-edge-package"></a>Установите пакет Azure IoT Edge hello
+## <a name="install-the-azure-iot-edge-package"></a>Установка пакета Edge Интернета вещей Azure
 
-пакет Azure IoT Edge Hello содержит hello заранее скомпилированные двоичные файлы IoT границей и его зависимости. Эти двоичные файлы являются Azure IoT Edge, hello IoT Azure SDK и соответствующих средств hello. Hello пакет также содержит «hello_world» приложение представляет функциональность шлюза используется toovalidate hello. Граница IoT является hello основной частью hello шлюза. 
+Пакет Edge Интернета вещей Azure содержит предварительно скомпилированные двоичные файлы самого пакета Edge Интернета вещей и его зависимостей. В список этих файлов входят Edge Интернета вещей Azure, пакет SDK для Интернета вещей Azure и соответствующие средства. Пакет также содержит пример приложения hello_world, который используется для проверки работоспособности шлюза. Edge Интернета вещей является основой шлюза. 
 
-Выполните эти шаги tooinstall hello пакета.
+Для установки пакета выполните следующие действия.
 
-1. Добавьте hello облака IoT репозиторий, выполнив следующие команды в окне терминала hello:
+1. Добавьте репозиторий облака Интернета вещей, выполнив в окне терминала следующие команды:
 
    ```bash
    rpm --import https://iotdk.intel.com/misc/iot_pub2.key
@@ -102,75 +102,75 @@ ms.lasthandoff: 10/06/2017
    smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
    ```
 
-   > Введите «y», при запросе too'Include этот канал? "
+   > Введите "y", получив запрос "Include this channel?" (Включить этот канал?).
    
-   При получении `import read failed(-1)` ошибку, используйте hello следующая проблема hello tooresolve команды:
+   Если произошла ошибка `import read failed(-1)`, можно решить эту проблему, выполнив следующие команды:
    ```bash
    wget http://iotdk.intel.com/misc/iot_pub2.key 
    rpm --import iot_pub2.key  
    ```
 
-   Hello `rpm` команда импортирует hello ключ об/мин. Hello `smart channel` команда добавляет hello rpm канала toohello смарт-диспетчера пакетов. Перед запуском hello `smart update` команды, вы увидите выходные данные, аналогичные показанным ниже.
+   Команда `rpm` импортирует ключ RPM. Команда `smart channel` добавляет канал RPM в Smart Package Manager. Перед запуском команды `smart update` вы должны увидеть примерно такие результаты, как показано ниже.
 
    ![результаты выполнения команд rpm и smart channel](media/iot-hub-gateway-kit-lessons/lesson1/rpm_smart_channel.png)
 
-2. Выполните команду hello смарт-обновления:
+2. Выполните команду smart update:
 
    ```bash
    smart update
    ```
 
-3. Установите пакет шлюза Azure IoT hello, выполнив hello следующую команду:
+3. Установите пакет для шлюза Интернета вещей Azure, выполнив следующую команду:
 
    ```bash
    smart install packagegroup-cloud-azure -y
    ```
 
-   `packagegroup-cloud-azure`— Имя пакета hello hello. Hello `smart install` команды — пакет используется tooinstall hello.
+   Здесь `packagegroup-cloud-azure` — это имя пакета. Команда `smart install` используется для установки пакета.
 
-    > Выполнения hello следующая команда, если вы видите эту ошибку: «открытый ключ недоступен»
+    > Если вы увидите ошибку "Открытый ключ недоступен", выполните следующую команду:
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
-    > Перезагрузить hello Intel NUC, если вы видите эту ошибку: «нет пакет предоставляет util-linux-dev»
+    > Перезагрузите Intel NUC, если отображается сообщение об ошибке "no package provides util-linux-dev" (нет пакета, предоставляющего util-linux-dev)
 
-   После установки пакета hello Intel NUC — Готово toofunction как шлюз.
+   Когда установка пакета завершится, Intel NUC будет готово выполнять функции шлюза.
 
-## <a name="run-hello-azure-iot-edge-helloworld-sample-application"></a>Запустить hello Azure IoT края «hello_world» образец приложения
+## <a name="run-the-azure-iot-edge-helloworld-sample-application"></a>Запуск примера приложения hello_world из Edge Интернета вещей Azure
 
-Следующий пример приложения Hello создает шлюз из `hello_world.json` файл и использует hello базовые компоненты архитектуры Azure IoT Edge toolog файл tooa сообщение hello world (log.txt) каждые 5 секунд.
+Этот пример приложения создает шлюз из файла `hello_world.json` и использует базовые компоненты архитектуры Edge Интернета вещей Azure, чтобы каждые 5 секунд записывать в журнал (log.txt) сообщение Hello World.
 
-Вы можете запустить пример Hello World hello, выполнив следующие команды hello:
+Чтобы запустить наш пример "Hello World", выполните следующие команды:
 
 ```bash
 cd /usr/share/azureiotgatewaysdk/samples/hello_world/
 ./hello_world hello_world.json
 ```
 
-Разрешить приложения hello Hello World работать несколько минут и нажмите клавишу hello ввод ключа toostop его.
+Оставьте приложение "Hello World" работать в течение нескольких минут, а затем остановите его, нажав клавишу ВВОД.
 ![выходные данные приложения](media/iot-hub-gateway-kit-lessons/lesson1/hello_world.png)
 
 > Вы можете игнорировать любые ошибки "Недопустимый дескриптор аргумента (NULL)", которые появляются после нажатия клавиши ВВОД.
 
-Убедитесь, что шлюз hello выполнено успешно, открыв файл log.txt hello, которая теперь находится в папке hello_world ![log.txt представления каталога](media/iot-hub-gateway-kit-lessons/lesson1/logtxtdir.png)
+Убедитесь, что шлюз успешно работал, открыв файл log.txt, который был создан в папке приложения hello_world. ![Представление каталога с файлом log.txt](media/iot-hub-gateway-kit-lessons/lesson1/logtxtdir.png)
 
-Откройте файл log.txt, с помощью hello следующую команду:
+Откройте файл log.txt с помощью следующей команды:
 
 ```bash
 vim log.txt
 ```
 
-Вы увидите содержимое hello log.txt, которой будет выводиться в формате JSON hello ведения журнала сообщений, которые были записаны каждые 5 секунд модулем Hello World hello шлюза.
+Вы увидите содержимое log.txt, который содержит сообщения в формате JSON, создаваемые каждые 5 секунд нашим модулем шлюза "Hello World".
 ![Представление каталога log.txt](media/iot-hub-gateway-kit-lessons/lesson1/logtxtview.png)
 
-Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-troubleshooting.md).
+Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="summary"></a>Сводка
 
-Поздравляем! Итак, вы завершили настройку Intel NUC в качестве шлюза. Теперь вы готовы toomove на следующем занятии tooset toohello компьютера узла, создать центр IoT Azure и зарегистрировать логические устройства Azure IoT Hub.
+Поздравляем! Итак, вы завершили настройку Intel NUC в качестве шлюза. Теперь можно переходить к следующему уроку, в котором вы настроите главный компьютер, настроите Центр Интернета вещей Azure и зарегистрируете логическое устройство Центра Интернета вещей Azure.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Использовать tooconnect шлюза IoT tooAzure устройства центра IoT](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+[Использование шлюза Интернета вещей для подключения устройства к Центру Интернета вещей Azure](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 

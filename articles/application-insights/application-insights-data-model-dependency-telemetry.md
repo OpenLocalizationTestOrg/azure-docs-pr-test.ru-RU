@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure модели данных телеметрии приложения аналитики - телеметрии зависимости | Документы Microsoft"
+title: "Модель данных телеметрии Azure Application Insights — телеметрия зависимостей | Документы Майкрософт"
 description: "Модель данных Application Insights для телеметрии зависимостей"
 services: application-insights
 documentationcenter: .net
@@ -12,23 +12,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: bwren
-ms.openlocfilehash: cd5ab7c61d3498e4aa2a0aa0c8b0d106a92912e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2e97c3f951f46c32802aea543b93d5ab1bb76228
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Телеметрия зависимостей: модель данных Application Insights
 
-Данные телеметрии зависимостей (в [Application Insights](app-insights-overview.md)) представляет взаимодействие компонента hello отслеживается с удаленного компонента, например SQL или конечной точки HTTP.
+Телеметрия зависимостей (в [Application Insights](app-insights-overview.md)) представляет взаимодействие отслеживаемого компонента с удаленным, таким как SQL или конечная точка HTTP.
 
 ## <a name="name"></a>Имя
 
-Имя команды hello, этот вызов зависимости для инициализации. Низкое значение кратности. Примерами являются имя хранимой процедуры и шаблон пути URL-адреса.
+Имя команды, инициированной этим вызовом зависимости. Низкое значение кратности. Примерами являются имя хранимой процедуры и шаблон пути URL-адреса.
 
 ## <a name="id"></a>ИД
 
-Идентификатор для экземпляра вызова зависимости. Использовать для корреляции с hello запрос телеметрии элемент, соответствующий вызов toothis зависимости. Дополнительные сведения см. на странице [корреляции](application-insights-correlation.md).
+Идентификатор для экземпляра вызова зависимости. Используется для корреляции с элементом телеметрии запроса, соответствующим этому вызову зависимости. Дополнительные сведения см. на странице [корреляции](application-insights-correlation.md).
 
 ## <a name="data"></a>Данные
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate и отправка виртуального жесткого диска Linux Ubuntu в Azure"
-description: "Узнайте toocreate и отправить в Azure виртуального жесткого диска (VHD), содержащий операционную систему, Ubuntu Linux."
+title: "Создание и передача виртуального жесткого диска с ОС Ubuntu Linux в Azure"
+description: "Узнайте, как создать и передать виртуальный жесткий диск (VHD-файл) Azure, содержащий операционную систему Ubuntu Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: cc546a487f769b32432a7e80ddcd0f6af44e201f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4496b34ff88ca1e08cc74788ae09d787d4399eaf
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Подготовка виртуальной машины Ubuntu для Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="official-ubuntu-cloud-images"></a>Официальные образы облаков Ubuntu
-Теперь Ubuntu публикует официальные виртуальные жесткие диски Azure, загрузить которые можно по адресу: [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/). Если требуются специализированные изображения Ubuntu toobuild для Azure, вместо того чтобы использовать hello Ручная процедура под ним рекомендуемые toostart с этих известных работает виртуальных жестких дисков и при необходимости настроить. последние версии образа Hello всегда находятся в hello следующих элементов:
+Теперь Ubuntu публикует официальные виртуальные жесткие диски Azure, загрузить которые можно по адресу: [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/). Если вам нужно создать свой собственный, особый образ Ubuntu для Azure, не выполняйте описанную ниже процедуру, а начните с таких заведомо рабочих виртуальных жестких дисков и настройте их так, как вам требуется. Последние выпуски образов можно всегда найти в следующих расположениях:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этой статье предполагается, что вы уже установили Ubuntu Linux операционной системы tooa виртуального жесткого диска. Существуют несколько средства toocreate VHD-файлы, например решение виртуализации, таких как Hyper-V. Инструкции см. в разделе [Установка hello роль Hyper-V и настройка виртуальной машины](http://technet.microsoft.com/library/hh846766.aspx).
+В этой статье предполагается, что вы уже установили операционную систему Ubuntu Linux на виртуальный жесткий диск. Существует несколько средств для создания VHD-файлов, например решение для виртуализации, такое как Hyper-V. Инструкции см. в разделе [Установка роли Hyper-V и настройка виртуальной машины](http://technet.microsoft.com/library/hh846766.aspx).
 
 **Замечания по установке Ubuntu**
 
 * Дополнительные сведения о подготовке Linux для Azure см. в разделе [Общие замечания по установке Linux](create-upload-generic.md#general-linux-installation-notes).
-* Hello формат VHDX не поддерживается только в Azure, **фиксированный VHD**.  Можно преобразовать формат tooVHD hello диска, с помощью диспетчера Hyper-V или hello командлет convert-vhd.
-* При установке системы Linux hello рекомендуется использовать стандартный секции, а не LVM (часто hello по умолчанию для многих установок). Это позволит избежать конфликтов имен LVM с клонированные виртуальные машины, особенно в том случае, если на диске ОС никогда не требуется tooanother toobe присоединенного виртуальной Машины для устранения неполадок. Для дисков данных можно использовать [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Не настраивайте переключения секции на диске ОС hello. агент Linux Hello может быть настроенный toocreate файл подкачки на диске временного ресурса hello.  Дополнительные сведения об этом можно найти в hello описанные ниже действия.
-* Все виртуальные жесткие диски hello должны иметь размеры, кратные 1 МБ.
+* Формат VHDX не поддерживается в Azure, поддерживается только **фиксированный VHD**.  Можно преобразовать диск в формат VHD с помощью диспетчера Hyper-V или командлета convert-vhd.
+* При установке системы Linux рекомендуется использовать стандартные разделы, а не LVM (как правило, значение по умолчанию во многих дистрибутивах). Это позволит избежать конфликта имен LVM при клонировании виртуальных машин, особенно если диск с OC может быть подключен к другой ВМ в целях устранения неполадок. Для дисков данных можно использовать [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Не настраивайте раздел подкачки на диске с ОС. Можно настроить агент Linux для создания файла подкачки на временном диске ресурсов.  Дополнительные сведения описаны далее.
+* Все VHD-диски должны иметь размер, кратный 1 МБ.
 
 ## <a name="manual-steps"></a>Создание вручную
 > [!NOTE]
-> Прежде чем toocreate собственное изображение Ubuntu для Azure, возможно, следует с помощью hello предварительно построение и тестирование образов из [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) вместо него.
+> Прежде чем создавать собственный образ Ubuntu для Azure, рассмотрите возможность применения предварительно созданных и проверенных образов с сайта [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) .
 > 
 > 
 
-1. Hello центральной панели диспетчера Hyper-V выберите виртуальную машину hello.
+1. На центральной панели диспетчера Hyper-V выберите виртуальную машину.
 
-2. Нажмите кнопку **Connect** окна hello tooopen для hello виртуальной машины.
+2. Щелкните **Подключение** , чтобы открыть окно виртуальной машины.
 
-3. Замените hello текущего репозитории в Azure репозиториев hello изображения toouse Ubuntu. Hello шаги будут немного отличаться в зависимости от версии Ubuntu hello.
+3. Замените текущие репозитории в образе на репозитории Ubuntu Azure. Эти действия могут незначительно отличаться в зависимости от версии Ubuntu.
    
-    Прежде чем изменять `/etc/apt/sources.list`, это рекомендуемое toomake резервной копии:
+    Перед редактированием `/etc/apt/sources.list` рекомендуется сделать резервную копию:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/06/2017
         # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-4. Hello Ubuntu Azure изображения теперь подписаны hello *включения оборудования* ядра (HWE). Обновление ядра последнюю toohello операционной системы hello, выполнив следующие команды hello:
+4. Теперь образы Azure Ubuntu используют ядро с *расширенной поддержкой оборудования* (HWE). Обновите операционную систему до последней версии ядра, выполнив следующие команды.
 
     Ubuntu 12,04:
    
@@ -106,32 +106,32 @@ ms.lasthandoff: 10/06/2017
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Измените строку загрузки ядра hello Grub tooinclude дополнительных системных параметров для Azure. этом откройте toodo `/etc/default/grub` в текстовом редакторе, найдите hello переменную с именем `GRUB_CMDLINE_LINUX_DEFAULT` (или добавьте ее при необходимости) и изменить его hello tooinclude следующие параметры:
+5. Измените строку загрузки ядра в конфигурации Grub, чтобы включить дополнительные параметры ядра для Azure. Для этого откройте файл `/etc/default/grub` в текстовом редакторе, найдите переменную `GRUB_CMDLINE_LINUX_DEFAULT` (или добавьте ее, если это необходимо) и измените ее, включив следующие параметры:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Сохраните и закройте файл, а затем выполните команду `sudo update-grub`. Это позволит гарантировать, что все сообщения консоли отправляются toohello первый последовательный порт, который может помочь Azure технической поддержки с отладки проблем с.
+    Сохраните и закройте файл, а затем выполните команду `sudo update-grub`. Это гарантирует отправку всех сообщений консоли на первый последовательный порт, что может помочь технической поддержке Azure в плане отладки.
 
-6. Убедитесь, что hello SSH сервер установлен и настроен toostart во время загрузки.  Обычно это происходит по умолчанию hello.
+6. Убедитесь, что SSH-сервер установлен и настроен для включения во время загрузки.  Обычно это сделано по умолчанию.
 
-7. Установите агент Azure Linux hello:
+7. Установите агент Linux для Azure:
    
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
     >[!Note]
-    Hello `walinuxagent` пакет может удалять hello `NetworkManager` и `NetworkManager-gnome` пакеты, если они установлены.
+    Установка пакета `walinuxagent` приведет к удалению пакетов `NetworkManager` и `NetworkManager-gnome` (если они установлены).
 
-8. Запустите следующие команды toodeprovision hello виртуальной машины hello и подготовить его для подготовки в Azure:
+8. Выполните следующие команды, чтобы отменить подготовку виртуальной машины и подготовить ее в Azure:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-9. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. ДИСК Linux имеет теперь готовы toobe отправлен tooAzure.
+9. В диспетчере Hyper-V выберите **Действие -> Завершение работы**. Виртуальный жесткий диск Linux готов к передаче в Azure.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы являетесь теперь готовы toouse Ubuntu Linux виртуальный жесткий диск toocreate новых виртуальных машин в Azure. Если это первый раз, что идет Отправка tooAzure файл .vhd hello hello см. шаги 2 и 3 в [Создание и передача виртуального жесткого диска, который содержит операционную систему Linux hello](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Теперь виртуальный жесткий диск Ubuntu Linux можно использовать для создания новых виртуальных машин Azure. Если вы загружаете VHD-файл в Azure впервые, обратитесь к шагам 2 и 3 в статье [Создание и загрузка виртуального жесткого диска, содержащего операционную систему Linux](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="references"></a>Ссылки
 Ядро Ubuntu с расширенной поддержкой оборудования (HWE):

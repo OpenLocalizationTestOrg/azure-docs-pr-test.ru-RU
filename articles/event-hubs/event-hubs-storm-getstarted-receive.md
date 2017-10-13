@@ -1,5 +1,5 @@
 ---
-title: "события aaaReceive из концентраторов событий Azure с помощью Apache Storm | Документы Microsoft"
+title: "Получение событий от концентраторов событий Azure с помощью Apache Storm | Документация Майкрософт"
 description: "Узнайте основные сведения о получении событий от концентраторов событий с помощью Apache Storm."
 services: event-hubs
 documentationcenter: 
@@ -14,25 +14,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a0ab860ee8d504a28aac380c504c928f0d6dbc1e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Получение событий из концентраторов событий с помощью Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) — это распределенная система вычислений в реальном времени, упрощающая надежную обработку неограниченных потоков данных. В этом разделе показано, как toouse потока концентраторов событий Azure spout tooreceive события из концентраторов событий. С помощью Apache Storm можно разделить события между несколькими процессами, размещенными в разных узлах. Hello интеграции концентраторов событий с Storm упрощает использование событий, прозрачно контрольных ход его выполнения с помощью элемента Storm Zookeeper установки, управления постоянно контрольные точки и одновременно получает от концентраторов событий.
+[Apache Storm](https://storm.incubator.apache.org) — это распределенная система вычислений в реальном времени, упрощающая надежную обработку неограниченных потоков данных. В этом разделе показано использование spout Storm концентраторов событий Azure для приема событий из концентраторов событий. С помощью Apache Storm можно разделить события между несколькими процессами, размещенными в разных узлах. Интеграция концентраторов событий с помощью Storm упрощает использование событий путем прозрачного определения контрольных точек в ходе выполнения с помощью установки Storm Zookeeper, управляя постоянными контрольными точками и одновременно облегчает получение от концентраторов событий.
 
-Дополнительные сведения о концентраторах событий получения шаблонов см. в разделе hello [Обзор концентраторов событий][Event Hubs overview].
+Дополнительные сведения о шаблонах получения концентраторов событий см. в статье [Обзор концентраторов событий][Event Hubs overview].
 
 ## <a name="create-project-and-add-code"></a>Создание проекта и добавление кода
 
-В этом учебнике используется [HDInsight Storm] [ HDInsight Storm] установки, который поставляется вместе с hello spout концентраторов событий уже доступны.
+В данном руководстве используется установка программы [HDInsight Storm][HDInsight Storm], которая поставляется вместе с уже доступным Spout концентраторов событий.
 
-1. Выполните hello [HDInsight Storm - приступить к работе](../hdinsight/hdinsight-storm-overview.md) процедура toocreate новый HDInsight кластера и подключения tooit через удаленный рабочий стол.
-2. Копировать hello `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` файл tooyour локальной среде разработки. Этот элемент содержит hello события storm-spout.
-3. Используйте следующие команды tooinstall hello пакет в локальном хранилище Maven hello hello. Это позволит вам tooadd его в hello ураган в качестве ссылки проекта на более позднем этапе.
+1. Следуя процедурам, приведенным в разделе [HDInsight Storm — начало работы](../hdinsight/hdinsight-storm-overview.md) , создайте новый кластер HDInsight и подключитесь к нему через удаленный рабочий стол.
+2. Скопируйте файл `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` в локальную среду разработки. Он содержит пакет events-storm-spout.
+3. Для установки пакета в локальный репозиторий Maven выполните следующую команду. Это позволит добавить его в качестве ссылки в проекте Storm позже.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
@@ -41,9 +41,9 @@ ms.lasthandoff: 10/06/2017
    
     ![][12]
 5. Выберите параметр **Use default Workspace location** (Использовать расположение рабочей области по умолчанию), а затем нажмите кнопку **Next** (Далее).
-6. Выберите hello **maven архетипа краткое руководство** архетипа, нажмите кнопку **Далее**
+6. Выберите архетип **maven-archetype-quickstart** и нажмите кнопку **Next** (Далее).
 7. Вставьте параметры **GroupId** и **ArtifactId**, а затем нажмите кнопку **Finish** (Готово).
-8. В **pom.xml**, добавить следующие зависимости в hello hello `<dependency>` узла.
+8. В файле **pom.xml** добавьте следующие зависимости в узел `<dependency>`:
 
     ```xml  
     <dependency>
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/06/2017
     </dependency>
     ```
 
-9. В hello **src** папки, создайте файл с именем **Config.properties** и копирования hello вслед содержимым, заменив hello `receive rule key` и `event hub name` значения:
+9. В папке **src** создайте файл с именем **Config.properties** и скопируйте следующее содержимое, заменив значения `receive rule key` и `event hub name`:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -90,8 +90,8 @@ ms.lasthandoff: 10/06/2017
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Здравствуйте, значение для **eventhub.receiver.credits** определяет, сколько событий являются пакетными прежде чем освободить их toohello Storm конвейера. Ради hello простоты в этом примере задается too10 это значение. В рабочей среде он обычно значение должно быть toohigher значений; Например, 1024.
-10. Создайте новый класс с именем **LoggerBolt** с hello, следующий код:
+    Значение для **eventhub.receiver.credits** определяет, сколько событий являются пакетными перед их выпуском в конвейер Storm. Для простоты в этом примере используется значение 10. В рабочей среде обычно указывается более высокое значение, например, 1024.
+10. Создайте новый класс с именем **LoggerBolt** с использованием следующего кода:
     
     ```java
     import java.util.Map;
@@ -130,8 +130,8 @@ ms.lasthandoff: 10/06/2017
     }
     ```
     
-    Это Storm молнии регистрирует содержимое hello hello полученных событий. Это можно легко расширить toostore кортежей в службе хранилища. Hello [учебник по службам analysis датчика HDInsight] использует подход toostore тех же данных в HBase.
-11. Создайте класс с именем **LogTopology** с hello, следующий код:
+    Этот Storm Bolt регистрирует содержимое полученного события. Эго можно легко расширить для хранения кортежей в службе хранилища. В [учебнике по анализу датчика HDInsight] используется аналогичный подход к хранению данных в HBase.
+11. Создайте класс с названием **LogTopology** и со следующим кодом:
     
     ```java
     import java.io.FileReader;
@@ -182,9 +182,9 @@ ms.lasthandoff: 10/06/2017
                     namespaceName, entityPath, partitionCount, zkEndpointAddress,
                     checkpointIntervalInSeconds, receiverCredits);
         
-            // set hello number of workers toobe hello same as partition number.
-            // hello idea is toohave a spout and a logger bolt co-exist in one
-            // worker tooavoid shuffling messages across workers in storm cluster.
+            // set the number of workers to be the same as partition number.
+            // the idea is to have a spout and a logger bolt co-exist in one
+            // worker to avoid shuffling messages across workers in storm cluster.
             numWorkers = spoutConfig.getPartitionCount();
         
             if (args.length > 0) {
@@ -235,10 +235,10 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-    Этот класс создает новый spout концентраторов событий, с помощью свойств hello в tooinstantiate файла конфигурации hello его. Очень важно, что toonote, этот пример создает столько spouts задач как hello количество разделов в концентраторе событий hello в порядке toouse hello Максимальная параллелизма запрещаемых этот концентратор событий.
+    Этот класс создает новую воронку концентраторов событий, используя свойства в файле конфигурации для создания ее экземпляра. Важно отметить, что в данном примере создается такое же количество задач spout, сколько и разделов в концентраторе событий, чтобы обеспечить максимальный параллелизм, допустимый для этого концентратора событий.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-На сайте ссылкам hello, изучите более подробную концентраторов событий:
+Дополнительные сведения о концентраторах событий см. в следующих источниках:
 
 * [Обзор концентраторов событий Azure][Event Hubs overview].
 * [Создание концентратора событий](event-hubs-create.md)
@@ -247,7 +247,7 @@ ms.lasthandoff: 10/06/2017
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
-[учебник по службам analysis датчика HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[учебнике по анализу датчика HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 
 <!-- Images -->
 

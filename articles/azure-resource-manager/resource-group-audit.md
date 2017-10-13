@@ -1,6 +1,6 @@
 ---
-title: "aaaView действий Azure записывает ресурсы toomonitor | Документы Microsoft"
-description: "Используйте hello действий журналы tooreview пользователя и ошибок. Отображаются портал Azure, PowerShell, интерфейс командной строки Azure и REST."
+title: "Просмотр журналов действий Azure для наблюдения за ресурсами | Документация Майкрософт"
+description: "Просмотр действий пользователя и ошибок с помощью журнала действий. Отображаются портал Azure, PowerShell, интерфейс командной строки Azure и REST."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,75 +14,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8430ed2a9c1dfe5f13423a55d358e590b0facb22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="view-activity-logs-tooaudit-actions-on-resources"></a>Просмотр активности регистрирует действия tooaudit ресурсов
+# <a name="view-activity-logs-to-audit-actions-on-resources"></a>Просмотр журналов действий для аудита действий с ресурсами
 С помощью журналов действий можно определить:
 
-* операций, которые были выполнены на hello ресурсам в подписке
-* кто инициировал операцию hello (несмотря на то, что операции, инициированные с помощью серверной службы не возвращают пользователя как hello вызывающего объекта)
-* Если произошла операция hello
-* Hello состояние операции hello
-* Hello значений других свойств, которые могут помочь вам исследовать операции hello
+* какие операции выполнялись с ресурсами в вашей подписке;
+* кто инициировал операцию (при этом для операций, инициированных серверной службой, имя вызывающего пользователя не возвращается); 
+* когда была выполнена операция;
+* состояние операции;
+* значения других свойств, которые могут помочь в изучении операции.
 
 [!INCLUDE [resource-manager-audit-limitations](../../includes/resource-manager-audit-limitations.md)]
 
-Можно получать сведения из журналы действий hello через портал hello, PowerShell, Azure CLI, API-интерфейса REST аналитики или [библиотеки .NET аналитики](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+Сведения из журналов действий можно получить с помощью портала, PowerShell, интерфейса командной строки Azure, API REST Insights или с помощью [библиотеки .NET для Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Microsoft Azure
-1. Выберите журналы действий hello tooview через портал hello **монитора**.
+1. Чтобы просмотреть журналы действий на портале, выберите **Монитор**.
    
     ![просмотр журналов действий](./media/resource-group-audit/select-monitor.png)
 
-   Или, в журнал действий hello tooautomatically фильтра для определенного ресурса или ресурса группы выберите **журнал действий** из этой колонки ресурсов. Обратите внимание, что этот журнал активности hello автоматически фильтруется по hello выбранных ресурсов.
+   Или, чтобы автоматически отфильтровать журнал действий по определенному ресурсу или группе ресурсов, выберите **Журнал действий** в колонке этого ресурса. Обратите внимание, что журнал действий автоматически фильтруется по выбранному ресурсу.
    
     ![фильтрация по ресурсам](./media/resource-group-audit/filtered-by-resource.png)
-2. В hello **журнал действий** колонке просмотреть сводку последних операций.
+2. В колонке **Журнал действий** можно просмотреть сводку последних операций.
    
     ![отображение действий](./media/resource-group-audit/audit-summary.png)
-3. Количество операций, отображенных, hello toorestrict выберите различных условий. Hello следующем рисунке показано, hello **Timespan** и **инициировано событие** поля изменить tooview hello действия, предпринимаемые конкретного пользователя или приложения hello прошлый месяц. Выберите **применить** tooview hello результатов запроса.
+3. Чтобы ограничить количество отображаемых операций, выберите различные условия. Например, на следующем рисунке показано, как изменение полей **Временной диапазон** и **Кем инициировано событие** позволяет просмотреть действия конкретного пользователя или приложения за прошлый месяц. Выберите **Применить** для просмотра результатов запроса.
    
     ![установка параметров фильтра](./media/resource-group-audit/set-filter.png)
 
-4. Если требуется запрос toorun hello позже выбрать **Сохранить** и присвойте имя запроса hello.
+4. Если вы хотите повторить тот же запрос позже, выберите **Сохранить** и укажите имя запроса.
    
     ![сохранение запроса](./media/resource-group-audit/save-query.png)
-5. tooquickly при выполнении запроса, можно выбрать один из встроенных запросов hello, например неудачными развертываниями.
+5. Чтобы быстро выполнить запрос, можно выбрать один из встроенных запросов, например запрос невыполненных развертываний.
 
     ![Выбор запроса](./media/resource-group-audit/select-quick-query.png)
 
-   Выбранный запрос Hello автоматически задает hello необходимые значения фильтра.
+   Выбранный запрос автоматически задает необходимые значения фильтра.
 
     ![Просмотр ошибок развертывания](./media/resource-group-audit/view-failed-deployment.png)   
 
-6. Выберите одну из операций hello toosee сводку событий hello.
+6. Выберите одну из операций, чтобы просмотреть сводку по событию.
 
     ![Просмотр операции](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
-1. tooretrieve, записи журнала выполнения hello **Get AzureRmLog** команды. Задаются Дополнительные параметры toofilter hello список записей. Если время начала и окончания не указан, возвращаются записи для hello последний час. Например tooretrieve hello операции для группы ресурсов во время hello последний час запуска:
+1. Чтобы получить записи журнала, выполните команду **Get-AzureRmLog** . Укажите дополнительные параметры, чтобы отфильтровать список записей. Если не указать время начала и окончания, возвращаются записи за последний час. Например, для получения операций для группы ресурсов за последний час выполните следующую команду:
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup
   ```
    
-    Hello в следующем примере показано, как действие hello toouse входа tooresearch операций, выполненных во время указанного времени. Hello даты начала и окончания указаны в формате даты.
+    В следующем примере показано, как использовать журнал действий для анализа действий, выполненных в течение указанного времени. Даты начала и окончания указывайте в формате даты.
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
   ```
 
-    Или можно использовать функции toospecify hello дату диапазона дат, например hello последние 14 дней.
+    Диапазон дат, например последние 14 дней, также можно указать с помощью функций даты.
    
   ```powershell 
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
-2. В зависимости от времени запуска hello, указываемые hello предыдущих команд может возвращать длинный список операций для группы ресурсов hello. Можно фильтровать результаты hello для то, что вы ищете, предоставляя условия поиска. Например если вы пытаетесь tooresearch как веб-приложения было остановлено, можно выполнить hello следующую команду:
+2. В зависимости от указанного времени начала приведенные выше команды могут вернуть длинный список операций для группы ресурсов. Чтобы найти в результатах нужную информацию, отфильтруйте их, используя условия поиска. Например, чтобы проанализировать обстоятельства остановки веб-приложения, выполните приведенную ниже команду.
 
   ```powershell
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/06/2017
   SubStatus         : OK
   ```
 
-3. Можно выполнять поиск hello действия, производимые конкретного пользователя, даже для группы ресурсов, которые больше не существует.
+3. Можно найти действия, выполненные конкретным пользователем, даже для группы ресурсов, которой больше не существует.
 
   ```powershell 
   Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/06/2017
   Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
-5. Просмотрев hello сообщение о состоянии для этой записи, можно сосредоточиться на одну ошибку.
+5. Можно получить сведения об одной ошибке, просмотрев сообщение о состоянии для ее записи.
    
         ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
    
@@ -132,7 +132,7 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="azure-cli"></a>Инфраструктура CLI Azure
-* записи журнала tooretrieve, запустите hello **Показать журнал группу azure** команды.
+* Чтобы получить записи журнала, выполните команду **azure group log show** .
 
   ```azurecli
   azure group log show ExampleGroup --json
@@ -140,11 +140,11 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="rest-api"></a>Интерфейс REST API
-Hello операции REST для работы с журналом hello являются частью hello [API-интерфейса REST аналитики](https://msdn.microsoft.com/library/azure/dn931943.aspx). tooretrieve активности журнала событий, в разделе [список событий управления hello в подписке](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Операции REST для работы с журналом действий включены в интерфейс [REST API Insights](https://msdn.microsoft.com/library/azure/dn931943.aspx). Получение событий журнала действий описано в статье [Список событий управления в подписке](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Журналы Azure действие может использоваться с Power BI toogain лучшее представление о действиях hello в вашей подписке. Дополнительные сведения см. в записи блога [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Журналы аудита Azure в Power BI: просмотр, анализ и другие возможности).
-* toolearn о настройке политик безопасности в разделе [управления доступом на основе ролей Azure](../active-directory/role-based-access-control-configure.md).
-* toolearn о командах hello Просмотр операций развертывания. в разделе [просмотреть операции развертывания](resource-manager-deployment-operations.md).
-* tooprevent удаления ресурса для всех пользователей. в статье toolearn [блокировку ресурсов с помощью диспетчера ресурсов Azure](resource-group-lock-resources.md).
+* Чтобы получить больше информации о действиях в вашей подписке, можно использовать журналы аудита Azure совместно с Power BI. Дополнительные сведения см. в записи блога [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Журналы аудита Azure в Power BI: просмотр, анализ и другие возможности).
+* Дополнительные сведения о настройке политик безопасности см. в статье о [контроле доступа на основе ролей Azure](../active-directory/role-based-access-control-configure.md).
+* Чтобы узнать о командах для просмотра операций развертывания, ознакомьтесь с разделом [View deployment operations with Azure Resource Manager](resource-manager-deployment-operations.md) (Просмотр операций развертывания с помощью Azure Resource Manager).
+* Вы можете запретить всем пользователям операции удаления для определенного ресурса, как описано в статье [Блокировка ресурсов с помощью Azure Resource Manager](resource-group-lock-resources.md).
 

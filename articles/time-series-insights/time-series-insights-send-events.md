@@ -1,6 +1,6 @@
 ---
-title: "aaaSend события tooAzure аналитики ряда времени среда | Документы Microsoft"
-description: "В этом учебнике hello действия toopush события tooyour аналитики ряда времени среды"
+title: "Отправка событий в среду Azure Time Series Insights | Документация Майкрософт"
+description: "Это руководство содержит сведения об отправке событий в среду Time Series Insights."
 keywords: 
 services: tsi
 documentationcenter: 
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: dbccc23f61351a0033cd48c1a02fb3841b45d560
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-events-tooa-time-series-insights-environment-using-event-hub"></a>Отправка событий tooa аналитики ряда времени среды с помощью концентратора событий
+# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Отправка событий в среду Time Series Insights через концентратор событий
 
-В этом учебнике описано как toocreate и настройка концентратора событий и запустить образец приложения toopush событий. Если у вас уже есть концентратор событий, содержащий события в формате JSON, пропустите это руководство и просмотрите свою среду в [Time Series Insights](https://insights.timeseries.azure.com).
+Это руководство содержит сведения о том, как создать и настроить концентратор событий и запустить пример приложения для передачи событий. Если у вас уже есть концентратор событий, содержащий события в формате JSON, пропустите это руководство и просмотрите свою среду в [Time Series Insights](https://insights.timeseries.azure.com).
 
 ## <a name="configure-an-event-hub"></a>Настройка концентратора событий
-1. toocreate концентратора событий, следуйте инструкциям из концентратора событий hello [документации](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+1. Чтобы создать концентратор событий, следуйте инструкциям из [документации](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) по концентратору событий.
 
 2. Создайте группу потребителей, которая используется исключительно источником событий Time Series Insights.
 
   > [!IMPORTANT]
-  > Убедитесь, что эта группа потребителей не используется другой службой (например, заданием Stream Analytics или другой средой Time Series Insights). Если группа потребителей используется другими службами, считать операции отрицательно влияет для этой среды и hello других служб. При использовании как hello группа потребителей «$Default» может привести toopotential повторного использования другими пользователями.
+  > Убедитесь, что эта группа потребителей не используется другой службой (например, заданием Stream Analytics или другой средой Time Series Insights). Если группа потребителей используется другими службами, это негативно скажется на операции чтения в этой среде и в других службах. Использование $Default в качестве группы потребителей может потенциально привести к ее повторному использованию другими читателями.
 
   ![Выбор группы потребителей концентратора событий](media/send-events/consumer-group.png)
 
-3. На концентратор событий hello, создайте «MySendPolicy», используется toosend событий в c# образца hello.
+3. В концентраторе событий создайте политику MySendPolicy, используемую для отправки событий в примере C#.
 
   ![Выбор "Политики общего доступа" и кнопка "Добавить"](media/send-events/shared-access-policy.png)  
 
   ![Добавление новой политики общего доступа](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>Создание источника событий Time Series Insights
-1. Если вы еще не создали источник событий, выполните [эти инструкции](time-series-insights-add-event-source.md) toocreate источника события.
+1. Если вы еще не создали источник событий, создайте его, [следуя инструкциям](time-series-insights-add-event-source.md).
 
-2. Укажите «deviceTimestamp» в качестве имени свойства hello отметка времени — это свойство используется как hello фактическое timestamp в образце hello csharp. Имя свойства timestamp Hello учитывается регистр, и значения должны иметь формат hello __гггг-мм-ДДТЧЧ. FFFFFFFK__ при отправке в качестве концентратора tooevent JSON. Если свойство hello не существует в событии hello, то hello время нахождения концентратора событий будет использоваться.
+2. В качестве имени свойства метки времени укажите deviceTimestamp. Это свойство будет использоваться в качестве фактической метки времени в примере C#. Имя свойства метки времени чувствительно к регистру, поэтому при отправке в концентратор событий в формате JSON значения должны иметь формат __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__. Если свойство не существует в событии, используется время размещения в очереди для концентратора событий.
 
   ![Создание источника событий](media/send-events/event-source-1.png)
 
-## <a name="sample-code-toopush-events"></a>Примеры кода toopush событий
-1. Вернитесь к политики концентратора событий toohello «MySendPolicy» и скопируйте строку подключения hello с ключом политики hello.
+## <a name="sample-code-to-push-events"></a>Пример кода для принудительной отправки событий
+1. Перейдите к политике концентратора событий MySendPolicy и скопируйте строку подключения с ключом политики.
 
   ![Копирование строки подключения MySendPolicy](media/send-events/sample-code-connection-string.png)
 
-2. Запустите после кода hello toosend 600 событий для каждого из трех hello устройств. Обновите `eventHubConnectionString` с помощью строки подключений.
+2. Выполните следующий код, который будет отправлять 600 событий для каждого из трех устройств. Обновите `eventHubConnectionString` с помощью строки подключений.
 
 ```csharp
 using System;
@@ -113,7 +113,7 @@ namespace Microsoft.Rdx.DataGenerator
                 sw.Flush();
                 ms.Position = 0;
 
-                // Send JSON tooevent hub.
+                // Send JSON to event hub.
                 EventData eventData = new EventData(ms);
                 eventHubClient.Send(eventData);
             }
@@ -144,7 +144,7 @@ namespace Microsoft.Rdx.DataGenerator
 ### <a name="sample-2"></a>Пример 2
 
 #### <a name="input"></a>Входные данные
-Массив JSON с двумя объектами JSON. Каждый объект JSON будет преобразованный tooan событий.
+Массив JSON с двумя объектами JSON. Каждый объект JSON будет преобразован в событие.
 ```json
 [
     {
@@ -185,7 +185,7 @@ namespace Microsoft.Rdx.DataGenerator
 
 ```
 #### <a name="output---2-events"></a>Выходные данные, два события
-Обратите внимание, что tooeach события hello копирования hello свойство «местоположение».
+Обратите внимание, что свойство location копируется для каждого события.
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -196,7 +196,7 @@ namespace Microsoft.Rdx.DataGenerator
 
 #### <a name="input"></a>Входные данные
 
-Объект JSON с вложенным массивом JSON, содержащий два объекта JSON. Этот входной демонстрирует, что hello глобальные свойства может быть представлен hello сложный объект JSON.
+Объект JSON с вложенным массивом JSON, содержащий два объекта JSON. Эти входные данные указывают на то, что глобальные свойства могут быть представлены сложным объектом JSON.
 
 ```json
 {

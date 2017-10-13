@@ -1,10 +1,10 @@
 ---
-title: "AAA Azure Stream Analytics управляемых данными отладку с помощью схемы задания hello | Документы Microsoft"
-description: "Устранение неполадок в задание Stream Analytics с помощью схемы задания hello и метрики."
+title: "Отладка на основе данных в Azure Stream Analytics с помощью схемы заданий | Документация Майкрософт"
+description: "Устраняйте неполадки задания Stream Analytics с помощью схемы и метрик заданий."
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,61 +14,61 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: jeffstok
-ms.openlocfilehash: 1af884d485bebb06b034da01a13f7f8240516571
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: samacha
+ms.openlocfilehash: 5b689c07bf8baa531c7a50ca50ed5140c1787e7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="data-driven-debugging-by-using-hello-job-diagram"></a>Отладка с использованием схемы hello задания на основе данных
+# <a name="data-driven-debugging-by-using-the-job-diagram"></a>Отладка на основе данных с помощью схемы заданий
 
-Задание Hello к схеме для hello **мониторинг** колонки в hello Azure портал позволяет наглядно представить конвейер задания. На ней представлены сведения о входных и выходных данных, а также о шагах запроса. Можно использовать hello задания схемы tooexamine hello показатели для каждого шага, toomore быстро изолировать hello источник проблемы при устранении неполадок.
+Схема заданий в колонке **Мониторинг** на портале Azure может вам помочь визуализировать конвейер заданий. На ней представлены сведения о входных и выходных данных, а также о шагах запроса. С помощью схемы заданий можно проанализировать метрики на каждом шаге, чтобы быстро выявить источник проблемы при устранении неполадок.
 
-## <a name="using-hello-job-diagram"></a>С помощью схемы задания hello
+## <a name="using-the-job-diagram"></a>Использование схемы заданий
 
-В hello портал Azure при работе в задание Stream Analytics в группе **поддержки + Устранение неполадок**выберите **схема задания**:
+На портале Azure в задании Stream Analytics в разделе **Поддержка и устранение неполадок** выберите **Схема заданий**:
 
 ![Схема заданий с метриками — расположение](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
-Выберите каждый шаг toosee hello соответствующего раздела запроса в запросе области редактирования. Диаграмма метрик для hello шаг отображается в нижней области на странице приветствия.
+Выберите каждый шаг запроса, чтобы отобразить соответствующий раздел в области изменения запроса. В нижней области на странице отображается диаграмма метрик для шага.
 
 ![Схема заданий с метриками — базовое задание](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Выберите секции hello toosee входа hello концентраторов событий Azure **...** Откроется контекстное меню. Также можно просмотреть входные слияния hello.
+Для просмотра разделов входных данных концентраторов событий Azure выберите **...** Откроется контекстное меню. Кроме того, отобразится инструмент слияния входных данных.
 
 ![Схема заданий с метриками — развертывание раздела](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
-toosee hello метрики диаграммы для только одной секции, узел раздела выберите hello. метрики Hello отображаются внизу hello страницы приветствия.
+Чтобы просмотреть схему с метриками для одного раздела, выберите его узел. Метрики отображаются в нижней части страницы.
 
 ![Схема заданий с метриками — дополнительные метрики](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-4.png)
 
-toosee hello диаграмма метрик для слияния, выберите hello узел слияния. Hello, следующая диаграмма показывает, что события не были удалены или изменены.
+Чтобы увидеть схему метрик для слияния, выберите узел слияния. На следующей схеме видно, что события не были удалены или скорректированы.
 
 ![Схема заданий с метриками — сетка](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-5.png)
 
-сведения о hello toosee значение метрики hello и времени, toohello точки диаграммы.
+Чтобы просмотреть значения метрик и время, наведите указатель мыши на схему.
 
 ![Схема заданий с метриками — наведение](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-6.png)
 
 ## <a name="troubleshoot-by-using-metrics"></a>Устранение неполадок с помощью метрик
 
-Hello **QueryLastProcessedTime** Метрика показывает, когда конкретный шаг полученных данных. Просмотрев hello топологии, можно работать назад от hello toosee процессора на выходные данные шага не получает данные. Если шаг получает данные, перейдите toohello действия запроса перед его. Проверьте hello предыдущего действия запроса есть временное окно, и если прошло достаточно времени для него toooutput данных. (Обратите внимание, времени пребывание час привязанных toohello windows.)
+Метрика **QueryLastProcessedTime** указывает, на каком конкретном шаге были переданы данные. Учитывая топологию, вы можете проанализировать обратный процесс выполнения (начиная от обработчика выходных данных), чтобы понять, на каком шаге данные не передаются. Если данные на шаге не передавались, перейдите к шагу запроса перед текущим шагом. Проверьте, задано ли на предыдущем шаге запроса временное окно и достаточно ли было времени для вывода данных. Учтите, что временные окна имеют почасовую привязку.
  
-Если hello действия предыдущего запроса, процессор ввода используйте hello ввода метрики toohelp ответов hello следующие целевые вопросы. о заданиях, получающих данные из источников входных данных. Если запрос hello секционирована, изучите каждой секции.
+Если на предыдущем этапе не обрабатываются входящие данные, используйте входные метрики, чтобы получить ответ на следующие вопросы о заданиях, получающих данные из источников входных данных. Если запрос разделен, проверьте каждый раздел.
  
 ### <a name="how-much-data-is-being-read"></a>Какой объем данных считывается?
 
-*   **InputEventsSourcesTotal** hello число единиц данных чтения. Например hello количество больших двоичных объектов.
-*   **InputEventsTotal** hello число событий, которые чтения. Эта метрика доступна для каждого раздела.
-*   **InputEventsInBytesTotal** hello число считанных байтов.
+*   **InputEventsSourcesTotal** содержит число прочитанных единиц данных, например больших двоичных объектов.
+*   Метрика **InputEventsTotal** содержит число прочитанных событий. Эта метрика доступна для каждого раздела.
+*   Метрика **InputEventsInBytesTotal** содержит число прочитанных байтов.
 *   Метрика **InputEventsLastArrivalTime** обновляется после размещения в очереди каждого полученного события.
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Отсчитывается ли время? Если фактические события считываются, знаки препинания могут быть опущены.
 
-*   **InputEventsLastPunctuationTime** указывает выдачи знакам препинания tookeep время перемещение вперед. Последовательность данных может быть заблокирована, если знаки препинания будут опущены.
+*   Метрика **InputEventsLastPunctuationTime** указывает, когда знаки препинания используются для отсчета времени. Последовательность данных может быть заблокирована, если знаки препинания будут опущены.
  
-### <a name="are-there-any-errors-in-hello-input"></a>Существуют ли ошибки во входном файле hello?
+### <a name="are-there-any-errors-in-the-input"></a>Есть ли ошибки во входных данных?
 
 *   Метрика **InputEventsEventDataNullTotal** содержит число событий со значением null.
 *   Метрика **InputEventsSerializerErrorsTotal** содержит число событий, десериализацию которых удалось выполнить правильно.
@@ -76,20 +76,20 @@ Hello **QueryLastProcessedTime** Метрика показывает, когда
  
 ### <a name="are-events-being-dropped-or-adjusted"></a>Были ли события удалены или скорректированы?
 
-*   **InputEventsEarlyTotal** hello число событий, которые имеют отметку времени приложения перед hello верхнего предела.
-*   **InputEventsLateTotal** hello число событий, которые имеют отметку времени приложения после hello верхнего предела.
-*   **InputEventsDroppedBeforeApplicationStartTimeTotal** номер события hello удалена перед выполнением время начала задания hello.
+*   Метрика **InputEventsEarlyTotal** содержит число событий с меткой времени для приложения до верхнего предела.
+*   Метрика **InputEventsLateTotal** содержит число событий с меткой времени для приложения после верхнего предела.
+*   Метрика **InputEventsDroppedBeforeApplicationStartTimeTotal** содержит число событий, удаленных до начала выполнения задания.
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Есть ли непрочитанные данные?
 
-*   **InputEventsSourcesBackloggedTotal** сообщает, сколько дополнительные сообщения должны toobe чтения для концентраторов событий и центр IoT Azure входных данных.
+*   Метрика **InputEventsSourcesBackloggedTotal** сообщает, сколько сообщений должен прочитать концентратор событий, а также входные данные Центра Интернета вещей Azure.
 
 
 ## <a name="get-help"></a>Получение справки
 Дополнительную помощь вы можете получить на нашем [форуме Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Введение tooStream аналитика](stream-analytics-introduction.md)
+* [Что такое Stream Analytics?](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics: выявление мошенничества в режиме реального времени](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий Azure Stream Analytics для повышения пропускной способности базы данных](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Справочник по языку запросов Stream Analytics)

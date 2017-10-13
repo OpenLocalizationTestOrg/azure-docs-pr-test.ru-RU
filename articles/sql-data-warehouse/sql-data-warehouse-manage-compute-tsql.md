@@ -1,6 +1,6 @@
 ---
-title: "aaaPause, возобновить, масштабирования с помощью T-SQL в хранилище данных SQL Azure | Документы Microsoft"
-description: "Transact-SQL (T-SQL) задачи tooscale производительности путем настройки Dwu. Сокращение затрат путем свертывания ресурсов в периоды низкой загрузки."
+title: "Приостановка, возобновление и масштабирование ресурсов в хранилище данных SQL Azure с помощью T-SQL | Документация Майкрософт"
+description: "Задачи Transact-SQL (T-SQL) для масштабирования производительности путем изменения числа единиц DWU. Сокращение затрат путем свертывания ресурсов в периоды низкой загрузки."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 03/30/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 84c6868acb673221d8853319ac9a05bb98b2b7c2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9221d72ecf8ab2ba8b04e4bc97eeef7157817cca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-t-sql"></a>Управление вычислительными ресурсами в хранилище данных SQL (T-SQL)
 > [!div class="op_single_selector"]
@@ -33,11 +33,11 @@ ms.lasthandoff: 10/06/2017
 <a name="current-dwu-bk"></a>
 
 ## <a name="view-current-dwu-settings"></a>для просмотра текущих параметров DWU;
-tooview hello текущие DWU параметры для баз данных:
+Для просмотра текущих параметров DWU для своих баз данных:
 
 1. Откройте обозреватель объектов SQL Server в Visual Studio.
-2. Подключение базы данных master toohello, связанные с сервером базы данных SQL логические hello.
-3. Выберите из динамического административного представления sys.database_service_objectives hello. Пример: 
+2. Подключитесь к базе данных master, связанной с логическим сервером базы данных SQL.
+3. Выберите в sys.database_service_objectives динамическое административное представление. Пример: 
 
 ```sql
 SELECT
@@ -56,10 +56,10 @@ JOIN
 ## <a name="scale-compute"></a>Масштабирование вычислительных ресурсов
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-hello toochange Dwu:
+Изменение DWU:
 
-1. Подключение базы данных master toohello, связанный с логической базы данных SQL server.
-2. Используйте hello [инструкции ALTER DATABASE] [ ALTER DATABASE] инструкции t-SQL. Hello следующий пример устанавливает hello службы уровня цели tooDW1000 для базы данных hello MySQLDW. 
+1. Подключитесь к базе данных master, связанной с логическим сервером базы данных SQL.
+2. Используйте оператор TSQL [ALTER DATABASE][ALTER DATABASE]. В приведенном ниже примере для базы данных MySQLDW устанавливается цель уровня обслуживания DW1000. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -71,8 +71,8 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ## <a name="check-database-state-and-operation-progress"></a>Проверка состояния базы данных и хода выполнения операции
 
-1. Подключение базы данных master toohello, связанный с логической базы данных SQL server.
-2. Отправить запрос о состоянии toocheck базы данных
+1. Подключитесь к базе данных master, связанной с логическим сервером базы данных SQL.
+2. Отправьте запрос для проверки состояния базы данных.
 
 ```sql
 SELECT *
@@ -80,7 +80,7 @@ FROM
 sys.databases
 ```
 
-3. Отправить запрос toocheck состояние операции
+3. Отправьте запрос для проверки состояния операции.
 
 ```sql
 SELECT *
@@ -92,7 +92,7 @@ AND
     major_resource_id = 'MySQLDW'
 ```
 
-Это динамическое административное Представление возвращает сведения о различных операций управления на хранилище данных SQL как hello операции и hello состояние операции hello, который будет IN_PROGRESS или ЗАВЕРШЕНА.
+Это динамическое административное представление возвращает сведения о различных операциях управления хранилищем данных SQL, такие как операция и ее состояние, которое будет иметь значение IN_PROGRESS или COMPLETED.
 
 
 

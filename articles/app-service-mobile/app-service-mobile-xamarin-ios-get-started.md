@@ -1,6 +1,6 @@
 ---
-title: "aaaGet работы с мобильные приложения службы приложений Azure для приложения Xamarin.iOS | Документы Microsoft"
-description: "Выполните этот учебник tooget работы с помощью мобильных приложений для разработки Xamarin.iOS."
+title: "Приступая к работе с мобильными приложениями службы приложений Azure для приложений Xamarin.iOS | Документация Майкрософт"
+description: "Этот учебник поможет приступить к использованию мобильных приложений в разработке для Xamarin.iOS."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,66 +14,66 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: syntaxc4
-ms.openlocfilehash: 524c5ac4d8a29d7cb858f74132aad5d6e2201d02
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8dc965df2cd45366970effb29f246b0045a94717
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-a-xamarinios-app"></a>Создание приложения Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
-Этот учебник показывает, как tooadd облачную серверную службу tooa Xamarin.iOS мобильного приложения с помощью внутреннего мобильного приложения Azure.  Вы создадите новую серверную часть мобильного приложения и простое приложение Xamarin.iOS *Todo list*, в котором в Azure хранятся данные приложения.
+В этом учебнике рассказывается, как добавить облачную серверную службу в мобильное приложение Xamarin.iOS с помощью серверной части мобильного приложения Azure.  Вы создадите новую серверную часть мобильного приложения и простое приложение Xamarin.iOS *Todo list*, в котором в Azure хранятся данные приложения.
 
-Изучения этого учебника является необходимым условием для всех других Xamarin.iOS учебников по использованию функции hello мобильные приложения в службе приложений Azure.
+Завершение этого учебника является необходимым условием для других учебников по Xamarin.iOS, посвященных использованию функции мобильных приложений в службе приложений Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
-toocomplete этого учебника требуется hello следующие предварительные требования:
+Для работы с данным руководством вам потребуется:
 
-* Активная учетная запись Azure. Если у вас нет учетной записи, зарегистрируйтесь в пробной версии Azure и получите бесплатные too10 мобильных приложений, которые вы можете продолжать использовать даже после окончания срока действия пробной версии никакие. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Активная учетная запись Azure. Если у вас нет учетной записи, зарегистрируйтесь для получения бесплатной пробной версии Azure и получите до 10 бесплатных мобильных приложений, которые можно использовать и после окончания пробного периода. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Visual Studio с Xamarin. Инструкции см. в статье об [установке и настройке Visual Studio и Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * Компьютер Mac с установленным ПО XCode версии 7.0 или выше и Xamarin Studio Community. См. статьи об [установке и настройке Visual Studio и Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) и [установке, настройке и проверке для пользователей Mac](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Создание серверной части мобильного приложения Azure
-Выполните эти шаги toocreate серверной мобильного приложения.
+Чтобы создать серверную часть мобильного приложения, выполните указанные ниже действия.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-hello-server-project"></a>Настройка проекта сервера hello
-Итак, вы подготовили серверную часть мобильного Azure, которая может использоваться мобильными клиентскими приложениями. Затем загрузить проект сервера для простого «todo list» серверная часть и опубликовать его tooAzure.
+## <a name="configure-the-server-project"></a>Настройка серверного проекта
+Итак, вы подготовили серверную часть мобильного Azure, которая может использоваться мобильными клиентскими приложениями. Теперь скачайте серверный проект со списком простых задач и опубликуйте его в Azure.
 
-Выполните следующие шаги tooconfigure hello server проекта toouse hello либо серверной части hello .NET или Node.js.
+Выполните следующие действия, чтобы настроить серверный проект для использования серверной части .NET или Node.js.
 
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-xamarinios-app"></a>Загрузите и запустите приложение Xamarin.iOS hello
-1. Откройте hello [портал Azure] в окне браузера.
-2. В колонке параметров hello для мобильного приложения, нажмите кнопку **начать** > **Xamarin.iOS**. На этапе 3 нажмите кнопку **Создать приложение** (если вы еще не сделали этого).  Далее щелкните hello **загрузки** кнопки.
+## <a name="download-and-run-the-xamarinios-app"></a>Скачивание и запуск приложения Xamarin.iOS
+1. В окне браузера откройте [портал Azure] .
+2. В колонке параметров мобильного приложения щелкните **Приступая к работе** > **Xamarin.iOS**. На этапе 3 нажмите кнопку **Создать приложение** (если вы еще не сделали этого).  Затем нажмите кнопку **Загрузить** .
 
-      Клиентское приложение, которое подключается мобильной серверной части tooyour загружается. Сохраните файл проекта сжатых hello на локальный компьютер и запишите где сохранить.
-3. Извлеките hello проекта, который вы загрузили и откройте его в Xamarin Studio (или Visual Studio).
+      После этого клиентское приложение, которое подключается к серверной части мобильной службы, будет скачано. Сохраните сжатый файл проекта на локальном компьютере и запомните путь к нему.
+3. Извлеките скачанный проект и откройте его в Xamarin Studio (или Visual Studio).
 
     ![][9]
 
     ![][8]
-4. Нажмите клавишу ключа toobuild hello hello F5 проект и запустить приложение hello в эмуляторе iPhone hello.
-5. В приложение hello введите значимыми текстовыми, таких как *узнать Xamarin*и нажмите кнопку hello  **+**  кнопки.
+4. Нажмите клавишу F5, чтобы выполнить сборку проекта и запустить приложение в эмуляторе iPhone.
+5. В приложении введите содержательный текст, например *Изучение Xamarin*, и нажмите кнопку **+**.
 
     ![][10]
 
-    Данные из запроса hello вставляется в таблицу TodoItem hello. Элементы, хранящиеся в таблице hello возвращаются сервером мобильного приложения hello, а данные отображаются в списке hello.
+    Данные из запроса вставляются в таблицу TodoItem. Элементы, хранящиеся в таблице, возвращаются серверной частью мобильной службы, а данные отображаются в списке.
 
 > [!NOTE]
-> Можно просмотреть hello код, который обращается к tooquery серверной части вашего мобильного приложения и вставить данные в файл QSTodoService.cs C# hello.
+> Код, который обращается к серверной части вашей мобильной службы для запроса и вставки данных, можно просмотреть в файле C# QSTodoService.cs.
 >
 >
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавить приложение tooyour автономной синхронизации](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [Добавить приложение tooyour проверки подлинности](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Добавить приложение Xamarin.Android tooyour уведомлений push](app-service-mobile-xamarin-ios-get-started-push.md)
-* [Управление toouse hello клиента для мобильных приложений Azure](app-service-mobile-dotnet-how-to-use-client-library.md)
+* [Включение автономной синхронизации для мобильного приложения Xamarin.Android](app-service-mobile-xamarin-ios-get-started-offline-data.md)
+* [Добавление проверки подлинности в приложение](app-service-mobile-xamarin-ios-get-started-users.md)
+* [Добавление push-уведомлений в приложение Xamarin.Android](app-service-mobile-xamarin-ios-get-started-push.md)
+* [Использование управляемого клиента для мобильных приложений Azure](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->
 [Getting started with mobile app backends]:#getting-started

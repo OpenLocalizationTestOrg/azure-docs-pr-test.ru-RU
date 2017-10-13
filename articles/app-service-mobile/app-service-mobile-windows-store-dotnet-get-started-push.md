@@ -1,6 +1,6 @@
 ---
-title: "принудительные уведомления aaaAdd tooyour-приложения универсальной платформы Windows (UWP) | Документы Microsoft"
-description: "Узнайте, как toouse мобильные приложения службы приложений Azure и концентраторов уведомлений Azure toosend push-уведомления tooyour универсальной платформы Windows (UWP) приложения."
+title: "Добавление push-уведомлений в приложение универсальной платформы Windows (UWP) | Документация Майкрософт"
+description: "Узнайте, как использовать мобильные приложения службы приложений Azure и центры уведомлений Azure для отправки push-уведомлений в приложение универсальной платформы Windows (UWP)."
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -14,68 +14,68 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.openlocfilehash: 378ce59cab974830c0a3801108b24b30a21ae5cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a14bb0320c1f6a563f766a6a0fad5cf556fe7b70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-push-notifications-tooyour-windows-app"></a>Добавление приложения Windows tooyour уведомлений push
+# <a name="add-push-notifications-to-your-windows-app"></a>Добавление push-уведомлений в приложение Windows
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Обзор
-В этом учебнике добавить push уведомления toohello [краткое руководство по Windows](app-service-mobile-windows-store-dotnet-get-started.md) проекта, чтобы каждый раз при вставке записи push-уведомление отправляется toohello устройства.
+В этом руководстве мы добавим push-уведомления в [простое приложение Windows](app-service-mobile-windows-store-dotnet-get-started.md), чтобы при каждом добавлении новой записи на устройство отправлялось push-уведомление.
 
-Если вы не используете hello загружен проект быстрый запуск сервера, будет необходимо hello пакета расширения уведомлений push. В разделе [работать с сервера базы данных hello .NET SDK для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) для получения дополнительной информации.
+Если вы не используете скачанный проект сервера, необходимо добавить пакет расширений для push-уведомлений. Дополнительные сведения о пакетах расширений для сервера см. в статье [Работа с пакетом SDK для внутреннего сервера .NET для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="configure-hub"></a>Настройка концентратора уведомлений
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Регистрация приложения для работы с push-уведомлениями
-Требуется toosubmit toohello вашего приложения магазина Windows, а затем настроить toointegrate проекта на сервере с принудительной отправкой toosend Windows Notification Service (WNS).
+Вам нужно отправить свое приложение в Магазин Windows, а затем настроить в проекте сервера интеграцию со службами уведомлений Windows (WNS) для отправки push-уведомлений.
 
-1. В обозревателе решений Visual Studio, щелкните правой кнопкой мыши проект приложения hello UWP, щелкните **хранилища** > **связать приложение с hello хранилища...** .
+1. В обозревателе решений Visual Studio щелкните правой кнопкой мыши проект приложения UWP, щелкните **Магазин** > **Связать приложение с Магазином…**.
 
     ![Связь приложения с Магазином Windows](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
-2. В мастере приветствия щелкните **Далее**, войти в учетную запись Майкрософт, введите имя приложения в **зарезервировать новое имя приложения**, нажмите кнопку **резерва**.
-3. После регистрации приложения hello hello успешно создан, выберите новое имя приложения, нажмите кнопку **Далее**, а затем нажмите кнопку **связать**. Это добавляет манифест приложения toohello сведения о регистрации требуется hello магазина Windows.  
-4. Перейдите toohello [центра разработчиков Windows](https://dev.windows.com/en-us/overview)вход с учетной записью Майкрософт, нажмите кнопку Регистрация нового приложения hello в **Мои приложения**, затем разверните **службы**  >  **Push-уведомления**.
-5. В hello **Push-уведомления** щелкните **узла службы Live** под **мобильных служб Microsoft Azure**.
-6. На странице регистрации hello, запишите значение hello в **секреты приложения** и hello **ИД безопасности пакета**, который затем используется tooconfigure серверной части мобильных приложений.
+2. В окне мастера нажмите кнопку **Далее**, выполните вход с помощью учетной записи Майкрософт, введите имя приложения в поле **Зарезервировать новое имя приложения** и нажмите кнопку **Зарезервировать**.
+3. После успешного создания регистрации приложения выберите новое имя приложения, нажмите кнопку **Далее**, а затем кнопку **Связать**. Это добавляет необходимые регистрационные данные Магазина Windows в манифест приложения.  
+4. Перейдите в [Центр разработки для Windows](https://dev.windows.com/en-us/overview), войдите с помощью учетной записи Майкрософт, щелкните "Регистрация нового приложения" в области **Мои приложения**, а затем разверните **Службы** > **Push-уведомления**.
+5. На странице **Push-уведомления** в разделе **Мобильные службы Microsoft Azure** щелкните **Live Services site** (Сайт служб Live).
+6. На странице регистрации запишите значения полей **Секреты приложения** и **SID пакета**, которые вам понадобятся позже при настройке серверной части мобильного приложения.
 
     ![Связь приложения с Магазином Windows](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > Hello секрета клиента и ИД безопасности пакета являются важными элементами обеспечения безопасности. Не сообщайте никому эти значения и не распространяйте их вместе со своим приложением. Hello **идентификатор приложения** с проверки подлинности учетной записи Майкрософт секретный tooconfigure hello.
+   > Секрет клиента и ИД безопасности пакета — это важные учетные данные для безопасного доступа. Не сообщайте никому эти значения и не распространяйте их вместе со своим приложением. **Идентификатор приложения** используется с секретным кодом для настройки аутентификации учетной записи Майкрософт .
    >
    >
 
-## <a name="configure-hello-backend-toosend-push-notifications"></a>Настройка внутреннего toosend hello push-уведомлений
+## <a name="configure-the-backend-to-send-push-notifications"></a>Настройка серверной части для отправки push-уведомлений
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>Обновление сервера toosend hello push-уведомлений
-Процедура hello ниже, соответствующую типу вашего внутреннего проекта&mdash;либо [серверное приложение .NET](#dotnet) или [Node.js серверной](#nodejs).
+## <a id="update-service"></a>Обновление сервера для отправки push-уведомлений
+Используйте приведенную ниже процедуру, которая соответствует типу вашего серверного проекта &mdash; [серверный проект .NET](#dotnet) или [серверный проект Node.js](#nodejs).
 
 ### <a name="dotnet"></a>Серверный проект .NET
-1. В Visual Studio, щелкните правой кнопкой мыши проект сервера hello и нажмите кнопку **управление пакетами NuGet**, поиск Microsoft.Azure.NotificationHubs, а затем нажмите кнопку **установить**. При этом устанавливаются hello концентраторы уведомлений клиентской библиотеки.
-2. Разверните **контроллеров**откройте TodoItemController.cs и добавьте следующее hello операторы using:
+1. В Visual Studio щелкните правой кнопкой мыши серверный проект, затем щелкните **Управление пакетами NuGet**, найдите пакет Microsoft.Azure.NotificationHubs и нажмите кнопку **Установить**. Будет установлена клиентская библиотека центров уведомлений.
+2. Разверните **Контроллеры**, откройте TodoItemController.cs и добавьте следующие операторы using:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.Mobile.Server.Config;
-3. В hello **PostTodoItem** метод, добавьте следующий код после вызова hello слишком hello**InsertAsync**:
+3. В метод **PostTodoItem** добавьте следующий код после вызова **InsertAsync**.
 
-        // Get hello settings for hello server project.
+        // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings =
             this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-        // Get hello Notification Hubs credentials for hello Mobile App.
+        // Get the Notification Hubs credentials for the Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
 
-        // Create hello notification hub client.
+        // Create the notification hub client.
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
@@ -84,25 +84,25 @@ ms.lasthandoff: 10/06/2017
                                 + item.Text + @"</text></binding></visual></toast>";
         try
         {
-            // Send hello push notification.
+            // Send the push notification.
             var result = await hub.SendWindowsNativeNotificationAsync(windowsToastPayload);
 
-            // Write hello success result toohello logs.
+            // Write the success result to the logs.
             config.Services.GetTraceWriter().Info(result.State.ToString());
         }
         catch (System.Exception ex)
         {
-            // Write hello failure result toohello logs.
+            // Write the failure result to the logs.
             config.Services.GetTraceWriter()
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    Этот код показывает toosend концентратора уведомлений hello push-уведомление после вставки нового элемента.
-4. Повторная публикация проекта сервера hello.
+    Этот код заставляет центр уведомлений отправить push-уведомление после вставки элемента задачи.
+4. Повторная публикация серверного проекта
 
 ### <a name="nodejs"></a>Серверный проект Node.js
-1. Если вы еще не сделали этого, [загрузите проект краткое руководство hello](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) или в противном случае используйте hello [интерактивном редакторе в hello портал Azure](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Замените существующий код hello в файле todoitem.js hello hello следующее:
+1. [Скачайте проект быстрого запуска](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) или воспользуйтесь [онлайн-редактором на портале Azure](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor), если вы этого еще не сделали.
+2. Замените существующий код в файле todoitem.js следующим кодом:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -111,19 +111,19 @@ ms.lasthandoff: 10/06/2017
         var table = azureMobileApps.table();
 
         table.insert(function (context) {
-        // For more information about hello Notification Hubs JavaScript SDK,
+        // For more information about the Notification Hubs JavaScript SDK,
         // see http://aka.ms/nodejshubs
         logger.info('Running TodoItem.insert');
 
-        // Define hello WNS payload that contains hello new item Text.
+        // Define the WNS payload that contains the new item Text.
         var payload = "<toast><visual><binding template=\ToastText01\><text id=\"1\">"
                                     + context.item.text + "</text></binding></visual></toast>";
 
-        // Execute hello insert.  hello insert returns hello results as a Promise,
-        // Do hello push as a post-execute action within hello promise flow.
+        // Execute the insert.  The insert returns the results as a Promise,
+        // Do the push as a post-execute action within the promise flow.
         return context.execute()
             .then(function (results) {
-                // Only do hello push if configured
+                // Only do the push if configured
                 if (context.push) {
                     // Send a WNS native toast notification.
                     context.push.wns.sendToast(null, payload, function (error) {
@@ -134,7 +134,7 @@ ms.lasthandoff: 10/06/2017
                         }
                     });
                 }
-                // Don't forget tooreturn hello results from hello context.execute()
+                // Don't forget to return the results from the context.execute()
                 return results;
             })
             .catch(function (error) {
@@ -144,17 +144,17 @@ ms.lasthandoff: 10/06/2017
 
         module.exports = table;
 
-    Это отправляет всплывающее уведомление WNS, содержащий hello item.text при вставке нового элемента todo.
-3. При редактировании файла hello на локальном компьютере повторно опубликуйте проект сервера hello.
+    При вставке нового элемента todo будет отправляться всплывающее уведомление WNS, содержащее item.text.
+3. При редактировании этого файла на локальном компьютере повторно опубликуйте серверный проект.
 
-## <a id="update-app"></a>Добавить приложение tooyour уведомлений push
-Затем приложение необходимо зарегистрировать для получения push-уведомлений при запуске. Уже включена аутентификация, убедитесь в том, что hello пользователь выполняет вход перед попыткой tooregister push-уведомления.
+## <a id="update-app"></a>Добавление push-уведомлений в приложение
+Затем приложение необходимо зарегистрировать для получения push-уведомлений при запуске. Если аутентификация уже включена, убедитесь, что пользователь выполняет вход прежде, чем пытается зарегистрироваться для использования push-уведомлений.
 
-1. Откройте hello **App.xaml.cs** файл проекта и добавьте следующее hello `using` инструкции:
+1. Откройте файл проекта **App.xaml.cs** и добавьте следующие операторы `using`.
 
         using System.Threading.Tasks;
         using Windows.Networking.PushNotifications;
-2. В hello того же файла, добавьте следующее hello **InitNotificationsAsync** toohello определение метода **приложения** класса:
+2. В том же файле добавьте следующее определение метода **InitNotificationsAsync** в класс **App**.
 
         private async Task InitNotificationsAsync()
         {
@@ -162,12 +162,12 @@ ms.lasthandoff: 10/06/2017
             var channel = await PushNotificationChannelManager
                 .CreatePushNotificationChannelForApplicationAsync();
 
-            // Register hello channel URI with Notification Hubs.
+            // Register the channel URI with Notification Hubs.
             await App.MobileService.GetPush().RegisterAsync(channel.Uri);
         }
 
-    Этот код извлекает из WNS hello ChannelURI для приложения hello и затем выполняется регистрация, ChannelURI приложение мобильного приложения службы.
-3. Вверху hello hello **OnLaunched** обработчик событий в **App.xaml.cs**, добавить hello **async** определение метода toohello модификатор и добавьте hello следующий вызов toohello новый  **InitNotificationsAsync** методом, как следующий пример hello:
+    Этот код возвращает ChannelURI для приложения из WNS, а затем регистрирует ChannelURI в мобильном приложении службы приложений.
+3. В верхней части обработчика событий **OnLaunched** в файле **App.xaml.cs** добавьте в определение метода модификатор **async**, а в новый метод **InitNotificationsAsync** добавьте следующий вызов (как в приведенном ниже примере).
 
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -176,8 +176,8 @@ ms.lasthandoff: 10/06/2017
             // ...
         }
 
-    Это гарантирует, что приветствия кратковременных ChannelURI регистрируется при каждом запуске приложения hello.
-4. Перестройте проект приложения UWP. Приложение больше не готов tooreceive всплывающие уведомления.
+    Это обеспечит регистрацию кратковременного ChannelURI при каждом запуске приложения.
+4. Перестройте проект приложения UWP. Теперь приложение готово к получению всплывающих уведомлений.
 
 ## <a id="test"></a>Тестирование push-уведомлений в приложении
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
@@ -185,17 +185,17 @@ ms.lasthandoff: 10/06/2017
 ## <a id="more"></a>Дальнейшие действия
 Дополнительные сведения о push-уведомлениях:
 
-* [Управление toouse hello клиента для мобильных приложений Azure](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
-  Шаблоны обеспечивают гибкость toosend кросс платформенных Push-уведомлений, а также локализованные Push-уведомлений. Узнайте, как шаблоны tooregister.
+* [Использование управляемого клиента для мобильных приложений Azure](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
+  Шаблоны обеспечивают гибкость при отправке push-уведомлений локально и между различными платформами. Узнайте, как регистрировать шаблоны.
 * [Диагностика неполадок, связанных с push-уведомлениями](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Существуют различные причины, по которым уведомления могут теряться или не доходить до устройств. В этом разделе показано, как tooanalyze и выясните, hello корневой причиной сбоев уведомлений push.
+  Существуют различные причины, по которым уведомления могут теряться или не доходить до устройств. В этой статье рассказывается, как проанализировать и определить основную причину сбоев push-уведомлений.
 
-Рассмотрим, продолжая tooone из hello следующие учебники:
+Мы также рекомендуем изучить одно из следующих руководств:
 
-* [Добавить приложение tooyour проверки подлинности](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Узнайте, как пользователи tooauthenticate приложения с поставщиком удостоверений.
+* [Добавление аутентификации в приложение](app-service-mobile-windows-store-dotnet-get-started-users.md)  
+  Узнайте больше о проверке подлинности пользователей приложения с помощью поставщика удостоверений.
 * [Включение автономной синхронизации для приложения](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Узнайте, как автономные tooadd поддерживают приложения с помощью внутреннего сервера мобильного приложения. Автономная синхронизация позволяет конечным пользователям toointeract с мобильным приложением&mdash;Просмотр, добавление или изменение данных&mdash;даже в том случае, если нет сетевого соединения.
+  Узнайте, как добавить в приложение поддержку автономной работы с помощью серверной части мобильного приложения. Автономная синхронизация позволяет пользователям взаимодействовать с мобильным приложением &mdash; просматривать, добавлять или изменять данные &mdash; даже при отсутствии подключения к сети.
 
 <!-- Anchors. -->
 

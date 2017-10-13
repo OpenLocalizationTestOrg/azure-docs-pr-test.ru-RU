@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с SAML SSO for Jira by resolution GmbH | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и единого входа SAML для Jira методом GmbH разрешения."
+description: "Узнайте, как настроить единый вход для Azure Active Directory и SAML SSO for Jira by resolution GmbH."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: a3436a9aa25640e931a61b5ba4a62611e6e07890
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cde5983710185d1e46a5601b16bbfb1c0fcae382
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Руководство по интеграции Azure Active Directory с SAML SSO for Jira by resolution GmbH
 
-В этом учебнике вы узнаете, как toointegrate единого входа SAML для Jira постановлением GmbH с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать SAML SSO for Jira by resolution GmbH с Azure Active Directory (Azure AD).
 
-Интеграция единого входа SAML для Jira постановлением GmbH с Azure AD предоставляет hello следующие преимущества:
+Интеграция SAML SSO for Jira by resolution GmbH с Azure AD предоставляет следующие преимущества.
 
-- Можно управлять в Azure AD, имеющим доступ tooSAML единого входа с разрешением GmbH Jira
-- Можно включить на пользователей tooautomatically get вошедшего tooSAML единого входа для Jira, разрешение GmbH (Single Sign-On) с использованием их учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- Можно управлять доступом пользователей Azure AD к SAML SSO for Jira by resolution GmbH.
+- Можно включить автоматический вход пользователей в SAML SSO for Jira by resolution GmbH (единый вход) с учетными записями Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с помощью единого входа SAML для Jira постановлением GmbH требуется hello следующих элементов:
+Для настройки интеграции Azure AD с SAML SSO for Jira by resolution GmbH требуется:
 
 - подписка Azure AD;
 - подписка SAML SSO for Jira by resolution GmbH с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление единого входа SAML для Jira путем разрешения GmbH из галереи hello
+1. Добавление SAML SSO for Jira by resolution GmbH из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-saml-sso-for-jira-by-resolution-gmbh-from-hello-gallery"></a>Добавление единого входа SAML для Jira путем разрешения GmbH из галереи hello
-tooconfigure hello интеграции единого входа SAML для Jira постановлением GmbH в Azure AD, необходимо tooadd единого входа SAML для Jira постановлением GmbH из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-saml-sso-for-jira-by-resolution-gmbh-from-the-gallery"></a>Добавление SAML SSO for Jira by resolution GmbH из коллекции
+Чтобы настроить интеграцию SAML SSO for Jira by resolution GmbH в Azure AD, необходимо добавить SAML SSO for Jira by resolution GmbH из коллекции в список управляемых приложений SaaS.
 
-**tooadd единого входа SAML для Jira постановлением GmbH из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить SAML SSO for Jira by resolution GmbH из коллекции, выполните следующее.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **единого входа SAML для Jira постановлением GmbH**.
+4. В поле поиска введите **SAML SSO for Jira by resolution GmbH**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_search.png)
 
-5. В панели результатов hello выберите **единого входа SAML для Jira постановлением GmbH**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **SAML SSO for Jira by resolution GmbH** и нажмите кнопку **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в SAML SSO for Jira by resolution GmbH с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователя аналог какие hello в единый вход SAML для Jira постановлением GmbH является tooa пользователем в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей в единый вход SAML для Jira постановлением hello GmbH должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в SAML SSO for Jira by resolution GmbH соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в SAML SSO for Jira by resolution GmbH.
 
-В единый вход SAML для Jira постановлением GmbH, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в SAML SSO for Jira by resolution GmbH.
 
-tooconfigure и выполнить проверку Azure AD единого входа с помощью единого входа SAML Jira методом GmbH разрешения, необходимые hello toocomplete следующие стандартные блоки.
+Чтобы настроить и проверить единый вход Azure AD в SAML SSO for Jira by resolution GmbH, требуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание единого входа SAML для Jira теста пользователем разрешение GmbH](#creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user)**  -toohave аналог Саймон Britta в единый вход SAML для Jira постановлением GmbH, представление связанных toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя SAML SSO for Jira by resolution GmbH](#creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user)** требуется, чтобы создать в SAML SSO for Jira by resolution GmbH пользователя Britta Simon, связанного с соответствующим пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей единого входа SAML для Jira постановлением GmbH приложения.
+В данном разделе описано, как включить единый вход в Azure AD на портале Azure и настроить его в приложении SAML SSO for Jira by resolution GmbH.
 
-**tooconfigure Azure AD единого входа с помощью единого входа SAML для Jira постановлением GmbH, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в SAML SSO for Jira by resolution GmbH, выполните следующее.**
 
-1. В hello в hello портала Azure **единого входа SAML для Jira постановлением GmbH** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **SAML SSO for Jira by resolution GmbH** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_samlbase.png)
 
-3. На hello **единого входа SAML Jira постановлением GmbH доменов и URL-адреса** статьи, при желании tooconfigure приложения hello в **IDP** инициировал режим:
+3. Если вы хотите настроить приложение в режиме, инициированном **IdP**, то в разделе **Домены и URL-адреса приложения SAML SSO for Jira by resolution GmbH** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_1.png)
 
-    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
+    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`.
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, При необходимости приложение hello tooconfigure в **SP** инициировал режим:
+4. Установите флажок **Показать дополнительные параметры URL-адресов**, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_url_2.png)
 
-    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<server-base-url>/plugins/servlet/samlsso`
+    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<server-base-url>/plugins/servlet/samlsso`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Обратитесь к [поддержки единого входа SAML для Jira постановлением GmbH клиента](https://www.resolution.de/go/support) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. Обратитесь к [группе поддержки SAML SSO for Jira by resolution GmbH](https://www.resolution.de/go/support) для получения этих значений. 
 
-5. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+5. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_certificate.png) 
 
@@ -131,21 +131,21 @@ tooconfigure и выполнить проверку Azure AD единого вх
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_general_400.png)
     
-7. В другом окне браузера, войдите в tooyour **единого входа SAML для Jira с портала администрирования GmbH разрешение** с правами администратора.
+7. В другом окне браузера войдите на **портал администрирования SAML SSO for Jira by resolution GmbH** с правами администратора.
 
-8. Наведите указатель мыши на шестеренки и выберите hello **надстройки**.
+8. Наведите указатель мыши на шестеренку и щелкните **Add-ons** (Надстройки).
     
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon1.png)
 
-9. Все страницы перенаправленный tooAdministrator доступа. Введите hello **пароль** и нажмите кнопку **Подтверждение** кнопки.
+9. Вы перейдете на страницу доступа с правами администратора. Введите **пароль** и нажмите кнопку **Confirm** (Подтвердить).
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon2.png)
 
-10. На вкладке "Add-ons" (Надстройки) щелкните **Find new add-ons** (Найти новые надстройки). Поиск **SAML единого входа (SSO) для JIRA** и нажмите кнопку **установить** tooinstall кнопку hello нового подключаемого модуля SAML.
+10. На вкладке "Add-ons" (Надстройки) щелкните **Find new add-ons** (Найти новые надстройки). Найдите подключаемый модуль **SAML Single Sign On (SSO) for Jira** и нажмите кнопку **Install** (Установить), чтобы установить новый подключаемый модуль SAML.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon7.png)
 
-11. Установка подключаемого модуля Hello начнется. Нажмите кнопку **Закрыть**
+11. Начнется установка подключаемого модуля. Нажмите кнопку **Закрыть**
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon8.png)
 
@@ -155,11 +155,11 @@ tooconfigure и выполнить проверку Azure AD единого вх
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon10.png)
     
-13. Нажмите кнопку **Настройка** tooconfigure hello нового подключаемого модуля.
+13. Щелкните **Configure** (Настройка), чтобы настроить новый подключаемый модуль.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon11.png)
 
-14. На **конфигурации подключаемый модуль единого входа SAML** щелкните **Добавление дополнительного поставщика удостоверений** кнопку tooconfigure hello параметры поставщика удостоверений.
+14. На странице **SAML SingleSignOn Plugin Configuration** (Конфигурация подключаемого модуля единого входа SAML) нажмите кнопку **Add additional Identity Provider** (Добавить дополнительный поставщик удостоверений), чтобы настроить параметры поставщика удостоверений.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon4.png)
 
@@ -167,69 +167,69 @@ tooconfigure и выполнить проверку Azure AD единого вх
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon5.png)
  
-    а. Добавить **имя** из hello поставщика удостоверений (например, Azure AD).
+    а. Добавьте **имя** поставщика удостоверений (например, Azure AD).
     
-    b. Добавить **описание** из hello поставщика удостоверений (например, Azure AD).
+    b. Добавьте **описание** поставщика удостоверений (например, Azure AD).
 
-    c. Нажмите кнопку **XML** и выберите hello **метаданные** файл, загруженный с портала Azure.
+    c. Щелкните **XML** и выберите файл **метаданных**, скачанный с портала Azure.
 
-    d. Нажмите кнопку **Load** (Загрузить).
+    г) Нажмите кнопку **Load** (Загрузить).
 
-    д. Считывает метаданные поставщика удостоверений hello и заполняет поля hello, как показано на снимке экрана приветствия.   
+    д. Будут считаны метаданные поставщика удостоверений и заполнены поля, как показано на снимке экрана. 
 
-16. Нажмите кнопку **сохранить параметры** кнопку Параметры toosave hello.
+16. Нажмите кнопку **Save settings** (Сохранить параметры), чтобы сохранить параметры.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/addon6.png)
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-samlssojira-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-saml-sso-for-jira-by-resolution-gmbh-test-user"></a>Создание тестового пользователя SAML SSO for Jira by resolution GmbH
 
-Пользователи toolog tooenable Azure AD в tooSAML единого входа для Jira постановлением GmbH, их необходимо подготовить в единый вход SAML для Jira методом GmbH разрешения.  
+Чтобы пользователи Azure AD могли входить в SAML SSO for Jira by resolution GmbH, их необходимо подготовить в SAML SSO for Jira by resolution GmbH.  
 Подготовка в SAML SSO for Jira by resolution GmbH выполняется вручную.
 
-**tooprovision учетной записи пользователя, выполните следующие шаги hello.**
+**Чтобы подготовить учетную запись пользователя, сделайте следующее:**
 
-1. Войдите в tooyour единого входа SAML для Jira путем разрешения GmbH корпоративный сайт с правами администратора.
+1. Войдите на свой корпоративный сайт SAML SSO for Jira by resolution GmbH с правами администратора.
 
-2. Наведите указатель мыши на шестеренки и выберите hello **Управление пользователями**.
+2. Наведите указатель мыши на шестеренку и щелкните **User management** (Управление пользователями).
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssojira-tutorial/user1.png) 
 
-3. Являются tooenter страницы доступ перенаправленной tooAdministrator **пароль** и нажмите кнопку **Подтверждение** кнопки.
+3. Вы будете перенаправлены на страницу доступа с правами администратора. Введите **пароль** и нажмите кнопку **Confirm** (Подтвердить).
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssojira-tutorial/user2.png) 
 
@@ -237,37 +237,37 @@ tooconfigure и выполнить проверку Azure AD единого вх
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssojira-tutorial/user3.png) 
 
-5. На hello **«Создать пользователя»** диалогового окна выполните следующие шаги hello:
+5. На странице **Create New User** (Создание пользователя) выполните следующие действия.
 
     ![Добавление сотрудника](./media/active-directory-saas-samlssojira-tutorial/user4.png) 
 
-    а. В hello **адрес электронной почты** в текстовое поле типа hello адрес электронной почты пользователя, например Brittasimon@contoso.com.
+    а. В текстовом поле **Email address** (Адрес электронной почты) введите адрес электронной почты пользователя, например Brittasimon@contoso.com.
 
-    b. В hello **полное имя** текстовое поле, полное имя типа пользователя hello как Саймон Britta.
+    b. В текстовом поле **Full Name** (Полное имя) введите полное имя пользователя, например Britta Simon.
 
-    c. В hello **Username** электронной почты hello тип пользователя в текстовое поле, например Brittasimon@contoso.com.
+    c. В текстовом поле **Username** (Имя пользователя) введите электронный адрес пользователя, например Brittasimon@contoso.com.
 
-    d. В hello **пароль** текстового поля, типа hello пароль пользователя.
+    г) В текстовом поле **Password** (Пароль) введите пароль пользователя.
 
     д. Щелкните **Create user** (Создать пользователя).   
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooSAML единого входа для Jira методом GmbH разрешения.
+В этом разделе описано, как позволить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к SAML SSO for Jira by resolution GmbH.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooSAML Britta Simon единого входа для Jira постановлением GmbH, выполните hello следующие шаги.**
+**Чтобы назначить пользователя Britta Simon в SAML SSO for Jira by resolution GmbH, выполните следующее.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **единого входа SAML для Jira постановлением GmbH**.
+2. Из списка приложений выберите **SAML SSO for Jira by resolution GmbH**.
 
     ![Настройка единого входа](./media/active-directory-saas-samlssojira-tutorial/tutorial_samlssojira_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -275,7 +275,7 @@ tooconfigure и выполнить проверку Azure AD единого вх
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -283,14 +283,14 @@ tooconfigure и выполнить проверку Azure AD единого вх
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello единого входа SAML для Jira путем разрешения GmbH плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour единого входа SAML для Jira постановлением GmbH приложения.
+Щелкнув элемент SAML SSO for Jira by resolution GmbH на панели доступа, вы должны автоматически войти в свое приложение SAML SSO for Jira by resolution GmbH.
 Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

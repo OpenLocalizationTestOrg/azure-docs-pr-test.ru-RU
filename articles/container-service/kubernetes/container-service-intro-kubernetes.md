@@ -1,6 +1,6 @@
 ---
-title: "aaaIntroduction tooAzure контейнер службы для Kubernetes | Документы Microsoft"
-description: "Служба Azure контейнер для Kubernetes делает простой toodeploy и управлять приложениями на основе контейнера в Azure."
+title: "Знакомство со службой контейнеров Azure для Kubernetes | Документация Майкрософт"
+description: "Служба контейнеров Azure для Kubernetes упрощает развертывание и администрирование контейнерных приложений в Azure."
 services: container-service
 documentationcenter: 
 author: gabrtv
@@ -17,22 +17,22 @@ ms.workload: na
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: bfc85a180bdf4a405c9047eb882d3eed01640dd1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 92cdbe20e7a2974a734dfed5294c547866050290
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="introduction-tooazure-container-service-for-kubernetes"></a>Введение tooAzure контейнер службы для Kubernetes
-Служба Azure контейнер для Kubernetes делает простой toocreate, настройки и управления кластера виртуальных машин, которые являются предварительно настроенных toorun контейнерных приложений. Это позволяет вам toouse существующие навыки работы или рисования при растущих части опытом сообщества, toodeploy и управлять приложениями на основе контейнера на Microsoft Azure.
+# <a name="introduction-to-azure-container-service-for-kubernetes"></a>Знакомство со службой контейнеров Azure для Kubernetes
+Служба контейнеров Azure для Kubernetes упрощает создание, настройку и администрирование кластера виртуальных машин, настроенных для запуска контейнерных приложений. Это позволяет использовать имеющиеся навыки либо положиться на опыт обширного и постоянно увеличивающегося сообщества при развертывании приложений на основе контейнера в Microsoft Azure и управлении ими.
 
-С помощью контейнера службы Azure, можно воспользоваться преимуществами hello функций корпоративного уровня, Azure, одновременно сохраняя переносимость приложения через Kubernetes и hello Docker формат изображения.
+Служба контейнеров Azure позволяет пользоваться преимуществами функций корпоративного уровня в Azure, сохраняя при этом возможность переноса приложений в Kubernetes и поддержку формата образов Docker.
 
 ## <a name="using-azure-container-service-for-kubernetes"></a>Использование службы контейнеров Azure для Kubernetes
-Наша цель, с помощью контейнера службы Azure — tooprovide среды размещения контейнера с помощью средств с открытым исходным кодом и технологии, которые часто используются для наших заказчиков сегодня. конец toothis мы предоставляем hello стандартные конечные точки Kubernetes API. Используя эти стандартные конечные точки, может использовать программное обеспечение, которое поддерживает обмен данными tooa Kubernetes кластера. Например, можно выбрать [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/), [Helm](https://helm.sh/) или [Draft](https://github.com/Azure/draft).
+Цель, которой мы стремимся достичь с помощью службы контейнеров Azure, заключается в том, чтобы предоставить среду для размещения контейнеров, применяя средства и технологии с открытым исходным кодом, которые сейчас пользуются популярностью среди наших клиентов. Для этого мы предоставляем стандартные конечные точки API Kubernetes. С помощью этих стандартных конечных точек можно использовать любое программное обеспечение, способное взаимодействовать с кластером Kubernetes. Например, можно выбрать [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/), [Helm](https://helm.sh/) или [Draft](https://github.com/Azure/draft).
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service"></a>Создание кластера Kubernetes с помощью службы контейнеров Azure
-toobegin с помощью контейнера службы Azure, развернуть кластер контейнера службы Azure с hello [Azure CLI 2.0](container-service-kubernetes-walkthrough.md) или через портал hello (hello поиска Marketplace для **контейнера службы Azure**). Опытных пользователей, которым необходим больший контроль над hello шаблоны диспетчера ресурсов Azure можно использовать Привет открыть источник [acs ядра](https://github.com/Azure/acs-engine) toobuild проект собственных пользовательских Kubernetes кластера и его развертывания через hello `az` CLI.
+Чтобы приступить к работе со службой контейнеров Azure, разверните кластер службы контейнеров Azure с помощью [Azure CLI 2.0](container-service-kubernetes-walkthrough.md) или портала (выполните в Marketplace поиск по словам **служба контейнеров Azure**). Если вы — опытный пользователь, которому требуется дополнительный контроль над шаблонами Azure Resource Manager, вы можете создать пользовательский кластер Kubernetes и развернуть его с помощью интерфейса командной строки `az`, используя проект с открытым кодом [acs-engine](https://github.com/Azure/acs-engine).
 
 ### <a name="using-kubernetes"></a>Использование Kubernetes
 Kubernetes автоматизирует развертывание, масштабирование приложений-контейнеров и управление ими. Это решение предоставляет обширный набор возможностей, в том числе:
@@ -47,7 +47,7 @@ Kubernetes автоматизирует развертывание, масшта
 
 Архитектура службы Kubernetes, развернутой с помощью службы контейнеров Azure:
 
-![Служба Azure контейнера настроен toouse Kubernetes.](media/acs-intro/kubernetes.png)
+![Служба контейнеров Azure, настроенная для использования Kubernetes.](media/acs-intro/kubernetes.png)
 
 ## <a name="videos"></a>Видеоролики
 
@@ -65,4 +65,4 @@ Kubernetes автоматизирует развертывание, масшта
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Просмотр hello [краткое руководство Kubernetes](container-service-kubernetes-walkthrough.md) toobegin сегодня изучение контейнера службы Azure.
+Изучите [краткое руководство по Kubernetes](container-service-kubernetes-walkthrough.md), чтобы приступить к работе со службой контейнеров Azure прямо сейчас.

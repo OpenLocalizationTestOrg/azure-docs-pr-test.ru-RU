@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall .NET на ролях в облачных службах Azure | Документы Microsoft"
-description: "В этой статье описывается toomanually установки hello .NET Framework на роли рабочих и веб-облачной службы"
+title: "Установка .NET для ролей облачных служб Azure | Документация Майкрософт"
+description: "В этой статье описывается, как вручную установить платформу .NET Framework для веб-роли и рабочей роли облачной службы."
 services: cloud-services
 documentationcenter: .net
 author: thraka
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: adegeo
-ms.openlocfilehash: 45f0f30221292f98c591511b091b02ebe1c1272c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9cffa275ae6b9315b821d3160b17a997a1523f7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Установка .NET для ролей облачных служб Azure
-В этой статье описывается, как tooinstall версии платформы .NET Framework, не входящие в состав hello гостевой ОС Azure. Можно использовать .NET на гостевой ОС tooconfigure hello роли рабочих и веб-облачной службы.
+В этой статье описывается установка версий платформы .NET Framework, которые не входят в состав гостевой ОС Azure. .NET в гостевой ОС можно использовать для настройки веб-ролей и рабочих ролей облачной службы.
 
-Например можно установить .NET 4.6.1 на hello семейства гостевых ОС 4, который не входят в состав всех выпусков .NET 4.6. (hello семейства гостевой ОС 5 поставляются с .NET 4.6.) Для hello последнюю информацию относительно hello выпусков гостевой ОС Azure см. в разделе hello [новости выпуска гостевой ОС Azure](cloud-services-guestos-update-matrix.md). 
+Например, можно установить .NET 4.6.1 в семействе версий 4 гостевых ОС, которые не входят в состав какого-либо из выпусков .NET 4.6. (Семейство версий 5 гостевых ОС поставляется с NET 4.6.) Самые актуальные сведения о выпусках гостевой ОС Azure см. в статье [Таблица совместимости выпусков гостевых ОС Azure и пакетов SDK](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Hello Azure SDK 2.9 содержит ограничения на развертывание .NET 4.6 в гостевой ОС семейства hello 4 или более ранней версии. Доступно исправление для hello ограничения на hello [документы Microsoft](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) сайта.
+>Пакет SDK 2.9 для Azure содержит ограничение на развертывание .NET 4.6 в семействе версий 4 гостевых ОС. Исправление ограничения доступно на сайте [документации Майкрософт](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
-tooinstall .NET на веб- и рабочих ролей, включают веб-установщик .NET hello как часть проекта облачной службы. Запустите установщик hello как часть задач запуска роли hello. 
+Чтобы установить .NET для веб-ролей и рабочих ролей, включите веб-установщик .NET в качестве части проекта облачной службы. Запустите установщик в рамках задач запуска роли. 
 
-## <a name="add-hello-net-installer-tooyour-project"></a>Добавление проекта tooyour установщика .NET hello
-toodownload hello веб-установщик для hello .NET Framework выберите версию hello, что требуется tooinstall:
+## <a name="add-the-net-installer-to-your-project"></a>Добавление установщика .NET в проект
+Чтобы скачать веб-установщик для платформы .NET Framework, выберите версию, которую требуется установить:
 
 * [Веб-установщик .NET 4.7](http://go.microsoft.com/fwlink/?LinkId=825298).
 * [Веб-установщик .NET 4.6.1](http://go.microsoft.com/fwlink/?LinkId=671729).
 
-Установщик hello tooadd *web* роли:
+Чтобы добавить установщик для *веб*-роли:
   1. В **обозревателе решений** в разделе **Роли** проекта облачной службы щелкните правой кнопкой мыши *веб-роль* и выберите **Добавить** > **Новая папка**. Создайте папку с именем **bin**.
-  2. Щелкните правой кнопкой мыши папку bin hello и выберите **добавить** > **существующий элемент**. Выберите установщик .NET hello и добавить его папку bin toohello.
+  2. Щелкните правой кнопкой мыши папку bin и выберите **Добавить** > **Существующий элемент**. Выберите установщик .NET и добавьте его в папку bin.
   
-Установщик hello tooadd *рабочих* роли:
-* Щелкните правой кнопкой мыши *рабочую* роль и выберите **Добавить** > **Существующий элемент**. Выберите установщик .NET hello и добавьте его toohello роли. 
+Чтобы добавить установщик для *рабочей* роли:
+* Щелкните правой кнопкой мыши *рабочую* роль и выберите **Добавить** > **Существующий элемент**. Выберите установщик .NET и добавьте его в роль. 
 
-При добавлении файлов в папке содержимого роли toohello способом, они автоматически добавляются tooyour пакет облачной службы. Hello файлы, затем последовательно развернутой tooa согласованное на виртуальной машине hello. Повторите эту процедуру для каждой из рабочих и веб-ролей в облачной службе, таким образом, что все роли копию установщика hello.
+При добавлении файлов таким образом в папку содержимого роли они автоматически добавляются в пакет облачной службы. Файлы затем развертываются в согласованное расположение на виртуальной машине. Повторите эту процедуру для каждой веб-роли и рабочей роли в облачной службе, чтобы у всех ролей была копия установщика.
 
 > [!NOTE]
-> Установите .NET 4.6.1 в роль облачной службы, даже если приложению необходим .NET 4.6. Hello гостевой ОС содержит hello базы знаний [обновление 3098779](https://support.microsoft.com/kb/3098779) и [обновление 3097997](https://support.microsoft.com/kb/3097997). Проблемы могут возникнуть при запуске приложений .NET, если .NET 4.6 устанавливается поверх hello базы знаний Майкрософт. Эти проблемы tooavoid установить .NET 4.6.1 вместо версии 4.6. Дополнительные сведения см. в разделе hello [статьи базы знаний 3118750](https://support.microsoft.com/kb/3118750).
+> Установите .NET 4.6.1 в роль облачной службы, даже если приложению необходим .NET 4.6. Гостевая ОС включает [обновление 3098779](https://support.microsoft.com/kb/3098779) и [обновление 3097997](https://support.microsoft.com/kb/3097997) базы знаний. Проблемы могут возникнуть при запуске приложений .NET, если .NET 4.6 установлена поверх обновлений базы знаний Майкрософт. Чтобы избежать этих проблем, установите .NET 4.6.1 вместо версии 4.6. Дополнительные сведения см. в [статье базы знаний 3118750](https://support.microsoft.com/kb/3118750).
 > 
 > 
 
 ![Роль с файлами установщика][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>Определение начальных задач для ролей
-Можно использовать операции tooperform запуска задачи до запуска роли. Установка .NET Framework hello как часть задачи запуска hello гарантирует, что framework hello устанавливается перед выполнением любого кода приложения. Дополнительные сведения о начальных задачах см. в статье [Как настроить и выполнить задачи запуска для облачной службы](cloud-services-startup-tasks.md). 
+С помощью задач запуска вы можете выполнять различные операции перед запуском роли. Установка платформы .NET Framework как части начальной задачи позволяет установить платформу до того, как будет запущено выполнение программного кода. Дополнительные сведения о начальных задачах см. в статье [Как настроить и выполнить задачи запуска для облачной службы](cloud-services-startup-tasks.md). 
 
-1. Добавьте следующие файл ServiceDefinition.csdef содержимого toohello под hello hello **WebRole** или **WorkerRole** узел для всех ролей:
+1. В файл ServiceDefinition.csdef в узле **WebRole** или **WorkerRole** добавьте для всех ролей следующее содержимое:
    
     ```xml
     <LocalResources>
@@ -75,29 +75,29 @@ toodownload hello веб-установщик для hello .NET Framework выб
     </Startup>
     ```
    
-    Hello предыдущей конфигурации выполняется команда консоли hello `install.cmd` с tooinstall привилегии администратора hello .NET Framework. Hello конфигурации также создает **LocalStorage** элемента с именем **NETFXInstall**. сценарий запуска Hello задает hello временной папке toouse этого ресурса локального хранилища. 
+    Предыдущая конфигурация выполняет консольную команду `install.cmd` с правами администратора и устанавливает платформу .NET Framework. Конфигурация также создает элемент **LocalStorage** с именем **NETFXInstall**. Сценарий запуска задает временную папку для использования этого локального ресурса хранилища. 
     
     > [!IMPORTANT]
-    > tooensure исправление установки Framework hello, размер набора hello этот ресурс tooat бы 1024 МБ.
+    > Для обеспечения правильной установки платформы размер этого ресурса должен быть не менее 1024 МБ.
     
     Дополнительные сведения о задачах запуска см. в статье [Стандартные задачи запуска в облачной службе](cloud-services-startup-tasks-common.md).
 
-2. Создайте файл с именем **install.cmd** и добавьте следующее hello установить toohello файл сценария.
+2. Создайте файл с именем **install.cmd** и добавьте в него следующий скрипт установки.
 
-    Hello скрипт проверяет, hello указанную версию .NET Framework hello уже установлены ли на компьютере hello путем отправки запроса реестр hello. Если не установлена версия hello .NET, веб-установщик .NET hello открывается. toohelp поиска и устранения неполадок, скрипт hello регистрирует все действия toohello файл startuptasklog-(текущую дату и время) .txt, хранящиеся в **InstallLogs** локального хранилища.
+    Скрипт путем поиска по реестру проверяет, установлена ли на компьютере выбранная версия .NET Framework. Если требуемая версия .NET не установлена, открывается веб-установщик .NET. Для помощи в устранении возникших проблем скрипт регистрирует все действия в файл startuptasklog-(текущая дата и время).txt, который хранится в локальном хранилище **InstallLogs**.
 
     > [!IMPORTANT]
-    > Используйте простой текстовый редактор, как файл install.cmd hello toocreate программы Блокнот. При использовании Visual Studio toocreate текстовый файл и измените расширение too.cmd hello, hello файл по-прежнему может содержать метку порядка байтов UTF-8. Марка может вызвать ошибку при выполнении первой строки скрипта hello hello. tooavoid эту ошибку, сделать hello первую строку hello скрипт оператор REM, могут быть пропущены при обработке порядок байтов hello. 
+    > Для создания файла install.cmd используйте простой текстовый редактор, например Блокнот. Если для создания текстового файла и изменения расширения на .cmd используется Visual Studio, файл по-прежнему может содержать метку порядка байтов UTF-8. Эта метка может вызвать ошибку при выполнении первой строки скрипта. Чтобы избежать этой ошибки, сделайте первую строку скрипта оператором REM, который может быть пропущен при обработке порядка байтов. 
     > 
     >
    
     ```cmd
-    REM Set hello value of netfx tooinstall appropriate .NET Framework. 
-    REM ***** tooinstall .NET 4.5.2 set hello variable netfx too"NDP452" *****
-    REM ***** tooinstall .NET 4.6 set hello variable netfx too"NDP46" *****
-    REM ***** tooinstall .NET 4.6.1 set hello variable netfx too"NDP461" *****
-    REM ***** tooinstall .NET 4.6.2 set hello variable netfx too"NDP462" *****
-    REM ***** tooinstall .NET 4.7 set hello variable netfx too"NDP47" *****
+    REM Set the value of netfx to install appropriate .NET Framework. 
+    REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
+    REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
+    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
+    REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
+    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
     set netfx="NDP47"
 
     REM ***** Set script start timestamp *****
@@ -108,7 +108,7 @@ toodownload hello веб-установщик для hello .NET Framework выб
     REM ***** Exit script if running in Emulator *****
     if %ComputeEmulatorRunning%=="true" goto exit
 
-    REM ***** Needed toocorrectly install .NET 4.6.1, otherwise you may see an out of disk space error *****
+    REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
     set TMP=%PathToNETFXInstall%
     set TEMP=%PathToNETFXInstall%
 
@@ -167,7 +167,7 @@ toodownload hello веб-установщик для hello .NET Framework выб
         echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
 
     :restart
-    echo Restarting toocomplete .NET (%netfx%) installation >> %startuptasklog%
+    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
     EXIT /B %ERRORLEVEL%
 
     :installed
@@ -181,20 +181,20 @@ toodownload hello веб-установщик для hello .NET Framework выб
     ```
    
    > [!NOTE]
-   > Этот сценарий показывает, как tooinstall .NET 4.5.2 или версии 4.6 для обеспечения непрерывности, даже если уже находится в .NET 4.5.2 hello гостевой ОС Azure. Необходимо непосредственно установить .NET 4.6.1 вместо версии 4.6, как описано в hello [статьи базы знаний 3118750](https://support.microsoft.com/kb/3118750).
+   > Этот скрипт показывает, как установить .NET 4.5.2 или 4.6 для обеспечения непрерывности работы, несмотря на то что версия .NET 4.5.2 уже доступна в гостевой ОС Azure. Необходимо сразу же установить .NET 4.6.1 вместо версии 4.6, как описано в [статье базы знаний 3118750](https://support.microsoft.com/kb/3118750).
    > 
    > 
 
-3. Добавить роль hello install.cmd файл tooeach с помощью **добавить** > **существующий элемент** в **обозревателе решений** как описано ранее в этом разделе. 
+3. Добавьте файл install.cmd для каждой роли, используя команды **Добавить** > **Существующий элемент** в **обозревателе решений**, как описано ранее в этой статье. 
 
-    После завершения этого шага все роли должны иметь файл установщика .NET hello и файл install.cmd hello.
+    После завершения этого шага все роли должны иметь файл установщика .NET и файл install.cmd.
 
    ![Роль со всеми файлами][2]
 
-## <a name="configure-diagnostics-tootransfer-startup-logs-tooblob-storage"></a>Настройка диагностики tootransfer запуска журналы tooBlob хранилища
-Устранение неполадок установки toosimplify, можно настроить tootransfer диагностики Azure все файлы журналов, созданные при запуске hello скрипта или hello хранилища больших двоичных объектов tooAzure установщика .NET. Используя этот подход, можно просмотреть журналы hello загрузка файлов журнала hello из хранилища больших двоичных объектов, а не с рабочего стола tooremote в роль hello.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Настройка диагностики для передачи журналов задач запуска в хранилище BLOB-объектов
+Чтобы упростить устранение неполадок при установке, можно настроить в системе диагностики Microsoft Azure передачу всех файлов журналов, созданных скриптом запуска или установщиком .NET, в хранилище BLOB-объектов Azure. Это позволит просматривать журналы, скачивая их из хранилища BLOB-объектов, а не на удаленном рабочем столе, где хранится роль.
 
-tooconfigure диагностики, откройте файл diagnostics.wadcfgx hello и добавьте следующие содержимое в hello hello **каталоги** узла: 
+Чтобы настроить систему диагностики, откройте файл diagnostics.wadcfgx и добавьте в узел **Directories** следующее содержимое: 
 
 ```xml 
 <DataSources>
@@ -204,18 +204,18 @@ tooconfigure диагностики, откройте файл diagnostics.wadcf
 </DataSources>
 ```
 
-Этот XML-документ настраивает диагностики tootransfer hello файлы в каталог журнала hello в hello **NETFXInstall** toohello ресурсов учетной записи хранения диагностики в hello **netfx install** контейнер больших двоичных объектов.
+Этот XML-код позволяет системе диагностики передавать файлы из каталога log в ресурсе **NETFXInstall** в учетную запись хранения диагностических данных в контейнере больших двоичных объектов **netfx-install**.
 
 ## <a name="deploy-your-cloud-service"></a>Развертывание облачной службы
-При развертывании облачной службы, задачи запуска hello установить hello .NET Framework, если он еще не установлен. Роли облачной службы находятся в hello *занят* состояния при установке hello framework. Если hello framework требуется для установки, службы ролей hello также может перезапуститься. 
+При развертывании облачной службы задачи запуска устанавливают платформу .NET Framework, если она еще не установлена. Роли облачной службы находятся в состоянии *занятости* при установке платформы. Если при установке платформы необходима перезагрузка, роли службы также могут перезапуститься. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-* [Установка .NET Framework hello][Installing hello .NET Framework]
+* [Установка платформы .NET Framework][Installing the .NET Framework]
 * [Практическое руководство. Определение установленных версий платформы .NET Framework][How to: Determine Which .NET Framework Versions Are Installed]
 * [Устранение неполадок заблокированных установок и удалений .NET Framework][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
-[Installing hello .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
+[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
 [Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
 
 <!--Image references-->

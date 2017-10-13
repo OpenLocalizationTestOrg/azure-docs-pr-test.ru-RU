@@ -1,6 +1,6 @@
 ---
-title: "aaaGet работает с аналитики Озера данных Azure, с помощью портала Azure | Документы Microsoft"
-description: "Узнайте, как создать задание аналитики Озера данных с помощью U-SQL toouse hello Azure портала toocreate учетную запись аналитики Озера данных и отправить задание hello. "
+title: "Начало работы с Azure Data Lake Analytics с помощью портала Azure | Документация Майкрософт"
+description: "Узнайте, как использовать портал Azure для создания учетной записи Data Lake Analytics, создания задания Data Lake Analytics с помощью U-SQL и его отправки. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 6bb54404fa42cfed25b18bc2bfb7c72e6c361149
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Начало работы с Azure Data Lake Analytics с помощью портала Azure
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Узнайте, как toouse hello учетных записей Azure портала toocreate аналитики Озера данных Azure, определить задания в [U-SQL](data-lake-analytics-u-sql-get-started.md)и служба аналитики Озера данных toohello задания отправки. Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Узнайте, как с помощью портала Azure создавать учетные записи Azure Data Lake Analytics, определять задания в [U-SQL](data-lake-analytics-u-sql-get-started.md) и отправлять их в службу Data Lake Analytics. Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -31,23 +31,23 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="create-a-data-lake-analytics-account"></a>Создание учетной записи аналитики озера данных
 
-Теперь вы создадите аналитики Озера данных и хранилище Озера данных учетной записи в hello же время.  Этот шаг является простым и только занимает около toofinish 60 секунд.
+Теперь мы одновременно создадим учетные записи Data Lake Analytics и Data Lake Store.  Этот простой шаг занимает около минуты.
 
-1. Войдите на toohello [портал Azure](https://portal.azure.com).
+1. Выполните вход на [портал Azure](https://portal.azure.com).
 2. Щелкните **Создать** >  **Данные+аналитика** > **Data Lake Analytics**.
-3. Выберите значения для hello следующих элементов:
+3. Выберите значения для следующих параметров:
    * **Имя**: имя учетной записи Data Lake Analytics (разрешены только строчные буквы и цифры).
-   * **Подписки**: выберите hello подписку Azure, используемую для hello Analytics учетной записи.
+   * **Подписка**: выберите подписку Azure, которая используется для учетной записи аналитики.
    * **Группа ресурсов**: выберите существующую группу ресурсов Azure или создайте новую группу. Обычно приложения состоят из множества компонентов, например веб-приложения, базы данных, сервера базы данных, хранилища и служб сторонних поставщиков.
-   * **Расположение.** Выберите центр данных Azure для учетной записи аналитики Озера данных hello.
-   * **Хранилище Озера данных**: следуйте toocreate hello инструкция новую учетную запись хранилища Озера данных, или выберите существующий. 
+   * **Расположение.** выберите центр обработки данных Azure для учетной записи аналитики озера данных.
+   * **Data Lake Store.** Следуйте инструкциям для создания учетной записи Data Lake Store или выберите имеющуюся. 
 4. При необходимости выберите ценовую категорию для учетной записи Data Lake Analytics.
 5. Щелкните **Создать**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Первый скрипт U-SQL
 
-После текста Hello является очень простой скрипт U-SQL. Он осуществляет — определить небольшой набор данных в рамках скрипта hello, а затем написать этот набор данных в хранилище Озера данных по умолчанию toohello как файл с именем `/data.csv`.
+Ниже приводится очень простой скрипт U-SQL. Он определяет небольшой набор данных (в рамках скрипта) и записывает его в Azure Data Lake Store по умолчанию как файл с именем `/data.csv`.
 
 ```
 @a  = 
@@ -58,21 +58,21 @@ ms.lasthandoff: 10/06/2017
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    too"/data.csv"
+    TO "/data.csv"
     USING Outputters.Csv();
 ```
 
 ## <a name="submit-a-u-sql-job"></a>Отправка задания U-SQL
 
-1. Hello учетной записи аналитики Озера данных, щелкните **новое задание**.
-2. Вставьте текст hello hello скрипт U-SQL, показанном выше. 
+1. В учетной записи Data Lake Analytics щелкните **Новое задание**.
+2. Вставьте в текст скрипт U-SQL, представленный выше. 
 3. Щелкните **Отправить задание**.   
-4. Подождите, пока изменения состояния задания hello слишком**успешно**.
-5. Если не удалось выполнить задание hello, см. раздел [монитора и диагностика заданий аналитики Озера данных](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
-6. Нажмите кнопку hello **вывода** , а затем щелкните `data.csv`. 
+4. Подождите, пока состояние задания не изменится на **Успешно**.
+5. Если задание завершилось сбоем, см. сведения о [мониторинге и устранении неполадок с заданиями Azure Data Lake Analytics](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
+6. Перейдите на вкладку **Выходные данные** и щелкните `data.csv`. 
 
 ## <a name="see-also"></a>См. также
 
-* tooget к разработке приложений U-SQL, в разделе [сценариев разработки U-SQL, с помощью средства Озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).
+* Чтобы приступить к разработке приложений U-SQL, ознакомьтесь со статьей [Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).

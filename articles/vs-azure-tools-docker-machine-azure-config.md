@@ -1,6 +1,6 @@
 ---
-title: "размещает aaaCreate Docker в Azure с машины Docker | Документы Microsoft"
-description: "Описывает использование узлов docker toocreate машин Docker в Azure."
+title: "Создание узлов Docker в Azure с помощью виртуальной машины Docker | Документация Майкрософт"
+description: "Описывается использование машины Docker для создания узлов Docker в Azure."
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: fbf67e8189bbf33f874c4a9b619a931f28ccee12
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Создание узлов Docker в Azure с помощью машины Docker
-Под управлением [Docker](https://www.docker.com/) контейнеры требует узла виртуальной Машины выполняющегося hello управляющей программы docker.
-В этом разделе описывается способ toouse hello [машины docker](https://docs.docker.com/machine/) команда toocreate новые виртуальные машины Linux настроены hello управляющей программы Docker в Azure. 
+Для запуска контейнеров [Docker](https://www.docker.com/) требуется виртуальная машина узла с запущенной управляющей программой Docker.
+В этой статье описывается использование команды [docker-machine](https://docs.docker.com/machine/) , которая используется для создания новых виртуальных машин Linux, настроенных с помощью управляющей программы Docker, запущенной в Azure. 
 
 **Примечание.** 
 
 * *Для выполнения действий, описанных в этой статье, требуется машина Docker версии 0.9.0-rc2 или более поздней версии.*
-* *Контейнеры Windows поддерживаются через docker машину в hello ближайшее будущее*
+* *Поддержка контейнеров Windows на машинах Docker будет реализована в ближайшем будущем*
 
 ## <a name="create-vms-with-docker-machine"></a>Создание виртуальных машин с помощью машины Docker
-Создание docker узлов виртуальных машин в Azure с hello `docker-machine create` команду, указав hello `azure` драйвера. 
+Создавайте виртуальные машины узла Docker в Azure с помощью команды `docker-machine create`, используя драйвер `azure`. 
 
-Hello Azure драйвер требуется идентификатор вашей подписки. Можно использовать hello [Azure CLI](cli-install-nodejs.md) или hello [портала Azure](https://portal.azure.com) tooretrieve подписки Azure. 
+Для драйвера Azure потребуется ваш идентификатор подписки. Для получения идентификатора подписки Azure можно воспользоваться [интерфейсом командной строки Azure](cli-install-nodejs.md) или [порталом Azure](https://portal.azure.com). 
 
-**С помощью портала Azure hello**
+**Использование портала Azure**
 
-* Выберите **подписки** из hello левой панели навигации страницы и скопируйте hello идентификатор подписки.
+* В области навигации слева выберите **Подписки** и скопируйте идентификатор подписки.
 
-**С помощью hello Azure CLI**
+**Использование Azure CLI**
 
-* Тип ```azure account list``` и идентификатор подписки hello копирования.
+* Введите ```azure account list``` и скопируйте идентификатор подписки.
 
-Тип `docker-machine create --driver azure` toosee hello параметры и их значения по умолчанию.
-Можно также просмотреть hello [документации по драйверу Azure Docker](https://docs.docker.com/machine/drivers/azure/) Дополнительные сведения. 
+Чтобы просмотреть параметры и их значения по умолчанию, введите `docker-machine create --driver azure` .
+Также можно ознакомиться с [документацией по драйверу Docker Azure](https://docs.docker.com/machine/drivers/azure/) . 
 
-Hello примере полагается на hello [значения по умолчанию](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), но при необходимости значение эти значения: 
+В приведенном ниже примере используются [значения по умолчанию](https://github.com/docker/machine/blob/master/drivers/azure/azure.go#L22), но при необходимости можно задать следующие значения. 
 
-* dns Azure для hello имя, связанное с общедоступным IP-hello и сертификаты, созданные. Это hello DNS-имя виртуальной машины. Hello ВМ можно затем безопасно остановить, выпуск hello динамических IP-адресов и предоставляют возможность tooreconnect hello после ВМ hello снова начинается с новый IP-адрес. префикс имени Hello должно быть уникальным для той области UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
-* Открытие порта 80 в hello виртуальной Машины для исходящего доступа к Интернету
-* размер hello хранилище быстрее premium tooutilize виртуальной Машины
-* хранилище Premium, используемый для диска ВМ hello
+* azure-dns в качестве имени, связанного с созданными общедоступным IP-адресом и сертификатами. Это DNS-имя вашей виртуальной машины. В таком случае можно безопасно остановить виртуальную машину, освободить динамический IP-адрес и выполнить повторное подключение, после того как виртуальная машина начнет работу с новым IP-адресом. Префикс имени должен быть уникальным для этого региона: UNIQUE_DNSNAME_PREFIX.westus.cloudapp.azure.com.
+* Открытые порта 80 на виртуальной машине для исходящего доступа к Интернету.
+* Размер виртуальной машины для использования более быстрого хранилища класса Premium.
+* Хранилище класса Premium, используемое для диска виртуальной машины.
 
 ```
 docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-dns <Your UNIQUE_DNSNAME_PREFIX> --azure-open-port 80 --azure-size Standard_DS1_v2 --azure-storage-type "Premium_LRS" mydockerhost 
 ```
 
 ## <a name="choose-a-docker-host-with-docker-machine"></a>Выбор узла Docker с помощью машины Docker
-При наличии запись машины docker для узла, можно задать узел по умолчанию hello при выполнении команды docker.
+Когда в машине Docker есть запись для узла, можно установить узел по умолчанию при выполнении команд Docker.
 
 ## <a name="using-powershell"></a>с использованием PowerShell.
 ```powershell
@@ -69,7 +69,7 @@ docker-machine env MyDockerHost | Invoke-Expression
 eval $(docker-machine env MyDockerHost)
 ```
 
-Теперь можно запускать команды docker с указанным узлом hello
+Теперь можно выполнять команды Docker в указанном узле.
 
 ```
 docker ps
@@ -77,17 +77,17 @@ docker info
 ```
 
 ## <a name="run-a-container"></a>Запуск контейнера
-С настройки узла можно запустить простой web server tootest ли узла был настроен правильно.
-Здесь мы использовать стандартный nginx образ, указать, что он должен прослушивать порт 80 и, если hello узла виртуальная машина перезапускается, hello контейнер будет перезапустить также (`--restart=always`). 
+Теперь, когда узел настроен, можно запустить простой веб-сервер, чтобы проверить правильность настроек узла.
+В этом примере мы используем стандартный образ nginx, указываем, что он должен прослушивать порт 80, и что при перезапуске виртуальной машины узла контейнер также должен перезапускаться (`--restart=always`). 
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
 ```
 
-Hello вывод должен выглядеть примерно hello следующим образом:
+Результаты должны быть примерно следующими:
 
 ```
-Unable toofind image 'nginx:latest' locally
+Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 efd26ecc9548: Pull complete
 a3ed95caeb02: Pull complete
@@ -98,7 +98,7 @@ Status: Downloaded newer image for nginx:latest
 25942c35d86fe43c688d0c03ad478f14cc9c16913b0e1c2971cb32eb4d0ab721
 ```
 
-## <a name="test-hello-container"></a>Тестовый контейнер hello
+## <a name="test-the-container"></a>Проверка контейнера
 Проверьте запущенные контейнеры с помощью `docker ps`:
 
 ```bash
@@ -106,7 +106,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago       Up 5 minutes        0.0.0.0:80->80/tcp, 443/tcp   goofy_mahavira
 ```
 
-И, в контейнер типа запускается hello toosee `docker-machine ip <VM name>` tooenter toofind hello IP адрес в браузере hello:
+Введите `docker-machine ip <VM name>`, чтобы узнать IP-адрес, который вводится в браузере:
 
 ```
 PS C:\> docker-machine ip MyDockerHost
@@ -117,7 +117,7 @@ PS C:\> docker-machine ip MyDockerHost
 
 ## <a name="summary"></a>Сводка
 С помощью машины Docker можно легко подготовить узлы Docker в Azure к выполнению проверок отдельных узлов Docker.
-Для рабочей среды размещения контейнеров, в разделе hello [контейнера службы Azure](http://aka.ms/AzureContainerService)
+Сведения о рабочем размещении контейнеров см. в разделе [Служба контейнеров Azure](http://aka.ms/AzureContainerService).
 
-toodevelop основных приложений .NET в Visual Studio, в разделе [Docker средства для Visual Studio](http://aka.ms/DockerToolsForVS)
+Сведения о разработке приложений .NET Core с помощью Visual Studio см. в разделе [Docker Tools for Visual Studio](http://aka.ms/DockerToolsForVS) (Инструменты Docker для Visual Studio).
 

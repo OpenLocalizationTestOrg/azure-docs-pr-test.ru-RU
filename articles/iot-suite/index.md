@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure IoT Suite документации - учебники, справочник по API | Документы Microsoft"
+title: "Документация по Azure IoT Suite. Руководства и справочник по API | Документация Майкрософт"
 description: 
 services: iot-suite
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 83b006447e0d06d49ed7feace16b0db7d04d56f9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9726304918cbbc85e32e2095d2f1d4701fb8a71e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-suite-documentation"></a>Документация по IoT Suite
 
-Быстрое начало работы с Microsoft Azure IoT Suite. С помощью предварительно настроенных решений и ускорения разработки hello решения Интернета вещей (IoT). Добавляйте устройства и подключайте существующие устройства с помощью пакетов SDK для разных платформ, включая Linux, Windows и операционные системы, работающие в режиме реального времени. Простота масштабирования от всего несколько датчиков toomillions одновременно подключенных устройств и полагаться на доступность глобального hello Azure&mdash;независимо от того, как большие или малые проекта.
+Быстрое начало работы с Microsoft Azure IoT Suite. Используйте решения с предварительно заданными параметрами и ускорьте разработку вашего решения для Интернета вещей. Добавляйте устройства и подключайте существующие устройства с помощью пакетов SDK для разных платформ, включая Linux, Windows и операционные системы, работающие в режиме реального времени. Легко масштабируйте систему &mdash; от нескольких датчиков до миллионов одновременно подключенных устройств — и будьте уверены в глобальной доступности Azure независимо от объема вашего проекта.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -92,7 +92,7 @@ ms.lasthandoff: 10/06/2017
                         <p><a href="/azure/iot-suite/iot-security-architecture">Архитектура безопасности</a></p>
                         <p><a href="/azure/iot-suite/iot-security-best-practices">Рекомендации по обеспечению безопасности</a></p>
                         <p><a href="/azure/iot-suite/iot-suite-security-deployment">Защита развернутой службы Интернета вещей</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Безопасности из hello основание,</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Все аспекты безопасности</a></p>
                    </div>
                 </div>
             </div>

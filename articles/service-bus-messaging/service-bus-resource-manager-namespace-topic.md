@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate подписки на раздел Azure Service Bus пространства имен с помощью шаблона диспетчера ресурсов Azure | Документы Microsoft"
+title: "Создание подписки на раздел пространства имен служебной шины Azure с помощью шаблона Azure Resource Manager | Документация Майкрософт"
 description: "Создание пространства имен служебной шины с разделом и подпиской с помощью шаблона Azure Resource Manager."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 9b5f7d8710e598b73c0a7ea3daf8c300f7fa9ecd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8dd48787e7b788d249085b3110484de1a2c1d265
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Создание пространства имен служебной шины с разделом и подпиской с помощью шаблона Azure Resource Manager
 
-В этой статье показано, как toouse шаблона диспетчера ресурсов Azure, создает пространство имен служебной шины и раздела и подписки в этом пространстве имен. Вы узнаете, как toodefine какие ресурсы развертываются с указанием как toodefine параметры, которые при выполнении развертывания hello. Этот шаблон используется для собственных развертывания или настройте его toomeet требований
+В этой статье показывается, как использовать шаблон Azure Resource Manager, создающий пространство имен служебной шины с разделом и подпиской. Вы узнаете, как определить развертываемые ресурсы и параметры, указываемые при развертывании. Этот шаблон можно использовать для собственных развертываний или изменить его в соответствии с вашими требованиями.
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Полный шаблон hello, в разделе hello [пространства имен Service Bus с помощью разделов и подписок] [ Service Bus namespace with topic and subscription] шаблона.
+Полный шаблон пространства имен служебной шины с разделом и подпиской приведен [здесь][Service Bus namespace with topic and subscription].
 
 > [!NOTE]
-> следующие шаблоны Azure Resource Manager Hello доступны для загрузки и развертывания.
+> Для скачивания и развертывания можно использовать указанные ниже шаблоны диспетчера ресурсов Azure.
 > 
 > * [Создайте пространство имен служебной шины](service-bus-resource-manager-namespace.md)
 > * [Создание пространства имен служебной шины с очередью](service-bus-resource-manager-namespace-queue.md)
 > * [Создание пространства имен служебной шины с очередью и правилом авторизации](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Создание пространства имен служебной шины с разделом, подпиской и правилом с помощью шаблона Azure Resource Manager](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> toocheck для hello последние шаблоны, посетите hello [шаблоны быстрый запуск Azure] [ Azure Quickstart Templates] коллекции и выполните поиск «Шина обслуживания».
+> Чтобы узнать о новых шаблонах, в коллекции [шаблонов быстрого запуска Azure][Azure Quickstart Templates] выполните поиск "Service Bus".
 > 
 > 
 
@@ -46,18 +46,18 @@ ms.lasthandoff: 10/06/2017
 
 [Разделы и подписки служебной шины](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) предоставляют разновидность взаимодействия "один ко многим" в рамках схемы *публикации или подписки*.
 
-toorun hello развертывания автоматически, нажмите кнопку hello следующие кнопки:
+Чтобы выполнить развертывание автоматически, нажмите следующую кнопку.
 
-[![Развертывание tooAzure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
+[![Развертывание в Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Параметры
 
-С помощью диспетчера ресурсов Azure можно определить параметры для значения требуется toospecify при развертывании шаблона hello. шаблон Hello имеется раздел с именем `Parameters` , содержащий все значения параметров hello. Следует определить параметр для те значения, которые будут различаться на основе hello проекта, в которой выполняется развертывание или на основании hello среды, в которой выполняется развертывание. Определяет параметры для значения, которые всегда останутся hello таким же. Каждое значение параметра используется в hello шаблона toodefine hello ресурсы, которые развертываются.
+С помощью диспетчера ресурсов Azure можно определить параметры значений, которые должны указываться на этапе развертывания шаблона. В шаблоне есть раздел `Parameters` , содержащий все значения параметров. Для этих значений необходимо определить параметры, которые будут зависеть от развертываемого проекта либо от среды, в которой выполняется развертывание. Не задавайте параметры для значений, которые не меняются. Значение каждого параметра в шаблоне определяет развертываемые ресурсы.
 
-шаблон Hello определяет hello следующие параметры.
+Шаблон определяет следующие параметры.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Имя Hello toocreate пространство имен Service Bus hello.
+Имя создаваемого пространства имен служебной шины.
 
 ```json
 "serviceBusNamespaceName": {
@@ -66,7 +66,7 @@ toorun hello развертывания автоматически, нажмит
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
-Имя Hello раздел hello, создан в пространстве имен Service Bus hello.
+Имя раздела, создаваемого в пространстве имен служебной шины.
 
 ```json
 "serviceBusTopicName": {
@@ -75,7 +75,7 @@ toorun hello развертывания автоматически, нажмит
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
-Имя Hello hello подписка, созданная в пространство имен Service Bus hello.
+Имя подписки, создаваемой в пространстве имен служебной шины.
 
 ```json
 "serviceBusSubscriptionName": {
@@ -84,14 +84,14 @@ toorun hello развертывания автоматически, нажмит
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-версия API служебной шины Hello hello шаблона.
+Версия API служебной шины для шаблона.
 
 ```json
 "serviceBusApiVersion": {
 "type": "string"
 }
 ```
-## <a name="resources-toodeploy"></a>Toodeploy ресурсы
+## <a name="resources-to-deploy"></a>Развертываемые ресурсы
 Создает стандартное пространство имен служебной шины типа **Messaging**с разделом и подпиской.
 
 ```json
@@ -128,7 +128,7 @@ toorun hello развертывания автоматически, нажмит
     }]
 ```
 
-## <a name="commands-toorun-deployment"></a>Команды toorun развертывания
+## <a name="commands-to-run-deployment"></a>Команды для выполнения развертывания
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
@@ -144,14 +144,14 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, создания и развертывания ресурсов с помощью диспетчера ресурсов Azure, узнайте, как toomanage эти ресурсы в следующих статьях:
+Теперь, когда вы создали и развернули ресурсы с помощью диспетчера ресурсов Azure, узнайте, как управлять этими ресурсами, изучив следующие статьи:
 
 * [Управление служебной шиной с помощью PowerShell](service-bus-manage-with-ps.md)
-* [Управление ресурсами Service Bus с помощью обозревателя Service Bus hello](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Управление ресурсами служебной шины с помощью обозревателя служебной шины](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Service Bus namespace with topic and subscription]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-and-subscription/

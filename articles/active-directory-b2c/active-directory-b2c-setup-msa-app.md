@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: настройка учетной записи Майкрософт | Документация Майкрософт"
-description: "Укажите tooconsumers регистрации и входе в систему с учетными записями Microsoft в приложениях, которые защищены с помощью Azure Active Directory B2C."
+description: "Регистрация и вход пользователей с помощью учетных записей Майкрософт в приложениях, защищенных с помощью Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: bec4777f003c459030f68c35b24f0e4bcddf84ae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 59879dc0b3fc1d7af3e2a1f67f1701f451de9126
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-tooconsumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Укажите tooconsumers регистрации и входе в систему с учетными записями Microsoft
+# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory (AD) B2C: организация регистрации и входа для потребителей с учетными записями Microsoft
 ## <a name="create-a-microsoft-account-application"></a>Создание приложения для учетной записи Майкрософт
-Учетная запись Майкрософт toouse как поставщик удостоверений в Azure Active Directory (Azure AD) B2C, требуется toocreate приложение учетной записи Microsoft и передайте в него hello нужные параметры. Требуется toodo учетной записи Майкрософт. Если у вас ее нет, вы можете создать такую учетную запись на сайте [https://www.live.com/](https://www.live.com/).
+Чтобы использовать учетную запись Майкрософт в качестве поставщика удостоверений в Azure Active Directory (Azure AD) B2C, необходимо сначала создать приложение для учетной записи Майкрософт и задать в нем правильные параметры. Для этого требуется учетная запись Майкрософт. Если у вас ее нет, вы можете создать такую учетную запись на сайте [https://www.live.com/](https://www.live.com/).
 
-1. Go toohello [портала регистрации приложения Microsoft](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) и выполните вход с помощью учетных данных вашей учетной записи Майкрософт.
+1. Перейдите в [Центр регистрации приложений Майкрософт](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) и войдите с помощью своей учетной записи Майкрософт.
 2. Нажмите кнопку **Добавить приложение**.
    
     ![Учетная запись Майкрософт: добавление нового приложения](./media/active-directory-b2c-setup-msa-app/msa-add-new-app.png)
 3. Укажите **имя** приложения и нажмите кнопку **Создать приложение**.
    
     ![Учетная запись Майкрософт: имя приложения](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
-4. Скопируйте значение hello **идентификатор приложения**. Вам потребуется tooconfigure учетную запись Майкрософт как поставщик удостоверений в вашем клиенте.
+4. Скопируйте значение **Идентификатор приложения**. Оно необходимо для настройки учетной записи Майкрософт в качестве поставщика удостоверений в вашем клиенте.
    
     ![Учетная запись Майкрософт: идентификатор приложения](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
 5. Щелкните **Добавить платформу** и выберите параметр **Веб**.
@@ -39,24 +39,24 @@ ms.lasthandoff: 10/06/2017
     ![Учетная запись Майкрософт: добавление платформы](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
    
     ![Учетная запись Майкрософт: веб](./media/active-directory-b2c-setup-msa-app/msa-web.png)
-6. Введите `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` в hello **URI перенаправления** поля. Замените **{tenant}** именем своего клиента (например, contosob2c.onmicrosoft.com).
+6. Введите `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` в поле **URI перенаправления** . Замените **{tenant}** именем своего клиента (например, contosob2c.onmicrosoft.com).
    
     ![Учетная запись Майкрософт: URL-адрес перенаправления](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
-7. Щелкните **создать новый пароль** под hello **секреты приложения** раздела. Скопируйте новый пароль hello отображается на экране. Вам потребуется tooconfigure учетную запись Майкрософт как поставщик удостоверений в вашем клиенте. Данный пароль — важный элемент обеспечения безопасности.
+7. Щелкните **Создать новый пароль** в разделе **Секреты приложения**. Скопируйте новый пароль с экрана. Оно необходимо для настройки учетной записи Майкрософт в качестве поставщика удостоверений в вашем клиенте. Данный пароль — важный элемент обеспечения безопасности.
    
     ![Microsoft учетной записи: создание нового пароля](./media/active-directory-b2c-setup-msa-app/msa-generate-new-password.png)
    
     ![Microsoft учетной записи: новый пароль](./media/active-directory-b2c-setup-msa-app/msa-new-password.png)
-8. Hello флажок **поддержки пакета SDK Live** под hello **Дополнительно** раздела. Щелкните **Сохранить**.
+8. Установите флажок **Поддержка Live SDK** в разделе **Дополнительные параметры**. Щелкните **Сохранить**.
    
     ![Учетная запись Майкрософт: поддержка Live SDK](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
 
 ## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>Настройка учетной записи Майкрософт в качестве поставщика удостоверений в клиенте
-1. Выполните следующие действия слишком[перейдите в колонку функции toohello B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) на hello портал Azure.
-2. В колонке функции hello B2C, нажмите кнопку **Поставщики удостоверений**.
-3. Нажмите кнопку **+ добавить** hello верхней части колонки hello.
-4. Укажите понятное **имя** hello конфигурации поставщика удостоверений. Например, введите "MSA".
+1. Выполните эти действия, чтобы [перейти к колонке функций B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) на портале Azure.
+2. В колонке функций B2C щелкните **Поставщики удостоверений**.
+3. Нажмите **+Добавить** в верхней части колонки.
+4. Укажите понятное **имя** конфигурации поставщика удостоверений. Например, введите "MSA".
 5. Щелкните **Тип поставщика удостоверений**, выберите **Учетная запись Майкрософт** и нажмите кнопку **ОК**.
-6. Нажмите кнопку **настройки этого поставщика удостоверений** и введите идентификатор приложения hello и пароль hello приложения учетной записи Майкрософт, созданного ранее.
-7. Нажмите кнопку **ОК** и нажмите кнопку **создать** toosave конфигурации учетной записи Майкрософт.
+6. Щелкните **Настроить этот поставщик удостоверений** и введите идентификатор приложения и пароль ранее созданного приложения учетной записи Майкрософт.
+7. Нажмите кнопку **ОК**, а затем — **Создать**, чтобы сохранить конфигурацию учетной записи Майкрософт.
 

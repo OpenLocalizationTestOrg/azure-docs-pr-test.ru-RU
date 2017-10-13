@@ -1,5 +1,5 @@
 ---
-title: "aaaAuditing отчетов пользователь совместной работы с Azure Active Directory B2B и | Документы Microsoft"
+title: "Аудит и отчеты для пользователей службы совместной работы Azure Active Directory B2B | Документация Майкрософт"
 description: "Свойства гостевого пользователя службы совместной работы Azure Active Directory B2B можно настраивать."
 services: active-directory
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/12/2017
 ms.author: sasubram
-ms.openlocfilehash: 24ee5f7a2e9585a5edcdd795ec0ffc7124756c11
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ba782270f3280e52235bc13148d232284b55762a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Аудит и отчеты для пользователей службы совместной работы B2B
-С гостевых пользователей имеется аудит возможности аналогичные toowith пользователей. Ниже приведен пример hello приглашения и активации История приглашенный Sam Oogle:
+Для гостевых пользователей доступны такие же возможности аудита, как и для пользователей-участников. Ниже приведен пример журнала приглашений и активаций приглашенного пользователя Сэма Угла (Sam Oogle).
 
 ![журнал аудита](./media/active-directory-b2b-auditing-and-reporting/audit-log.png)
 
-Можно перейти в каждый из этих сведений hello tooget события. Например рассмотрим hello принятия сведения.
+Вы можете подробней рассмотреть каждое из этих событий. Например, давайте просмотрим сведения о принятии приглашения.
 
 ![сведения о действии](./media/active-directory-b2b-auditing-and-reporting/activity-details.png)
 
-Можно также экспортировать эти журналы из Azure AD и использовать hello отчетов инструмент вашего выбора tooget настроенных отчетов.
+Вы можете также экспортировать эти журналы из Azure AD и с помощью любого инструмента для создания отчетов создавать собственные настраиваемые отчеты.
 
 ### <a name="next-steps"></a>Дальнейшие действия
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/06/2017
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Свойства пользователя службы совместной работы Azure Active Directory B2B](active-directory-b2b-user-properties.md)
-* [Добавление роли пользователя tooa B2B совместной работы](active-directory-b2b-add-guest-to-role.md)
+* [Добавление пользователя службы совместной работы Azure Active Directory B2B в роль](active-directory-b2b-add-guest-to-role.md)
 * [Делегирование приглашений для службы совместной работы Azure Active Directory B2B](active-directory-b2b-delegate-invitations.md)
 * [Динамические группы и служба совместной работы Azure Active Directory B2B](active-directory-b2b-dynamic-groups.md)
 * [Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B](active-directory-b2b-code-samples.md)

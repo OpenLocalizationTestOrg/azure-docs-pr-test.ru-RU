@@ -1,6 +1,6 @@
 ---
-title: "aaaWhat произошло toomy создаваемого проекта (хранилища Azure для Visual Studio подключается к службе)? | Документация Майкрософт"
-description: "Описывает, что произошло в проект веб-задания Azure после подключения tooa учетной записи хранилища с помощью Visual Studio подключенные службы"
+title: "Что произошло с моим проектом веб-заданий (подключенными к службе хранилища Azure службами Visual Studio)? | Документация Майкрософт"
+description: "Сведения о том, что происходит в проекте веб-заданий Azure после подключения к учетной записи хранения с помощью подключенных служб Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: ed0ce75f5b23eca3c41dacb48564d6e5b846f395
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8891685a99c5ba366b74af0a21396d4a5e499835
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-happened-toomy-webjob-project-visual-studio-azure-storage-connected-service"></a>Какая ошибка toomy создаваемого проекта (хранилища Azure для Visual Studio подключается к службе)?
+# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>Что произошло с моим проектом веб-заданий (подключенными к службе хранилища Azure службами Visual Studio)?
 ## <a name="references-added"></a>Добавленные ссылки
-пакет NuGet хранилища Azure Hello была добавлена tooor обновлен в проект Visual Studio.  
-Этот пакет добавляет hello следующие ссылки .NET:
+Пакет NuGet хранилища Azure добавлен в проект Visual Studio или обновлен в этом проекте.  
+Этот пакет добавляет следующие ссылки .NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/06/2017
 * **System.Spatial**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Добавлена строка подключения к хранилищу Azure
-В файле App.config hello проекта, hello **AzureWebJobsStorage** и **AzureWebJobsDashboard** записи были обновлены с помощью строки подключения и ключа учетной записи хранилища hello выбран.
+В файле App.config вашего проекта в записи **AzureWebJobsStorage** и **AzureWebJobsDashboard** добавлена строка подключения и ключ выбранной учетной записи хранения.
 
 Дополнительные сведения см. в статье [Документация по веб-заданиям Azure](http://go.microsoft.com/fwlink/?linkid=390226).
 

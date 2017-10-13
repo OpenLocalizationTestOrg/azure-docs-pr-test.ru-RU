@@ -1,6 +1,6 @@
 ---
-title: "aaaGet работы с Azure Mobile Engagement для Xamarin.Android"
-description: "Узнайте, как toouse Azure Mobile Engagement с аналитики и Push-уведомления для Xamarin.Android приложений."
+title: "Начало работы со Службами мобильного взаимодействия Azure для Xamarin.Android"
+description: "Узнайте, как использовать Службы мобильного взаимодействия Azure с аналитическими функциями и push-уведомлениями для приложений Xamarin.Android."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
@@ -14,76 +14,75 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/16/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9d584fea8e8153d511258cf9b6f87f31dac6aeca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7b3d01b32c2d5a40448fc22861cd45f612238f2f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinandroid-apps"></a>Начало работы со Службами мобильного взаимодействия Azure для приложений Xamarin.Android
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-В этом разделе показано, как Azure Mobile Engagement toounderstand toouse использовании веб-приложения и как toosend push-уведомления пользователей toosegmented Xamarin.Android приложения.
-В этом учебнике показано hello простой широковещательных сценарий с помощью мобильного охвата. В рассматриваемом сценарии создается пустое приложение Xamarin.Android, которое собирает основные данные и получает push-уведомления с помощью службы Google Cloud Messaging (GCM).
+В этой статье показано, как применять Службы мобильного взаимодействия Azure для анализа использования приложения и как отправлять push-уведомления сегментированным пользователям приложения Xamarin.Android.
+В этом учебнике описывается простой сценарий вещания с использованием Служб мобильного взаимодействия. В рассматриваемом сценарии создается пустое приложение Xamarin.Android, которое собирает основные данные и получает push-уведомления с помощью службы Google Cloud Messaging (GCM).
 
 > [!NOTE]
-> Служба Azure Mobile Engagement Hello будет прекращено 2018 марта и в настоящее время только доступные tooexisting клиентов. Дополнительные сведения см. на странице [Службы мобильного взаимодействия](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Мы прекратим использование Служб мобильного взаимодействия Azure в марте 2018 г. Сейчас они доступны только существующим клиентам. Дополнительные сведения см. на странице [Службы мобильного взаимодействия](https://azure.microsoft.com/en-us/services/mobile-engagement/).
 
-Этот учебник требует hello следующее:
+Для работы с данным учебником требуется следующее:
 
 * [Xamarin Studio](http://xamarin.com/studio). Вы также можете использовать Visual Studio с расширением Xamarin, но в этом руководстве используется Xamarin Studio. Инструкции см. в руководстве по [установке и настройке Visual Studio и Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * [пакет Xamarin SDK для Служб мобильного взаимодействия](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [!NOTE]
-> toocomplete этого учебника необходимо иметь активную учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started).
+> Для работы с этим учебником необходима активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-android-get-started).
 > 
 > 
 
-## <a id="setup-azme">
-            </a>Настройка Служб мобильного взаимодействия для вашего приложения Android
+## <a id="setup-azme"></a>Настройка Служб мобильного взаимодействия для вашего приложения Android
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Подключение мобильного охвата toohello внутренний сервер приложений
-В этом руководстве содержатся «базовой интеграции», который hello минимальный набор данных требуется toocollect и отправить push-уведомление. 
+## <a id="connecting-app"></a>Подключение приложения к серверной части Служб мобильного взаимодействия
+В этом руководстве описаны действия по базовой интеграции, т. е. минимум, необходимый для сбора данных и отправки push-уведомлений. 
 
-Мы создадим простое приложение с интеграцией hello toodemonstrate Xamarin Studio.
+Мы создадим базовое приложение в Xamarin Studio, чтобы продемонстрировать интеграцию.
 
 ### <a name="create-a-new-xamarinandroid-project"></a>Создание нового проекта Xamarin.Android
-1. Запустите **Xamarin Studio** Go слишком**файл** -> **New** -> **решения** 
+1. Запустите **Xamarin Studio**. Щелкните **File** -> **New** -> **Solution** (Файл -> Создать -> Решение). 
    
     ![][1]
-2. Выберите **приложения Android** убедитесь, что выбран hello язык — **C#** и нажмите кнопку **Далее**.
+2. Выберите **Android App** (Приложение Android), а затем выберите язык **C#** и нажмите кнопку **Next** (Далее).
    
     ![][2]
-3. Заполните hello **имя приложения** и hello **идентификатор организации**. Убедитесь, что toocheckmark **службы Google Play** и нажмите кнопку **Далее**. 
+3. Заполните поля **App Name** (Имя приложения) и **Organization Identifier** (Идентификатор организации). Установите флажок **Google Play Services** (Службы Google Play) и нажмите кнопку **Next** (Далее). 
    
     ![][3]
-4. Обновление hello **имя проекта**, **имя решения** и **расположение** , если требуется и нажмите кнопку **создать**.
+4. Если требуется, обновите значения в полях **Project Name** (Имя проекта), **Solution Name** (Имя решения) и **Location** (Расположение), а затем нажмите кнопку **Create** (Создать).
    
     ![][4]
 
-Xamarin Studio создаст приложение hello, в котором будет интегрировать мобильного охвата. 
+Xamarin Studio создаст приложение, в которое мы интегрируем Службы мобильного взаимодействия. 
 
-### <a name="connect-your-app-toomobile-engagement-backend"></a>Подключение Engagement tooMobile внутренний сервер приложений
-1. Щелкните правой кнопкой мыши hello **пакетов** папки в windows hello решений и выберите **Добавление пакетов...**
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Подключение приложения к серверной части Служб мобильного взаимодействия
+1. В окне решения правой кнопкой мыши щелкните папку **Packages** (Пакеты) и выберите пункт **Add Packages...** (Добавить пакеты).
    
     ![][5]
-2. Поиск hello **Microsoft Azure Mobile Engagement Xamarin SDK** и добавьте его tooyour решения.  
+2. Найдите пакет **Xamarin SDK для Служб мобильного взаимодействия Microsoft Azure** и добавьте его в свое решение.  
    
     ![][6]
-3. Откройте **MainActivity.cs** и добавьте следующее hello операторы using:
+3. Откройте файл **MainActivity.cs** и добавьте следующие инструкции using:
    
         using Microsoft.Azure.Engagement;
         using Microsoft.Azure.Engagement.Activity;
-4. В hello `OnCreate` метод, добавить следующие tooinitialize hello соединения с внутреннего сервера мобильного охвата hello. Убедитесь, что tooadd вашей **ConnectionString**. 
+4. В метод `OnCreate` добавьте следующую команду, чтобы инициализировать подключение к внутреннему серверу Служб мобильного взаимодействия. Обязательно добавьте **строку подключения**. 
    
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
         engagementConfiguration.ConnectionString = "YourConnectionStringFromAzurePortal";
         EngagementAgent.Init(engagementConfiguration);
 
 ### <a name="add-permissions-and-a-service-declaration"></a>Добавление разрешений и объявления службы
-1. Откройте hello **Manifest.xml** файл в папке свойства hello. Перейдите на вкладку источника, чтобы непосредственного изменения XML-источник hello.
-2. Добавьте эти разрешения toohello Manifest.xml (который можно найти в разделе hello **свойства** папки) проекта непосредственно перед или после hello `<application>` тег:
+1. Откройте файл **Manifest.xml** в папке Properties (Свойства). Перейдите на вкладку Source (Источник), чтобы напрямую обновить источник XML.
+2. Добавьте эти разрешения в файл Manifest.xml (который можно найти в папке **Properties** (Свойства)) проекта непосредственно перед тегом `<application>` или после него:
    
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -91,17 +90,17 @@ Xamarin Studio создаст приложение hello, в котором бу
         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         <uses-permission android:name="android.permission.VIBRATE" />
         <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
-3. Добавьте следующий код hello между hello `<application>` и `</application>` теги toodeclare hello агент службы:
+3. Добавьте следующий код между тегами `<application>` и `</application>`, чтобы объявить службу агента:
    
         <service
              android:name="com.microsoft.azure.engagement.service.EngagementService"
              android:exported="false"
              android:label="<Your application name>"
              android:process=":Engagement"/>
-4. В коде hello только что вставленного замените `"<Your application name>"` в метке hello. Это отражается в hello **параметры** меню, где пользователи могут видеть службы, работающие на устройстве hello. Можно добавить слово hello «Служба» в этой метке например.
+4. В только что вставленном коде замените `"<Your application name>"` в метке фактическим значением. Это имя появится в меню **Параметры** , где отображены службы, работающие на устройстве пользователя. Вы можете добавить в метку слово, например Service (служба).
 
-### <a name="send-a-screen-toomobile-engagement"></a>Отправить экрана tooMobile Engagement
-В toostart порядок отправки данных и убедитесь, что пользователи hello активны необходимо отправить по крайней мере один внутреннего сервера мобильного охвата toohello экрана. Для этого-убедитесь, что hello `MainActivity` наследует от `EngagementActivity` вместо `Activity`.
+### <a name="send-a-screen-to-mobile-engagement"></a>Отправка экрана в Службы мобильного взаимодействия
+Чтобы начать отправку данных и убедиться, что пользователи активны, отправьте по крайней мере один экран на внутренний сервер Служб мобильного взаимодействия. Для этого убедитесь, что `MainActivity` наследуется от `EngagementActivity`, а не от `Activity`.
 
     public class MainActivity : EngagementActivity
 
@@ -122,9 +121,9 @@ Xamarin Studio создаст приложение hello, в котором бу
 ## <a id="monitor"></a>Подключение приложения с возможностью его отслеживания в режиме реального времени
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Включение функции отправки и приема push-уведомлений и обмена сообщениями в приложении
-Mobile Engagement позволяет вам toointeract с и доступа пользователей с push-уведомления и сообщения в контексте hello кампаний в приложения. Этот модуль вызывается REACH на портале мобильного охвата hello.
-Hello в следующих разделах Настройка вашего приложения tooreceive их.
+## <a id="integrate-push"></a>Включение push-уведомлений и обмена сообщениями в приложении
+Службы мобильного взаимодействия позволяют взаимодействовать и СВЯЗЫВАТЬСЯ с пользователями с помощью push-уведомлений и сообщений в приложении в контексте кампаний. На портале Служб мобильного взаимодействия этот модуль называется МОДУЛЕМ ОБРАБОТКИ РЕКЛАМНЫХ КАМПАНИЙ.
+В следующих разделах показано, как настроить приложение для приема уведомлений и сообщений.
 
 [!INCLUDE [Enable Google Cloud Messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 

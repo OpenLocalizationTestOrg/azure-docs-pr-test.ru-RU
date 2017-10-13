@@ -1,6 +1,6 @@
 ---
-title: "aaaGet к выполнению аналитики Озера данных Azure, с помощью Azure PowerShell | Документы Microsoft"
-description: "Использовать Azure PowerShell toocreate учетную запись аналитики Озера данных, создайте задание аналитики Озера данных с помощью U-SQL и отправка задания hello. "
+title: "Начало работы с Azure Data Lake Analytics с помощью Azure PowerShell | Документация Майкрософт"
+description: "Используйте Azure PowerShell для создания учетной записи Data Lake Analytics, создания задания Data Lake Analytics с помощью U-SQL и его отправки. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
-ms.openlocfilehash: cb9b35352d1cc9a78337448b1d6835875a212e08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4f73e27c733edae658d1ea3bdabe48076328279b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Начало работы с Azure Data Lake Analytics с помощью Azure PowerShell
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Узнайте, как toouse toocreate Azure PowerShell аналитики Озера данных Azure учетные записи и затем отправьте и запуска заданий U-SQL. Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Узнайте, как использовать Azure PowerShell для создания учетных записей Azure Data Lake Analytics, а затем отправлять и выполнять задания U-SQL. Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Прежде чем начать работу с учебником, необходимо иметь hello следующую информацию:
+Перед началом работы с этим руководством необходимо иметь следующую информацию:
 
 * **Учетная запись Azure Data Lake Analytics**. См. раздел [Начало работы с Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
-* **Рабочая станция с Azure PowerShell**. В разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
+* **Рабочая станция с Azure PowerShell**. См. статью [Установка и настройка Azure PowerShell](/powershell/azure/overview).
 
-## <a name="log-in-tooazure"></a>Войдите в tooAzure
+## <a name="log-in-to-azure"></a>Вход в Azure
 
-Для работы с руководством необходим опыт работы с Azure PowerShell. В частности, необходимы tooknow как toolog в tooAzure. В разделе hello [Приступая к работе с Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) Если вам нужна помощь.
+Для работы с руководством необходим опыт работы с Azure PowerShell. В частности вам нужно знать, как выполнить вход в Azure. Если вам нужна помощь, см. раздел [Начало работы с Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps).
 
-toolog систему с именем подписки:
+Вход в систему с использованием имени подписки:
 
 ```
 Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
-Вместо имени подписки hello можно также использовать toolog идентификатор подписки в:
+Вместо имени подписки для входа можно использовать ее идентификатор:
 
 ```
 Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-В случае успешного выполнения hello выходные данные этой команды выглядит следующим образом после текста hello.
+При успешном выполнении этой команды выходные данные будут выглядеть так:
 
 ```
 Environment           : AzureCloud
@@ -59,9 +59,9 @@ SubscriptionName      : ContosoSubscription
 CurrentStorageAccount :
 ```
 
-## <a name="preparing-for-hello-tutorial"></a>Подготовка для учебника hello
+## <a name="preparing-for-the-tutorial"></a>Подготовка к работе с руководством
 
-фрагменты кода PowerShell Hello в этом учебнике используйте эти переменные toostore эти сведения.
+В этом руководстве во фрагментах кода PowerShell для хранения информации используются следующие переменные:
 
 ```
 $rg = "<ResourceGroupName>"
@@ -78,7 +78,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 ## <a name="submit-a-u-sql-job"></a>Отправка задания U-SQL
 
-Создайте сценарий PowerShell переменной toohold hello U-SQL.
+Создайте переменную для хранения скрипта U-SQL PowerShell.
 
 ```
 $script = @"
@@ -90,19 +90,19 @@ $script = @"
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    too"/data.csv"
+    TO "/data.csv"
     USING Outputters.Csv();
 
 "@
 ```
 
-Отправьте скрипт hello.
+Отправьте скрипт.
 
 ```
 $job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-Кроме того можно сохранить как файл скрипта hello и отправить с hello следующую команду:
+Или же можно сохранить скрипт в файл, а затем отправить его с помощью следующей команды:
 
 ```
 $filename = "d:\test.usql"
@@ -111,25 +111,25 @@ $job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
 
-Получите состояние hello определенного задания. Продолжать использовать этот командлет, пока вы увидите, что выполнена hello.
+Получите состояние конкретного задания. Продолжайте использовать этот командлет, пока задание не будет выполнено.
 
 ```
 $job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-Вместо вызова Get AdlAnalyticsJob снова и снова до завершения задания, можно использовать командлет Wait-AdlJob hello.
+Вместо того чтобы снова и снова вызывать командлет Get-AdlAnalyticsJob, пока задание не будет завершено, можно использовать командлет Wait-AdlJob.
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Загрузите hello выходного файла.
+Загрузите выходной файл.
 
 ```
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>См. также
-* toosee hello же учебника при помощи других средств, щелкните селекторы вкладку hello на hello вверху страницы приветствия.
-* в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).
+* Для просмотра учебника с помощью других средств используйте вкладки-селекторы в верхней части страницы.
+* Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).

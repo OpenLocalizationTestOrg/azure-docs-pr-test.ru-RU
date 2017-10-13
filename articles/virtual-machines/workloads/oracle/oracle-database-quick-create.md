@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate базы данных Oracle на виртуальной Машине Azure | Документы Microsoft"
+title: "Создание базы данных Oracle на виртуальной машине Azure | Документация Майкрософт"
 description: "Быстрое создание и запуск базы данных Oracle 12c в среде Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 83205154c3275d5f57b46c8acfb0cb4e5c68a412
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Создание базы данных Oracle на виртуальной машине Azure
 
-В этом руководстве рассматривается использование hello Azure CLI toodeploy виртуальной машине Azure из hello [образ из коллекции marketplace Oracle](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) чтобы toocreate базы данных Oracle 12 c. После развертывания сервера hello нужно будет подключиться по протоколу SSH в базе данных Oracle hello tooconfigure заказа. 
+В этом руководстве объясняется, как с помощью Azure CLI развернуть виртуальную машину Azure, используя [образ из коллекции Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview), чтобы создать базу данных Oracle 12c. После развертывания сервера вы подключитесь к нему по протоколу SSH для настройки базы данных Oracle. 
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Если выбрать tooinstall и использовать hello CLI локально, краткого руководства требуется управлением hello Azure CLI версия 2.0.4 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).
+Если вы решили установить и использовать CLI локально, для выполнения инструкций в этом руководстве вам понадобится Azure CLI 2.0.4 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
+Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение.
+В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Создание виртуальной машины
 
-toocreate виртуальной машины (VM), использовать hello [создания виртуальной машины az](/cli/azure/vm#create) команды. 
+Чтобы создать виртуальную машину, выполните команду [az vm create](/cli/azure/vm#create). 
 
-Hello следующий пример создает Виртуальную машину с именем `myVM`. Также создаются ключи SSH, если они не существуют в расположении ключей по умолчанию. toouse конкретный набор ключей, используйте hello `--ssh-key-value` параметр.  
+В следующем примере создается виртуальная машина `myVM`. Также создаются ключи SSH, если они не существуют в расположении ключей по умолчанию. Чтобы использовать определенный набор ключей, используйте параметр `--ssh-key-value`.  
 
 ```azurecli-interactive 
 az vm create \
@@ -56,7 +56,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-После создания виртуальной Машины hello Azure CLI отображает toohello аналогичные сведения, следующий пример. Запомните значение hello для `publicIpAddress`. Используется этот адрес tooaccess hello виртуальной Машины.
+После создания виртуальной машины в Azure CLI отображается информация следующего вида. Обратите внимание на значение `publicIpAddress`. Этот адрес используется для доступа к виртуальной машине.
 
 ```azurecli
 {
@@ -71,26 +71,26 @@ az vm create \
 }
 ```
 
-## <a name="connect-toohello-vm"></a>Подключение toohello виртуальной Машины
+## <a name="connect-to-the-vm"></a>Подключение к виртуальной машине
 
-toocreate сеанс SSH с hello виртуальной Машины, используйте следующую команду hello. Замените hello hello IP-адрес `publicIpAddress` значение для виртуальной Машины.
+Используйте следующую команду для создания сеанса SSH с виртуальной машиной. Замените IP-адрес общедоступным IP-адресом виртуальной машины (значение `publicIpAddress`).
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-## <a name="create-hello-database"></a>Создание базы данных hello
+## <a name="create-the-database"></a>Создание базы данных
 
-Hello программное обеспечение Oracle уже установлены на образа Marketplace hello. Создайте пример базы данных, как описано ниже. 
+Программное обеспечение Oracle уже установлено в образе Marketplace. Создайте пример базы данных, как описано ниже. 
 
-1.  Переключение toohello *oracle* суперпользователя, а затем инициализировать прослушиватель hello для ведения журнала:
+1.  Переключитесь на учетную запись суперпользователя *oracle* и инициализируйте прослушиватель для ведения журнала.
 
     ```bash
     $ sudo su - oracle
     $ lsnrctl start
     ```
 
-    Hello выходные данные выглядят аналогично toohello следующее:
+    Выход аналогичен приведенному ниже:
 
     ```bash
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
@@ -98,11 +98,11 @@ Hello программное обеспечение Oracle уже установ
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of hello LISTENER
+    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of the LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -114,11 +114,11 @@ Hello программное обеспечение Oracle уже установ
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    hello listener supports no services
-    hello command completed successfully
+    The listener supports no services
+    The command completed successfully
     ```
 
-2.  Создайте базу данных hello:
+2.  Создание базы данных
 
     ```bash
     dbca -silent \
@@ -140,17 +140,17 @@ Hello программное обеспечение Oracle уже установ
            -ignorePreReqs
     ```
 
-    Он принимает несколько баз данных hello toocreate минут.
+    Создание базы данных занимает несколько минут.
 
 3. Задайте переменные Oracle.
 
-Перед подключением необходимо tooset двух переменных среды: *ORACLE_HOME* и *ORACLE_SID*.
+Прежде чем подключиться, необходимо задать две переменные среды: *ORACLE_HOME* и *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-Также можно добавить ORACLE_HOME и ORACLE_SID файл .bashrc toohello переменных. Это может сэкономить hello переменные среды для будущих входа в систему. Подтвердите hello следующие операторы были добавлены toohello `~/.bashrc` файла с помощью редактора по своему усмотрению.
+При необходимости можно добавить переменные ORACLE_HOME и ORACLE_SID в BASHRC-файл. Это позволит сохранить переменные среды для следующих входов в систему. Добавьте следующие инструкции в файл `~/.bashrc` с помощью любого редактора.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -161,27 +161,27 @@ export ORACLE_SID=cdb1
 
 ## <a name="oracle-em-express-connectivity"></a>Подключение к Oracle EM Express
 
-Средства управления графического интерфейса пользователя, который можно использовать tooexplore hello базы данных, настроить Oracle EM Express. tooOracle tooconnect EM Express, необходимо сначала настроить порт hello в Oracle. 
+Мы включим в Oracle EM Express инструмент управления графическим интерфейсом пользователя, чтобы была возможность просматривать базу данных. Для подключения к Oracle EM Express сначала необходимо настроить порт в Oracle. 
 
-1. Подключение базы данных tooyour, с помощью sqlplus:
+1. Подключитесь к базе данных с помощью SQL Plus.
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. После подключения задайте порт hello 5502 для EM, экспресс-выпуск
+2. После подключения задайте порт 5502 для EM Express.
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Привет открыть контейнер PDB1 случае hello уже открыт, но сначала проверить его состояние:
+3. Откройте контейнер PDB1, если вы еще не сделали этого, но сначала проверьте его состояние.
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
     ```
 
-    Hello выходные данные выглядят аналогично toohello следующее:
+    Выход аналогичен приведенному ниже:
 
     ```bash
       CON_ID NAME                           OPEN_MODE 
@@ -190,55 +190,55 @@ export ORACLE_SID=cdb1
       3           PDB1                      MOUNT
     ```
 
-4. Если hello OPEN_MODE для `PDB1` не чтения и записи, затем запустите hello следующие команды tooopen PDB1:
+4. Если значение переменной OPEN_MODE для `PDB1` отличается от READ WRITE, выполните следующие команды, чтобы открыть PDB1.
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-Требуется tootype `quit` tooend hello sqlplus сеанса и тип `exit` toologout пользователя oracle hello.
+Теперь введите команду `quit` для завершения сеанса sqlplus, а затем `exit` для завершения сеанса пользователя oracle.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Автоматизация запуска и завершения работы базы данных
 
-Hello базы данных Oracle по умолчанию не запускается автоматически при перезагрузке hello виртуальной Машины. tooset копирование toostart базы данных Oracle hello автоматически, выполните вход как корень. Затем создайте и обновите некоторые системные файлы.
+По умолчанию база данных Oracle не запускается автоматически при перезапуске виртуальной машины. Чтобы база данных Oracle запускалась автоматически, войдите с правами привилегированного пользователя. Затем создайте и обновите некоторые системные файлы.
 
 1. Войдите с правами привилегированного пользователя.
     ```bash
     sudo su -
     ```
 
-2.  Используя текстовый редактор, измените файл hello `/etc/oratab` и изменить по умолчанию hello `N` слишком`Y`:
+2.  В любом удобном редакторе откройте файл `/etc/oratab` и замените значение по умолчанию `N` на `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Создайте файл с именем `/etc/init.d/dbora` и вставить hello содержимое:
+3.  Создайте файл с именем `/etc/init.d/dbora` и вставьте в него следующее содержимое:
 
     ```
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
     #
-    # Set ORA_HOME toobe equivalent too$ORACLE_HOME.
+    # Set ORA_HOME to be equivalent to $ORACLE_HOME.
     ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
     ORA_OWNER=oracle
 
     case "$1" in
     'start')
-        # Start hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Start the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         # Remove "&" if you don't want startup as a background process.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" &
         touch /var/lock/subsys/dbora
         ;;
 
     'stop')
-        # Stop hello Oracle databases:
-        # hello following command assumes that hello Oracle sign-in
-        # will not prompt hello user for any values.
+        # Stop the Oracle databases:
+        # The following command assumes that the Oracle sign-in
+        # will not prompt the user for any values.
         su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" &
         rm -f /var/lock/subsys/dbora
         ;;
@@ -260,7 +260,7 @@ Hello базы данных Oracle по умолчанию не запускае
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  tootest изменения, перезапустите hello виртуальной Машины:
+6.  Чтобы проверить изменения, перезапустите виртуальную машину.
 
     ```bash
     reboot
@@ -268,9 +268,9 @@ Hello базы данных Oracle по умолчанию не запускае
 
 ## <a name="open-ports-for-connectivity"></a>Открытие портов для подключения
 
-Последняя задача Hello является tooconfigure некоторые внешние конечные точки. tooset копирование hello Azure сетевой группы безопасности, защищающий hello ВМ, сначала закрыть сеанс SSH в hello виртуальной Машины (должен был запущен вне SSH при перезагрузке в предыдущем шаге). 
+Последнее, что следует сделать, — настроить несколько внешних конечных точек. Чтобы настроить группу безопасности сети Azure, которая защищает виртуальную машину, сначала следует завершить сеанс SSH на виртуальной машине. (Завершение сеанса SSH должно был произойти при перезапуске на предыдущем шаге.) 
 
-1.  tooopen конечную точку hello удаленно, использовании базы данных Oracle hello tooaccess, создайте правило группы безопасности сети с [создать правило nsg сети az](/cli/azure/network/nsg/rule#create) следующим образом: 
+1.  Чтобы открыть конечную точку для удаленного доступа к базе данных Oracle, создайте правило группы безопасности сети с помощью команды [az network nsg rule create](/cli/azure/network/nsg/rule#create): 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ Hello базы данных Oracle по умолчанию не запускае
         --destination-port-range 1521
     ```
 
-2.  tooopen конечную точку hello удаленно, используйте tooaccess Oracle EM Express, создайте правило группы безопасности сети с [создать правило nsg сети az](/cli/azure/network/nsg/rule#create) следующим образом:
+2.  Чтобы открыть конечную точку для удаленного доступа к Oracle EM Express, создайте правило группы безопасности сети с помощью команды [az network nsg rule create](/cli/azure/network/nsg/rule#create):
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ Hello базы данных Oracle по умолчанию не запускае
         --destination-port-range 5502
     ```
 
-3. При необходимости получить hello общедоступный IP-адрес виртуальной Машины с [az сети public-ip show](/cli/azure/network/public-ip#show) следующим образом:
+3. При необходимости получите общедоступный IP-адрес виртуальной машины еще раз с помощью команды [az network public-ip show](/cli/azure/network/public-ip#show):
 
     ```azurecli-interactive
     az network public-ip show \
@@ -310,13 +310,13 @@ Hello базы данных Oracle по умолчанию не запускае
     https://<VM ip address or hostname>:5502/em
     ```
 
-Вы можете войти с помощью hello **SYS** учетную запись, а также проверьте hello **как sysdba** флажок. Использовать пароль hello **OraPasswd1** , заданным во время установки. 
+Вы можете войти с помощью учетной записи **SYS** и установить флажок **as sysdba**. Используйте пароль **OraPasswd1**, заданный во время установки. 
 
-![Снимок экрана со страницей входа Oracle OEM Express hello](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Снимок экрана со страницей входа Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
-Когда Вы завершили изучение первой базы данных Oracle в Azure и hello ВМ больше не нужен, можно использовать hello [удаление группы az](/cli/azure/group#delete) команд группы ресурсов tooremove hello, виртуальных Машин и все связанные ресурсы.
+Когда вы завершите изучение первой базы данных Oracle в Azure, вы можете удалить ненужную виртуальную машину, группу ресурсов и все связанные с ней ресурсы с помощью команды [az group delete](/cli/azure/group#delete).
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -326,4 +326,4 @@ az group delete --name myResourceGroup
 
 Узнайте о других [решениях Oracle в Azure](oracle-considerations.md). 
 
-Повторите hello [Установка и настройка управления хранением автоматических Oracle](configure-oracle-asm.md) учебника.
+Ознакомьтесь с руководством по [установке и настройке Oracle ASM](configure-oracle-asm.md).

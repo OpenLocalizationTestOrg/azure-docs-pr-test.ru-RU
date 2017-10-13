@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy вашего первого приложения tooCloud Foundry в Microsoft Azure | Документы Microsoft"
-description: "Развертывание приложения tooCloud Foundry в Azure"
+title: "Развертывание первого приложения в Cloud Foundry в Microsoft Azure | Документация Майкрософт"
+description: "Сведения о развертывании приложения в Cloud Foundry в Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: seanmck
@@ -16,136 +16,136 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 878da38f6eabe32a339f02aa0ead811d6e5af9a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-your-first-app-toocloud-foundry-on-microsoft-azure"></a>Развертывание вашего первого приложения tooCloud Foundry в Microsoft Azure
+# <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Развертывание первого приложения в Cloud Foundry в Microsoft Azure
 
-[Cloud Foundry](http://cloudfoundry.org) — это популярная платформа приложений с открытым кодом в Microsoft Azure. В этой статье показано, как toodeploy и управлять ими на Foundry облачные приложения в среду Azure.
+[Cloud Foundry](http://cloudfoundry.org) — это популярная платформа приложений с открытым кодом в Microsoft Azure. В этой статье рассматривается развертывание приложения в Cloud Foundry в среде Azure и управление им.
 
 ## <a name="create-a-cloud-foundry-environment"></a>Создание среды Cloud Foundry
 
 Существует несколько способов создания среды Cloud Foundry в Azure.
 
-- Используйте hello [предложение жизненно важную Foundry облака] [ pcf-azuremarketplace] в Azure Marketplace hello toocreate стандартной среды, которые включают диспетчер Ops PCF и hello Azure Service Broker. Можно найти [завершения инструкции] [ pcf-azuremarketplace-pivotaldocs] развертывания hello marketplace предложить в hello жизненно важную документацию.
+- Используйте [предложение Pivotal Cloud Foundry][pcf-azuremarketplace] в Azure Marketplace для создания стандартной среды, содержащей диспетчер операций PCF и компонент Azure Service Broker. [Полные инструкции][pcf-azuremarketplace-pivotaldocs] по развертыванию предложения Marketplace представлены в документации по Pivotal.
 - Создайте пользовательскую среду, [развернув Pivotal Cloud Foundry вручную][pcf-custom].
-- [Развертывание пакетов Foundry облака открытая hello непосредственно] [ oss-cf-bosh] , настроив [BOSH](http://bosh.io) директора виртуальной Машины, которая координирует развертывания hello hello Foundry облачной среды.
+- [Разверните пакеты Cloud Foundry напрямую][oss-cf-bosh], настроив директор [BOSH](http://bosh.io), виртуальную машину, координирующую развертывание среды Cloud Foundry.
 
 > [!IMPORTANT] 
-> При развертывании PCF из hello Azure Marketplace, запишите hello SYSTEMDOMAINURL и требуемые учетные данные администратора hello tooaccess hello жизненно важную Диспетчер приложений, которые описаны в руководстве по развертыванию marketplace hello. Они имеют необходимые toocomplete этого учебника. Для развертываний marketplace hello SYSTEMDOMAINURL находится в форме https://system hello. *IP-адрес*. cf.pcfazure.com.
+> Если вы развертываете PCF из Azure Marketplace, запишите SYSTEMDOMAINURL и учетные данные администратора, необходимые для доступа к Pivotal Apps Manager (описано в руководстве по развертыванию Marketplace). Эти значения необходимы для работы с этим руководством. Для развертываний Marketplace значение SYSTEMDOMAINURL представлено в форме https://system.*IP-адрес*.cf.pcfazure.com.
 
-## <a name="connect-toohello-cloud-controller"></a>Подключение toohello контроллера облака
+## <a name="connect-to-the-cloud-controller"></a>Подключение к Cloud Controller
 
-Hello контроллера облака — hello первичная запись точки tooa Foundry облачной среды для развертывания и управления приложениями. Hello core API контроллера облака (CCAPI) представляет собой API REST, однако он доступен с помощью различных средств. В этом случае мы взаимодействуют с его помощью hello [CLI Foundry облака][cf-cli]. Можно установить на Windows, Linux, MacOS или hello CLI, но если вы предпочитаете не tooinstall, он будет доступен предварительно установленных в hello [оболочки облако Azure][cloudshell-docs].
+Cloud Controller — основная точка входа в среду Cloud Foundry для развертывания приложений и управления ими. Основной API Cloud Controller — это REST API. Доступ к нему можно получить с помощью различных средств. В этом случае взаимодействие с ним осуществляется с помощью [интерфейса командной строки Cloud Foundry][cf-cli]. Его можно установить в Windows, Linux или MacOS. Если вы не хотите его устанавливать, он уже предварительно установлен в [Azure Cloud Shell][cloudshell-docs].
 
-toolog в начале `api` toohello SYSTEMDOMAINURL, полученный из развертывания marketplace hello. Поскольку развертывание по умолчанию hello использует самозаверяющий сертификат, следует также добавить hello `skip-ssl-validation` переключения.
+Для входа добавьте `api` перед SYSTEMDOMAINURL, полученным из развертывания Marketplace. Так как развертывание по умолчанию использует самозаверяющий сертификат, следует также добавить параметр `skip-ssl-validation`.
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-Все запрашиваемые toolog в toohello контроллера облака. Используйте hello учетных данных администратора, полученные из шагов развертывания marketplace hello.
+Вам будет предложено войти в Cloud Controller. Используйте учетные данные учетной записи администратора, полученные при развертывании из Marketplace.
 
-Предоставляет облачные Foundry *организаций* и *пробелы* как пространства имен tooisolate hello групп и сред в рамках общего развертывания. Hello PCF marketplace развертывания включает по умолчанию hello *системы* организации и набор областей создания toocontain hello базовые компоненты, как автоматическое масштабирование службы hello и hello Azure service broker. Теперь нажмите кнопку hello *системы* пространства.
+Для изоляции команд и сред в общей среде Cloud Foundry предоставляет *организации* и *пространства*, используемые в качестве пространств имен. Развертывание PCF Marketplace содержит *системную* организацию по умолчанию и несколько пространств, созданных для хранения основных компонентов, таких как служба автомасштабирования и Azure Service Broker. Сейчас выберите *системное* пространство.
 
 
 ## <a name="create-an-org-and-space"></a>Создание организации и пространства
 
-Если ввести `cf apps`, вы видите набор приложений системы, которые были развернуты в пространстве системы hello в системе org. hello 
+Если ввести `cf apps`, отобразится набор системных приложений, развернутых в системном пространстве в системной организации. 
 
-Необходимо хранить hello *системы* организации, зарезервированных для приложений системы, таким образом создать toohouse организации и пространство приложении образца.
+*Системную* организацию необходимо зарезервировать для системных приложений. Создайте организацию и пространство для размещения примера приложения.
 
 ```bash
 cf create-org myorg
 cf create-space dev -o myorg
 ```
 
-Используйте hello целевой команда tooswitch toohello новой организации и пространства:
+Используйте команду target для перехода к новой организации и пространству:
 
 ```bash
 cf target -o testorg -s dev
 ```
 
-Теперь при развертывании приложения, он автоматически создается в новой организации hello и пространства. Введите tooconfirm, который в настоящее время нет приложений в новой организации hello дискового пространства, `cf apps` еще раз.
+Теперь при развертывании приложения оно автоматически создается в новой организации и пространстве. Чтобы убедиться, что в новой организации или пространстве нет приложений, введите `cf apps` еще раз.
 
 > [!NOTE] 
-> Дополнительные сведения о организаций и пробелы и как они могут использоваться для управления доступом на основе ролей (RBAC) см. в разделе hello [документации Foundry облака][cf-orgs-spaces-docs].
+> Дополнительные сведения об организациях и пространствах, а также о том, как их можно использовать для управления доступом на основе ролей (RBAC), см. в [документации по Cloud Foundry][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Развертывание приложения
 
-Используем образец приложения Foundry облака, вызывается Hello Spring облака, который написан на языке Java и основании hello [Spring Framework](http://spring.io) и [Spring загрузки](http://projects.spring.io/spring-boot/).
+Воспользуемся примером приложения Cloud Foundry (Hello Spring Cloud), написанным на языке Java и созданным на основе [Spring Framework](http://spring.io) и [Spring Boot](http://projects.spring.io/spring-boot/).
 
-### <a name="clone-hello-hello-spring-cloud-repository"></a>Клонирование репозитория облака Spring Hello hello
+### <a name="clone-the-hello-spring-cloud-repository"></a>Клонирование репозитория Hello Spring Cloud
 
-Образец Hello Spring облачные приложения Hello можно найти в GitHub. Клонирует его tooyour среды и преобразовать в новый каталог hello:
+Пример приложения Hello Spring Cloud доступен на GitHub. Клонируйте его в свою среду и измените расположение на новый каталог:
 
 ```bash
 git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
 cd hello-spring-cloud
 ```
 
-### <a name="build-hello-application"></a>Создание приложения hello
+### <a name="build-the-application"></a>Создание приложения
 
-С помощью приложения hello построения [Apache Maven](http://maven.apache.org).
+Создайте приложение с помощью [Apache Maven](http://maven.apache.org).
 
 ```bash
 mvn clean package
 ```
 
-### <a name="deploy-hello-application-with-cf-push"></a>Развертывание приложения hello с принудительной отправкой cf
+### <a name="deploy-the-application-with-cf-push"></a>Развертывание приложения с помощью команды cf push
 
-Большинство приложений tooCloud Foundry можно развернуть с помощью hello `push` команды:
+Большинство приложений можно развернуть в Cloud Foundry с помощью команды `push`:
 
 ```bash
 cf push
 ```
 
-Когда вы *принудительной* Foundry облачные приложения, определяет тип hello приложения (в данном случае приложение Java) и определяет его зависимости (в это случае framework Spring hello). Затем он упаковывает все необходимые toorun кода в автономный образ контейнера, известный как *дроплета*. Наконец расписания Foundry облака hello приложения на одном hello доступных компьютеров в вашей среде и создает URL-адрес, где можно получить доступ, который доступен в hello выходные данные команды hello.
+При *принудительной передаче* приложения Cloud Foundry определяет его тип (в данном случае — приложение Java) и зависимости (в данном случае — Spring Framework). Затем это решение упаковывает все необходимые для выполнения кода компоненты в автономный образ контейнера, известный как *дроплет*. Наконец, Cloud Foundry планирует приложение на одном из компьютеров, доступных в среде, и создает URL-адрес, по которому к нему можно получить доступ. Этот URL-адрес доступен в выходных данных команды.
 
 ![Выходные данные команды cf push][cf-push-output]
 
-приложение hello spring облако hello toosee, откройте hello предоставленный URL-адрес в браузере:
+Чтобы просмотреть приложение Hello Spring Cloud, откройте указанный URL-адрес в браузере:
 
 ![Пользовательский интерфейс по умолчанию для приложения Hello Spring Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> toolearn Дополнительные сведения о том, что происходит во время `cf push`, в разделе [как поэтапно приложений] [ cf-push-docs] в hello документации Foundry облака.
+> Дополнительные сведения о том, что происходит при выполнении команды `cf push`, см. в разделе [How Applications Are Staged][cf-push-docs] (Поэтапное развертывание приложений) в документации по Cloud Foundry.
 
 ## <a name="view-application-logs"></a>Просмотр журналов приложения
 
-Можно использовать журналы tooview hello облака Foundry CLI для приложения по имени:
+С помощью интерфейса командной строки Cloud Foundry можно просмотреть журналы приложения по имени:
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-По умолчанию hello журналы команда с помощью *заключительного*, который демонстрирует новые журналы, записываемые. отображается toosee новые журналы, обновите приложение hello spring облако hello в браузере hello.
+По умолчанию команда logs использует *заключительный фрагмент*, который позволяет просмотреть новые записываемые журналы. Чтобы просмотреть новые отображаемые журналы, обновите приложение Hello Spring Cloud в браузере.
 
-tooview журналы, которые уже были записаны, добавить hello `recent` переключения:
+Чтобы просмотреть записанные журналы, добавьте параметр `recent`:
 
 ```bash
 cf logs --recent hello-spring-cloud
 ```
 
-## <a name="scale-hello-application"></a>Масштабирование приложения hello
+## <a name="scale-the-application"></a>Масштабирование приложения
 
-По умолчанию команда `cf push` создает только один экземпляр приложения. tooensure высокого уровня доступности и масштабирования включить более высокую пропускную способность, обычно требуется toorun более одного экземпляра приложения. Можно легко масштабировать уже развернутых приложений с помощью hello `scale` команды:
+По умолчанию команда `cf push` создает только один экземпляр приложения. Чтобы обеспечить высокий уровень доступности и развертывания для поддержки более высокой пропускной способности, обычно требуется запустить несколько экземпляров приложения. Развернутые приложения можно легко масштабировать с помощью команды `scale`:
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-Выполнение hello `cf app` команда приложения hello показывает, что облачные Foundry создает другой экземпляр приложения hello. После запуска приложения hello Foundry облака автоматически запускает tooit трафика балансировки нагрузки.
+Если выполнить команду `cf app` в приложении, мы увидим, что Cloud Foundry создает другой экземпляр приложения. После запуска приложения Cloud Foundry автоматически запускает балансировку нагрузки по трафику к нему.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- [Hello чтения документации Foundry облака][cloudfoundry-docs]
-- [Настройка подключаемого модуля Visual Studio Team Services hello для облака Foundry][vsts-plugin]
-- [Настройка hello сопел аналитика журналов Microsoft для облака Foundry][loganalytics-nozzle]
+- [Ознакомьтесь с документацией по Cloud Foundry][cloudfoundry-docs]
+- [Настройте подключаемый модуль Visual Studio Team Services для Cloud Foundry][vsts-plugin]
+- [Настройте Microsoft Log Analytics Nozzle для Cloud Foundry][loganalytics-nozzle]
 
 <!-- LINKS -->
 

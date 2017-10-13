@@ -1,9 +1,9 @@
 ---
-title: "Сетевая безопасность aaaAnalyze с представлением группы безопасности Наблюдатель сети Azure - PowerShell | Документы Microsoft"
-description: "В этой статье описывается, как toouse tooanalyze PowerShell в виртуальной машины, безопасность в представление \"Группа безопасности\"."
+title: "Анализ безопасности сети с помощью представления группы безопасности Наблюдателя за сетями (PowerShell) | Документация Майкрософт"
+description: "В этой статье вы узнаете, как проанализировать безопасность виртуальных машин, используя представление группы безопасности, с помощью PowerShell."
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 04e76b49-6a1b-4d0f-9a9b-51cf2f4df5a2
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5e1990d97899bd8585025ec13dd556ab2e034c3b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: jdial
+ms.openlocfilehash: 3983055cd580c263d39b908c61a16ed14353c9a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Анализ безопасности виртуальной машины с использованием представления группы безопасности (PowerShell)
 
@@ -28,21 +28,21 @@ ms.lasthandoff: 10/06/2017
 > - [CLI 2.0](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Представление "Группа безопасности" возвращает правила безопасности сети настроены и эффективным, примененные tooa виртуальной машины. Эта возможность является полезным tooaudit и диагностики сетевых групп безопасности и правила, настроенные на tooensure трафика виртуальных Машин выполняется правильно разрешен или запрещен. В этой статье мы показано, как настроить tooretrieve hello и эффективной защиты правила tooa виртуальной машины с помощью PowerShell
+Представление группы безопасности возвращает настроенные и действующие правила сетевой безопасности, применяемые к виртуальной машине. Эта возможность полезна для аудита и диагностики групп безопасности сети и настроенных на виртуальной машине правил, позволяющих обеспечить разрешение или отклонение трафика соответствующим образом. В этой статье мы покажем, как получить настроенные и действующие правила безопасности, применяемые к виртуальной машине, с помощью PowerShell.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этом сценарии запуска hello `Get-AzureRmNetworkWatcherSecurityGroupView` сведения о правиле безопасности командлет tooretrieve hello.
+В этом сценарии вы получите сведения о правиле безопасности, используя командлет `Get-AzureRmNetworkWatcherSecurityGroupView`.
 
-Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети.
+В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы).
 
 ## <a name="scenario"></a>Сценарий
 
-Hello сценарий, описанный в этой статье извлекает настроен hello и правила безопасности для данной виртуальной машине.
+В сценарии, описанном в этой статье, вы получите настроенные и действующие правила безопасности для указанной виртуальной машины.
 
 ## <a name="retrieve-network-watcher"></a>Извлечение Наблюдателя за сетями
 
-Первым шагом Hello — экземпляр Наблюдатель сети tooretrieve hello. Эта переменная передается toohello `Get-AzureRmNetworkWatcherSecurityGroupView` командлета.
+Сначала необходимо извлечь экземпляр Наблюдателя за сетями. Эта переменная передается в командлет `Get-AzureRmNetworkWatcherSecurityGroupView`.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -51,7 +51,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-vm"></a>Получение виртуальной машины
 
-Виртуальная машина — hello необходимые toorun `Get-AzureRmNetworkWatcherSecurityGroupView` командлета для. Следующий пример Hello получает объект виртуальной Машины.
+Для повторного выполнения командлета `Get-AzureRmNetworkWatcherSecurityGroupView` необходима виртуальная машина. Ниже приведен пример получения объекта виртуальной машины.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
@@ -59,15 +59,15 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 
 ## <a name="retrieve-security-group-view"></a>Получение представления группы безопасности
 
-Hello следующим шагом является результат представления группы безопасности hello tooretrieve.
+Далее необходимо получить результат представления группы безопасности.
 
 ```powershell
 $secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
-## <a name="viewing-hello-results"></a>Просмотр результатов hello
+## <a name="viewing-the-results"></a>Просмотр результатов
 
-Hello следующий пример — сокращенный ответа возвращаемых результатов hello. Hello результаты показывают все правила безопасности эффективный и примененные hello на виртуальной машине hello разбит на группы **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, и  **EffectiveSecurityRules**.
+Далее приведен пример сокращенного ответа возвращенных результатов. В результатах приводятся все действующие и применяемые правила безопасности на виртуальной машине, разделенные по группам **NetworkInterfaceSecurityRules**, **DefaultSecurityRules** и **EffectiveSecurityRules**.
 
 ```
 NetworkInterfaces : [
@@ -128,6 +128,6 @@ NetworkInterfaces : [
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Посетите [аудита безопасности сети группы (NSG) с Наблюдатель сети](network-watcher-nsg-auditing-powershell.md) toolearn способ проверки tooautomate групп безопасности сети.
+Сведения об автоматизации проверки групп безопасности сети см. в статье [Auditing Network Security Groups (NSG) with Network Watcher](network-watcher-nsg-auditing-powershell.md) (Выполнение аудита групп безопасности сети с помощью Наблюдателя за сетями).
 
 

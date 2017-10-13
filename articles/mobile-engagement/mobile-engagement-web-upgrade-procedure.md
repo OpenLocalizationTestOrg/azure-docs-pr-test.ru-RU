@@ -1,6 +1,6 @@
 ---
-title: "процедуры обновления Mobile Engagement Web SDK aaaAzure | Документы Microsoft"
-description: "Здравствуйте, последние обновления и процедуры для hello Web SDK для Azure Mobile Engagement"
+title: "Процедуры обновления веб-пакета SDK для Служб мобильного взаимодействия Azure | Документация Майкрософт"
+description: "Последние обновления и процедуры для веб-пакета SDK для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,40 +14,40 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: a2df65904c6b56584ce6588ed26a9b79f3aa27ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Процедуры обновления веб-пакета SDK для Служб мобильного взаимодействия Azure
-Если уже имеется встроенный более ранней версии Azure Mobile Engagement Web SDK hello в веб-приложения, необходимо при обновлении hello SDK следующие точки hello tooconsider.
+Если вы уже интегрировали в веб-приложение предыдущую версию веб-пакета SDK для Служб мобильного взаимодействия Azure, то при обновлении пакета SDK необходимо учитывать следующее.
 
-Если вы не выполнили несколько версий hello Mobile Engagement Web SDK, может потребоваться toocomplete несколько процедур во время обновления hello. Например, если выполняется миграция из 1.4.0 too1.6.0 первый выполните hello процедуры tooupgrade из 1.4.0 too1.5.0. Выполните процедуры tooupgrade hello из 1.5.0 too1.6.0.
+Если вы пропустили несколько версий веб-пакета SDK для Служб мобильного взаимодействия Azure, то в процессе обновления может потребоваться выполнить несколько процедур. Например, при миграции с версии 1.4.0 на 1.6.0 сначала выполните обновление с версии 1.4.0 до 1.5.0. Затем выполните процедуры обновления с версии 1.5.0 до 1.6.0.
 
-Независимо от версии обновления, замените все более ранние версии файла hello azure-engagement.js hello последнюю версию файла hello.
+Независимо от того, с какой версии выполняется обновление, необходимо заменить предыдущую версию файла azure-engagement.js его последней версией.
 
-## <a name="upgrade-from-121-too200"></a>Обновление с 1.2.1 too2.0.0
-В этом разделе описывается, как toomigrate пакет SDK Mobile Engagement Web интеграции из обновления Capptain hello, предлагаемых Capptain SAS, приложение Azure Mobile Engagement tooan. При миграции из более ранней версии, проверьте hello см. в Capptain toofirst веб-сайт too1.2.1 миграции и примените hello следующих процедур.
+## <a name="upgrade-from-121-to-200"></a>Обновление с версии 1.2.1 до 2.0.0
+В этом разделе описан процесс переноса веб-пакета SDK для Служб мобильного взаимодействия из службы Capptain от Capptain SAS в приложение Служб мобильного взаимодействия Azure. При миграции с более ранней версии сначала ознакомьтесь с информацией о переносе на версию 1.2.1 на веб-сайте Capptain, а затем выполните описанные ниже процедуры.
 
-Эта версия hello Mobile Engagement Web SDK не поддерживает смарт-ТВ Samsung, Opera ТВ, webOS или функции hello Reach.
+Эта версия веб-пакета SDK для Служб мобильного взаимодействия не поддерживает функции Samsung Smart TV, Opera TV, webOS и Reach.
 
 > [!IMPORTANT]
-> Capptain и Azure Mobile Engagement не являются hello одной службы. После процедуры Hello выделены только как toomigrate hello клиентского приложения. Миграция hello Mobile Engagement Web SDK в приложение hello не выполняют миграцию данных из Capptain tooa мобильного охвата серверных компонентов.
+> Службы Capptain и Службы мобильного взаимодействия Azure отличаются между собой. В представленных ниже процедурах описывается способ переноса только для клиентского приложения. При переносе веб-пакета SDK для Служб мобильного взаимодействия в приложение данные не будут перенесены с сервера Capptain на сервер Служб мобильного взаимодействия.
 > 
 > 
 
 ### <a name="javascript-files"></a>Файлы JavaScript
-Замените файл hello capptain-sdk.js файл hello azure-engagement.js, а потом изменить сценарий импортирует соответствующим образом.
+Замените файл capptain-sdk.js файлом azure-engagement.js, а затем обновите соответствующим образом импортируемые элементы в сценарии.
 
 ### <a name="remove-capptain-reach"></a>Удаление модуля Capptain Reach
-Эта версия hello Mobile Engagement Web SDK не поддерживает функции hello Reach. Если охват Capptain интегрированы в приложение, необходимо tooremove его.
+Эта версия веб-пакета SDK для Служб мобильного взаимодействия не поддерживает функцию Reach. Если вы интегрировали модуль Capptain Reach в приложение, то его необходимо удалить.
 
-Удалите hello достичь CSS импорта со страницы и удалите hello связанные CSS-файл (capptain-reach.css, по умолчанию).
+Удалите импортированный код CSS Reach со страницы, также удалите связанный CSS-файл (по умолчанию: capptain-reach.css).
 
-Удалить следующие ресурсы Reach hello: hello закрыть изображение (capptain-close.png, по умолчанию) и hello фирменной символики значок (capptain уведомления-, по умолчанию).
+Удалите следующие ресурсы Reach: изображение для закрытия (по умолчанию: capptain-close.png) и фирменный значок (по умолчанию: capptain-notification-icon).
 
-Удалите hello достичь пользовательского интерфейса для уведомления в приложении. макет по умолчанию Hello выглядит следующим образом:
+Удалите пользовательский интерфейс Reach для получения уведомлений в приложении. Макет по умолчанию выглядит следующим образом:
 
     <!-- capptain notification -->
     <div id="capptain_notification_area" class="capptain_category_default">
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/06/2017
       </div>
     </div>
 
-Удалите hello достичь пользовательского интерфейса для текста и веб-объявлений и для опросов. макет по умолчанию Hello выглядит следующим образом:
+Удалите пользовательский интерфейс Reach для текстовых и веб-объявлений и опросов. Макет по умолчанию выглядит следующим образом:
 
     <div id="capptain_overlay" class="capptain_category_default">
       <button id="capptain_overlay_close">x</button>
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/06/2017
       </div>
     </div>
 
-Удалите hello `reach` объекта из вашей конфигурации, если он существует. Это выглядит следующим образом.
+Удалите объект `reach` из конфигурации, если таковой имеется. Это выглядит следующим образом.
 
     window.capptain = {
       [...]
@@ -89,16 +89,16 @@ ms.lasthandoff: 10/06/2017
 Удалите все прочие настройки Reach, например категории.
 
 ### <a name="remove-deprecated-apis"></a>Удаление нерекомендуемых интерфейсов API
-Некоторые интерфейсы API из Capptain являются устаревшими в hello Mobile Engagement Web SDK.
+Некоторые интерфейсы API из Capptain являются нерекомендуемыми в веб-пакете SDK для Служб мобильного взаимодействия.
 
-Удалите все вызовы toohello следующие API-интерфейсы: `agent.connect`, `agent.disconnect`, `agent.pause`, и `agent.sendMessageToDevice`.
+Удалите все вызовы к следующим API: `agent.connect`, `agent.disconnect`, `agent.pause` и `agent.sendMessageToDevice`.
 
-Удалите все экземпляры hello следующую обратные вызовы из конфигурации Capptain: `onConnected`, `onDisconnected`, `onDeviceMessageReceived`, и `onPushMessageReceived`.
+Удалите все экземпляры следующих обратных вызовов из конфигурации Capptain: `onConnected`, `onDisconnected`, `onDeviceMessageReceived` и `onPushMessageReceived`.
 
 ### <a name="configuration"></a>Конфигурация
-Mobile Engagement используются идентификаторы SDK tooconfigure строку подключения, например, идентификатор приложения hello.
+Службы мобильного взаимодействия используют строку подключения для настройки идентификаторов пакета SDK, таких как идентификатор приложения.
 
-Замените идентификатор приложения hello строки подключения. Обратите внимание на то что hello глобальный объект hello настройки SDK изменится с `capptain` слишком`azureEngagement`.
+Замените идентификатор приложения строкой подключения. Обратите внимание, что глобальный объект для настройки пакета SDK меняется с `capptain` на `azureEngagement`.
 
 Перед миграцией:
 
@@ -114,10 +114,10 @@ Mobile Engagement используются идентификаторы SDK tooc
       [...]
     };
 
-Hello строку подключения для приложения отображается в hello портала Azure.
+Теперь строка подключения для приложения отображается на портале Azure.
 
 ### <a name="javascript-apis"></a>Интерфейсы API JavaScript
-глобальный объект JavaScript Hello `window.capptain` был переименован `window.azureEngagement` , но можно использовать hello `window.engagement` псевдоним для вызовов API. Нельзя использовать настройки hello псевдоним toodefine hello SDK.
+Глобальный объект JavaScript `window.capptain` был переименован в `window.azureEngagement`, но можно использовать псевдоним `window.engagement` для вызовов API. Этот псевдоним нельзя использовать для определения конфигурации пакета SDK.
 
 Например: `capptain.deviceId` становится `engagement.deviceId`, `capptain.agent.startActivity` становится `engagement.agent.startActivity` и т. д.
 

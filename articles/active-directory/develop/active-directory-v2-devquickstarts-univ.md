@@ -1,6 +1,6 @@
 ---
-title: "версия 2.0 aaaAzure AD универсального приложения Windows | Документы Microsoft"
-description: "Как toobuild универсальное приложение Windows, подписывает пользователей обоих личную учетную запись Майкрософт и рабочих учетных записей."
+title: "Универсальное приложение для Windows для Azure AD версии 2.0 | Документация Майкрософт"
+description: "Как создать универсальное приложение Windows, которое поддерживает вход пользователей в систему с помощью лично, рабочей и учебной учетной записью Майкрософт."
 services: active-directory
 documentationcenter: 
 author: jmprieur
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 49b26c74fa5a76664c3229256c9bd128563b830c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-sign-in-tooa-windows-universal-app-using-hello-v20-endpoint"></a>Добавить вход tooa универсальное приложение Windows с помощью конечной точки v2.0 hello
-  Hello краткое руководство для универсальных приложений Windows не готова... Вернитесь через некоторое время и следите за каналом @AzureAD в Twitter.
+# <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>Добавление входа в универсальное приложение для Windows с помощью конечной точки версии 2.0
+  Краткий учебник для универсальных приложений Windows еще не совсем готов... Вернитесь через некоторое время и следите за каналом @AzureAD в Twitter.
 
 > [!NOTE]
-> Не все сценарии Azure Active Directory и возможности поддерживаются hello v2.0 конечной точкой.  toodetermine, если необходимо использовать конечную точку v2.0 hello, прочтите сведения о [ограничения v2.0](active-directory-v2-limitations.md).
+> Не все сценарии и компоненты Azure Active Directory поддерживаются конечной точкой версии 2.0.  Чтобы определить, следует ли вам использовать конечную точку версии 2.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
 > 
 > 
 
     ## Get security updates for our products
 
-Мы рекомендуем вам уведомления при возникновении события безопасности, посетив tooget [эту страницу](https://technet.microsoft.com/security/dd252948) и подписка tooSecurity рекомендация предупреждения.
+Рекомендуем вам настроить уведомления о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на [этой странице](https://technet.microsoft.com/security/dd252948).
 

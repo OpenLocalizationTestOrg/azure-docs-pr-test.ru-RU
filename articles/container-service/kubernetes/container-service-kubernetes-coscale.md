@@ -1,5 +1,5 @@
 ---
-title: "aaaMonitor Kubernetes Azure кластер с CoScale | Документы Microsoft"
+title: "Мониторинг кластера Kubernetes в Azure с помощью CoScale | Документация Майкрософт"
 description: "Мониторинг кластера Kubernetes в Службе контейнеров Azure с помощью CoScale"
 services: container-service
 documentationcenter: 
@@ -17,43 +17,43 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: f835e82d2be3afe1d85070bd0bf69649cc6dd2ff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f894191baced710fc0f5a8c8692df98033341a48
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Мониторинг кластера Kubernetes в Службе контейнеров Azure с помощью CoScale
 
-В этой статье мы покажем, как toodeploy hello [CoScale](https://www.coscale.com/) toomonitor агента, все узлы и контейнеры в вашей Kubernetes кластера в службе контейнера Azure. Для работы с этой конфигурацией вам понадобится учетная запись с CoScale. 
+В этой статье показано, как развернуть агент [CoScale](https://www.coscale.com/) для отслеживания всех узлов и контейнеров кластера Kubernetes в Службе контейнеров Azure. Для работы с этой конфигурацией вам понадобится учетная запись с CoScale. 
 
 
 ## <a name="about-coscale"></a>Сведения о CoScale 
 
-CoScale представляет собой платформу для мониторинга, собирающую метрики и события из всех контейнеров на нескольких платформах оркестрации. CoScale обеспечивает комплексный мониторинг для сред Kubernetes. Он предоставляет визуализации и анализа для всех слоев в стек hello: hello ОС, Kubernetes, Docker и приложения, работающие на контейнеры. CoScale предоставляет несколько встроенных панелей мониторинга и он имеет операторы tooallow обнаружение аномалий встроенные и проблем инфраструктуры и приложений toofind разработчикам быстро.
+CoScale представляет собой платформу для мониторинга, собирающую метрики и события из всех контейнеров на нескольких платформах оркестрации. CoScale обеспечивает комплексный мониторинг для сред Kubernetes. Она предоставляет средства визуализации и аналитики на всех слоях стека: ОС, Kubernetes, Docker и приложения, выполняющиеся в контейнерах. CoScale содержит несколько встроенных панелей мониторинга, а также средства обнаружения аномалий, которые позволяют операторам и разработчикам быстро обнаруживать проблемы в инфраструктуре и приложении.
 
 ![Пользовательский интерфейс CoScale](./media/container-service-kubernetes-coscale/coscale.png)
 
-Как показано в этой статье, можно установить агенты на toorun кластера Kubernetes CoScale как решение SaaS. Если требуется tookeep данных на месте, CoScale также доступна для локальной установки.
+Как показано в этой статье, вы можете установить агенты в кластер Kubernetes для выполнения CoScale в качестве решения SaaS. CoScale также можно установить локально, если необходимо хранить данные на месте.
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Необходимо сначала слишком[создать учетную запись CoScale](https://www.coscale.com/free-trial).
+Сначала потребуется [создать учетную запись CoScale](https://www.coscale.com/free-trial).
 
 В этом пошаговом руководстве предполагается, что вы [создали кластер Kubernetes с помощью службы контейнеров Azure](container-service-kubernetes-walkthrough.md).
 
-Также предполагается, что имеется hello `az` Azure CLI и `kubectl` установлены инструменты.
+Кроме того, предполагается, что у вас установлен Azure CLI `az` и средства `kubectl`.
 
-Можно проверить при наличии hello `az` установить, запустив средство:
+Чтобы проверить наличие средства `az`, выполните такую команду:
 
 ```azurecli
 az --version
 ```
 
-Если у вас нет hello `az` средство установки приведены инструкции по [здесь](/cli/azure/install-azure-cli).
+Если средство `az` не установлено, следуйте инструкциям, приведенным [здесь](/cli/azure/install-azure-cli).
 
-Можно проверить при наличии hello `kubectl` установить, запустив средство:
+Чтобы проверить наличие средства `kubectl`, выполните такую команду:
 
 ```bash
 kubectl version
@@ -65,26 +65,26 @@ kubectl version
 az acs kubernetes install-cli
 ```
 
-## <a name="installing-hello-coscale-agent-with-a-daemonset"></a>Установка агента CoScale hello с DaemonSet
-[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) , используемые Kubernetes toorun один экземпляр контейнера на каждом узле в кластере hello.
-Они идеально подходит для выполнения агентов мониторинга, например агент CoScale hello.
+## <a name="installing-the-coscale-agent-with-a-daemonset"></a>Установка агента CoScale с помощью DaemonSet
+Kubernetes использует наборы [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) для выполнения отдельного экземпляра контейнера на каждом узле в кластере.
+Они идеально подходят для выполнения агентов мониторинга, таких как CoScale.
 
-После входа в tooCoScale go toohello [агент страница](https://app.coscale.com/) tooinstall CoScale агенты на кластер с помощью DaemonSet. Hello CoScale пользовательского интерфейса предоставляет toocreate действия интерактивная конфигурации агента и начать наблюдение за полный Kubernetes кластера.
+После входа в CoScale перейдите на [страницу агента](https://app.coscale.com/), чтобы установить в кластер агенты CoScale с помощью DaemonSet. Пользовательский интерфейс CoScale содержит пошаговые инструкции настройки по созданию агента и запуску мониторинга всего кластера Kubernetes.
 
 ![Конфигурация агента CoScale](./media/container-service-kubernetes-coscale/installation.png)
 
-агент hello toostart hello кластере, выполните команду предоставленный hello:
+Чтобы запустить агент в кластере, выполните указанную команду.
 
-![Запуск агента CoScale hello](./media/container-service-kubernetes-coscale/agent_script.png)
+![Запуск агента CoScale](./media/container-service-kubernetes-coscale/agent_script.png)
 
-Вот и все! После hello агенты запущены и работают, вы увидите данные в консоли hello через несколько минут. Посетите hello [агент страница](https://app.coscale.com/) toosee сводку по кластеру, выполнять дополнительные действия по настройке и в разделе панелей мониторинга, например hello **Kubernetes кластера Обзор**.
+Вот и все! Через несколько минут после того, как агенты будут запущены и начнут работать, вы увидите данные в консоли. Посетите [страницу агента](https://app.coscale.com/), чтобы просмотреть сводку по кластеру, выполнить дополнительные действия по настройке и увидеть панели мониторинга, например панель **основных сведений о кластере Kubernetes**.
 
 ![Основные сведения о кластере Kubernetes](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 
-агент CoScale Hello автоматически развертываются на новых компьютерах в кластере hello. Hello агента автоматически обновляется при выпуске новой версии.
+На новых компьютерах в кластере агент CoScale устанавливается автоматически. Он автоматически обновляется при выпуске новой версии.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В разделе hello [CoScale документации](http://docs.coscale.com/) и [блог](https://www.coscale.com/blog) для получения дополнительных сведения о CoScale мониторинг решений. 
+Дополнительные сведения о решениях CoScale для мониторинга см. в [документации по CoScale](http://docs.coscale.com/) и в [блоге](https://www.coscale.com/blog). 
 

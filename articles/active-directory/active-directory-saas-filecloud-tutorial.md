@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с FileCloud | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и FileCloud."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и FileCloud."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,122 +14,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: fe58d01f02d6ce99ee9e2f83e7dc72c4434e13b9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ad03516f684acc59912ffc57f6e0712828bd03f2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Учебник. Интеграция Azure Active Directory с FileCloud
 
-В этом учебнике вы узнаете, как toointegrate FileCloud с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать FileCloud с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD FileCloud предоставляет hello следующие преимущества:
+Интеграция FileCloud с Azure AD обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooFileCloud.
-- Можно включить на пользователей tooautomatically get вошедшего tooFileCloud (Single Sign-On) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
+- С помощью Azure AD вы можете контролировать доступ к FileCloud.
+- Вы можете включить автоматический вход пользователей в FileCloud (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с FileCloud требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с FileCloud, вам потребуется:
 
 - подписка Azure AD;
 - подписка FileCloud с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление FileCloud из галереи hello
-2. Настройка и проверка единого входа в Azure AD
+1. Добавление FileCloud из коллекции
+2. Настройка и проверка единого входа в Azure AD.
 
-## <a name="adding-filecloud-from-hello-gallery"></a>Добавление FileCloud из галереи hello
-tooconfigure hello интеграции FileCloud в Azure AD, вы должны tooadd FileCloud из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-filecloud-from-the-gallery"></a>Добавление FileCloud из коллекции
+Чтобы настроить интеграцию FileCloud с Azure AD, необходимо добавить FileCloud из коллекции в список управляемых приложений SaaS.
 
-**tooadd FileCloud из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить FileCloud из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **FileCloud**выберите **FileCloud** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
+4. В поле поиска введите **FileCloud**, выберите **FileCloud** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![FileCloud в списке результатов hello](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_addfromgallery.png)
+    ![FileCloud в списке результатов](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение FileCloud с помощью тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в FileCloud является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в FileCloud должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в FileCloud соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в FileCloud.
 
-В FileCloud, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в FileCloud.
 
-tooconfigure и теста Azure AD единого входа с FileCloud, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в FileCloud, выполните следующие стандартные действия.
 
-1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя FileCloud](#create-a-filecloud-test-user)**  -toohave аналог Саймон Britta в FileCloud, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя FileCloud](#create-a-filecloud-test-user)** нужно для того, чтобы в FileCloud также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении FileCloud.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении FileCloud.
 
-**tooconfigure Azure AD единого входа с FileCloud, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в FileCloud, выполните следующие действия.**
 
-1. В hello в hello портала Azure **FileCloud** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **FileCloud** щелкните **Единый вход**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_samlbase.png)
 
-3. На hello **URL-адреса и домена FileCloud** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения FileCloud** выполните указанные ниже действия.
 
     ![Сведения о домене и URL-адресах единого входа приложения FileCloud](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.filecloudhosted.com`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<subdomain>.filecloudhosted.com`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента FileCloud](mailto:support@codelathe.com) tooget эти значения.
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов FileCloud](mailto:support@codelathe.com).
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
 
-    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_certificate.png) 
+    ![Ссылка для скачивания сертификата](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-filecloud-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации FileCloud** щелкните **Настройка FileCloud** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML** из hello **краткий справочник.**
+6. В разделе **Настройка FileCloud** щелкните **Настроить FileCloud**, чтобы открыть окно **Настройка единого входа**. Скопируйте значение **SAML Entity ID** (Идентификатор сущности SAML) из раздела **Краткий справочник**.
 
     ![Настройка FileCloud](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_configure.png) 
 
-7. В другом окне браузера, клиент FileCloud tooyour входа от имени администратора.
+7. В другом окне веб-браузера войдите в свой клиент FileCloud с правами администратора.
 
-8. На панели навигации слева hello, нажмите кнопку **параметры**. 
+8. В левой панели навигации щелкните **Settings**(Параметры). 
    
     ![Раздел "Settings" (Параметры) на стороне приложения](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
 
@@ -141,84 +141,84 @@ tooconfigure и теста Azure AD единого входа с FileCloud, тр
    
     ![Панель "Single Sign-On Settings" (Параметры единого входа) на стороне приложения](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
 
-11. Вставить **идентификатор сущности SAML**, который вы скопировали из портала Azure в hello **URL-адрес конечной точки поставщика удостоверений** текстовое поле.
+11. Вставьте значение **Идентификатор сущности SAML**, скопированное на портале Azure, в поле **IdP End Point URL** (URL-адрес конечной точки IdP).
 
     ![Текстовое поле "IDP End Point URL" (URL-адрес конечной точки IDP)](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
 
-12. Откройте скачанный файл метаданных в блокноте, hello копирования содержимого его в буфер обмена, а затем вставьте его toohello **метаданные поставщика удостоверений** текстового поля на **параметры SAML** панель.
+12. Откройте скачанный файл метаданных в Блокноте, скопируйте его содержимое в буфер обмена, а затем вставьте в текстовое поле **IdP Meta Data** (Метаданные IdP) на панели **SAML Settings** (Параметры SAML).
 
     ![Раздел "IDP Meta Data" (Метаданные IDP) на стороне приложения](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
 
 13. Нажмите кнопку **Сохранить** .
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-filecloud-tutorial/create_aaduser_01.png)
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-filecloud-tutorial/create_aaduser_01.png)
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
 
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-filecloud-tutorial/create_aaduser_02.png)
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-filecloud-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
 
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-filecloud-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-filecloud-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-filecloud-tutorial/create_aaduser_04.png)
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-filecloud-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
  
 ### <a name="create-a-filecloud-test-user"></a>Создание тестового пользователя FileCloud
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в FileCloud. FileCloud поддерживает JIT-подготовку. Эта функция включена по умолчанию. В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь создается во время попытки tooaccess FileCloud, если он еще не существует.
+Цель этого раздела — создать пользователя с именем Britta Simon в FileCloud. FileCloud поддерживает JIT-подготовку. Эта функция включена по умолчанию. В этом разделе никакие действия с вашей стороны не требуются. Пользователь создается при попытке получить доступ к приложению FileCloud (если он еще не существует).
 
 >[!NOTE]
->Если требуется toocreate пользователя вручную, необходимо toocontact hello [FileCloud клиента поддержки](mailto:support@codelathe.com). 
+>Если вам нужно вручную создать пользователя, обратитесь в [службу поддержки клиентов FileCloud](mailto:support@codelathe.com). 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooFileCloud доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к FileCloud.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign tooFileCloud Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в FileCloud, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **FileCloud**.
+2. Из списка приложений выберите **FileCloud**.
 
-    ![ссылка FileCloud Hello в списке приложений hello](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_app.png)  
+    ![Ссылка на FileCloud в списке "Приложения"](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202]
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -226,13 +226,13 @@ tooconfigure и теста Azure AD единого входа с FileCloud, тр
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest конфигурации единого входа Azure AD с помощью панели доступа "hello".
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello FileCloud плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour FileCloud приложения.
+Щелкнув элемент "FileCloud" на панели доступа, вы автоматически войдете в приложение FileCloud.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

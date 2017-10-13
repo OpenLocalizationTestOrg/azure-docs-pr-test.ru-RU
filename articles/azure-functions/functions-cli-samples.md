@@ -1,10 +1,10 @@
 ---
-title: "aaaAzure образцы CLI - функции Azure | Документы Microsoft"
+title: "Примеры Azure CLI. Функции Azure | Документация Майкрософт"
 description: "Примеры Azure CLI для Функций Azure."
 services: functions
 documentationcenter: functions
 author: syntaxc4
-manager: erikre
+manager: cfowler
 editor: ggailey777
 tags: azure-service-management
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
@@ -16,15 +16,15 @@ ms.workload: functions
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2041e710560a41f230a0ffc20dc89756c6b5c854
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f3c9fc67c082a759432f1db0b44b42513f2fb733
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples"></a>Примеры Azure CLI
 
-Hello следующей таблице представлены ссылки toobash сценариев для функций Azure, используйте hello Azure CLI.
+В следующей таблице содержатся ссылки на сценарии Bash для Функций Azure, которые используют Azure CLI.
 
 | | |
 |-|-|
@@ -33,15 +33,15 @@ Hello следующей таблице представлены ссылки to
 | [Создание приложения-функции в плане службы приложений](scripts/functions-cli-create-app-service-plan.md) | Создает приложение-функцию в выделенном плане службы приложений. |
 | | |
 |**Интеграция**||
-| [Создайте приложение функции и подключить учетную запись хранилища tooa](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Создание приложения функции и подключите его tooa учетной записи хранилища. |
-| [Создайте приложение функции и подключения tooan Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Создание приложения функции и подключите его tooan Azure Cosmos DB |
+| [Создание приложения-функции и подключение к учетной записи хранения](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Создает приложение-функцию и подключает его к учетной записи хранения. |
+| [Создание приложения-функции и подключение к Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Создает приложение-функцию и подключает его к Azure Cosmos DB. |
 | | |
 |**Настройка приложения**||
-| [Карта приложении функция tooa пользовательского домена](scripts/functions-cli-configure-custom-domain.md) | Определяет личный домен для функций.  |
-| [Привязка функции приложения tooa сертификат SSL](scripts/functions-cli-configure-ssl-certificate.md)  |  Оправляет SSL-сертификаты для функций в личном домене. |
+| [Сопоставление личного домена с приложением-функцией](scripts/functions-cli-configure-custom-domain.md) | Определяет личный домен для функций.  |
+| [Привязка SSL-сертификата к приложению-функции](scripts/functions-cli-configure-ssl-certificate.md)  |  Оправляет SSL-сертификаты для функций в личном домене. |
 <!--
 
 |**Scale app**||
 
-|**Connect app tooresources**||
+|**Connect app to resources**||
 -->

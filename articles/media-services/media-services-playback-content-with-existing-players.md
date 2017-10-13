@@ -1,6 +1,6 @@
 ---
-title: "aaaUse существующих проигрывателей tooplayback контент - Azure | Документы Microsoft"
-description: "В этом разделе перечислены существующих проигрывателей, которые можно использовать tooplayback контента."
+title: "Использование существующих проигрывателей для воспроизведения содержимого в Azure | Документация Майкрософт"
+description: "В этой статье перечислены существующие проигрыватели, которые можно использовать для воспроизведения содержимого."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: juliako
-ms.openlocfilehash: 54817345a19a9d3b18f1e7b352c3342043a569b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 48f373b013b1192c353352b801876d706d91dd28
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="playing-your-content-with-existing-players"></a>Воспроизведение содержимого с помощью существующих проигрывателей
-Службы мультимедиа Azure поддерживают многие популярные форматы потоковой передачи, например Smooth Streaming, HTTP Live Streaming и MPEG-Dash. В этом подразделе описываются tooexisting проигрыватели, которые можно использовать tootest потоков.
+Службы мультимедиа Azure поддерживают многие популярные форматы потоковой передачи, например Smooth Streaming, HTTP Live Streaming и MPEG-Dash. В этой статье описываются имеющиеся проигрыватели, которые можно использовать для тестирования потоков.
 
-### <a name="hello-azure-portal-media-services-content-player"></a>проигрывателя содержимого портала Azure Media Services Hello
-Hello **Azure** портал предоставляет проигрыватель контента, которые можно использовать tootest видео.
+### <a name="the-azure-portal-media-services-content-player"></a>Проигрыватель содержимого служб мультимедиа портала Azure
+Портал **Azure** предлагает проигрыватель содержимого, с помощью которого можно проверить видео.
 
-Щелкните здесь hello требуемого видео (Убедитесь, что он был [опубликованных](media-services-portal-publish.md)) и нажмите кнопку hello **воспроизведение** кнопку в нижней части hello hello портала.
+Выберите нужное видео (убедитесь, что оно [опубликовано](media-services-portal-publish.md)) и нажмите кнопку **Воспроизвести** в нижней части портала.
 
 Важные особенности
 
-* Hello **ПРОИГРЫВАТЕЛЬ КОНТЕНТА СЛУЖБ МУЛЬТИМЕДИА** воспроизводит контент из конечной точки потоковой передачи по умолчанию hello. Если вы хотите tooplay из конечной точки потоковой передачи не по умолчанию, используйте другой проигрыватель. Например, [Проигрыватель мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* **ПРОИГРЫВАТЕЛЬ КОНТЕНТА СЛУЖБ МУЛЬТИМЕДИА** выполняет воспроизведение из конечной точки потоковой передачи по умолчанию. Если требуется воспроизвести из конечной точке потоковой передачи не по умолчанию, используйте другой проигрыватель. Например, [Проигрыватель мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Проигрыватель мультимедиа Azure
-Используйте [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) tooplayback содержимого (открытым или защищенным) в любом из следующих форматов hello:
+Используйте [Проигрыватель мультимедиа Azure](http://amsplayer.azurewebsites.net/azuremediaplayer.html) для воспроизведения содержимого (незашифрованного или защищенного) в любом из следующих форматов:
 
 * Smooth Streaming
 * MPEG DASH
@@ -59,13 +59,13 @@ Hello **Azure** портал предоставляет проигрывател
 [http://dashif.org](http://dashif.org)
 
 ### <a name="other"></a>Другие
-tootest HLS URL-адреса, можно также использовать:
+Для проверки URL-адресов HLS также можно использовать:
 
 * **Safari** на устройстве iOS или
 * **3ivx HLS Player** в Windows.
 
 ## <a name="developing-video-players"></a>Разработка видеопроигрывателей
-Сведения о том, как toodevelop собственных проигрывателей отображается [разработке видеопроигрывателей](media-services-develop-video-players.md)
+Сведения о том, как разрабатывать собственные проигрыватели, см. в статье [Разработка приложений видеопроигрывателя](media-services-develop-video-players.md).
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Соединитель Microsoft Office 365 видео aaaUse hello в приложениях для логики | Документы Microsoft"
-description: "Начало работы с использованием соединителя Office 365 видео hello в приложениях для логики службы приложения Microsoft Azure"
+title: "Использование соединителя Office 365 Видео в приложениях логики | Документация Майкрософт"
+description: "Начало использования соединителя Office 365 Видео в приложениях логики службы приложений Microsoft Azure"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,33 +15,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 6e0a4b658d166d1cf8096d50f4bf2d502053aa43
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f0e3613d4a3fd5478787c0365eb7a0bcde886c81
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-office365-video-connector"></a>Приступая к работе с Office 365 видео разъем hello
-Подключение tooOffice 365 видео tooget сведения о видео Office 365, получить список видео и многое другое. С помощью Office 365 Видео вы можете:
+# <a name="get-started-with-the-office365-video-connector"></a>Начало работы с соединителем Office 365 Видео
+Подключившись к Office 365 Видео, вы сможете получать информацию об Office 365 Видео, список видео и многое другое. С помощью Office 365 Видео вы можете:
 
-* Создать поток вашего бизнеса, на основе hello данных, получаемых из Office 365 видео. 
-* Использование действий, проверка hello видео портала, получить список всех видео в канал и многое другое. Эти действия получить ответ и внесите hello выходные данные для других действий. Например можно использовать соединитель toosearch hello поиска Bing для Office 365 видео и затем использовать hello Office 365 видео соединитель tooget сведения о видео. Если hello видео удовлетворяет вашим требованиям, можно опубликовать в этом видео на Facebook. 
+* формировать бизнес-процессы на основе данных, получаемых из Office 365 Видео; 
+* использовать действия для проверки состояния видеопортала, получения списка всех видео, имеющихся в канале, и т. д. Эти действия получают ответ и делают выходные данные доступными для использования другими действиями. Например, можно воспользоваться соединителем Поиска Bing для поиска видео в Office 365, а затем соединителем Office 365 Видео для получения сведений об этом видео. Если видео соответствует вашим требованиям, его можно опубликовать в Facebook. 
 
 Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-toooffice365-video-connector"></a>Создание соединителя видео tooOffice365 подключения
-При добавлении этого соединителя tooyour логику приложений необходимо подписать-в Office 365 видео tooyour учетную запись и разрешить учетной записи tooyour tooconnect логику приложения.
+## <a name="create-a-connection-to-office365-video-connector"></a>Создание подключения к соединителю Office 365 Видео
+При добавлении этого соединителя в приложения логики необходимо войти в учетную запись Office 365 Видео и разрешить приложениям логики подключаться к вашей учетной записи.
 
-> [!INCLUDE [Steps toocreate a connection tooOffice 365 Video](../../includes/connectors-create-api-office365video.md)]
+> [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
 > 
 > 
 
-После создания подключения hello, введите свойства видео hello Office 365, такие как имя клиента hello, или идентификатор канала 
+После создания подключения укажите свойства Office 365 Видео, такие как имя клиента или идентификатор канала. 
 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/office365videoconnector/).
+Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/office365videoconnector/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
+Вы можете вернуться к [списку интерфейсов API](apis-list.md).

@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor рабочей нагрузки с помощью динамических административных представлений | Документы Microsoft"
-description: "Узнайте, как toomonitor рабочей нагрузки с помощью динамических административных представлений."
+title: "Мониторинг рабочей нагрузки с помощью динамических административных представлений | Документация Майкрософт"
+description: "Узнайте о том, как организовать отслеживание рабочей нагрузки с помощью динамических административных представлений."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: acccf952d165ccec3de3b4b1c633b18bbbf78077
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Мониторинг рабочей нагрузки с помощью динамических административных представлений
-В этой статье описывается как динамические административные представления (DMV) toomonitor toouse рабочей нагрузки и изучить выполнение запросов в хранилище данных SQL Azure.
+В этой статье рассказывается, как использовать динамические административные представления (DMV) для наблюдения за рабочей нагрузкой и проверки выполнения запросов в хранилище данных SQL Azure.
 
 ## <a name="permissions"></a>Разрешения
-hello tooquery динамических административных представлений в этой статье, необходимо разрешение VIEW DATABASE STATE или элемента УПРАВЛЕНИЯ. Обычно предоставляется право VIEW DATABASE STATE не hello предпочитаемый разрешение, поскольку она является значительно более ограниченным.
+Для запроса динамических административных представлений в этой статье, необходимо разрешение VIEW DATABASE STATE или CONTROL. Более предпочтительно разрешение VIEW DATABASE STATE, так как оно гораздо строже.
 
 ```sql
-GRANT VIEW DATABASE STATE toomyuser;
+GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Мониторинг подключений
-Все имена входа tooSQL хранилище данных регистрируются слишком[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Это динамическое административное Представление содержит hello последние 10 000 имена входа.  Hello session_id — первичный ключ hello, назначенное последовательно для каждого нового сеанса входа.
+Все операции входа в хранилище данных SQL регистрируются в [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Это динамическое административное представление содержит записи о последних 10 000 операций входа.  Идентификатор session_id является первичным ключом и назначается последовательно для каждого нового входа.
 
 ```sql
 -- Other Active Connections
@@ -40,16 +40,16 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Наблюдение за выполнением запросов
-Все запросы, выполняемые в хранилище данных SQL регистрируются слишком[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Это динамическое административное Представление содержит hello последние 10 000 запросов, которые выполняются.  идентификатор_запроса Hello уникальным образом идентифицирует каждый запрос и hello первичный ключ для данного динамического административного Представления.  идентификатор_запроса Hello назначается последовательно для каждой новой и префиксом QID, предназначенную для ИД запроса.  При запросе конкретного session_id из этого динамического административного представления будут показаны все запросы для данной операции входа.
+Все запросы к хранилищу данных SQL регистрируются в [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Это динамическое административное представление содержит записи о последних 10 000 запросах.  Идентификатор request_id уникально идентифицирует каждый запрос и является первичным ключом для этого динамического административного представления.  Идентификатор request_id назначается последовательно для каждого нового запроса с добавлением префикса QID, означающего идентификатор запроса.  При запросе конкретного session_id из этого динамического административного представления будут показаны все запросы для данной операции входа.
 
 > [!NOTE]
 > Хранимые процедуры используют несколько идентификаторов request_id.  Идентификатора запросов назначаются последовательно. 
 > 
 > 
 
-Ниже приведены планы выполнения запросов tooinvestigate toofollow действия и время для конкретного запроса.
+Ниже приведено несколько действий для проверки планов выполнения запросов и длительности конкретных запросов.
 
-### <a name="step-1-identify-hello-query-you-wish-tooinvestigate"></a>Шаг 1: Определение hello запросов, которые вы будете tooinvestigate
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Шаг 1. Определение запроса, который нужно исследовать
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,18 +63,18 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with hello Label 'My Query'
--- Use brackets when querying hello label column, as it it a key word
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
 SELECT  *
 FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-Из hello предыдущих результатов запроса **Примечание hello ИД запроса** запроса hello, желательно tooinvestigate.
+**Запишите идентификатор запроса**, который вы хотите исследовать. Он указан в приведенных выше результатах запроса.
 
-Запросы в hello **Suspended** состояние ставятся из-за пределов tooconcurrency. Эти запросы появляются также в hello sys.dm_pdw_waits ожиданий запросов с типом UserConcurrencyResourceType. Дополнительные сведения об ограничениях параллелизма см. в разделе [Управление параллелизмом и рабочей нагрузкой в хранилище данных SQL][Concurrency and workload management]. Запросы также могут быть отложены по другим причинам, в том числе из-за блокировки объектов.  Если запрос ожидает ресурс, ознакомьтесь с разделом [Исследование запросов, ожидающих ресурсы][Investigating queries waiting for resources] далее в этой статье.
+Запросы в состоянии **Приостановлено** поставлены в очередь из-за ограничений параллелизма. Эти запросы также отображаются в результатах запроса Waits к sys.dm_pdw_waits с типом UserConcurrencyResourceType. Дополнительные сведения об ограничениях параллелизма см. в разделе [Управление параллелизмом и рабочей нагрузкой в хранилище данных SQL][Concurrency and workload management]. Запросы также могут быть отложены по другим причинам, в том числе из-за блокировки объектов.  Если запрос ожидает ресурс, ознакомьтесь с разделом [Исследование запросов, ожидающих ресурсы][Investigating queries waiting for resources] далее в этой статье.
 
-Уточняющий запрос hello toosimplify запроса в таблице sys.dm_pdw_exec_requests hello, используйте [МЕТКА] [ LABEL] tooassign tooyour запрос комментарий, который можно найти в представлении sys.dm_pdw_exec_requests hello.
+Чтобы упростить поиск запроса в таблице sys.dm_pdw_exec_requests, используйте [LABEL][LABEL], чтобы добавить комментарий к запросу, который можно будет найти в представлении sys.dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -84,11 +84,11 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-hello-query-plan"></a>Шаг 2: Проверьте план запроса hello
-Использовать план распределенных SQL (DSQL) tooretrieve hello hello ИД запроса запроса из [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+### <a name="step-2-investigate-the-query-plan"></a>Шаг 2. Изучение плана запроса
+С помощью идентификатора запроса получите план DSQL запроса из [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
--- Find hello distributed query plan steps for a specific query.
+-- Find the distributed query plan steps for a specific query.
 -- Replace request_id with value from Step 1.
 
 SELECT * FROM sys.dm_pdw_request_steps
@@ -96,51 +96,51 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Если план DSQL занимает больше времени, чем ожидалось, hello может быть вызвано сложным план с многих DSQL действия или только один этап, слишком долго.  Если план hello множество действий с несколькими операциями перемещения, рассмотрите возможность оптимизации вашей перемещение данных tooreduce распределения таблицы. Hello [распределение таблиц] [ Table distribution] статье объясняется, почему данные должны быть перемещены toosolve запроса и описание некоторых перемещения данных toominimize стратегии распространения.
+Если план DSQL выполняется больше времени, чем ожидалось, причина может быть в том, что это сложный план со множеством действий DSQL или только одним этапом, который выполняется слишком долго.  Если план содержит множество действий с несколькими операциями перемещения, рассмотрите возможность оптимизировать распределение таблиц, чтобы сократить перемещение данных. В статье [Распределение таблиц][Table distribution] объясняется, почему необходимо перемещать данные для разрешения запроса, и описываются некоторые стратегии распределения, позволяющие свести к минимуму перемещение данных.
 
-tooinvestigate Дополнительные сведения об одном шаге hello *operation_type* столбец hello продолжительный запрос шаг и Примечание hello **индекс**:
+Чтобы узнать больше об отдельном этапе, перейдите к столбцу *operation_type* самого длительного этапа запроса и запишите значение **Индекс этапа**:
 
 * Перейдите к шагу 3а для **операций SQL**: OnOperation, RemoteOperation, ReturnOperation.
 * Перейдите к шагу 3б для **операций перемещения данных**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-hello-distributed-databases"></a>ШАГ 3a: исследовать hello распределенных баз данных SQL
-Используйте hello ИД запроса и hello индекс tooretrieve сведений из [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], который содержит сведения о выполнении шага hello запроса на всех hello распределенных баз данных.
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Шаг 3а. Изучение SQL распределенных баз данных
+Используйте идентификатор запроса и индекс этапа, чтобы извлечь сведения из представления [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], которое содержит информацию о выполнении этапа запроса на каждой из распределенных баз данных.
 
 ```sql
--- Find hello distribution run times for a SQL step.
+-- Find the distribution run times for a SQL step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-При выполнении действия запроса hello, [: DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] может быть используется tooretrieve hello SQL Server предполагаемый план из кэша планов SQL Server для выполнения на определенной шага hello hello распределение.
+Когда выполняется этап запроса, можно использовать [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN], чтобы получить из кэша планов SQL Server предполагаемый план SQL Server для этапа, выполняемого с определенным распределением.
 
 ```sql
--- Find hello SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-hello-distributed-databases"></a>ШАГ 3b: исследовать перемещения данных hello распределенных баз данных
-Используйте hello ИД запроса и hello индекс tooretrieve сведения о шаг перемещения данных, работающих на каждого распределения из [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Шаг 3б. Изучение перемещения данных в распределенных базах данных
+Используйте идентификатор запроса и индекс этапа, чтобы получить из [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers] сведения об этапе перемещения данных, выполняющемся для каждого распределения.
 
 ```sql
--- Find hello information about all hello workers completing a Data Movement Step.
+-- Find the information about all the workers completing a Data Movement Step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Проверьте hello *total_elapsed_time* toosee столбца, если частичным распределением занимает больше времени, чем другие для перемещения данных.
-* Для распространения hello длительное время, проверьте hello *rows_processed* toosee столбца, если число строк, перемещается из этого распространения hello значительно больше, чем другие. Если это так, то это может означать отклонение базовых данных.
+* Перейдите к столбцу *total_elapsed_time*, чтобы просмотреть, есть ли какая-то операция распространения, перемещение данных для которой значительно больше времени по сравнению с другими операциями.
+* Для длительной операции распространения обратитесь к столбцу *rows_processed* и проверьте, является ли количество перемещаемых строк для этой операции значительно большим по сравнению с другими операциями. Если это так, то это может означать отклонение базовых данных.
 
-Если выполняется запрос hello, [: DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] может быть используется tooretrieve hello SQL Server предполагаемый план из кэша планов SQL Server для hello, запущенных в течение определенного шага SQL hello распределение.
+Если запрос выполняется, то можно использовать [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN], чтобы получить из кэша планов SQL Server предполагаемый план для выполняемого шага SQL для определенного распределения.
 
 ```sql
--- Find hello SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
@@ -149,7 +149,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Наблюдение за ожидающими запросами
-Если вы обнаружили, что запрос не выполняется, так как он ожидает ресурс, вот запрос, отображающий все ресурсы hello Ожидание запроса.
+Если вы обнаружили, что запрос не выполняется, так как ожидает ресурс, то можете отобразить все ожидаемые запросом ресурсы, выполнив приведенный ниже запрос.
 
 ```sql
 -- Find queries 
@@ -171,15 +171,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Если активно hello запрос ожидает ресурсы из другой запрос, то будет иметь состояние hello **AcquireResources**.  Если запрос hello имеет все необходимые hello ресурсы, то будет иметь состояние hello **Granted**.
+Если запрос активно ожидает ресурсы из другого запроса, то его состоянием будет **AcquireResources**.  Если запрос содержит все необходимые ресурсы, то его состоянием будет **Granted**.
 
 ## <a name="monitor-tempdb"></a>Мониторинг tempdb
-Использование высокого уровня базы данных tempdb может быть hello основную причину проблем с нехваткой памяти и снижению производительности. Проверьте Если rowgroups наклона или снижению качества данных и предпринять соответствующие действия hello сначала. Вы можете рассмотреть масштабирование хранилища данных, если во время выполнения запроса наблюдается приближение к пределам базы данных tempdb. Hello ниже приводится способ использования базы данных tempdb tooidentify каждого запроса на каждом узле. 
+Чрезмерное использование tempdb может стать основной причиной низкой производительности и нехватки памяти. Мы рекомендуем сначала проверить наличие неравномерного распределение данных или групп строк низкого качества, а затем предпринять соответствующие действия. Вы можете рассмотреть масштабирование хранилища данных, если во время выполнения запроса наблюдается приближение к пределам базы данных tempdb. Ниже описано, как определить использование базы данных tempdb на каждый запрос в каждом узле. 
 
-Создайте код представления tooassociate hello соответствующий узел подписки для sys.dm_pdw_sql_requests hello. Это включает вы tooleverage других к серверу динамических административных представлений и объедините эти таблицы с sys.dm_pdw_sql_requests.
+Создайте следующее представление, чтобы связать соответствующий идентификатор узла для sys.dm_pdw_sql_requests. Это позволит вам использовать другие сквозные динамические административные представления (DMV) и объединять эти таблицы с sys.dm_pdw_sql_requests.
 
 ```sql
--- sys.dm_pdw_sql_requests with hello correct node id
+-- sys.dm_pdw_sql_requests with the correct node id
 CREATE VIEW sql_requests AS
 (SELECT
        sr.request_id,
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Выполните следующий запрос toomonitor tempdb hello.
+Выполните следующий запрос для отслеживания базы данных tempdb:
 
 ```sql
 -- Monitor tempdb
@@ -233,9 +233,9 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Мониторинг памяти
 
-Память может быть hello основную причину проблем с нехваткой памяти и снижению производительности. Проверьте Если rowgroups наклона или снижению качества данных и предпринять соответствующие действия hello сначала. Вы можете рассмотреть масштабирование хранилища данных, если во время выполнения запроса наблюдается активное использование памяти SQL Server (приближение к пределам).
+Объем может стать основной причиной низкой производительности и нехватки памяти. Мы рекомендуем сначала проверить наличие неравномерного распределение данных или групп строк низкого качества, а затем предпринять соответствующие действия. Вы можете рассмотреть масштабирование хранилища данных, если во время выполнения запроса наблюдается активное использование памяти SQL Server (приближение к пределам).
 
-Привет, в следующем запросе возвращает нехватка памяти SQL Server использование и памяти на каждом узле: 
+Следующий запрос возвращает использование памяти SQL Server и нехватку памяти на каждом узле:   
 ```sql
 -- Memory consumption
 SELECT
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Мониторинг размера журнала транзакций
-Hello следующий запрос возвращает размер журнала транзакций hello на каждого распределения. Проверьте, если rowgroups наклона или снижению качества данных и предпринять соответствующие действия hello. Если один из файлов журнала hello почти 160 ГБ, следует рассмотреть вертикальное масштабирование экземпляра или ограничение на размер транзакции. 
+Следующий запрос возвращает размер журнала транзакций для каждого распределения. Мы рекомендуем проверить наличие неравномерного распределение данных или групп строк низкого качества, а затем предпринять соответствующие действия. Если один из файлов журнала достигает 160 ГБ, следует рассмотреть вертикальное масштабирование экземпляра или ограничение размера транзакции. 
 ```sql
 -- Transaction log size
 SELECT
@@ -272,7 +272,7 @@ AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>Мониторинг отката журнала транзакций
-Если не удается установить запросы или подсчета tooproceed много времени, можно проверить и мониторинга, если у вас есть все транзакции, откат.
+Если запросы завершаются сбоем или требуют слишком много времени на выполнение, вы можете отследить, происходит ли откат транзакций.
 ```sql
 -- Monitor rollback
 SELECT 

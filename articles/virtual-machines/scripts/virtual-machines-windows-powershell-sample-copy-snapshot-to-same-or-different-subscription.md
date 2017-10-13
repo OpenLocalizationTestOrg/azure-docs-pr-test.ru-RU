@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария PowerShell - копии (перемещения) снимок toosame управляемого диска или другой подписке aaaAzure | Документы Microsoft"
-description: "Azure образец скрипта PowerShell - копии (перемещения) снимок toosame управляемого диска или другой подписке"
+title: "Пример сценария Azure PowerShell. Копирование (перемещение) моментального снимка управляемого диска в ту же или другую подписку | Документация Майкрософт"
+description: "Пример сценария Azure PowerShell для копирования (перемещения) моментального снимка управляемого диска в ту же или другую подписку."
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: d7b8a71cc09d1950271f472e89b95bb551323be5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Копирование моментального снимка управляемого диска в ту же или другую подписку с помощью PowerShell
 
-Этот скрипт создает копию этого моментального снимка в hello же одной подписке или другую подписку. Используйте этот скрипт toomove toodifferent подписки на моментальные снимки для хранения данных. Хранение моментальных снимков в другой подписке защитит вас от случайного удаления моментальных снимков в основной подписке. 
+Этот сценарий создает копию моментального снимка в той же или в другой подписке. Используйте этот сценарий, чтобы переместить моментальный снимок в другую подписку для хранения данных. Хранение моментальных снимков в другой подписке защитит вас от случайного удаления моментальных снимков в основной подписке. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующую toocreate команд моментального снимка в hello целевой подписки с помощью hello идентификатор моментального снимка источника hello. Каждая команда в таблице hello связывает toocommand документацию.
+Этот сценарий использует приведенные ниже команды для создания моментального снимка в целевой подписке с помощью идентификатора исходного моментального снимка. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
-| [New-AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | Создает конфигурацию моментального снимка, используемую для создания моментального снимка. Он содержит идентификатор родительского снимка hello и расположение, которое совпадает с родительского снимка hello hello ресурса.  |
+| [New-AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | Создает конфигурацию моментального снимка, используемую для создания моментального снимка. Она содержит идентификатор ресурса родительского моментального снимка и расположение, которое совпадает с расположением родительского моментального снимка.  |
 | [New-AzureRmSnapshot](/powershell/module/azurerm.compute/New-AzureRmDisk) | Создает моментальный снимок с помощью конфигурации моментального снимка, имени моментального снимка и имени группы ресурсов, которые передаются в качестве параметров. |
 
 
@@ -48,6 +48,6 @@ ms.lasthandoff: 10/06/2017
 
 [Создание виртуальной машины на основе моментального снимка](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
 
-Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

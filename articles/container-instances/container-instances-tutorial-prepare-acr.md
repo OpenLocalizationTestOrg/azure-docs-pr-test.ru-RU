@@ -1,5 +1,5 @@
 ---
-title: "Учебник экземпляры контейнером aaaAzure - Подготовка реестра контейнера Azure | Документы Microsoft"
+title: "Руководство по службе \"Экземпляры контейнеров Azure\". Подготовка реестра контейнеров Azure | Документация Майкрософт"
 description: "Руководство по службе \"Экземпляры контейнеров Azure\". Подготовка реестра контейнеров Azure"
 services: container-instances
 documentationcenter: 
@@ -14,65 +14,65 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 2525626125740c3c861fad36aad207d0b587ff54
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ac85bffb9593923808c77f2240e6f0e841e74cd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Развертывание реестра контейнеров Azure и его использование
 
-Это вторая часть руководства, состоящего из трех частей. В hello [ранее](./container-instances-tutorial-prepare-app.md), был создан образ контейнера простого веб-приложения, написанные на [Node.js](http://nodejs.org). В этом учебнике это изображение помещается tooan реестра контейнера Azure. Если вы не создали hello образ контейнера, возвращают слишком[учебник 1 – Создание образа контейнера](./container-instances-tutorial-prepare-app.md). 
+Это вторая часть руководства, состоящего из трех частей. На [предыдущем шаге](./container-instances-tutorial-prepare-app.md) мы создали образ контейнера для простого веб-приложения, написанного на [Node.js](http://nodejs.org). Теперь мы поместим этот образ в реестр контейнеров Azure. Если вы еще не создали образ контейнера, вернитесь к первой части этой серии — [руководству по созданию образа контейнера](./container-instances-tutorial-prepare-app.md). 
 
-Hello реестра контейнера Azure является Azure, частного реестра образов контейнера Docker. Этот учебник Пошаговое руководство по развертыванию экземпляра реестра контейнера Azure и опубликуйте tooit образа контейнера. В частности, рассматриваются такие шаги:
+Реестр контейнеров Azure — это частный реестр на базе Azure для образов контейнеров Docker. В этом руководстве описывается развертывание экземпляра реестра контейнеров Azure и отправка в него образа контейнера. В частности, рассматриваются такие шаги:
 
 > [!div class="checklist"]
 > * Развертывание экземпляра реестра контейнеров Azure.
 > * Добавление тегов к образу контейнера для помещения в реестр контейнеров Azure.
-> * Отправка изображения tooAzure реестра контейнера
+> * Отправка образа в реестр контейнеров Azure.
 
-В последующих учебники развертывание hello контейнера из вашего частного реестра tooAzure экземпляры контейнером.
+В последующих руководствах мы развернем контейнер из частного реестра в службе "Экземпляры контейнеров Azure".
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-Что вы используете версию Azure CLI hello 2.0.4 упражнений этого учебника нужен или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).
+Для этого руководства требуется Azure CLI 2.0.12 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="deploy-azure-container-registry"></a>Развертывание реестра контейнеров Azure
 
 При развертывании реестра контейнеров Azure сначала необходимо создать группу ресурсов. Группа ресурсов Azure — это логическая коллекция, в которой выполняется развертывание и администрирование ресурсов Azure.
 
-Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. В этом примере имя группы ресурсов *myResourceGroup* создается в hello *eastus* области.
+Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). В этом примере создается группа ресурсов с именем *myResourceGroup* в регионе *eastus*.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Создайте в реестре контейнера Azure с hello [создать az acr](/cli/azure/acr#create) команды. Имя контейнера реестра Hello **должно быть уникальным**. В следующем примере hello, мы используем имя hello *mycontainerregistry082*.
+Создайте реестр контейнеров Azure с помощью команды[az acr create](/cli/azure/acr#create). Имя контейнера реестра **должно быть уникальным**. В следующем примере мы используем имя *mycontainerregistry082*.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
 ```
 
-На протяжении hello конца данного учебника мы используем `<acrname>` как заполнитель для hello контейнер реестра с выбранным именем.
+В этом руководстве будет использоваться имя `<acrname>` как заполнитель выбранного имени реестра контейнеров.
 
 ## <a name="container-registry-login"></a>Вход в реестр контейнеров
 
-Необходимо войти в экземпляре ACR tooyour до отправки tooit изображения. Используйте hello [входа acr az](https://docs.microsoft.com/en-us/cli/azure/acr#login) команды toocomplete hello операции. Необходимо tooprovide hello уникальное имя, заданное реестра toohello контейнера, при его создании.
+Войдите в свой экземпляр ACR, прежде чем отправлять в него образы. Используйте команду [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login), чтобы выполнить операцию. Укажите уникальное имя реестра контейнеров, заданное для него при создании.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-Команда Hello возвращает сообщение «Успешно выполнен вход» после завершения.
+После выполнения эта команда возвращает сообщение Login Succeeded (Вход выполнен).
 
 ## <a name="tag-container-image"></a>Добавление тега к образу контейнера
 
-toodeploy образ контейнера из частного реестра hello образ нуждается toobe тегом hello `loginServer` имя реестра hello.
+Чтобы развернуть образ контейнера из частного реестра, необходимо добавить к этому образу тег с именем `loginServer` реестра.
 
-список текущего изображения, используйте hello toosee `docker images` команды.
+Чтобы просмотреть список текущих образов, используйте команду `docker images`.
 
 ```bash
 docker images
@@ -85,19 +85,19 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-hello loginServer tooget имя, запустите следующую команду hello.
+Чтобы получить имя loginServer, выполните следующую команду.
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Тег hello *aci учебника приложений* изображение с loginServer hello hello контейнер реестра. Кроме того, добавьте `:v1` toohello конец hello имя образа. Этот тег указывает номер версии образа hello.
+Добавьте к образу *aci-tutorial-app* тег loginServer реестра контейнеров. Кроме того, добавьте `:v1` в конец имени образа. Этот тег указывает номер версии образа.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
 ```
 
-После тегов, выполните `docker images` tooverify hello операции.
+После пометки выполните команду `docker images` для проверки операции.
 
 ```bash
 docker images
@@ -111,11 +111,11 @@ aci-tutorial-app                                          latest              5c
 mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9dace4e1a17        7 minutes ago       68.1 MB
 ```
 
-## <a name="push-image-tooazure-container-registry"></a>Принудительная tooAzure образ контейнера реестра
+## <a name="push-image-to-azure-container-registry"></a>Передача образа в реестр контейнеров Azure
 
-Принудительная hello *aci учебника приложения* toohello реестра образов.
+Передайте образ *aci-tutorial-app* в реестр.
 
-Используя следующий пример hello, замените имя loginServer реестра контейнера hello loginServer hello из среды.
+Используйте следующий пример, заменив имя loginServer реестра контейнеров именем loginServer своей среды.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -123,7 +123,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 
 ## <a name="list-images-in-azure-container-registry"></a>Получение списка образов в реестре контейнеров Azure
 
-tooreturn список образов, которые передаются реестра tooyour контейнера Azure, пользователь hello [списка репозитория acr az](/cli/azure/acr/repository#list) команды. Обновление hello команды с именем реестра hello контейнера.
+Чтобы получить список образов, отправленных в реестр контейнеров Azure, выполните команду [az acr repository list](/cli/azure/acr/repository#list). Обновите команду, используя имя реестра контейнеров.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -137,7 +137,7 @@ Result
 aci-tutorial-app
 ```
 
-А затем toosee hello тегов для определенного образа, используйте hello [acr репозитория az show теги](/cli/azure/acr/repository#show-tags) команды.
+Чтобы увидеть теги для конкретного образа, используйте команду [az acr repository show-tags](/cli/azure/acr/repository#show-tags).
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
@@ -153,14 +153,14 @@ v1
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом учебнике в реестре контейнера Azure был подготовлен для использования с экземплярами Azure контейнера и занесен hello образ контейнера. Привет, следующие шаги были выполнены:
+В этом руководстве мы подготовили реестр контейнеров Azure к использованию со службой "Экземпляры контейнеров Azure", а также передали образ контейнера. Были выполнены следующие действия:
 
 > [!div class="checklist"]
 > * Развертывание экземпляра реестра контейнеров Azure.
 > * Добавление тегов к образу контейнера для помещения в реестр контейнеров Azure.
-> * Отправка изображения tooAzure реестра контейнера
+> * Отправка образа в реестр контейнеров Azure.
 
-Переместить Далее учебника toolearn toohello о развертывании tooAzure hello контейнера, с помощью экземпляров контейнера Azure.
+Перейдите к следующему руководству, чтобы узнать о развертывании контейнера в Azure с помощью службы "Экземпляры контейнеров Azure".
 
 > [!div class="nextstepaction"]
-> [Развертывание контейнеров tooAzure экземпляры контейнером](./container-instances-tutorial-deploy-app.md)
+> [Deploy a container to Azure Container Instances](./container-instances-tutorial-deploy-app.md) (Развертывание контейнера в службе "Экземпляры контейнеров Azure")

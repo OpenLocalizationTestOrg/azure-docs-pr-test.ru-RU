@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate виртуальную Машину с статический общедоступный IP-адрес - Azure CLI 1.0 | Документы Microsoft"
-description: "Узнайте, как toocreate ВМ с статических открытый IP адрес с помощью hello Azure командной строки (CLI) 1.0."
+title: "Создание виртуальной машины со статическим общедоступным IP-адресом (Azure CLI 1.0) | Документация Майкрософт"
+description: "Узнайте, как создать виртуальную машину со статическим общедоступным IP-адресом с помощью интерфейса командной строки Azure (CLI) версии 1.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ee906b65735830757b455df00f9f8d4373be3dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a373c32271096308678fe3402e8420cc14fe5935
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-hello-azure-cli-10"></a>Создайте виртуальную Машину с помощью hello Azure CLI 1.0 статический общедоступный IP-адрес
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-10"></a>Создание виртуальной машины со статическим общедоступным IP-адресом с помощью Azure CLI 1.0
 
 > [!div class="op_single_selector"]
 > * [Портал Azure](virtual-network-deploy-static-pip-arm-portal.md)
@@ -35,21 +35,21 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../resource-manager-deployment-model.md). В этой статье описан с помощью модели развертывания диспетчера ресурсов hello, который рекомендуется в большинстве случаев новый вместо hello классической модели развертывания.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../resource-manager-deployment-model.md). В этой статье описывается использование модели развертывания c помощью Resource Manager. Для большинства новых развертываний мы рекомендуем использовать эту модель вместо классической.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-Выполнить эту задачу с помощью hello Azure CLI 1.0 (Эта статья) или hello [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md). 
+Эту задачу можно выполнить с помощью Azure CLI 1.0 (в этой статье) или [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md). 
 
 ## <a name = "create"></a>Шаг 1. Запуск скрипта
-Вы можете загрузить hello bash полный сценарий [здесь](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-cli.sh). Выполните следующие toowork действия toochange hello скрипта в среде hello.
+Полный сценарий Bash можно скачать [здесь](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-cli.sh). Чтобы изменить скрипт для работы в вашей среде, сделайте следующее:
 
-Изменить значения hello hello следующих переменных на основе значений hello нужно toouse для развертывания. Привет, выполнив сценарий toohello карты значения, используемые в этой статье:
+Измените значения следующих переменных на основе значений, которые нужно использовать для своего развертывания. Приведенные ниже значения соответствуют сценарию, используемому в этой статье.
 
 ```azurecli
-# Set variables for hello new resource group
+# Set variables for the new resource group
 rgName="IaaSStory"
 location="westus"
 
@@ -79,8 +79,8 @@ pipName="PIPWEB1"
 dnsName="iaasstoryws1"
 ```
 
-## <a name="step-2---create-hello-necessary-resources-for-your-vm"></a>Шаг 2 — Создание hello необходимые ресурсы для виртуальной Машины
-Перед созданием виртуальной Машины, необходимо группы ресурсов, виртуальной сети, открытый IP и Сетевых toobe используемые hello виртуальной Машины.
+## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>Шаг 2. Создание необходимых ресурсов для виртуальных машин
+Перед созданием виртуальной машины необходимо создать группу ресурсов, виртуальную сеть, общедоступный IP-адрес и сетевой адаптер для использования с виртуальной машиной.
 
 1. Создайте новую группу ресурсов.
 
@@ -88,7 +88,7 @@ dnsName="iaasstoryws1"
     azure group create $rgName $location
     ```
 
-2. Создание hello виртуальной сети и подсети.
+2. Создайте виртуальную сеть и подсеть.
 
     ```azurecli
     azure network vnet create --resource-group $rgName \
@@ -101,7 +101,7 @@ dnsName="iaasstoryws1"
         --address-prefix $subnetPrefix
     ```
 
-3. Создайте открытый IP-ресурс hello.
+3. Создайте ресурс общедоступного IP-адреса.
 
     ```azurecli
     azure network public-ip create --resource-group $rgName \
@@ -111,7 +111,7 @@ dnsName="iaasstoryws1"
         --domain-name-label $dnsName
     ```
 
-4. Создайте hello сетевого интерфейса (NIC) для hello ВМ в подсети hello, созданная выше, с hello общедоступный IP-адрес. Обратите внимание hello первый набор команд, используемых tooretrieve hello **идентификатор** hello подсети, созданной ранее.
+4. Создайте сетевой интерфейс (NIC) для виртуальной машины в подсети, созданной ранее, с помощью общедоступного IP-адреса. Обратите внимание на первый набор команд, которые используются для получения **идентификатора** подсети, созданной ранее.
 
     ```azurecli
     subnetId="$(azure network vnet subnet show --resource-group $rgName \
@@ -129,10 +129,10 @@ dnsName="iaasstoryws1"
     ```
 
    > [!TIP]
-   > Здравствуйте, первая команда выше используется [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) и [строка манипуляции](http://tldp.org/LDP/abs/html/string-manipulation.html) (в частности, подстроки удаления).
+   > Первая команда выше использует [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) и [манипуляции со строками](http://tldp.org/LDP/abs/html/string-manipulation.html) (в частности, удаление подстроки).
    >
 
-5. Создайте hello toohost учетной записи хранения диска ОС виртуальной Машины.
+5. Создайте учетную запись хранения для размещения диска виртуальной машины с ОС.
 
     ```azurecli
     azure storage account create $stdStorageAccountName \
@@ -140,10 +140,10 @@ dnsName="iaasstoryws1"
         --location $location --type LRS
     ```
 
-## <a name="step-3---create-hello-vm"></a>Шаг 3 — Создание hello виртуальной Машины
+## <a name="step-3---create-the-vm"></a>Шаг 3. Создание виртуальной машины
 Теперь, когда имеются все необходимые ресурсы, можно создать новую виртуальную машину.
 
-1. Создайте hello виртуальной Машины.
+1. Создайте виртуальную машину.
 
     ```azurecli
     azure vm create --resource-group $rgName \
@@ -160,18 +160,18 @@ dnsName="iaasstoryws1"
         --admin-username $username \
         --admin-password $password
     ```
-2. Сохраните файл скрипта hello.
+2. Сохраните файл скрипта.
 
-## <a name="step-4---run-hello-script"></a>Шаг 4. выполнение сценариев hello
-После внесения необходимых изменений и основные сведения о скрипте hello Показать выше, запустите скрипт hello.
+## <a name="step-4---run-the-script"></a>Шаг 4. Запуск сценария
+После внесения необходимых изменений и изучения указанного выше скрипта запустите сценарий.
 
-1. С помощью консоли bash скрипт hello выше.
+1. С помощью консоли bash запустите приведенный выше сценарий.
 
     ```azurecli
     sh myscript.sh
     ```
 
-2. ниже Hello вывода должны отображаться через несколько минут.
+2. Представленные ниже выходные данные должны отобразиться через несколько минут.
 
         info:    Executing command group create
         info:    Getting resource group IaaSStory
@@ -197,9 +197,9 @@ dnsName="iaasstoryws1"
         data:      192.168.0.0/16
         info:    network vnet create command OK
         info:    Executing command network vnet subnet create
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         info:    Creating subnet "FrontEnd"
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
         data:    Type                            : Microsoft.Network/virtualNetworks/subnets
         data:    ProvisioningState               : Succeeded
@@ -208,9 +208,9 @@ dnsName="iaasstoryws1"
         data:
         info:    network vnet subnet create command OK
         info:    Executing command network public-ip create
-        info:    Looking up hello public ip "PIPWEB1"
+        info:    Looking up the public ip "PIPWEB1"
         info:    Creating public ip address "PIPWEB1"
-        info:    Looking up hello public ip "PIPWEB1"
+        info:    Looking up the public ip "PIPWEB1"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/publicIPAddresses/PIPWEB1
         data:    Name                            : PIPWEB1
         data:    Type                            : Microsoft.Network/publicIPAddresses
@@ -223,10 +223,10 @@ dnsName="iaasstoryws1"
         data:    FQDN                            : iaasstoryws1.westus.cloudapp.azure.com
         info:    network public-ip create command OK
         info:    Executing command network nic create
-        info:    Looking up hello network interface "NICWEB1"
-        info:    Looking up hello public ip "PIPWEB1"
+        info:    Looking up the network interface "NICWEB1"
+        info:    Looking up the public ip "PIPWEB1"
         info:    Creating network interface "NICWEB1"
-        info:    Looking up hello network interface "NICWEB1"
+        info:    Looking up the network interface "NICWEB1"
         data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkInterfaces/NICWEB1
         data:    Name                            : NICWEB1
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -246,10 +246,10 @@ dnsName="iaasstoryws1"
         info:    Creating storage account
         info:    storage account create command OK
         info:    Executing command vm create
-        info:    Looking up hello VM "WEB1"
-        info:    Using hello VM Size "Standard_A1"
-        info:    hello [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up hello storage account iaasstorystorage
-        info:    Looking up hello NIC "NICWEB1"
+        info:    Looking up the VM "WEB1"
+        info:    Using the VM Size "Standard_A1"
+        info:    The [OS, Data] Disk or image configuration requires storage account
+        info:    Looking up the storage account iaasstorystorage
+        info:    Looking up the NIC "NICWEB1"
         info:    Creating VM "WEB1"
         info:    vm create command OK

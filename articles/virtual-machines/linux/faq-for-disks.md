@@ -1,5 +1,5 @@
 ---
-title: "aaaFrequently, задаваемые вопросы (FAQ) о дисках виртуальной Машине Linux Azure IaaS | Документы Microsoft"
+title: "Часто задаваемые вопросы о дисках виртуальных машин Linux в Azure IaaS | Документация Майкрософт"
 description: "Часто задаваемые вопросы о дисках виртуальных машин Linux в Azure IaaS и дисках класса \"Премиум\" (управляемых и неуправляемых)."
 services: virtual-machines-linux
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: iainfou
-ms.openlocfilehash: d335d4ec25a2d73aa893be82b81d2b002bdaeb19
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: be746506f06319739a5eb5408a3bf04d1beadac5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

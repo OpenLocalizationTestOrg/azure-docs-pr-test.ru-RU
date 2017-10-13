@@ -1,6 +1,6 @@
 ---
-title: "приложения tooChrome aaaSend принудительной уведомлений с концентраторами уведомлений Azure | Документы Microsoft"
-description: "Узнайте, как toosend toouse концентраторов уведомлений Azure push-уведомления tooa Chrome приложения."
+title: "Отправка push-уведомлений в приложения Chrome с помощью Центров уведомлений Azure | Документация Майкрософт"
+description: "Узнайте, как использовать Центры уведомлений Azure для отправки push-уведомлений в приложение Chrome."
 services: notification-hubs
 keywords: "мобильные push-уведомления, push-уведомления, push-уведомление, push-уведомления Chrome"
 documentationcenter: 
@@ -15,79 +15,79 @@ ms.devlang: JavaScript
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 7dec8ab02622563bc3730a2e96820da8932d22f3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 600b1b7e5f3987c9a0acc33b7049f7118442b931
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="send-push-notifications-toochrome-apps-with-azure-notification-hubs"></a>Отправка push приложений tooChrome уведомлений с концентраторами уведомлений Azure
+# <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Отправка push-уведомлений в приложения Chrome с помощью Центров уведомлений Azure
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-В этом разделе показано, как toosend toouse концентраторов уведомлений Azure push-уведомления tooa Chrome приложение, которое будет отображаться в контексте hello hello браузера Google Chrome. В этом руководстве мы создадим приложение Chrome, которое получает push-уведомления с помощью [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/). 
+В этом разделе показано, как использовать Центры уведомлений Azure для отправки push-уведомлений в приложение Chrome, которое будет запущено в браузере Google Chrome. В этом руководстве мы создадим приложение Chrome, которое получает push-уведомления с помощью [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/). 
 
 > [!NOTE]
-> toocomplete этого учебника необходимо иметь активную учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
+> Для работы с этим учебником необходима активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
 > 
 > 
 
-Hello учебник поможет выполнить следующие основные шаги tooenable push-уведомлений:
+В этом учебнике рассматриваются следующие основные шаги для включения push-уведомлений:
 
 * [Включение Google Cloud Messaging](#register)
 * [Настройка концентратора уведомлений](#configure-hub)
-* [Концентратор уведомлений приложение Chrome toohello подключения](#connect-app)
-* [Отправка push уведомления tooyour Chrome приложения](#send)
+* [Подключение приложения Chrome к концентратору уведомлений](#connect-app)
+* [Отправка push-уведомления в приложение Chrome](#send)
 * [Дополнительные функции и возможности](#next-steps)
 
 > [!NOTE]
-> Push-уведомлений приложения Chrome не универсальный уведомления в браузере — это модель расширяемости конкретных toohello браузера (см. [Обзор приложений Chrome] подробные сведения). В дополнение к этому toohello браузер для настольных компьютеров, Chrome приложения выполняются на мобильном устройстве (Android и iOS) через Apache Cordova. В разделе [Chrome приложений на мобильном устройстве] toolearn дополнительные.
+> push-уведомления приложения Chrome не поддерживаются во всех браузерах. Они поддерживаются в браузерах с конкретной моделью расширения (дополнительные сведения см. в статье [Обзор приложений Chrome]). Помимо классического браузера, приложения Chrome также могут работать на мобильных устройствах (с ОС Android и iOS) с помощью Apache Cordova. Дополнительные сведения см. в статье [Приложения Chrome на мобильных устройствах].
 > 
 > 
 
-Настройка GCM и концентраторов уведомлений Azure — идентичные tooconfiguring для Android, так как [Google Cloud Messaging для Chrome] является устаревшим и hello же GCM теперь поддерживает устройства Android и хром экземпляров.
+Так как служба [Google Cloud Messaging для Chrome] устарела и одна версия GCM теперь поддерживает как устройства Android, так и экземпляры Chrome, настройка GCM и Центров уведомлений Azure аналогична их настройке для ОС Android.
 
 ## <a id="register"></a>Включение Google Cloud Messaging
-1. Перейдите toohello [облачной консоли Google] веб-сайта, войдите с помощью учетной записи Google и нажмите кнопку hello **Создание проекта** кнопки. Укажите соответствующий **имя проекта**и нажмите кнопку hello **создать** кнопки.
+1. Перейдите на веб-сайт [консоли Google Cloud] , войдите с помощью своих учетных данных Google и нажмите кнопку **Create Project** (Создать проект). Введите соответствующее **имя проекта** и нажмите кнопку **Create** (Создать).
    
        ![Google Cloud Console - Create Project][1]
-2. Запишите hello **номер проекта** на hello **проекты** страницы для hello проекта, который вы только что создали. Это будет использоваться в качестве hello **идентификатор отправителя GCM** в tooregister Chrome приложения hello с GCM.
+2. Запишите номер только что созданного проекта из поля **Project Number** (Номер проекта) на странице **Projects** (Проекты). Этот номер следует использовать как **идентификатор отправителя GCM** в приложении Chrome для регистрации в GCM.
    
        ![Google Cloud Console - Project Number][2]
-3. Hello левой панели щелкните **API-интерфейсы & auth**, затем прокрутите вниз и нажмите кнопку переключателя tooenable hello **Google Cloud Messaging для Android**. Нет tooenable **Google Cloud Messaging для Chrome**.
+3. В области слева щелкните **APIs & auth** (API и проверка подлинности), прокрутите вниз и переведите переключатель **Google Cloud Messaging for Android** (Google Cloud Messaging для Android) в положение "Вкл.". **Google Cloud Messaging для Chrome**включать не нужно.
    
        ![Google Cloud Console - Server Key][3]
-4. Hello левой панели щелкните **учетные данные** > **создать новый ключ** > **ключа сервера** > **создать**.
+4. В области слева щелкните **Credentials** (Учетные данные) > **Create New Key** (Создать ключ) > **Server Key** (Ключ сервера) > **Create** (Создать).
    
        ![Google Cloud Console - Credentials][4]
-5. Запишите hello server **ключ API**. Вы настроите это ваш tooenable Далее, концентратор уведомлений его tooGCM уведомления toosend push.
+5. Запишите значение **API Key**(Ключ API) для сервера. Далее мы выполним эти настройки в концентраторе уведомлений, чтобы активировать отправку push-уведомлений в GCM.
    
        ![Google Cloud Console - API Key][5]
 
 ## <a id="configure-hub"></a>Настройка концентратора уведомлений
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.   В hello **параметры** колонке выберите **служб Notification Services** и затем **Google (GCM)**. Введите ключ API hello и сохранить.
+&emsp;&emsp;6.   В колонке **Параметры** щелкните **Службы уведомлений**, а затем — **Google (GCM)**. Введите ключ API и сохраните изменения.
 
 &emsp;&emsp;![Центры уведомлений Azure — Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-## <a id="connect-app"></a>Концентратор уведомлений приложение Chrome toohello подключения
-Концентратор уведомлений теперь настроенных toowork с GCM, и у вас есть hello tooregister строки подключения вашего приложения tooboth получения и отправки извещающих уведомлений. LK
+## <a id="connect-app"></a>Подключение приложения Chrome к концентратору уведомлений
+Теперь центр уведомлений настроен для работы с GCM, а у вас есть строки подключения, с помощью которых вы можете зарегистрировать приложение для получения и отправки push-уведомлений. LK
 
 ### <a name="create-a-new-chrome-app"></a>Создание нового приложения Chrome
-Образец Hello ниже основан на hello [пример GCM приложения Chrome] и использует hello рекомендуется toocreate способом приложения Chrome. TooAzure специально связанные действия hello концентраторы уведомлений будут выделены. 
+Пример ниже основан на [образце использования службы GCM для приложения Chrome]. В нем приведен рекомендуемый способ создания приложения Chrome. В разделах ниже описаны действия, связанные с Центрами уведомлений Azure. 
 
 > [!NOTE]
-> Мы рекомендуем загрузить hello источника для этого приложения Chrome из [пример концентратора уведомлений приложения Chrome].
+> Мы рекомендуем скачать источник для этого приложения Chrome со страницы [Образец использования концентратора уведомлений с приложением Chrome].
 > 
 > 
 
-Hello Chrome приложение создается с помощью JavaScript и любой из редакторов Ваш предпочитаемый word можно использовать для его создания. Приложение Chrome будет выглядеть следующим образом.
+Для создания приложения Chrome используется код JavaScript, который можно создать в любом текстовом редакторе. Приложение Chrome будет выглядеть следующим образом.
 
 ![Приложение Google Chrome][15]
 
-1. Создайте папку с именем `ChromePushApp`. Конечно, произвольное имя hello - Если присвоить файлу имя, чем-то другим, убедитесь, что можно заменить путем hello в сегменты кода hello требуется.
-2. Загрузите hello [библиотеки шифрования js] в hello папку, созданную на втором шаге hello. В этой папке библиотеки будут содержаться две вложенные папки: `components` и `rollups`.
-3. Создайте файл `manifest.json` . Все приложения Chrome, поддерживаемых файл манифеста, содержащий метаданные приложения hello и большинство того, все разрешения, предоставленные toohello приложения при hello пользователь устанавливает его.
+1. Создайте папку с именем `ChromePushApp`. Вы можете присвоить ей другое имя, но в таком случае необходимо изменить путь в соответствующих сегментах кода.
+2. Скачайте [библиотеку crypto-js] в папку, созданную на втором шаге. В этой папке библиотеки будут содержаться две вложенные папки: `components` и `rollups`.
+3. Создайте файл `manifest.json` . Все приложения Chrome сохраняются с помощью файла манифеста, в котором содержатся метаданные приложения и, самое главное, все предоставленные для него разрешения при установке.
    
         {
           "name": "NH-GCM Notifications",
@@ -103,11 +103,11 @@ Hello Chrome приложение создается с помощью JavaScrip
           "icons": { "128": "gcm_128.png" }
         }
    
-    Обратите внимание hello `permissions` элемент, который указывает, что это приложение Chrome будет может tooreceive push-уведомления в GCM. Также необходимо указать URI концентраторов уведомлений Azure, где hello Chrome приложение сделает вызов REST tooregister hello.
-    Наш пример приложения также использует файл значка `gcm_128.png`, можно найти в источнике hello повторно из исходного GCM образца hello. Его можно заменить на любое изображение, которое соответствует hello [критерии значок](https://developer.chrome.com/apps/manifest/icons).
-4. Создайте файл с именем `background.js` с hello, следующий код:
+    Обратите внимание на элемент `permissions` , который указывает, что это приложение Chrome сможет получать push-уведомления от GCM. Кроме того, он должен содержать универсальный код ресурса (URI) Центров уведомлений Azure, по которому приложение Chrome будет вызывать REST для регистрации.
+    В нашем примере приложения также используется файл значка `gcm_128.png`, который можно найти в источнике, многократно используемом из исходного образца GCM. Его можно заменить на любое другое изображение, которое соответствует [критериям значка](https://developer.chrome.com/apps/manifest/icons).
+4. Создайте файл с именем `background.js` с помощью указанного ниже кода.
    
-        // Returns a new notification ID used in hello notification.
+        // Returns a new notification ID used in the notification.
         function getNotificationId() {
           var id = Math.floor(Math.random() * 9007199254740992) + 1;
           return id.toString();
@@ -117,7 +117,7 @@ Hello Chrome приложение создается с помощью JavaScrip
           // A message is an object with a data property that
           // consists of key-value pairs.
    
-          // Concatenate all key-value pairs tooform a display string.
+          // Concatenate all key-value pairs to form a display string.
           var messageString = "";
           for (var key in message.data) {
             if (messageString != "")
@@ -126,7 +126,7 @@ Hello Chrome приложение создается с помощью JavaScrip
           }
           console.log("Message received: " + messageString);
    
-          // Pop up a notification tooshow hello GCM message.
+          // Pop up a notification to show the GCM message.
           chrome.notifications.create(getNotificationId(), {
             title: 'GCM Message',
             iconUrl: 'gcm_128.png',
@@ -155,15 +155,15 @@ Hello Chrome приложение создается с помощью JavaScrip
         // Set up a listener for GCM message event.
         chrome.gcm.onMessage.addListener(messageReceived);
    
-        // Set up listeners tootrigger hello first-time registration.
+        // Set up listeners to trigger the first-time registration.
         chrome.runtime.onInstalled.addListener(firstTimeRegistration);
         chrome.runtime.onStartup.addListener(firstTimeRegistration);
    
-    Это файл hello, всплывает окно Chrome приложения hello HTML (**register.html**) и также определяет обработчик hello **messageReceived** toohandle hello входящих push-уведомлений.
-5. Создайте файл с именем `register.html` -это определяет пользовательский Интерфейс hello Chrome приложения hello. 
+    Это файл, в котором всплывает HTML-код окна приложения Chrome (**register.html**) и который определяет обработчик **messageReceived** для обработки входящего push-уведомления.
+5. Создайте файл с именем `register.html` , который определяет пользовательский интерфейс приложения Chrome. 
    
    > [!NOTE]
-   > В этом образце используется **CryptoJS 3.1.2**. Если вы загрузили другую версию библиотеки hello, убедитесь, что вы правильно заменить версию hello в hello `src` пути.
+   > В этом образце используется **CryptoJS 3.1.2**. Если вы скачали другую версию библиотеки, измените версию в пути `src` .
    > 
    > 
    
@@ -199,7 +199,7 @@ Hello Chrome приложение создается с помощью JavaScrip
         </body>
    
         </html>
-6. Создайте файл с именем `register.js` hello код, приведенный ниже. Этот файл содержит скрипт hello за `register.html`. Chrome приложения не допускают встроенного выполнения, их необходимо toocreate отдельные резервного скрипта для пользовательского интерфейса.
+6. Создайте файл `register.js` , используя указанный ниже код. Этот файл определяет скрипт, лежащий в основе `register.html`. Приложения Chrome не предусматривают встроенное выполнение, поэтому необходимо создать отдельный резервный сценарий для пользовательского интерфейса.
    
         var registrationId = "";
         var hubName        = "", connectionString = "";
@@ -224,7 +224,7 @@ Hello Chrome приложение создается с помощью JavaScrip
           var senderId = document.getElementById("senderId").value.trim();
           chrome.gcm.register([senderId], registerCallback);
    
-          // Prevent register button from being clicked again before hello registration finishes.
+          // Prevent register button from being clicked again before the registration finishes.
           document.getElementById("registerWithGCM").disabled = true;
         }
    
@@ -233,7 +233,7 @@ Hello Chrome приложение создается с помощью JavaScrip
           document.getElementById("registerWithGCM").disabled = false;
    
           if (chrome.runtime.lastError) {
-            // When hello registration fails, handle hello error and retry the
+            // When the registration fails, handle the error and retry the
             // registration later.
             updateLog("Registration failed: " + chrome.runtime.lastError.message);
             return;
@@ -242,7 +242,7 @@ Hello Chrome приложение создается с помощью JavaScrip
           updateLog("Registration with GCM succeeded.");
           document.getElementById("registerWithNH").disabled = false;
    
-          // Mark that hello first-time registration is done.
+          // Mark that the first-time registration is done.
           chrome.storage.local.set({registered: true});
         }
    
@@ -310,7 +310,7 @@ Hello Chrome приложение создается с помощью JavaScrip
               "</content>" +
           "</entry>";
    
-          // Update hello payload with hello registration ID obtained earlier.
+          // Update the payload with the registration ID obtained earlier.
           registrationPayload = registrationPayload.replace("{GCMRegistrationId}", registrationId);
    
           var url = originalUri + "/registrations/?api-version=2014-09";
@@ -346,38 +346,38 @@ Hello Chrome приложение создается с помощью JavaScrip
           }
         }
    
-    Hello выше сценарий имеет следующие ключевые параметры hello.
+    В приведенном выше сценарии есть следующие параметры.
    
-   * **Window.onload** определяет события нажатия кнопки hello hello двух кнопок на hello пользовательского интерфейса. Один регистрируется GCM и других hello использует идентификатор регистрации hello, возвращаемое после регистрации GCM tooregister с концентраторами уведомлений Azure.
-   * **updateLog** — hello функция, которая позволяет нам toohandle простой протоколирования.
-   * **registerWithGCM** первого нажатия кнопки обработчика hello, благодаря чему hello `chrome.gcm.register` tooGCM tooregister hello текущего приложения Chrome экземпляра вызова.
-   * **registerCallback** — hello функция обратного вызова, который вызывается при возвращении вызова регистрации GCM hello.
-   * **registerWithNH** — hello второй обработчик щелчка кнопки, который регистрируется с помощью концентраторов уведомлений. Он возвращает `hubName` и `connectionString` (какие hello пользователь указал) и создается hello вызова интерфейса API REST регистрации концентраторов уведомлений.
-   * **splitConnectionString** и **generateSaSToken** — это вспомогательные средства представляют реализация JavaScript hello процесса создания маркера SaS, который должен использоваться во всех вызовах API-интерфейса REST. Дополнительные сведения см. в статье [Common Concepts](http://msdn.microsoft.com/library/dn495627.aspx) (Основные понятия).
-   * **sendNHRegistrationRequest** это вызов функции hello, который делает HTTP REST tooAzure концентраторов уведомлений.
-   * **registrationPayload** определяет полезные данные XML регистрации hello. Дополнительные сведения см. в статье [Create Registration NH REST API]. (Создание REST API Центра уведомлений для регистрации). Мы дополнить код регистрации hello в нем был получен из GCM.
-   * **клиент** является экземпляром класса **XMLHttpRequest** , мы используем toomake hello HTTP-запроса POST. Обратите внимание, что мы изменить hello `Authorization` заголовок с `sasToken`. Если этот вызов будет выполнен успешно, этот экземпляр приложения Chrome будет зарегистрирован в центре уведомлений Azure.
+   * **window.onload** определяет события, которые происходят при нажатии каждой из двух кнопок в пользовательском интерфейсе. Одна кнопка запускает регистрацию в GCM, а другая использует полученный после регистрации в GCM идентификатор для регистрации в центрах уведомлений Azure.
+   * **updateLog** — это функция, которая позволяет обрабатывать простые операции ведения журнала.
+   * **registerWithGCM** — это обработчик нажатия первой кнопки, выполняющий вызов `chrome.gcm.register` в GCM, чтобы зарегистрировать текущий экземпляр приложения Chrome.
+   * **registerCallback** — это функция обратного вызова, которая вызывается при возврате вызова регистрации в GCM.
+   * **registerWithNH** — это обработчик нажатия второй кнопки, который выполняет регистрацию в Центрах уведомлений. Он получает значения `hubName` и `connectionString` (которые указал пользователь) и вызывает REST API для регистрации в Центре уведомлений.
+   * **splitConnectionString** и **generateSaSToken** — это вспомогательные приложения для создания маркера SaS с помощью JavaScript. Этот маркер должен использоваться при каждом вызове REST API. Дополнительные сведения см. в статье [Common Concepts](http://msdn.microsoft.com/library/dn495627.aspx) (Основные понятия).
+   * **sendNHRegistrationRequest** — это функция, вызывающая HTTP REST в Центрах уведомлений Azure.
+   * **registrationPayload** определяет полезные XML-данные регистрации. Дополнительные сведения см. в статье [Create Registration NH REST API]. (Создание REST API Центра уведомлений для регистрации). Здесь мы обновляем идентификатор регистрации, используя полученные из GCM данные.
+   * **client** — это экземпляр **XMLHttpRequest**, используемый для выполнения запроса HTTP POST. Обратите внимание, что мы обновляем заголовок `Authorization` с помощью `sasToken`. Если этот вызов будет выполнен успешно, этот экземпляр приложения Chrome будет зарегистрирован в центре уведомлений Azure.
 
-Hello общую структуру папок для этого проекта должен выглядеть примерно следующим образом: ![приложение Google Chrome - структура папок][21]
+Общая структура папок для этого проекта должна выглядеть следующим образом. ![Приложение Google Chrome — структура папок][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>Настройка и тестирование приложения Chrome
 1. Откройте браузер Chrome. Откройте окно **Расширения** и установите флажок **Режим разработчика**.
    
        ![Google Chrome - Enable Developer Mode][16]
-2. Нажмите кнопку **загрузить распаковано расширение** и перейдите в папку toohello, где были созданы файлы hello. Можно также использовать hello **Chrome приложений и средства разработчика расширения**. Этот инструмент представляет собой приложение и хром само по себе (установлен hello Chrome веб-хранилище) и предоставляет расширенные возможности отладки для разработки приложений Chrome.
+2. Нажмите кнопку **Load unpacked extension** (Скачать распакованное расширение) и перейдите к папке, в которой вы создали файлы. При необходимости можно также использовать средство **Chrome Apps & Extensions Developer Tool**. Это средство само по себе является приложением Chrome (оно устанавливается из веб-магазина Chrome), предоставляющим дополнительные возможности отладки для разработки приложений Chrome.
    
        ![Google Chrome - Load Unpacked Extension][17]
-3. Если hello Chrome приложения создается без ошибок, вы увидите отображаться Chrome приложения.
+3. Если ошибки создания отсутствуют, вы увидите свое приложение Chrome.
    
        ![Google Chrome - Chrome App Display][18]
-4. Введите hello **номер проекта** , полученный ранее из hello **облачной консоли Google** идентификатор отправителя hello и нажмите кнопку **регистрации GCM**. Должно появиться сообщение hello **регистрации GCM успешно выполнен.**
+4. Введите в поле Sender ID (Идентификатор отправителя) **номер проекта**, полученный ранее из **консоли Google Cloud**, а затем щелкните **Register with GCM** (Зарегистрировать в GCM). Должно появиться сообщение **Registration with GCM succeeded**
    
        ![Google Chrome - Chrome App Customization][19]
-5. Введите ваш **имя концентратора уведомлений** и hello **DefaultListenSharedAccessSignature** , полученный из портала hello ранее и нажмите кнопку **регистрации в концентратор уведомлений Azure**. Должно появиться сообщение hello **регистрации концентратор уведомлений успешно!** а hello подробные сведения о регистрации ответ hello, который содержит hello регистрации концентраторов уведомлений Azure по идентификатору.
+5. Введите имя в поле **Notification Hub Name** (Имя Центра уведомлений) и значение **DefaultListenSharedAccessSignature**, полученное ранее на портале, а затем щелкните **Register with Azure Notification Hub** (Зарегистрировать в Центре уведомлений Azure). Должно появиться сообщение **Notification Hub Registration successful!** (Регистрация в концентраторе уведомлений выполнена успешно) и данные ответа о регистрации, в которых содержится идентификатор регистрации в Центрах уведомлений Azure.
    
        ![Google Chrome - Specify Notification Hub Details][20]  
 
-## <a name="send"></a>Отправлять уведомления tooyour Chrome приложения
+## <a name="send"></a>Отправка уведомления в приложение Chrome
 Для тестирования мы отправим push-уведомления Chrome с помощью консольного приложения .NET. 
 
 > [!NOTE]
@@ -385,17 +385,17 @@ Hello общую структуру папок для этого проекта 
 > 
 > 
 
-1. В Visual Studio, из hello **файл** последовательно выберите пункты **New** и затем **проекта**. В разделе **Visual C#** щелкните **Windows** и **Консольное приложение**, а затем нажмите кнопку **ОК**.  Это создаст новый проект консольного приложения.
-2. Из hello **средства** меню, нажмите кнопку **диспетчер пакетов библиотеки** и затем **консоль диспетчера пакетов**. Откроется консоль диспетчера пакетов hello.
-3. В окне консоли hello выполните следующую команду hello:
+1. В Visual Studio откройте меню **Файл** и выберите **Создать**, а затем — **Проект**. В разделе **Visual C#** щелкните **Windows** и **Консольное приложение**, а затем нажмите кнопку **ОК**.  Это создаст новый проект консольного приложения.
+2. В меню **Инструменты** щелкните **Library Package Manager** (Диспетчер пакетов библиотеки) и **Консоль диспетчера пакетов**. Отобразится консоль диспетчера пакетов.
+3. В окне консоли выполните следующую команду:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-       This adds a reference toohello Azure Service Bus SDK with hello <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
-4. Откройте `Program.cs` и добавьте следующее hello `using` инструкции:
+       This adds a reference to the Azure Service Bus SDK with the <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
+4. Откройте файл `Program.cs` и добавьте следующую инструкцию `using`:
    
         using Microsoft.Azure.NotificationHubs;
-5. В hello `Program` добавьте следующий метод hello:
+5. Добавьте в класс `Program` следующий метод:
    
         private static async void SendNotificationAsync()
         {
@@ -404,35 +404,35 @@ Hello общую структуру папок для этого проекта 
             await hub.SendGcmNativeNotificationAsync(message);
         }
    
-       Make sure tooreplace hello `<hub name>` placeholder with hello name of hello notification hub that appears in hello [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace hello connection string placeholder with hello connection string called `DefaultFullSharedAccessSignature` that you obtained in hello notification hub configuration section.
+       Make sure to replace the `<hub name>` placeholder with the name of the notification hub that appears in the [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace the connection string placeholder with the connection string called `DefaultFullSharedAccessSignature` that you obtained in the notification hub configuration section.
    
    > [!NOTE]
-   > Убедитесь, что используются hello строки подключения с **полного** доступ, не **прослушивания** доступа. Hello **прослушивания** строку подключения доступа не предоставляет разрешений toosend push-уведомлений.
+   > Обязательно используйте строку подключения с **полным** доступом, а не доступом к **прослушиванию**. Строка подключения с доступом к **прослушиванию** не предоставляет разрешения для отправки push-уведомлений.
    > 
    > 
-6. Добавьте следующие hello вызовы в hello `Main` метод:
+6. Добавьте в метод `Main` следующие вызовы:
    
          SendNotificationAsync();
          Console.ReadLine();
-7. Убедитесь, что запущен Chrome и запустите консольное приложение hello.
-8. Вы увидите следующее hello уведомления всплывающее окно на рабочем столе.
+7. Убедитесь, что браузер Chrome запущен, и запустите консольное приложение.
+8. На рабочем столе должно появиться следующее всплывающее уведомление.
    
        ![Google Chrome - Notification][13]
-9. Можно также просмотреть все уведомления с помощью окно уведомления Chrome hello в панели задач hello (в Windows) при выполнении Chrome.
+9. Кроме того, вы можете просмотреть все уведомления в окне уведомлений Chrome, которое можно открыть в запущенном браузере Chrome на панели задач (в ОС Windows).
    
        ![Google Chrome - Notifications List][14]
 
 > [!NOTE]
-> Не нужно toohave hello Chrome приложение работает или открыть в браузере hello (хотя должна быть запущена самим браузером hello Chrome). Можно также получить консолидированное представление всех уведомлений в окно приветствия Chrome уведомления.
+> При этом в нем не должно быть запущено или открыто приложение Chrome (хотя сам браузер Chrome должен быть запущен). В окне уведомлений Chrome можно увидеть обобщенное представление всех уведомлений.
 > 
 > 
 
 ## <a name="next-steps"> </a>Дальнейшие действия
 Дополнительные сведения о Центрах уведомлений см. в статье [Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET].
 
-tootarget конкретных пользователей, см. toohello [Azure концентраторы уведомлений уведомить пользователей] учебника. 
+Дополнительные сведения о том, как ориентироваться на определенных пользователей, см. в статье [Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET]. 
 
-Если требуется toosegment пользователи, группы интересов, можно выполнить hello [концентраторов уведомлений Azure, новости] учебника.
+Дополнительные сведения о том, как разделить пользователей по группам интересов, см. в статье [Использование Центров уведомлений Azure для передачи экстренных новостей].
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -458,17 +458,17 @@ tootarget конкретных пользователей, см. toohello [Azure
 [21]: ./media/notification-hubs-chrome-get-started/FinalFolderView.png
 
 <!-- URLs. -->
-[пример концентратора уведомлений приложения Chrome]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
-[облачной консоли Google]: http://cloud.google.com/console
+[Образец использования концентратора уведомлений с приложением Chrome]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
+[консоли Google Cloud]: http://cloud.google.com/console
 [Azure Classic Portal]: https://manage.windowsazure.com/
 [Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET]: notification-hubs-push-notification-overview.md
 [Обзор приложений Chrome]: https://developer.chrome.com/apps/about_apps
-[пример GCM приложения Chrome]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
+[образце использования службы GCM для приложения Chrome]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
-[Chrome приложений на мобильном устройстве]: https://developer.chrome.com/apps/chrome_apps_on_mobile
+[Приложения Chrome на мобильных устройствах]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Create Registration NH REST API]: http://msdn.microsoft.com/library/azure/dn223265.aspx
-[библиотеки шифрования js]: http://code.google.com/p/crypto-js/
+[библиотеку crypto-js]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging для Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure концентраторы уведомлений уведомить пользователей]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[концентраторов уведомлений Azure, новости]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Использование Центров уведомлений Azure для передачи экстренных новостей]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

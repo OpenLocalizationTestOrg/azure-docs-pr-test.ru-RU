@@ -1,6 +1,6 @@
 ---
-title: "aaaProtecting зоны и записи DNS | Документы Microsoft"
-description: "Как tooprotect зон DNS и запись задает в Microsoft Azure DNS."
+title: "Защита зон и записей DNS | Документация Майкрософт"
+description: "Как защитить зоны и наборы записей DNS в службе DNS Microsoft Azure."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 7945f6240feeed3d79a11d340f9f845e083026ae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooprotect-dns-zones-and-records"></a>Как tooprotect DNS-зоны и записи
+# <a name="how-to-protect-dns-zones-and-records"></a>Как защитить зоны и записи DNS
 
 Зоны и записи DNS являются критически важными ресурсами. Удаление зоны DNS или даже одной записи DNS может привести к полному отключению службы.  Поэтому важно, чтобы критически важные зоны и записи DNS были защищены от несанкционированных или случайных изменений.
 
-В этой статье объясняется, как Azure DNS позволяет вам tooprotect зон DNS и записи для таких изменений.  Мы применяем две эффективные функции безопасности, предоставляемые Azure Resource Manager: [управление доступом на основе ролей](../active-directory/role-based-access-control-what-is.md) и [блокировки ресурсов](../azure-resource-manager/resource-group-lock-resources.md).
+В этой статье объясняется, как с помощью службы DNS Azure защитить зоны и записи DNS от таких изменений.  Мы применяем две эффективные функции безопасности, предоставляемые Azure Resource Manager: [управление доступом на основе ролей](../active-directory/role-based-access-control-what-is.md) и [блокировки ресурсов](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Контроль доступа на основе ролей
 
-Управление доступом на основе ролей (RBAC) Azure обеспечивает точное управление доступом для пользователей, групп и ресурсов Azure. С помощью RBAC, можно предоставить точно hello уровень доступа, пользователи должны tooperform свою работу. Дополнительные сведения о том, как RBAC помогает управлять доступом, см. в статье [Начало работы с управлением доступом на портале Azure](../active-directory/role-based-access-control-what-is.md).
+Управление доступом на основе ролей (RBAC) Azure обеспечивает точное управление доступом для пользователей, групп и ресурсов Azure. С помощью RBAC вы можете с высокой точностью предоставлять пользователям доступ, необходимый для выполнения поставленных перед ними задач. Дополнительные сведения о том, как RBAC помогает управлять доступом, см. в статье [Начало работы с управлением доступом на портале Azure](../active-directory/role-based-access-control-what-is.md).
 
-### <a name="hello-dns-zone-contributor-role"></a>роль «Участника зоны DNS» Hello
+### <a name="the-dns-zone-contributor-role"></a>Роль DNS Zone Contributor (Участник зоны DNS)
 
-роль «Участника зоны DNS» Hello — это встроенная роль, предоставляемые Azure для управления ресурсами DNS.  Назначение пользователя tooa разрешения участника зоны DNS или группы обеспечивает этой группы toomanage DNS ресурсы, но не к ресурсам любого другого типа.
+DNS Zone Contributor (Участник зоны DNS) — это встроенная роль, предоставляемая Azure для управления ресурсами DNS.  Назначение пользователю или группе разрешений участника зоны DNS дает возможность этой группе управлять ресурсами DNS, но не позволяет управлять ресурсами других типов.
 
-Например предположим, что группа ресурсов hello «myzones» содержит пять зон для Contoso Corporation. Предоставление hello DNS администратора «Участник зоны DNS» разрешения toothat группы ресурсов, позволяет полный контроль над этих зон DNS. Это также устраняет необходимость предоставлять ненужные разрешения, например Здравствуйте, администратор DNS не удается создать или остановка виртуальных машин.
+Предположим, например, что группа ресурсов myzones содержит пять зон для Contoso Corporation. Если предоставить администратору DNS разрешения DNS Zone Contributor (Участник зоны DNS) для этой группы ресурсов, то он получит полный контроль над этими зонами DNS. Это также позволяет избежать предоставления ненужных разрешений. Например, администратор DNS не сможет создавать или останавливать виртуальные машины.
 
-Hello простейший способ разрешения RBAC, tooassign [через портал Azure hello](../active-directory/role-based-access-control-configure.md).  Открыть колонку hello «управление доступом (IAM)» для группы ресурсов hello, а затем нажмите кнопку «Добавить», а затем выберите роль «Участника зоны DNS» hello и выберите hello необходимых пользователей или групп toogrant разрешения.
+Самый простой способ назначения разрешений RBAC — [через портал Azure](../active-directory/role-based-access-control-configure.md).  Откройте колонку "Управление доступом (IAM)" для группы ресурсов, затем нажмите кнопку "Добавить", выберите роль DNS Zone Contributor (Участник зоны DNS) и выберите пользователей или группы, которым будут предоставлены разрешения.
 
-![Уровень группы ресурсов RBAC через портал Azure hello](./media/dns-protect-zones-recordsets/rbac1.png)
+![Назначение разрешений RBAC на уровне группы ресурсов через портал Azure](./media/dns-protect-zones-recordsets/rbac1.png)
 
 Разрешения также можно [предоставить с помощью Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant 'DNS Zone Contributor' permissions tooall zones in a resource group
+# Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-также является Hello эквивалентную команду [доступны через hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Аналогичную команду также [можно выполнить через интерфейс командной строки Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant 'DNS Zone Contributor' permissions tooall zones in a resource group
+# Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
 ```
 
 ### <a name="zone-level-rbac"></a>RBAC на уровне зоны
 
-Правила RBAC Azure может быть применен tooa подписки, ресурс группы или tooan отдельных ресурсов. В случае hello Azure DNS этот ресурс может быть отдельные зоны DNS, или даже набор отдельных записей.
+Правила RBAC Azure могут применяться к подписке, группе ресурсов или к отдельному ресурсу. В случае службы DNS Azure таким ресурсом может быть отдельная зона DNS или даже отдельный набор записей.
 
-Например предположим, что группа ресурсов hello «myzones» содержит зоны hello «contoso.com» и subzone «customers.contoso.com» создания записи CNAME для каждой учетной записи клиента.  toomanage учетная запись, используемая Hello эти записи CNAME должны назначаться разрешения записи toocreate hello «customers.contoso.com» только в зоне, он не должен иметь toohello доступ других зон.
+Предположим, например, что группа ресурсов myzones содержит зону contoso.com и подзону customers.contoso.com, в которой для каждой учетной записи клиента созданы записи CNAME.  Учетной записи, используемой для управления этими записями CNAME, необходимо назначить разрешения на создание записей только в зоне customers.contoso.com. Она не должна иметь доступ к другим зонам.
 
-Разрешения РОЛЕЙ уровня зоны могут предоставляться через портал Azure hello.  Открыть колонку «Управление доступом (IAM)» hello hello зоны, затем нажмите кнопку «Добавить», а затем выберите роль «Участника зоны DNS» hello и выберите hello необходимых пользователей или групп toogrant разрешения.
+Разрешения RBAC на уровне зоны можно предоставлять через портал Azure.  Откройте колонку "Управление доступом (IAM)" для зоны, затем нажмите кнопку "Добавить", выберите роль DNS Zone Contributor (Участник зоны DNS) и выберите пользователей или группы, которым будут предоставлены разрешения.
 
-![Зона DNS уровня RBAC через портал Azure hello](./media/dns-protect-zones-recordsets/rbac2.png)
+![Назначение разрешений RBAC на уровне зоны DNS через портал Azure](./media/dns-protect-zones-recordsets/rbac2.png)
 
 Разрешения также можно [предоставить с помощью Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant 'DNS Zone Contributor' permissions tooa specific zone
+# Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-также является Hello эквивалентную команду [доступны через hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Аналогичную команду также [можно выполнить через интерфейс командной строки Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant 'DNS Zone Contributor' permissions tooa specific zone
+# Grant 'DNS Zone Contributor' permissions to a specific zone
 azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
 ```
 
 ### <a name="record-set-level-rbac"></a>RBAC на уровне набора записей
 
-Мы можем пойти еще дальше. Рассмотрите возможность hello администратору почтового сервера для Contoso Corporation, которым необходим доступ toohello MX и записи TXT на вершине зоны «contoso.com» hello hello.  Она не требуется доступ к tooany других записей MX или TXT или записи tooany любого другого типа.  Azure DNS позволяет вам tooassign разрешения в hello набора записей уровня, tooprecisely hello записей, которые Здравствуйте, администратор почты требуется доступ к.  Hello почты администратору предоставляется точно контролировать hello ей нужны и будет невозможно toomake любые другие изменения.
+Мы можем пойти еще дальше. Давайте рассмотрим пример с администратором почтового сервера в Contoso Corporation, которому требуется доступ к записям MX и TXT на вершине зоны contoso.com.  Ему не нужен доступ к другим записям MX и TXT или к записям любого другого типа.  Служба DNS Azure позволяет назначить разрешения на уровне набора записей, именно к тем записям, к которым администратору почтового сервера требуется доступ.  Администратор почтового сервера получает именно тот уровень контроля, который ему необходим, и не может вносить другие изменения.
 
-Разрешения на уровне RBAC набор записей можно настроить с помощью hello портал Azure, с помощью кнопки hello «пользователи» в колонке hello набор записей:
+Разрешения RBAC на уровне набора записей можно настроить через портал Azure (с помощью кнопки "Пользователи" в колонке набора записей):
 
-![Набор записей уровне RBAC через портал Azure hello](./media/dns-protect-zones-recordsets/rbac3.png)
+![Назначение разрешений RBAC на уровне набора записей через портал Azure](./media/dns-protect-zones-recordsets/rbac3.png)
 
 Разрешения RBAC на уровне набора записей также можно [предоставить с помощью Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant permissions tooa specific record set
+# Grant permissions to a specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-также является Hello эквивалентную команду [доступны через hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+Аналогичную команду также [можно выполнить через интерфейс командной строки Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant permissions tooa specific record set
+# Grant permissions to a specific record set
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 ### <a name="custom-roles"></a>Пользовательские роли
 
-Встроенная роль «Участник зоны DNS» Hello обеспечивает полный контроль над ресурсов DNS. Он является также возможно toobuild собственного клиента Azure роли, tooprovide даже детальный контроль.
+Встроенная роль DNS Zone Contributor (Участник зоны DNS) обеспечивает полный контроль над ресурсом DNS. Можно также создавать собственные пользовательские роли Azure, чтобы обеспечить более детализированный контроль.
 
-Снова рассмотрим пример hello, в котором создается запись CNAME в зоне hello «customers.contoso.com» для каждой учетной записи клиента Contoso Corporation.  Учетная запись, используемая toomanage Hello этих записей CNAME должны предоставляться записи CNAME toomanage разрешение только.  Это то записи не удается toomodify других типов (например, изменение записи MX) или уровня зоны операций, таких как удаление зоны.
+Давайте снова рассмотрим пример, где в зоне customers.contoso.com для каждой учетной записи клиента Contoso Corporation создана запись CNAME.  Учетной записи, используемой для управления этими записями CNAME, необходимо предоставить разрешение на управление только записями CNAME.  В этом случае она не сможет изменять записи других типов (такие как записи MX) или выполнять операции на уровне зоны, такие как удаление зоны.
 
-Hello в следующем примере показано определение пользовательской роли для управления только для записей CNAME.
+В следующем примере показано определение пользовательской роли для управления только записями CNAME:
 
 ```json
 {
@@ -131,47 +131,47 @@ Hello в следующем примере показано определени
 }
 ```
 
-Свойства действия Hello определяет hello после разрешения DNS:
+Свойство Actions определяет следующие разрешения для DNS:
 
 * `Microsoft.Network/dnsZones/CNAME/*` предоставляет полный контроль над записями CNAME.
-* `Microsoft.Network/dnsZones/read`предоставляет разрешение tooread DNS-зон, но не toomodify их включение вы toosee hello зону, в которой hello создается запись CNAME.
+* `Microsoft.Network/dnsZones/read` предоставляет разрешение на чтение зон DNS, но не позволяет их изменять. Таким образом вы можете видеть зону, в которой создается запись CNAME.
 
-Привет, оставшиеся действия копируются из hello [встроенная роль участника зоны DNS](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
+Остальные элементы свойства Actions копируются из [встроенной роли участника зоны DNS](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
-> Использование пользовательских tooprevent роли RBAC, удаление записи наборов, хотя по-прежнему обеспечивая toobe обновления не эффективный контроль. Наборы записей нельзя удалить, но ничто не препятствует их изменению.  Разрешенные изменения включают добавление и удаление записей из набора записей hello, включая удаление всех записей tooleave «пустой» набор записей. У него есть hello же эффект, что удаление записи hello набор с точки зрения разрешение DNS.
+> Применение пользовательской роли RBAC для предотвращения удаления наборов записей, разрешая при этом их обновление, не является эффективным. Наборы записей нельзя удалить, но ничто не препятствует их изменению.  К разрешенным изменениям относятся добавление и удаление записей из набора записей, включая удаление всех записей (при этом остается "пустой" набор записей). Это действует так же, как удаление набора записей с точки зрения разрешения DNS.
 
-В настоящее время невозможно определить пользовательские определения роли через портал Azure hello. Пользовательскую роль на основе этого определения роли можно создать с помощью Azure PowerShell:
+В настоящее время определения пользовательских ролей не определяются через портал Azure. Пользовательскую роль на основе этого определения роли можно создать с помощью Azure PowerShell:
 
 ```powershell
 # Create new role definition based on input file
 New-AzureRmRoleDefinition -InputFile <file path>
 ```
 
-Он также могут создаваться через hello Azure CLI:
+Ее также можно создать с помощью интерфейса командной строки Azure:
 
 ```azurecli
 # Create new role definition based on input file
 azure role create -inputfile <file path>
 ```
 
-Hello роли могут быть предоставлены в hello таким же образом как встроенные роли, как описано ранее в этой статье.
+Затем роль можно назначить таким же образом, как и встроенные роли. Этот процесс описан ранее в этой статье.
 
-Дополнительные сведения о том, как toocreate, управление и назначить пользовательских ролей в разделе [настраиваемые роли в Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+Дополнительные сведения о создании и назначении пользовательских ролей, а также об управлении ими см. в статье [Пользовательские роли в Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="resource-locks"></a>Блокировки ресурсов
 
-В tooRBAC Добавление диспетчера ресурсов Azure поддерживает контроль безопасности, а именно: hello too'lock возможность другого типа "ресурсов. Где RBAC правила разрешают передачу toocontrol hello действия конкретных пользователей и групп, блокировки ресурсов, примененные toohello ресурсов и вступают в силу для всех пользователей и ролей. Дополнительные сведения см. в статье [Блокировка ресурсов с помощью диспетчера ресурсов Azure](../azure-resource-manager/resource-group-lock-resources.md).
+Помимо функции RBAC Azure Resource Manager поддерживает и другой тип защиты — возможность "блокировать" ресурсы. Если правила RBAC позволяют контролировать действия определенных пользователей и групп, то блокировки ресурсов применяются к конкретному ресурсу и действуют для всех пользователей и ролей. Дополнительные сведения см. в статье [Блокировка ресурсов с помощью диспетчера ресурсов Azure](../azure-resource-manager/resource-group-lock-resources.md).
 
-Существует два типа блокировки ресурсов: **DoNotDelete** и **ReadOnly**. Они могут применяться tooa зоны DNS или tooan набор отдельных записей.  Hello следующих разделах описаны некоторые распространенные сценарии и как toosupport их с помощью блокировки ресурсов.
+Существует два типа блокировки ресурсов: **DoNotDelete** и **ReadOnly**. Они могут применяться к зоне DNS или к отдельному набору записей.  Следующие разделы описывают несколько распространенных сценариев и способы их поддержки с помощью блокировок ресурсов.
 
 ### <a name="protecting-against-all-changes"></a>Защита от любых изменений
 
-tooprevent изменения внесенные, применить зоны toohello блокировки только для чтения.  Эта блокировка не позволит создавать наборы записей, а также изменять или удалять существующие наборы.
+Чтобы предотвратить внесение каких-либо изменений, примените к зоне блокировку ReadOnly.  Эта блокировка не позволит создавать наборы записей, а также изменять или удалять существующие наборы.
 
-Блокировки уровня ресурсов зоны могут создаваться через портал Azure hello.  Из колонки зоны DNS hello, нажмите кнопку «Блокировка» нажмите «Добавить»:
+Блокировки ресурсов на уровне зоны можно создавать через портал Azure.  В колонке "Зона DNS" выберите "Блокировки", а затем нажмите кнопку "Добавить":
 
-![Блокировки уровня ресурсов зоны через портал Azure hello](./media/dns-protect-zones-recordsets/locks1.png)
+![Блокировка ресурсов на уровне зоны через портал Azure](./media/dns-protect-zones-recordsets/locks1.png)
 
 Блокировки ресурсов на уровне зоны также можно создать с помощью Azure PowerShell:
 
@@ -180,16 +180,16 @@ tooprevent изменения внесенные, применить зоны to
 New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
-Настройка блокировки ресурсов Azure не поддерживается в настоящее время через hello Azure CLI.
+В настоящее время настройка блокировки ресурсов Azure с помощью интерфейса командной строки Azure не поддерживается.
 
 ### <a name="protecting-individual-records"></a>Защита отдельных записей
 
-tooprevent установить для изменения существующей записи DNS применяются только для чтения блокировки toohello набор записей.
+Чтобы предотвратить внесение изменений в существующий набор записей DNS, примените к нему блокировку ReadOnly.
 
 > [!NOTE]
-> Применение блокировки DoNotDelete tooa набор записей не эффективный контроль. Он предотвращает набора от удаления записей hello, но она не предотвращает его изменение.  Разрешенные изменения включают добавление и удаление записей из набора записей hello, включая удаление всех записей tooleave «пустой» набор записей. У него есть hello же эффект, что удаление записи hello набор с точки зрения разрешение DNS.
+> Применение к набору записей блокировки DoNotDelete не является эффективным. Набор записей нельзя удалить, но ничто не препятствует его изменению.  К разрешенным изменениям относятся добавление и удаление записей из набора записей, включая удаление всех записей (при этом остается "пустой" набор записей). Это действует так же, как удаление набора записей с точки зрения разрешения DNS.
 
-В настоящее время блокировки ресурсов на уровне наборов записей можно настраивать только с помощью Azure PowerShell.  Они не поддерживаются в hello портал Azure или Azure CLI.
+В настоящее время блокировки ресурсов на уровне наборов записей можно настраивать только с помощью Azure PowerShell.  Эта возможность пока не предоставляется через портал Azure или интерфейс командной строки Azure.
 
 ```powershell
 # Lock a DNS record set
@@ -198,27 +198,27 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -Resourc
 
 ### <a name="protecting-against-zone-deletion"></a>Защита зоны от удаления
 
-При удалении зоны Azure DNS, также удаляются все наборы записей в зоне hello.  Эту операцию нельзя отменить.  Случайное удаление критическую зону имеет потенциальные toohave hello значительные значимым.  Поэтому это очень важно tooprotect от зоны случайного удаления.
+При удалении зоны в службе DNS Azure все наборы записей в этой зоне также удаляются.  Эту операцию нельзя отменить.  Случайное удаление критически важной зоны может оказать серьезное влияние на коммерческую деятельность.  Поэтому очень важно защитить зоны от случайного удаления.
 
-Зоны tooa блокировки DoNotDelete позволяет предотвратить hello зоны от удаления.  Тем не менее поскольку блокировки, наследуются дочерними ресурсами, он также препятствует любой наборов записей в зоне hello от удаления, который может быть нежелательно.  Более того как описано выше примечании hello, также является неэффективным с момента записи по-прежнему могут быть удалены из существующих наборов записей hello.
+Применение к зоне блокировки DoNotDelete предотвратит ее удаление.  Однако, поскольку блокировки наследуются дочерними ресурсами, это действие также предотвращает удаление всех наборов записей, находящихся в этой зоне, что может быть нежелательно.  Более того, как уже говорилось ранее в примечании, это неэффективно, так как записи по-прежнему могут удаляться из существующих наборов записей.
 
-В качестве альтернативы рассмотрите возможность применения блокировки tooa DoNotDelete запись набора в зоне hello, такие как набор записей SOA hello.  Так как не удается удалить зону hello удаляя hello наборы записей, это обеспечивает защиту от удаления зоны, по-прежнему предоставляя наборами записей в рамках свободно изменить toobe зоны hello. При попытке toodelete hello зоны, диспетчера ресурсов Azure обнаруживает это также удалит набор записей SOA hello и блоки hello вызовов, поскольку hello SOA заблокирован.  Наборы записей не будут удалены.
+Альтернативным решением может быть применение блокировки DoNotDelete к набору записей в зоне, такому как набор записей типа SOA.  Так как зону нельзя удалить, не удалив также наборы записей, это обеспечивает защиту зоны от удаления, при этом наборы записей в зоне по-прежнему можно свободно изменять. При попытке удалить зону Azure Resource Manager определяет, что это действие также удалит набор записей типа SOA, и блокирует вызов, так как набор SOA заблокирован.  Наборы записей не будут удалены.
 
-Hello следующую команду PowerShell создает DoNotDelete блокировку для записи SOA hello hello, учитывая зоны:
+Следующая команда PowerShell создает блокировку DoNotDelete для записи типа SOA в заданной зоне:
 
 ```powershell
-# Protect against zone delete with DoNotDelete lock on hello record set
+# Protect against zone delete with DoNotDelete lock on the record set
 New-AzureRmResourceLock -LockLevel DoNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
-Другим способом является использование оператора hello tooensure пользовательской роли и службы учетных записей, используемых toomanage зон не имеют зоны tooprevent зоны случайного удаления удаление разрешений. При необходимости toodelete зону можно принудительно выполнить удаление из двух, первый предоставлении разрешений удаления зоны (в области зоны hello tooprevent удаление hello неправильный зоны) и второй toodelete hello зоны.
+Другой способ предотвратить случайное удаление зоны — настроить пользовательскую роль, благодаря чему в учетных записях оператора и службы, используемых для управления зонами, не будет разрешений на удаление зоны. Если вам понадобится удалить зону, можно применить двухэтапное удаление. Сначала нужно предоставить разрешения на удаление зоны (в области зоны, чтобы предотвратить удаление не той зоны), после чего ее можно будет удалить.
 
-Такой подход имеет преимущество hello, его работы для всех зон, использованным этих учетных записей без необходимости tooremember toocreate все блокировки. Он имеет недостаток hello, что все учетные записи с разрешениями удаления зоны, например hello владелец подписки, может по-прежнему случайно удалить критическую зону.
+Преимущество этого подхода заключается в том, что он работает для всех зон, к которым у этих учетных записей есть доступ, и при этом не нужно создавать блокировки. Но у него также есть недостаток, заключающийся в том, что пользователи учетных записей с разрешениями на удаление зоны, например владелец подписки, по-прежнему могут случайно удалить критическую зону.
 
-Это возможно toouse оба подхода — блокировки ресурсов и пользовательские роли — на hello же время, в целях защиты зоны tooDNS подход глубокой обороны.
+Оба подхода — блокировки ресурсов и пользовательские роли — можно использовать одновременно в качестве эшелонированного подхода к защите зоны DNS.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения о работе с RBAC см. в разделе [Приступая к управлению доступом в hello портал Azure](../active-directory/role-based-access-control-what-is.md).
+* Дополнительные сведения о работе с RBAC см. в статье [Начало работы с управлением доступом на портале Azure](../active-directory/role-based-access-control-what-is.md).
 * Дополнительные сведения о работе с блокировками ресурсов см. в статье [Блокировка ресурсов с помощью диспетчера ресурсов Azure](../azure-resource-manager/resource-group-lock-resources.md).
 

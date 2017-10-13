@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 ASP.NET Web Server Приступая к работе - введение | Документы Microsoft"
+title: "Приступая к работе с Azure AD версии 2 для веб-сервера ASP.NET. Обзор | Документация Майкрософт"
 description: "Реализация входа Майкрософт в решении ASP.NET с традиционным браузерным приложением с использованием стандарта OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: d6449926af2bdad24cbc8e91f74885a08f909103
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8062923b6270ec6253dc231a3db4333cf4666b42
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="add-sign-in-with-microsoft-tooan-aspnet-web-app"></a>Добавить вход с помощью веб-приложение ASP.NET tooan Microsoft
+# <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Добавление возможности входа в веб-приложение ASP.NET с помощью учетной записи Майкрософт
 
-В этом руководстве показано, как tooimplement вход с корпорацией Майкрософт, с помощью ASP.NET MVC решения с традиционной веб-браузера приложения с использованием OpenID Connect. 
+В этом руководстве описывается, как реализовать вход через учетную запись Майкрософт, используя решение ASP.NET MVC с традиционным браузерным приложением с помощью OpenID Connect. 
 
-В конце данного руководства hello приложение будет подписываться может tooaccept модули из личные учетные записи (в том числе outlook.com, live.com и другие), а также работать и школьные учетные записи из любого компании или организации, интегрированное с Azure Active Directory. 
+В конце этого руководства ваше приложение сможет принимать операции входа с помощью личных учетных записей (включая outlook.com, live.com и другие), а также рабочих и учебных учетных записей из любой компании или организации, которая использует Azure Active Directory. 
 
 > Для работы с этим руководством требуется Visual Studio 2015 с обновлением 3 или Visual Studio 2017.  У вас его нет?  [Скачайте Visual Studio 2017 бесплатно.](https://www.visualstudio.com/downloads/)
 
@@ -33,15 +33,15 @@ ms.lasthandoff: 10/06/2017
 
 ![Принцип работы с руководством](media/active-directory-serversidewebapp-aspnetwebappowin-intro/aspnetbrowsergeneral.png)
 
-Это руководство составлено на основе сценария hello, где браузера обращается к веб-сайт ASP.NET, запрашивающего пользователя tooauthenticate по нажатию кнопки входа. В этом сценарии hello рабочих toorender hello веб-страницы происходит на стороне сервера hello.
+Это руководство основано на сценарии, в котором браузер обращается к веб-сайту ASP.NET. При этом пользователь должен выполнить проверку подлинности с помощью кнопки входа. В этом сценарии большая часть работы по отображению веб-страницы происходит на стороне сервера.
 
 ## <a name="libraries"></a>Библиотеки
 
-В этом руководстве используется hello следующие библиотеки:
+В этом руководстве используются следующие библиотеки:
 
 |Библиотека|Описание|
 |---|---|
-|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|По промежуточного слоя, позволяющий приложения toouse OpenIdConnect для проверки подлинности|
-|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|По промежуточного слоя, позволяющий сеанса пользователя toomaintain приложения с помощью файлов cookie|
-|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Включает toorun OWIN-приложений в IIS с помощью hello конвейер обработки запросов ASP.NET|
+|[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Промежуточный слой, который позволяет приложению использовать OpenIDConnect для проверки подлинности.|
+|[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Промежуточный слой, который позволяет приложению поддерживать пользовательский сеанс с помощью файлов cookie.|
+|[Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb)|Позволяет приложениям на основе OWIN работать на платформе IIS с помощью конвейера запросов ASP.NET.|
 

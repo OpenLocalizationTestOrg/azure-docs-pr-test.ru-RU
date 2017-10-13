@@ -1,6 +1,6 @@
 ---
-title: "Application Insights: языки, платформы, интеграция | Документация Майкрософт"
-description: "Языки, платформы и варианты интеграции для Application Insights."
+title: "Application Insights: языки программирования, платформы, интеграция | Документация Майкрософт"
+description: "Языки программирования, платформы и варианты интеграции для Application Insights"
 services: application-insights
 documentationcenter: 
 author: OlegAnaniev-MSFT
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.openlocfilehash: 14b363c934a018ce72be97d1a0b74a6c2210656e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d49ad2ff584f42c0e4732a5cff60d23cdf631512
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>Аналитические средства для разработчиков: языки, платформы, интеграция
+# <a name="developer-analytics-languages-platforms-and-integrations"></a>Аналитические средства для разработчиков: языки программирования, платформы, интеграция
 Ниже перечислены известные нам реализации [Application Insights](app-insights-overview.md) , в том числе реализации от сторонних производителей.
 
-## <a name="languages---officially-supported-by-application-insights-team"></a>Языки, официально поддерживаемые командой Application Insights
+## <a name="languages---officially-supported-by-application-insights-team"></a>Языки программирования, официально поддерживаемые командой Application Insights
 * [C#|VB (.NET)](app-insights-asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [Веб-страницы JavaScript](app-insights-javascript.md)
+* [Node.JS](app-insights-nodejs.md)
 
-## <a name="languages---community-supported"></a>Языки, поддерживаемые сообществом
-* [Node.JS](https://github.com/Microsoft/ApplicationInsights-node.js)
+## <a name="languages---community-supported"></a>Языки программирования, поддерживаемые сообществом
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -82,4 +82,4 @@ ms.lasthandoff: 10/06/2017
 * [Анализ потока](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Создание собственного пакета SDK
-Если не существует, но пакет SDK для языков или платформ, например хотелось бы toobuild один? Взгляните на код hello hello существующие пакеты SDK, перечисленные в hello [пакет SDK Application Insights проекта на GitHub](https://github.com/Microsoft/AppInsights-Home).
+Если для языка программирования или платформы, которые вы используете, не существует пакета SDK, возможно, вы захотите создать его. Просмотрите код существующих пакетов SDK, перечисленных в описании [проекта пакета SDK для Application Insights на GitHub](https://github.com/Microsoft/AppInsights-Home).

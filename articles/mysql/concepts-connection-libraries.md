@@ -1,6 +1,6 @@
 ---
-title: "библиотеки aaaConnection для базы данных Azure для MySQL | Документы Microsoft"
-description: "В этой статье перечислены библиотеки и драйвера, клиентские программы, которые можно использовать при подключении tooAzure базы данных MySQL."
+title: "Библиотеки подключений для базы данных Azure для MySQL | Документация Майкрософт"
+description: "В этой статье приведены все библиотеки и драйверы, с помощью которых клиентские программы могут подключиться к базе данных Azure для MySQL."
 services: mysql
 author: mswutao
 ms.author: wutao
@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/08/2017
-ms.openlocfilehash: ff439274ec5865d7713dec18d53e7e44f5886457
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e746f28829063f8437ad408c4681f90aec6c0e0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Библиотеки подключений для базы данных Azure для MySQL
-В этом разделе перечислены библиотеки и драйвера, клиентские программы, которые можно использовать при подключении tooAzure базы данных MySQL.
+В этом разделе приведены все библиотеки и драйверы, с помощью которых клиентские программы могут подключиться к базе данных Azure для MySQL.
 
 ## <a name="client-interfaces"></a>Интерфейсы клиента
 MySQL предлагает возможность подключения к базе данных с помощью стандартного драйвера для использования MySQL с приложениями и инструментами, совместимыми с отраслевыми стандартами ODBC и JDBC. Любая система, которая работает с ODBC или JDBC, может использовать MySQL.

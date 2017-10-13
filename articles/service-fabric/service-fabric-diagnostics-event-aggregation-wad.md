@@ -1,5 +1,5 @@
 ---
-title: "Статистическая обработка событий структуры службы с помощью системы диагностики Windows Azure aaaAzure | Документы Microsoft"
+title: "Агрегация событий Azure Service Fabric c помощью системы диагностики Microsoft Azure | Документация Майкрософт"
 description: "Ознакомьтесь со сведениями об агрегации и сборе событий с использованием WAD для мониторинга и диагностики кластеров Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 4827ce66620e61c5b4a8682db55952333113188a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5773361fdec4cb8ee54fa2856f6aa969d5dac4e9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Агрегирование и сбор событий с помощью системы диагностики Microsoft Azure
 > [!div class="op_single_selector"]
@@ -27,14 +27,14 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-При запуске кластера с Azure Service Fabric это журналы hello смысл toocollect со всех узлов hello в центральном расположении. Наличие журналы hello в центральном расположении, помогает выполнить анализ и устранение проблем в кластере, или в hello приложений и служб, работающих в этом кластере.
+Во время работы кластера Azure Service Fabric рекомендуется централизованно собирать журналы со всех узлов. Централизованное хранение журналов упрощает анализ и устранение неполадок в кластере, а также в приложениях и службах, работающих в этом кластере.
 
-Собирать журналы и tooupload один из способов — расширение диагностики Windows Azure (WAD) toouse hello, передает журналы tooAzure хранилища, которое имеет hello параметр toosend журналы tooAzure Application Insights или концентраторов событий. Можно также использовать внешний процесс tooread hello событий из хранилища и поместите их в платформа продуктом анализа [аналитики журнала OMS](../log-analytics/log-analytics-service-fabric.md) или другим решением для синтаксического анализа журнала.
+Один из способов отправки и сбора журналов заключается в использовании расширения системы диагностики Microsoft Azure (WAD), которое отправляет журналы в службу хранилища Azure, а также может отправлять журналы в Azure Application Insights или концентраторы событий Azure. Вы также можете использовать внешний процесс, чтобы считывать события из хранилища и помещать их на платформу обработки, например в [OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) или другое решение для анализа журналов.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Эти средства, используемые tooperform некоторые операции hello в этом документе:
+Эти инструменты используются для некоторых операций в данном документе:
 
-* [Диагностика Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) (о tooAzure облачные службы, но имеет хорошее сведения и примеры)
+* [Система диагностики Azure](../cloud-services/cloud-services-dotnet-diagnostics.md) (статья посвящена облачным службам Azure, но содержит нужную информацию и примеры)
 * [Диспетчер ресурсов Azure](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Клиент Azure Resource Manager](https://github.com/projectkudu/ARMClient)
@@ -43,35 +43,35 @@ ms.lasthandoff: 10/06/2017
 ## <a name="log-and-event-sources"></a>Источники журналов и событий
 
 ### <a name="service-fabric-platform-events"></a>События платформы Service Fabric
-Как было сказано в [в этой статье](service-fabric-diagnostics-event-generation-infra.md), Service Fabric задает вы с несколько каналов ведения журнала out of box, из которой hello следующие каналы легко настраивать WAD toosend наблюдение и диагностику tooa хранения таблицы данных или Где-нибудь ещё:
-  * События операционного канала: операции более высокого уровня, которые hello выполняет платформы Service Fabric. Некоторые примеры: создание приложений и служб, изменение состояния узлов и сведения об обновлении. Они передаются в рамках журнала трассировки событий для Windows (ETW).
+Как упоминалось в [этой статье](service-fabric-diagnostics-event-generation-infra.md), Service Fabric настраивает несколько стандартных каналов ведения журнала. Следующие каналы легко настраиваются с помощью WAD для отправки данных мониторинга и диагностики в таблицу хранилища или в другое место:
+  * Рабочие события: операции более высокого уровня, выполняемые платформой Service Fabric. Некоторые примеры: создание приложений и служб, изменение состояния узлов и сведения об обновлении. Они передаются в рамках журнала трассировки событий для Windows (ETW).
   * [События модели программирования на основе Reliable Actors](service-fabric-reliable-actors-diagnostics.md).
   * [События модели программирования на основе Reliable Services](service-fabric-reliable-services-diagnostics.md).
 
 ### <a name="application-events"></a>События приложения
- События, переданные из кода вашего приложения и службы и записывается с помощью вспомогательного класса EventSource hello указан в hello шаблонов Visual Studio. Дополнительные сведения о как toowrite EventSource журналы из приложения в разделе [монитора и диагностики служб в случае установки локального компьютера разработки](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+ События, которые генерируются кодом служб и приложений и записываются с помощью вспомогательного класса EventSource, предоставленного в шаблонах Visual Studio. Дополнительные сведения о способах записи журналов EventSource из приложения см. в статье [Мониторинг и диагностика состояния служб в локальной среде разработки](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
-## <a name="deploy-hello-diagnostics-extension"></a>Развертывание расширения диагностики hello
-Первым шагом Hello в сбор журналов является расширение диагностики toodeploy hello в каждой из виртуальных машин hello в кластер Service Fabric hello. Hello расширения диагностики собирает журналы на каждой виртуальной Машине и отправляет их toohello учетной записи хранения, указанной вами. шаги Hello немного отличаться в зависимости от hello портал Azure или диспетчера ресурсов Azure. Hello действия также различаются в зависимости от возможность развертывания hello является частью создания кластера или кластера, который уже существует. Давайте рассмотрим hello действия для каждого сценария.
+## <a name="deploy-the-diagnostics-extension"></a>Развертывание расширения системы диагностики
+Первым шагом при сборе журналов является развертывание расширения системы диагностики на каждой виртуальной машине в кластере Service Fabric. Расширение системы диагностики собирает журналы на каждой виртуальной машине и отправляет их в указанную учетную запись хранения. Действия могут немного отличаться в зависимости от того, что вы используете — портал Azure или Azure Resource Manager. Кроме того, они зависят о того, как выполняется развертывание — в ходе создания кластера или для уже существующего кластера. Рассмотрим действия для каждого сценария.
 
-### <a name="deploy-hello-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Развертывание расширения диагностики hello в процессе создания кластера через портал Azure
-toodeploy hello диагностики расширения toohello виртуальных машин в кластере hello в процессе создания кластера, используйте панель параметров диагностики hello, показано в следующих hello изображение — убедитесь, что диагностики слишком**на** (hello по умолчанию) . После создания кластера hello, нельзя изменить эти параметры с помощью портала hello.
+### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Развертывание расширения системы диагностики в ходе создания кластера с помощью портала Azure
+Для развертывания расширения системы диагностики на виртуальных машинах в кластере во время его создания используется панель "Параметры диагностики", показанная на рисунке ниже. Убедитесь, что для параметра "Диагностика" установлено значение **ВКЛ** (параметр по умолчанию). После создания кластера эти параметры нельзя изменить на портале.
 
-![Параметры диагностики Azure hello портала для создания кластера](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
+![Параметры системы диагностики Azure на портале для создания кластера](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
 
-При создании кластера с помощью портала hello, настоятельно рекомендуется загрузить шаблон hello **до нажатия кнопки ОК** toocreate hello кластера. Дополнительные сведения приведены слишком[настроить кластер Service Fabric с помощью шаблона Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Потребуется hello шаблон toomake изменений более поздней версии, так как не удается внести некоторые изменения с помощью портала hello.
+При создании кластера с помощью портала настоятельно рекомендуется скачать шаблон перед тем, как нажать кнопку **ОК** для создания кластера. Дополнительную информацию см. в статье [Создание кластера Service Fabric с помощью Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Шаблон вам понадобится позже для внесения изменений, так как не все изменения можно выполнять с помощью портала.
 
-### <a name="deploy-hello-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Развертывание расширения диагностики hello в процессе создания кластера с помощью диспетчера ресурсов Azure
-toocreate кластера с помощью диспетчера ресурсов необходимо tooadd hello диагностики конфигурации JSON toohello полного кластера шаблона диспетчера ресурсов перед созданием кластера hello. Мы предоставляем образец шаблона диспетчера ресурсов кластера пяти ВМ с конфигурацией диагностики добавлены tooit как часть наши примеры шаблона диспетчера ресурсов. Его можно просматривать в этом месте в коллекции примеров Azure hello: [пяти узла кластера с образцом шаблона диспетчера ресурсов диагностики](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad).
+### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Развертывание расширения системы диагностики в ходе создания кластера с помощью диспетчера ресурсов Azure
+Чтобы создать кластер с помощью диспетчера ресурсов, добавьте JSON-файл конфигурации системы диагностики в полный шаблон Resource Manager ресурсов кластера перед созданием кластера. Мы предоставляем пример шаблона диспетчера ресурсов для кластера из пяти виртуальных машин с конфигурацией системы диагностики (эта конфигурация входит в примеры шаблонов диспетчера ресурсов). Этот шаблон можно найти в коллекции примеров Azure. См. статью [Пример шаблона Resource Manager — кластер из пяти узлов с системой диагностики](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad).
 
-параметры диагностики toosee hello в hello шаблона диспетчера ресурсов, откройте hello azuredeploy.json файл и выполните поиск **IaaSDiagnostics**. toocreate кластера с помощью этого шаблона, выберите hello **развертывание tooAzure** кнопка доступны по ссылке на предыдущую hello.
+Чтобы просмотреть параметр системы диагностики в шаблоне Resource Manager, откройте файл azuredeploy.json и выполните поиск **IaaSDiagnostics**. Чтобы создать кластер с помощью этого шаблона, нажмите кнопку **Развернуть в Azure**, которая доступна по ссылке выше.
 
-Можно также загрузить образец hello диспетчера ресурсов, внести изменения tooit и создайте кластер с hello измененный шаблон с помощью hello `New-AzureRmResourceGroupDeployment` команду в окне Azure PowerShell. См. следующий код для hello параметры, которые передаются в команде toohello hello. Подробные сведения о том, как группировать toodeploy ресурса с помощью PowerShell. в статье hello [развертывания группы ресурсов с помощью шаблона Azure Resource Manager hello](../azure-resource-manager/resource-group-template-deploy.md).
+Также можно скачать пример шаблона Resource Manager, внести в него изменения и создать кластер на основе измененного шаблона с помощью команды `New-AzureRmResourceGroupDeployment` в окне Azure PowerShell. Параметры, передаваемые в команду, приведены в коде ниже. Дополнительные инструкции по развертыванию группы ресурсов с помощью PowerShell см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
 
-### <a name="deploy-hello-diagnostics-extension-tooan-existing-cluster"></a>Развертывание существующего кластера расширения диагностики tooan hello
-При наличии существующего кластера, у которого нет диагностики развертывания или вы хотите toomodify существующей конфигурации, можно добавить или обновить ее. Изменение шаблона диспетчера ресурсов hello, используемые toocreate hello существующего кластера или загрузить шаблон hello из портала hello, как описано выше. Измените файл template.json hello, выполнив следующие задачи hello.
+### <a name="deploy-the-diagnostics-extension-to-an-existing-cluster"></a>Развертывание расширения системы диагностики в существующем кластере
+Если у вас есть кластер, в котором не развернута система диагностики, или вы хотите изменить существующую конфигурацию, систему диагностики можно добавить или обновить. Измените шаблон Resource Manager, который используется для создания существующего кластера, или скачайте шаблон на портале, как описано выше. Измените файл template.json, выполнив следующие действия.
 
-Добавьте новый шаблон toohello ресурсов хранения, добавив раздел ресурсов toohello.
+Добавьте новый ресурс хранилища в шаблон, внеся изменения в раздел resources.
 
 ```json
 {
@@ -89,7 +89,7 @@ toocreate кластера с помощью диспетчера ресурсо
 },
 ```
 
- Добавьте параметры toohello статьи сразу после определения учетной записи хранилища hello, между `supportLogStorageAccountName` и `vmNodeType0Name`. Замените текст заполнителя hello *здесь имя учетной записи хранения* с именем hello hello учетной записи хранения.
+ Затем добавьте этот ресурс в раздел parameters сразу после определений учетной записи хранения между `supportLogStorageAccountName` и `vmNodeType0Name`. Замените текст заполнителя *storage account name goes here* именем нужной учетной записи хранения.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -100,18 +100,18 @@ toocreate кластера с помощью диспетчера ресурсо
       ],
       "defaultValue": "Standard_LRS",
       "metadata": {
-        "description": "Replication option for hello application diagnostics storage account"
+        "description": "Replication option for the application diagnostics storage account"
       }
     },
     "applicationDiagnosticsStorageAccountName": {
       "type": "string",
       "defaultValue": "storage account name goes here",
       "metadata": {
-        "description": "Name for hello storage account that contains application diagnostics data from hello cluster"
+        "description": "Name for the storage account that contains application diagnostics data from the cluster"
       }
     },
 ```
-Обновите hello `VirtualMachineProfile` раздел файла template.json hello, добавив следующий код в пределах массива расширения hello hello. Быть убедиться, что tooadd запятая в начале hello или в конце hello, в зависимости от того, куда вставляется.
+Затем добавьте в раздел `VirtualMachineProfile` файла template.json следующий код в массиве extensions. Обязательно добавьте запятую в конце или в начале в зависимости от места вставки.
 
 ```json
 {
@@ -168,13 +168,13 @@ toocreate кластера с помощью диспетчера ресурсо
 }
 ```
 
-После изменения файла template.json hello, как описано, повторная публикация шаблона диспетчера ресурсов hello. Если шаблон hello был экспортирован, выполняется файл deploy.ps1 hello опубликует hello шаблона. После развертывания убедитесь, что параметр **ProvisioningState** имеет значение **Succeeded**.
+После изменения файла template.json (как описано выше) повторно опубликуйте шаблон Resource Manager. Если шаблон экспортирован, для повторной публикации шаблона выполните файл deploy.ps1. После развертывания убедитесь, что параметр **ProvisioningState** имеет значение **Succeeded**.
 
 ## <a name="collect-health-and-load-events"></a>Сбор событий работоспособности и нагрузки
 
-Начиная с выпуска hello 5.4 Service Fabric, работоспособности и загрузка метрики события, доступные для коллекции. Эти события отражают события, создаваемые системой hello или код с помощью работоспособности hello или загрузить отчетов интерфейсы API, такие как [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) или [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Это обеспечивает статистическую обработку и просмотр состояния работоспособности системы с течением временем, а также оповещение на основе событий работоспособности или нагрузки. Эти события в окне просмотра событий диагностики в Visual Studio добавьте tooview «Microsoft-ServiceFabric:4:0x4000000000000008» toohello список поставщиков трассировки событий Windows.
+Начиная с выпуска Service Fabric 5.4 для сбора доступны события метрик работоспособности и нагрузки. Это события, создаваемые системой или кодом с помощью интерфейсов API для создания отчетов о работоспособности или нагрузке, в том числе [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) или [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Это обеспечивает статистическую обработку и просмотр состояния работоспособности системы с течением временем, а также оповещение на основе событий работоспособности или нагрузки. Чтобы просмотреть эти события в окне просмотра событий диагностики Visual Studio, добавьте Microsoft-ServiceFabric:4:0x4000000000000008 в список поставщиков трассировки событий Windows.
 
-события toocollect hello, изменить tooinclude шаблона диспетчера ресурсов hello
+Чтобы включить сбор событий, измените шаблон Resource Manager, добавив в него следующее.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -191,11 +191,11 @@ toocreate кластера с помощью диспетчера ресурсо
 
 ## <a name="collect-reverse-proxy-events"></a>Сбор событий обратного прокси-сервера
 
-Начиная с выпуска hello 5.7 Service Fabric [обратный прокси-сервер](service-fabric-reverseproxy.md) события, доступные для коллекции.
-Обратный прокси-сервер передает события в два канала, одна ошибка содержащего отражения события ошибок при обработке запроса и hello других одна из которых содержит подробные события, о всех hello запросов, обрабатываемых в hello обратного прокси-сервера. 
+Начиная с выпуска Service Fabric 5.7 для сбора доступны события [обратного прокси-сервера](service-fabric-reverseproxy.md).
+Обратный прокси-сервер передает события в два канала. Один из них содержит события ошибок, отражающие сбои обработки запросов, а другой содержит подробные события всех запросов, обработанных на обратном прокси-сервере. 
 
-1. Собирать события ошибок: tooview, добавьте эти события в окне просмотра событий диагностики в Visual Studio «Microsoft-ServiceFabric:4:0x4000000000000010» toohello список поставщиков трассировки событий Windows.
-события hello toocollect из Azure кластеров изменить tooinclude шаблона диспетчера ресурсов hello
+1. Сбор событий ошибок. Чтобы просмотреть эти события в окне просмотра событий диагностики Visual Studio, добавьте Microsoft-ServiceFabric:4:0x4000000000000010 в список поставщиков трассировки событий Windows.
+Чтобы включить сбор событий из кластеров Azure, измените шаблон Resource Manager, добавив в него следующее.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -210,8 +210,8 @@ toocreate кластера с помощью диспетчера ресурсо
     }
 ```
 
-2. Собирает события обработки запроса: В Visual Studio диагностические средства просмотра событий, запись hello Microsoft ServiceFabric update в слишком hello список поставщиков трассировки событий Windows "Microsoft-ServiceFabric:4:0x4000000000000020».
-Для кластеров Azure Service Fabric измените tooinclude шаблона диспетчера ресурсов hello
+2. Сбор всех событий обработки запросов. В средстве просмотра событий диагностики Visual Studio измените запись Microsoft-ServiceFabric в списке поставщиков трассировки событий Windows, указав Microsoft-ServiceFabric:4:0x4000000000000020.
+Для кластеров Azure Service Fabric измените шаблон Resource Manager, добавив в него следующее.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -225,18 +225,18 @@ toocreate кластера с помощью диспетчера ресурсо
       }
     }
 ```
-> Рекомендуется toojudiciously включить сбор событий из этого канала, как это собирает весь трафик через hello обратного прокси-сервера и может привести к быстрому потреблению емкости хранилища.
+> Рекомендуется с осторожностью включать сбор событий из этого канала, так как это означает сбор всего трафика, проходящего через обратный прокси-сервер, что может привести к быстрому потреблению емкости хранилища.
 
-Для кластеров Azure Service Fabric hello события из всех узлов hello собираются и статистически hello SystemEventTable.
-Подробные сведения об устранении hello события обратного прокси-сервера, описаны hello [руководство по диагностике обратного прокси-сервера](service-fabric-reverse-proxy-diagnostics.md).
+События на всех узлах кластеров Azure Service Fabric собираются и объединяются в SystemEventTable.
+Подробные сведения об устранении неполадок, связанных с событиями обратного прокси-сервера, приведены в [руководстве по диагностике обратного прокси-сервера](service-fabric-reverse-proxy-diagnostics.md).
 
 ## <a name="collect-from-new-eventsource-channels"></a>Сбор из новых каналов EventSource
 
-журналы toocollect tooupdate диагностики из новых каналов EventSource, представляющие новое приложение, которое скоро будет toodeploy, выполнить hello же действия как описано выше для hello Настройка диагностики для существующего кластера.
+Чтобы обновить службу диагностики для сбора журналов из новых каналов EventSource, представляющих новое приложение, которое вы собираетесь развернуть, выполните шаги, описанные выше, чтобы настроить службу диагностики для имеющегося кластера.
 
-Обновить hello `EtwEventSourceProviderConfiguration` раздела записи tooadd hello template.json файлов для обновления hello новых EventSource каналов перед применением hello конфигурации с помощью hello `New-AzureRmResourceGroupDeployment` команды PowerShell. Имя источника события hello Hello определяется как часть кода в файле hello ServiceEventSource.cs, созданный средой Visual Studio.
+В раздел `EtwEventSourceProviderConfiguration` файла template.json нужно добавить записи для новых каналов EventSource. Это следует сделать до обновления конфигурации с помощью команды PowerShell `New-AzureRmResourceGroupDeployment`. Имя источника события определяется как часть кода в файле ServiceEventSource.cs, созданном в Visual Studio.
 
-Например если источник события с именем My Eventsource, добавьте следующую hello tooplace коды событий из Мой Eventsource в таблицу с именем MyDestinationTableName hello.
+Например, если источнику события задано имя My-Eventsource, добавьте следующий код для помещения событий из источника My-Eventsource в таблицу MyDestinationTableName.
 
 ```json
         {
@@ -248,13 +248,13 @@ toocreate кластера с помощью диспетчера ресурсо
         }
 ```
 
-счетчики производительности toocollect или журналы событий изменения шаблона диспетчера ресурсов hello с помощью hello примеры, приведенные в [Создание виртуальной машины Windows с помощью мониторинга и диагностики с помощью шаблона Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Затем повторно опубликуйте hello шаблона диспетчера ресурсов.
+Чтобы собрать данные счетчиков производительности и журналов событий, измените шаблон Resource Manager, используя примеры в статье [Создание виртуальной машины Windows с мониторингом и диагностикой с использованием шаблона Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Затем опубликуйте шаблон Resource Manager.
 
 ## <a name="collect-performance-counters"></a>Сбор данных счетчиков производительности
 
-метрики производительности toocollect из кластера, добавьте tooyour счетчики производительности hello «DiagnosticMonitorConfiguration WadCfg >» в hello шаблона диспетчера ресурсов для кластера. Дополнительные сведения о счетчиках производительности Service Fabric, которые мы рекомендуем собирать, см. в [этой статье](service-fabric-diagnostics-event-generation-perf.md).
+Для сбора метрик производительности из кластера добавьте счетчики производительности в элемент WadCfg > DiagnosticMonitorConfiguration в шаблоне Resource Manager для кластера. Дополнительные сведения о счетчиках производительности Service Fabric, которые мы рекомендуем собирать, см. в [этой статье](service-fabric-diagnostics-event-generation-perf.md).
 
-Например, здесь мы устанавливаем один счетчик производительности, выборка каждые 15 секунд (это может быть изменено и следующим hello формат «PT\<время >\<единицы >», к примеру, PT3M бы образец каждые три минуты) и передать toohello Таблица соответствующих дисковых раз в минуту.
+К примеру, установим один счетчик производительности, который будет делать выборку каждые 15 секунд (это можно изменить и указывается в формате "РТ\<время>\<единица_измерения>", например для РТ3М выборка будет выполняться каждые три минуты) и переносить соответствующие данные в требуемую таблицу хранилища каждую минуту.
 
   ```json
   "PerformanceCounters": {
@@ -272,20 +272,20 @@ toocreate кластера с помощью диспетчера ресурсо
   }
   ```
   
-Если вы используете приемник Application Insights, как описано в разделе "hello" ниже и хотите эти показатели tooshow вверх в Application Insights, внесите убедиться, что имя приемника hello tooadd в разделе «приемники» hello, как показано выше. Кроме того, рассмотрите возможность создания toosend отдельную таблицу счетчиками производительности, поэтому они не заполнять out hello Здравствуйте, данные поступают из других каналов ведения журнала включен.
+Если вы используете приемник Application Insights, как описано в разделе ниже, и вам нужно, чтобы эти метрики отображались в Application Insights, добавьте имя приемника в соответствующем разделе, как показано выше. Кроме того, создайте отдельную таблицу для отправки счетчиков производительности, чтобы они не вытесняли данные, поступающие с других включенных каналов ведения журналов.
 
 
-## <a name="send-logs-tooapplication-insights"></a>Отправить журналы аналитики tooApplication
+## <a name="send-logs-to-application-insights"></a>Отправка журналов в Application Insights
 
-Отправка данных мониторинга и диагностики, tooApplication аналитики (AI) может выполняться как часть конфигурации WAD hello. Если вы решите toouse AI для анализа событий и визуализации, чтение [анализ событий и визуализации с помощью Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) tooset копирование приемник AI как часть «WadCfg».
+Отправку данных мониторинга и диагностики в Application Insights можно выполнить в ходе настройки WAD. Дополнительные сведения об использовании Application Insights для анализа событий и визуализации, а также установке приемника Application Insights как части WadCfg см. в [этой статье](service-fabric-diagnostics-event-analysis-appinsights.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-После правильной настройки диагностики Azure, вы увидите данные в таблицах хранилища из hello трассировки событий Windows и журналы EventSource. При выборе toouse OMS Kibana или любые другие данные аналитики и визуализации платформы, которая непосредственно не настроены на hello шаблона диспетчера ресурсов, внести в hello данные из этих таблиц хранилища, что tooset копирование hello платформа tooread ваш выбор. Сделать это для OMS несложно. Дополнительные сведения см. в статье [Event and log analysis through OMS](service-fabric-diagnostics-event-analysis-oms.md) (Анализ событий и журналов с помощью OMS). Application Insights бит в этом смысле особым случаем, поскольку его можно настроить как часть конфигурации расширения диагностики hello, таким образом обратитесь toohello [соответствующей статье](service-fabric-diagnostics-event-analysis-appinsights.md) при выборе toouse AI.
+Если вы правильно настроили диагностику Azure, данные из журнала трассировки событий Windows и журнала EventSource станут появляться в таблице хранилища. При использовании OMS, Kibana или любой другой платформы для аналитики и визуализации, которая не настроена в шаблоне Resource Manager явным образом, убедитесь, что выбранная платформа настроена для чтения данных из таблиц хранилища. Сделать это для OMS несложно. Дополнительные сведения см. в статье [Event and log analysis through OMS](service-fabric-diagnostics-event-analysis-oms.md) (Анализ событий и журналов с помощью OMS). В этом смысле Application Insights — это особый случай, так как это решение можно настроить при настройке расширения диагностики. Дополнительные сведения об Application Insights см. в [этой статье](service-fabric-diagnostics-event-analysis-appinsights.md).
 
 >[!NOTE]
->В данный момент нет способа toofilter или очистки hello событий, отправляемых toohello таблицы. Если не реализовать tooremove обработки событий, из таблицы hello, таблица hello останется toogrow. В настоящее время является примером службы очистки данных, работающей в hello [образца контрольного](https://github.com/Azure-Samples/service-fabric-watchdog-service), и рекомендуется записать его, если не дает веские причины для вас toostore журналы за период времени 30 или 90 дней.
+>Сегодня не существует способа фильтрации или очистки событий, которые отправляются в таблицу. Если не реализовать метод удаления событий из таблицы, она продолжит расти. Сейчас есть пример службы очистки данных, выполняющийся в [примере модуля наблюдения](https://github.com/Azure-Samples/service-fabric-watchdog-service). Мы также советуем написать собственный пример, если у вас нет веских причин для хранения журналов дольше 30 или 90 дней.
 
-* [Узнайте, как счетчики производительности toocollect или журналы с помощью hello расширения диагностики](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Узнайте, как собирать данные счетчиков производительности или журналы, используя расширения системы диагностики.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Event Analysis and Visualization with Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) (Анализ событий и визуализация с помощью Application Insights)
 * [Event Analysis and Visualization with OMS](service-fabric-diagnostics-event-analysis-oms.md) (Анализ событий и журналов с помощью OMS)

@@ -1,5 +1,5 @@
 ---
-title: "решения по управлению Azure Log Analytics aaaAdd | Документы Microsoft"
+title: "Добавление решений для управления Azure Log Analytics | Документация Майкрософт"
 description: "Решения для управления Operations Management Suite (OMS) и Log Analytics представляют собой коллекцию логики, визуализации и правил получения данных, предоставляющую метрики, связанные с определенной проблемной областью."
 services: log-analytics
 documentationcenter: 
@@ -15,125 +15,125 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5a232d20e144b800387b09adb5248505d801944
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1ba1bb02c27fa040cc2daef4baf5c9ecc827d323
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-azure-log-analytics-management-solutions-tooyour-workspace"></a>Добавление рабочей tooyour анализа журналов Azure управление решениями
+# <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Добавление решений для управления Azure Log Analytics в рабочую область
 
-Решения для управления Log Analytics представляют собой коллекцию **логики**, **визуализации** и **правил получения данных**, предоставляющую метрики, связанные с определенной проблемной областью. В этой статье перечислены поддерживаемые анализа журналов решения для управления и показано, как tooadd и remove для рабочей области с помощью hello портал Azure. Можно также добавить решения на портале OMS hello, с помощью коллекции решений hello.
+Решения для управления Log Analytics представляют собой коллекцию **логики**, **визуализации** и **правил получения данных**, предоставляющую метрики, связанные с определенной проблемной областью. В этой статье перечислены решения для управления, поддерживаемые Log Analytics, и показано, как их можно добавлять и удалять в рабочей области с помощью портала Azure. Эти решения можно также добавить на портале OMS с помощью коллекции решений.
 
 Решения для управления позволяют получить более подробные данные для:
 
 * изучения и более быстрого решения проблем с работоспособностью;
 * сбора и сопоставления различных типов машинных данных;
-* Помочь заблаговременно решать, которые предоставляет решение hello.
+* заблаговременного выполнения операций, которые предоставляет решение.
 
 > [!NOTE]
-> Служба аналитики журналов включает функции поиска журналов, вам требуется tooinstall tooenable решение управления его. Тем не менее вы получаете визуализации данных, предлагаемые запросы поиска и аналитики путем добавления рабочей tooyour решений управления.
+> Log Analytics включает в себя функции поиска по журналам, поэтому для активации решения для управления устанавливать его необязательно. Однако для получения визуализации данных, рекомендуемых условий поиска и аналитических следует добавить решения для управления в рабочую область.
 
-В этой статье вы добавить управления решения tooa рабочей области с помощью портала Azure Marketplace hello. После добавления решения данные собираются с серверов hello в инфраструктуре и отправляются toohello службой OMS. Обработка по приветствия службой OMS обычно занимает несколько минут tooan час. После hello служба обрабатывает данные hello, его можно просмотреть в OMS.
+В этой статье описывается, как добавить решения для управления в рабочую область с помощью портала Azure Marketplace. После добавления решения данные собираются с серверов в вашей инфраструктуре и отправляются в службу OMS. Обычно обработка в OMS занимает от нескольких минут до часа. Обработанные данные можно просмотреть в службе OMS.
 
-Если решение для управления больше не нужно, его можно удалить. При удалении решение управления, его данные не отправляются tooOMS. Если вы находитесь на бесплатной ценовой категории hello, удаление решения может снизить hello количества данных, помогая расти дневной квоты данных.
+Если решение для управления больше не нужно, его можно удалить. При удалении решения для управления его данные не отправляются в OMS. Если используется ценовая категория "Бесплатный", удаление решения может уменьшить объем используемых данных, что поможет не превысить ежедневную квоту данных.
 
 ## <a name="view-available-management-solutions"></a>Просмотр доступных решений для управления
 
-Hello Azure marketplace содержит список hello [решений по управлению для анализа журналов](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+В Azure Мarketplace доступен ряд [административных решений (решений для управления) для Log Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Решения для управления можно установить из Azure marketplace, щелкнув hello **компания** ссылку внизу hello каждого решения.
+Эти решения для управления можно установить из Azure Мarketplace, щелкнув ссылку для **скачивания** в нижней части каждого решения.
 
 ## <a name="add-a-management-solution"></a>Добавление решения для управления
-1. Если это еще не сделано, войдите в toohello [портал Azure](https://portal.azure.com) с помощью вашей подписки Azure.
-2. В hello **New** колонке под **Marketplace**выберите **мониторинг + управления**.
-3. В hello **мониторинг + управления** колонка, щелкните **все**.  
+1. Войдите на [портал Azure](https://portal.azure.com), используя подписку Azure, если вы еще этого не сделали.
+2. В колонке **Создать** выберите **Marketplace** > **Мониторинг и управление**.
+3. В колонке **Мониторинг и управление** щелкните **See all** (Просмотреть все).  
     ![Колонка "Мониторинг и управление"](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
-4. toohello справа от **решения для управления**, нажмите кнопку **дополнительные**.
-5. В hello **решений по управлению** колонке выберите решение управления, что требуется tooadd tooa область.  
+4. Справа от элемента **Решения для управления** щелкните **More** (Дополнительные).
+5. В колонке **Решения для управления** выберите решение для управления, которое вы хотите добавить в рабочую область.  
     ![Колонка "Мониторинг и управление"](./media/log-analytics-add-solutions/management-solutions.png)  
-6. В колонке решение управления hello, просмотрите сведения о решении по управлению hello и нажмите кнопку **создать**.
-7. В hello *имя решения управления* колонке выберите рабочей области, что tooassociate решение для управления hello.
-8. При необходимости измените параметры рабочей области для hello подписки Azure, группу ресурсов и расположение. Можно также выбрать **параметры службы автоматизации**. Щелкните **Создать**.  
+6. В колонке решения для управления просмотрите сведения о решении, затем щелкните **Создать**.
+7. В колонке *имя решения для управления* выберите рабочую область, в которую нужно добавить решение для управления.
+8. При необходимости измените параметры подписки Azure, группы ресурсов и расположения для рабочей области. Можно также выбрать **параметры службы автоматизации**. Щелкните **Создать**.  
     ![Рабочая область решения](./media/log-analytics-add-solutions/solution-workspace.png)  
-9. с помощью решения по управлению hello, которые были добавлены рабочей tooyour toostart перехода слишком**анализа журналов** > **подписки** > ***имя рабочей области ***  >  **Обзор**. Появится новый элемент для вашего решения для управления. Щелкните tooopen плитки приветствия, ее и приступить к использованию решение hello после сбора данных для решения hello.
+9. Чтобы начать использовать решение для управления, добавленное в рабочую область, выберите **Log Analytics** > **Подписки** > ***имя рабочей области*** > **Обзор**. Появится новый элемент для вашего решения для управления. Щелкните этот элемент, чтобы открыть его и начать использовать решение после сбора данных для него.
 
 ## <a name="remove-a-management-solution"></a>Удаление решения для управления
 
-1. В hello [портал Azure](https://portal.azure.com), перейдите в слишком**анализа журналов** > **подписки** > ***имя рабочей области*** затем в hello ***имя рабочей области*** колонке нажмите кнопку **решения**.
-2. В списке hello решений по управлению выберите нужных tooremove решения hello.
-3. В колонке hello решения для рабочей области, щелкните **удалить**.  
+1. На [портале Azure](https://portal.azure.com) выберите **Log Analytics** > **Подписки** > ***имя рабочей области***, затем в колонке ***имя рабочей области*** щелкните **Решения**.
+2. Из списка решений для управления выберите решение, которое требуется удалить.
+3. В колонке решения для рабочей области щелкните **Удалить**.  
     ![Удаление решения](./media/log-analytics-add-solutions/solution-delete.png)  
-4. В диалоговом окне подтверждения hello, нажмите кнопку **Да**.
+4. В диалоговом окне подтверждения нажмите кнопку **Да**.
 
 ## <a name="offers-and-pricing-tiers"></a>Предложения и ценовые категории
 
-Hello в следующей таблице определяет, какие решения управления принадлежит предложение tooeach Operations Management Suite.
-Hello таблице также указаны hello ценовым категориям, доступные для каждого решения по управлению.
-Все решения в следующей таблице hello доступны из hello Azure портал и hello коллекции решений на портале службы анализа журналов hello.
+В следующей таблице указаны решения для управления, относящиеся к каждому предложению Operations Management Suite.
+В таблице также указаны ценовые категории, доступные для каждого для решения управления.
+Все решения в приведенной таблице доступны на портале Azure и в коллекции решений на портале Log Analytics.
 
 | Решение для управления                                                                       | ПРЕДЛОЖЕНИЕ                                                                     | Ценовые категории<sup>1</sup>                                                 | Примечания |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
-| [Анализ журнала действий](log-analytics-activity.md)                                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | 90 дней данные доступны бесплатно.<br>Данные не регулируется cap toohello уровень Free |
+| [Анализ журнала действий](log-analytics-activity.md)                                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | 90 дней данные доступны бесплатно.<br>Для данных не действует ограничение уровня "Бесплатный". |
 | [Оценка AD](log-analytics-ad-assessment.md)                                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Состояние репликации AD](log-analytics-ad-replication-status.md)                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Недоступно tooadd из Azure portal или marketplace. |
-| [Работоспособность агентов](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Данные не регулируется cap toohello уровень Free<br> Недоступно tooadd из Azure portal или marketplace. |
-| [Управление оповещениями](log-analytics-solution-alert-management.md)                            | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Недоступно tooadd из Azure portal или marketplace. |
+| [Состояние репликации AD](log-analytics-ad-replication-status.md)                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Добавление с портала Azure или Marketplace недоступно. |
+| [Работоспособность агентов](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Для данных не действует ограничение уровня "Бесплатный".<br> Добавление с портала Azure или Marketplace недоступно. |
+| [Управление оповещениями](log-analytics-solution-alert-management.md)                            | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Добавление с портала Azure или Marketplace недоступно. |
 | [Соединитель Application Insights (предварительная версия)](log-analytics-app-insights-connector.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Гибридная рабочая роль службы автоматизации](../automation/automation-hybrid-runbook-worker.md)                                                                     | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации |
+| [Гибридная рабочая роль службы автоматизации](../automation/automation-hybrid-runbook-worker.md)                                                                     | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации. |
 | [Анализ шлюзов приложений Azure](log-analytics-azure-networking-analytics.md)    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
 | [Анализ групп безопасности сети Azure](log-analytics-azure-networking-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Службы анализа SQL Azure (предварительная версия)](log-analytics-azure-sql.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br>На&nbsp;узел&nbsp;(OMS)                                                                          | Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации|
+| [Службы анализа SQL Azure (предварительная версия)](log-analytics-azure-sql.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br>На&nbsp;узел&nbsp;(OMS)                                                                          | Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации.|
 | [Аналитика веб-приложений Azure](log-analytics-azure-web-apps-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-|[Архивация](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)                                                                       | Требуется классическое резервное хранилище.<br> Недоступно tooadd из Azure portal или marketplace. |
+|[Архивация](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)                                                                       | Требуется классическое резервное хранилище.<br> Добавление с портала Azure или Marketplace недоступно. |
 | [Емкость и производительность (предварительная версия)](log-analytics-capacity.md)                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Отслеживание изменений](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации |
+| [Отслеживание изменений](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации. |
 | [Контейнеры](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
 | [Соединитель управления ИТ-службами (предварительная версия)](log-analytics-itsmc-overview.md)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> На&nbsp;узел&nbsp;(OMS)     | |
 | HDInsight HBase Monitoring <br>(предварительная версия)                                                  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
 | [Анализ хранилища ключей](log-analytics-azure-key-vault.md)                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Logic Apps B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Недоступно tooadd из Azure portal или marketplace. |
-| [Оценка вредоносных программ](log-analytics-malware.md)                                            | <ul><li>Служба "Безопасность и соответствие требованиям"</li></ul>                                 | Free<br> Автономный<br>На&nbsp;узел&nbsp;(OMS)                                                                           | При добавлении решения безопасности и соответствия требованиям hello после 19 июня 2017 г. [выставление счетов осуществляется на каждом узле](https://azure.microsoft.com/pricing/details/security-compliance/)независимо от того, рабочую область hello ценовой категории. Hello первых 60 дней свободны.  |
+| [Logic Apps B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Добавление с портала Azure или Marketplace недоступно. |
+| [Оценка вредоносных программ](log-analytics-malware.md)                                            | <ul><li>Служба "Безопасность и соответствие требованиям"</li></ul>                                 | Free<br> Автономный<br>На&nbsp;узел&nbsp;(OMS)                                                                           | Если вы добавите решения для обеспечения безопасности и соответствия требованиям после 19 июня 2017 г., [плата будет начисляться за каждый узел](https://azure.microsoft.com/pricing/details/security-compliance/), независимо от ценовой категории рабочей области. В первые 60 дней плата не взимается.  |
 | [Монитор производительности сети](log-analytics-network-performance-monitor.md) <br>  | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | |
 | [Аналитика Office 365 (предварительная версия)](../operations-management-suite/oms-solution-office-365.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Безопасность и аудит](../operations-management-suite/oms-security-getting-started.md)      | <ul><li>Security&nbsp;and&nbsp;Compliance</li></ul>                       | Free<br> Автономный<br>На&nbsp;узел&nbsp;(OMS)                                                                           | Это решения нужно для сбора журналов событий безопасности.<br>При добавлении решения безопасности и соответствия требованиям hello после 19 июня 2017 г. [выставление счетов осуществляется на каждом узле](https://azure.microsoft.com/pricing/details/security-compliance/)независимо от того, рабочую область hello ценовой категории. Hello первых 60 дней свободны. |
+| [Безопасность и аудит](../operations-management-suite/oms-security-getting-started.md)      | <ul><li>Security&nbsp;and&nbsp;Compliance</li></ul>                       | Free<br> Автономный<br>На&nbsp;узел&nbsp;(OMS)                                                                           | Это решения нужно для сбора журналов событий безопасности.<br>Если вы добавите решения для обеспечения безопасности и соответствия требованиям после 19 июня 2017 г., [плата будет начисляться за каждый узел](https://azure.microsoft.com/pricing/details/security-compliance/), независимо от ценовой категории рабочей области. В первые 60 дней плата не взимается. |
 | [Анализ Service Fabric (предварительная версия)](log-analytics-service-fabric.md)                     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
 | [Сопоставление служб (предварительная версия)](../operations-management-suite/operations-management-suite-service-map.md) | <ul><li>Анализ и аналитика</li></ul>                      | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Доступно в восточной части США, Западной Европе и западно-центральной части США.    |
-| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)                                                                       | Требуется классическое хранилище Site Recovery.<br> Недоступно tooadd из Azure portal или marketplace. |
+| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)                                                                       | Требуется классическое хранилище Site Recovery.<br> Добавление с портала Azure или Marketplace недоступно. |
 | [Оценка SQL](log-analytics-sql-assessment.md)                                         | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| Запуск и остановка виртуальных машин в нерабочее время<br>(предварительная версия)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации |
-| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Недоступно tooadd из Azure portal или marketplace. |
+| Запуск и остановка виртуальных машин в нерабочее время<br>(предварительная версия)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации. |
+| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Добавление с портала Azure или Marketplace недоступно. |
 | [Оценка System Center Operations Manager (предварительная версия)](log-analytics-scom-assessment.md)  | <ul><li>Анализ и аналитика</li><li>Служба Log Analytics</li></ul>        | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
-| [Управление обновлениями](../operations-management-suite/oms-solution-update-management.md)                                                                         | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации |
-| [Поддержка обновлений (предварительная версия)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Плата за данные или узлы не взимается.<br>Данные не субъекта toohello уровень Free крепления.<br> Недоступно tooadd из Azure portal или marketplace. |
-| [Готовность к обновлению](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Плата за данные или узлы не взимается.<br>Данные не субъекта toohello уровень Free крепления.<br> Недоступно tooadd из Azure portal или marketplace. |
+| [Управление обновлениями](../operations-management-suite/oms-solution-update-management.md)                                                                         | <ul><li>Automation and Control</li></ul>                                  | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации. |
+| [Поддержка обновлений (предварительная версия)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Плата за данные или узлы не взимается.<br>Для данных не действует ограничение уровня "Бесплатный".<br> Добавление с портала Azure или Marketplace недоступно. |
+| [Готовность к обновлению](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | Плата за данные или узлы не взимается.<br>Для данных не действует ограничение уровня "Бесплатный".<br> Добавление с портала Azure или Marketplace недоступно. |
 | [Мониторинг VMware (предварительная версия)](log-analytics-vmware.md)                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> Стандартная<br> Премиум&nbsp;(OMS)<br> На&nbsp;ГБ&nbsp;(изолированное решение)<br> На&nbsp;узел&nbsp;(OMS)   | |
 | [Wire Data 2.0 (предварительная версия)](log-analytics-wire-data.md)                                                                 | <ul><li>Анализ и аналитика</li></ul>                                   | Free<br> На&nbsp;узел&nbsp;(OMS)                                                                         | Доступно в восточной части США, Западной Европе и западно-центральной части США. |
 
-<sup>1</sup> hello *Стандартная* и *Premium (OMS)* ценовые категории доступны только для пользователей, создавших предыдущих tooSeptember каталога рабочей их анализа журналов 21, 2016.
+<sup>1</sup> Ценовые категории *Стандартная* и *Премиум (OMS)* доступны только клиентам, которые создали свою область Log Analytics до 21 сентября 2016 года.
 
 ### <a name="community-provided-management-solutions"></a>Решения для управления от сообщества
 
-Предоставленный сообщества решения доступны из hello [коллекции шаблонов Azure](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS)) и прямой от авторов hello.
+Предоставляемые сообществом решения можно получить из [коллекции шаблонов Azure](https://azure.microsoft.com/resources/templates/?term=Per&nbsp;Node&nbsp;(OMS)) и непосредственно у авторов.
 
 | Решение для управления               | ПРЕДЛОЖЕНИЕ                                                                     | Ценовые категории                         | Примечания |
 | ---                               | ---                                                                       | ---                                   | ---   |
-| Все решения от сообщества  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> На&nbsp;узел&nbsp;(OMS)     |   Требует вашего анализа журналов tooan toobe связанные рабочей учетной записи автоматизации |
+| Все решения от сообщества  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Служба Log Analytics</li></ul>   | Free<br> На&nbsp;узел&nbsp;(OMS)     |   Требуется рабочая область Log Analytics, которую нужно привязать к учетной записи службы автоматизации. |
 
 
 
 
 ## <a name="data-collection-details"></a>Сведения о сборе данных
-Hello следующих таблицах приведены методы сбора данных и другие сведения о сборе данных для анализа журналов управления решения и источников данных. Hello таблиц разбиты на категории по решения предложений, которые соответствуют слишком[подписки ценовым категориям](https://go.microsoft.com/fwlink/?linkid=827926). Hello решения для анализа журналов действий — доступные tooall ценовым категориям бесплатно.
+В следующих таблицах приведены методы сбора данных и другие сведения о том, как собираются данные для решений для управления и источников данных Log Analytics. Эти таблицы разбиты по предлагаемым решениям, тождественным [ценовым категориям подписки](https://go.microsoft.com/fwlink/?linkid=827926). Решение для анализа журнала действий бесплатно для всех ценовых категорий.
 
-Здравствуйте, агент Windows аналитика журналов и hello System Center Operations Manager агент в основном являются одинаковыми. Агент Windows Hello включает дополнительные функциональные возможности tooallow его tooconnect toohello OMS рабочей области и маршрут, используя учетную запись-посредник. Если вы используете агент Operations Manager, должно быть целью как toocommunicate агента OMS с OMS. Агенты Operations Manager в этой таблице, агенты OMS, которые являются подключенных tooOperations диспетчера. В разделе [tooLog подключение Operations Manager Analytics](log-analytics-om-agents.md) сведения о подключении к существующей среде tooOMS Operations Manager.
+Агент Log Analytics для Windows и агент System Center Operations Manager по сути одинаковы. Однако в агенте Windows предусмотрена дополнительная возможность, позволяющая ему подключиться к рабочей области OMS и выполнять маршрутизацию через прокси-сервер. Агент Operations Manager должен использоваться в качестве агента OMS для взаимодействия с OMS. Агенты Operations Manager в этой таблице являются агентами OMS, подключенными к Operations Manager. Сведения о подключении существующей среды Operations Manager к OMS см. в статье [Подключение Operations Manager к Log Analytics](log-analytics-om-agents.md).
 
 > [!NOTE]
-> Hello тип агента, используемого определяет способ отправки данных tooOMS, с hello следующие условия:
-> - Можно использовать агент Windows hello или агента OMS, подключенных к Operations Manager.
-> - При необходимости Operations Manager данные агента Operations Manager для решения hello всегда отправляется с помощью группы управления Operations Manager hello tooOMS. Кроме того при необходимости Operations Manager решением hello используется только агент Operations Manager hello.
-> - Если Operations Manager не является обязательным и hello таблице показано, что данные агента Operations Manager отправляется tooOMS, с помощью hello группы управления, а затем данные агента Operations Manager всегда отправляется tooOMS, с помощью групп управления. Агенты Windows обхода группы управления hello и отправки данных по tooOMS напрямую.
-> - Когда данные агента Operations Manager не отправляется с использованием группы управления, затем hello данные отправляются напрямую tooOMS — обход hello группы управления.
+> Тип используемого агента определяет способ отправки данных в OMS со следующими условиями:
+> - Можно использовать агент Windows или агент OMS, подключенный к Operations Manager.
+> - Когда требуется использовать Operations Manager, данные агента Operations Manager для решения всегда передаются в OMS с помощью группы управления Operations Manager. Кроме того, если требуется использовать Operations Manager, то в решении используется только агент Operations Manager.
+> - Если использовать Operations Manager не обязательно и в таблице показано, что данные агента Operations Manager передаются в OMS с помощью группы управления, то передача этих данных в OMS будет всегда осуществляться с помощью групп управления. Агенты Windows обходят группу управления и передают свои данные непосредственно в OMS.
+> - Если при передаче данных агента Operations Manager не используется группа управления, то данные отправляются непосредственно в OMS, минуя группу управления.
 
 ### <a name="insight--analytics--log-analytics"></a>Insight and Analytics и Log Analytics
 
@@ -181,7 +181,7 @@ Hello следующих таблицах приведены методы сбо
 | Оценка защиты от вредоносных программ |Windows |&#8226; |&#8226; |  |  |&#8226; |ежечасно |
 | Безопасность и аудит <sup>1</sup> | Windows и Linux | Частично | Частично | Частично |   | Частично | Различная |
 
-<sup>1</sup> hello безопасности и аудита решения могут собирать журналы из агентов Windows, Operations Manager и Linux. Сведения о сборе данных приведены в разделе [Источники данных](#data-sources).
+<sup>1</sup> Решение для защиты и аудита может собирать журналы от агентов Windows, Linux и Operations Manager. Сведения о сборе данных приведены в разделе [Источники данных](#data-sources).
 
 - syslog
 - Журналы событий безопасности Windows
@@ -211,72 +211,72 @@ Hello следующих таблицах приведены методы сбо
 | Счетчики производительности |Windows |&#8226; |&#8226; |  |  |  |по расписанию, не менее 10 секунд |
 | Счетчики производительности |Linux |&#8226; |  |  |  |  |по расписанию, не менее 10 секунд |
 | syslog |Linux |&#8226; |  |  |  |  |Из хранилища Azure — 10 минут, из агента — при получении |
-| Журналы событий безопасности Windows |Windows |&#8226; |&#8226; |&#8226; |  |  |для хранилища Azure: 10 мин; для hello агента: по поступлении |
+| Журналы событий безопасности Windows |Windows |&#8226; |&#8226; |&#8226; |  |  |для хранилища Azure — 10 мин, для агента — при получении |
 | Журналы брандмауэра Windows |Windows |&#8226; |&#8226; |  |  |  |при получении |
-| Журналы событий Windows |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |для хранилища Azure: 10 мин; для hello агента: по поступлении |
+| Журналы событий Windows |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |для хранилища Azure — 10 мин, для агента — при получении |
 
 
 
 ## <a name="preview-management-solutions-and-features"></a>Предварительные версии решений для управления и компонентов
-Запуск службы и devops методы, не могут toopartner с клиентов toodevelop компонентов и решений.
+Запуск службы и выполнение процедур разработки позволяет сотрудничать с клиентами в процессе разработки функций и решений.
 
-Во время получения личной предварительной версии мы предоставить небольшой группы клиенты доступа tooan раннее реализация hello компоненты или решения toogain обратной связи и вносить улучшения. Ранняя реализация включает минимум функций и операционных возможностей.
+На этапе закрытой предварительной версии мы предоставляем небольшой группе клиентов доступ к ранней реализации функции или решения, чтобы получить обратную связь и внести усовершенствования. Ранняя реализация включает минимум функций и операционных возможностей.
 
-Наша цель — вещей tootry быстро, чтобы мы могли найти, что работает и что не работает. Мы итерацию этот процесс, пока hello отзывов пользователей hello личной предварительной версии сообщает, что все готово для общедоступной предварительной версии.
+Наша цель — быстро опробовать новые функции и понять, что работает, а что нет. Мы работаем таким образом до тех пор, пока отзывы пользователей закрытой предварительной версии не покажут, что мы готовы к выпуску общедоступной предварительной версии.
 
-Во время hello общедоступной предварительной версии мы освободить hello компоненты или решения для всех пользователей tooget дополнительные отзывы и проверить наши масштабирование и эффективность. На этом этапе
+В общедоступной предварительной версии функция или решение становятся доступными для всех пользователей, что позволяет получить больше отзывов и проверить нашу оценку и эффективность. На этом этапе
 
-* Функции предварительной версии отображаются на вкладке Параметры hello и можно включить любой пользователь.
-* Предварительная версия решения добавляются через hello коллекции или с помощью скрипта.
+* Предварительные версии компонентов появляются на вкладке "Параметры" и могут быть активированы любым пользователем.
+* Предварительные версии решений можно добавлять из коллекции или с помощью сценария.
 
 ### <a name="what-should-i-know-about-preview-features-and-solutions"></a>Что нужно знать о предварительных версиях компонентов и решений?
-Мы сообщаем о новых функциях и решения для управления, и мы рады, что работа с toodevelop вы их.
+Мы всегда с радостью выпускаем новые функции и решения для управления и нам нравится сотрудничать с вами в процессе их разработки.
 
-Предварительные версии компонентов и решений подходят не для всех. Перед запросом toojoin личной предварительной версии или включение общедоступной предварительной версии, убедитесь, что работаете ОК то, что находится в стадии разработки.
+Предварительные версии компонентов и решений подходят не для всех. Прежде чем подавать запрос об участии в тестировании закрытой предварительной версии или активировать общедоступную предварительную версию, убедитесь, что вы сможете работать с продуктом на этапе разработки.
 
-При включении функцию предварительного просмотра через портал hello, появится предупреждение о том, что hello компонент находится в предварительной версии.
+Активировав предварительную версию функции через портал, вы увидите предупреждение о том, что эта функция находится на этапе предварительной версии.
 
 #### <a name="for-both-private-and-public-preview"></a>Для *закрытых* и *общедоступных* предварительных версий
-Hello следующая информация применима tooboth открытых и закрытых предварительного просмотра:
+И к закрытой, и к общедоступной предварительным версиям применимо следующее.
 
 * Они могут работать некорректно.
-  * Выдает диапазона не дополнительный недовольство через toosomething не работает во всех.
-* Рекомендуется ограничить toohave preview hello отрицательно повлиять на ваши системы или среды.
-  * Мы пытаемся tooavoid отрицательное вещей, которые возникают ситуации toohello систем, которые вы используете с OMS, но некоторые неожиданные вещей.
+  * Проблемы могут быть разными, от незначительных раздражающих факторов до абсолютно неработающих функций.
+* Предварительная версия может негативно повлиять на ваши системы или среду.
+  * Мы стараемся избежать негативного влияния на системы, используемые с OMS, но иногда происходит непредвиденное.
 * Возможна потеря или повреждение данных.
-* Мы можем попросить вы toocollect журналы диагностики или других данных toohelp устранения неполадок.
-* функция Hello или решения могут быть удалены (временно или постоянно).
-  * Основаны на нашем данных во время предварительного просмотра hello мы может решить функций hello версии toonot или решения.
+* Мы можем запрашивать у вас журналы диагностики или другие данные для устранения проблем.
+* Компонент или решение можно удалить (временно или навсегда).
+  * В зависимости от результатов работы на этапе предварительной версии мы можем отказаться от выпуска функции или решения.
 * Предварительные версии могут не работать или тестироваться со всеми конфигурациями; кроме того, мы можем ограничить следующее.
-  * Здравствуйте, операционных систем, которые можно использовать (например, функция может применяться только tooLinux во время предварительного просмотра).
-  * Здравствуйте, тип агента (MMA, Operations Manager), который можно использовать (например, компонент не может работать с Operations Manager во время предварительного просмотра).  
-* Предварительный просмотр решений и компонентов не покрывается hello соглашение об уровне обслуживания.
+  * Операционные системы, которые можно использовать (например, на этапе предварительной версии компонент может применяться только в Linux).
+  * Тип агента (MMA, Operations Manager), который можно использовать (например, функция может не работать с Operations Manager на этапе предварительной версии).  
+* Предварительные версии решений и компонентов не регулируются соглашением об уровне обслуживания.
 * Работа с предварительными версиями компонентов потребует платы за использование.
-* Функции и возможности, необходимые для функции hello / toobe решение полезно возможно, отсутствует или является неполным.
+* Компоненты или возможности, необходимые для эффективной работы компонента или решения, могут отсутствовать или быть неполными.
 * Компоненты и решения могут быть доступны не во всех регионах.
 * Компоненты и решения могут быть не локализованы.
-* Компоненты и решения могут иметь ограничение на количество hello пользователей или устройств, которые можно использовать.
-* Может потребоваться toouse сценариев tooperform конфигурации и tooenable hello решения или компонент.
-* Hello пользовательского интерфейса (UI) является неполным и может измениться из tooday день.
+* Компоненты и решения могут иметь ограничение по числу клиентов или устройств, которые могут их использовать.
+* Для настройки конфигурации и включения решения или компонента могут потребоваться сценарии.
+* Пользовательский интерфейс может быть неполным и периодически меняться.
 * Общедоступные предварительные версии могут не подойти для ваших рабочих или критически важных систем.
 
 #### <a name="for-private-preview"></a>Для *закрытых* предварительных версий
-В выше элементов toohello сложения hello следующую информацию — Предварительный просмотр конкретных tooprivate:
+Помимо вышеизложенного, к закрытым предварительным версиям применимо следующее.
 
-* Мы предполагаем tooprovide нам отзыв о своем опыте работы, чтобы мы могли принимать hello компонент или решение, лучше.
+* Мы рассчитываем на обратную связь с вашей стороны — это поможет нам усовершенствовать компонент или решение.
 * Мы можем обращаться к вам за отзывами с помощью опросов, по телефону и по электронной почте.
 * Предварительные версии могут работать некорректно.
 * Для участия может потребоваться заключить соглашение о неразглашении, так как предварительные версии могут включать в себя конфиденциальное содержимое.
-  * Перед ведения блогов, работа с Twitter или в противном случае взаимодействия с третьими сторонами свяжитесь с hello руководителя программы, отвечающий за toounderstand hello Предварительный просмотр каких-либо ограничений на раскрытие.
+  * Прежде чем писать в блог или Twitter либо сообщать что-либо третьим сторонам, уточните у руководителя программы, ответственного за предварительную версию, какие ограничения связаны с разглашением информации.
 * Предварительные версии не стоит использовать в рабочих и критически важных системах.
 
-### <a name="how-do-i-get-access-tooprivate-preview-features-and-solutions"></a>Получение доступа tooprivate предварительных версий компонентов и решений
-Мы приглашаем предварительных версий tooprivate клиентов через несколькими различными способами в зависимости от hello предварительного просмотра.
+### <a name="how-do-i-get-access-to-private-preview-features-and-solutions"></a>Как получить доступ к закрытым предварительным версиям функций и решений?
+Мы приглашаем клиентов участвовать в тестировании предварительных версий различными способами в зависимости от конкретной функции или решения.
 
-* Ответы на опросы клиентов ежемесячные hello и дальнейшие нам разрешение toofollow вам повышает вероятность того, что приглашенных tooa личной предварительной версии.
+* Участвуя в ежемесячных опросах клиентов и предоставив нам разрешение на дальнейшую связь, вы повышаете свои шансы на участие в тестировании.
 * Ваше участие в тестировании может быть предложено менеджером по работе с клиентами Майкрософт.
 * Данные о регистрации опубликованы в Twitter [msopsmgmt](https://twitter.com/msopsmgmt)
 * Данные о регистрации распространяются на общественных мероприятиях — ищите нас на собраниях, конференциях и в онлайн-сообществах.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Выполнять поиск в журналах](log-analytics-log-searches.md) tooview подробные данные, собранные решения для управления.
+* Выполните [поиск по журналам](log-analytics-log-searches.md) для просмотра подробных сведений, собранных решениями для управления.

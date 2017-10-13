@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure контейнер реестра репозиториев | Документы Microsoft"
-description: "Как toouse репозиториями реестра контейнера Azure для Docker images"
+title: "Репозитории реестра контейнеров Azure | Документация Майкрософт"
+description: "Использование репозиториев реестра контейнеров Azure для образов Docker"
 services: container-registry
 documentationcenter: 
 author: cristy
@@ -8,48 +8,48 @@ manager: balans
 editor: dlepow
 ms.service: container-registry
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2017
 ms.author: cristyg
-ms.openlocfilehash: 108622c565e41777fbb1fc9da9a01168abc7a7fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d737df98fee955b57166cb44f45f61dff906514e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Репозитории реестра контейнеров Azure
 
-Контейнер Azure реестра позволяет toostore образы контейнеров в репозитории. Это позволяет содержать группы образов (версии образов) в изолированных средах. При выполнении отправки изображений tooyour реестра можно указать эти репозиториев.
+Реестр контейнеров Azure позволяет хранить образы контейнеров в репозиториях. Это позволяет содержать группы образов (версии образов) в изолированных средах. Эти репозитории можно указать при отправке образов в реестр.
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-* **Реестр контейнеров Azure.** Создайте реестр контейнеров в своей подписке Azure. Например, использовать hello [портал Azure](container-registry-get-started-portal.md) или hello [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
-* **Docker CLI** -tooset ваш локальный компьютер как узла и доступа к hello Docker CLI команды Docker, установите [подсистемы Docker](https://docs.docker.com/engine/installation/).
-* **Изображение по запросу** — извлечь изображение из открытого реестра Docker Hub hello пометить ее и принудительно отправить его tooyour реестра. Рекомендации о том, как push и pull образов см. в разделе [Push Docker изображения tooAzure частного реестра](container-registry-get-started-docker-cli.md).
+* **Реестр контейнеров Azure.** Создайте реестр контейнеров в своей подписке Azure. Это можно сделать на [портале Azure](container-registry-get-started-portal.md) или с помощью [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
+* **Интерфейс командной строки Docker.** Установите [подсистему Docker](https://docs.docker.com/engine/installation/), чтобы настроить локальный компьютер в качестве узла Docker и получить доступ к командам интерфейса командной строки Docker.
+* **Извлечение образа.** Извлеките образ из общедоступного реестра в концентраторе Docker, пометьте его и отправьте в свой реестр. Сведения об отправке и извлечении изображений см. в разделе [Отправка первого образа в частный реестр контейнеров Docker с помощью интерфейса командной строки Docker](container-registry-get-started-docker-cli.md).
 
 
-## <a name="viewing-repositories-in-hello-portal"></a>Просмотр репозитории в hello портала
+## <a name="viewing-repositories-in-the-portal"></a>Просмотр репозиториев на портале
 
-После помещается реестра контейнера tooyour изображения, можно просмотреть список репозиториев hello размещение изображений hello в hello портал Azure.
+После отправки образов в реестр контейнеров можно просмотреть список репозиториев, в которых размещаются образы, на портале Azure.
 
-Если вы следовали инструкциям hello hello [Push Docker изображения tooAzure частного реестра](container-registry-get-started-docker-cli.md) статьи, вы добавили изображения Nginx в реестре контейнера. Как часть инструкции hello следует указано пространство имен для hello изображения. В следующем примере hello команда hello помещает репозитория hello NGinx образов toohello «samples»:
+Если вы следовали инструкциям из статьи [Отправка первого образа в частный реестр контейнеров Docker с помощью интерфейса командной строки Docker](container-registry-get-started-docker-cli.md), в вашем реестре контейнеров должен содержаться образ Nginx. В ходе выполнения инструкций вы должны были указать пространство имен для образа. В следующем примере команда отправляет образ NGinx в репозиторий samples:
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Реестр контейнеров Azure поддерживает многоуровневые пространства имен для репозитория. Эта функция позволяет вам toogroup коллекции изображений связанные tooa определенного приложения или коллекции toospecific разработки приложений или рабочей группы. tooread Дополнительные сведения о репозитории в контейнера реестры, в разделе [Docker закрытого контейнера реестры в Azure](container-registry-intro.md).
+ Реестр контейнеров Azure поддерживает многоуровневые пространства имен для репозитория. Благодаря этому можно группировать коллекции образов, связанные с определенным приложением, или коллекции приложений, связанные с определенным развертыванием или рабочими группами. Дополнительные сведения о репозиториях в реестрах контейнеров см. в статье [Общие сведения о частных реестрах контейнеров Docker](container-registry-intro.md).
 
-tooview hello контейнер реестра хранилища:
+Чтобы просмотреть репозитории реестра контейнеров, сделайте следующее:
 
-1. Войдите в toohello портал Azure
-2. На hello **реестра контейнера Azure** колонку, вы хотите tooinspect реестра выберите hello
-3. В колонке hello реестра щелкните **репозиториев** toosee список всех репозиториев hello и изображений
-4. (Необязательно) Выберите теги toosee определенного образа
+1. Войдите на портал Azure.
+2. В колонке **Реестр контейнеров Azure** выберите реестр, который вы хотите проверить.
+3. В колонке реестра щелкните **Репозитории**, чтобы просмотреть список всех репозиториев и соответствующих образов.
+4. (Необязательно.) Выберите определенный образ, чтобы просмотреть теги.
 
-![Репозитории в портале hello](./media/container-registry-repositories/container-registry-repositories.png)
+![Репозитории на портале](./media/container-registry-repositories/container-registry-repositories.png)
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, вы знаете основы hello, все готово toostart, с помощью реестра! Например, начать развертывание контейнера изображений tooan [контейнера службы Azure](https://azure.microsoft.com/documentation/services/container-service/) кластера.
+Теперь, когда вы знаете основы, можно приступать к использованию реестра. Например, разверните образы контейнера в кластер [службы контейнеров Azure](https://azure.microsoft.com/documentation/services/container-service/).

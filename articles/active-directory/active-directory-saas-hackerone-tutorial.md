@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с HackerOne | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Hackerone."
+description: "Узнайте, как настроить единый вход Azure Active Directory в HackerOne."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,67 +13,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c9dc033e26e79a7233dcfb3899c62684d4a19652
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 657d8d4c98b7b133698a5cda0aa675da7f68c464
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Учебник. Интеграция Azure Active Directory с HackerOn
 
-В этом учебнике вы узнаете, как toointegrate HackerOne с Azure Active Directory (Azure AD).
+В данном руководстве описано, как интегрировать Azure Active Directory (Azure AD) с приложением HackerOne.
 
-Интеграция с Azure AD HackerOne предоставляет hello следующие преимущества:
+Интеграция HackerOn с Azure AD дает приведенные далее преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooHackerOne
-- Можно включить на пользователей tooautomatically get вошедшего tooHackerOne (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к HackerOn.
+- Вы можете включить автоматический вход пользователей в HackerOn (единый вход) под учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с HackerOne требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с HackerOn, вам потребуется:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа HackerOne.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление HackerOne из галереи hello
+1. Добавление HackerOne из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-hackerone-from-hello-gallery"></a>Добавление HackerOne из галереи hello
-tooconfigure hello интеграции HackerOne в Azure AD, вы должны tooadd HackerOne из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-hackerone-from-the-gallery"></a>Добавление HackerOne из коллекции
+Чтобы настроить интеграцию HackerOne с Azure AD, необходимо добавить HackerOne из коллекции в список управляемых приложений SaaS.
 
-**tooadd HackerOne из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить HackerOn из коллекции, выполните следующие действия:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **HackerOne**.
+4. В поле поиска введите **HackerOne**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_search.png)
 
-5. В панели результатов hello выберите **HackerOne**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **HackerOne** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_addfromgallery.png)
 
@@ -81,44 +81,44 @@ tooconfigure hello интеграции HackerOne в Azure AD, вы должны
 
 В этом разделе описана настройка и проверка единого входа Azure AD в HackerOne с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в HackerOne является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в HackerOne должен установить toobe.
+Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь в HackerOne соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в HackerOne.
 
-В HackerOne, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в HackerOne.
 
-tooconfigure и теста Azure AD единого входа с HackerOne, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в HackerOne, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя HackerOne](#creating-a-hackerone-test-user)**  -toohave аналог Саймон Britta в HackerOne, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя HackerOne](#creating-a-hackerone-test-user)** требуется для создания пользователя Britta Simon в HackerOne, связанного с соответствующим представлением в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении HackerOne.
+В данном разделе описано, как включить единый вход Azure AD на портале управления Azure и настроить его в приложении HackerOne.
 
-**tooconfigure Azure AD единого входа с HackerOne, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в HackerOne, выполните следующие действия:**
 
-1. В hello в hello портала Azure **HackerOne** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **HackerOne** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_samlbase.png)
 
-3. На hello **HackerOne один URL-адрес входа и идентификатор** выполните следующие шаги hello:
+3. Для **URL-адреса службы единого входа и идентификатора HackerOne** введите следующие значения:
 
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://hackerone.com/<company name>/authentication`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://hackerone.com/<company name>/authentication`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес как:`https://hackerone.com/users/saml/metadata`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в формате:`https://hackerone.com/users/saml/metadata`
     
     > [!NOTE] 
-    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес входа. Обратитесь к [HackerOne поддержки](mailto:support@hackerone.com) tooget это значение. 
+    > Это значение приведено для справки. Вместо него необходимо указать фактический URL-адрес входа. Чтобы получить его, обратитесь в [службу поддержки HackerOne](mailto:support@hackerone.com). 
  
-4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_certificate.png) 
 
@@ -126,72 +126,72 @@ tooconfigure и теста Azure AD единого входа с HackerOne, тр
 
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации HackerOne** щелкните **Настройка HackerOne** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка HackerOne** щелкните **Настроить HackerOne**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_configure.png) 
 
-7. Вход tooyour HackerOne клиента с правами администратора.
+7. Войдите в клиент HackerOne как администратор.
 
-8. В меню в верхней части hello hello щелкните hello»**параметры**.»
+8. В верхнем меню щелкните **Settings** (Параметры).
    
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png) 
 
-9. Перейдите слишком»**проверки подлинности**«и нажмите кнопку»**добавить параметры SAML**.»
+9. Перейдите к разделу **Authentication** (Аутентификация) и щелкните **Add SAML settings** (Добавить параметры SAML).
    
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) 
 
-10. На hello **параметры SAML** диалоговое окно, выполните следующие шаги hello:
+10. В диалоговом окне **SAML Settings** (Параметры SAML) выполните следующие действия.
    
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) 
 
-    а. В hello **домена электронной почты** текстовом поле введите зарегистрированный домен.
+    а. Введите имя зарегистрированного домена в поле **Email Domain** (Домен электронной почты).
 
-    b. В **адрес единого входа** текстовые поля, вставьте значение hello **SAML единого входа URL-адрес службы** скопирован из портала Azure.
+    b. В текстовое поле **URL-адрес для единого входа** вставьте значение **URL-адреса службы единого входа SAML**, скопированное на портале Azure.
 
-    c. Откройте ваш **файл сертификата** в блокноте, Скачанный с портала Azure скопируйте hello содержимое в буфер обмена, а затем вставьте его toohello **X509 сертификатов** текстового поля.
+    c. Откройте в блокноте **сертификат**, скачанный на портале Azure, скопируйте его содержимое в буфер обмена, а затем вставьте его в текстовое поле **Сертификат X.509**.
     
-    d. Щелкните **Сохранить**.
+    г) Щелкните **Сохранить**.
 
-11. В диалоговом окне Параметры проверки подлинности hello выполните следующие шаги hello.
+11. В диалоговом окне "Authentication Settings" (Параметры аутентификации) выполните следующие действия.
    
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) 
 
     а. Щелкните **Run test**(Выполнить проверку).
 
-    b. Если hello значение hello **состояние** содержат значение **последнее состояние теста: создан**, обратитесь в службу вашей [HackerOne поддержки](mailto:support@hackerone.com) toorequest проверки конфигурации.
+    b. Если поле **Status** (Состояние) имеет значение **Last test status: created** (Состояние при последней проверке: создан), обратитесь в [службу поддержки HackerOne](mailto:support@hackerone.com), чтобы запросить проверку своей конфигурации.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
@@ -202,26 +202,26 @@ tooconfigure и теста Azure AD единого входа с HackerOne, тр
 В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь, если он еще не существует, создается при доступе к HackerOne.
 
 >[!NOTE]
->Если вам требуется toocreate пользователя вручную, необходимо группа поддержки Certify toocontact hello. 
+>Если вам нужно вручную создать пользователя, необходимо обратиться в службу поддержки HackerOne. 
 > 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooHackerOne доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к HackerOne.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooHackerOne Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в HackerOne, выполните следующие действия:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **HackerOne**.
+2. В списке приложений выберите **HackerOne**.
 
     ![Настройка единого входа](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -229,7 +229,7 @@ tooconfigure и теста Azure AD единого входа с HackerOne, тр
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -237,13 +237,13 @@ tooconfigure и теста Azure AD единого входа с HackerOne, тр
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Наконец при тестировании конфигурации Azure AD единого входа с помощью панели доступа hello.  
+И, наконец, нужно проверить конфигурацию единого входа Azure AD с помощью панели доступа.  
 
-При нажатии кнопки hello HackerOne плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour HackerOne приложения.
+Щелкнув плитку HackerOne на панели доступа, вы автоматически войдете в приложение HackerOne.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

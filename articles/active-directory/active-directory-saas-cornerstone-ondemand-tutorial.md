@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Cornerstone OnDemand | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory с Cornerstone OnDemand."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и Cornerstone OnDemand."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 85fd6eb4e93010d8f7477df236403e205e9f2d83
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8bb32588579a0d40b9ae7e0f823c6daab21c856e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Руководство. Интеграция Azure Active Directory с Cornerstone OnDemand
 
-В этом учебнике вы узнаете, как toointegrate Cornerstone OnDemand с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать Cornerstone OnDemand с Azure Active Directory (Azure AD).
 
-Интеграция Cornerstone OnDemand с Azure AD предоставляет hello следующие преимущества:
+Интеграция Cornerstone OnDemand с Azure AD обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooCornerstone по запросу
-- Можно включить на пользователей tooautomatically get вошедшего tooCornerstone OnDemand (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к Cornerstone OnDemand
+- Вы можете включить автоматический вход пользователей в Cornerstone OnDemand (единый вход) с учетной записью Azure AD
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с Cornerstone OnDemand требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Cornerstone OnDemand, вам потребуется:
 
 - подписка Azure AD;
 - подписка Cornerstone OnDemand с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление Cornerstone OnDemand из галереи hello
+1. Добавление Cornerstone OnDemand из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-cornerstone-ondemand-from-hello-gallery"></a>Добавление Cornerstone OnDemand из галереи hello
-tooconfigure hello интеграции Cornerstone OnDemand в Azure AD, вы должны tooadd Cornerstone OnDemand из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Добавление Cornerstone OnDemand из коллекции
+Чтобы настроить интеграцию Cornerstone OnDemand с Azure AD, необходимо добавить это приложение из коллекции в список управляемых приложений SaaS.
 
-**tooadd Cornerstone OnDemand из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить Cornerstone OnDemand из коллекции, выполните следующие действия:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **Cornerstone OnDemand**.
+4. В поле поиска введите **Cornerstone OnDemand**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_search.png)
 
-5. В панели результатов hello выберите **Cornerstone OnDemand**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. В области результатов выберите **Cornerstone OnDemand** и нажмите кнопку **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Cornerstone OnDemand для тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователя аналог hello в Cornerstone OnDemand — tooa пользователя в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в Cornerstone OnDemand должен установить toobe.
+Для работы единого входа Azure AD необходимо знать, какой пользователь в Cornerstone OnDemand соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Cornerstone OnDemand.
 
-В Cornerstone OnDemand, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, укажите **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Cornerstone OnDemand.
 
-tooconfigure и теста Azure AD единого входа с Cornerstone OnDemand, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в Cornerstone OnDemand, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя Cornerstone OnDemand](#creating-a-cornerstone-ondemand-test-user)**  -toohave аналог Саймон Britta в Cornerstone OnDemand, представление связанных toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя Cornerstone OnDemand](#creating-a-cornerstone-ondemand-test-user)** требуется для создания в Cornerstone OnDemand пользователя Britta Simon, связанного с представлением этого пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Cornerstone OnDemand.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Cornerstone OnDemand.
 
-**tooconfigure Azure AD единого входа с Cornerstone OnDemand, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в Cornerstone OnDemand, выполните следующие действия:**
 
-1. В hello в hello портала Azure **Cornerstone OnDemand** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **Cornerstone OnDemand** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
 
-3. На hello **Cornerstone OnDemand доменов и URL-адреса** выполните следующий шаг hello:
+3. В разделе **Домены и URL-адреса Cornerstone OnDemand** сделайте следующее:
 
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company>.csod.com`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<company>.csod.com`
 
-    b. В **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company>.csod.com`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<company>.csod.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки Cornerstone OnDemand клиента](mailTo:moreinfo@csod.com) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Cornerstone OnDemand](mailTo:moreinfo@csod.com). 
  
-4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
 
@@ -125,72 +125,72 @@ tooconfigure и теста Azure AD единого входа с Cornerstone OnD
 
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_400.png)
 
-6. На hello **Cornerstone OnDemand конфигурации** щелкните **Настройка Cornerstone OnDemand** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка Cornerstone OnDemand** щелкните **Настроить Cornerstone OnDemand**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_configure.png) 
 
-7. tooconfigure единого входа на **Cornerstone OnDemand** стороны, необходимо загрузить hello toosend **сертификат**, **URL-адрес выхода** и **один SAML Вход URL-адрес службы** слишком[поддержки Cornerstone OnDemand](mailTo:moreinfo@csod.com). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
+7. Чтобы настроить единый вход на стороне **Cornerstone OnDemand**, нужно отправить скачанный **Сертификат**, **URL-адрес выхода** и **URL-адрес службы единого входа SAML** в [службу поддержки Cornerstone OnDemand](mailTo:moreinfo@csod.com). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах подключения.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-cornerstone-ondemand-test-user"></a>Создание тестового пользователя Cornerstone OnDemand
 
-В порядке tooenable toolog пользователей Azure AD в Cornerstone OnDemand их необходимо подготовить в Cornerstone OnDemand. В случае hello объекта Cornerstone OnDemand Подготовка выполняется вручную.
+Чтобы пользователи Azure AD могли выполнять вход в Cornerstone OnDemand, они должны быть подготовлены для работы с Cornerstone OnDemand. В случае с Cornerstone OnDemand подготовка выполняется вручную.
 
-tooconfigure подготовки пользователей, отправлять информацию hello (например: имя, электронной почты) о пользователе hello Azure AD требуется tooprovision toohello [поддержки Cornerstone OnDemand](mailTo:moreinfo@csod.com).
+Чтобы настроить подготовку пользователей, отправьте сведения о пользователе Azure AD, которого необходимо подготовить (например, имя, адрес электронной почты), в [службу поддержки Cornerstone OnDemand](mailTo:moreinfo@csod.com).
 
 >[!NOTE]
->Можно использовать любые другие Cornerstone OnDemand пользователя средства создания учетных записей или интерфейсы API, предоставляемые Cornerstone OnDemand tooprovision учетных записей пользователей AAD.
+>Вы можете использовать любые другие средства создания учетной записи пользователя Cornerstone OnDemand или API, предоставляемые Cornerstone OnDemand, для подготовки учетных записей пользователей AAD.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooCornerstone по запросу.
+В этом разделе описано, как включить единый вход Azure для пользователя Britta Simon, предоставив этому пользователю доступ к Cornerstone OnDemand.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooCornerstone Britta Simon OnDemand, выполните hello следующие шаги.**
+**Чтобы назначить пользователя Britta Simon для приложения Cornerstone OnDemand, сделайте следующее:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **Cornerstone OnDemand**.
+2. В списке приложений выберите **Cornerstone OnDemand**.
 
     ![Настройка единого входа](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -198,7 +198,7 @@ tooconfigure подготовки пользователей, отправлят
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -206,14 +206,14 @@ tooconfigure подготовки пользователей, отправлят
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При выборе плитки Cornerstone OnDemand hello в hello панели доступа, вы должны получить приложение автоматически вошедшего tooyour Cornerstone OnDemand.
-Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
+Щелкнув элемент Cornerstone OnDemand на панели доступа, вы автоматически войдете в приложение Cornerstone OnDemand.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

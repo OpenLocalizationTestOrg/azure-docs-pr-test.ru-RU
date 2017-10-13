@@ -1,6 +1,6 @@
 ---
-title: "хранилище таблиц toouse aaaHow из PHP | Документы Microsoft"
-description: "Узнайте, как toouse hello службы таблиц из PHP toocreate и удалить таблицу и insert, delete и таблица hello запроса."
+title: "Как использовать хранилище таблиц из PHP | Документация Майкрософт"
+description: "Вы узнаете, как использовать службу таблиц в PHP для создания и удаления таблиц, вставки, удаления строк и создания запросов для таблиц."
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,41 +14,41 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: 5b7c92221069d1c2a6ca951c06ae8eea8bb8478c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7a48446a11c5c6db0c9f4fdd8872b1e3c12e85c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-table-storage-from-php"></a>Как toouse таблицу хранилища из PHP
+# <a name="how-to-use-table-storage-from-php"></a>Использование табличного хранилища из PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве показано, как с помощью распространенных сценариев tooperform hello службы таблиц Azure. Hello примеры написаны на PHP и использовать hello [пакет Azure SDK для PHP][download]. Hello сценарии включают **Создание и удаление таблицы и вставка, удаление и выполнения запросов к сущностям в таблице**. Дополнительные сведения о hello службы таблиц Azure см. в разделе hello [дальнейшие действия](#next-steps) раздела.
+В этом руководстве показано, как реализовать типичные сценарии с использованием службы таблиц Azure. Примеры написаны на PHP и используют [пакет SDK Azure для PHP][download]. Здесь описаны такие сценарии, как **создание и удаление таблицы, а также вставка, удаление и запрос сущностей в таблице**. Дополнительные сведения о службе таблиц Azure см. в разделе [Дальнейшие действия](#next-steps).
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>Создание приложения PHP
-Здравствуйте, используется только для создания приложения PHP, которое обращается к службе таблиц Azure hello hello ссылки на классы в hello Azure SDK для PHP из кода. Можно использовать любой toocreate средства разработки приложения, включая «Блокнот».
+Единственным требованием для создания приложения PHP, которое получает доступ к службе таблиц Azure, является ссылка на классы в пакете Azure SDK для PHP непосредственно из кода. Можно использовать любые средства разработки для создания приложения, включая программу "Блокнот".
 
 В этом руководстве используются компоненты службы таблиц, которые могут вызываться локально из приложения PHP или в коде, работающем в веб-роли, рабочей роли или на веб-сайте Azure.
 
-## <a name="get-hello-azure-client-libraries"></a>Получить клиентские библиотеки Azure hello
+## <a name="get-the-azure-client-libraries"></a>Получение клиентских библиотек Azure
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-tooaccess-hello-table-service"></a>Для настройки приложения tooaccess hello таблицы
-toouse hello Azure API службы таблиц, необходимо:
+## <a name="configure-your-application-to-access-the-table-service"></a>Настройка приложения для доступа к службе таблиц
+Чтобы использовать интерфейсы API службы таблиц Azure, необходимо следующее:
 
-1. Файл автозагрузчика hello ссылка, с помощью hello [require_once] [ require_once] инструкции, и
+1. Ссылка на файл автозагрузчика с использованием оператора [require_once][require_once].
 2. Ссылка на любые классы, которые могут использоваться.
 
-Hello следующем примере показано, как tooinclude hello автозагрузчика файла и ссылку hello **ServicesBuilder** класса.
+В следующем примере показано, как включить файл автозагрузчика и сослаться на класс **ServicesBuilder** .
 
 > [!NOTE]
-> Примеры Hello в этой статье предполагается, что вы установили hello клиентские библиотеки PHP для Azure через редактор. При установке библиотеки hello вручную необходимо tooreference hello <code>WindowsAzure.php</code> автозагрузчика файла.
+> В примере этой статьи предполагается, что установлены клиентские библиотеки PHP для Azure с помощью Composer. Если вы установили эти библиотеки вручную, то необходимо добавить ссылку на файл автозагрузчика <code>WindowsAzure.php</code> .
 >
 >
 
@@ -57,10 +57,10 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-В ниже примерах hello, hello `require_once` инструкции всегда отображаются, но указываются только классы hello, необходимые для tooexecute пример hello.
+В приведенных ниже примерах всегда отображается оператор `require_once` , однако ссылки приводятся только на классы, которые необходимы для выполнения этого примера.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Настройка подключения к службе хранилища Azure
-tooinstantiate клиента службы таблиц Azure, сначала нужно допустимую строку соединения. Hello для hello строку подключения таблицы службы выглядит следующим образом:
+Для создания клиента службы таблиц Azure необходимо сначала сформировать правильную строку подключения. Формат строки подключения к службе таблиц:
 
 Для доступа к службе в режиме реального времени:
 
@@ -68,20 +68,20 @@ tooinstantiate клиента службы таблиц Azure, сначала н
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-Для доступа к хранилищу эмулятор hello:
+Для доступа к хранилищу эмулятора:
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-toocreate любого клиента службы Azure необходимо toouse hello **ServicesBuilder** класса. Вы можете:
+Чтобы создать клиент любой службы Azure, необходимо использовать класс **ServicesBuilder** . Вы можете:
 
-* Передайте hello подключения напрямую строка tooit или
-* использовать hello **CloudConfigurationManager (CCM)** toocheck нескольких внешних источников для hello строки подключения:
+* передать строку подключения напрямую или
+* использовать **CloudConfigurationManager (CCM)** для проверки нескольких внешних источников на наличие строки подключения:
   * по умолчанию предоставляется поддержка одного внешнего источника — переменных среды.
-  * можно добавлять новые источники, расширяя hello **ConnectionStringSource** класса
+  * можно добавить новые источники, расширив класс **ConnectionStringSource**
 
-Приведенные ниже примеры hello hello строки подключения будут передаваться напрямую.
+В приведенных здесь примерах строка подключения передается напрямую.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -92,7 +92,7 @@ $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connection
 ```
 
 ## <a name="create-a-table"></a>Создание таблицы
-Объект **TableRestProxy** объектов позволяет создать таблицу с hello **createTable** метод. При создании таблицы, можно задать время ожидания службы таблицы hello. (Дополнительные сведения о времени ожидания службы таблицы hello см. в разделе [задание времени ожидания для операций службы таблиц][table-service-timeouts].)
+Объект **TableRestProxy** позволяет создать таблицу с помощью метода **createTable**. При создании таблицы можно задать время ожидания службы таблиц. (Дополнительные сведения о времени ожидания службы таблиц см. в статье [Setting Timeouts for Table Service Operations][table-service-timeouts] (Настройка времени ожидания для операций службы таблиц).)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -116,10 +116,10 @@ catch(ServiceException $e){
 }
 ```
 
-Сведения об ограничениях на имена таблиц см. в разделе [hello основные сведения о модели данных службы таблиц][table-data-model].
+Дополнительные сведения об ограничениях имен таблиц см. в статье [Understanding the Table Service Data Model][table-data-model] (Общие сведения о модели данных службы таблиц).
 
-## <a name="add-an-entity-tooa-table"></a>Добавьте таблицу tooa сущности
-tooadd таблицу tooa сущности, создайте новый **сущности** и передать его слишком**TableRestProxy -> insertEntity**. Обратите внимание, что при создании сущности необходимо задать свойства `PartitionKey` и `RowKey`. Это hello уникальные идентификаторы для сущности, — это значения, которые могут запрашиваться гораздо быстрее, чем другие свойства сущности. Hello система использует `PartitionKey` tooautomatically распределения сущностей таблицы hello по многим узлам хранилища. Здравствуйте сущности с одинаковым `PartitionKey` хранятся на hello того же узла. (Операции на несколько сущностей, хранящихся на hello же выполнять лучше, чем на записи, которые хранятся на разных узлах.) Hello `RowKey` hello уникальным идентификатором сущности внутри секции.
+## <a name="add-an-entity-to-a-table"></a>Добавление сущности в таблицу
+Чтобы добавить сущность в таблицу, создайте новый объект **Entity** и передайте его в **TableRestProxy->insertEntity**. Обратите внимание, что при создании сущности необходимо задать свойства `PartitionKey` и `RowKey`. Это уникальные идентификаторы сущности и значения, которые можно запросить гораздо быстрее, чем другие свойства сущности. Система использует `PartitionKey`, чтобы автоматически распространять сущности таблицы на несколько узлов хранилища. Сущности с одинаковым значением `PartitionKey` хранятся на одном узле. (Операции с несколькими сущностями, хранящимися на одном узле, выполняются эффективнее, чем с сущностями с разных узлов). `RowKey` — это уникальный идентификатор сущности в разделе.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -135,7 +135,7 @@ $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connection
 $entity = new Entity();
 $entity->setPartitionKey("tasksSeattle");
 $entity->setRowKey("1");
-$entity->addProperty("Description", null, "Take out hello trash.");
+$entity->addProperty("Description", null, "Take out the trash.");
 $entity->addProperty("DueDate",
                         EdmType::DATETIME,
                         new DateTime("2012-11-05T08:15:00-08:00"));
@@ -153,9 +153,9 @@ catch(ServiceException $e){
 }
 ```
 
-Сведения о таблице свойств и типов, см. в разделе [hello основные сведения о модели данных службы таблиц][table-data-model].
+Дополнительные сведения о типах и свойствах таблиц см. в статье [Understanding the Table Service Data Model][table-data-model] (Общие сведения о модели данных службы таблиц).
 
-Hello **TableRestProxy** класс предлагает два альтернативных методов для вставки сущностей: **insertOrMergeEntity** и **insertOrReplaceEntity**. toouse эти методы, создайте новый **сущности** и передайте его в качестве параметра метода tooeither. Каждый метод будет вставлять hello сущности, если он не существует. Если сущность hello уже существует, **insertOrMergeEntity** обновляет значения свойств, если свойства hello уже существует и добавляет новые свойства, если они не существуют, а **insertOrReplaceEntity** полностью заменяет существующую сущность. Следующий пример показывает как Hello toouse **insertOrMergeEntity**. Если сущность с hello `PartitionKey` «tasksSeattle» и `RowKey` «1» еще не существует, он будет вставлен. Тем не менее, если он ранее был вставлен (как показано в приведенном выше примере hello), hello `DueDate` свойство будет обновляться и hello `Status` свойство будет добавлено. Hello `Description` и `Location` свойства также будут обновлены, но со значениями, эффективно оставить их без изменений. Если последний этих свойств не добавлено, как показано в примере hello, но существующие на целевую сущность hello, их существующие значения останется без изменений.
+Класс **TableRestProxy** предлагает два альтернативных способа вставки сущностей: **insertOrMergeEntity** и **insertOrReplaceEntity**. Чтобы использовать эти методы, создайте новый объект **Entity** и передайте его в качестве параметра в любой из этих методов. Каждый метод вставит эту сущность, если она не существует. Если сущность уже существует, **insertOrMergeEntity** обновляет значения свойств, если свойства уже существуют, и добавляет новые свойства, если они не существуют, в то время как **insertOrReplaceEntity** полностью заменяет существующую сущность. Следующий пример показывает, как использовать **insertOrMergeEntity**. Если сущность со значением `PartitionKey` "tasksSeattle" и значением `RowKey` "1" еще не существует, она будет вставлена. Но если она была вставлена ранее (как показано в приведенном выше примере), будет обновлено свойство `DueDate` и добавлено свойство `Status`. Свойства `Description` и `Location` также будут обновлены, однако до таких значений, которые фактически равны предыдущим. Если эти два последних свойства не были добавлены, как показано в примере, но существовали в целевой сущности, их текущие значения остаются без изменений.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -177,14 +177,14 @@ $entity->setRowKey("1");
 
 // If entity exists, existing properties are updated with new values and
 // new properties are added. Missing properties are unchanged.
-$entity->addProperty("Description", null, "Take out hello trash.");
-$entity->addProperty("DueDate", EdmType::DATETIME, new DateTime()); // Modified hello DueDate field.
+$entity->addProperty("Description", null, "Take out the trash.");
+$entity->addProperty("DueDate", EdmType::DATETIME, new DateTime()); // Modified the DueDate field.
 $entity->addProperty("Location", EdmType::STRING, "Home");
 $entity->addProperty("Status", EdmType::STRING, "Complete"); // Added Status field.
 
 try    {
     // Calling insertOrReplaceEntity, instead of insertOrMergeEntity as shown,
-    // would simply replace hello entity with PartitionKey "tasksSeattle" and RowKey "1".
+    // would simply replace the entity with PartitionKey "tasksSeattle" and RowKey "1".
     $tableRestProxy->insertOrMergeEntity("mytable", $entity);
 }
 catch(ServiceException $e){
@@ -198,7 +198,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Извлечение одной сущности
-Hello **TableRestProxy -> getEntity** метод позволяет tooretrieve одной сущности, запрашивая его `PartitionKey` и `RowKey`. В следующем примере hello, hello ключ раздела `tasksSeattle` и ключом строки `1` передаются toohello **getEntity** метод.
+Метод **TableRestProxy->getEntity** позволяет получить одну сущность, запрашивая ее значения `PartitionKey` и `RowKey`. В приведенном ниже примере ключ раздела `tasksSeattle` и ключ строки `1` передаются в метод **getEntity**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -227,7 +227,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Получение всех сущностей в разделе
-Запросы сущностей создаются с помощью фильтров (дополнительные сведения см. в статье [Querying Tables and Entities][filters] (Запросы таблиц и сущностей)). tooretrieve все сущности в секции, используйте фильтр hello «PartitionKey eq *имя_раздела*». Следующий пример показывает как Hello tooretrieve все сущности в hello `tasksSeattle` секции, передав toohello фильтра **queryEntities** метод.
+Запросы сущностей создаются с помощью фильтров (дополнительные сведения см. в статье [Querying Tables and Entities][filters] (Запросы таблиц и сущностей)). Для получения всех сущностей в разделе используйте фильтр "PartitionKey eq *имя_раздела*". В следующем примере показано, как получить все сущности в разделе `tasksSeattle`, передав фильтр в метод **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -260,7 +260,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Получение диапазона сущностей в разделе
-Здравствуйте, же шаблон, используемый в предыдущем примере hello может быть используется tooretrieve любого подмножества сущностей из секции. Hello подмножества сущностей можно получить, определяются hello фильтра используется (Дополнительные сведения см. в разделе [запрос таблицами и сущностями][filters]) .hello следующий пример показывает как toouse tooretrieve фильтра все сущности с определенным `Location` и `DueDate` меньше указанной даты.
+Процедуру, аналогичную приведенной в предыдущем примере, можно использовать для получения любого подмножества сущностей в разделе. Получаемое подмножество сущностей определяется используемым фильтром (дополнительные сведения см. в статье [Querying Tables and Entities][filters] (Запросы таблиц и сущностей)). В следующем примере показано, как использовать фильтр для получения всех сущностей с определенным значением `Location` и значением `DueDate`, которое меньше указанной даты.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -293,7 +293,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Запрос подмножества свойств сущности
-Запрос позволяет получить подмножество свойств сущности. Этот метод, который называется *проекцией*, снижает потребление полосы пропускания и может повысить производительность запросов, особенно для крупных сущностей. получить toobe свойство toospecify, передать имя hello hello свойство toohello **запроса -> addSelectField** метод. Дополнительные свойства можно вызвать этот метод tooadd несколько раз. После выполнения **TableRestProxy -> queryEntities**, hello возвращаемых сущностей будет иметь только свойства выбранного hello. (Если требуется tooreturn подмножество сущностей таблицы, с помощью фильтра как показано в приведенном выше запросах hello.)
+Запрос позволяет получить подмножество свойств сущности. Этот метод, который называется *проекцией*, снижает потребление полосы пропускания и может повысить производительность запросов, особенно для крупных сущностей. Чтобы задать свойство для извлечения, передайте имя этого свойства в метод **Query->addSelectField**. Этот метод можно вызывать несколько раз для добавления дополнительных свойств. После выполнения **TableRestProxy->queryEntities** возвращаемые сущности будут иметь только выбранные свойства. (Если вы хотите вернуть подмножество сущностей таблицы, используйте фильтр из приведенных выше запросов.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -320,9 +320,9 @@ catch(ServiceException $e){
     echo $code.": ".$error_message."<br />";
 }
 
-// All entities in hello table are returned, regardless of whether
-// they have hello Description field.
-// toolimit hello results returned, use a filter.
+// All entities in the table are returned, regardless of whether
+// they have the Description field.
+// To limit the results returned, use a filter.
 $entities = $result->getEntities();
 
 foreach($entities as $entity){
@@ -332,7 +332,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>Обновление сущности
-Сущность можно обновлять с помощью hello **сущности -> setProperty** и **сущности -> addProperty** методы hello сущности, а затем вызов метода **TableRestProxy -> updateEntity** . Hello следующий пример извлекает сущность, изменяет одно свойство, удаляет другого свойства и добавляет новое свойство. Обратите внимание, что свойство можно удалить путем изменения его значения слишком**null**.
+Существующие сущности можно обновить, воспользовавшись методами **Entity->setProperty** и **Entity->addProperty** для сущности, а затем вызвав **TableRestProxy->updateEntity**. Следующий пример извлекает сущность, изменяет одно свойство, удаляет другое свойство и добавляет новое свойство. Обратите внимание, что свойство можно удалить, установив для него значение **null**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -369,7 +369,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>Удаление сущности
-toodelete сущности, передайте имя таблицы hello и hello сущности `PartitionKey` и `RowKey` toohello **TableRestProxy -> deleteEntity** метод.
+Чтобы удалить сущность, передайте имя таблицы и значения `PartitionKey` и `RowKey` сущности в метод **TableRestProxy->deleteEntity**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -394,10 +394,10 @@ catch(ServiceException $e){
 }
 ```
 
-Обратите внимание, что для проверки параллелизма можно задать hello Etag для сущности toobe удалена с помощью hello **DeleteEntityOptions -> setEtag** метода и передача hello **DeleteEntityOptions** объекта слишком**deleteEntity** как четвертый параметр.
+Обратите внимание, что для проверки на наличие конфликтов можно задать Etag для удаляемой сущности, воспользовавшись методом **DeleteEntityOptions->setEtag** и передав объект **DeleteEntityOptions** в **deleteEntity** в качестве четвертого параметра.
 
 ## <a name="batch-table-operations"></a>Пакетные операции с таблицами
-Hello **TableRestProxy -> пакет** метод позволяет tooexecute несколько операций в одном запросе. Hello здесь шаблон включает в себя добавление операций слишком**BatchRequest** объекта и затем передачу hello **BatchRequest** объекта toohello **TableRestProxy -> пакет** метод. Операция tooa tooadd **BatchRequest** объекта можно вызывать любые hello следующие методы несколько раз:
+Метод **TableRestProxy->batch** позволяет выполнять несколько операций в одном запросе. Здесь шаблон включает в себя добавление операций в объект **BatchRequest** и последующую передачу объекта **BatchRequest** в метод **TableRestProxy->batch**. Чтобы добавить операцию в объект **BatchRequest** , можно вызвать любой из следующих методов несколько раз:
 
 * **addInsertEntity** (добавляет операцию insertEntity)
 * **addUpdateEntity** (добавляет операцию updateEntity)
@@ -406,7 +406,7 @@ Hello **TableRestProxy -> пакет** метод позволяет tooexecute 
 * **addInsertOrMergeEntity** (добавляет операцию insertOrMergeEntity)
 * **addDeleteEntity** (добавляет операцию deleteEntity)
 
-Следующий пример показывает как Hello tooexecute **insertEntity** и **deleteEntity** операций в одном запросе:
+Следующий пример показывает, как выполнить операции **insertEntity** и **deleteEntity** в одном запросе:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -432,10 +432,10 @@ $entity1->addProperty("DueDate",
                         new DateTime("2012-11-05T08:15:00-08:00"));
 $entity1->addProperty("Location", EdmType::STRING, "Home");
 
-// Add operation toolist of batch operations.
+// Add operation to list of batch operations.
 $operations->addInsertEntity("mytable", $entity1);
 
-// Add operation toolist of batch operations.
+// Add operation to list of batch operations.
 $operations->addDeleteEntity("mytable", "tasksSeattle", "1");
 
 try    {
@@ -454,7 +454,7 @@ catch(ServiceException $e){
 Дополнительные сведения о пакетной обработке операций с таблицами см. в статье [Performing Entity Group Transactions][entity-group-transactions] (Выполнение групповых транзакций для сущности).
 
 ## <a name="delete-a-table"></a>Удаление таблицы
-Наконец, toodelete таблицы, передайте hello таблицы имя toohello **TableRestProxy -> deleteTable** метод.
+Наконец, чтобы удалить таблицу, следует передать имя таблицы в метод **TableRestProxy->deleteTable**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -480,9 +480,9 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы узнали основы hello hello службы таблиц Azure, выполните эти ссылки toolearn о более сложных задач хранилища.
+Вы изучили основные сведения о службе таблиц Azure. Дополнительные сведения о более сложных задачах хранилища можно найти по приведенным ниже ссылкам.
 
-* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.
+* [Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.
 
 * [Центр разработчиков PHP](/develop/php/)
 

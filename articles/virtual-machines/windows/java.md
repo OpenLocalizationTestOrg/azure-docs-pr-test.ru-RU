@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate и управления ими Java с помощью виртуальной машины Azure | Документы Microsoft"
-description: "Используйте Java и диспетчера ресурсов Azure toodeploy виртуальную машину, а также все вспомогательные ресурсы."
+title: "Создание виртуальной машины Azure и управление ею с помощью Java | Документация Майкрософт"
+description: "Развертывание виртуальной машины и всех ее вспомогательных ресурсов с помощью Java и Azure Resource Manager."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 31ac8d59f92ecff887e64906940933dd6fd50815
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b9e739a07c5863577285fb3a221b372b385c6762
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Создание виртуальных машин Windows в Azure и управление ими с помощью Java
 
@@ -31,16 +31,16 @@ ms.lasthandoff: 10/06/2017
 > * Создание учетных данных
 > * Создание ресурсов.
 > * Выполнение задач управления.
-> * Удаление ресурсов
-> * Запустите приложение hello
+> * Удаление ресурсов.
+> * Выполнение приложения
 
-Занимает около 20 минут toodo следующие действия.
+На выполнение этих действий требуется примерно 20 минут.
 
 ## <a name="create-a-maven-project"></a>Создание проекта Maven
 
 1. Установите [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html), если это еще не сделано.
 2. Установите [Maven](http://maven.apache.org/download.cgi).
-3. Создайте новый проект папку и hello:
+3. Создайте папку и проект:
     
     ```
     mkdir java-azure-test
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="add-dependencies"></a>Добавление зависимостей
 
-1. В разделе hello `testAzureApp` папки, откройте hello `pom.xml` и добавьте конфигурацию сборки hello слишком&lt;проекта&gt; tooenable hello построение приложения:
+1. В папке `testAzureApp` откройте файл `pom.xml` и добавьте конфигурацию сборки к &lt;проекту&gt;, чтобы включить создание приложения:
 
     ```xml
     <build>
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/06/2017
     </build>
     ```
 
-2. Добавьте зависимости hello, необходимые tooaccess hello Java Azure SDK.
+2. Добавьте зависимости, необходимые для доступа к пакету Azure SDK для Java.
 
     ```xml
     <dependency>
@@ -112,15 +112,15 @@ ms.lasthandoff: 10/06/2017
     </dependency>
     ```
 
-3. Сохраните файл hello.
+3. Сохраните файл.
 
 ## <a name="create-credentials"></a>Создание учетных данных
 
-Перед началом этого шага убедитесь, что доступ tooan [участника-службы Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Также необходимо записать идентификатор приложения hello, hello ключ проверки подлинности и ИД клиента hello, необходимое на более позднем этапе.
+Прежде чем выполнить этот шаг, убедитесь в наличии доступа к [субъекту-службе Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Кроме того, необходимо записать идентификатор приложения, ключ проверки подлинности и идентификатор клиента, которые понадобятся позже.
 
-### <a name="create-hello-authorization-file"></a>Создание файла авторизации hello
+### <a name="create-the-authorization-file"></a>Создание файла авторизации
 
-1. Создайте файл с именем `azureauth.properties` и добавьте эти свойства tooit:
+1. Создайте файл `azureauth.properties` и добавьте в него следующие свойства:
 
     ```
     subscription=<subscription-id>
@@ -133,20 +133,20 @@ ms.lasthandoff: 10/06/2017
     graphURL=https://graph.windows.net/
     ```
 
-    Замените  **&lt;идентификатор подписки&gt;**  на идентификатор вашей подписки  **&lt;идентификатор приложения&gt;**  с hello приложение Active Directory идентификатор,  **&lt;ключ проверки подлинности&gt;**  с ключом приложения hello, и  **&lt;ИД клиента&gt;**  с клиентом hello идентификатор.
+    Замените **&lt;subscription-id&gt;** своим идентификатором подписки, **&lt;application-id&gt;** — идентификатором приложения Active Directory, **&lt;authentication-key&gt;** — ключом приложения, а **&lt;tenant-id&gt;** — идентификатором клиента.
 
-2. Сохраните файл hello.
-3. Задайте переменную среды с именем AZURE_AUTH_LOCATION в оболочка с toohello проверки подлинности hello полный путь к файлу.
+2. Сохраните файл.
+3. Задайте в оболочке переменную среды AZURE_AUTH_LOCATION и укажите полный путь к файлу аутентификации.
 
-### <a name="create-hello-management-client"></a>Создание клиента управления hello
+### <a name="create-the-management-client"></a>Создание клиента управления
 
-1. Откройте hello `App.java` файл `src\main\java\com\fabrikam` и убедитесь, что эта инструкция пакета вверху hello:
+1. В папке `src\main\java\com\fabrikam` откройте файл `App.java` и убедитесь, что этот оператор statement находится в верхней части:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. В области инструкции пакета hello, добавьте следующие операторы импорта:
+2. Под оператором statement добавьте следующие операторы import:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -168,7 +168,7 @@ ms.lasthandoff: 10/06/2017
     import java.util.Scanner;
     ```
 
-2. учетные данные Active Directory hello toocreate необходимые запросы toomake, добавьте этот код toohello основного метода класса приложения hello:
+2. Чтобы создать учетные данные Active Directory, необходимые для выполнения запросов, добавьте следующий код в метод Main класса App:
    
     ```java
     try {    
@@ -186,11 +186,11 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="create-resources"></a>Создание ресурсов
 
-### <a name="create-hello-resource-group"></a>Создать группу ресурсов hello
+### <a name="create-the-resource-group"></a>Создание группы ресурсов
 
 Все ресурсы должны содержаться в [группе ресурсов](../../azure-resource-manager/resource-group-overview.md).
 
-toospecify значений для приложения hello и создать группу ресурсов hello, добавьте этот блок try toohello код в метод main hello:
+Чтобы определить значения для приложения и создать группу ресурсов, добавьте этот код в блок Try метода Main:
 
 ```java
 System.out.println("Creating resource group...");
@@ -200,11 +200,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-hello-availability-set"></a>Создать группу доступности hello
+### <a name="create-the-availability-set"></a>Создание группы доступности
 
-[Наборы доступности](tutorial-availability-sets.md) упростить для вас toomaintain hello виртуальных машин, используемых приложением.
+[Группы доступности](tutorial-availability-sets.md) упрощают обслуживание виртуальных машин, используемых приложением.
 
-доступность hello toocreate значение, добавьте этот блок try toohello код в метод main hello:
+Чтобы создать группу доступности, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Creating availability set...");
@@ -215,11 +215,11 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
-### <a name="create-hello-public-ip-address"></a>Создать общедоступный IP-адрес hello
+### <a name="create-the-public-ip-address"></a>Создание общедоступного IP-адреса
 
-Объект [общедоступный IP-адрес](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) — необходимые toocommunicate с виртуальной машиной hello.
+[Общедоступный IP-адрес](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) необходим для взаимодействия с виртуальной машиной.
 
-toocreate hello общедоступный IP-адрес для виртуальной машины hello, добавьте этот блок try toohello код в метод main hello:
+Чтобы создать общедоступный IP-адрес виртуальной машины, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -231,11 +231,11 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
     .create();
 ```
 
-### <a name="create-hello-virtual-network"></a>Создайте виртуальную сеть hello
+### <a name="create-the-virtual-network"></a>Создание виртуальной сети
 
 Виртуальная машина должна быть в подсети [виртуальной сети](../../virtual-network/virtual-networks-overview.md).
 
-toocreate a подсети и виртуальной сети, добавьте этот блок try toohello код в метод main hello:
+Чтобы создать подсеть и виртуальную сеть, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -248,11 +248,11 @@ Network network = azure.networks()
     .create();
 ```
 
-### <a name="create-hello-network-interface"></a>Создание сетевого интерфейса hello
+### <a name="create-the-network-interface"></a>Создание сетевого интерфейса
 
-Виртуальная машина должна toocommunicate интерфейса сети hello виртуальной сети.
+Для обмена данными в виртуальной сети виртуальной машине нужен сетевой интерфейс.
 
-toocreate сетевого интерфейса, добавьте этот блок try toohello код в метод main hello:
+Чтобы создать сетевой интерфейс, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Creating network interface...");
@@ -267,11 +267,11 @@ NetworkInterface networkInterface = azure.networkInterfaces()
     .create();
 ```
 
-### <a name="create-hello-virtual-machine"></a>Создание виртуальной машины hello
+### <a name="create-the-virtual-machine"></a>Создание виртуальной машины
 
-Теперь, когда вы создали все hello, ресурсы поддержки, можно создать виртуальную машину.
+Теперь, когда вы создали все вспомогательные ресурсы, можно создать виртуальную машину.
 
-toocreate Здравствуйте виртуальной машины, добавьте этот блок try toohello код в метод main hello:
+Чтобы создать виртуальную машину, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -288,16 +288,16 @@ VirtualMachine virtualMachine = azure.virtualMachines()
     .withSize("Standard_DS1")
     .create();
 Scanner input = new Scanner(System.in);
-System.out.println("Press enter tooget information about hello VM...");
+System.out.println("Press enter to get information about the VM...");
 input.nextLine();
 ```
 
 > [!NOTE]
-> Данный учебник создает виртуальную машину под управлением версии операционной системы Windows Server hello. toolearn Дополнительные сведения о выборе других изображений. в разделе [перехода, а затем выберите образы виртуальных машин Azure с помощью Windows PowerShell и hello Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В этом учебнике создается виртуальная машина под управлением одной из версий операционной системы Windows Server. Дополнительные сведения о выборе других образов см. в статье [Просмотр и выбор образов виртуальных машин Windows в Azure с помощью оболочки PowerShell или интерфейса командной строки](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Если вы хотите toouse существующий диск вместо образа marketplace, используйте следующий код: 
+Если вы хотите использовать имеющийся диск вместо образа Marketplace, используйте следующий код: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk") 
@@ -320,17 +320,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Выполнение задач управления
 
-Во время жизненного цикла hello виртуальной машины может понадобиться toorun задачи управления, такие как запуск, остановка или удаление виртуальной машины. Кроме того вы можете toocreate tooautomate повторяющихся или сложных задач кода.
+В течение жизненного цикла виртуальной машины можно выполнять задачи управления, такие как запуск, остановка или удаление виртуальной машины. Кроме того, можно создавать код для автоматизации повторяющихся или сложных задач.
 
-При необходимости toodo никаких действий с hello ВМ необходимо tooget его экземпляр. Добавьте этот код блока try toohello hello основного метода:
+Если необходимо выполнить любые действия с виртуальной машиной, необходимо получить ее экземпляр. Добавьте следующий код в блок Try метода Main:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-hello-vm"></a>Получение сведений о hello виртуальной Машины
+### <a name="get-information-about-the-vm"></a>Получение информации о виртуальной машине
 
-tooget сведения о виртуальной машине hello, добавьте этот блок try toohello код в метод main hello:
+Чтобы получить сведения о виртуальной машине, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("hardwareProfile");
@@ -382,94 +382,94 @@ for(InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  code: " + status.code());
     System.out.println("  displayStatus: " + status.displayStatus());
 }
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();   
 ```
 
-### <a name="stop-hello-vm"></a>Остановить hello виртуальной Машины
+### <a name="stop-the-vm"></a>Остановка виртуальной машины
 
-Остановка виртуальной машины и оставьте все параметры, но продолжить toobe оплачивать или можно остановить виртуальную машину и освободить ее. При этом освобождаются все ресурсы, связанные с ней, а также прекращается выставление счетов за эту виртуальную машину.
+Вы можете остановить виртуальную машину, сохранив все ее настройки (при этом за нее будет продолжать взиматься плата) или остановить ее и отменить ее распределение. При этом освобождаются все ресурсы, связанные с ней, а также прекращается выставление счетов за эту виртуальную машину.
 
-toostop hello виртуальной машины не освобождает его, добавьте этот блок try toohello код в метод main hello:
+Чтобы остановить виртуальную машину без ее освобождения, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Stopping vm...");
 vm.powerOff();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-При необходимости toodeallocate hello виртуальной машины, измените hello выключена вызов toothis кода:
+Если вы хотите отменить распределение виртуальной машины, измените вызов PowerOff на следующий код:
 
 ```java
 vm.deallocate();
 ```
 
-### <a name="start-hello-vm"></a>Запуск hello виртуальной Машины
+### <a name="start-the-vm"></a>Запуск виртуальной машины
 
-toostart Здравствуйте виртуальной машины, добавьте этот блок try toohello код в метод main hello:
+Чтобы запустить виртуальную машину, добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Starting vm...");
 vm.start();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="resize-hello-vm"></a>Изменение размера виртуальной Машины hello
+### <a name="resize-the-vm"></a>Изменение размера виртуальной машины
 
 При выборе размера виртуальной машины необходимо учесть многие аспекты развертывания. Дополнительные сведения см. в статье [Размеры виртуальных машин Windows в Azure](sizes.md).  
 
-toochange размер виртуальной машины hello, добавьте этот блок try toohello код в метод main hello:
+Чтобы изменить размер виртуальной машины, добавьте следующий код в блок Try метода Main :
 
 ```java
 System.out.println("Resizing vm...");
 vm.update()
     .withSize(VirtualMachineSizeTypes.STANDARD_DS2)
     .apply();
-System.out.println("Press enter toocontinue...");
+System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-toohello-vm"></a>Добавить toohello диска данных виртуальной Машины
+### <a name="add-a-data-disk-to-the-vm"></a>Добавление диска данных в виртуальную машину
 
-tooadd данных диска toohello виртуальной машины, составляет 2 ГБ в размере, имеет LUN 0 и типом кэширования ReadWrite, добавьте этот блок try toohello код в метод main hello:
+Чтобы добавить диск данных в виртуальную машину (при этом будет добавлен диск данных размером 2 ГБ, имеющий логический номер устройства (LUN) 0 и тип кэширования ReadWrite), добавьте следующий код в блок Try метода Main:
 
 ```java
 System.out.println("Adding data disk...");
 vm.update()
     .withNewDataDisk(2, 0, CachingTypes.READ_WRITE)
     .apply();
-System.out.println("Press enter toodelete resources...");
+System.out.println("Press enter to delete resources...");
 input.nextLine();
 ```
 
 ## <a name="delete-resources"></a>Удаление ресурсов
 
-Поскольку вы оплачивать ресурсы, используемые в Azure, всегда является хорошей практикой toodelete ресурсы, которые больше не нужны. Если необходимо, чтобы toodelete hello виртуальных машин и поддержку ресурсов все hello, все, что есть toodo — удалить группу ресурсов hello.
+Так как за использование ресурсов Azure взимается плата, рекомендуется всегда удалять ресурсы, которые больше не нужны. Если вы хотите удалить виртуальные машины и все вспомогательные ресурсы, достаточно удалить группу ресурсов.
 
-1. ресурс hello toodelete группу, добавить блок try toohello этот код в метод main hello:
+1. Чтобы удалить группу ресурсов, добавьте следующий код в блок Try метода Main:
    
 ```java
 System.out.println("Deleting resources...");
 azure.resourceGroups().deleteByName("myResourceGroup");
 ```
 
-2. Сохраните файл App.java hello.
+2. Сохраните файл App.java.
 
-## <a name="run-hello-application"></a>Запустите приложение hello
+## <a name="run-the-application"></a>Выполнение приложения
 
-Занимает около пяти минут для этого toorun приложения консоли полностью с начала toofinish.
+На полное выполнение этого консольного приложения потребуется примерно 5 минут.
 
-1. toorun Здравствуйте, приложения, используйте следующую команду Maven:
+1. Чтобы запустить приложение, используйте следующую команду Maven:
 
     ```
     mvn compile exec:java
     ```
 
-2. Перед нажатием кнопки **ввод** toostart удаление ресурсов, может потребоваться несколько минут tooverify hello Создание ресурсов hello в hello портал Azure. Щелкните hello развертывания toosee сведения о состоянии развертывания hello.
+2. Прежде чем нажать клавишу **ВВОД** и начать удаление ресурсов, потратьте несколько минут и проверьте на портале Azure, созданы ли эти ресурсы. Щелкните состояние развертывания, чтобы просмотреть сведения о развертывании.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения об использовании hello [библиотек Azure для Java](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
+* Дополнительные сведения об использовании библиотек Azure для Java см. в [этой статье](https://docs.microsoft.com/en-us/java/azure/java-sdk-azure-overview).
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaUse ПК Windows с Hadoop в HDInsight - Azure | Документы Microsoft"
+title: "Использование Hadoop в Azure HDInsight на компьютере с Windows | Документация Майкрософт"
 description: "Сведения об использовании Hadoop в HDInsight на компьютере с Windows, а также о запросе кластеров и управлении ими с помощью PowerShell, Visual Studio и средств Linux. Разработка решений для работы с большими данными на языке .NET."
 services: hdinsight
 keywords: "hadoop в windows, hadoop для windows"
@@ -10,20 +10,20 @@ ms.date: 05/17/2017
 ms.topic: article
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 7c93f16e93349c0b8fb1abd55320c2c172b93aa9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e4f231c1f9b903d6cc7f2b062b30d2a072be8493
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="work-in-hello-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Незавершенное hello экосистема Hadoop в HDInsight с помощью компьютера Windows
+# <a name="work-in-the-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Работа в экосистеме Hadoop в HDInsight на компьютере с Windows
 
-Дополнительные сведения о разработке и параметры управления на Компьютере Windows hello для работы в экосистеме hello Hadoop в HDInsight. 
+В этой статье приведены сведения о способах развертывания экосистемы Hadoop в HDInsight и управления ею при работе на компьютере с Windows. 
 
-Служба HDInsight включает в себя компоненты Apache Hadoop и Hadoop, технологии с открытым исходным кодом, разработанные на платформе Linux. HDInsight версии 3.4 и выше hello распространения Ubuntu Linux использует в качестве базовой операционной системы для кластера hello hello. Но с HDInsight можно также работать в клиенте или среде разработки Windows.
+Служба HDInsight включает в себя компоненты Apache Hadoop и Hadoop, технологии с открытым исходным кодом, разработанные на платформе Linux. HDInsight 3.4 и более поздних версий использует дистрибутив Ubuntu Linux в качестве базовой операционной системы кластера. Но с HDInsight можно также работать в клиенте или среде разработки Windows.
 
 ## <a name="use-powershell-for-deployment-and-management-tasks"></a>Задачи развертывания и управления с помощью PowerShell
-Azure PowerShell — это среда сценариев, можно использовать toocontrol и автоматизации задач развертывания и управления в HDInsight из Windows.
+Azure PowerShell — это среда сценариев, которая позволяет контролировать и автоматизировать задачи развертывания и управления в HDInsight на компьютере с Windows.
 
 При помощи PowerShell можно выполнять такие задачи:
 
@@ -31,63 +31,63 @@ Azure PowerShell — это среда сценариев, можно испол
 * [Выполнение запросов Hive с помощью PowerShell](hdinsight-hadoop-use-hive-powershell.md)
 * [управлять кластерами](hdinsight-administer-use-powershell.md).
 
-Выполните действия слишком[Установка и настройка Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) tooget hello последнюю версию. Если у вас есть сценарии, требующие изменения toobe toouse hello новые командлеты для диспетчера ресурсов Azure, см. раздел [перенести tooAzure средства разработки на основе диспетчера ресурсов для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+Указания по установке и настройке последней версии Azure PowerShell см. [здесь](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Если у вас есть сценарии, в которые нужно добавить новые командлеты для Azure Resource Manager, см. статью [Переход к средствам разработки на основе Azure Resource Manager для кластеров HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Браузерные служебные программы
-Hello следующие программы имеют веб-интерфейса, который выполняется в браузере.
-* **[Azure облачной оболочки (Предварительная версия)](https://docs.microsoft.com/azure/cloud-shell/quickstart)**  является интерактивной командной строки оболочки, который выполняется в браузере и изнутри hello портал Azure.
-* **[Веб-Интерфейс Ambari](hdinsight-hadoop-manage-ambari.md)**  управления и мониторинга служебной программы, доступные в hello портал Azure, которое может быть используется toomanage различных типов заданий, таких как:
-    * [Использовать Ambari с hello REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+Ниже приведены примеры служебных программ с веб-интерфейсом, выполняемым в браузере.
+* **[Azure Cloud Shell (предварительная версия)](https://docs.microsoft.com/azure/cloud-shell/quickstart)** — интерактивная оболочка командной строки, выполняемая в браузере и на портале Azure.
+* **[Веб-интерфейс Ambari](hdinsight-hadoop-manage-ambari.md)** — служебная программа для управления и мониторинга, доступная на портале Azure. Она позволяет управлять разными видами заданий, например:
+    * [интеграция Ambari с REST API](hdinsight-hadoop-manage-ambari-rest-api.md);
     * [используйте представление Hive в Ambari](hdinsight-hadoop-use-hive-ambari-view.md)
     * [использование представлений Tez в Ambari](hdinsight-debug-ambari-tez-view.md).
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Средства Data Lake (Hadoop) для Visual Studio
-Используйте средства Озера данных для toodeploy Visual Studio и управление ими Storm топологии. Средства Озера данных также устанавливает hello SCP.NET пакета SDK, который позволяет вам toodevelop топологии Storm C# с помощью Visual Studio.
+Средства Data Lake для Visual Studio позволяют развертывать топологии Storm и управлять ими. Эти средства также устанавливают пакет SDK для SCP.NET, который позволяет разрабатывать топологии Storm на языке C# с помощью Visual Studio.
 
-Перед переходом в следующих примерах toohello [установки и повторите Озера Data Tools для Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md). 
+Перед выполнением приведенных ниже примеров [установите средства Data Lake для Visual Studio и попробуйте работать с ними](hdinsight-hadoop-visual-studio-tools-get-started.md). 
 
 При помощи средств Data Lake и Visual Studio можно выполнять следующие задачи:
 * [Развертывать топологии Storm и управлять ими](hdinsight-storm-deploy-monitor-topology-linux.md).
-* [Разрабатывать топологии Storm на языке C#](hdinsight-storm-develop-csharp-visual-studio-topology.md). шаблоны битов Hello пример топологии Storm могут подключаться toodatabases, таких как Azure Cosmos DB и базы данных SQL.
+* [Разрабатывать топологии Storm на языке C#](hdinsight-storm-develop-csharp-visual-studio-topology.md). Биты содержат примеры шаблонов топологий Storm, которые можно подключать к базам данных, таким как Azure Cosmos DB и база данных SQL.
 
-## <a name="visual-studio-and-hello-net-sdk"></a>Visual Studio и .NET SDK hello 
+## <a name="visual-studio-and-the-net-sdk"></a>Visual Studio и пакет SDK для .NET 
 
-Можно использовать Visual Studio с кластерами toomanage .NET SDK hello и разрабатывать приложения для больших данных. Других интегрированных средах разработки можно использовать для следующих задач hello, но примеры показаны в Visual Studio.
+Visual Studio с пакетом SDK для .NET позволяет управлять кластерами и разрабатывать приложения больших данных. Ниже приведены примеры задач, которые можно выполнять в Visual Studio. Но их также можно выполнять и с помощью других интерфейсов IDE.
 
-Примеры задач, которые можно выполнить с hello .NET SDK в Visual Studio.
+При помощи пакета SDK для .NET в Visual Studio можно выполнять следующие задачи:
 * [создавать кластеры и работать в HDInsight из приложения .NET Framework](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md);
-* [Выполнять запросы Hive, с помощью hello .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md)
+* [выполнять запросы Hive с помощью пакета SDK для .NET](hdinsight-hadoop-use-hive-dotnet-sdk.md);
 * [использовать определяемые пользователем функции C# при потоковой передаче Hive и Pig в Hadoop](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-> Совет При запуске решения .NET с кластерами HDInsight под управлением Windows, это подходящий момент tooplan миграции кластеров на основе tooLinux. Дополнительные сведения см. в разделе [решение перенести .NET для HDInsight под управлением Windows на основе tooLinux HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
+> Совет. Если вы используете решения .NET с кластерами HDInsight под управлением Windows, мы советуем перенести эти решения в кластеры под управлением Linux. Дополнительные сведения см. в статье [Перенос решений .NET из HDInsight под управлением Windows в HDInsight под управлением Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Intellij IDEA и Eclipse IDE для кластеров Spark
-Оба [ИДЕЯ Intellij](https://www.jetbrains.com/idea/download) и hello [интегрированной среды разработки Eclipse](https://www.eclipse.org/downloads/) можно использовать для:
+При помощи [Intellij IDEA](https://www.jetbrains.com/idea/download) и [Eclipse IDE](https://www.eclipse.org/downloads/) можно выполнять следующие задачи:
 * разрабатывать и отправлять приложения Scala Spark в кластер HDInsight Spark;
 * получать доступ к ресурсам кластера Spark;
 * разрабатывать и запускать приложения Scala Spark в локальной среде.
 
 В этих статьях описывается: 
-* IntelliJ ИДЕЯ: [Spark создание приложений, с помощью средств Azure для подключаемый модуль Intellij hello и hello Scala SDK.](hdinsight-apache-spark-intellij-tool-plugin.md)
-* Eclipse IDE или Scala интегрированную среду разработки Eclipse: [Spark создания приложений и средств Azure для Eclipse hello](hdinsight-apache-spark-eclipse-tool-plugin.md) 
+* [Создание приложений Spark для кластера HDInsight с помощью набора средств Azure для IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) (Intellij IDEA).
+* [Создание приложений Spark для кластера HDInsight с помощью набора средств Azure для Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) (Eclipse IDE или Scala IDE для Eclipse). 
 
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>Записные книжки в Spark для специалистов по обработке и анализу данных 
 Кластеры Apache Spark в HDInsight включают записные книжки Zeppelin и ядра, которые можно использовать с записными книжками Jupyter. 
 
-* [Узнайте, как toouse ядер на Spark кластеры с приложениями Spark tootest записные книжки Jupyter](hdinsight-apache-spark-zeppelin-notebook.md)
-* [Узнайте, как ноутбуки Zeppelin toouse на Spark кластеры toorun Spark заданий](hdinsight-apache-spark-jupyter-notebook-kernels.md) 
+* [Использование записных книжек Zeppelin с кластером Apache Spark в Azure HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
+* [Ядра для записных книжек Jupyter с кластерами Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md) 
 
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Запуск средств и технологии Linux в Windows
 
-Ситуации, когда необходимо использовать специальное средство или технология, которая доступна только для Linux, рассмотрим следующие варианты hello.
+Если возникнет ситуация, когда необходимо использовать средства или технологии, доступные только в Linux, рассмотрите следующие варианты:
 
-* **Bash (бета-версия) на платформе Windows 10** предоставляет подсистему Linux в Windows. Bash позволяет toodirectly запуска программ Linux без toomaintain выделенной установки Linux. [Установите и запустите hello Bash бета-версии на Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide)
-* **Docker для Windows** предоставляет средства на базе Linux toomany доступ и запускается непосредственно из Windows. Например можно использовать клиент Beeline hello toorun Docker для куста непосредственно из Windows. Можно также использовать Docker toorun локального книжке Jupyter и удаленное подключение tooSpark на HDInsight. [Начните работу с Docker для Windows.](https://docs.docker.com/docker-for-windows/)
-* **[MobaXTerm](http://mobaxterm.mobatek.net/)**  разрешает toographically обзора hello кластера файловой системы по SSH-подключения.
+* **Bash (бета-версия) на платформе Windows 10** предоставляет подсистему Linux в Windows. Это средство позволяет напрямую запускать служебные программы Linux, не устанавливая выделенный сервер Linux. [Установите и запустите бета-версию средства Bash на платформе Windows 10.](https://msdn.microsoft.com/commandline/wsl/install_guide)
+* **Docker для Windows** предоставляет доступ ко многим средствам Linux. Эту платформу можно запустить непосредственно из Windows. Например, с помощью Docker можно запустить клиент Beeline для Hive непосредственно из Windows. Кроме того, Docker позволяет запускать локальные записные книжки Jupyter и удаленно подключаться к Spark в HDInsight. [Начните работу с Docker для Windows.](https://docs.docker.com/docker-for-windows/)
+* **[MobaXTerm](http://mobaxterm.mobatek.net/)** позволяет графически просматривать файловую систему кластера через SSH-подключение.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если вы новый tooworking в кластеры под управлением Linux, см. раздел hello статей, выполните:
+Если вы только начали работать с кластерами под управлением Linux, см. сведения в следующих статьях:
 * [Создание кластеров Hadoop в HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Сведения об использовании HDInsight в Linux](hdinsight-hadoop-linux-information.md)

@@ -9,10 +9,13 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [Ретранслятор WCF](relay-wcf-dotnet-get-started.md)
+## [Руководство по ретранслятору WCF](service-bus-relay-tutorial.md)
+## [Учебник по REST для ретранслятора WCF](service-bus-relay-rest-tutorial.md)
 
 # Практическое руководство
 ## Планирование и проектирование
 ### [Проверка подлинности и безопасность](relay-authentication-and-authorization.md)
+#### [Миграция из ACS в SAS](relay-migrate-acs-sas.md)
 ### [Протокол гибридных подключений](relay-hybrid-connections-protocol.md)
 ## Разработка
 ### [Доступные интерфейсы API](relay-api-overview.md)

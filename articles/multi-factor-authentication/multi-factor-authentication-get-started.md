@@ -1,6 +1,6 @@
 ---
-title: "aaaChoose между многофакторной проверки Подлинности Azure облачной или сервером | Документы Microsoft"
-description: "Выберите hello многофакторной проверки подлинности безопасности решение, которое вам подходит предлагая, какие am, находится ли попытки toosecure, а где мои пользователи.  После этого выберите облако, сервер службы MFA или службы AD FS."
+title: "Выбор между облаком и сервером Azure MFA | Документация Майкрософт"
+description: "Выберите подходящее решение многофакторной проверки подлинности, выяснив, что является объектом защиты и где находятся пользователи.  После этого выберите облако, сервер службы MFA или службы AD FS."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -12,38 +12,38 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/23/2017
+ms.date: 08/25/2017
 ms.author: kgremban
-ms.openlocfilehash: bd9639e5f744f586d9143c6e90b105ed645eecb6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cc5a0a8ff789b878cd5afb62176ae8bcf3f80902
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="choose-hello-azure-multi-factor-authentication-solution-for-you"></a>Выбор решения hello многофакторной проверки подлинности Azure для вас
-Так как существует несколько видов многофакторной проверки подлинности Azure (MFA), мы необходимо ответить на несколько вопросов toofigure, какие версии имеет правильную один toouse hello.  Эти вопросы приведены ниже.
+# <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Выберите для себя решение "Многофакторная идентификация Microsoft Azure".
+Так как существует несколько вариантов использования службы "Многофакторная идентификация Microsoft Azure" (MFA), для определения наиболее подходящей версии следует ответить на некоторые вопросы.  Эти вопросы приведены ниже.
 
-* [Что я хочу попытки toosecure](#what-am-i-trying-to-secure)
-* [Где находятся пользователи hello](#where-are-the-users-located)
+* [Что я пытаюсь защитить?](#what-am-i-trying-to-secure)
+* [Где находятся пользователи?](#where-are-the-users-located)
 * [Какие функции мне нужны?](#what-featured-do-i-need)
 
-Hello следующих разделах представлены рекомендации по определению, каждый из этих ответов.
+В разделах этой статьи представлены рекомендации, которые помогут найти ответы на эти вопросы.
 
-## <a name="what-am-i-trying-toosecure"></a>Что я хочу попытки toosecure?
-toodetermine hello правильный двухшаговой проверки решения, сначала мы необходимо ответить hello вопрос о том, что при попытке toosecure со второй метод проверки подлинности.  Это приложение в службе Azure?  Или в системе удаленного доступа?  Определяя, мы пытаемся toosecure, мы может ответить на вопрос: hello целей toobe включена многофакторная проверка подлинности.  
+## <a name="what-am-i-trying-to-secure"></a>Что я пытаюсь защитить
+Чтобы выяснить, какой из вариантов двухфакторной проверки подлинности вам нужен, сначала определите, что вы пытаетесь защитить с помощью второго метода проверки подлинности.  Это приложение в службе Azure?  Или в системе удаленного доступа?  Определив объект, который необходимо защитить, мы будем знать, где именно нужно активировать многофакторную проверку подлинности.  
 
-| Что такое идет toosecure | Многофакторной проверки Подлинности в облаке hello | Сервер MFA |
+| Что вы пытаетесь защитить | MFA в облаке | Сервер MFA |
 | --- |:---:|:---:|
 | Приложения Майкрософт, получающие данные напрямую из источника |● |● |
-| Приложений SaaS в коллекцию приложений hello |● |  |
+| Приложения SaaS в коллекции приложений |● |  |
 | Веб-приложения, опубликованные через прокси приложения Azure AD |● |  |
 | Приложения IIS, опубликованные не через прокси приложения Azure AD | |● |
 | Удаленный доступ, например VPN или RDG | ● | ● |
 
-## <a name="where-are-hello-users-located"></a>Где находятся пользователи hello
-Далее просмотрев, где находятся пользователи помогает toouse правильным решением toodetermine hello, ли в облаке hello или локально с помощью hello многофакторной проверки Подлинности сервера.
+## <a name="where-are-the-users-located"></a>Где находятся пользователи?
+В зависимости от местонахождения пользователей можно определить, какое решение нам нужно для использования сервера MFA — облачное или локальное.
 
-| Местонахождение пользователей | Многофакторной проверки Подлинности в облаке hello | Сервер MFA |
+| Местонахождение пользователей | MFA в облаке | Сервер MFA |
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD и локальная служба AD с использованием федерации в AD FS |● |● |
@@ -52,9 +52,9 @@ toodetermine hello правильный двухшаговой проверки 
 | Локальная служба Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Какие функции мне нужны?
-Hello приведенной ниже таблице сравниваются функции hello, доступные с многофакторной проверки подлинности в облаке hello и hello многофакторной проверки подлинности сервера.
+В таблице ниже сравниваются возможности службы "Многофакторная идентификация" в облаке и на сервере.
 
-| Функция | Многофакторной проверки Подлинности в облаке hello | Сервер MFA |
+| Функция | MFA в облаке | Сервер MFA |
 | --- |:---:|:---:|
 | Уведомление от мобильного приложения в качестве второго фактора | ● | ● |
 | Код подтверждения мобильного приложения в качестве второго фактора | ● | ● |
@@ -77,11 +77,8 @@ Hello приведенной ниже таблице сравниваются ф
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь, после определения ли toouse облачных многофакторной проверки подлинности и hello многофакторной проверки Подлинности сервер локально, мы можете начать настройке и использовании Azure Multi-factor Authentication. **Выберите значок hello, представляющий вашего сценария**
+Теперь, когда вы имеете представление о различиях в возможностях службы "Многофакторная идентификация Microsoft Azure" в облаке и на локальном сервере, можно приступать к настройке и использованию службы. **Выберите значок, соответствующий вашему сценарию.**
 
 <center>
 
-
-
-
-[![Облако](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Сервер](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![MFA в облаке](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Сервер MFA](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>

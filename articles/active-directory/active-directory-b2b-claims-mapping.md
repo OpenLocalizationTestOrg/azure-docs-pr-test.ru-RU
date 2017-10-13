@@ -1,5 +1,5 @@
 ---
-title: "сопоставление в Azure Active Directory выдает совместной работы aaaB2B | Документы Microsoft"
+title: "Сопоставление утверждений пользователя службы совместной работы B2B в Azure Active Directory | Документация Майкрософт"
 description: "Справочные материалы по сопоставлению утверждений для службы совместной работы Azure Active Directory B2B."
 services: active-directory
 documentationcenter: 
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.openlocfilehash: 9e26085e91a6004b2f11286ae9c1df133bd47341
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5f8559450b24effd40a38879aeae3a8dd03944a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Сопоставление утверждений пользователя службы совместной работы B2B в Azure Active Directory
 
-Azure Active Directory (Azure AD) поддерживает Настройка hello утверждений, выданных в токене SAML hello B2B совместной работы пользователей. При прохождении пользователем проверки подлинности приложения toohello, Azure AD выдает приложение toohello маркера SAML, которое содержит сведения (или утверждения) о пользователе hello, которое однозначно определяет их. По умолчанию в нем имя пользователя, адрес электронной почты, имя и Фамилия пользователя hello. Можно просмотреть или изменить hello утверждения, отправляемые в hello приложения toohello маркера SAML вкладка атрибуты "hello".
+Azure Active Directory (Azure AD) поддерживает настройку утверждений, которые передаются в токене SAML для пользователей службы совместной работы B2B. Когда пользователь проходит аутентификацию в приложении, Azure AD выдает токен SAML для приложения. В токене собрана информация (утверждения), которая однозначно идентифицирует пользователя. По умолчанию здесь указаны имя пользователя, адрес электронной почты, имя и фамилия пользователя. На вкладке "Атрибуты" можно просмотреть или изменить утверждения, которые передаются приложению в токене SAML.
 
-Существуют две возможные причины, почему вам необходимо tooedit hello утверждений, выданных в маркер SAML hello.
+Изменение утверждений, выданных в токене SAML, может потребоваться по двум основным причинам:
 
-1. Hello приложение было написано toorequire другой набор утверждений идентификаторы URI или значения утверждений
+1. Приложение требует другого набора URI утверждений или значений утверждений.
 
-2. Приложение требует toobe утверждения NameIdentifier hello, отличные от hello имя участника-пользователя в Azure Active Directory.
+2. Приложение требует, чтобы утверждение NameIdentifier содержало данные, отличные от имени участника-пользователя, которое хранится в Azure Active Directory.
 
   ![Просмотр утверждений в токене SAML](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 
-Сведения о как tooadd и изменения утверждений, см. в этой статье, для настройки утверждений [настройка утверждений, выданных в токене SAML hello для предварительно интегрированных приложений в Azure Active Directory](develop/active-directory-saml-claims-customization.md). По соображениям безопасности сопоставление NameID и имени участника-пользователя между клиентами для пользователей службы совместной работы B2B запрещено.
+Сведения о том, как добавлять и редактировать утверждения, см. в статье [Настройка утверждений, выпущенных в маркере SAML для предварительно интегрированных приложений в Azure Active Directory](develop/active-directory-saml-claims-customization.md). По соображениям безопасности сопоставление NameID и имени участника-пользователя между клиентами для пользователей службы совместной работы B2B запрещено.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) поддерживает Настройка he
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Свойства пользователя службы совместной работы Azure Active Directory B2B](active-directory-b2b-user-properties.md)
-* [Добавление роли пользователя tooa B2B совместной работы](active-directory-b2b-add-guest-to-role.md)
+* [Добавление пользователя службы совместной работы Azure Active Directory B2B в роль](active-directory-b2b-add-guest-to-role.md)
 * [Делегирование приглашений для службы совместной работы Azure Active Directory B2B](active-directory-b2b-delegate-invitations.md)
 * [Динамические группы и служба совместной работы Azure Active Directory B2B](active-directory-b2b-dynamic-groups.md)
 * [Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B](active-directory-b2b-code-samples.md)

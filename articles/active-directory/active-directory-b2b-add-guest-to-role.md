@@ -1,6 +1,6 @@
 ---
-title: "роль tooa aaaAdd Azure Active Directory B2B совместную работу пользователя | Документы Microsoft"
-description: "Добавление роли tooa гостевой пользователя в Azure Active Directory"
+title: "Добавление пользователя службы совместной работы Azure Active Directory B2B в роль | Документация Майкрософт"
+description: "Добавление роли гостевого пользователя в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -16,15 +16,15 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccc58a0c8ecc73f8e79a8d827efdc0ff93846a96
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="grant-permissions-toousers-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Предоставьте разрешения toousers из партнерские организации в клиенте Azure Active Directory
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Предоставление пользователям разрешений от партнерских организаций в клиенте Azure Active Directory
 
-Совместная работа пользователей Azure Active Directory (Azure AD) B2B добавляются в качестве гостевых пользователей toohello каталога и разрешения гостя в каталоге hello ограничены по умолчанию. Вашей организации может потребоваться некоторые гостевые пользователи toofill более высокие права доступа роли в вашей организации. Определение ролей более высокие права доступа, toosupport гостевых пользователей могут быть добавлены tooany роли при работе, исходя из потребностей вашей организации.
+Пользователи службы совместной работы Azure Active Directory (Azure AD) B2B добавляются в каталог как гостевые пользователи, а разрешения гостей в каталоге по умолчанию ограничены. Ваша организация может быть заинтересована в назначении некоторым гостевым пользователям более привилегированных ролей. Чтобы это сделать, вы можете добавлять гостевых пользователей в любые роли, исходя из потребностей своей организации.
 
 ## <a name="default-role"></a>Роль по умолчанию
 

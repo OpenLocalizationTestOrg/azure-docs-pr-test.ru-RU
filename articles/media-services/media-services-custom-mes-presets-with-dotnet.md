@@ -1,6 +1,6 @@
 ---
-title: "Стандартный кодировщик мультимедиа стили aaaCustomizing | Документы Microsoft"
-description: "В этом разделе показано, как tooperform advanced кодирования, настроив Media Encoder Стандартная предустановки задачи. Hello разделе показано, как задача toocreate Media Services .NET SDK toouse кодировку и задания. Здесь также показано, как toosupply пользовательские стили toohello задания кодирования."
+title: "Настройка предустановок Media Encoder Standard | Документация Майкрософт"
+description: "В этом разделе показано, как выполнять расширенные задачи кодирования, настраивая предустановки задач Media Encoder Standard. В этом разделе показано, как использовать пакет SDK служб мультимедиа для .NET для создания задания и задачи кодирования. В нем также показано, как предоставить пользовательские предустановки для задания кодирования."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: fa8c3bef63b0c1ecc88a6b8874ecbff3a8028a57
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Настройка предустановок Media Encoder Standard
 
 ## <a name="overview"></a>Обзор
 
-В этом разделе показано, как tooperform advanced кодирование с носителя кодировщика Standard (MES) с использованием пользовательской конфигурации. раздел Hello использует .NET toocreate задачу кодирования и задания, в которой выполняется эта задача.  
+В этом разделе показано, как выполнять расширенные задачи кодирования с помощью Media Encoder Standard (MES) и пользовательской предустановки. В этом разделе с помощью .NET создаются задача кодирования и задание, которое выполняет эту задачу.  
 
-В этом разделе вы увидите, как hello toocustomize конфигурацию, выполнив [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) hello предустановленным и уменьшая число слоев. Hello [Настройка стандартный кодировщик мультимедиа стили](media-services-advanced-encoding-with-mes.md) статья описывает пользовательские стили, которые можно использовать tooperform сложных задач кодирования.
+В данном разделе показано, как настроить предустановку. Для примера взята предустановка [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md), в которой уменьшается количество уровней. В разделе [Настройка предустановок Media Encoder Standard](media-services-advanced-encoding-with-mes.md) показаны пользовательские предустановки, которые могут использоваться для выполнения расширенных задач кодирования.
 
 ## <a id="customizing_presets"></a> Настройка предустановки MES
 
 ### <a name="original-preset"></a>Первоначальная предустановка
 
-Hello сохранить определенные JSON в hello [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) раздела в некоторый файл с расширением .json. Например, **CustomPreset_JSON.json**.
+Сохраните код JSON, определенный в разделе [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md), в отдельный JSON-файл. Например, **CustomPreset_JSON.json**.
 
 ### <a name="customized-preset"></a>Настроенная предустановка
 
-Откройте hello **CustomPreset_JSON.json** файл и удалить первые три слоя из **H264Layers** , файл выглядит следующим образом.
+Откройте файл **CustomPreset_JSON.json** и удалите первые три слоя из **H264Layers**, чтобы файл выглядел, как показано ниже.
 
     
     {  
@@ -111,24 +111,24 @@ Hello сохранить определенные JSON в hello [H264 Multiple B
 
 ## <a id="encoding_with_dotnet"></a>Кодирование с помощью пакета SDK служб мультимедиа для .NET
 
-Следующий пример кода Hello использует hello tooperform Media Services .NET SDK следующие задачи:
+В следующем примере кода пакет SDK служб мультимедиа используется для выполнения следующих задач.
 
 - Создание задания кодирования.
-- Получите кодировщик Media Encoder Стандартная toohello ссылки.
-- Загрузить приветствия JSON пользовательской конфигурации, созданный в предыдущем разделе hello. 
+- Получение ссылки на стандартный кодировщик мультимедиа.
+- Загрузите пользовательскую предустановку JSON, созданную в предыдущем разделе. 
   
-        // Load hello JSON from hello local file.
+        // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Добавьте задание кодирования toohello задачи. 
-- Укажите входной hello toobe активов кодировке.
-- Создание выходного актива, который будет содержать активов hello в кодировке.
-- Добавьте событие обработчика toocheck hello ход выполнения задания.
-- Отправка задания hello.
+- Добавление задачи кодирования в задание. 
+- Указание входного ресурса-контейнера для кодирования.
+- Создание выходного ресурса-контейнера, который будет содержать закодированный ресурс-контейнер.
+- Добавление обработчика событий для проверки хода выполнения задания.
+- Отправка задания.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Пример   
 
@@ -143,7 +143,7 @@ Hello сохранить определенные JSON в hello [H264 Multiple B
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -168,7 +168,7 @@ Hello сохранить определенные JSON в hello [H264 Multiple B
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate hello output using custom presets.
+            // Encode and generate the output using custom presets.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -178,11 +178,11 @@ Hello сохранить определенные JSON в hello [H264 Multiple B
         {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Load hello XML (or JSON) from hello local file.
+            // Load the XML (or JSON) from the local file.
             string configuration = File.ReadAllText("CustomPreset_JSON.json");
 
             // Create a task
@@ -191,11 +191,11 @@ Hello сохранить определенные JSON в hello [H264 Multiple B
             configuration,
             TaskOptions.None);
 
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
+            // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.None);
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaSending push-уведомлений с концентраторами уведомлений Azure на Windows Phone | Документы Microsoft"
-description: "В этом учебнике вы узнаете, как уведомления toopush концентраторов уведомлений Azure toouse tooa Windows Phone 8 или приложения Windows Phone 8.1 Silverlight."
+title: "Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure | Документация Майкрософт"
+description: "Из этого учебника вы узнаете, как использовать центры уведомлений Azure для отправки push-уведомлений в приложение Silverlight для Windows Phone 8 или Windows Phone 8.1."
 services: notification-hubs
 documentationcenter: windows
 keywords: "push-уведомление, push-уведомление, push-уведомление windows phone"
@@ -15,33 +15,33 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 1a0ad238fe7788ae2e4f47f02d113391af03dd1d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f0bfe81f849813d146d644b32490af657b1071b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
 > [!NOTE]
-> toocomplete этого учебника необходимо иметь активную учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F).
+> Для работы с этим учебником необходима активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F).
 > 
 > 
 
-Этот учебник показывает, как toosend toouse концентраторов уведомлений Azure push-уведомления tooa: приложения Windows Phone 8 или Windows Phone 8.1 Silverlight. Если вы используете Windows Phone 8.1 (отличных от Silverlight), а затем ссылаться toohello [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) версии.
-В этом учебнике создается пустого приложения Windows Phone 8, получающий push-уведомления с помощью hello Microsoft Push Notification Service (MPNS). После завершения вы будете иметь доступ toouse вашей toobroadcast концентратора уведомлений push-уведомления tooall hello устройств под управлением приложения.
+В этом учебнике показано, как использовать центры уведомлений Azure для отправки push-уведомлений в приложение Silverlight для Windows Phone 8 или Windows Phone 8.1. Если вы ориентируетесь на Windows Phone 8.1 (не Silverlight), см. версию [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+В этом учебнике вам предстоит создать пустое приложение Windows Phone 8, получающее push-уведомления с помощью службы push-уведомлений Майкрософт (MPNS). По завершении вы сможете рассылать push-уведомления на все устройства, где запущено ваше приложение, с помощью центра уведомлений.
 
 > [!NOTE]
-> пакет SDK для Windows Phone концентраторы уведомлений Hello не поддерживает использование hello Windows Push Notification Service (WNS) с приложениями Silverlight 8.1 Windows Phone. toouse WNS (вместо MPNS) с приложениями Silverlight 8.1 Windows Phone, выполните hello [концентраторы уведомлений — Windows Phone Silverlight учебника], которая использует API-интерфейс REST.
+> Центры уведомлений Windows Phone SDK не поддерживают использование службы push-уведомлений Windows (WNS) с приложениями Windows Phone 8.1 Silverlight. Использование WNS (вместо MPNS) с приложениями Windows Phone 8.1 Silverlight описано в статье [Центр уведомлений: учебник для Windows Phone Silverlight], в котором используются API REST.
 > 
 > 
 
-Hello учебник демонстрирует простой сценарий широковещательных hello в с использованием концентраторов уведомлений.
+В этом учебнике описывается простой сценарий вещания с использованием Центров уведомлений.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Этот учебник требует hello следующее:
+Для работы с данным учебником требуется следующее:
 
 * [Microsoft Visual Studio 2012 Express для Windows Phone]или более поздняя версия.
 
@@ -51,20 +51,20 @@ Hello учебник демонстрирует простой сценарий 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="6">
-<li><p>Щелкните hello <b>служб Notification Services</b> раздела (в пределах <i>параметры</i>), щелкните <b>Windows Phone (MPNS)</b> и нажмите кнопку hello <b>включить push без проверки подлинности </b> флажок.</p>
+<li><p>Щелкните раздел <b>Службы уведомлений</b> (в колонке <i>Параметры</i>), выберите пункт <b>Windows Phone (MPNS)</b> и установите флажок <b>Включить push-уведомления без проверки подлинности</b>.</p>
 </li>
 </ol>
 
 &emsp;&emsp;![Azure Portal — включение push-уведомлений без проверки подлинности](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-Концентратор больше не была создана и настроена toosend не прошедшие проверку подлинности уведомления для Windows Phone.
+Концентратор будет создан и настроен для отправки уведомлений без проверки подлинности для Windows Phone.
 
 > [!NOTE]
-> В этом учебнике используется MPNS в режиме без проверки подлинности. Режим без проверки подлинности MPNS поставляется с ограничения на уведомления, можно отправить tooeach канала. Концентраторы уведомлений поддерживает [режиме с проверкой подлинности MPNS](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) , позволяя tooupload свой сертификат.
+> В этом учебнике используется MPNS в режиме без проверки подлинности. Режим MPNS без проверки подлинности налагает ограничения на использование уведомлений, отправляемых для каждого канала. Центры уведомлений поддерживают [Режим работы MPNS с проверкой подлинности](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) , позволяя отправить ваш сертификат.
 > 
 > 
 
-## <a name="connecting-your-app-toohello-notification-hub"></a>Подключение приложения toohello концентратор уведомлений
+## <a name="connecting-your-app-to-the-notification-hub"></a>Подключение приложения к центру уведомлений
 1. В Visual Studio создайте новое консольное приложение Windows Phone 8.
    
        ![Visual Studio - New Project - Windows Phone App][13]
@@ -72,19 +72,19 @@ Hello учебник демонстрирует простой сценарий 
     В Visual Studio 2013 с обновлением 2 вместо этого вы создаете приложение Windows Phone Silverlight.
    
     ![Visual Studio — новый проект — пустое приложение — Windows Phone Silverlight][11]
-2. В Visual Studio, щелкните правой кнопкой мыши решение hello и нажмите кнопку **управление пакетами NuGet**.
+2. В Visual Studio щелкните решение правой кнопкой мыши, а затем выберите пункт **Управление пакетами NuGet**.
    
-    При этом отображаются hello **управление пакетами NuGet** диалоговое окно.
-3. Поиск `WindowsAzure.Messaging.Managed` и нажмите кнопку **установить**, а затем примите условия использования hello.
+    Откроется диалоговое окно **Управление пакетами NuGet** .
+3. Выполните поиск по запросу `WindowsAzure.Messaging.Managed` , щелкните **Установить**, а затем примите условия использования.
    
     ![Visual Studio — диспетчер пакетов NuGet][20]
    
-    Это загружает устанавливает и добавляет библиотеку обмена сообщениями Azure toohello ссылки для Windows с помощью hello <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">пакет WindowsAzure.Messaging.Managed NuGet</a>.
-4. Откройте файл hello App.xaml.cs и добавьте следующее hello `using` инструкции:
+    После этого будут выполнены скачивание, установка и добавление ссылки на библиотеку Azure Messaging для Windows с помощью <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">пакета NuGet WindowsAzure.Messaging.Managed</a>.
+4. Откройте файл App.xaml.cs и добавьте следующие инструкции `using` :
    
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
-5. Добавьте следующий код в начало hello hello **Application_Launching** метод в App.xaml.cs:
+5. Добавьте следующий код в верхнюю часть метода **Application_Launching** в файле App.xaml.cs:
    
         var channel = HttpNotificationChannel.Find("MyPushChannel");
         if (channel == null)
@@ -106,56 +106,56 @@ Hello учебник демонстрирует простой сценарий 
         });
    
    > [!NOTE]
-   > Здравствуйте, значение **MyPushChannel** — это индекс, используемый toolookup существующего канала в hello [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) коллекции. Если канал отсутствует, создайте новую запись с таким именем.
+   > Значение **MyPushChannel** — это индекс, который используется для поиска существующего канала в коллекции [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) . Если канал отсутствует, создайте новую запись с таким именем.
    > 
    > 
    
-    Убедитесь, что имя строки подключения концентратора и hello hello tooinsert вызывать **DefaultListenSharedAccessSignature** , полученный в предыдущем разделе hello.
-    Этот код извлекает из MPNS hello URI канала для приложения hello и затем регистрирует URI канала в концентраторе уведомлений. Она также гарантирует зарегистрировано на концентраторе уведомлений, запускаемого каждое приложение hello времени URI канала hello.
+    Обязательно вставьте имя концентратора и строку подключения с именем **DefaultListenSharedAccessSignature** , полученные в предыдущем разделе.
+    Этот код получает универсальный код ресурса (URI) канала (ChannelURI) для приложения из MPNS, а затем регистрирует ChannelURI в вашем центре уведомлений. Он также гарантирует регистрацию ChannelURI в центре уведомлений при каждом запуске приложения.
    
    > [!NOTE]
-   > Этот учебник отправляет устройства toohello всплывающие уведомления. При отправке уведомления плитки, вместо этого необходимо вызвать hello **BindToShellTile** метод на канале hello. toosupport плиток и всплывающих уведомлений, вызвать **BindToShellTile** и **BindToShellToast**.
+   > В этом учебнике на устройство отправляется всплывающее уведомление. Когда вы отправляете всплывающее уведомление, необходимо вместо этого вызвать метод **BindToShellTile** в канале. Чтобы поддерживать одновременно и всплывающие уведомления, и уведомления на плитке, следует вызвать оба метода: **BindToShellTile** и **BindToShellToast**.
    > 
    > 
-6. В обозревателе решений откройте **свойства**откройте hello `WMAppManifest.xml` щелкните hello **возможности** вкладку и убедитесь, что hello **ID_CAP_PUSH_NOTIFICATION** проверяется возможность.
+6. В обозревателе решений разверните меню **Свойства**, откройте файл `WMAppManifest.xml`, перейдите на вкладку **Capabilities** (Возможности) и убедитесь, что установлен флажок **ID_CAP_PUSH_NOTIFICATION**.
    
        ![Visual Studio - Windows Phone App Capabilities][14]
    
-       This ensures that your app can receive push notifications. Without it, any attempt toosend a push notification toohello app will fail.
-7. Нажмите клавишу hello `F5` приложение hello toorun ключа.
+       This ensures that your app can receive push notifications. Without it, any attempt to send a push notification to the app will fail.
+7. Нажмите клавишу `F5` , чтобы запустить приложение.
    
-    Отправляет сообщение отображается в приложение hello.
-8. Приложение hello закрыть.  
+    В приложении отобразится сообщение о регистрации.
+8. Закройте приложение.  
    
    > [!NOTE]
-   > tooreceive всплывающих push-уведомлений приложения hello не должна быть запущена на переднем плане hello.
+   > Для получения всплывающего push-уведомления приложение не должно выполняться в фоновом режиме.
    > 
    > 
 
 ## <a name="send-push-notifications-from-your-backend"></a>Отправка push-уведомлений из серверной части
-Можно отправлять извещающие уведомления с помощью концентраторов уведомлений с любого сервера через hello public <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">интерфейс REST</a>. В этом учебнике мы будем отправлять push-уведомления с помощью консольного приложения .NET. 
+Push-уведомления можно отправлять с помощью центров уведомлений с любого сервера через общедоступный <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">интерфейс REST</a>. В этом учебнике мы будем отправлять push-уведомления с помощью консольного приложения .NET. 
 
-Пример как toosend push-уведомления из ASP.NET WebAPI серверную платформу, которая интегрируется с концентраторами уведомлений см. в разделе [уведомления концентраторы уведомления пользователей Azure с серверной части .NET](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).  
+Пример отправки push-уведомлений из серверной части веб-API ASP.NET, интегрированной с центрами уведомлений, см. в статье [Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).  
 
-Пример как hello toosend push-уведомления с помощью [API-интерфейс REST](https://msdn.microsoft.com/library/azure/dn223264.aspx), извлечь [как toouse концентраторы уведомлений из Java](notification-hubs-java-push-notification-tutorial.md) и [как toouse концентраторы уведомлений из PHP](notification-hubs-php-push-notification-tutorial.md) .
+Примеры отправки push-уведомлений с использованием [REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) см. в статье [How to use Notification Hubs from Java](notification-hubs-java-push-notification-tutorial.md) (Использование центров уведомлений из Java) и [How to use Notification Hubs from PHP](notification-hubs-php-push-notification-tutorial.md) (Использование центров уведомлений из PHP).
 
-1. Щелкните правой кнопкой мыши решение hello, выберите **добавить** и **новый проект...** , а затем в разделе **Visual C#**, нажмите кнопку **Windows** и **консольное приложение**и нажмите кнопку **ОК**.
+1. Щелкните решение правой кнопкой мыши, выберите пункты **Добавить** и **Создать проект...**. После этого в разделе **Visual C#** выберите **Windows** и **Консольное приложение**, а затем нажмите кнопку **ОК**.
    
        ![Visual Studio - New Project - Console Application][6]
    
-    Используется для добавления нового Visual C# консольного приложения toohello решения. Это можно сделать также и в отдельном решении.
+    При этом в решение добавляется новое консольное приложение Visual C#. Это можно сделать также и в отдельном решении.
 2. Щелкните **Сервис**, **Library Package Manager** (Диспетчер пакетов библиотеки), а затем — **Консоль диспетчера пакетов**.
    
-    Откроется консоль диспетчера пакетов hello.
-3. В hello **консоль диспетчера пакетов** окна, набор hello **проекта по умолчанию** tooyour нового консольного приложения проекта, а затем в окне консоли hello, выполните hello следующую команду:
+    Отобразится консоль диспетчера пакетов.
+3. В окне **консоли диспетчера пакетов** задайте свойство **Default project** (Проект по умолчанию) для нового проекта консольного приложения, а затем в окне консоли выполните следующую команду:
    
        Install-Package Microsoft.Azure.NotificationHubs
    
-   При этом добавляется ссылка toohello концентраторов уведомлений Azure SDK с помощью hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">пакет NuGet концентраторов Microsoft.Azure.Notification</a>.
-4. Откройте hello `Program.cs` файл и добавьте следующее hello `using` инструкции:
+   После этого будет добавлена ссылка на пакет SDK для Центров уведомлений Azure с помощью <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">пакета NuGet Microsoft.Azure.Notification Hubs</a>.
+4. Откройте файл `Program.cs` и добавьте следующую инструкцию `using`:
    
         using Microsoft.Azure.NotificationHubs;
-5. В hello `Program` добавьте следующий метод hello:
+5. Добавьте в класс `Program` следующий метод:
    
         private static async void SendNotificationAsync()
         {
@@ -170,30 +170,30 @@ Hello учебник демонстрирует простой сценарий 
             await hub.SendMpnsNativeNotificationAsync(toast);
         }
    
-    Убедитесь, что hello tooreplace `<hub name>` заполнитель с именем hello hello концентратор уведомлений, который отображается на портале hello. Кроме того, замените заполнитель строки подключения hello строкой подключения hello вызывается **DefaultFullSharedAccessSignature** , полученный в разделе "hello" «Настройка центра уведомлений».
+    Обязательно замените заполнитель `<hub name>` именем центра уведомлений, которое отображается на портале. Кроме того, замените заполнитель строки подключения строкой подключения с именем **DefaultFullSharedAccessSignature** , полученной в разделе «Настройка концентратора уведомлений».
    
    > [!NOTE]
-   > Убедитесь, что используются hello строки подключения с **полного** доступ, не **прослушивания** доступа. Строка Hello прослушивания доступа не имеет разрешения toosend push-уведомлений.
+   > Обязательно используйте строку подключения с **полным** доступом, а не доступом к **прослушиванию**. У строки с доступом к прослушиванию отсутствуют разрешения для отправки push-уведомлений.
    > 
    > 
-6. Добавить hello, следующей строкой в вашей `Main` метод:
+6. Добавьте следующую строку в метод `Main` :
    
          SendNotificationAsync();
          Console.ReadLine();
-7. С вашей Windows Phone эмулятор и вашего приложения hello закрытые, задайте консольное приложение как hello запускаемый проект по умолчанию и нажмите клавишу hello `F5` приложение hello toorun ключа.
+7. Когда эмулятор Windows Phone будет запущен, а приложение будет закрыто, установите проект приложения консоли в качестве начального проекта по умолчанию, после чего нажмите клавишу `F5` , чтобы запустить приложение.
    
-    Вы получите всплывающее push-уведомление. Коснувшись баннер всплывающих hello загружает приложение hello.
+    Вы получите всплывающее push-уведомление. Приложение загружается при касании этого всплывающего баннера.
 
-Можно найти все возможные полезных данных hello hello [каталога всплывающих] и [плитки каталога] разделах в библиотеке MSDN.
+В [каталоге всплывающих уведомлений] и [каталоге уведомлений на плитке] на сайте MSDN можно найти самые разнообразные полезные данные.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом простом примере вы широковещательной рассылки push уведомления tooall устройствами Windows Phone 8. 
+В этом простом примере осуществляется широковещательная рассылка push-уведомлений на все устройства Windows Phone 8. 
 
-В заказ tootarget определенным пользователям, см. toohello [toousers уведомления toopush использования концентраторов уведомлений] учебника. 
+Сведения о том, как рассылать уведомления определенным пользователям, см. в руководстве [Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET]. 
 
-Следует ли toosegment пользователям по группы интересов, можно прочитать [toosend использования концентраторов уведомлений, новости]. 
+Если необходимо разделить пользователей по группам интересов, см. раздел [Использование концентраторов уведомлений для передачи экстренных новостей]. 
 
-Дополнительные сведения о toouse концентраторов уведомлений в [руководство концентраторы уведомлений].
+Дополнительные сведения об использовании концентраторов уведомлений см. в [руководстве по использованию концентраторов уведомлений].
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
@@ -216,11 +216,11 @@ Hello учебник демонстрирует простой сценарий 
 
 <!-- URLs. -->
 [Microsoft Visual Studio 2012 Express для Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[руководство концентраторы уведомлений]: http://msdn.microsoft.com/library/jj927170.aspx
+[руководстве по использованию концентраторов уведомлений]: http://msdn.microsoft.com/library/jj927170.aspx
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
-[toousers уведомления toopush использования концентраторов уведомлений]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[toosend использования концентраторов уведомлений, новости]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[каталога всплывающих]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[плитки каталога]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[концентраторы уведомлений — Windows Phone Silverlight учебника]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[Уведомление пользователей посредством концентраторов уведомлений с помощью серверной части .NET]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Использование концентраторов уведомлений для передачи экстренных новостей]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+[каталоге всплывающих уведомлений]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[каталоге уведомлений на плитке]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[Центр уведомлений: учебник для Windows Phone Silverlight]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 

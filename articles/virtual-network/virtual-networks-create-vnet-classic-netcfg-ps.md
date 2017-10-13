@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate виртуальной сети, с помощью файла конфигурации сети | PowerShell | Классический | Документы Microsoft"
-description: "Узнайте, как toocreate виртуальной сети, с помощью конфигурации сети файла в hello портал Azure."
+title: "Создание виртуальной сети с помощью файла конфигурации сети | PowerShell | Классическая модель | Документация Майкрософт"
+description: "Узнайте, как создать виртуальную сеть с помощью файла конфигурации сети на портале Azure."
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 1e4005b06324ca61d63b03799ebbbc4373f14dbd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a67c3f73d9e56ab0081836ba5db62f5a01c7b6bc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-network-classic-using-a-network-configuration-file-with-powershell"></a>Создание виртуальной сети (классической) с помощью файла конфигурации сети и PowerShell
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этом документе рассматриваются создания виртуальной сети с помощью hello классической модели развертывания. Вы также можете [создать виртуальную сеть в модели развертывания диспетчера ресурсов hello](virtual-networks-create-vnet-arm-ps.md).
+В этом документе описывается создание виртуальной сети с помощью классической модели развертывания. Вы также можете [создать виртуальную сеть на основе модели развертывания диспетчера ресурсов](virtual-networks-create-vnet-arm-ps.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 

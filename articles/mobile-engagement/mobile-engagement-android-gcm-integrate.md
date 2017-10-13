@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure интеграции пакета SDK Android Mobile Engagement"
+title: "Интеграция пакета Android SDK для Служб мобильного взаимодействия Azure"
 description: "Последние обновления и процедуры пакета Android SDK для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,24 +14,24 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: e81230cbc99a209f2909cc163c4e566df67dc828
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toointegrate-gcm-with-mobile-engagement"></a>Как tooIntegrate GCM с мобильного охвата
+# <a name="how-to-integrate-gcm-with-mobile-engagement"></a>Интеграция GCM с помощью Служб мобильного взаимодействия
 > [!IMPORTANT]
-> Необходимо выполнить процедуры интеграции hello, описанной в hello как tooIntegrate Engagement на Android документ до следующего руководства.
+> Перед выполнением действий, описанных в этом руководстве, необходимо выполнить процедуру интеграции, описанную в документе "Интеграция Engagement на платформе Android".
 > 
-> В этом документе полезно только в том случае, если уже интеграции hello достигают модуля и план toopush Google Play устройств. кампании Reach toointegrate в вашем приложении, ознакомьтесь сначала как tooIntegrate Engagement Reach на Android.
+> Этот документ пригоден только в том случае, если вы уже встроили модуль обработки рекламных кампаний и план для отправки данных на устройства Google Play. Для интеграции кампаний, обработанных модулем, в приложение необходимо сначала ознакомиться с разделом «Интеграция модуля обработки рекламных кампаний платформы Engagement для Android».
 > 
 > 
 
 ## <a name="introduction"></a>Введение
-Интеграция GCM позволяет вашей toobe приложения передано.
+Интеграция GCM позволяет приложению получать push-уведомления.
 
-GCM полезных данных всегда помещается toohello SDK содержит hello `azme` ключа в hello объекта данных. Таким образом, если вы в своем приложении используете GCM для другой цели, вы можете фильтровать push-передачи в зависимости от этого ключа.
+Полезные данные GCM, перемещаемые при помощи push-технологии в SDK, всегда содержат ключ `azme` в объекте данных. Таким образом, если вы в своем приложении используете GCM для другой цели, вы можете фильтровать push-передачи в зависимости от этого ключа.
 
 > [!IMPORTANT]
 > С помощью GCM отправлять push-уведомления можно только на устройства под управлением Android 2.2 или выше с установленным Google Play, а также включенным фоновым подключением Google. Тем не менее, этот код можно безопасно интегрировать и на неподдерживаемых  устройствах (он использует только намерения).
@@ -43,19 +43,19 @@ GCM полезных данных всегда помещается toohello SDK
 
 ## <a name="sdk-integration"></a>Интеграция пакета SDK
 ### <a name="managing-device-registrations"></a>Управление регистрацией устройств
-Каждое устройство должно отправить toohello команда регистрации серверам Google, в противном случае они не могут использоваться.
+Каждое устройство должно отправлять команду регистрации серверам Google, в противном случае с ними невозможно связаться.
 
-Устройства также можно отменить регистрацию уведомления GCM (hello устройства отменяется автоматически при удалении приложения hello).
+Устройство также может отменить регистрацию на получение уведомлений GCM (отмена регистрации устройства выполняется автоматически при удалении приложения).
 
-Если вы не используете [Google воспроизвести SDK] или не уже отправляется намерение регистрации hello самостоятельно, можно сделать Engagement автоматически зарегистрировать устройство hello для вас.
+Если вы не используете [пакет SDK для Google Play] или еще не отправили намерение регистрации, можно сделать так, чтобы платформа Engagement выполняла регистрацию устройств автоматически.
 
-tooenable это, добавьте следующие tooyour hello `AndroidManifest.xml` файла внутри hello `<application/>` тег:
+Для этого добавьте следующий код в файл `AndroidManifest.xml` внутри тега `<application/>`:
 
-            <!-- If only 1 sender, don't forget hello \n, otherwise it will be parsed as a negative number... -->
+            <!-- If only 1 sender, don't forget the \n, otherwise it will be parsed as a negative number... -->
             <meta-data android:name="engagement:gcm:sender" android:value="<Your Google Project Number>\n" />
 
-### <a name="communicate-registration-id-toohello-engagement-push-service-and-receive-notifications"></a>Связи Push обязательств со службой регистрации идентификатора toohello и получать уведомления
-В порядке toocommunicate hello регистрации с идентификатором hello устройства toohello Engagement Push службы и получать его уведомления, добавить следующие tooyour hello `AndroidManifest.xml` файла внутри hello `<application/>` тег (даже если регистрация устройств управлять самостоятельно):
+### <a name="communicate-registration-id-to-the-engagement-push-service-and-receive-notifications"></a>Передайте идентификатор регистрации службе Push-уведомлений платформы Engagement и начните получать уведомления.
+Чтобы передать идентификатор регистрации устройства службе push-уведомлений Engagement и получать ее уведомления, необходимо добавить следующий код в файл `AndroidManifest.xml` внутри тега `<application/>` (даже если вы управляете регистрацией устройств самостоятельно):
 
             <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
               android:exported="false">
@@ -72,13 +72,13 @@ tooenable это, добавьте следующие tooyour hello `AndroidMani
               </intent-filter>
             </receiver>
 
-Убедитесь, имеются следующие разрешения в hello вашей `AndroidManifest.xml` (после hello `</application>` тега).
+Убедитесь в наличии следующих разрешений в `AndroidManifest.xml` (после тега `</application>`).
 
             <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
             <uses-permission android:name="<your_package_name>.permission.C2D_MESSAGE" />
             <permission android:name="<your_package_name>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 
-## <a name="grant-mobile-engagement-access-tooyour-gcm-api-key"></a>Предоставление мобильного охвата доступа tooyour ключ API GCM
-Выполните [в этом руководстве](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key) tooyour доступа мобильного охвата toogrant ключ API GCM.
+## <a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Предоставление Службам мобильного взаимодействия доступа к ключу API GCM
+Следуйте [этому руководству](mobile-engagement-android-get-started.md#grant-mobile-engagement-access-to-your-gcm-api-key), чтобы предоставить Службам мобильного взаимодействия доступ к вашему ключу API GCM.
 
-[Google воспроизвести SDK]:https://developers.google.com/cloud-messaging/android/start
+[пакет SDK для Google Play]:https://developers.google.com/cloud-messaging/android/start

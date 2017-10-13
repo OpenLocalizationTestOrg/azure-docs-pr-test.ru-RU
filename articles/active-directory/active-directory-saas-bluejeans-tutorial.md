@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с BlueJeans | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и BlueJeans."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и BlueJeans."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 67613303a9f854afbf4619418cc1607d329caf94
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 03bf65852b8d3cf14aebf155891a028db86e78d0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Руководство по интеграции Azure Active Directory с BlueJeans
 
-В этом учебнике вы узнаете, как toointegrate BlueJeans с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать BlueJeans с Azure Active Directory (Azure AD).
 
-Интеграция BlueJeans с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением BlueJeans обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooBlueJeans
-- Можно включить на пользователей tooautomatically get вошедшего tooBlueJeans (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к BlueJeans.
+- Вы можете включить автоматический вход пользователей в BlueJeans (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с BlueJeans требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с BlueJeans, вам потребуется:
 
 - подписка Azure AD;
 - подписка BlueJeans с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление BlueJeans из галереи hello
+1. Добавление BlueJeans из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-bluejeans-from-hello-gallery"></a>Добавление BlueJeans из галереи hello
-tooconfigure hello интеграции BlueJeans в Azure AD, вы должны tooadd BlueJeans из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-bluejeans-from-the-gallery"></a>Добавление BlueJeans из коллекции
+Чтобы настроить интеграцию BlueJeans с Azure AD, необходимо добавить BlueJeans из коллекции в список управляемых приложений SaaS.
 
-**tooadd BlueJeans из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить BlueJeans из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **BlueJeans**.
+4. В поле поиска введите **BlueJeans**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_search.png)
 
-5. В панели результатов hello выберите **BlueJeans**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **BlueJeans** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в BlueJeans с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в BlueJeans является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в BlueJeans должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в BlueJeans соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в BlueJeans.
 
-В BlueJeans, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в BlueJeans.
 
-tooconfigure и теста Azure AD единого входа с BlueJeans, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в BlueJeans, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя BlueJeans](#creating-a-bluejeans-test-user)**  -toohave аналог Саймон Britta в BlueJeans, представление связанных toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя BlueJeans](#creating-a-bluejeans-test-user)** нужно для того, чтобы в BlueJeans также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в BlueJeans приложения.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении BlueJeans.
 
-**tooconfigure Azure AD единого входа с BlueJeans, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в BlueJeans, выполните следующие действия.**
 
-1. В hello в hello портала Azure **BlueJeans** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **BlueJeans** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_samlbase.png)
 
-3. На hello **URL-адреса и домена BlueJeans** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения BlueJeans** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.BlueJeans.com`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname>.BlueJeans.com`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.BlueJeans.com`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<companyname>.BlueJeans.com`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента BlueJeans](https://support.bluejeans.com/contact) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь к [группе поддержки BlueJeans](https://support.bluejeans.com/contact). 
  
-4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_certificate.png) 
 
@@ -125,17 +125,17 @@ tooconfigure и теста Azure AD единого входа с BlueJeans, тр
 
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации BlueJeans** щелкните **Настройка BlueJeans** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, URL-адрес изменения пароля и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка BlueJeans** щелкните **Настроить BlueJeans**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, URL-адрес изменения пароля и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_configure.png) 
 
-7. В другом окне браузера, войдите в tooyour **BlueJeans** сайт компании от имени администратора.
+7. В другом окне веб-браузера войдите на свой корпоративный веб-сайт **BlueJeans** в качестве администратора.
 
-8. Go слишком**АДМИНИСТРАТОРА \> параметры группы \> безопасности**.
+8. Последовательно щелкните **Admin \> Group Settings \> Security** (Администратор > Параметры группы > Безопасность).
    
    ![Администратор](./media/active-directory-saas-bluejeans-tutorial/IC785868.png "Администратор")
 
-9. В hello **безопасности** выполните следующие шаги hello:
+9. В разделе **Security** (Безопасность) выполните следующие действия.
    
    ![Единый вход SAML](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "Единый вход SAML")   
    
@@ -143,109 +143,109 @@ tooconfigure и теста Azure AD единого входа с BlueJeans, тр
   
    b. Установите флажок **Enable automatic provisioning**(Включить автоматическую подготовку).
 
-10. Продолжите и hello следующие шаги:
+10. После этого выполните следующие действия.
 
     ![Путь к сертификату](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "Путь к сертификату")
     
-    а. Нажмите кнопку **выбрать файл**и затем передайте сертификат загружаются hello.
+    а. Нажмите кнопку **Choose File**(Выбрать файл) и отправьте скачанный сертификат.
    
-    b. Вставить **SAML единого входа URL-адрес службы** в hello **URL-адрес входа** текстового поля.
+    b. Вставьте **URL-адрес службы единого входа SAML** в текстовое поле **Login URL** (URL-адрес входа).
    
-    c. Вставить **URL-адрес изменения пароля** в hello **URL-адрес изменения пароля** текстового поля.
+    c. Вставьте **URL-адрес изменения пароля** в текстовое поле **Password Change URL** (URL-адрес изменения пароля).
    
-    d. Вставить **URL-адрес выхода** в hello **URL-адрес выхода** текстового поля.
+    г) Вставьте **URL-адрес выхода** в текстовое поле **Logout URL** (URL-адрес выхода).
 
-11. Продолжите и hello следующие шаги:
+11. После этого выполните следующие действия.
     
     ![Сохранение изменений](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "Сохранение изменений")
     
-    а. В hello **идентификатор пользователя** введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    а. В текстовое поле **User id** (Идентификатор пользователя) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
    
-    b. В hello **электронной почты** введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. В текстовое поле **Email** (Электронная почта) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
    
     c. Нажмите кнопку **Сохранить изменения**.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-bluejeans-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-bluejeans-test-user"></a>Создание тестового пользователя BlueJeans
 
-Пользователи toolog tooenable Azure AD в tooBlueJeans, их необходимо подготовить в BlueJeans.  
+Чтобы пользователи Azure AD могли выполнять вход в BlueJeans, они должны быть подготовлены в BlueJeans.  
 
 В случае BlueJeans подготовка выполняется вручную.
 
-**tooprovision учетных записей пользователей, выполните следующие действия hello:**
+**Чтобы подготовить учетные записи пользователей, выполните следующие действия.**
 
-1. Войдите в tooyour **BlueJeans** сайт компании от имени администратора.
+1. Выполните вход на веб-сайт компании **BlueJeans** в качестве администратора.
 
-2. Go слишком**АДМИНИСТРАТОРА \> Управление пользователями \> добавить пользователя**.
+2. Последовательно выберите пункты **Admin \> Manage Users \> Add User** (Администратор > Управление пользователями > Добавить пользователя).
    
    ![Администратор](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "Администратор")
    
    >[!IMPORTANT]
-   >Hello **добавить пользователя** вкладка доступна, только если в hello **вкладка "Безопасность"**, **включить автоматическую подготовку** снят. 
+   >Вкладка **Add User** (Добавить пользователя) доступна, только если на вкладке **Security** (Безопасность) снят флажок **Enable automatic provisioning** (Включить автоматическую подготовку). 
    
-3. В hello **добавить пользователя** выполните следующие шаги hello:
+3. В разделе **Add User** (Добавление пользователя) выполните следующие действия.
 
     ![Добавление пользователя](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "Добавление пользователя")
     
-    а. Введите значение **имя пользователя BlueJeans**, **адрес электронной почты**, **идентификатор собрания BlueJeans**, **секретный код модератора**, **полное имя** , hello **компании** из текстовых полей, связанных с действительной учетной записи AAD, которые должны tooprovision hello.
+    а. Введите в текстовых полях **BlueJeans Username** (Имя пользователя BlueJeans), **Email address** (Адрес электронной почты), **BlueJeans Meeting ID** (Идентификатор собрания BlueJeans), **Moderator Passcode** (Секретный код модератора), **Full Name** (Полное имя) и **Company** (Компания) соответствующие данные действующей учетной записи AAD, которую вы хотите подготовить.
     
     b. Нажмите кнопку **Add User**(Добавить пользователя).
 
 >[!NOTE]
->Можно использовать любые другие BlueJeans пользователя средства создания учетных записей или интерфейсы API, предоставляемые BlueJeans tooprovision учетных записей пользователей AAD. 
+>Вы можете использовать любые другие средства создания учетной записи пользователя BlueJeans или API, предоставляемые BlueJeans для подготовки учетных записей пользователя AAD. 
 > 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooBlueJeans доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к BlueJeans.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooBlueJeans Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в BlueJeans, сделайте следующее.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **BlueJeans**.
+2. Из списка приложений выберите **BlueJeans**.
 
     ![Настройка единого входа](./media/active-directory-saas-bluejeans-tutorial/tutorial_bluejeans_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -253,7 +253,7 @@ tooconfigure и теста Azure AD единого входа с BlueJeans, тр
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -261,14 +261,14 @@ tooconfigure и теста Azure AD единого входа с BlueJeans, тр
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки BlueJeans плитки в панели доступа hello приветствия, должно появиться страница входа BlueJeans приложения.
-Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
+Когда вы щелкните элемент "BlueJeans" на панели доступа, должна появиться страница входа в приложение BlueJeans.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

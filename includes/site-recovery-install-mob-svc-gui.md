@@ -1,15 +1,15 @@
-1. Скопируйте сервер toohello установки hello и откройте hello установщика.
-2. На hello **вариант установки** колонке выберите **установить службу Mobility**.
+1. Скопируйте установку на сервер и откройте установщик.
+2. В колонке **параметров установки** выберите **Install Mobility Service** (Установить Mobility Service).
 
     ![Страница параметров установки службы Mobility Service ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
-3. Выберите место установки hello и нажмите кнопку **установить** процедура установки toobeing hello.
+3. Выберите расположение установки и щелкните **Установить**, чтобы начать процедуру установки.
 
     ![Страница расположения установки службы Mobility Service ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
-4. Можно использовать **ход выполнения установки** страница хода выполнения установщика toomonitor hello.
+4. Чтобы следить за ходом установки, используйте страницу **хода выполнения установки**.
     ![Ход выполнения установки службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility3.png)
 
-5. После завершения установки нажмите кнопку hello **продолжить tooConfiguration** hello tooregister кнопку службы Mobility Service на сервере конфигурации.
+5. После завершения установки нажмите кнопку **Proceed to Configuration** (Перейти к конфигурации), чтобы зарегистрировать службу Mobility Service на сервере конфигурации.
     ![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility4.png)
 
-6. Щелкните hello **зарегистрировать** кнопку регистрации toocomplete hello.
+6. Для завершения регистрации нажмите кнопку **Зарегистрировать**.
     ![Страница регистрации службы Mobility Service](./media/site-recovery-install-mob-svc-gui/mobility5.png)

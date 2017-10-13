@@ -1,6 +1,6 @@
 ---
-title: "текущий пользователь aaaRegister hello push-уведомления с помощью веб-API | Документы Microsoft"
-description: "Узнайте, как toorequest зарегистрировать push-уведомлений в приложения iOS с концентраторами уведомлений Azure при регистрации выполняется с веб-API ASP.NET."
+title: "Регистрация текущего пользователя для push-уведомлений с помощью веб-API | Документация Майкрософт"
+description: "Узнайте, как запросить регистрацию push-уведомления в приложении iOS с помощью центров уведомлений Azure, когда регистрации выполняется через веб-API ASP.NET."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,25 +14,25 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: f859feb436093e703d7e1db38354dd356fff8efe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="register-hello-current-user-for-push-notifications-by-using-aspnet"></a>Зарегистрируйте hello текущего пользователя для push-уведомлений с помощью ASP.NET
+# <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Регистрация текущего пользователя для push-уведомлений с помощью ASP.NET
 > [!div class="op_single_selector"]
 > * [iOS](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 > 
 > 
 
 ## <a name="overview"></a>Обзор
-В этом разделе показано, как toorequest зарегистрировать push-уведомлений с концентраторами уведомлений Azure при выполнении в ASP.NET Web API регистрации. В этом разделе расширяет hello учебника [уведомить пользователей с концентраторами уведомлений]. Вы должны уже выполнили hello необходимые действия, описанные в этой мобильной службы учебника toocreate hello с проверкой подлинности. Дополнительные сведения о hello уведомить пользователей сценарии, см. в разделе [уведомить пользователей с концентраторами уведомлений].
+В этом разделе рассказывается о том, как запросить регистрацию push-уведомлений с помощью концентраторов уведомлений Azure при выполнении регистрации средствами веб-API ASP.NET. Эта статья расширяет руководство [Уведомление пользователей с помощью концентраторов уведомлений]. Чтобы создать прошедшую проверку подлинности мобильную службу, вы должны завершить требуемые действия в этом учебнике. Дополнительные сведения о сценарии уведомления пользователей см. в руководстве [Уведомление пользователей с помощью концентраторов уведомлений].
 
 ## <a name="update-your-app"></a>Обновление приложения
-1. Добавьте в ваш MainStoryboard_iPhone.storyboard hello следующие компоненты из библиотеки hello объекта.
+1. В вашем MainStoryboard_iPhone.storyboard добавьте следующие компоненты из библиотеки объектов:
    
-   * **Метка**: «Push-tooUser с концентраторами уведомлений»
+   * **Метка**: «Принудительно отправлять пользователю уведомления из центров уведомлений»
    * **Метка**: «InstallationId»
    * **Метка**: «Пользователь»
    * **Текстовое поле**: «Пользователь»
@@ -40,25 +40,25 @@ ms.lasthandoff: 10/06/2017
    * **Текстовое поле**: «Пароль»
    * **Кнопка**: «Вход»
      
-     На этом этапе раскадровки выглядит hello следующим образом:
+     На этом этапе раскадровка выглядит следующим образом:
      
       ![][0]
-2. В редакторе помощника hello, создания выходов для всех элементов управления переключить hello и их вызова, соединение hello текстовые поля с hello View-Controller (делегат) и создайте **действия** для hello **входа** кнопки.
+2. Во вспомогательном редакторе создайте выходы для всех коммутируемых элементов управления и вызовите их, соедините текстовые поля с контроллером представления (делегируйте) и создайте **Действие** для кнопки **Вход**.
    
        ![][1]
    
-       Your BreakingNewsViewController.h file should now contain hello following code:
+       Your BreakingNewsViewController.h file should now contain the following code:
    
         @property (weak, nonatomic) IBOutlet UILabel *installationId;
         @property (weak, nonatomic) IBOutlet UITextField *User;
         @property (weak, nonatomic) IBOutlet UITextField *Password;
    
         - (IBAction)login:(id)sender;
-3. Создайте класс с именем **DeviceInfo**, и копировать hello после кода в раздел интерфейс hello hello файла DeviceInfo.h:
+3. Создайте класс с именем **DeviceInfo**и скопируйте следующий код в раздел интерфейса файла DeviceInfo.h:
    
         @property (readonly, nonatomic) NSString* installationId;
         @property (nonatomic) NSData* deviceToken;
-4. Скопируйте следующий код в разделе реализации hello файла DeviceInfo.m hello hello:
+4. Скопируйте следующий код в реализационную часть файла DeviceInfo.m:
    
             @synthesize installationId = _installationId;
    
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/06/2017
                     _installationId = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, newUUID);
                     CFRelease(newUUID);
    
-                    //store hello install ID so we don't generate a new one next time
+                    //store the install ID so we don't generate a new one next time
                     [defaults setObject:_installationId forKey:@"PushToUserInstallationId"];
                     [defaults synchronize];
                 }
@@ -89,32 +89,32 @@ ms.lasthandoff: 10/06/2017
                                       ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
                 return hexToken;
             }
-5. В PushToUserAppDelegate.h добавьте следующие свойства одноэлементный hello.
+5. В PushToUserAppDelegate.h добавьте следующее одноэлементное свойство:
    
         @property (strong, nonatomic) DeviceInfo* deviceInfo;
-6. В hello **didFinishLaunchingWithOptions** метод в PushToUserAppDelegate.m, добавить hello, следующий код:
+6. В метод **didFinishLaunchingWithOptions** в файле PushToUserAppDelegate.m добавьте следующий код:
    
         self.deviceInfo = [[DeviceInfo alloc] init];
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Первая строка Hello инициализирует hello **DeviceInfo** singleton. Hello второй строки начинается hello регистрации для push-уведомления, которая уже присутствует — вы уже выполнили hello [начало работы с концентраторами уведомлений] учебника.
-7. В PushToUserAppDelegate.m, реализуйте метод hello **didRegisterForRemoteNotificationsWithDeviceToken** в ваш AppDelegate и добавить hello, следующий код:
+    Первая строка обеспечивает инициализацию одноэлементного **DeviceInfo** . Во второй строке начинается регистрация для push-уведомлений, которая уже существует, если вы уже изучили учебник [Приступая к работе с концентраторами уведомлений] .
+7. В PushToUserAppDelegate.m реализуйте метод **didRegisterForRemoteNotificationsWithDeviceToken** в своем AppDelegate и добавьте следующий код:
    
         self.deviceInfo.deviceToken = deviceToken;
    
-    Таким образом задается hello маркер устройства для запроса hello.
+    Таким образом задается маркер устройства для запроса.
    
    > [!NOTE]
-   > На этом этапе в методе не должно быть никакого другого кода. Если у вас уже есть toohello вызов **registerNativeWithDeviceToken** метода, который был добавлен после завершения hello [начало работы с концентраторами уведомлений](/manage/services/notification-hubs/get-started-notification-hubs-ios/) учебника, необходимо масштабирование комментарий или удалить, вызов.
+   > На этом этапе в методе не должно быть никакого другого кода. Если в методе **registerNativeWithDeviceToken** уже есть вызов, добавленный при прохождении учебника [Приступая к работе с концентраторами уведомлений](/manage/services/notification-hubs/get-started-notification-hubs-ios/) , этот вызов нужно закомментировать или удалить.
    > 
    > 
-8. Добавьте следующий метод обработчика hello hello PushToUserAppDelegate.m файла:
+8. В файле PushToUserAppDelegate.m добавьте следующий метод обработчика:
    
    * (void) приложения:(UIApplication *) приложения didReceiveRemoteNotification:(NSDictionary *) userInfo {NSLog (@"% @", сведений о пользователях);   UIAlertView * предупреждение = [[UIAlertView alloc] initWithTitle:@"Notification» сообщение: cancelButtonTitle делегата: nil [userInfo objectForKey:@"inAppMessage]»: @ otherButtonTitles:nil «ОК», nil];   [Показать предупреждения]; }
    
-   Этот метод отображает предупреждение в hello пользовательского интерфейса, когда приложение получает уведомления при выполнении.
-9. Откройте файл PushToUserViewController.m hello и возврата hello клавиатуры в hello после реализации:
+   Этот метод отображает предупреждение в пользовательском интерфейсе, когда приложение получает уведомления во время работы.
+9. Откройте файл PushToUserViewController.m и верните клавиатуру в следующей реализации:
    
         - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
             if (theTextField == self.User || theTextField == self.Password) {
@@ -122,15 +122,15 @@ ms.lasthandoff: 10/06/2017
             }
             return YES;
         }
-10. В hello **viewDidLoad** метод в файле PushToUserViewController.m hello, инициализировать hello installationId метку следующим образом:
+10. В методе **viewDidLoad** в файле PushToUserViewController.m инициализируйте метку installationId, как показано ниже.
     
          DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
          Self.installationId.text = deviceInfo.installationId;
-11. Добавьте следующие свойства в интерфейсе в PushToUserViewController.m hello:
+11. В интерфейс файла PushToUserViewController.m добавьте следующие свойства:
     
         @property (readonly) NSOperationQueue* downloadQueue;
         - (NSString*)base64forData:(NSData*)theData;
-12. Затем добавьте следующие реализации hello:
+12. Затем добавьте следующую реализацию:
     
             - (NSOperationQueue *)downloadQueue {
                 if (!_downloadQueue) {
@@ -173,7 +173,7 @@ ms.lasthandoff: 10/06/2017
     
                 return [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
             }
-13. Копирования hello следующий код в hello **входа** метод обработчика, созданные XCode:
+13. Скопируйте следующий код в метод обработчика **login** , созданный с помощью XCode:
     
             DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
     
@@ -206,9 +206,9 @@ ms.lasthandoff: 10/06/2017
                 }
             }];
     
-    Этот метод возвращает идентификатор установки и каналов уведомлений и отправляет его, а также типа устройства hello, toohello проверку подлинности метод веб-API, который создает регистрацию в концентраторах уведомлений. Этот веб-API был определен в учебнике [уведомить пользователей с концентраторами уведомлений].
+    Этот метод возвращает ИД установки и канал для push-уведомлений и отправляет его, вместе с типом устройства, прошедшему проверку подлинности методу веб-API, который создает регистрацию в концентраторах уведомлений. Этот веб-API был определен в учебнике [Уведомление пользователей с помощью концентраторов уведомлений].
 
-Теперь, когда hello клиентское приложение будет обновлен, возвращают toohello [уведомить пользователей с концентраторами уведомлений] и обновлять уведомления toosend hello мобильной службы с помощью концентраторов уведомлений.
+Теперь, когда клиентское приложение было обновлено, вернитесь к учебнику [Уведомление пользователей с помощью концентраторов уведомлений] и обновите мобильную службу для отправки уведомлений с помощью концентраторов уведомлений.
 
 <!-- Anchors. -->
 
@@ -217,6 +217,6 @@ ms.lasthandoff: 10/06/2017
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[уведомить пользователей с концентраторами уведомлений]: /manage/services/notification-hubs/notify-users-aspnet
+[Уведомление пользователей с помощью концентраторов уведомлений]: /manage/services/notification-hubs/notify-users-aspnet
 
-[начало работы с концентраторами уведомлений]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[Приступая к работе с концентраторами уведомлений]: /manage/services/notification-hubs/get-started-notification-hubs-ios

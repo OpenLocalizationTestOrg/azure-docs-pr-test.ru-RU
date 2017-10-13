@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария PowerShell - aaaAzure развертывания шаблона | Документы Microsoft"
+title: "Пример сценария Azure PowerShell. Развертывание шаблона | Документы Майкрософт"
 description: "Пример сценария для развертывания шаблона Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 536b8ccecad4ed8a4c4a4139c6bf4600e2eb9405
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b7a7dda1da653d084e02e6724d2f0cb5aa76807a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-resource-manager-template-deployment---powershell-script"></a>Развертывание шаблона Azure Resource Manager — сценарий PowerShell
 
-Этот сценарий выполняет развертывание группы ресурсов tooa шаблона диспетчера ресурсов в вашей подписке.
+Этот сценарий развертывает шаблон Resource Manager в группе ресурсов в вашей подписке.
 
 [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install.md)]
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/06/2017
 ```powershell
 <#
  .SYNOPSIS
-    Deploys a template tooAzure
+    Deploys a template to Azure
 
  .DESCRIPTION
     Deploys an Azure Resource Manager template
@@ -41,30 +41,30 @@ ms.lasthandoff: 10/06/2017
 
 param (
     [Parameter(Mandatory)]
-    #hello subscription id where hello template will be deployed.
+    #The subscription id where the template will be deployed.
     [string]$SubscriptionId,  
 
     [Parameter(Mandatory)]
-    #hello resource group where hello template will be deployed. Can be hello name of an existing or a new resource group.
+    #The resource group where the template will be deployed. Can be the name of an existing or a new resource group.
     [string]$ResourceGroupName, 
 
-    #Optional, a resource group location. If specified, will try toocreate a new resource group in this location. If not specified, assumes resource group is existing.
+    #Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
     [string]$ResourceGroupLocation, 
 
-    #hello deployment name.
+    #The deployment name.
     [Parameter(Mandatory)]
     [string]$DeploymentName,    
 
-    #Path toohello template file. Defaults tootemplate.json.
+    #Path to the template file. Defaults to template.json.
     [string]$TemplateFilePath = "template.json",  
 
-    #Path toohello parameters file. Defaults tooparameters.json. If file is not found, will prompt for parameter values based on template.
+    #Path to the parameters file. Defaults to parameters.json. If file is not found, will prompt for parameter values based on template.
     [string]$ParametersFilePath = "parameters.json"
 )
 
 $ErrorActionPreference = "Stop"
 
-# Login tooAzure and select subscription
+# Login to Azure and select subscription
 Write-Output "Logging in"
 Login-AzureRmAccount
 Write-Output "Selecting subscription '$SubscriptionId'"
@@ -84,7 +84,7 @@ else {
     Write-Output "Using existing resource group '$ResourceGroupName'"
 }
 
-# Start hello deployment
+# Start the deployment
 Write-Output "Starting deployment"
 if ( Test-Path $ParametersFilePath ) {
     New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFilePath -TemplateParameterFile $ParametersFilePath
@@ -96,7 +96,7 @@ else {
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполнения hello следующую команду, группа ресурсов tooremove hello и всех его ресурсов.
+Выполните следующую команду, чтобы удалить группу ресурсов и все ее ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -104,21 +104,21 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды toocreate hello развертывания hello. Каждый элемент в таблице hello связывает toocommand документацию.
+Чтобы создать развертывание, скрипт использует следующие команды. Для каждого элемента в таблице приведены ссылки на документацию по команде.
 
 | Команда | Примечания |
 |---|---|
-| [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) | Регистрирует поставщика ресурсов, чтобы его типы ресурсов могут быть развернутой tooyour подписки.  |
+| [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) | Регистрирует поставщик ресурсов, чтобы его типы ресурсов можно было развертывать в вашей подписке.  |
 | [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/get-azurermresourcegroup) | Возвращает группы ресурсов.  |
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Создает группу ресурсов, в которой хранятся все ресурсы. |
-| [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) | Добавляет группу ресурсов tooa развертывания Azure.  |
+| [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) | Добавляет развертывание Azure в группу ресурсов.  |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Удаляет группу ресурсов и все ресурсы, содержащиеся в ней. |
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Шаблоны toodeploying введение в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure PowerShell](resource-group-template-deploy.md).
+* Вводные сведения о развертывании шаблонов см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](resource-group-template-deploy.md).
 * Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-powershell-sas-token.md).
-* toodefine параметры в шаблоне, в разделе [разработки шаблонов](resource-group-authoring-templates.md#parameters).
-* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
+* Сведения об определении параметров в шаблоне см. в разделе [Создание шаблонов](resource-group-authoring-templates.md#parameters).
+* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
 

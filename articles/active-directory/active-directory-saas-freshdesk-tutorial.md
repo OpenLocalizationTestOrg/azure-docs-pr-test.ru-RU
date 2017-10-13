@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с FreshDesk | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и FreshDesk."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и FreshDesk."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,107 +14,107 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 577a5eb6d9b1bc03030a2b47f63d375869c903bb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f4b47e345a40b64f69ad8a4618564662b4a6c879
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Руководство по интеграции Azure Active Directory с FreshDesk
 
-В этом учебнике вы узнаете, как toointegrate FreshDesk с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение FreshDesk с Azure Active Directory (Azure AD).
 
-Интеграция FreshDesk с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с FreshDesk обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooFreshDesk
-- Можно включить на пользователей tooautomatically get вошедшего tooFreshDesk (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
+- С помощью Azure AD вы можете контролировать доступ к FreshDesk.
+- Вы можете включить автоматический вход пользователей в FreshDesk (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал управления Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с FreshDesk требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с FreshDesk, вам потребуется:
 
 - подписка Azure AD;
 - подписка FreshDesk с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление FreshDesk из галереи hello
+1. Добавление FreshDesk из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-freshdesk-from-hello-gallery"></a>Добавление FreshDesk из галереи hello
-tooconfigure hello интеграции FreshDesk в Azure AD, вы должны tooadd FreshDesk из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-freshdesk-from-the-gallery"></a>Добавление FreshDesk из коллекции
+Чтобы настроить интеграцию FreshDesk с Azure AD, необходимо добавить FreshDesk из коллекции в список управляемых приложений SaaS.
 
-**tooadd FreshDesk из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить FreshDesk из коллекции, выполните следующие действия:**
 
-1. В hello  **[портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **FreshDesk**.
+4. В поле поиска введите **FreshDesk**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_search.png)
 
-5. В панели результатов hello выберите **FreshDesk**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **FreshDesk** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение FreshDesk с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в FreshDesk является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в FreshDesk требуется toobe установлено.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь во FreshDesk соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в FreshDesk.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в FreshDesk.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** во FreshDesk.
 
-tooconfigure и теста Azure AD единого входа с FreshDesk, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в FreshDesk, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя FreshDesk](#creating-a-freshdesk-test-user)**  -toohave аналог Саймон Britta в FreshDesk, представление связанных toohello Azure AD ей.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя FreshDesk](#creating-a-freshdesk-test-user)** требуется для создания во FreshDesk пользователя Britta Simon, связанного с соответствующим пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в ваше приложение Freshservice.
+В этом разделе описано, как включить единый вход Azure AD на портале управления Azure и настроить его в приложении FreshDesk.
 
-**tooconfigure Azure AD единого входа с FreshDesk, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD во FreshDesk, выполните следующие действия:**
 
-1. На портале управления Azure hello на hello **FreshDesk** странице интеграции приложения щелкните **единого входа**.
+1. На портале управления Azure на странице интеграции с приложением **FreshDesk** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
 
-3. На hello **URL-адреса и домена FreshDesk** статьи, введите hello **URL-адрес входа** как: `https://<tenant-name>.freshdesk.com` или любое другое значение имеет предлагаемых Freshdesk.
+3. В разделе **Домены и URL-адреса приложения FreshDesk** введите в поле **URL-адрес для входа** значение `https://<tenant-name>.freshdesk.com` или любое другое значение, предлагаемое Freshdesk.
 
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_url.png)
 
     > [!NOTE] 
     > Обратите внимание, что это значение используется только в качестве примера. Вместо него необходимо указать фактический URL-адрес для входа. Для получения этого значения обратитесь в [службу поддержки клиентов FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg).  
 
-4. На hello **сертификат подписи SAML** щелкните **сертификат** и сохраните hello сертификата на компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат**, а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_certificate.png) 
 
@@ -122,21 +122,21 @@ tooconfigure и теста Azure AD единого входа с FreshDesk, тр
 
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации FreshDesk** щелкните **Настройка FreshDesk** tooopen Настройка входа окна. Скопируйте hello SAML единого входа URL-адрес службы и URL-адрес выхода из hello **краткий справочник** раздела.
+6. В разделе **Конфигурация FreshDesk** щелкните **Настроить FreshDesk**, чтобы открыть окно настройки единого входа. Скопируйте URL-адрес службы единого входа SAML и URL-адрес выхода из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
 7. В другом окне браузера войдите на свой корпоративный веб-сайт Freshdesk в качестве администратора.
 
-8. В меню в верхней части hello hello выберите **администратора**.
+8. В верхнем меню щелкните **Администратор**.
    
    ![Администратор](./media/active-directory-saas-freshdesk-tutorial/IC776768.png "Администратор")
 
-9. В hello **Общие параметры** щелкните **безопасности**.
+9. На вкладке **General Settings** (Общие параметры) щелкните **Security** (Безопасность).
    
    ![Безопасность](./media/active-directory-saas-freshdesk-tutorial/IC776769.png "Безопасность")
 
-10. В hello **безопасности** выполните следующие шаги hello:
+10. В разделе **Security** (Безопасность) выполните следующие действия.
    
     ![Единый вход](./media/active-directory-saas-freshdesk-tutorial/IC776770.png "Единый вход")
    
@@ -144,62 +144,62 @@ tooconfigure и теста Azure AD единого входа с FreshDesk, тр
 
     b. Выберите **Единый вход SAML**.
 
-    c. Тип hello **SAML единого входа URL-адрес службы** скопирован из портала Azure в hello **URL-адрес входа SAML** текстового поля.
+    c. Введите **URL-адрес службы единого входа SAML**, скопированный на портале Azure, в текстовое поле **SAML Login URL** (URL-адрес входа SAML).
 
-    d. Тип hello **URL-адрес выхода** скопирован из портала Azure в hello **URL-адрес выхода** текстового поля.
+    d. Введите **URL-адрес выхода**, скопированный на портале Azure, в текстовое поле **Logout URL** (URL-адрес выхода).
 
-    д. Копировать hello **отпечаток** из сертификата hello загружен с портала Azure и вставьте его в hello **отпечаток сертификата безопасности** текстового поля.  
+    д. Скопируйте значение поля **Thumbprint** (Отпечаток) из скачанного с портала Azure сертификата и вставьте его в текстовое поле **Security Certificate Fingerprint** (Отпечаток сертификата безопасности).  
  
     >[!TIP]
-    >Дополнительные сведения см. в разделе [как tooretrieve значение отпечатка сертификата](http://youtu.be/YKQF266SAxI). 
+    >Дополнительные сведения см. в статье [Практическое руководство. Извлечение отпечатка сертификата](http://youtu.be/YKQF266SAxI). 
     
     f. Щелкните **Сохранить**.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
+Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-freshdesk-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-freshdesk-test-user"></a>Создание тестового пользователя FreshDesk
 
-В порядке tooenable toolog пользователей Azure AD в FreshDesk их необходимо подготовить во FreshDesk.  
-В случае hello объекта FreshDesk Подготовка выполняется вручную.
+Чтобы пользователи Azure AD могли входить во FreshDesk, их необходимо подготовить во FreshDesk.  
+В случае с FreshDesk подготовка выполняется вручную.
 
-**tooprovision учетных записей пользователей, выполните следующие действия hello:**
+**Чтобы подготовить учетные записи пользователей, выполните следующие действия.**
 
-1. Войдите в tooyour **Freshdesk** клиента.
-2. В меню в верхней части hello hello выберите **администратора**.
+1. Выполните вход в клиент **Freshdesk** .
+2. В верхнем меню щелкните **Администратор**.
    
    ![Администратор](./media/active-directory-saas-freshdesk-tutorial/IC776772.png "Администратор")
 
-3. В hello **Общие параметры** щелкните **агенты**.
+3. На вкладке **General Settings** (Общие параметры) выберите **Agents** (Агенты).
    
    ![Агенты](./media/active-directory-saas-freshdesk-tutorial/IC776773.png "Агенты")
 
@@ -207,44 +207,44 @@ tooconfigure и теста Azure AD единого входа с FreshDesk, тр
    
     ![Создание агента](./media/active-directory-saas-freshdesk-tutorial/IC776774.png "Создание агента")
 
-5. В диалоговом окне сведений об агенте hello выполните hello следующие шаги.
+5. В диалоговом окне "Сведения об агенте " выполните следующие действия.
    
    ![Сведения об агенте](./media/active-directory-saas-freshdesk-tutorial/IC776775.png "Сведения об агенте")
    
-   а. В hello **полное имя** текстовое поле, имя типа hello hello Azure AD счета tooprovision.
+   а. В текстовое поле **Полное имя** введите имя учетной записи Azure AD, которую желаете подготовить.
 
-   b. В hello **электронной почты** текстового поля, типа hello Azure AD адрес электронной почты учетной записи hello Azure AD будет tooprovision.
+   b. В текстовое поле **Электронная почта** введите адрес электронной почты той учетной записи Azure AD, которую вы хотите подготовить.
 
-   c. В hello **заголовок** текстовом поле введите название hello hello Azure AD счета tooprovision.
+   c. В текстовое поле **Название** введите название учетной записи Azure AD, которую желаете подготовить.
 
-   d. Выберите **Agents role** (Роль агента) и нажмите кнопку **Assign** (Назначить).
+   г) Выберите **Agents role** (Роль агента) и нажмите кнопку **Assign** (Назначить).
        
    д. Щелкните **Сохранить**.     
    
     >[!NOTE]
-    >Владелец учетной записи Hello Azure AD получит сообщение электронной почты, включает в себя учетную запись hello tooconfirm ссылку, перед его активации. 
+    >Владелец учетной записи Azure AD получит по электронной почте сообщение со ссылкой для активации учетной записи. 
     > 
     
     >[!NOTE]
-    >Можно использовать любые другие Freshdesk пользователя средства создания учетных записей или интерфейсы API, предоставляемые Freshdesk tooprovision учетных записей пользователей AAD. tooFreshDesk.
+    >Вы можете использовать любые другие средства создания учетной записи пользователя Freshdesk или API, предоставляемые Freshdesk, для подготовки учетных записей пользователей AAD. во FreshDesk.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа, предоставляя свой доступ панель инструментов.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к Box.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooFreshDesk Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon во FreshDesk, выполните следующие действия:**
 
-1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **FreshDesk**.
+2. В списке приложений выберите **FreshDesk**.
 
     ![Настройка единого входа](./media/active-directory-saas-freshdesk-tutorial/tutorial_freshdesk_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -252,7 +252,7 @@ tooconfigure и теста Azure AD единого входа с FreshDesk, тр
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -260,13 +260,13 @@ tooconfigure и теста Azure AD единого входа с FreshDesk, тр
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello FreshDesk плитки в панели доступа hello, вы должны получить входа страницы tooget вошедшего tooyour приложение Freshservice.
+Щелкнув элемент FreshDesk на панели доступа, вы автоматически войдете в приложение FreshDesk.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

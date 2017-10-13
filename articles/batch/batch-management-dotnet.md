@@ -1,6 +1,6 @@
 ---
-title: "aaaManage пакетной учетной записи ресурсов с hello клиентская библиотека для .NET — Azure | Документы Microsoft"
-description: "Создание, удаление и изменение ресурсов учетной записи пакетной службы Azure с библиотекой hello пакета управления .NET."
+title: "Управление ресурсами учетной записи пакетной службы с помощью клиентской библиотеки для .NET в Azure | Документация Майкрософт"
+description: "Создание, удаление и изменение ресурсов учетных записей пакетной службы Azure с помощью библиотеки .NET для управления пакетной службой."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -16,13 +16,13 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 638d8129f3841ffcfb2e10f5d531a319bcbb7701
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="manage-batch-accounts-and-quotas-with-hello-batch-management-client-library-for-net"></a>Управление учетными записями пакетной и квоты с hello пакета управления клиентской библиотеки для .NET
+# <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Управление учетными записями и квотами пакетной службы с помощью клиентской библиотеки .NET для управления пакетной службой
 
 > [!div class="op_single_selector"]
 > * [Портал Azure](batch-account-create-portal.md)
@@ -30,22 +30,22 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Можно понизить обслуживания издержек в приложениях пакетной службы Azure с помощью hello [пакета управления .NET] [ api_mgmt_net] библиотеки tooautomate пакетной учетной записи создание, удаление, управление ключами и обнаружения квоты.
+С помощью [библиотеки .NET для управления пакетной службой][api_mgmt_net] можно снизить издержки на обслуживание приложений пакетной службы Azure. Эта библиотека позволяет автоматизировать создание и удаление учетных записей пакетной службы, управление ключами и определение квот.
 
-* **Создание и удаление учетных записей пакетной службы** в любом регионе. Если, например, как независимый поставщик программного (обеспечения ISV) предоставляет службы для клиентов в которых каждый назначается отдельной учетной записи пакета для выставления счетов, можно добавить портал учетных записей создание и удаление возможности tooyour клиента.
+* **Создание и удаление учетных записей пакетной службы** в любом регионе. Например, вы являетесь независимым поставщиком программного обеспечения и оказываете услуги клиентам, каждому из которых назначена соответствующая учетная запись пакетной службы для выставления счетов. Для повышения удобства вы можете добавить на портал для пользователей возможность создания и удаления учетных записей.
 * **Получение и повторное создание ключей учетных записей** для всех учетных записей пакетной службы программным образом. Это особенно удобно для обеспечения соответствия политикам безопасности, которые могут требовать периодической смены ключей и определять сроки действия ключей учетных записей. Если у вас есть несколько учетных записей пакетной службы в разных регионах Azure, автоматизация смены ключей повысит эффективность вашего решения.
-* **Проверьте учетную запись квоты** и принимать hello организации проб и ошибок и определения, имеют какие ограничений, какие учетные записи пакета. Проверка квот учетной записи до запуска заданий, создание пулов или добавление вычислительных узлов позволит вам заранее выбирать время и место создания вычислительных ресурсов. Вы можете определить учетные записи, требующие повышения квот, прежде чем выделить дополнительные ресурсы в этих учетных записях.
-* **Объединить возможности других служб Azure** взаимодействие полнофункционального управления — с помощью пакета управления .NET, [Azure Active Directory][aad_about]и hello [Azure Диспетчер ресурсов] [ resman_overview] вместе в hello того же приложения. С помощью этих функций и их интерфейсы API, можно полноценного издержками проверки подлинности, hello toocreate возможности и удаления группы ресурсов и возможности hello, описанных выше для решения управления начала до конца.
+* **Проверка квот учетных записей** и исключение метода проб и ошибок из процедуры определения ограничений учетных записей пакетной службы. Проверка квот учетной записи до запуска заданий, создание пулов или добавление вычислительных узлов позволит вам заранее выбирать время и место создания вычислительных ресурсов. Вы можете определить учетные записи, требующие повышения квот, прежде чем выделить дополнительные ресурсы в этих учетных записях.
+* **Объедините функции других служб Azure** для создания полнофункционального приложения для управления, в котором одновременно используются библиотека .NET для управления пакетной службой, [Azure Active Directory][aad_about] и [Azure Resource Manager][resman_overview]. С помощью этих функций и соответствующих API вы можете предоставлять клиентам удобные возможности проверки подлинности, создания и удаления групп ресурсов, а также доступа к описанным выше функциям.
 
 > [!NOTE]
-> Хотя данная статья посвящена hello программное управление учетными записями, ключи и квоты пакета, можно выполнять многие из этих действий с помощью hello [портал Azure][azure_portal]. Дополнительные сведения см. в разделе [создать учетную запись пакетной службы Azure с помощью портала Azure hello](batch-account-create-portal.md) и [квоты и лимиты для пакетной службы Azure hello](batch-quota-limit.md).
+> Несмотря на то, что в этой статье акцент сделан на программное управление учетными записями пакетной службы, ключами и квотами, большую часть описываемых действий можно выполнить на [портале Azure][azure_portal]. Дополнительные сведения см. в статьях [Создание учетной записи пакетной службы Azure на портале Azure](batch-account-create-portal.md) и [Квоты и ограничения пакетной службы Azure](batch-quota-limit.md).
 > 
 > 
 
 ## <a name="create-and-delete-batch-accounts"></a>Создание и удаление учетных записей пакетной службы
-Как уже упоминалось, одной из функций hello основной hello API управления пакета является toocreate и удалять учетные записи пакета в регионе Azure. Таким образом, используйте toodo [BatchManagementClient.Account.CreateAsync] [ net_create] и [DeleteAsync][net_delete], или их синхронных аналогов.
+Как упоминалось выше, одной из основных функций API управления пакетной службой является возможность создания и удаления учетных записей пакетной службы в определенном регионе Azure. Для этого используйте методы [BatchManagementClient.Account.CreateAsync][net_create] и [DeleteAsync][net_delete], а также их синхронные аналоги.
 
-Hello следующий фрагмент кода создает учетную запись, получает вновь созданные учетной записи из hello пакетная служба hello, а затем удаляет его. В этом фрагменте кода и hello другим пользователям в этой статье `batchManagementClient` — это полностью инициализированный экземпляр [BatchManagementClient][net_mgmt_client].
+В следующем фрагменте кода создается учетная запись, выполняется получение созданной учетной записи из пакетной службы, а затем она удаляется. В этом и других фрагментах кода, приведенных в этой статье, `batchManagementClient` представляет собой полностью инициализированный экземпляр [BatchManagementClient][net_mgmt_client].
 
 ```csharp
 // Create a new Batch account
@@ -53,17 +53,17 @@ await batchManagementClient.Account.CreateAsync("MyResourceGroup",
     "mynewaccount",
     new BatchAccountCreateParameters() { Location = "West US" });
 
-// Get hello new account from hello Batch service
+// Get the new account from the Batch service
 AccountResource account = await batchManagementClient.Account.GetAsync(
     "MyResourceGroup",
     "mynewaccount");
 
-// Delete hello account
+// Delete the account
 await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name);
 ```
 
 > [!NOTE]
-> Требуется для приложений, использующих библиотеки пакета управления .NET hello и его класс BatchManagementClient **администратора службы** или **coadministrator** получить доступ к подписке toohello, которому принадлежит hello Управлять toobe пакетной учетной записи. Дополнительные сведения см. в разделе hello [Azure Active Directory](#azure-active-directory) раздел и hello [AccountManagement] [ acct_mgmt_sample] образец кода.
+> Приложениям, использующим библиотеку .NET для управления пакетной службой и класс BatchManagementClient, необходимы права **администратора службы** или **соадминистратора** для доступа к подписке, которой принадлежит управляемая учетная запись пакетной службы. Дополнительные сведения можно получить, ознакомившись с разделом [Azure Active Directory](#azure-active-directory) ниже и примером кода [AccountManagement][acct_mgmt_sample].
 > 
 > 
 
@@ -71,7 +71,7 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 Получите первичный и вторичный ключи из любой учетной записи пакетной службы в своей подписке с помощью метода [ListKeysAsync][net_list_keys]. Для повторного создания этих ключей используется метод [RegenerateKeyAsync][net_regenerate_keys].
 
 ```csharp
-// Get and print hello primary and secondary keys
+// Get and print the primary and secondary keys
 BatchAccountListKeyResult accountKeys =
     await batchManagementClient.Account.ListKeysAsync(
         "MyResourceGroup",
@@ -79,7 +79,7 @@ BatchAccountListKeyResult accountKeys =
 Console.WriteLine("Primary key:   {0}", accountKeys.Primary);
 Console.WriteLine("Secondary key: {0}", accountKeys.Secondary);
 
-// Regenerate hello primary key
+// Regenerate the primary key
 BatchAccountRegenerateKeyResponse newKeys =
     await batchManagementClient.Account.RegenerateKeyAsync(
         "MyResourceGroup",
@@ -90,20 +90,20 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> Вы можете упростить процедуру подключения в своем приложении для управления. Во-первых, получить ключ учетной записи для учетной записи пакетной hello нужно toomanage с [ListKeysAsync][net_list_keys]. Затем используйте этот ключ при инициализации библиотеки .NET пакета hello [BatchSharedKeyCredentials] [ net_sharedkeycred] класс, который используется при инициализации [BatchClient] [net_batch_client].
+> Вы можете упростить процедуру подключения в своем приложении для управления. Сначала получите ключ учетной записи пакетной службы, которой вы хотите управлять, с помощью метода [ListKeysAsync][net_list_keys]. Затем используйте этот ключ при инициализации класса [BatchSharedKeyCredentials][net_sharedkeycred] библиотеки .NET пакетной службы, который применяется при инициализации [BatchClient][net_batch_client].
 > 
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Проверка подписки Azure и квот учетной записи пакетной службы
-Подписки Azure и hello отдельных служб Azure, как все пакета имеют квот по умолчанию, максимальное число сущностей, определенных в них hello. Hello квоты по умолчанию для подписок Azure, в разделе [подписка Azure и ограничения служб, квоты и ограничения](../azure-subscription-service-limits.md). Квоты по умолчанию hello hello пакетная служба, в разделе [квоты и лимиты для пакетной службы Azure hello](batch-quota-limit.md). С помощью библиотеки .NET пакета управления hello, можно проверить эти квоты в ваших приложениях. Это позволит вам решений по распределению toomake перед добавлением учетных записей или вычислительные ресурсы, такие как пулы и вычислительных узлов.
+Подписки Azure и отдельные службы Azure, такие как пакетная служба, имеют стандартные квоты для ограничения количества определенных в них сущностей. Квоты по умолчанию для подписок Azure см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md). Квоты пакетной службы по умолчанию см. в статье [Квоты и ограничения пакетной службы Azure](batch-quota-limit.md). С помощью библиотеки .NET для управления пакетной службой можно проверять эти квоты в приложениях. Это позволяет принимать решения о выделении ресурсов перед добавлением учетных записей или вычислительных ресурсов, таких как пулы и вычислительные узлы.
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Определение квот для учетной записи пакетной службы в подписке Azure
-Перед созданием пакетную учетную запись в области, можно проверить вашей подписки Azure toosee ли вы могли tooadd учетную запись в этом регионе.
+Прежде чем создавать учетную запись пакетной службы в определенном регионе, вы можете проверить данные подписки Azure, чтобы узнать о возможности создания учетной записи в этом регионе.
 
-В приведенном ниже фрагменте кода hello, сначала используется [BatchManagementClient.Account.ListAsync] [ net_mgmt_listaccounts] tooget коллекцию все учетные записи пакета, которые находятся в пределах подписки. После получения этой коллекции мы мы определили сколько учетных записей в целевой области hello. Затем мы используем [BatchManagementClient.Subscriptions] [ net_mgmt_subscriptions] tooobtain hello Квота пакетной учетной записи и определите, сколько учетных записей (если таковые имеются), которые могут создаваться в этом регионе.
+В следующем фрагменте кода мы сначала используем метод [BatchManagementClient.Account.ListAsync][net_mgmt_listaccounts], чтобы получить коллекцию всех учетных записей пакетной службы в подписке. После получения этой коллекции мы определяем количество учетных записей в целевом регионе. Затем мы используем метод [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] для получения квоты учетной записи пакетной службы и определения количества учетных записей, которые могут создаваться в этом регионе (если таковые имеются).
 
 ```csharp
-// Get a collection of all Batch accounts within hello subscription
+// Get a collection of all Batch accounts within the subscription
 BatchAccountListResponse listResponse =
         await batchManagementClient.Account.ListAsync(new AccountListParameters());
 IList<AccountResource> accounts = listResponse.Accounts;
@@ -111,68 +111,68 @@ Console.WriteLine("Total number of Batch accounts under subscription id {0}:  {1
     creds.SubscriptionId,
     accounts.Count);
 
-// Get a count of all accounts within hello target region
+// Get a count of all accounts within the target region
 string region = "westus";
 int accountsInRegion = accounts.Count(o => o.Location == region);
 
-// Get hello account quota for hello specified region
+// Get the account quota for the specified region
 SubscriptionQuotasGetResponse quotaResponse = await batchManagementClient.Subscriptions.GetSubscriptionQuotasAsync(region);
 Console.WriteLine("Account quota for {0} region: {1}", region, quotaResponse.AccountQuota);
 
-// Determine how many accounts can be created in hello target region
+// Determine how many accounts can be created in the target region
 Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
-Console.WriteLine("You can create {0} accounts in hello {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
+Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-В приведенном выше фрагменте hello `creds` является экземпляром класса [TokenCloudCredentials][azure_tokencreds]. toosee пример создания этого объекта. в разделе hello [AccountManagement] [ acct_mgmt_sample] образец кода на сайте GitHub.
+В приведенном выше фрагменте `creds` является экземпляром [TokenCloudCredentials][azure_tokencreds]. Пример создания этого объекта см. в примере [AccountManagement][acct_mgmt_sample] на GitHub.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Определение квоты вычислительных ресурсов для учетной записи пакетной службы
-Перед увеличением вычислительные ресурсы в пакет решения, можно проверить tooensure hello ресурсов, tooallocate не будет превышать квоты hello учетной записи. В приведенном ниже фрагменте кода hello, мы печати hello данные квоты для hello пакетной учетной записи с именем `mybatchaccount`. В приложении можно использовать такие сведения toodetermine ли hello учетной записи может обрабатывать toobe дополнительные ресурсы hello создан.
+Прежде чем увеличивать количество вычислительных ресурсов в решении пакетной службы, убедитесь, что выделяемые ресурсы не превысят квоты для учетной записи. В следующем фрагменте кода мы выводим сведения о квотах для учетной записи пакетной службы с именем `mybatchaccount`. В своем приложении с помощью этих сведений можно определить, способна ли учетная запись обрабатывать дополнительные ресурсы, которые вы хотите создать.
 
 ```csharp
-// First obtain hello Batch account
+// First obtain the Batch account
 BatchAccountGetResponse getResponse =
     await batchManagementClient.Account.GetAsync("MyResourceGroup", "mybatchaccount");
 AccountResource account = getResponse.Resource;
 
-// Now print hello compute resource quotas for hello account
+// Now print the compute resource quotas for the account
 Console.WriteLine("Core quota: {0}", account.Properties.CoreQuota);
 Console.WriteLine("Pool quota: {0}", account.Properties.PoolQuota);
 Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.ActiveJobAndJobScheduleQuota);
 ```
 
 > [!IMPORTANT]
-> Хотя по умолчанию квоты для подписки Azure и служб, многие из этих ограничений может быть повышен путем выполнения запроса в hello [портал Azure][azure_portal]. Например, в разделе [квоты и лимиты для пакетной службы Azure hello](batch-quota-limit.md) инструкции об увеличении квот пакетной учетной записи.
+> Несмотря на наличие стандартных квот для подписок и служб Azure, многие из ограничений можно увеличить путем создания соответствующего запроса на [портале Azure][azure_portal]. В качестве примера обратитесь к инструкциям по увеличению квот для учетной записи пакетной службы в статье [Квоты и ограничения пакетной службы Azure](batch-quota-limit.md) .
 > 
 > 
 
 ## <a name="use-azure-ad-with-batch-management-net"></a>Использование Azure AD с библиотекой .NET для управления пакетной службой
 
-Библиотека пакета управления .NET Hello является клиента поставщика ресурсов Azure и используется вместе с [диспетчера ресурсов Azure] [ resman_overview] toomanage записи ресурсам программными средствами. Azure AD — необходимые tooauthenticate запросов, выполненных при помощи любого клиента поставщика ресурсов Azure, включая библиотеку .NET пакета управления hello, а по [диспетчера ресурсов Azure][resman_overview]. Сведения об использовании Azure AD с библиотекой hello пакета управления .NET см. в разделе [использование Azure Active Directory tooauthenticate пакета решения](batch-aad-auth.md). 
+Данная библиотека является клиентом поставщика ресурсов Azure и используется совместно с [Azure Resource Manager][resman_overview] для программного управления ресурсами учетных записей. Служба Azure AD необходима для аутентификации запросов, выполненных с помощью любого клиента поставщика ресурсов Azure, а также библиотеки .NET для управления пакетной службой и [Azure Resource Manager][resman_overview]. Сведения об использовании Azure AD с библиотекой .NET для управления пакетной службой см. в разделе [Authenticate from Batch solutions with Active Directory](batch-aad-auth.md) (Аутентификация решений пакетной службы в Active Directory). 
 
 ## <a name="sample-project-on-github"></a>Пример проекта на сайте GitHub
 
-toosee пакета управления .NET в действии, извлечь hello [AccountManagment] [ acct_mgmt_sample] примера проекта на GitHub. AccountManagment пример приложения Hello демонстрирует hello следующие операции:
+Работу библиотеки .NET для управления пакетной службой можно посмотреть на примере проекта [AccountManagment][acct_mgmt_sample] на сайте GitHub. В примере приложения AccountManagment демонстрируются следующие операции.
 
-1. Получение маркера безопасности из Active Directory Azure с помощью библиотеки [ADAL][aad_adal]. Если пользователь hello не уже выполнил вход, запрос для своих учетных данных Azure.
-2. С помощью маркера безопасности hello, полученный из Azure AD, создавать [SubscriptionClient] [ resman_subclient] tooquery Azure список подписок, связанных с учетной записью hello. Hello пользователь может выбрать подписку из списка hello, если он содержит более одной подписки.
-3. Получите учетные данные, связанные с hello выбранной подписки.
-4. Создание [ResourceManagementClient] [ resman_client] объекта с использованием учетных данных hello.
-5. Используйте [ResourceManagementClient] [ resman_client] объекта toocreate группу ресурсов.
-6. Используйте [BatchManagementClient] [ net_mgmt_client] объекта tooperform несколько операций пакетной учетной записи:
-   * Создайте учетную запись пакета в новую группу ресурсов hello.
-   * Получение hello вновь созданные учетной записи из hello пакетной службы.
-   * Здравствуй, мир ключи учетной записи для новой учетной записи hello.
-   * Повторно создать новый первичный ключ для учетной записи hello.
-   * Сведения о квоте Здравствуй, мир hello учетной записи.
-   * Здравствуй, мир данные квоты для подписки hello.
-   * Печать всех учетных записей в рамках подписки hello.
+1. Получение маркера безопасности из Active Directory Azure с помощью библиотеки [ADAL][aad_adal]. Если пользователь не выполнил вход, ему будет предложено ввести учетные данные Azure.
+2. Создание [SubscriptionClient][resman_subclient] для отправки запроса к Azure на получение списка подписок, связанных с учетной записью, с помощью маркера безопасности, полученного из Azure AD. Пользователь может выбрать подписку из списка, если он содержит более одной подписки.
+3. Получение учетных данных, связанных с выбранной подпиской.
+4. Создание объекта [ResourceManagementClient][resman_client] с использованием учетных данных.
+5. Создание группы ресурсов с помощью объекта [ResourceManagementClient][resman_client].
+6. Выполнение нескольких операций с учетной записью пакетной службы с помощью объекта [BatchManagementClient][net_mgmt_client].
+   * Создание учетной записи пакетной службы в новой группе ресурсов.
+   * Получение созданной учетной записи из пакетной службы.
+   * Вывод ключей учетной записи для новой учетной записи.
+   * Повторное создание первичного ключа для учетной записи.
+   * Вывод сведений о квотах для учетной записи.
+   * Вывод сведений о квотах для подписки.
+   * Вывод всех учетных записей в подписке.
    * Удаление созданной учетной записи.
-7. Удалите группу ресурсов hello.
+7. Удалите ее.
 
-Перед удалением группы учетных записей и ресурсов пакета только что созданный hello, их можно просмотреть в hello [портал Azure][azure_portal]:
+Перед удалением новой учетной записи пакетной службы или группы ресурсов вы можете просмотреть их на [портале Azure][azure_portal].
 
-Пример приложения hello toorun успешно, необходимо сначала зарегистрировать его с вашим клиентом Azure AD в hello Azure portal и предоставьте разрешения toohello API диспетчера ресурсов Azure. Выполните шаги hello в [решения для проверки подлинности пакета управления с помощью Active Directory](batch-aad-auth-management.md).
+Для успешного выполнения примера приложения необходимо зарегистрировать его в клиенте Azure AD на портале Azure и предоставить разрешения для API Azure Resource Manager. Выполните инструкции, описанные в статье [Аутентификация решений по управлению пакетной службой с помощью Active Directory](batch-aad-auth-management.md).
 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Что такое Microsoft Azure Active Directory?"

@@ -1,6 +1,6 @@
 ---
-title: "aaaCloud роль служб config XPath памятку | Документы Microsoft"
-description: "Здравствуйте, различные параметры XPath, который можно использовать в tooexpose параметры конфигурации роли hello облачной службы в качестве переменной среды."
+title: "Памятка по конфигурации XPath для роли облачных служб | Документация Майкрософт"
+description: "Различные параметры XPath можно использовать в конфигурации роли облачной службы, чтобы предоставить их в качестве переменных среды."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 27f98f956a1c790c9bb30f9fefe1ab1736b2b150
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Предоставление параметров конфигурации ролей как переменной среды с помощью XPath
-В hello облачной службы рабочего процесса или файл определения веб-роль службы можно предоставить значения конфигурации времени выполнения в переменных среды. поддерживаются следующие значения XPath Hello (что соответствует tooAPI значения).
+В файле определения службы рабочей роли или веб-роли облачной службы можно предоставить значения конфигурации среды выполнения как переменные среды. Поддерживаются следующие значения XPath (которые соответствуют значениям API).
 
-Эти значения XPath также доступны через hello [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) библиотеки. 
+Эти значения XPath также можно использовать с помощью библиотеки [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) . 
 
 ## <a name="app-running-in-emulator"></a>Приложение, запущенное в эмуляторе
-Указывает, что приложение hello выполняется в эмуляторе hello.
+Указывает, что приложение выполняется в эмуляторе.
 
 | Тип | Пример |
 | --- | --- |
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var x = RoleEnvironment.IsEmulated; |
 
 ## <a name="deployment-id"></a>Идентификатор развертывания
-Извлекает идентификатор hello развертывания для экземпляра hello.
+Получает идентификатор развертывания для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var deploymentId = RoleEnvironment.DeploymentId; |
 
 ## <a name="role-id"></a>Идентификатор роли
-Возвращает идентификатор текущей роли hello для экземпляра hello.
+Получает идентификатор текущей роли для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var id = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Обновление домена
-Получает домен обновления hello hello экземпляра.
+Получает домен обновления для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## <a name="fault-domain"></a>Домен сбоя
-Получает домен сбоя hello hello экземпляра.
+Получает домен сбоя для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## <a name="role-name"></a>Имя роли
-Возвращает имя роли hello hello экземпляров.
+Получает имя роли для экземпляров.
 
 | Тип | Пример |
 | --- | --- |
@@ -74,7 +74,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Параметр конфигурации
-Извлекает значение hello hello заданное параметром конфигурации.
+Получает значение указанного параметра конфигурации.
 
 | Тип | Пример |
 | --- | --- |
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
 ## <a name="local-storage-path"></a>Путь к локальному хранилищу
-Извлекает hello путь локального хранилища для экземпляра hello.
+Получает путь к локальному хранилищу для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -90,7 +90,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
 
 ## <a name="local-storage-size"></a>Размер локального хранилища
-Получает размер hello hello локального хранилища для экземпляра hello.
+Получает размер локального хранилища для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Протокол конечной точки
-Извлекает hello протокол конечной точки для экземпляра hello.
+Получает протокол конечной точки для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
 
 ## <a name="endpoint-ip"></a>IP-адрес конечной точки
-Возвращает hello указан IP-адрес конечной точки.
+Получает IP-адрес указанной конечной точки.
 
 | Тип | Пример |
 | --- | --- |
@@ -114,7 +114,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
 
 ## <a name="endpoint-port"></a>Порт конечной точки
-Извлекает hello порт конечной точки для экземпляра hello.
+Получает порт конечной точки для экземпляра.
 
 | Тип | Пример |
 | --- | --- |
@@ -122,7 +122,7 @@ ms.lasthandoff: 10/06/2017
 | Код |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
 
 ## <a name="example"></a>Пример
-Ниже приведен пример рабочей роли, которая создает задачу запуска с переменной среды с именем `TestIsEmulated` задать toohello [ @emulated значение xpath](#app-running-in-emulator). 
+Ниже приведен пример рабочей роли, создающей задачу запуска с переменной среды `TestIsEmulated`, которой присваивается [значение XPath @emulated](#app-running-in-emulator). 
 
 ```xml
 <WorkerRole name="Role1">
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о hello [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) файла.
+Узнайте больше о файле [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) .
 
 Создайте пакет [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) .
 

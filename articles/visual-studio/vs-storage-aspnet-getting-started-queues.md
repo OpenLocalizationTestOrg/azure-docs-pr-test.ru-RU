@@ -1,6 +1,6 @@
 ---
-title: "aaaGet к работе с хранилищем очередей Azure и Visual Studio подключения службы (ASP.NET) | Документы Microsoft"
-description: "Как tooget запущена с помощью хранилища очередей Azure в проект ASP.NET в Visual Studio после подключения tooa учетной записи хранилища с помощью Visual Studio подключенные службы"
+title: "Приступая к работе с хранилищем очередей Azure и подключенными службами Visual Studio (ASP.NET) | Документация Майкрософт"
+description: "Как приступить к работе, используя хранилище очередей Azure в проекте ASP.NET в Visual Studio после подключения к учетной записи хранения с помощью подключенных служб Visual Studio."
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
 ms.author: kraigb
-ms.openlocfilehash: 415a437c4ce60b1e2e328f8e937c73b0d5c50e78
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4687e5dfce72583728068c176d86d100313badf6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Приступая к работе с хранилищем очередей Azure и подключенными службами Visual Studio (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Обзор
 
-Хранилище очередей Azure — это служба, обеспечивающая обмен сообщениями в облаке между компонентами приложения. При разработке приложений для масштабирования компоненты приложения часто не связаны между собой, так что они могут масштабироваться независимо друг от друга. Хранилище очередей обеспечивает асинхронный обмен сообщениями для взаимодействия между компонентами приложения, ли они выполняются в облаке hello, на рабочем столе hello, на локальном сервере или на мобильном устройстве. Хранилище очередей также поддерживает управление асинхронными задачами и создание рабочих процессов.
+Хранилище очередей Azure — это служба, обеспечивающая обмен сообщениями в облаке между компонентами приложения. При разработке приложений для масштабирования компоненты приложения часто не связаны между собой, так что они могут масштабироваться независимо друг от друга. Хранилище очередей обеспечивает асинхронный обмен сообщениями для взаимодействия между компонентами приложения независимо от того, где они выполняются: в облаке, на рабочем столе, локальном сервере или мобильном устройстве. Хранилище очередей также поддерживает управление асинхронными задачами и создание рабочих процессов.
 
-В этом учебнике показано, как toowrite ASP.NET кода в некоторых распространенных сценариях, с помощью сущностей хранилища очереди Azure. Сюда относятся такие задачи, как создание очереди Azure, а также добавление, изменение, чтение и удаление сообщений очереди.
+В этом руководстве показано, как написать код ASP.NET для некоторых распространенных сценариев с использованием сущностей хранилища очередей Azure. Сюда относятся такие задачи, как создание очереди Azure, а также добавление, изменение, чтение и удаление сообщений очереди.
 
 ##<a name="prerequisites"></a>Предварительные требования
 
@@ -42,19 +42,19 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="create-an-mvc-controller"></a>Создание контроллера MVC 
 
-1. В hello **обозревателе решений**, щелкните правой кнопкой мыши **контроллеров**и в контекстном меню hello, выберите **Добавить -> контроллер**.
+1. В **обозревателе решений** щелкните правой кнопкой мыши **Контроллеры** и в контекстном меню выберите **Добавить -> Контроллер**.
 
-    ![Добавление контроллера tooan приложение ASP.NET MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
+    ![Добавление контроллера в приложение ASP.NET MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-1. На hello **Добавление формирования шаблонов** диалогового окна выберите **контроллер MVC 5 - пустой**и выберите **добавить**.
+1. В диалоговом окне **Добавление шаблона** выберите **Контроллер MVC5 — пустой** и нажмите кнопку **Добавить**.
 
     ![Выбор типа контроллера MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-1. На hello **добавления контроллера** диалогового окна, имя контроллера hello *QueuesController*и выберите **добавить**.
+1. В диалоговом окне **Добавление контроллера** присвойте контроллеру имя *BlobsController* и нажмите кнопку **Добавить**.
 
-    ![Имя контроллера MVC hello](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
+    ![Назначение имени для контроллера MVC](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. Добавьте следующее hello *с помощью* toohello директивы `QueuesController.cs` файла:
+1. Добавьте в файл `QueuesController.cs` следующие директивы *using*:
 
     ```csharp
     using Microsoft.Azure;
@@ -62,28 +62,28 @@ ms.lasthandoff: 10/06/2017
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Queue;
     ```
-## <a name="create-a-queue"></a>Создать очередь
+## <a name="create-a-queue"></a>Создание очереди
 
-Hello ниже показано, как toocreate очереди:
+Чтобы создать очередь, выполните приведенные ниже действия.
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла. 
+1. Откройте файл `QueuesController.cs` . 
 
 1. Добавьте метод **CreateQueue**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult CreateQueue()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
 
-1. В пределах hello **CreateQueue** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В методе **CreateQueue** организуйте получение объекта **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -95,29 +95,29 @@ Hello ниже показано, как toocreate очереди:
     ```csharp
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Получить **CloudQueue** , представляющий имя нужной очереди toohello ссылки. Hello **CloudQueueClient.GetQueueReference** метод не выполняет запрос к очереди хранилища. независимо от того, имеется ли hello очередь существует, возвращается ссылка Hello. 
+1. Получите объект **CloudQueue**, представляющий ссылку на требуемое имя очереди. Метод **CloudQueueClient.GetQueueReference** не выполняет запрос к хранилищу очередей. Ссылка возвращается всегда, независимо от существования очереди. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Вызовите hello **CloudQueue.CreateIfNotExists** метод toocreate hello очереди, если она еще не существует. Hello **CloudQueue.CreateIfNotExists** возвращает **true** Если hello очередь не существует и успешно создан. В противном случае возвращается значение **false**.    
+1. Вызовите метод **CloudQueue.CreateIfNotExists**, чтобы создать очередь, если она еще не создана. Метод **CloudQueue.CreateIfNotExists** возвращает значение**true**, если очередь не существовала и была успешно создана. В противном случае возвращается значение **false**.    
 
     ```csharp
     ViewBag.Success = queue.CreateIfNotExists();
     ```
 
-1. Обновление hello **ViewBag** с именем hello hello очереди.
+1. Занесите имя очереди в **ViewBag**.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
 
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **CreateQueue** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите имя представления **CreateQueue** и выберите **Добавить**.
 
-1. Откройте `CreateQueue.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `CreateQueue.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -129,42 +129,42 @@ Hello ниже показано, как toocreate очереди:
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **создать очередь** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Создание очереди**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Создание очереди](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Как упоминалось ранее, hello **CloudQueue.CreateIfNotExists** возвращает **true** только когда hello очередь не существует и создается. Таким образом, если при запуске приложение hello hello очередь существует, метод hello возвращает **false**. приложение hello toorun несколько раз, необходимо удалить очередь hello перед повторным запуском приложения hello. Удаление очереди hello можно сделать с помощью hello **CloudQueue.Delete** метод. Можно также удалить очередь hello, с помощью hello [портал Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) или hello [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Как упоминалось ранее, метод **CloudQueue.CreateIfNotExists** возвращает значение **true**, только если создается не существовавшая ранее очередь. Если вы запустите приложение, когда очередь уже существует, метод вернет значение **false**. Чтобы запустить приложение несколько раз, вам нужно удалять очередь перед каждым повторным запуском приложения. Чтобы удалить очередь, используйте метод **CloudQueue.Delete**. Ее также можно удалить с помощью [портала Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040) или в [обозревателе хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
-## <a name="add-a-message-tooa-queue"></a>Добавить tooa очереди сообщений
+## <a name="add-a-message-to-a-queue"></a>Добавление сообщения в очередь
 
-После [была создана очередь](#create-a-queue), можно добавить toothat сообщений в очереди. В этом разделе описывается добавление очередью сообщений tooa *тестировать очередь*. 
+Когда вы закончите [создание очереди](#create-a-queue), можно добавлять в нее сообщения. В этом разделе мы будем добавлять сообщения в очередь с именем *test-queue*. 
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла.
+1. Откройте файл `QueuesController.cs` .
 
 1. Добавьте метод **AddMessage**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult AddMessage()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
  
-1. В пределах hello **AddMessage** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В рамках метода **AddMessage** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -177,36 +177,36 @@ Hello ниже показано, как toocreate очереди:
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Получить **CloudQueueContainer** , представляющий toohello ссылка на очередь. 
+1. Получите объект **CloudQueueContainer**, представляющий ссылку на очередь. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Создать hello **CloudQueueMessage** объект, представляющий сообщение hello tooadd toohello очереди. Для создания объекта **CloudQueueMessage** можно использовать либо строку (в формате UTF-8), либо массив типа byte.
+1. Создайте объект **CloudQueueMessage**, представляющий сообщение, которое требуется добавить в очередь. Для создания объекта **CloudQueueMessage** можно использовать либо строку (в формате UTF-8), либо массив типа byte.
 
     ```csharp
     CloudQueueMessage message = new CloudQueueMessage("Hello, Azure Queue Storage");
     ```
 
-1. Вызовите hello **CloudQueue.AddMessage** метод tooadd hello корреляции toohello очереди.
+1. Вызовите метод **CloudQueue.AddMessage**, чтобы добавить сообщение в очередь.
 
     ```csharp
     queue.AddMessage(message);
     ```
 
-1. Создайте и задайте несколько **ViewBag** свойства для отображения в представлении hello.
+1. Создайте и настройте несколько свойств **ViewBag**, чтобы они отображались в представлении.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
 
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **AddMessage** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите имя представления **AddMessage** и выберите **Добавить**.
 
-1. Откройте `AddMessage.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `AddMessage.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -215,45 +215,45 @@ Hello ниже показано, как toocreate очереди:
     
     <h2>Add Message results</h2>
     
-    hello message '@ViewBag.Message' was added toohello queue '@ViewBag.QueueName'.
+    The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **добавить сообщение** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Добавление сообщения**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Добавление сообщения](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-Здравствуйте, два раздела - [чтения сообщения из очереди, не удаляя его](#read-a-message-from-a-queue-without-removing-it) и [чтение и удаление сообщения из очереди](#read-and-remove-a-message-from-a-queue) -показывают, как tooread сообщений из очереди.  
+Чтение сообщений демонстрируется в двух разделах: [Чтение сообщения из очереди, не удаляя его](#read-a-message-from-a-queue-without-removing-it) и [Чтение и удаление сообщения из очереди](#read-and-remove-a-message-from-a-queue).    
 
 ## <a name="read-a-message-from-a-queue-without-removing-it"></a>Чтение сообщения из очереди, не удаляя его
 
-В этом разделе показано, как toopeek в сообщение из очереди (чтения hello первого сообщения без его удаления).  
+В следующем разделе объясняется, как программным способом просмотреть (прочитать, не удаляя) первое сообщение в очереди.  
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла.
+1. Откройте файл `QueuesController.cs` .
 
 1. Добавьте метод **PeekMessage**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult PeekMessage()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
  
-1. В пределах hello **PeekMessage** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В рамках метода **PeekMessage** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -266,30 +266,30 @@ Hello ниже показано, как toocreate очереди:
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Получить **CloudQueueContainer** , представляющий toohello ссылка на очередь. 
+1. Получите объект **CloudQueueContainer**, представляющий ссылку на очередь. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Вызовите hello **CloudQueue.PeekMessage** метод tooread hello первого сообщения в очереди hello, не удаляя его из очереди hello. 
+1. Вызовите метод **CloudQueue.PeekMessage**, чтобы прочитать первое сообщение из начала очереди, не удаляя его. 
 
     ```csharp
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. Обновление hello **ViewBag** с двумя значениями: имя очереди hello и приветственное сообщение, которое было прочитано. Hello **CloudQueueMessage** объект предоставляет два свойства для получения значения hello объекта: **CloudQueueMessage.AsBytes** и **CloudQueueMessage.AsString**. **AsString** (который используется в этом примере) возвращает строку, а **AsBytes** возвращает массив байтов.
+1. Занесите в **ViewBag** два значения: имя очереди и прочитанное сообщение. Объект **CloudQueueMessage**, предоставляет два свойства для получения значений объекта: **CloudQueueMessage.AsBytes** и **CloudQueueMessage.AsString**. **AsString** (который используется в этом примере) возвращает строку, а **AsBytes** возвращает массив байтов.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **PeekMessage** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите имя представления **PeekMessage** и выберите **Добавить**.
 
-1. Откройте `PeekMessage.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `PeekMessage.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -304,40 +304,40 @@ Hello ниже показано, как toocreate очереди:
     </table>    
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **считывания сообщения** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Просмотр сообщения**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Просмотр сообщения](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
 ## <a name="read-and-remove-a-message-from-a-queue"></a>Чтение и удаление сообщения из очереди
 
-В этом разделе вы узнаете, как tooread и удалять сообщение из очереди.   
+В этом разделе вы узнаете, как можно прочитать и удалить сообщение из очереди.   
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла.
+1. Откройте файл `QueuesController.cs` .
 
 1. Добавьте метод **ReadMessage**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult ReadMessage()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
  
-1. В пределах hello **ReadMessage** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В рамках метода **ReadMessage** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -350,37 +350,37 @@ Hello ниже показано, как toocreate очереди:
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Получить **CloudQueueContainer** , представляющий toohello ссылка на очередь. 
+1. Получите объект **CloudQueueContainer**, представляющий ссылку на очередь. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Вызовите hello **CloudQueue.GetMessage** метод tooread hello первого сообщения в очереди hello. Hello **CloudQueue.GetMessage** метод делает hello другой код, чтение сообщений, чтобы никакой другой код можно изменить или удалить сообщение hello при к обработке сообщений невидимым для tooany 30 секунд (по умолчанию). объем времени приветственное сообщение hello toochange выполняется без внешних проявлений, измените hello **visibilityTimeout** параметром, передаваемым toohello **CloudQueue.GetMessage** метод.
+1. Вызовите метод **CloudQueue.GetMessage**, чтобы прочитать первое сообщение в очереди. Метод **CloudQueue.GetMessage** на 30 секунд (по умолчанию) делает сообщение невидимым для любого другого кода, считывающего сообщения, чтобы никакой другой код не смог изменить или удалить сообщение, пока вы с ним работаете. Чтобы изменить промежуток времени, в течение которого сообщение остается невидимым, измените параметр **visibilityTimeout**, передаваемый в метод **CloudQueue.GetMessage**.
 
     ```csharp
-    // This message will be invisible tooother code for 30 seconds.
+    // This message will be invisible to other code for 30 seconds.
     CloudQueueMessage message = queue.GetMessage();     
     ```
 
-1. Вызовите hello **CloudQueueMessage.Delete** метод toodelete приветственное сообщение из очереди hello.
+1. Вызовите метод **CloudQueueMessage.Delete**, чтобы удалить сообщение из очереди.
 
     ```csharp
     queue.DeleteMessage(message);
     ```
 
-1. Обновление hello **ViewBag** hello сообщение удалено, а hello имя очереди hello.
+1. Занесите во **ViewBag** удаленное сообщение и имя очереди.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Message = message.AsString;
     ```
  
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **ReadMessage** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите имя представления **ReadMessage** и выберите **Добавить**.
 
-1. Откройте `ReadMessage.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `ReadMessage.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -395,40 +395,40 @@ Hello ниже показано, как toocreate очереди:
     </table>
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **чтение и удаление сообщений** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Чтение и удаление сообщения**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Чтение и удаление сообщения](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
-## <a name="get-hello-queue-length"></a>Получает длину очереди hello
+## <a name="get-the-queue-length"></a>Получение длины очереди
 
-В этом разделе показано, как tooget hello длина очереди (число сообщений). 
+В этом разделе показано, как узнать длину очереди (количество сообщений). 
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла.
+1. Откройте файл `QueuesController.cs` .
 
 1. Добавьте метод **GetQueueLength**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult GetQueueLength()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
  
-1. В пределах hello **ReadMessage** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В рамках метода **ReadMessage** получите объект **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -441,36 +441,36 @@ Hello ниже показано, как toocreate очереди:
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Получить **CloudQueueContainer** , представляющий toohello ссылка на очередь. 
+1. Получите объект **CloudQueueContainer**, представляющий ссылку на очередь. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Вызовите hello **CloudQueue.FetchAttributes** атрибуты метода tooretrieve hello очереди (в том числе его длина). 
+1. Вызовите метод **CloudQueue.FetchAttributes**, чтобы получить атрибуты очереди (включая ее длину). 
 
     ```csharp
     queue.FetchAttributes();
     ```
 
-6. Hello доступа **CloudQueue.ApproximateMessageCount** длина очереди для свойства tooget hello.
+6. Просмотрите свойство **CloudQueue.ApproximateMessageCount**, чтобы узнать длину очереди.
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;
     ```
 
-1. Обновление hello **ViewBag** с именем hello hello очереди и ее длину.
+1. Занесите во **ViewBag** имя и длину очереди.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ViewBag.Length = nMessages;
     ```
  
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **GetQueueLength** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите **GetQueueLength** для имени представления и выберите **Добавить**.
 
-1. Откройте `GetQueueLengthMessage.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `GetQueueLengthMessage.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -479,43 +479,43 @@ Hello ниже показано, как toocreate очереди:
     
     <h2>Get Queue Length results</h2>
     
-    hello queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
+    The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **длина очереди получения** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Получение длины очереди**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Получение длины очереди](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
 
 ## <a name="delete-a-queue"></a>Удаление очереди
-В этом разделе показано, как toodelete очереди. 
+В этом разделе показано, как удалить очередь. 
 
 > [!NOTE]
 > 
-> В этом разделе предполагается шаги hello [настроить среду разработки hello](#set-up-the-development-environment). 
+> Переходите к этому разделу, только выполнив все действия, описанные в разделе [Настройка среды разработки](#set-up-the-development-environment). 
 
-1. Откройте hello `QueuesController.cs` файла.
+1. Откройте файл `QueuesController.cs` .
 
 1. Добавьте метод **DeleteQueue**, который возвращает **ActionResult**.
 
     ```csharp
     public ActionResult DeleteQueue()
     {
-        // hello code in this section goes here.
+        // The code in this section goes here.
 
         return View();
     }
     ```
  
-1. В пределах hello **DeleteQueue** метода получения **CloudStorageAccount** , представляющий сведения об учетной записи хранения. Используйте hello следующий код tooget hello соединения строки и хранения данных учетной записи хранения из конфигурации службы Azure hello: (изменение  *&lt;имя учетной записи хранения >* toohello имя hello хранилища Azure Учетная запись, которой осуществляется доступ.)
+1. В методе **DeleteQueue** организуйте получение объекта **CloudStorageAccount**, который представляет сведения об учетной записи хранения. Используйте следующий фрагмент кода, чтобы получить строку подключения к хранилищу и сведения об учетной записи хранения из конфигурации службы Azure. (Измените *&lt;storage-account-name>* на имя учетной записи хранения Azure, к которой вы получаете доступ.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -528,29 +528,29 @@ Hello ниже показано, как toocreate очереди:
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
 
-1. Получить **CloudQueueContainer** , представляющий toohello ссылка на очередь. 
+1. Получите объект **CloudQueueContainer**, представляющий ссылку на очередь. 
    
     ```csharp
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Вызовите hello **CloudQueue.Delete** очереди hello toodelete метод, представленный hello **CloudQueue** объекта.
+1. Вызовите метод **CloudQueue.Delete**, чтобы удалить очередь, представленную объектом **CloudQueue**.
 
     ```csharp
     queue.Delete();
     ```
 
-1. Обновление hello **ViewBag** с именем hello hello очереди и ее длину.
+1. Занесите во **ViewBag** имя и длину очереди.
 
     ```csharp
     ViewBag.QueueName = queue.Name;
     ```
  
-1. В hello **обозреватель решений**, разверните hello **представления** папку, щелкните правой кнопкой мыши **очереди**и в контекстном меню hello выберите **Добавить -> Просмотр**.
+1. В **обозревателе решений** разверните папку **Представления**, щелкните правой кнопкой мыши **Очереди**, а затем в контекстном меню выберите **Добавить -> Представление**.
 
-1. На hello **добавить представление** диалоговое окно, введите **DeleteQueue** hello имя представления, а также выберите **добавить**.
+1. В диалоговом окне **Добавление представления** введите имя представления **DeleteQueue** и выберите **Добавить**.
 
-1. Откройте `DeleteQueue.cshtml`и измените его, чтобы он выглядел hello, следующий фрагмент кода:
+1. Откройте файл `DeleteQueue.cshtml` и измените его таким образом, чтобы он выглядел, как показано ниже.
 
     ```csharp
     @{
@@ -562,20 +562,20 @@ Hello ниже показано, как toocreate очереди:
     @ViewBag.QueueName deleted.
     ```
 
-1. В hello **обозревателе решений**, разверните hello **представления -> Shared** , а откройте `_Layout.cshtml`.
+1. В **обозревателе решений** разверните папку **Представления -> Общие** и откройте `_Layout.cshtml`.
 
-1. После hello последнего **Html.ActionLink**, добавьте следующее hello **Html.ActionLink**:
+1. После последней ссылки **Html.ActionLink** добавьте следующую ссылку **Html.ActionLink**:
 
     ```html
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. Запустите приложение hello и выберите **длина очереди получения** toosee результаты, аналогичные toohello следующий снимок экрана:
+1. Запустите приложение и выберите **Получение длины очереди**, чтобы увидеть результаты, как на снимке экрана ниже.
   
     ![Удаление очереди.](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Просмотрите дополнительные toolearn функция руководства о дополнительных параметрах для хранения данных в Azure.
+Просмотрите дополнительные руководства, чтобы изучить дополнительные возможности хранения данных в Azure.
 
   * [Приступая к работе с хранилищем BLOB-объектов Azure и подключенными службами Visual Studio (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [Начало работы с хранилищем таблиц Azure и подключенными службами Visual Studio (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)

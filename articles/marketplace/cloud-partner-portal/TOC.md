@@ -5,7 +5,7 @@
 ## [Начало работы с облачным порталом для партнеров](./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md)
 ## [Поддерживаемые продукты](./Cloud-partner-portal-products-that-can-get-published-via-portal.md)
 
-# Как tooguides
+# Практические руководства
 ## Управление виртуальными машинами
 ### [Создание предложения виртуальной машины](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md)
 #### [Предварительные требования](../../cloud-partner-portal/cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm)
@@ -21,7 +21,7 @@
 
 ### [Обновление имеющегося предложения](./cloud-partner-portal-update-existing-offer.md)
 ### [Удаление предложения виртуальной машины или номера SKU](./cloud-partner-portal-delete-an-offer.md)
-### [Перенос toocloud портал партнера](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+### [Переход на облачный портал для партнеров](./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 
 ## [Получение сведений о потенциальных заказчиках](./cloud-partner-portal-get-customer-leads.md)
 ### [Таблица Azure](../../cloud-partner-portal/cloud-partner-portal-lead-management-instructions-azure-table.md)

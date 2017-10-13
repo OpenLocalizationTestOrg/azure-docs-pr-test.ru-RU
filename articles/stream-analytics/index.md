@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документация Stream Analytics - учебники, справочник по API | Документы Microsoft"
-description: "Дополнительные сведения об облачных анализа IoT toorun в hello с полностью управляемого события обработки. Анализируйте в реальном времени данные, поступающие от приложений, датчиков, устройств и из других источников."
+title: "Документация по Azure Stream Analytics. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как выполнять в облаке аналитику IoT с помощью полностью управляемого модуля обработки событий. Анализируйте в реальном времени данные, поступающие от приложений, датчиков, устройств и из других источников."
 services: stream-analytics
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
 ms.author: carolz
-ms.openlocfilehash: 4015137b0f39f86ada69d92e77e72b77b799d2d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dc8aa21d89ce575d29d3a9c08909eb5617d7b8a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-documentation"></a>Документация по Stream Analytics
 
-Дополнительные сведения об облачных toorun анализа Интернета вещей (IoT) в hello с Stream Analytics, полностью управляемая механизм обработки событий. Учебники и другую документацию показывается, как tooanalyze данных в режиме реального времени из приложений, датчики, устройств, социальные сети и многое другое. 
+Узнайте, как выполнять аналитику Интернета вещей (IoT) в облаке с помощью Stream Analytics — полностью управляемого модуля обработки событий. В руководствах и другой документации показано, как анализировать в реальном времени данные, поступающие от приложений, датчиков, устройств, социальных сетей и из других источников. 
 
 <ul class="panelContent cardsFTitle">
      <li>

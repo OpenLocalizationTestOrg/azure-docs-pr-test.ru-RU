@@ -1,9 +1,9 @@
 ---
-title: "элемент управляемого пользовательского интерфейса приложения CredentialsCombo aaaAzure | Документы Microsoft"
-description: "Описывает hello элемент пользовательского интерфейса Microsoft.Compute.CredentialsCombo для управляемых приложений Azure"
+title: "Элемент пользовательского интерфейса CredentialsCombo управляемого приложения Azure | Документация Майкрософт"
+description: "Сведения об элементе пользовательского интерфейса Microsoft.Compute.CredentialsCombo для управляемых приложений Azure"
 services: azure-resource-manager
 documentationcenter: na
-author: tabrezm
+author: tfitzmac
 manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
-ms.author: tabrezm;tomfitz
-ms.openlocfilehash: d44a3929ebb7a5ff78b72f9eaeb6e52b098e266f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: tomfitz
+ms.openlocfilehash: 9a35d6d8631e02fd7b3745cc15efd92a1556de53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Элемент пользовательского интерфейса Microsoft.Compute.CredentialsCombo
 Группа элементов управления со встроенной проверкой паролей и открытых ключей SSH для Windows и Linux. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/06/2017
 ![Элемент пользовательского интерфейса Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
 
 ## <a name="schema"></a>Схема
-Если `osPlatform` — **Windows**, а затем hello используется следующая схема:
+Если параметр `osPlatform` имеет значение **Windows**, используется следующая схема:
 ```json
 {
   "name": "element1",
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/06/2017
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "hello password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/06/2017
 }
 ```
 
-Если `osPlatform` — **Linux**, а затем hello используется следующая схема:
+Если параметр `osPlatform` имеет значение **Linux**, используется следующая схема:
 ```json
 {
   "name": "element1",
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/06/2017
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "hello password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -83,13 +83,13 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="remarks"></a>Примечания
 - Необходимо задать значение для параметра `osPlatform` (**Windows** или **Linux**).
-- Если `constraints.required` задано слишком**true**, затем hello пароль или SSH открытого ключа текстовые поля должны содержать значения toovalidate успешно. значение по умолчанию Hello — **true**.
-- Если `options.hideConfirmation` задано слишком**true**, скрыта hello второе текстовое поле для подтверждения пароля пользователя hello. значение по умолчанию Hello — **false**.
-- Если `options.hidePassword` задано слишком**true**, скрыта hello параметр toouse пароля. Его можно использовать только тогда, когда параметр `osPlatform` имеет значение **Linux**. Значение по умолчанию — **false**.
-- Дополнительные ограничения на hello допускается пароли можно реализовать с помощью hello `customPasswordRegex` свойство. Здравствуйте, строки в `customValidationMessage` отображается, если пароль не соответствует пользовательской проверки. Hello значение по умолчанию для обоих свойств — **null**.
+- Если для параметра `constraints.required` задано значение **true**, то текстовые поля для пароля и открытого ключа SSH должны содержать значения, чтобы пройти проверку. Значение по умолчанию — **true**.
+- Если для параметра `options.hideConfirmation` задано значение **true**, второе текстовое поле для подтверждения пароля скрыто. Значение по умолчанию — **false**.
+- Если для параметра `options.hidePassword` задано значение **true**, возможность использования проверки пароля скрыта. Его можно использовать только тогда, когда параметр `osPlatform` имеет значение **Linux**. Значение по умолчанию — **false**.
+- Дополнительные ограничения на разрешенные пароли можно реализовать с помощью свойства `customPasswordRegex`. Строка в `customValidationMessage` отображается, если пароль не прошел пользовательскую проверку. Значение по умолчанию для обоих свойств — **null**.
 
 ## <a name="sample-output"></a>Пример выходных данных
-Если `osPlatform` — **Windows**, или предоставляемое hello пользователем пароля вместо открытого ключа SSH, а затем hello следующие ожидаются выходные данные:
+Если параметр `osPlatform` имеет значение **Windows** или пользователь указал пароль вместо открытого ключа SSH, ожидаются следующие выходные данные:
 
 ```json
 {
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/06/2017
 }
 ```
 
-Если пользователь hello открытый ключ SSH, затем hello следующие выходные данные ожидается:
+Если пользователь предоставил открытый ключ SSH, ожидаются следующие выходные данные:
 ```json
 {
   "authenticationType": "sshPublicKey",
@@ -107,6 +107,6 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Введение toomanaged приложений, в разделе [Обзор управляемого приложения Azure](managed-application-overview.md).
-* Для определения пользовательского интерфейса toocreating Общие сведения см. в разделе [Приступая к работе с CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Общие сведения об управляемых приложениях Azure см. в [этой статье](managed-application-overview.md).
+* Общие сведения о создании определений пользовательского интерфейса см. в статье [Начало работы с CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Дополнительные сведения об общих свойствах элементов пользовательского интерфейса см. в статье [Элементы CreateUiDefinition](managed-application-createuidefinition-elements.md).

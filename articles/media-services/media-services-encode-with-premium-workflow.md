@@ -1,6 +1,6 @@
 ---
-title: "aaaAdvanced кодирование с помощью расширенного рабочего процесса кодировщика мультимедиа | Документы Microsoft"
-description: "Узнайте, как tooencode с расширенного рабочего процесса кодировщика мультимедиа. Примеры кода на языке C# и используйте hello пакета SDK служб мультимедиа для .NET."
+title: "Дополнительное кодирование с помощью расширенного рабочего процесса кодировщика мультимедиа | Документация Майкрософт"
+description: "Узнайте, как выполнять дополнительное кодирование с помощью рабочего процесса Premium кодировщика мультимедиа. Примеры кода написаны на языке C# и используют пакет SDK служб мультимедиа для .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 5a1c3d019a5c8fbf9bda2da751a7eff4c4907d97
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2b03853bf07e05c07fd730d5e8a8563963887921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Дополнительное кодирование с помощью рабочего процесса Premium кодировщика мультимедиа
 > [!NOTE]
@@ -29,47 +29,47 @@ ms.lasthandoff: 10/06/2017
 Вопросы о кодировщике Premium направляйте по адресу mepd@microsoft.com.
 
 ## <a name="overview"></a>Обзор
-Службы мультимедиа Microsoft Azure введение hello **расширенного рабочего процесса кодировщика мультимедиа** обработчика мультимедиа. Данный обработчик предоставляет расширенные возможности кодирования для рабочих процессов уровня premium по требованию.
+Службы мультимедиа Microsoft Azure представляют обработчик мультимедиа **Media Encoder Premium Workflow**. Данный обработчик предоставляет расширенные возможности кодирования для рабочих процессов уровня premium по требованию.
 
-Hello ниже описаны сведения, связанные с слишком**расширенного рабочего процесса кодировщика мультимедиа**:
+В следующих разделах приводятся подробные сведения o **расширенном рабочем процессе кодировщика мультимедиа**:
 
-* [Форматирует поддерживаемые с hello расширенного рабочего процесса кодировщика мультимедиа](media-services-premium-workflow-encoder-formats.md) — описание hello форматы и кодеки, поддерживаемые **расширенного рабочего процесса кодировщика мультимедиа**.
-* [Обзор и сравнение Azure по запросу мультимедиа кодировщики](media-services-encode-asset.md) сравнивает hello кодирования возможности **расширенного рабочего процесса кодировщика мультимедиа** и **Media Encoder Standard**.
+* [Форматы, которые поддерживаются рабочим процессом Premium кодировщика мультимедиа](media-services-premium-workflow-encoder-formats.md) — описание файла форматирования и поддерживаемые кодеки **рабочего процесса Premium кодировщика мультимедиа**.
+* В статье [Обзор и сравнение кодировщиков мультимедиа Azure по запросу](media-services-encode-asset.md) сравниваются возможности шифрования **рабочего процесса Media Encoder Premium** и **Media Encoder Standard**.
 
-В этом разделе показано, как tooencode с **расширенного рабочего процесса кодировщика мультимедиа** с использованием .NET.
+В этом разделе показаны способы кодирования с помощью **расширенного рабочего процесса кодировщика мультимедиа** с использованием .NET.
 
-Кодирование задачи для hello **расширенного рабочего процесса кодировщика мультимедиа** требуется отдельный файл конфигурации, называемый файлом рабочего процесса. Эти файлы имеют расширение цифры и создаются с помощью hello [конструктора рабочих процессов](media-services-workflow-designer.md) средства.
+Задачи кодирования для обработчика мультимедиа **Media Encoder Premium Workflow** требуют наличия отдельного файла конфигурации, который называется файлом Workflow). Эти файл имеют расширение .workflow и создаются с помощью [Конструктора рабочих процессов](media-services-workflow-designer.md) .
 
-Можно также получить по умолчанию hello файлы рабочего процесса [здесь](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Hello папка также содержит описание hello этих файлов.
+Также можно получить файлы рабочего процесса с настройками по умолчанию [отсюда](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). Папка также содержит описание этих файлов.
 
-файлы рабочего процесса Hello необходима учетная запись служб мультимедиа tooyour toobe загружен как основное средство и необходимо передать этот ресурс toohello кодирование задачи.
+Файлы рабочего процесса должны быть отправлены в учетную запись служб мультимедиа в виде ресурса, и этот ресурс нужно передать в задачу кодирования.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="encoding-example"></a>Пример кодирования
 
-Hello следующем примере показано, как tooencode с **расширенного рабочего процесса кодировщика мультимедиа**.
+В следующем примере показано, как кодировать с помощью обработчика мультимедиа **Media Encoder Premium Workflow**.
 
-выполняются следующие шаги Hello.
+Выполняются следующие шаги.
 
 1. Создание ресурса и отправка файла рабочего процесса.
 2. Создание ресурса и отправка исходного файла мультимедиа.
-3. Получите обработчик мультимедиа «Media расширенного рабочего процесса кодировщика» hello.
+3. Получение обработчика мультимедиа "Расширенный рабочий процесс кодировщика мультимедиа".
 4. Создание задания и задачи.
 
-    В большинстве случаев строка hello конфигурации для задачи «hello» пуста (например, в следующий пример hello). Существуют некоторых сложных сценариев (которые требуют динамически свойствам среды выполнения tootooset) в этом случае будет предоставлен кодирования задачу toohello строку XML. Примеры таких сценариев: создание наложения, параллельное или последовательное совмещение мультимедиа, субтитры.
-5. Добавьте две задачи toohello входные активы.
+    В большинстве случаев строка конфигурации задачи будет пуста (как в следующем примере). В некоторых расширенных сценариях (включающих динамическую настройку свойств среды выполнения) XML-строка прописывается в задаче шифрования. Примеры таких сценариев: создание наложения, параллельное или последовательное совмещение мультимедиа, субтитры.
+5. Добавление двух входных ресурсов в задачу.
 
-    1. 1-го — активов hello рабочего процесса.
-    2. 2 — видео активов hello.
+    1. Первый – ресурс рабочего процесса.
+    2. Второй – ресурс видео.
 
     >[!NOTE]
-    >Hello активов рабочего процесса должны быть добавлены toohello задач перед hello актив мультимедиа.
-   Строка Hello конфигурации для этой задачи должно быть пустым.
+    >Ресурс рабочего процесса необходимо добавить в задачу до того, как в нее будет добавлен ресурс мультимедиа.
+   Строка конфигурации для этой задачи должна быть пуста.
    
-6. Отправка задания кодирования hello.
+6. Отправка задания кодирования.
 
         using System;
         using System.Linq;
@@ -136,42 +136,42 @@ Hello следующем примере показано, как tooencode с **
                 {
                     // Declare a new job.
                     IJob job = _context.Jobs.Create("Premium Workflow encoding job");
-                    // Get a media processor reference, and pass tooit hello name of the
-                    // processor toouse for hello specific task.
+                    // Get a media processor reference, and pass to it the name of the
+                    // processor to use for the specific task.
                     IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
 
-                    // Create a task with hello encoding details, using a string preset.
+                    // Create a task with the encoding details, using a string preset.
                     ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
                         processor,
                         "",
                         TaskOptions.None);
 
-                    // Specify hello input asset toobe encoded.
+                    // Specify the input asset to be encoded.
                     task.InputAssets.Add(workflow);
                     task.InputAssets.Add(video); // we add one asset
-                                                 // Add an output asset toocontain hello results of hello job.
+                                                 // Add an output asset to contain the results of the job.
                                                  // This output is specified as AssetCreationOptions.None, which
-                                                 // means hello output asset is not encrypted.
+                                                 // means the output asset is not encrypted.
                     task.OutputAssets.AddNew("Output asset",
                         AssetCreationOptions.None);
 
-                    // Use hello following event handler toocheck job progress.  
+                    // Use the following event handler to check job progress.  
                     job.StateChanged += new
                             EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                    // Launch hello job.
+                    // Launch the job.
                     job.Submit();
 
-                    // Check job execution and wait for job toofinish.
+                    // Check job execution and wait for job to finish.
                     Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
                     progressJobTask.Wait();
 
-                    // If job state is Error hello event handling
+                    // If job state is Error the event handling
                     // method for job progress should log errors.  Here we check
                     // for error state and exit if needed.
                     if (job.State == JobState.Error)
                     {
-                        throw new Exception("\nExiting method due toojob error.");
+                        throw new Exception("\nExiting method due to job error.");
                     }
 
                     return job.OutputMediaAssets[0];

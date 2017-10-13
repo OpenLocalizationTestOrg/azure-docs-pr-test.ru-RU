@@ -1,6 +1,6 @@
 ---
-title: "aaaControl маршрутизации в классической виртуальной сети Azure - CLI - | Документы Microsoft"
-description: "Узнайте, как toocontrol маршрутизации в виртуальных сетей с помощью hello Azure CLI в hello классической модели развертывания"
+title: "Контроль маршрутизации в виртуальной сети Azure с помощью интерфейса командной строки (классическая модель) | Документация Майкрософт"
+description: "Сведения об управлении маршрутизацией и виртуальными сетями с помощью интерфейса командной строки Azure в классической модели развертывания"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 07dde573f1a605bf280156c261d51e213ede0cdc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8fcb98723e7e872c932908e3456dc8680deb0901
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="control-routing-and-use-virtual-appliances-classic-using-hello-azure-cli"></a>Маршрутизация управления и использования виртуальных устройств (классической) с помощью hello Azure CLI
+# <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Управление маршрутизацией и использование виртуальных модулей (классический режим) с помощью интерфейса командной строки Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](virtual-network-create-udr-arm-ps.md)
@@ -34,18 +34,18 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье рассматриваются hello классической модели развертывания. Вы также можете [управлять маршрутизацией и использования виртуальных устройств в модели развертывания диспетчера ресурсов hello](virtual-network-create-udr-arm-cli.md).
+В этой статье рассматривается классическая модель развертывания. Вы также можете [управлять маршрутизацией и использовать виртуальные модули с помощью модели развертывания диспетчера ресурсов](virtual-network-create-udr-arm-cli.md).
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-приведенную ниже команду Azure CLI Образец Hello ожидать простой среде уже создан на основании hello сценарии выше. Toorun hello команд, отображаемых в этом документе, создать среды hello, показанный на [Создание виртуальной сети (классические), с помощью Azure CLI hello](virtual-networks-create-vnet-classic-cli.md).
+Для приведенных ниже примеров команд интерфейса командной строки Azure требуется уже созданная простая среда, основанная на приведенном выше сценарии. Для выполнения команд в том виде, в каком они представлены в данном документе, создайте среду, описанную в разделе о [создании виртуальной сети (классический режим) с помощью интерфейса командной строки Azure](virtual-networks-create-vnet-classic-cli.md).
 
 [!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## <a name="create-hello-udr-for-hello-front-end-subnet"></a>Создать hello UDR для подсети hello переднего плана
-Таблица маршрутов toocreate hello и маршрутов для подсети hello переднего плана, в зависимости от варианта hello выше, выполните следующие шаги hello.
+## <a name="create-the-udr-for-the-front-end-subnet"></a>Создание определяемого пользователем маршрута для подсети переднего плана
+Чтобы создать таблицу маршрутов и маршрут, необходимые для подсети переднего плана, на основании приведенного выше сценария, выполните следующие действия.
 
-1. Следующая команда tooswitch tooclassic режим выполнения hello:
+1. Чтобы переключиться в классический режим, выполните следующую команду:
 
     ```azurecli
     azure config mode asm
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/06/2017
 
         info:    New mode is asm
 
-2. Выполните следующие команды toocreate hello таблицы маршрутов для подсети интерфейса hello:
+2. Чтобы создать таблицу маршрутов для интерфейсной подсети, выполните следующую команду:
 
     ```azurecli
     azure network route-table create -n UDR-FrontEnd -l uswest
@@ -72,9 +72,9 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-l (или --location)**. Регион Azure, где hello новой NSG будет создан. В нашем случае это *westus*.
-   * **-n (или --name)**. Имя для hello новая NSG. В данном сценарии это *NSG-FrontEnd*.
-3. Запустите все toohello внутренней подсети (192.168.2.0/24) toohello трафика, предназначенного hello, следующая команда toocreate маршрут в toosend таблицы маршрутов hello **FW1** виртуальной Машины (192.168.0.4):
+   * **-l (или --location)**. Регион Azure, в котором будет создана группа безопасности сети. В нашем случае это *westus*.
+   * **-n (или --name)**. Имя новой группы безопасности сети. В данном сценарии это *NSG-FrontEnd*.
+3. Чтобы создать маршрут в таблице маршрутов для отправки всего трафика, предназначенного для серверной подсети (192.168.2.0/24), в виртуальную машину **FW1** (192.168.0.4), выполните следующую команду:
 
     ```azurecli
     azure network route-table route set -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -t VirtualAppliance -p 192.168.0.4
@@ -89,11 +89,11 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-r (или --route-table-name)**. Имя таблицы маршрутов hello, куда будут добавлены hello маршрута. В данном сценарии это *UDR-FrontEnd*.
-   * **-a (или --address-prefix)**. Префикс адреса для подсети hello, где пакеты, предназначенные для. В данном сценарии это *192.168.2.0/24*.
+   * **-r (или --route-table-name)**. Имя таблицы маршрутов, куда будет добавлен маршрут. В данном сценарии это *UDR-FrontEnd*.
+   * **-a (или --address-prefix)**. Префикс адреса для подсети, в которую адресованы пакеты. В данном сценарии это *192.168.2.0/24*.
    * **-t (или --next-hop-type)**. Тип объекта, куда будет отправляться трафик. Возможные значения: *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* или *None*.
    * **-p (или --next-hop-ip-address**). IP-адрес следующего прыжка. В нашем случае это *192.168.0.4*.
-4. Выполнения hello следующая команда таблицы маршрутов hello tooassociate, созданных с помощью hello **переднего плана** подсети:
+4. Чтобы сопоставить созданную таблицу маршрутов с подсетью **FrontEnd**, выполните следующую команду:
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/06/2017
     Выходные данные:
    
         info:    Executing command network vnet subnet route-table add
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         info:    Looking up network configuration
         info:    Looking up network gateway route tables in virtual network "TestVNet" subnet "FrontEnd"
         info:    Associating route table "UDR-FrontEnd" and subnet "FrontEnd"
@@ -114,25 +114,25 @@ ms.lasthandoff: 10/06/2017
    
     Параметры
    
-   * **-t (или --vnet-name)**. Имя виртуальной сети, где находится подсети hello hello. В данном сценарии это *TestVNet*.
-   * **-n (или --subnet-name**). Имя таблицы маршрутов hello hello подсеть будет добавлено к. В данном сценарии это *FrontEnd*.
+   * **-t (или --vnet-name)**. Имя виртуальной сети, в которой расположена подсеть. В нашем случае это *TestVNet*.
+   * **-n (или --subnet-name**). Имя подсети, куда будет добавлена таблица маршрутов. В данном сценарии это *FrontEnd*.
 
-## <a name="create-hello-udr-for-hello-back-end-subnet"></a>Создать hello UDR для hello внутренней подсети
-Таблица маршрутов toocreate hello и маршрута, необходимые для hello конечной подсети в зависимости от варианта hello, полный hello, следующие шаги:
+## <a name="create-the-udr-for-the-back-end-subnet"></a>Создание определяемого пользователем маршрута для серверной подсети
+Чтобы создать таблицу маршрутов и маршрут, необходимые для серверной подсети, на основании сценария, выполните следующие действия:
 
-1. Выполните следующие команды toocreate hello таблицы маршрутов для подсети внутренней hello:
+1. Чтобы создать таблицу маршрутов для серверной подсети, выполните следующую команду:
 
     ```azurecli
     azure network route-table create -n UDR-BackEnd -l uswest
     ```
 
-2. Запустите все toohello интерфейса подсети (192.168.1.0/24) toohello трафика, предназначенного hello, следующая команда toocreate маршрут в toosend таблицы маршрутов hello **FW1** виртуальной Машины (192.168.0.4):
+2. Чтобы создать маршрут в таблице маршрутов для отправки всего трафика, предназначенного для интерфейсной подсети (192.168.1.0/24), в виртуальную машину **FW1** (192.168.0.4), выполните следующую команду:
 
     ```azurecli
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
     ```
 
-3. Выполнения hello следующие таблицы маршрутов hello tooassociate команды с hello **серверной** подсети:
+3. Чтобы сопоставить таблицу маршрутов с подсетью **BackEnd**, выполните следующую команду:
 
     ```azurecli
     azure network vnet subnet route-table add -t TestVNet -n BackEnd -r UDR-BackEnd

@@ -1,5 +1,5 @@
 ---
-title: "iOS v2 aaaAzure AD Приступая к работе - введение | Документы Microsoft"
+title: "Приступая к работе с Azure AD версии 2 для iOS. Введение | Документация Майкрософт"
 description: "В этой статье описано, как приложения iOS (Swift) могут вызывать API, которому необходимы маркеры доступа, с помощью конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: f40aebbb75490912e533aecc7eedfb2b2dcd8c6c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 948693c8501ecc46a1508e5ea085846d0910783e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="call-hello-microsoft-graph-api-from-an-ios-app"></a>Вызов hello Microsoft Graph API из приложения iOS
+# <a name="call-the-microsoft-graph-api-from-an-ios-app"></a>Вызов API Microsoft Graph из приложения iOS
 
-В этом руководстве показано, как приложении машинным кодом iOS (Swift) можно получить маркер доступа и вызвать hello Microsoft Graph API или другие API, которые требуются токены доступа из конечной v2 Azure Active Directory.
+В этом руководстве показано, как собственное приложение iOS (Swift) может получить маркер доступа и вызвать API Microsoft Graph или другие API, для которых требуются маркеры доступа, из конечной точки Azure Active Directory версии 2.
 
-В конце данного руководства hello приложения будет быть может toocall защищенный API, с помощью личные учетные записи (в том числе outlook.com, live.com и другие) а также рабочих и учебных учетных записей из любой компании или организации с Azure Active Directory.
+В конце этого руководства ваше приложение сможет вызывать защищенный API с помощью личных учетных записей (включая outlook.com, live.com и другие), а также рабочих и учебных учетных записей из любой компании или организации, которая использует Azure Active Directory.
 
 > ### <a name="pre-requisites"></a>Предварительные требования
 > - Для этого руководства требуется XCode 8.x. Скачать XCode можно [здесь](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "URL-адрес для скачивания XCode").
@@ -33,21 +33,21 @@ ms.lasthandoff: 10/06/2017
 
 ![Принцип работы с руководством](media/active-directory-mobileanddesktopapp-ios-introduction/iosintro.png)
 
-Пример приложения Hello, созданные в этом руководстве позволяет hello tooquery приложений iOS Microsoft Graph API или веб-API, принимающий токены из конечной точки v2 Azure Active Directory. В этом случае маркер добавляется tooHTTP запросы через заголовок Authorization hello. Получение токена и обновления обрабатываются hello библиотеки проверки подлинности Microsoft (MSAL).
+Пример приложения, созданный в этом руководстве, позволяет приложению iOS выполнять запрос к API Microsoft Graph или веб-API, который принимает маркеры от конечной точки Azure Active Directory версии 2. В этом сценарии маркер добавляется в запросы HTTP с помощью заголовка авторизации. Получение маркера и его обновление выполняет библиотека проверки подлинности Майкрософт (MSAL).
 
 
 ### <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Обработка получения маркера для доступа к защищенным веб-интерфейсам API
 
-После аутентификации пользователя hello пример приложения hello получает маркер, который можно использовать tooquery hello Microsoft Graph API или веб-API, защищенным v2 Microsoft Azure Active Directory.
+После того как пользователь пройдет проверку подлинности, приложение получит маркер, который может использоваться для запроса к API Microsoft Graph или к веб-API, защищенному Microsoft Azure Active Directory версии 2.
 
-API-интерфейсов, таких как Microsoft Graph требуют tooallow маркера доступа, доступ к определенным ресурсам — например, tooread профиля пользователя, доступ к календарю пользователя, или отправить сообщение электронной почты. Приложение может запросить маркер доступа с помощью MSAL, указав области API. Этот маркер доступа — то добавлены toohello заголовок авторизации HTTP для каждого вызова к hello защищенный ресурс.
+API, такие как Microsoft Graph, требуют маркер доступа для доступа к определенным ресурсам. Например, для чтения профиля пользователя, доступа к календарю пользователя или отправки почты. Приложение может запросить маркер доступа с помощью MSAL, указав области API. Затем этот маркер доступа добавляется в заголовок авторизации HTTP для каждого вызова к защищенному ресурсу.
 
 MSAL управляет кэшированием и обновлением маркеров доступа, поэтому вашему приложению не нужно этого делать.
 
 
 ### <a name="nuget-packages"></a>Пакеты NuGet
 
-В этом руководстве использует следующие пакеты NuGet hello:
+В этом руководстве используются следующие пакеты NuGet:
 
 |Библиотека|Описание|
 |---|---|

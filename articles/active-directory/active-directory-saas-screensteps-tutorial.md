@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с ScreenSteps | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и ScreenSteps."
+description: "Узнайте, как настроить единый вход Azure Active Directory в приложении ScreenSteps."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fd041e5fe4552727eeda2dabc1773d8043d410f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b6ded8ba1adf03fdccbdb7573c09fae1857c8b16
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Учебник. Интеграция Azure Active Directory с ScreenSteps
 
-В этом учебнике вы узнаете, как toointegrate ScreenSteps с Azure Active Directory (Azure AD).
+В этом учебнике описано, как интегрировать ScreenSteps с Azure Active Directory (Azure AD).
 
-Интеграция ScreenSteps с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением ScreenSteps обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooScreenSteps.
-- Можно включить на пользователей tooautomatically get вошедшего tooScreenSteps (Single Sign-On) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
+- C помощью Azure AD вы можете контролировать доступ к ScreenSteps.
+- Вы можете включить автоматический вход пользователей в ScreenSteps (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с ScreenSteps требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с ScreenSteps, вам потребуется:
 
 - подписка Azure AD;
 - подписка ScreenSteps с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление ScreenSteps из галереи hello
+1. Добавление ScreenSteps из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-screensteps-from-hello-gallery"></a>Добавление ScreenSteps из галереи hello
-tooconfigure hello интеграции ScreenSteps в Azure AD, вы должны tooadd ScreenSteps из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-screensteps-from-the-gallery"></a>Добавление ScreenSteps из коллекции
+Чтобы настроить интеграцию ScreenSteps с Azure AD, необходимо добавить ScreenSteps из коллекции в список управляемых приложений SaaS.
 
-**tooadd ScreenSteps из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить ScreenSteps из коллекции, выполните следующие действия.**
 
-1. В hello ** [портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **ScreenSteps**выберите **ScreenSteps** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
+4. В поле поиска введите **ScreenSteps**, выберите **ScreenSteps** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![ScreenSteps в списке результатов hello](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
+    ![ScreenSteps в списке результатов](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в ScreenSteps с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в ScreenSteps является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в ScreenSteps должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в ScreenSteps соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в ScreenSteps.
 
-В ScreenSteps, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в ScreenSteps.
 
-tooconfigure и теста Azure AD единого входа с ScreenSteps, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в ScreenSteps, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user) ** -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя ScreenSteps](#create-a-screensteps-test-user) ** -toohave аналог Саймон Britta в ScreenSteps, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on) ** -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя ScreenSteps](#create-a-screensteps-test-user)** требуется для того, чтобы в ScreenSteps существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в ScreenSteps приложения.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении ScreenSteps.
 
-**tooconfigure Azure AD единого входа с ScreenSteps, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в ScreenSteps, выполните следующие действия.**
 
-1. В hello в hello портала Azure **ScreenSteps** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **ScreenSteps** щелкните **Единый вход**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_samlbase.png)
 
-3. На hello **URL-адреса и домена ScreenSteps** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения ScreenSteps** сделайте следующее.
 
     ![Сведения о домене и URL-адресах единого входа приложения ScreenSteps](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_url.png)
 
-    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<tenantname>.ScreenSteps.com`
+    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<tenantname>.ScreenSteps.com`
 
     > [!NOTE] 
-    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес входа, который описывается далее в этом учебнике. 
+    > Это значение приведено для справки. Замените его на фактический URL-адрес входа, как описано далее в этом учебнике. 
 
-4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
-    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_certificate.png) 
+    ![Ссылка для скачивания сертификата](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-screensteps-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации ScreenSteps** щелкните **Настройка ScreenSteps** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Конфигурация ScreenSteps** щелкните **Настроить ScreenSteps**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Конфигурация ScreenSteps](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_configure.png) 
 
@@ -139,105 +139,105 @@ tooconfigure и теста Azure AD единого входа с ScreenSteps, т
 
     ![Удаленная аутентификация](./media/active-directory-saas-screensteps-tutorial/ic778525.png "Удаленная аутентификация")
 
-11. В hello **создать единую конечную точку входа** выполните следующие шаги hello:
+11. В разделе **Create Single Sign-on Endpoint** (Создать конечную точку единого входа) сделайте следующее:
 
     ![Создание конечной точки аутентификации](./media/active-directory-saas-screensteps-tutorial/ic778526.png "Создание конечной точки аутентификации")
     
-    а. В hello **заголовок** текстовом поле введите заголовок.
+    а. В текстовом поле **Название** введите название.
     
-    b. Из hello **режим** выберите **SAML**.
+    b. Из списка **Mode** (Режим) выберите **SAML**.
     
     c. Щелкните **Создать**.
 
-12. **Изменить** hello новой конечной точки.
+12. **Измените** новую конечную точку.
 
     ![Изменение конечной точки](./media/active-directory-saas-screensteps-tutorial/ic778528.png "Edit endpoint")
 
-13. В hello **изменить одну конечную точку входа** выполните следующие шаги hello:
+13. В разделе **Create Single Sign-on Endpoint** (Изменить конечную точку единого входа) сделайте следующее:
 
     ![Конечная точка удаленной аутентификации](./media/active-directory-saas-screensteps-tutorial/ic778527.png "Конечная точка удаленной аутентификации")
 
-    а. Нажмите кнопку **передачи новый файл сертификата SAML**, а затем передачи hello сертификат, который вы скачали из портала Azure.
+    а. Щелкните **Upload new SAML Certificate file** (Отправить новый файл сертификата SAML), а затем отправьте сертификат, скачанный с портала Azure.
     
-    b. Вставить **SAML единого входа URL-адрес службы** значение, которое было скопировано из hello портал Azure в hello **URL-адрес удаленного входа** текстового поля.
+    b. Вставьте **URL-адрес службы единого входа SAML**, скопированный на портале Azure, в текстовое поле **URL-адрес удаленного входа**.
     
-    c. Вставить **URL-адрес выхода** значение, которое было скопировано из hello портал Azure в hello **URL-адрес выхода** текстового поля.
+    c. Вставьте **URL-адрес входа**, скопированный на портале Azure, в текстовое поле **URL-адрес выхода**.
     
-    d. Выберите **группы** toowhen tooassign пользователей, их инициализации.
+    d. Выберите **группу** для назначения пользователей при их подготовке.
     
     д. Нажмите кнопку **Обновить**.
 
-    f. Hello копирования **URL-адрес потребителя SAML** toohello буфер обмена и вставьте в toohello **URL-адрес входа** текстовое поле в **URL-адреса и домена ScreenSteps** раздела.
+    f. Скопируйте **URL-адрес потребителя SAML** в буфер обмена и вставьте его в текстовое поле **URL-адрес входа** в разделе **Домены и URL-адреса приложения ScreenSteps**.
     
-    ж. Вернуть toohello **изменить одну конечную точку входа**.
+    ж. Вернитесь в раздел **Edit Single Sign-on Endpoint** (Изменить конечную точку единого входа).
     
-    h. Нажмите кнопку hello **сделать по умолчанию для учетной записи** кнопку toouse эту конечную точку для всех пользователей, входящих в ScreenSteps. Кроме того, можно щелкнуть hello **добавить tooSite** кнопку toouse эту конечную точку для определенных сайтов в **ScreenSteps**.
+    h. Нажмите кнопку **Make default for account** (Сделать значением по умолчанию для учетной записи), чтобы использовать эту конечную точку для всех пользователей, осуществляющих вход в ScreenSteps. Кроме того, можно нажать кнопку **Add to Site** (Добавить на сайт), чтобы использовать эту конечную точку для определенных сайтов в **ScreenSteps**.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello ** Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-screensteps-tutorial/create_aaduser_01.png)
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-screensteps-tutorial/create_aaduser_01.png)
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
 
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-screensteps-tutorial/create_aaduser_02.png)
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-screensteps-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
 
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-screensteps-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-screensteps-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-screensteps-tutorial/create_aaduser_04.png)
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-screensteps-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
  
 ### <a name="create-a-screensteps-test-user"></a>Создание тестового пользователя ScreenSteps
 
-В этом разделе описано, как создать пользователя Britta Simon в ScreenSteps. Работать с [группа поддержки клиент ScreenSteps](https://www.screensteps.com/contact) для добавления пользователей hello в платформе ScreenSteps hello. Перед использованием единого входа необходимо создать и активировать пользователей. 
+В этом разделе описано, как создать пользователя Britta Simon в ScreenSteps. Обратитесь в [службу поддержки ScreenSteps](https://www.screensteps.com/contact), чтобы добавить пользователей на платформу ScreenSteps. Перед использованием единого входа необходимо создать и активировать пользователей. 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooScreenSteps доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к ScreenSteps.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign tooScreenSteps Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon приложению ScreenSteps, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **ScreenSteps**.
+2. В списке приложений выберите **ScreenSteps**.
 
-    ![ссылка ScreenSteps Hello в списке приложений hello](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_app.png)  
+    ![Ссылка на ScreenSteps в списке "Приложения"](./media/active-directory-saas-screensteps-tutorial/tutorial_screensteps_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202]
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -245,14 +245,14 @@ tooconfigure и теста Azure AD единого входа с ScreenSteps, т
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки ScreenSteps плитки в панели доступа hello приветствия, вы должны получить автоматически вошедшего tooyour ScreenSteps приложения.
-Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
+Щелкнув элемент ScreenSteps на панели доступа, вы автоматически войдете в приложение ScreenSteps.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

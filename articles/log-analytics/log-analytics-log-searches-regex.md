@@ -1,6 +1,6 @@
 ---
-title: "Поиск журнала aaaRegular выражения в аналитику журнала OMS | Документы Microsoft"
-description: "Можно использовать ключевое слово hello регулярных выражений в анализа журналов выполняет toohello фильтра hello результатах журналов tooa регулярного выражения в соответствии с.  Эта статья содержит hello синтаксис для этих выражений с несколько примеров."
+title: "Регулярные выражения при поиске по журналам Log Analytics OMS | Документация Майкрософт"
+description: "Для фильтрации результатов в соответствии с регулярным выражением вы можете использовать ключевое слово RegEx при поиске по журналам Log Analytics.  В этой статье содержатся сведения о синтаксисе для этих выражений с несколькими примерами."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: bwren
-ms.openlocfilehash: 3033593dac2c50e911fc69054947d40d4a74369b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-regular-expressions-toofilter-log-searches-in-log-analytics"></a>С помощью регулярных выражений toofilter журнала выполняет поиск в службе анализа журналов
+# <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>Фильтрование поиска по журналам в Log Analytics с помощью регулярных выражений
 
-[Поиск журнала](log-analytics-log-searches.md) позволяют tooextract сведения из репозитория hello анализа журналов.  [Критерии фильтра](log-analytics-search-reference.md#filter-expressions) позволяют toofilter hello результаты поиска hello, в соответствии с toospecific критериев.  Hello **RegEx** ключевое слово позволяет toospecify регулярное выражение для этого фильтра.  
+[Поиск по журналам](log-analytics-log-searches.md) позволяет извлекать сведения из репозитория Log Analytics.  [Выражения фильтра](log-analytics-search-reference.md#filter-expressions) позволяют фильтровать результаты поиска в соответствии с определенными критериями.  Ключевое слово **RegEx** позволяет указать регулярное выражение для фильтра.  
 
-Эта статья содержит сведения о синтаксисе регулярных выражений hello, используется службой аналитики журналов.
+Эта статья содержит сведения о синтаксисе регулярных выражений, используемых службой Log Analytics.
 
 > [!NOTE]
 > Регулярное выражение можно использовать только в полях с поддержкой поиска.  Дополнительные сведения о полях, поддерживающих поиск, см. в разделе **Типы полей** статьи [Поиск данных по журналам в Log Analytics](log-analytics-log-searches.md#use-additional-filters).
@@ -31,21 +31,21 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="regex-keyword"></a>Ключевое слово RegEx
 
-Hello используйте следующий синтаксис hello toouse **RegEx** ключевое слово в поиске по журналам.  Можно использовать другие разделы в этой статье toodetermine hello синтаксис регулярного выражения hello сам hello.
+Чтобы использовать ключевое слово **RegEx** при поиске по журналам, воспользуйтесь следующим синтаксисом.  Вам также могут понадобиться сведения из других разделов этой статьи, чтобы определить сам синтаксис регулярного выражения.
 
     field:Regex("Regular Expression")
     field=Regex("Regular Expression")
 
-Например, записи toouse tooreturn оповещение в регулярное выражение с типом *предупреждение* или *ошибки*, можно использовать следующие поиска журналов hello.
+Например, для возврата записей оповещений с типом *Warning* или *Error* с применением регулярного выражения используется следующий запрос поиска по журналам.
 
     Type=Alert AlertSeverity=RegEx("Warning|Error")
 
 ## <a name="partial-matches"></a>Частичные совпадения
-Обратите внимание, что hello регулярное выражение должно соответствовать hello весь текст hello свойства.  При частичных совпадениях ни одна запись не будет возвращена.  Например, если выполняется tooreturn записей на компьютере с именем srv01.contoso.com, hello, выполнив поиск журналов будет **не** возвратит никаких записей.
+Обратите внимание, что регулярное выражение должно соответствовать всему тексту свойства.  При частичных совпадениях ни одна запись не будет возвращена.  Например, если вы пытались возвратить записи на компьютере с именем srv01.contoso.com, следующий поиск по журналам **не** возвратит никаких записей.
 
     Computer=RegEx("srv..")
 
-Это происходит потому hello только первая часть имени hello соответствует регулярному выражению hello.  Hello следующие два журнала будет результатов поиска записей с этого компьютера несовпадения hello полное имя.
+Это происходит, потому что только первая часть имени соответствует регулярному выражению.  Следующие два поиска по журналам возвратят записи на этом компьютере, так как эта записи соответствуют полному имени.
 
     Computer=RegEx("srv..@")
     Computer=RegEx("srv...contoso.com")
@@ -55,15 +55,15 @@ Hello используйте следующий синтаксис hello toouse 
 
 | Character | Описание | Пример | Пример совпадений |
 |:--|:--|:--|:--|
-| a | Одному вхождению символа hello. | Computer=RegEx("srv01.contoso.com") | Srv01.contoso.com |
+| a | Одно вхождение знака. | Computer=RegEx("srv01.contoso.com") | Srv01.contoso.com |
 | . | Любой отдельный знак. | Computer=RegEx("srv...contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
-| a? | Ноль или одно вхождение символа hello. | Computer=RegEx("srv01?.contoso.com") | srv0.contoso.com<br>Srv01.contoso.com |
-| a* | Ноль или несколько вхождений символа hello. | Computer=RegEx("srv01*.contoso.com") | srv0.contoso.com<br>Srv01.contoso.com<br>srv011.contoso.com<br>srv0111.contoso.com |
-| a+ | Один или несколько вхождений символа hello. | Computer=RegEx("srv01+.contoso.com") | Srv01.contoso.com<br>srv011.contoso.com<br>srv0111.contoso.com |
-| [*abc*] | Соответствует любому одиночному символу в квадратных скобках hello | Computer=RegEx("srv0[123].contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
-| [*a*-*z*] | Совпадение с символом в диапазоне hello.  Может содержать несколько диапазонов. | Computer=RegEx("srv0[1-3].contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
-| [^*abc*] | Ни один из hello символов в квадратных скобках hello | Computer=RegEx("srv0[^123].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
-| [^*a*-*z*] | Ни один из знаков hello в диапазоне hello. | Computer=RegEx("srv0[^1-3].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
+| a? | Одно вхождение знака или ни одного. | Computer=RegEx("srv01?.contoso.com") | srv0.contoso.com<br>Srv01.contoso.com |
+| a* | Несколько вхождений знака или ни одного. | Computer=RegEx("srv01*.contoso.com") | srv0.contoso.com<br>Srv01.contoso.com<br>srv011.contoso.com<br>srv0111.contoso.com |
+| a+ | Одно вхождение знака или несколько. | Computer=RegEx("srv01+.contoso.com") | Srv01.contoso.com<br>srv011.contoso.com<br>srv0111.contoso.com |
+| [*abc*] | Соответствует любому отдельному знаку в квадратных скобках | Computer=RegEx("srv0[123].contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
+| [*a*-*z*] | Соответствует одному знаку в диапазоне.  Может содержать несколько диапазонов. | Computer=RegEx("srv0[1-3].contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
+| [^*abc*] | Нет подходящих символов в квадратных скобках. | Computer=RegEx("srv0[^123].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
+| [^*a*-*z*] | Нет подходящих знаков в диапазоне. | Computer=RegEx("srv0[^1-3].contoso.com") | srv05.contoso.com<br>srv06.contoso.com<br>srv07.contoso.com |
 | [*n*-*m*] | Соответствует диапазону числовых знаков. | Computer=RegEx("srv[01-03].contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
 | @ | Любая строка знаков. | Computer=RegEx("srv@.contoso.com") | Srv01.contoso.com<br>SRV02.contoso.com<br>srv03.contoso.com |
 
@@ -73,9 +73,9 @@ Hello используйте следующий синтаксис hello toouse 
 
 | Character | Описание | Пример | Пример совпадений |
 |:--|:--|:--|:--|
-| a{n} |  *n*вхождения символа hello. | Computer=RegEx("bw-win-sc01{3}.bwren.lab") | bw-win-sc0111.bwren.lab |
-| a{n,} |  *n*или несколько вхождений символа hello. | Computer=RegEx("bw-win-sc01{3,}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab<br>bw-win-sc0111111.bwren.lab |
-| a{n,m} |  *n*слишком*m* hello символов. | Computer=RegEx("bw-win-sc01{3,5}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab |
+| a{n} |  *n* вхождений знака. | Computer=RegEx("bw-win-sc01{3}.bwren.lab") | bw-win-sc0111.bwren.lab |
+| a{n,} |  *n* или больше вхождений знака. | Computer=RegEx("bw-win-sc01{3,}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab<br>bw-win-sc0111111.bwren.lab |
+| a{n,m} |  Вхождений знака от *n* до *m*. | Computer=RegEx("bw-win-sc01{3,5}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab |
 
 
 ## <a name="logical-expressions"></a>Логические выражения
@@ -88,13 +88,13 @@ Hello используйте следующий синтаксис hello toouse 
 
 
 ## <a name="literals"></a>Литералы
-Преобразуйте символы tooliteral специальные символы.  Сюда входят символы, которые предоставляют функциональные возможности такие как выражения tooregular?-\*^\[\]{}\(\)+\|. &.
+Преобразуйте специальные знаки в литеральные.  Сюда входят знаки, предоставляющие возможности для регулярных выражений: ?, -, \*, ^, \[\], {}, \(\), +, \|, ., &.
 
 | Character | Описание | Пример | Пример совпадений |
 |:--|:--|:--|:--|
-| \\ | Преобразует литерала tooa специальный символ. | Status_CF=\\[Error\\]@<br>Status_CF=Error\\-@ | [Error] Файл не найден.<br>Error. Файл не найден. |
+| \\ | Преобразовывает специальный знак в литерал. | Status_CF=\\[Error\\]@<br>Status_CF=Error\\-@ | [Error] Файл не найден.<br>Error. Файл не найден. |
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Ознакомьтесь с [входа выполняет](log-analytics-log-searches.md) tooview и анализировать данные в репозиторий hello анализа журналов.
+* Ознакомьтесь с [поиском по журналу](log-analytics-log-searches.md), чтобы просматривать и анализировать данные в репозитории Log Analytics.

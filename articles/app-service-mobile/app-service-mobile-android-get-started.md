@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate приложение Android на мобильные приложения службы приложений Azure | Документы Microsoft"
-description: "Выполните этот учебник tooget работы с помощью серверных системах мобильного приложения Azure для разработки приложений Android"
+title: "Создание мобильного приложения для Android в службе мобильных приложений Azure | Документация Майкрософт"
+description: "Изучите этот учебник, чтобы начать работу с серверными частями мобильных приложений Azure для разработки программ на платформе Android."
 services: app-service\mobile
 documentationcenter: android
 author: ggailey777
@@ -14,34 +14,34 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 0af85a3a4de9fc265976bbe3f34d73effc3807df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 418a5229a084d570bc6cab5925dbd8d30945a3c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-android-app"></a>Создание приложения Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
-Этот учебник показывает, как tooadd облачную серверную службу tooan мобильное приложение Android с помощью внутреннего мобильного приложения Azure.  Мы создадим серверную часть мобильного приложения и простое приложение *списка дел* (на платформе Android), которое хранит свои данные в Azure.
+В этом учебнике рассказывается, как добавить облачную серверную службу в мобильное приложение для платформы Android с помощью серверной части мобильного приложения Azure.  Мы создадим серверную часть мобильного приложения и простое приложение *списка дел* (на платформе Android), которое хранит свои данные в Azure.
 
-Изучения этого учебника является необходимым условием для других Android учебники по использованию функции hello мобильные приложения в службе приложений Azure.
+Выполнение инструкций из этого учебника необходимо для работы с другими учебниками по Android, посвященными использованию функции мобильных приложений в службе приложений Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
-toocomplete этого учебника требуется hello следующие:
+Для работы с этим учебником требуется:
 
-* [Инструменты разработчика Android](https://developer.android.com/sdk/index.html), включающее hello Android Studio интегрированной среды разработки, а также последнюю версию платформы Android hello.
-* Azure Mobile Android SDK, она автоматически создается как часть проекта hello краткое руководство, для загрузки.
+* [Средства разработчика Android](https://developer.android.com/sdk/index.html), которые включают интегрированную среду разработки Android Studio и новейшую платформу Android.
+* Пакет SDK для мобильных приложений Android в Azure, который автоматически включается как часть скачиваемого вами ознакомительного проекта.
 * [Активная учетная запись Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Создание серверной части мобильного приложения Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-hello-server-project"></a>Настройка проекта сервера hello
+## <a name="configure-the-server-project"></a>Настройка серверного проекта
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-android-app"></a>Загрузите и запустите приложение Android hello
+## <a name="download-and-run-the-android-app"></a>Скачивание и запуск приложения для Android
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

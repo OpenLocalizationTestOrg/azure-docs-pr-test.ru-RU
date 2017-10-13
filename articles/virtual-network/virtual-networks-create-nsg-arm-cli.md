@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate сетевых групп безопасности - CLI Azure 2.0 | Документы Microsoft"
-description: "Узнайте, как toocreate и развертывание сетевых групп безопасности с помощью Azure CLI 2.0 hello."
+title: "Создание групп безопасности сети (Azure CLI 2.0) | Документация Майкрософт"
+description: "Узнайте, как создавать и развертывать группы безопасности сети с помощью Azure CLI 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,36 +16,36 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b1d60676331bf5e2bbbb046c747477be9d3338
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8efb3ab66d07875b51f723fed5594bcb477ed025
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-network-security-groups-using-hello-azure-cli-20"></a>Создание группы безопасности с помощью Azure CLI 2.0 hello сети
+# <a name="create-network-security-groups-using-the-azure-cli-20"></a>Создание групп безопасности сети с помощью Azure CLI 2.0
 
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Задача hello toocomplete версии CLI 
+## <a name="cli-versions-to-complete-the-task"></a>Версии интерфейса командной строки для выполнения задачи 
 
-Можно выполнить с помощью одного из следующих версий CLI hello задачу hello. 
+Вы можете выполнить задачу, используя одну из следующих версий интерфейса командной строки. 
 
-- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) — нашей CLI для hello классический и ресурсов развертывания модели управления 
-- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) -нашей нового поколения CLI для модели развертывания управления hello ресурсов (в этой статье)
+- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) — интерфейс командной строки для классической модели развертывания и модели развертывания Resource Manager. 
+- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) — это интерфейс командной строки нового поколения для модели развертывания Resource Manager (описывается в этой статье).
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Образец Hello Azure CLI 2.0 команды ниже ожидать простой среде уже создан на основании предыдущего сценария hello. 
+Для приведенных ниже примеров команд Azure CLI 2.0 требуется простая среда, созданная по приведенному выше сценарию. 
 
-## <a name="create-hello-nsg-for-hello-frontend-subnet"></a>Создать hello NSG для hello `FrontEnd` подсети
+## <a name="create-the-nsg-for-the-frontend-subnet"></a>Создание группы безопасности сети для подсети `FrontEnd`
 
-toocreate NSG с именем *NSG-FrontEnd* в зависимости от предыдущего сценария hello, выполните следующие шаги hello.
+Чтобы создать группу безопасности сети *NSG-FrontEnd* по описанному выше сценарию, сделайте следующее:
 
-1. Если еще не еще, установить и настроить hello последней [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login). 
+1. Установите и настройте последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) (если вы еще этого не сделали), а затем войдите с использованием учетной записи Azure, выполнив команду [az login](/cli/azure/#login). 
 
-2. Создание с помощью hello NSG [создать az сети nsg](/cli/azure/network/nsg#create) команды. 
+2. Создайте группу безопасности сети, выполнив команду [azure network nsg create](/cli/azure/network/nsg#create). 
 
     ```azurecli
     az network nsg create \
@@ -56,11 +56,11 @@ toocreate NSG с именем *NSG-FrontEnd* в зависимости от пр
 
     Параметры
    
-   * `--resource-group`: Имя группы ресурсов hello, где создается hello NSG. В данном сценарии это *TestRG*.
-   * `--location`: Azure регион, где hello новой NSG создается. В нашем случае это *westus*.
-   * `--name`: Имя hello новая NSG. В данном сценарии это *NSG-FrontEnd*.
+   * `--resource-group` — имя группы ресурсов, в которой создается группа безопасности сети. В данном сценарии это *TestRG*.
+   * `--location` — регион Azure, в котором создается группа безопасности сети. В нашем случае это *westus*.
+   * `--name` — имя новой группы безопасности сети. В данном сценарии это *NSG-FrontEnd*.
 
-    Hello тесты на ожидаемые выходные данные выглядят бит сведения, включая список всех правил по умолчанию hello. Hello пример hello правила по умолчанию, с помощью фильтра запроса JMESPATH с hello `table` формат вывода:
+    В результате вы получите довольно много сведений, включая список всех правил по умолчанию. В следующем примере показаны правила по умолчанию с использованием фильтра запроса JMESPATH с форматом выходных данных `table`:
 
     ```azurecli
     az network nsg show \
@@ -77,16 +77,16 @@ toocreate NSG с именем *NSG-FrontEnd* в зависимости от пр
         Allow     Allow inbound traffic from all VMs in VNET              *                Inbound           65000
         Allow     Allow inbound traffic from azure load balancer          *                Inbound           65001
         Deny      Deny all inbound traffic                                *                Inbound           65500
-        Allow     Allow outbound traffic from all VMs tooall VMs in VNET  *                Outbound          65000
-        Allow     Allow outbound traffic from all VMs tooInternet         *                Outbound          65001
+        Allow     Allow outbound traffic from all VMs to all VMs in VNET  *                Outbound          65000
+        Allow     Allow outbound traffic from all VMs to Internet         *                Outbound          65001
         Deny      Deny all outbound traffic                               *                Outbound          65500
 
 
 
-3. Создать правило, разрешающее доступ tooport 3389 (RDP) из hello Интернета с hello [создать правило nsg сети az](/cli/azure/network/nsg/rule#create) команды.
+3. Создайте правило, которое разрешает доступ к порту 3389 (RDP) из Интернета, выполнив команду [azure network nsg rule create](/cli/azure/network/nsg/rule#create).
 
     > [!NOTE]
-    > В зависимости от hello оболочки используется, может потребоваться toomodify hello `*` знаку в hello аргументы после так как не tooexpand hello аргумент перед выполнением.
+    > В зависимости от используемой оболочки может потребоваться изменить символ `*` в следующих аргументах, чтобы не расширять их перед выполнением.
    
     ```azurecli
     az network nsg rule create \
@@ -126,21 +126,21 @@ toocreate NSG с именем *NSG-FrontEnd* в зависимости от пр
 
     Параметры
 
-    * `--resource-group testrg`: hello toouse группы ресурсов. Обратите внимание, что в ней не учитывается регистр.
-    * `--nsg-name NSG-FrontEnd`: Имя hello NSG, в которой hello создается правило.
-    * `--name rdp-rule`: Имя для нового правила hello.
-    * `--access Allow`: Уровень доступа hello правила (запретить или разрешить).
+    * `--resource-group testrg` — группа ресурсов, которую следует использовать. Обратите внимание, что в ней не учитывается регистр.
+    * `--nsg-name NSG-FrontEnd` — имя группы безопасности сети, в которой будет создано правило.
+    * `--name rdp-rule` — имя нового правила.
+    * `--access Allow` — уровень доступа для правила (Deny или Allow).
     * `--protocol Tcp` — протокол (TCP, UDP или "*").
-    * `--direction Inbound`: Направление соединения hello (входящий или исходящий).
-    * `--priority 100`: Приоритет для правила hello.
+    * `--direction Inbound` — направление подключения (Inbound или Outbound).
+    * `--priority 100` — приоритет правила.
     * `--source-address-prefix Internet` — префикс адреса источника в CIDR или использование тегов по умолчанию.
-    * `--source-port-range "*"` — исходный порт или диапазон портов. Порт, который подключился hello.
+    * `--source-port-range "*"` — исходный порт или диапазон портов. Порт, открывший подключение.
     * `--destination-address-prefix "*"` — префикс адреса назначения в CIDR или использование тегов по умолчанию.
-    * `--destination-port-range 3389` — конечный порт или диапазон портов. Порт, который получает запрос на подключение hello.
+    * `--destination-port-range 3389` — конечный порт или диапазон портов. Порт, принимающий запрос на подключение.
 
 
 
-4. Создать правило, разрешающее доступ tooport 80 (HTTP) из Интернета hello **создать правило nsg сети az** команды.
+4. Создайте правило, которое разрешает доступ к порту 80 (HTTP) из Интернета, выполнив команду **azure network nsg rule create**.
    
     ```azurecli
     az network nsg rule create \
@@ -178,7 +178,7 @@ toocreate NSG с именем *NSG-FrontEnd* в зависимости от пр
     }
     ```
 
-5. Привязать hello NSG toohello **переднего плана** подсети с hello [обновления подсети виртуальной сети сети az](/cli/azure/network/vnet/subnet#update) команды.
+5. Привяжите группу безопасности сети к подсети **FrontEnd**, выполнив команду [az network vnet subnet update](/cli/azure/network/vnet/subnet#update).
         
     ```azurecli
     az network vnet subnet update \
@@ -231,10 +231,10 @@ toocreate NSG с именем *NSG-FrontEnd* в зависимости от пр
     }
     ```
 
-## <a name="create-hello-nsg-for-hello-backend-subnet"></a>Создать hello NSG для hello `BackEnd` подсети
-toocreate NSG с именем *NSG серверной* в зависимости от предыдущего сценария hello, выполните следующие шаги hello.
+## <a name="create-the-nsg-for-the-backend-subnet"></a>Создание группы безопасности сети для подсети `BackEnd`
+Чтобы создать группу безопасности сети *NSG-BackEnd* по описанному выше сценарию, сделайте следующее:
 
-1. Создать hello `NSG-BackEnd` NSG с **создать az сети nsg**.
+1. Создайте группу безопасности сети `NSG-BackEnd`, выполнив команду **az network nsg create**.
    
     ```azurecli
     az network nsg create \
@@ -243,9 +243,9 @@ toocreate NSG с именем *NSG серверной* в зависимости
     --location centralus
     ```
    
-    Как на шаге 2 выше hello тесты на ожидаемые выходные данные довольно велик, включая правила по умолчанию.
+    Как и на предыдущем шаге 2, в результате вы получите довольно много сведений, включая правила по умолчанию.
    
-2. Создать правило, разрешающее доступ tooport 1433 (SQL) из hello `FrontEnd` подсети с hello **создать правило nsg сети az** команды.
+2. Создайте правило, которое разрешает доступ к порту 1433 (SQL) из подсети `FrontEnd`, выполнив команду **azure network nsg rule create**.
    
     ```azurecli
     az network nsg rule create \
@@ -283,7 +283,7 @@ toocreate NSG с именем *NSG серверной* в зависимости
     }
     ```
 
-3. Создать правило, запрещающее доступ toohello в Интернет с помощью hello **создать правило nsg сети az** команды.
+3. Создайте правило, которое запрещает доступ к Интернету, выполнив команду **azure network nsg rule create**.
    
     ```azurecli
     az network nsg rule create \
@@ -321,7 +321,7 @@ toocreate NSG с именем *NSG серверной* в зависимости
     }
     ```
 
-4. Привязать hello NSG toohello `BackEnd` подсеть, используя hello **набор подсети виртуальной сети сети az** команды.
+4. Привяжите группу безопасности сети к подсети `BackEnd`, выполнив команду **az network vnet subnet set**.
    
     ```azurecli
     az network vnet subnet update \

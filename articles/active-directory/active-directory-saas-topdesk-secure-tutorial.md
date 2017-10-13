@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с TOPdesk — Secure | Документация Майкрософт"
-description: "Узнайте, как toouse TOPdesk - Secure с Azure Active Directory tooenable единого входа, автоматизированной подготовки и многое другое!."
+description: "Узнайте, как использовать TOPdesk — Secure с Azure Active Directory для реализации единого входа, автоматической подготовки к работе и многого другого."
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,67 +13,67 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 10fe420d1691c2845b89c779486ffd6fcd736432
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Учебник. Интеграция Azure Active Directory с TOPdesk — Secure
-Цель этого учебника Hello tooshow hello интеграцию Azure и TOPdesk - Secure.  
-Hello сценарий, описанный в этом руководстве предполагается, что уже hello следующих элементов:
+Цель данного учебника — показать интеграцию Azure и TOPdesk — Secure.  
+Сценарий, описанный в этом учебнике, предполагает, что у вас уже имеется:
 
 * Действующая подписка на Azure
 * Подписка TOPdesk — Secure с поддержкой единого входа.
 
-Изучив этот учебник, пользователи Azure AD hello назначенные tooTOPdesk - безопасный будет быть может toosingle входа в приложение hello в версию TOPdesk - сайте компании безопасной (инициированный поставщиком вход службы) или с помощью hello [введение Панель доступа toohello](active-directory-saas-access-panel-introduction.md).
+По завершении работы с этим руководством пользователи Azure AD, назначенные в TOPdesk — Secure, смогут выполнять единый вход в приложение на веб-сайте TOPdesk — Secure вашей компании (вход, инициированный поставщиком услуг) или следуя указаниям в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
 
-Hello сценарий, описанный в этом руководстве состоит из hello следующие стандартные блоки.
+Сценарий, описанный в этом учебнике, состоит из следующих блоков:
 
-1. Включение интеграции приложений hello для безопасной версии TOPdesk
+1. Включение интеграции приложений для TOPdesk — Secure
 2. Настройка единого входа
 3. Настройка подготовки учетных записей пользователей
 4. Назначение пользователей
 
 ![Сценарий](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "Сценарий")
 
-## <a name="enabling-hello-application-integration-for-topdesk---secure"></a>Включение интеграции приложений hello для безопасной версии TOPdesk
-Hello цель этого раздела — toooutline как интеграции приложения hello tooenable для безопасной версии TOPdesk.
+## <a name="enabling-the-application-integration-for-topdesk---secure"></a>Включение интеграции приложений для TOPdesk — Secure
+В этом разделе показано, как включить интеграцию приложений для TOPdesk — Secure.
 
-### <a name="tooenable-hello-application-integration-for-topdesk---secure-perform-hello-following-steps"></a>tooenable hello приложения интеграции для версии TOPdesk — безопасный, выполните следующие шаги hello.
-1. В hello классический портал Azure, hello левой области навигации, выберите **Active Directory**.
+### <a name="to-enable-the-application-integration-for-topdesk---secure-perform-the-following-steps"></a>Чтобы включить интеграцию приложений для TOPdesk — Secure, выполните следующие действия:
+1. На классическом портале Azure в области навигации слева щелкните **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-topdesk-secure-tutorial/IC700993.png "Active Directory")
 
-2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
+2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
 
-3. Щелкните представление приложения hello tooopen в представлении каталога hello **приложений** в верхнем меню hello.
+3. Чтобы открыть представление приложений, в представлении каталога нажмите **Приложения** в верхнем меню.
    
     ![Приложения](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "Приложения")
 
-4. Нажмите кнопку **добавить** hello нижней части страницы приветствия.
+4. В нижней части страницы нажмите кнопку **Добавить** .
    
     ![Добавление приложения](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "Добавление приложения")
 
-5. На hello **что вам требуется toodo** диалоговое окно, нажмите кнопку **добавить приложение из коллекции hello**.
+5. В диалоговом окне **Что необходимо сделать?** щелкните **Добавить приложение из коллекции**.
    
     ![Добавление приложения из коллекции](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "Добавление приложения из коллекции")
 
-6. В hello **поле поиска**, тип **безопасной версии TOPdesk**.
+6. В **поле поиска** введите **TOPdesk — Secure**.
    
     ![Коллекция приложений](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "Коллекция приложений")
 
-7. В области результатов hello выберите **безопасной версии TOPdesk**и нажмите кнопку **завершить** tooadd приложения hello.
+7. В области результатов выберите **TOPdesk — Secure** и щелкните **Завершить**, чтобы добавить приложение.
    
     ![TOPdesk — Secure](./media/active-directory-saas-topdesk-secure-tutorial/IC791933.png "TOPdesk — Secure")
 
 ## <a name="configuring-single-sign-on"></a>Настройка единого входа
-Hello цель этого раздела — toooutline как tooTOPdesk tooauthenticate пользователей tooenable - защитить с помощью учетной записи в Azure AD, используя федерацию основании hello протокола SAML.  
-Настройка единого входа для безопасной версии TOPdesk требуется tooupload файл значка логотипа. файл значка hello tooget, поддержки topdesk контактов hello.
+В этом разделе показано, как разрешить пользователям проходить проверку подлинности в TOPdesk — Secure с помощью своей учетной записи Azure AD, используя федерацию на основе протокола SAML.  
+Для настройки единого входа для TOPdesk — Secure вам необходимо отправить файл значка с логотипом. Для получения файла значка обратитесь в службу поддержки TOPdesk.
 
-### <a name="tooconfigure-single-sign-on-perform-hello-following-steps"></a>tooconfigure единого входа, выполните следующие шаги hello:
-1. Войдите на tooyour **безопасной версии TOPdesk** сайт компании от имени администратора.
-2. В hello **TOPdesk** меню, нажмите кнопку **параметры**.
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>Чтобы настроить единый вход, выполните следующие действия.
+1. Выполните вход на веб-сайт **TOPdesk — Secure** своей компании в качестве администратора.
+2. В меню **TOPdesk** выберите пункт **Settings** (Параметры).
    
     ![Параметры](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Параметры")
 
@@ -81,61 +81,61 @@ Hello цель этого раздела — toooutline как tooTOPdesk tooaut
    
     ![Параметры входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Параметры входа")
 
-4. Разверните hello **параметры входа** меню, а затем нажмите **Общие**.
+4. Разверните меню **Login Settings** (Параметры входа), а затем выберите **General** (Общие).
    
     ![Общие](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "Общие")
 
-5. В hello **Secure** раздел hello **входа SAML** конфигурации выполните следующие шаги hello:
+5. В разделе **Secure** (Безопасность) для конфигурации **SAML login** (Вход SAML) сделайте следующее.
    
     ![Технические параметры](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "Технические параметры")
    
-    а. Нажмите кнопку **загрузки** toodownload hello общедоступный файл метаданных, а затем сохраните его локально на компьютере.
+    а. Нажмите кнопку **Скачать** , чтобы скачать общедоступный файл метаданных, а затем сохраните его локально на компьютере.
    
-    b. Откройте файл метаданных hello, а затем найдите hello **AssertionConsumerService** узла.
+    b. Откройте файл метаданных и определите местоположение узла **AssertionConsumerService** .
     
     ![Служба обработчика утверждений](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Служба обработчика утверждений")
    
-    c. Копировать hello **AssertionConsumerService** значение.  
+    c. Скопируйте значение **AssertionConsumerService** .  
       
     > [!NOTE]
-    > Будет необходимо hello значение в hello **настроить URL-адрес приложения** далее в этом учебнике.
+    > Это значение потребуется в разделе **Настройка URL-адреса приложения** далее в этом руководстве.
     > 
     > 
 
 6. В другом окне веб-браузера войдите на **классический портал Azure** в качестве администратора.
 
-7. На hello **безопасной версии TOPdesk** странице интеграции приложения щелкните **настроить единый вход** tooopen hello ** Настройка единого входа ** диалогового окна.
+7. На **безопасной версии TOPdesk** странице интеграции приложения щелкните **настроить единый вход** Открытие ** Настройка единого входа ** диалогового окна.
    
     ![Настройка единого входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Настройка единого входа")
 
-8. На hello **как как toosign пользователей на tooTOPdesk - Secure** выберите **Microsoft Azure AD Single Sign-On**, а затем нажмите кнопку **Далее**.
+8. На странице **Как пользователи будут входить в TOPdesk — Secure** выберите **Единый вход Microsoft Azure AD** и нажмите кнопку **Далее**.
    
     ![Настройка единого входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "Настройка единого входа")
 
-9. На hello **настроить URL-адрес приложения** выполните следующие шаги hello:
+9. На странице **Настройка URL-адреса приложения** выполните следующие действия.
    
     ![Настройка URL-адреса приложения](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "Настройка URL-адреса приложения")
    
-    а. В hello **TOPdesk - Secure на URL-адрес входа** textbox hello введите URL-адрес, используемый вашей toosign пользователей в вашей безопасную версию TOPdesk (например: «*https://qssolutions.topdesk.net*»).
+    а. В текстовом поле **URL-адрес для входа в TOPdesk — Secure** введите URL-адрес, используемый пользователями для входа в ваше приложение TOPdesk — Secure (например, *https://qssolutions.topdesk.net*).
    
-    b. В hello **TOPdesk — общедоступный URL-адрес ответа** текстовое поле, вставить hello **TOPdesk - Secure URL-адрес AssertionConsumerService** (например: «*https://qssolutions.topdesk.net/tas/public/login/saml*")
+    b. В текстовое поле **URL-адрес ответа TOPdesk — Secure** вставьте значение **TOPdesk - Secure AssertionConsumerService URL** (URL-адрес AssertionConsumerService для TOPdesk — Secure) (например, *https://qssolutions.topdesk.net/tas/public/login/saml*).
    
     c. Щелкните **Далее**.
 
-10. На hello **настройки единого входа в безопасную версию TOPdesk** страницы, toodownload файл метаданных, нажмите кнопку **загрузить метаданные**, а затем сохраните файл hello на локальном компьютере.
+10. На странице **Настройка единого входа в TOPdesk — Secure** щелкните **Скачать метаданные**, чтобы скачать метаданные, а затем сохраните файл данных локально на компьютере.
     
     ![Настройка единого входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "Настройка единого входа")
 
-11. toocreate файлом сертификата, выполните следующие шаги hello.
+11. Чтобы создать файл сертификата, выполните следующие действия:
     
     ![Сертификат](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "Сертификат")
     
-    а. Откройте hello скачанный файл метаданных.
-    b. Разверните hello **RoleDescriptor** узла, имеющего **xsi: Type** из **fed: ApplicationServiceType**.
-    c. Скопируйте значение hello hello **X509Certificate** узла.
-    d. Сохранить hello копируются **X509Certificate** значение на локальном компьютере в файле.
+    а. Откройте скачанный файл метаданных.
+    b. Разверните узел **RoleDescriptor**, содержащий **xsi:type** со значением **fed:ApplicationServiceType**.
+    c. Скопируйте значение узла **X509Certificate** .
+    d. Сохраните скопированное значение узла **X509Certificate** локально в файл на компьютере.
 
-12. В версии TOPdesk - Secure корпоративный сайт в hello **TOPdesk** меню, нажмите кнопку **параметры**.
+12. На веб-сайте TOPdesk — Secure своей компании в меню **TOPdesk** выберите **Settings** (Параметры).
     
     ![Параметры](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Параметры")
 
@@ -143,75 +143,75 @@ Hello цель этого раздела — toooutline как tooTOPdesk tooaut
     
     ![Параметры входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Параметры входа")
 
-14. Разверните hello **параметры входа** меню, а затем нажмите **Общие**.
+14. Разверните меню **Login Settings** (Параметры входа), а затем выберите **General** (Общие).
     
     ![Общие](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "Общие")
 
-15. В hello **открытый** щелкните **добавить**.
+15. В разделе **Public** (Общедоступные) щелкните **Add** (Добавить).
     
     ![Добавление](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "Добавление")
 
-16. На hello **помощник по настройке SAML** диалогового окна выполните следующие шаги hello:
+16. На странице диалогового окна **Помощник настройки SAML** сделайте следующее:
     
     ![Помощник по настройке SAML](./media/active-directory-saas-topdesk-secure-tutorial/IC790608.png "Помощник по настройке SAML")
     
-    а. tooupload метаданные загруженного файла в разделе **метаданные федерации**, нажмите кнопку **Обзор**.
+    а. Чтобы отправить скачанный файл метаданных, напротив пункта **Federation Metadata** (Метаданные федерации) нажмите кнопку **Browse** (Обзор).
 
-    b. файл сертификата, в разделе tooupload **сертификат (RSA)**, нажмите кнопку **Обзор**.
+    b. Чтобы отправить файл сертификата, напротив пункта **Certificate (RSA)** (Сертификат (RSA)) нажмите кнопку **Browse** (Обзор).
 
-    c. Файл эмблемы hello tooupload, полученного от поддержки topdesk hello в разделе **значок логотипа**, нажмите кнопку **Обзор**.
+    c. Чтобы отправить файл с логотипом, полученный от службы поддержки TOPdesk, напротив пункта **Logo icon** (Значок логотипа) нажмите кнопку **Browse** (Обзор).
 
-    d. В hello **атрибут имени пользователя** введите **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    d. В текстовом поле **User name attribute** (Атрибут имени пользователя) введите **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    д. В hello **отображаемое имя** текстовом поле введите имя для конфигурации.
+    д. В текстовом поле **Отображаемое имя** введите имя конфигурации.
 
-    f. Щелкните **Сохранить**.
+    Е. Щелкните **Сохранить**.
 
-17. На hello классический портал Azure, выберите Подтверждение настройки единого входа hello и нажмите кнопку **завершить** tooclose hello **Настройка единого входа** диалогового окна.
+17. На классическом портале Azure выберите подтверждение конфигурации единого входа, а затем нажмите кнопку **Завершить**, чтобы закрыть диалоговое окно **Настройка единого входа**.
     
     ![Настройка единого входа](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "Настройка единого входа")
 
 ## <a name="configuring-user-provisioning"></a>Настройка подготовки учетных записей пользователей
-В порядке tooenable Azure AD пользователи toolog в версии TOPdesk - уровень безопасности, их необходимо подготовить в безопасной версии TOPdesk.  
-В случае TOPdesk - hello безопасный, Подготовка выполняется вручную.
+Чтобы пользователи Azure AD могли выполнять вход в систему TOPdesk — Secure, они должны быть подготовлены для нее.  
+В случае TOPdesk — Secure подготовка пользователей осуществляется вручную.
 
-### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure подготовки пользователей, выполните следующие шаги hello.
-1. Войдите на tooyour **безопасной версии TOPdesk** сайт компании от имени администратора.
-2. В меню в верхней части hello hello выберите **TOPdesk \> New \> файлы поддержки \> оператор**.
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Чтобы настроить подготовку учетных записей пользователей, выполните следующие действия.
+1. Выполните вход на веб-сайт **TOPdesk — Secure** компании в качестве администратора.
+2. В меню в верхней части страницы щелкните **TOPdesk \> New (Создать) \> Support Files (Файлы поддержки) \> Operator (Оператор)**.
    
     ![Оператор](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "Оператор")
 
-3. На hello **оператор New** диалоговое окно, выполните следующие шаги hello:
+3. В диалоговом окне **Новый оператор** выполните следующие действия:
    
     ![Новый оператор](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "Новый оператор")
    
-    а. Щелкните вкладку Общие hello.
+    а. Перейдите на вкладку "Общее".
    
-    b. В hello **Фамилия** текстового поля из hello **Общие** раздел, имя последнего типа hello действительной учетной записи Azure Active Directory требуется tooprovision.
+    b. В текстовом поле **Surname** (Фамилия) в разделе **General** (Общее) введите фамилию пользователя действующей учетной записи Azure Active Directory, которую нужно подготовить.
    
-    c. Выберите **сайта** для учетной записи hello в hello **расположение** раздела.
+    c. Выберите для этой учетной записи **Site** (Веб-сайт) в разделе **Location** (Расположение).
    
-    d. В hello **имя входа** текстового поля из hello **учетные данные TOPdesk** введите имя входа для пользователя.
+    d. В текстовом поле **Login Name** (Имя для входа в систему) в разделе **TOPdesk Login** (Вход в TOPdesk) введите имя для входа пользователя.
    
     д. Щелкните **Сохранить**.
 
 > [!NOTE]
-> Можно использовать любые другие версии TOPdesk - учетная запись безопасности пользователя, инструменты для создания или API-интерфейсы, предоставляемые версией TOPdesk - Secure tooprovision учетных записей пользователей AAD.
+> Вы можете использовать любые другие инструменты создания учетных записей пользователей TOPdesk — Secure или API-интерфейсы, предоставляемые TOPdesk — Secure для подготовки учетных записей пользователя AAD.
 > 
 > 
 
 ## <a name="assigning-users"></a>Назначение пользователей
-tootest конфигурацию, необходимо toogrant hello Azure AD пользователей с помощью tooit доступ вашего приложения путем назначения им tooallow.
+Чтобы проверить свою конфигурацию, предоставьте пользователям Azure AD, которые должны использовать приложение, доступ путем их назначения.
 
-### <a name="tooassign-users-tootopdesk---secure-perform-hello-following-steps"></a>tooTOPdesk пользователи tooassign - безопасной, выполните следующие шаги hello.
-1. В hello классический портал Azure создайте тестовую учетную запись.
-2. На hello ** безопасной версии TOPdesk ** странице интеграции приложения щелкните **назначить пользователей**.
+### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>Чтобы назначить пользователей TOPdesk — Secure, выполните следующие действия:
+1. На классическом портале Azure создайте тестовую учетную запись.
+2. На ** безопасной версии TOPdesk ** странице интеграции приложения щелкните **назначить пользователей**.
    
     ![Назначение пользователей](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Назначение пользователей")
 
-3. Выберите тестового пользователя, нажмите кнопку **назначить**, а затем нажмите кнопку **Да** tooconfirm назначения.
+3. Выберите тестового пользователя, нажмите кнопку **Назначить**, а затем — **Да**, чтобы подтвердить назначение.
    
     ![Да](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Да")
 
-Tootest параметры единого входа, откройте панель доступа hello. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
+Если вы хотите проверить параметры единого входа, откройте панель доступа. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
 

@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с AppDynamics | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и AppDynamics."
+description: "Узнайте, как настроить единый вход Azure Active Directory в приложении AppDynamics."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b63afec73d7442e6ac1ce34b511beea6f43ffe4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Руководство. Интеграция Azure Active Directory с AppDynamics
 
-В этом учебнике вы узнаете, как toointegrate AppDynamics с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение AppDynamics с Azure Active Directory (Azure AD).
 
-Интеграция AppDynamics с Azure AD предоставляет hello следующие преимущества:
+Интеграция AppDynamics с Azure AD обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooAppDynamics
-- Можно включить на пользователей tooautomatically get вошедшего tooAppDynamics (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к AppDynamics.
+- Вы можете включить автоматический вход пользователей в AppDynamics (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с AppDynamics требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с AppDynamics, вам потребуется:
 
 - подписка Azure AD;
 - Подписка с поддержкой единого входа AppDynamics
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление AppDynamics из галереи hello
+1. Добавление AppDynamics из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-appdynamics-from-hello-gallery"></a>Добавление AppDynamics из галереи hello
-tooconfigure hello интеграции AppDynamics в Azure AD, вы должны tooadd AppDynamics из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-appdynamics-from-the-gallery"></a>Добавление AppDynamics из коллекции
+Чтобы настроить интеграцию AppDynamics с Azure AD, необходимо добавить AppDynamics из коллекции в список управляемых приложений SaaS.
 
-**tooadd AppDynamics из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить AppDynamics из коллекции, выполните следующие действия.**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **AppDynamics**.
+4. В поле поиска введите **AppDynamics**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_search.png)
 
-5. В панели результатов hello выберите **AppDynamics**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **AppDynamics** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в AppDynamics с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в AppDynamics является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в AppDynamics должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в AppDynamics соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователям Azure AD и соответствующим пользователем в AppDynamics.
 
-В AppDynamics, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в AppDynamics.
 
-tooconfigure и теста Azure AD единого входа с AppDynamics, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в AppDynamics, вам потребуется выполнить действия в следующих стандартных блоках.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя, прошедшего AppDynamics](#creating-an-appdynamics-test-user)**  -toohave аналог Саймон Britta в AppDynamics, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя AppDynamics](#creating-an-appdynamics-test-user)** нужно для того, чтобы в AppDynamics также существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в AppDynamics приложения.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении AppDynamics.
 
-**tooconfigure Azure AD единого входа с AppDynamics, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в AppDynamics, выполните следующие действия.**
 
-1. В hello в hello портала Azure **AppDynamics** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **AppDynamics** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
 
-3. На hello **URL-адреса и домена AppDynamics** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения AppDynamics** сделайте следующее.
 
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.saas.appdynamics.com`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname>.saas.appdynamics.com`
 
-    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.saas.appdynamics.com/controller`
+    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<companyname>.saas.appdynamics.com/controller`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновить значения hello фактический URL-адрес входа и идентификатор. Обратитесь к [группа поддержки клиента AppDynamics](https://www.appdynamics.com/support/) tooget эти значения. 
+    > Эти значения приведены в качестве примера. Замените эти значения фактическим URL-адресом для входа и идентификатором. Чтобы получить эти значения, обратитесь к [группе поддержки AppDynamics](https://www.appdynamics.com/support/). 
  
-4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_certificate.png) 
 
@@ -125,110 +125,110 @@ tooconfigure и теста Azure AD единого входа с AppDynamics, т
 
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации AppDynamics** щелкните **Настройка AppDynamics** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка AppDynamics** щелкните **Настроить AppDynamics**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_configure.png) 
 
-7. В другом окне браузера войти в корпоративный сайт AppDynamics tooyour с правами администратора.
+7. В другом окне веб-браузера войдите на свой корпоративный веб-сайт AppDynamics в качестве администратора.
 
-8. Щелкните hello панели инструментов в верхней части hello **параметры**, а затем нажмите кнопку **администрирования**.
+8. Выберите меню **Settings** (Параметры) на панели инструментов в верхней части экрана и щелкните пункт **Administration** (Администрирование).
    
     ![Администрирование](./media/active-directory-saas-appdynamics-tutorial/ic790216.png "Администрирование")
 
-9. Нажмите кнопку hello **поставщика проверки подлинности** вкладки.
+9. Откройте вкладку **Authentication Provider** (Поставщик проверки подлинности).
    
     ![Поставщик проверки подлинности](./media/active-directory-saas-appdynamics-tutorial/ic790224.png "Поставщик проверки подлинности")
 
-10. В hello **поставщика проверки подлинности** выполните следующие шаги hello:
+10. В разделе **Authentication Provider** (Поставщик проверки подлинности) выполните следующие действия.
    
     ![Настройка SAML](./media/active-directory-saas-appdynamics-tutorial/ic790225.png "Настройка SAML")   
 
     а. Для параметра **Authentication Provider** (Поставщик проверки подлинности) выберите значение **SAML**.
 
-    b. В hello **URL-адрес входа** текстовое значение hello вставить **SAML единого входа URL-адрес службы** скопирован из портала Azure.
+    b. В текстовое поле **Login URL** (URL-адрес входа) вставьте значение **URL-адрес службы единого входа SAML**, скопированное на портале Azure.
 
-    c. В hello **URL-адрес выхода** текстовое значение hello вставить **URL-адрес выхода** скопирован из портала Azure.
+    c. В текстовое поле **Logout URL** (URL-адрес выхода) вставьте значение **URL-адрес выхода**, скопированное на портале Azure.
        
-    d. Откройте сертификат в кодировке base-64 в блокноте, hello копирования содержимого его в буфер обмена, а затем вставьте его toohello **сертификат** текстового поля
+    г) Откройте сертификат в кодировке Base-64 в Блокноте, скопируйте его содержимое в буфер обмена, а затем вставьте его в текстовое поле **Сертификат** .
 
     д. Щелкните **Сохранить**.
 
      ![Сохранить](./media/active-directory-saas-appdynamics-tutorial/ic777673.png "Сохранить")
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/create_aaduser_01.png) 
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
+2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-appdynamics-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-appdynamics-test-user"></a>Создание тестового пользователя AppDynamics
 
-Пользователи toolog tooenable Azure AD в tooAppDynamics, их необходимо подготовить в AppDynamics. В случае AppDynamics hello Подготовка выполняется вручную.
+Чтобы пользователи Azure AD могли выполнять вход в AppDynamics, они должны быть подготовлены в AppDynamics. В случае с AppDynamics подготовка выполняется вручную.
 
-**tooconfigure подготовки пользователей, выполните следующие шаги hello.**
+**Чтобы настроить подготовку учетных записей пользователей, выполните следующие действия.**
 
-1. Войдите в систему tooyour сайт AppDynamics компании как администратор.
+1. Войдите на свой корпоративный веб-сайт AppDynamics в качестве администратора.
 
-2. Go слишком**пользователей**и нажмите кнопку  **+**  tooopen hello **Create User** диалогового окна.
+2. Откройте раздел **Users** (Пользователи) и щелкните значок **+**, чтобы открыть диалоговое окно **Create User** (Создание пользователя).
    
     ![Пользователи](./media/active-directory-saas-appdynamics-tutorial/ic790229.png "Пользователи")
 
-3. В hello **Create User** выполните следующие шаги hello:
+3. В разделе **Создание пользователя** выполните следующие действия.
    
     ![Создание пользователя](./media/active-directory-saas-appdynamics-tutorial/ic790230.png "Создание пользователя")
    
-    а. Тип hello **Username**, **имя**, **электронной почты**, **новый пароль**, **повторно введенный новый пароль** из допустимых AAD учетной записи, которые должны tooprovision hello связанные текстовые поля.
+    а. Введите в текстовых полях **Username** (Имя пользователя), **Name** (Имя), **Email** (Адрес электронной почты), **New Password** (Новый пароль) и **Repeat New Password** (Введите новый пароль еще раз) соответствующие данные действующей учетной записи AAD, которую вы хотите подготовить.
 
     b. Щелкните **Сохранить**.
 
     >[!NOTE]
-    >Можно использовать любые другие AppDynamics пользователя средства создания учетных записей или API, предоставленные AppDynamics tooprovision учетных записей пользователей Azure AD.
+    >Вы можете использовать любые другие средства создания учетной записи пользователя AppDynamics или API, предоставляемые AppDynamics для подготовки учетных записей пользователя AAD.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooAppDynamics доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к AppDynamics.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooAppDynamics Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в AppDynamics, выполните следующие действия.**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **AppDynamics**.
+2. Из списка приложений выберите **AppDynamics**.
 
     ![Настройка единого входа](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -236,7 +236,7 @@ tooconfigure и теста Azure AD единого входа с AppDynamics, т
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -244,13 +244,13 @@ tooconfigure и теста Azure AD единого входа с AppDynamics, т
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки AppDynamics плитки в панели доступа hello приветствия, вы должны получить автоматически вошедшего tooyour AppDynamics приложения.
+Щелкнув элемент "AppDynamics" на панели доступа, вы автоматически войдете в приложение AppDynamics.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

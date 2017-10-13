@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooperform доступе | Документы Microsoft"
-description: "Узнайте, как tooperform отзыв с hello Azure управления привилегированными пользователями приложения."
+title: "Выполнение проверки доступа | Документация Майкрософт"
+description: "Сведения о выполнении проверки с помощью приложения для управления привилегированными пользователями Azure."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,38 +15,38 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 301a5e9f97b68fedfbf4954e0bd7dadb7f0fc510
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a98ed60221eeba1d9c92df846aeae2deafb8ae60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-an-access-review-in-azure-ad-privileged-identity-management"></a>Как tooperform доступа просмотрите в Azure AD Privileged Identity Management
-Active Directory (AD) Управление привилегированными пользователями Azure упрощает, как управлять предприятий tooresources привилегированный доступ в Azure AD и других электронных услуг Microsoft, такие как Office 365 или Microsoft Intune.  
+# <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Как выполнить проверку доступа в управлении привилегированными пользователями Azure AD
+Компонент Azure Active Directory (AD) Privileged Identity Management упрощает управление привилегированным доступом пользователей к ресурсам в Azure AD и других веб-службах Майкрософт, включая Office 365 и Microsoft Intune.  
 
-Если вам назначена роль администратора tooan, привилегированной роли Администратор организации может попросить вас tooregularly подтверждение по-прежнему требуется этой роли для данного задания. Может появиться сообщение электронной почты, содержащее ссылку или переходе прямой toohello [портал Azure](https://portal.azure.com). Выполните действия hello в этой статье tooperform, самостоятельно просмотрите назначенных ролей.
+Если вам назначена роль администратора, администратор привилегированных ролей вашей организации может попросить вас регулярно подтверждать, что эта роль по-прежнему требуется вам для работы. Вы можете получить сообщение электронной почты, содержащее ссылку для подтверждения, или перейти непосредственно на [портал Azure](https://portal.azure.com). Следуйте указаниям в этой статье, чтобы выполнить самостоятельную проверку назначенных вам ролей.
 
-Если вы являетесь администратором привилегированной роли интересует проверки доступа, получить более подробные сведения в [как toostart доступа просмотрите](active-directory-privileged-identity-management-how-to-start-security-review.md).
+Если вы администратор привилегированных ролей и вас интересуют функции проверки доступа, дополнительные сведения см. в статье [Как запустить проверку доступа в управлении привилегированными пользователями Azure AD](active-directory-privileged-identity-management-how-to-start-security-review.md).
 
-## <a name="add-hello-privileged-identity-management-application"></a>Добавить приложение hello Privileged Identity Management
-Можно использовать приложение hello Azure AD Privileged Identity управления (PIM) в hello [портал Azure](https://portal.azure.com/) tooperform проверки.  При отсутствии приложения hello Azure AD Privileged Identity Management на портале, выполните эти действия, tooget работы.
+## <a name="add-the-privileged-identity-management-application"></a>Добавление приложения для управления привилегированными пользователями
+Для выполнения проверки можно использовать приложение "Управление привилегированными пользователями" (PIM) Azure AD на [портале Azure](https://portal.azure.com/) .  Если приложение Azure AD PIM еще не установлено на портале, выполните следующие действия, чтобы приступить к работе.
 
-1. Войдите в toohello [портал Azure](https://portal.azure.com/).
-2. Выберите свое имя пользователя в верхнем правом углу hello hello портал Azure и выберите hello каталог, где можно будет работать.
-3. Выберите **дополнительные службы** и использовать hello toosearch текстовое поле фильтра для **Azure AD Privileged Identity Management**.
-4. Проверьте **toodashboard ПИН-код** и нажмите кнопку **создать**. Откроется Hello управления привилегированными пользователями приложения.
+1. Выполните вход на [портал Azure](https://portal.azure.com/).
+2. Щелкните свое имя пользователя в правом верхнем углу портала Azure и выберите каталог, с которым будете работать.
+3. Выберите **Другие службы** и в текстовое поле "Фильтр" введите **Azure AD Privileged Identity Management**.
+4. Установите флажок **Закрепить на панели мониторинга** и нажмите кнопку **Создать**. Откроется приложение "Управление привилегированными пользователями".
 
 ## <a name="approve-or-deny-access"></a>Утверждение или отклонение доступа
-При утверждении или запретить доступ, вы просто сообщают, что редактор hello ли вы по-прежнему использовать роль или нет. Выберите **утвердить** Если toostay в роли hello или **Deny** Если вы не должны hello доступ больше. Состояние не изменит прямо сейчас, пока редактор hello применяются hello результаты.
-Выполните эти шаги toofind, выполните проверку доступа hello.
+При утверждении или отклонении доступа вы просто сообщаете проверяющему, используете ли вы еще эту роль. Чтобы оставаться в этой роли, выберите **Утвердить**, а когда доступ вам больше не требуется — **Запретить**. Состояние роли изменится лишь тогда, когда проверяющий применит результаты.
+Выполните следующие действия, чтобы найти проверку доступа и завершить ее.
 
-1. В hello PIM приложения, выберите **проверки привилегированный доступ**. При наличии любой проверки ожидающих доступ, они отображаются в hello колонке проверок доступа Azure AD.
-2. Выберите, требуется toocomplete проверки hello.
-3. Если не был создан проверки hello, вы отображаются так, как только пользователь при проверке hello hello. Выберите имя следующего tooyour hello флажок.
-4. Выберите **Утвердить** или **Запретить**. Может потребоваться tooinclude причина такого решения в hello **указать причину** текстовое поле.  
-5. Закрыть hello **роли проверки Azure AD** колонку.
+1. В приложении PIM выберите **Просмотр привилегированного доступа**. Если у вас есть незавершенные проверки доступа, то они отображаются в колонке "Проверки доступа" в Azure AD.
+2. Выберите проверку, которую необходимо завершить.
+3. Если эта проверка создана не вами, вы должны быть единственным пользователем, отображаемым при проверке. Установите флажок рядом со своим именем.
+4. Выберите **Утвердить** или **Запретить**. Возможно, в текстовом поле **Указание причины** потребуется ввести причину своего решения.  
+5. Закройте колонку **Проверка ролей Azure AD** .
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Дальнейшие действия
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

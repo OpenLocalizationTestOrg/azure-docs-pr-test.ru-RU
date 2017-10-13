@@ -1,6 +1,6 @@
 ---
-title: "aaaSynonyms Предварительный Просмотр учебника в поиске Azure | Документы Microsoft"
-description: "Добавьте индекс hello синонимы предварительной версии компонентов tooan в поиске Azure."
+title: "Руководство по предварительной версии синонимов в Поиске Azure | Документация Майкрософт"
+description: "Добавление предварительной версии функции синонимов в индекс в Поиске Azure."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -12,33 +12,33 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 03/31/2017
 ms.author: heidist
-ms.openlocfilehash: 055c1cbafb945823a3dc4da0c522db236b1d192c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 014959ed471f796d2184f0f8ff10d15cdc8a2ec6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="synonym-preview-c-tutorial-for-azure-search"></a>Руководство по C# для синонимов (предварительная версия) в Поиске Azure
 
-Синонимы разверните запроса путем сопоставления на условиях, считаются входной термин toohello семантически эквивалентны. Например может потребоваться документы toomatch «машина», содержащие hello слова «автомобиль» или «машина».
+Синонимы позволяют расширить запрос с помощью сопоставления семантически эквивалентных терминов с входными терминами. Например, вы можете сопоставить термин "машина" с документами, в которых встречается слово "автомобиль" или "транспортное средство".
 
-В Поиске Azure синонимы определены в *сопоставлении синонимов* с помощью *правил сопоставления*, связывающих эквивалентные термины. Создайте несколько карт синоним, задайте их как доступные tooany индекс ресурса службы и затем ссылаться на какие один toouse на уровне полей hello. Во время обработки запроса кроме toosearching индекса поиска Azure выполняет поиск в сопоставлении синоним, если он указан на поля, используемые в запросе hello.
+В Поиске Azure синонимы определены в *сопоставлении синонимов* с помощью *правил сопоставления*, связывающих эквивалентные термины. Вы можете создать несколько сопоставлений синонимов, разместить их как ресурс служб, доступный для любого индекса, а затем указать ссылку на используемый на уровне поля. Во время выполнения запроса, кроме поиска индекса, Поиск Azure обязательно просмотрит сопоставление синонимов, если один из них указан в каком-либо поле, используемом в этом запросе.
 
 > [!NOTE]
-> синонимы Hello компонент в настоящий момент в Предварительный просмотр и поддерживается в только hello последнюю предварительную версию API и версии пакета SDK (api-version = 2016-09-01-Preview, версия пакета SDK 4.x-preview). Портал Azure такую поддержку пока не предоставляет. Предварительные версии API не регулируются Соглашением об уровне обслуживания, и так как предварительные возможности могут измениться, мы не рекомендуем использовать их в рабочих приложениях.
+> Сейчас возможности синонимов доступны в предварительной версии и поддерживаются только последними предварительными версиями API и пакетов SDK (предварительной версией API — 2016-09-01 и пакета SDK — 4.x). Портал Azure такую поддержку пока не предоставляет. Предварительные версии API не регулируются Соглашением об уровне обслуживания, и так как предварительные возможности могут измениться, мы не рекомендуем использовать их в рабочих приложениях.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Учебник требования включают hello следующее:
+Ниже приведены предварительные требования, описанные в этом руководстве.
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Служба поиска Azure](search-create-service-portal.md)
 * [Предварительная версия библиотеки Microsoft.Azure.Search .NET](https://aka.ms/search-sdk-preview)
-* [Как выполнить поиск Azure toouse из приложения .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Использование службы поиска Azure в приложении .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Обзор
 
-До и после запросов показано значение hello синонимов. В этом руководстве мы используем пример приложения, выполняющий запросы и возвращающий результаты для примера индекса. Пример приложения Hello создает небольшой индекс с именем «гостиницы» заполняется двух документов. приложение Hello выполняет запросов поиска с применением термины и фразы, которые не отображаются в индексе hello, включает hello синонимы, то проблем hello же поиск еще раз. Приведенный ниже код Hello показывает hello общий поток.
+Значение синонимов показано в запросах "до" и "после". В этом руководстве мы используем пример приложения, выполняющий запросы и возвращающий результаты для примера индекса. Пример приложения создает небольшой индекс с именем hotels с двумя документами. Приложение выполняет поисковые запросы с помощью терминов и фраз, которые отсутствуют в индексе, что вызывает функцию синонимов, и поиск выполняется повторно. В примере кода ниже показан общий поток.
 
 ```csharp
   static void Main(string[] args)
@@ -63,53 +63,53 @@ ms.lasthandoff: 10/06/2017
       Console.WriteLine("{0}", "Adding synonyms...\n");
       UploadSynonyms(serviceClient);
       EnableSynonymsInHotelsIndex(serviceClient);
-      Thread.Sleep(10000); // Wait for hello changes toopropagate
+      Thread.Sleep(10000); // Wait for the changes to propagate
 
       RunQueriesWithNonExistentTermsInIndex(indexClientForQueries);
 
-      Console.WriteLine("{0}", "Complete.  Press any key tooend application...\n");
+      Console.WriteLine("{0}", "Complete.  Press any key to end application...\n");
 
       Console.ReadKey();
   }
 ```
-Здравствуйте toocreate действия и заполнение индекса образец hello приведены в [как toouse Azure поиска из приложения .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+В статье [Использование службы поиска Azure в приложении .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk) вы ознакомитесь с действиями по созданию и заполнению примера индекса.
 
 ## <a name="before-queries"></a>Запросы "до"
 
 С помощью `RunQueriesWithNonExistentTermsInIndex` мы отправляли запросы на поиск таких терминов, как "пять звезд", "Интернет" и "отели среднего класса".
 ```csharp
-Console.WriteLine("Search hello entire index for hello phrase \"five star\":\n");
+Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = indexClient.Documents.Search<Hotel>("\"five star\"", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search hello entire index for hello term 'internet':\n");
+Console.WriteLine("Search the entire index for the term 'internet':\n");
 results = indexClient.Documents.Search<Hotel>("internet", parameters);
 WriteDocuments(results);
 
-Console.WriteLine("Search hello entire index for hello terms 'economy' AND 'hotel':\n");
+Console.WriteLine("Search the entire index for the terms 'economy' AND 'hotel':\n");
 results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
-Ни один из двух индексированных документов hello терминами hello, поэтому мы получаем следующие hello, выходные данные из hello сначала `RunQueriesWithNonExistentTermsInIndex`.
+Ни в одном из двух индексированных документов нет этих выражений, поэтому мы используем следующие выходные данные из первой функции `RunQueriesWithNonExistentTermsInIndex`.
 ~~~
-Search hello entire index for hello phrase "five star":
+Search the entire index for the phrase "five star":
 
 no document matched
 
-Search hello entire index for hello term 'internet':
+Search the entire index for the term 'internet':
 
 no document matched
 
-Search hello entire index for hello terms 'economy' AND 'hotel':
+Search the entire index for the terms 'economy' AND 'hotel':
 
 no document matched
 ~~~
 
 ## <a name="enable-synonyms"></a>Включение поиска синонимов
 
-Чтобы включить поиск синонимов, нам потребуется выполнить два действия. Мы сначала определить и отправить правила синонима, а затем настройте поля toouse их. описывается процесс Hello в `UploadSynonyms` и `EnableSynonymsInHotelsIndex`.
+Чтобы включить поиск синонимов, нам потребуется выполнить два действия. Сначала нам необходимо определить и отправить правила синонимов, а затем настроить поля для их использования. Описание этого процесса вы можете найти в `UploadSynonyms` и `EnableSynonymsInHotelsIndex`.
 
-1. Добавление службы поиска tooyour карты синоним. В `UploadSynonyms`, мы определить четыре правила в нашу карту синоним «desc synonymmap» и toohello служба отправки.
+1. Добавьте сопоставление синонимов в свою службу поиска. С помощью `UploadSynonyms` мы определим четыре правила в сопоставлении синонимов desc-synonymmap и добавим его в службу.
 ```csharp
     var synonymMap = new SynonymMap()
     {
@@ -123,9 +123,9 @@ no document matched
 
     serviceClient.SynonymMaps.CreateOrUpdate(synonymMap);
 ```
-Карта синонима должно соответствовать toohello открытого стандарта `solr` формат. Формат Hello описан в [синонимы в поиске Azure](search-synonyms.md) в разделе "hello" `Apache Solr synonym format`.
+Сопоставление синонимов должно соответствовать стандартному формату `solr` с открытым кодом. Сведения об этом формате вы найдете в разделе `Apache Solr synonym format` статьи [Synonyms in Azure Search](search-synonyms.md) (Синонимы в Поиске Azure).
 
-2. Настройка поля поиска toouse hello синоним схемы в определении индекса hello. В `EnableSynonymsInHotelsIndex`, мы можем добавить синонимы по двум полям `category` и `tags` путем установки hello `synonymMaps` имя свойства toohello hello вновь отправлен карты синоним.
+2. Настройте поля, поддерживающие поиск, чтобы использовать сопоставление синонимов в определении индекса. С помощью `EnableSynonymsInHotelsIndex` мы можем включить поиск синонимов для двух полей — `category` и `tags`. Для этого необходимо задать свойство `synonymMaps` для имени добавленного сопоставления синонимов.
 ```csharp
   Index index = serviceClient.Indexes.Get("hotels");
   index.Fields.First(f => f.Name == "category").SynonymMaps = new[] { "desc-synonymmap" };
@@ -133,37 +133,37 @@ no document matched
 
   serviceClient.Indexes.CreateOrUpdate(index);
 ```
-Когда вы добавите сопоставление синонимов, необходимость в перестроении индексов отпадет. Добавление службы tooyour синоним карты и затем измените существующие определения полей в любой индекс toouse hello нового синонима карты. Добавление новых атрибутов Hello не оказывает влияния на доступность индекса. Здравствуйте, же правило применяется к выключению синонимы для поля. Достаточно просто задать hello `synonymMaps` свойство tooan пустой список.
+Когда вы добавите сопоставление синонимов, необходимость в перестроении индексов отпадет. Чтобы использовать новое сопоставление синонимов, вы можете добавить это сопоставление в свою службу, а затем изменить существующие определения полей в любом индексе. Добавление новых атрибутов никак не скажется на доступности индексов. То же относится и к отключению поиска синонимов для поля. Вы можете просто задать для пустого списка свойство `synonymMaps`.
 ```csharp
   index.Fields.First(f => f.Name == "category").SynonymMaps = new List<string>();
 ```
 
 ## <a name="after-queries"></a>Запросы "после"
 
-После отправки карты синоним hello и индекс hello обновленные toouse hello синоним карты, во-вторых hello `RunQueriesWithNonExistentTermsInIndex` вызова выводит hello следующее:
+После добавления сопоставления синонимов и обновления индекса, необходимых для использования этого сопоставления, мы получаем следующие выходные данные, вызвав функцию `RunQueriesWithNonExistentTermsInIndex` второй раз:
 
 ~~~
-Search hello entire index for hello phrase "five star":
+Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search hello entire index for hello term 'internet':
+Search the entire index for the term 'internet':
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
 
-Search hello entire index for hello terms 'economy' AND 'hotel':
+Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 ~~~
-первый запрос Hello находит hello документа из правила hello `five star=>luxury`. Hello второй запрос расширяет hello поиска с помощью `internet,wifi` и hello в-третьих, используя оба `hotel, motel` и `economy,inexpensive=>budget` в поиск документов hello их соответствие.
+Первый запрос находит документ из правила `five star=>luxury`. Для второго запроса поиск расширяется с помощью термина `internet,wifi`, а для третьего при поиске соответствующих документов используются оба термина запросов — `hotel, motel` и `economy,inexpensive=>budget`.
 
-Добавление синонимов полностью изменяет интерфейс поиска hello. В этом учебнике hello исходного запросов не tooreturn значимые результаты, даже если документы hello в наш индекс, соответствовали. Включение синонимы, мы разверните tooinclude индекс часто применяемые условия без данных toounderlying изменения в индекс hello.
+Добавление синонимов полностью изменяет возможности поиска. При работе с этим руководством исходным запросам не удалось вернуть информативные результаты, несмотря на соответствующие документы в индексе. Включив поиск синонимов, мы можем расширить индекс, чтобы включить распространенные термины, не изменяя при этом базовые данные в индексе.
 
 ## <a name="sample-application-source-code"></a>Исходный код образца приложения
-Можно найти hello полный исходный код образца приложения hello, используемые в этом пошагового на [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
+Полный исходный код образца приложения, используемого в этом пошаговом руководстве, см. в репозитории [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Просмотрите [как синонимы toouse в поиске Azure](search-synonyms.md)
+* Ознакомьтесь со сведениями об [использовании синонимов в Поиске Azure](search-synonyms.md).
 * Ознакомьтесь с [документацией по API REST для синонимов](https://aka.ms/rgm6rq).
-* Обзор hello ссылки для hello [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) и [API-интерфейса REST](https://docs.microsoft.com/rest/api/searchservice/).
+* Изучите справочную информацию о [пакете SDK для .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) и [REST API](https://docs.microsoft.com/rest/api/searchservice/).

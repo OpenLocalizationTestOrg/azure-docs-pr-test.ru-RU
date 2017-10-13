@@ -1,6 +1,6 @@
 ---
-title: "aaaWindows содержимое пакета SDK Phone Silverlight"
-description: "Дополнительные сведения о hello содержимое hello пакет SDK для Windows Phone Silverlight для Azure Mobile Engagement"
+title: "Содержимое пакета SDK для Windows Phone Silverlight"
+description: "Информация о содержимом пакета SDK для Windows Phone Silverlight для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c39247383d65200493d028a80d444a6e96a697cd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ce323880100706accf0c08c9929d20908c6198cb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-content"></a>Содержимое пакета SDK для Windows Phone Silverlight
-В этом документе перечислены и описаны hello содержимого, развернутого с hello SDK в приложении.
+В этом документе перечислено и описано содержимое, которое развертывается в приложении с помощью пакета SDK.
 
-## <a name="hello-resources-folder"></a>Hello `/Resources` папки
-Эта папка содержит все hello ресурсы, необходимые для мобильного охвата. Также можно настроить их toofit приложения.
+## <a name="the-resources-folder"></a>Папка `/Resources`
+Эта папка содержит все ресурсы, необходимые для Служб мобильного взаимодействия. Вы также можете настроить их в соответствии с особенностями своего приложения.
 
-* `EngagementIconNotification.png`: hello фирменной символики значка, отображаемого в hello слева уведомления — заменить этот значок вашей торговой марки.
-* `EngagementIconOk.png`: значок «ОК» hello hello достичь ApplicationBar страницы.
-* `EngagementIconCancel.png`: hello достичь значок «Отмена» hello страниц ApplicationBar.
-* `EngagementIconCloseLight.png`: значок «Закрыть» hello hello мобильного охвата достичь уведомлений для "светлой" теме hello Windows Phone.
-* `EngagementIconCloseDark.png`: значок «Закрыть» hello hello мобильного охвата достичь уведомления для темной темы Windows Phone hello.
-* `EngagementConfiguration.xml`: hello файла конфигурации мобильного охвата, это, где можно настроить параметры Engagement (строка подключения обязательств, отчеты о сбоях и т. д).
+* `EngagementIconNotification.png`: фирменный значок, отображающийся слева от уведомления. Замените его собственным логотипом.
+* `EngagementIconOk.png`: значок "ОК" на панели ApplicationBar на страницах рекламной кампании.
+* `EngagementIconCancel.png` : значок "Отмена" на панели ApplicationBar на страницах рекламной кампании.
+* `EngagementIconCloseLight.png`: значок "Закрыть" в уведомлениях рекламных кампаний в Службах мобильного взаимодействия для светлой темы Windows Phone.
+* `EngagementIconCloseDark.png`: значок "Закрыть" уведомлений рекламных кампаний в Службах мобильного взаимодействия для темной темы Windows Phone.
+* `EngagementConfiguration.xml`: файл конфигурации Служб мобильного взаимодействия, в котором вы можете настроить параметры взаимодействия (строку подключения службы мобильного взаимодействия, сообщение о сбое и т. д.).
 

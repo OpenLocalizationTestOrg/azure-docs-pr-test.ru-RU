@@ -1,6 +1,6 @@
 ---
-title: "Azure AD и приложений: tooan назначение пользователей приложения | Документы Microsoft"
-description: "Как назначение tooimplement пользователя для приложения Azure."
+title: "Azure AD и приложения: назначение пользователей для приложения | Документация Майкрософт"
+description: "Как реализовать назначение пользователей для приложений Azure."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: kgremban
 robots: noindex
-ms.openlocfilehash: e9374cbd106d1bcb302645828a061fe184f9956b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 29d63bd5781dc7ef9e84840dd4b1b70222cf6892
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-ad-and-applications-assigning-users-tooan-application"></a>Azure AD и приложений: tooan назначение пользователей приложения
-Перед тем как назначать пользователей и групп tooan приложения, необходимо использовать назначение пользователя.  toolearn как назначение toorequire пользователя см. в разделе hello [требуется назначение пользователей](active-directory-applications-guiding-developers-requiring-user-assignment.md) статьи.
+# <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD и приложения: назначение пользователей для приложения
+Прежде чем назначить пользователей и группы для приложения, необходимо настроить требование назначения пользователей.  Чтобы узнать, как настроить требование назначения пользователей, см. статью [Azure AD и приложения: требование назначения пользователей](active-directory-applications-guiding-developers-requiring-user-assignment.md).
 
-## <a name="assigning-users-tooan-application"></a>Назначение пользователей tooan приложения
-1. Войдите в toohello портал Azure с учетной записью администратора.
-2. Щелкните hello **все элементы** элемента в главном меню hello.
-3. Выберите каталог hello, который вы используете для приложения hello.
-4. Щелкните hello **ПРИЛОЖЕНИЙ** вкладки.
-5. Выберите приложение hello hello список приложений, связанных с этим каталогом.
-6. Нажмите кнопку hello **пользователей и ГРУПП** вкладки.
-7. Выберите hello пользователей требуется приложение toohello tooassign.
+## <a name="assigning-users-to-an-application"></a>Назначение пользователей приложения
+1. Войдите на портал Azure с учетной записью администратора.
+2. В главном меню выберите пункт **Все элементы** .
+3. Выберите каталог, который используете для приложения.
+4. Откройте вкладку **ПРИЛОЖЕНИЯ** .
+5. Выберите приложение из списка приложений, связанных с данным каталогом.
+6. Откройте вкладку **ПОЛЬЗОВАТЕЛИ И ГРУППЫ** .
+7. Выберите пользователей, которых хотите назначить для приложения.
 8. Щелкните **НАЗНАЧИТЬ**.
 9. Щелкните **Да** при появлении запроса.
 

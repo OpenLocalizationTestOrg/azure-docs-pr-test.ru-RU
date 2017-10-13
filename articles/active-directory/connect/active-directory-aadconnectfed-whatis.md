@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD Connect и федерации | Документы Microsoft"
-description: "Данная страница является hello центрального расположения для всей документации об операциях службы федерации Active Directory, использующих Azure AD Connect."
+title: "Azure AD Connect и федерация | Документация Майкрософт"
+description: "На этой странице представлена вся документация об операциях служб федерации Active Directory с использованием Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: anandy
-ms.openlocfilehash: dc70206eee2296c2320712ef2ade48ccebcc912d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6822320c92d106d28607289a90f2f08a51e04070
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect и федерация
-Azure Active Directory (Azure AD) Connect позволяет настроить федерацию с локальными службами федерации Active Directory (AD FS) и Azure AD. Федерации входа в систему можно включить toosign пользователей в службах AD под управлением tooAzure со своими локальными паролями — и, в корпоративной сети hello, без необходимости tooenter свои пароли еще раз. С помощью параметра hello федерации с AD FS, можно развернуть новую установку AD FS, или можно указать существующую установку в ферме Windows Server 2012 R2.
+Azure Active Directory (Azure AD) Connect позволяет настроить федерацию с локальными службами федерации Active Directory (AD FS) и Azure AD. С помощью федеративного входа ваши пользователи могут входить в службы Azure AD со своими локальными паролями, а в корпоративной сети им не нужно будет вводить пароли повторно. Благодаря возможности федерации с AD FS можно развернуть новую установку AD FS или указать существующую установку в ферме Windows Server 2012 R2.
 
-В этом разделе — hello домашней сведения о функциями федерации для Azure AD Connect. Он содержит список tooall связанные разделы. Для ссылки tooAzure AD Connect, в разделе [интеграция локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).
+В этой статье содержатся сведения о функциях службы Azure AD Connect, относящихся к федерации, и приводятся ссылки на все связанные статьи. Ссылки на ресурсы, посвященные Azure AD Connect, приведены в статье [Интеграция локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).
 
 ## <a name="azure-ad-connect-federation-topics"></a>Статьи об Azure AD Connect и федерации
-| Раздел | Она охватывает и когда tooread его |
+| Раздел | Содержание и целевая аудитория |
 |:--- |:--- |
 | **Параметры входа в Azure AD Connect** | |
-| [Параметры входа в Azure AD Connect](active-directory-aadconnect-user-signin.md) |Дополнительные сведения о различных параметров вход пользователя и их влияние на взаимодействие с пользователем hello Azure вход. |
+| [Параметры входа в Azure AD Connect](active-directory-aadconnect-user-signin.md) |Описание разных параметров входа пользователей и их влияние на работу пользователя в среде Azure. |
 | **Установка AD FS с помощью Azure AD Connect** | |
-| [Предварительные требования](active-directory-aadconnect-get-started-custom.md#ad-fs-configuration-pre-requisites) |См. предварительные требования hello для успешной установки службы федерации Active Directory через Azure AD Connect. |
+| [Предварительные требования](active-directory-aadconnect-get-started-custom.md#ad-fs-configuration-pre-requisites) |Предварительные требования для установки AD FS с помощью Azure AD Connect. |
 | [Настройка федерации с AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) |Установка новой фермы AD FS с помощью Azure AD Connect. |
 | [Федерация с Azure AD с помощью альтернативного имени пользователя](active-directory-aadconnect-federation-management.md#alternateid) | Настройка федерации с использованием альтернативного имени пользователя.  |
-| **Изменение конфигурации hello AD FS** | |
-| [Восстановите доверие hello](active-directory-aadconnect-federation-management.md#repairthetrust) |Восстановление hello текущей доверия между локальной AD FS и Office 365 или Azure. |
+| **Изменение конфигурации AD FS** | |
+| [Восстановление доверия](active-directory-aadconnect-federation-management.md#repairthetrust) |Восстановление текущих отношений доверия между локальной службой AD FS и Office 365 или Azure. |
 | [Добавление сервера AD FS](active-directory-aadconnect-federation-management.md#addadfsserver) |Добавление к ферме AD FS дополнительных серверов AD FS после начальной установки. |
 | [Добавление прокси-сервера веб-приложения AD FS](active-directory-aadconnect-federation-management.md#addwapserver) |Добавление к ферме AD FS дополнительного сервера прокси-службы веб-приложения (WAP) после начальной установки. |
-| [Добавление нового федеративного домена](active-directory-aadconnect-federation-management.md#addfeddomain) |Добавьте другой toobe домена в федерацию с Azure AD. |
-| [Обновить сертификат SSL hello](active-directory-aadconnectfed-ssl-update.md)| Обновите hello SSL-сертификат для фермы AD FS. |
+| [Добавление нового федеративного домена](active-directory-aadconnect-federation-management.md#addfeddomain) |Добавление нового домена в федерацию с Azure AD. |
+| [Обновление SSL-сертификата](active-directory-aadconnectfed-ssl-update.md)| Обновление SSL-сертификата для фермы AD FS. |
 | **Другая конфигурация федерации** | |
 | [Федерация нескольких экземпляров Azure AD с одним экземпляром AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md) | Федерация нескольких экземпляров Azure AD с одной фермой AD FS.| 
-| [Добавление настраиваемого логотипа компании или иллюстрации](active-directory-aadconnect-federation-management.md#customlogo) |Измените hello входа в систему, указав hello логотип, отображаемый на hello AD FS на странице входа. |
-| [Добавление описания входа в систему](active-directory-aadconnect-federation-management.md#addsignindescription) |Изменить hello описание на страницу входа AD FS hello. |
-| [Изменение правил утверждений служб федерации Active Directory](active-directory-aadconnect-federation-management.md#modclaims) |Изменение или добавление правил для утверждений в AD FS, которые соответствуют конфигурация синхронизации tooAzure AD Connect. |
+| [Добавление настраиваемого логотипа компании или иллюстрации](active-directory-aadconnect-federation-management.md#customlogo) |Персонализация входа в систему путем настройки логотипа, который будет отображаться на странице входа в AD FS. |
+| [Добавление описания входа в систему](active-directory-aadconnect-federation-management.md#addsignindescription) |Изменение текста для описания входа на странице входа в AD FS. |
+| [Изменение правил утверждений служб федерации Active Directory](active-directory-aadconnect-federation-management.md#modclaims) |Изменение или добавление правил утверждений в AD FS в соответствии с настройками синхронизации Azure AD Connect. |
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы

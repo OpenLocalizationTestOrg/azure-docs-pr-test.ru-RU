@@ -1,6 +1,6 @@
 ---
-title: "Расширение CustomScript на виртуальной Машине Linux hello aaaUse | Документы Microsoft"
-description: "Узнайте, как toodeploy расширения приложений на виртуальных машин Linux в Azure toouse hello CustomScript созданной hello классической модели развертывания."
+title: "Использование расширения CustomScript на виртуальной машине Linux | Документация Майкрософт"
+description: "Узнайте, как использовать расширение CustomScript для развертывания приложений на виртуальных машинах под управлением Linux, созданных с помощью классической модели развертывания."
 editor: tysonn
 manager: timlt
 documentationcenter: 
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: guybo
-ms.openlocfilehash: 864a586e70093eefbabc065a3c05e1cf9e315704
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cb1fc9a44dc9e57d9cc9f1c546ad937d67e63c2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-a-lamp-app-using-hello-azure-customscript-extension-for-linux"></a>Развертывание приложения ИНДИКАТОРА с помощью hello расширение CustomScript Azure для Linux
+# <a name="deploy-a-lamp-app-using-the-azure-customscript-extension-for-linux"></a>Развертывание приложения LAMP с помощью расширения Azure CustomScript для Linux#
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения о развертывании стек LAMP, с помощью модели hello диспетчера ресурсов см. в разделе [здесь](../tutorial-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Сведения о развертывании стека LAMP с помощью модели Resource Manager см. [здесь](../tutorial-lamp-stack.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Hello расширения CustomScript Microsoft Azure для Linux обеспечивает toocustomize способом виртуальных машин (ВМ), запустив произвольный код, написанный на любом языке сценариев, поддерживаемых hello виртуальной Машины (например, Python и Bash). Это обеспечивает tooautomate очень гибкий способ машины toomultiple развертывания приложения.
+Расширение Microsoft Azure CustomScript для Linux позволяет использовать для настройки виртуальных машин произвольный код, написанный на одном из языков сценариев, которые поддерживаются виртуальной машиной (например, Python и Bash). Это обеспечивает гибкую автоматизацию развертывания приложения на нескольких виртуальных машинах.
 
-Hello расширение CustomScript можно развернуть с помощью hello портал Azure, Windows PowerShell или hello Azure командной строки (CLI Azure).
+Расширение CustomScript можно развернуть с помощью портала Azure, Windows PowerShell или интерфейса командной строки Azure (Azure CLI).
 
-В этой статье мы будем использовать toodeploy hello Azure CLI простого приложения tooan LAMP Ubuntu ВМ создан с помощью hello классической модели развертывания.
+В этой статье мы будем использовать интерфейс командной строки Azure для развертывания простого приложения LAMP на виртуальной машине под управлением Ubuntu, созданной с помощью классической модели развертывания.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для этого примера создайте две виртуальные машины Azure под управлением Ubuntu 14.04 или более поздней версии. Hello виртуальных машин, называются *ВМ сценарий* и *lamp ВМ*. Используйте уникальные имена для создания виртуальных машин hello. Он используется toorun команды CLI hello и одно является LAMP приложение используется toodeploy hello.
+Для этого примера создайте две виртуальные машины Azure под управлением Ubuntu 14.04 или более поздней версии. Присвойте им имена *script-vm* и *lamp-vm*. При создании виртуальных машин используйте уникальные имена. Одна из этих машин будет использоваться для выполнения команд интерфейса командной строки, а другая — для развертывания приложения LAMP.
 
-Необходимо также учетную запись хранилища Azure и ключа tooaccess ИТ (это можно получить из hello портал Azure).
+Вам также потребуется учетная запись службы хранилища Azure и ключ доступа к ней (все это можно получить на портале Azure).
 
-Если вам нужна помощь при создании виртуальных машин Linux в Azure см. слишком[создать виртуальную машину под управлением Linux](createportal.md).
+Дополнительные сведения о создании виртуальных машин Linux в Azure см. в статье [Создание настраиваемой виртуальной машины под управлением Linux](createportal.md).
 
-команды установки Hello предполагают Ubuntu, но вы можете адаптировать hello установки для любой поддерживаемый дистрибутив Linux.
+Команды установки рассчитаны на Ubuntu, но могут быть адаптированы для установки любого поддерживаемого дистрибутива Linux.
 
-Hello скрипт виртуальная машина виртуальная машина должна toohave установке Azure CLI, с tooAzure рабочего соединения. См. справку слишком[Установка и настройка интерфейса командной строки Azure hello](../../../cli-install-nodejs.md).
+На виртуальной машине script-vm должен быть установлен интерфейс CLI Azure. Кроме того, ее необходимо подключить к Azure. Дополнительную информацию см. в статье [Установка Azure CLI](../../../cli-install-nodejs.md).
 
 ## <a name="upload-a-script"></a>Загрузка сценария
-Используется hello расширение CustomScript toorun сценарий в стеке LAMP tooinstall hello удаленной виртуальной Машины и создание страницы PHP. В сценарии hello tooaccess заказа из любого места будет передать как BLOB-объекта Azure.
+Мы используем расширение CustomScript, чтобы выполнить сценарий на удаленной виртуальной машине для установки стека LAMP и создания PHP-страницы. Чтобы сценарий был доступен из любого расположения, мы передадим его как большой двоичный объект Azure.
 
 ### <a name="script-overview"></a>Общие сведения о сценариях
-Ниже приведен пример сценария Hello устанавливает tooUbuntu стек LAMP (включая настройку автоматической установкой MySQL), записывает простой файл PHP и запускает Apache.
+Сценарий в примере устанавливает стек LAMP в Ubuntu (включая настройку автоматической установки сервера MySQL), создает простой PHP-файл и запускает сервер Apache:
 
     #!/bin/bash
     # set up a silent install of MySQL
@@ -56,7 +56,7 @@ Hello скрипт виртуальная машина виртуальная м
     echo mysql-server-5.6 mysql-server/root_password password $dbpass | debconf-set-selections
     echo mysql-server-5.6 mysql-server/root_password_again password $dbpass | debconf-set-selections
 
-    # install hello LAMP stack
+    # install the LAMP stack
     apt-get -y install apache2 mysql-server php5 php5-mysql  
 
     # write some PHP
@@ -67,38 +67,38 @@ Hello скрипт виртуальная машина виртуальная м
     apachectl restart
 
 ### <a name="upload-script"></a>Отправка скрипта
-Сохраните скрипт hello как текстовый файл, например *install_lamp.sh*, а затем передать его tooAzure хранилища. Это легко сделать с помощью интерфейса CLI Azure. Hello следующий пример передает hello файла tooa хранилища контейнера с именем «скрипты». Если контейнер hello не существует, вам потребуется toocreate его первого.
+Сохраните сценарий как текстовый файл, например *install_lamp.sh*, и отправьте его в службу хранилища Azure. Это легко сделать с помощью интерфейса CLI Azure. Приведенный ниже пример передает файл в контейнер хранилища с именем scripts. Если контейнер не существует, необходимо сначала его создать.
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-Также можно создайте файл JSON, описывающий, как toodownload hello скрипта из хранилища Azure. Сохраните его в виде *public_config.json* (замена «mystorage» с именем hello учетной записи):
+Также создайте JSON-файл, в котором будет указан способ скачивания сценария из службы хранилища Azure. Сохраните его как *public_config.json* (вместо mystorage укажите имя своей учетной записи хранения):
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 
 
-## <a name="deploy-hello-extension"></a>Развертывание модуля hello
-Теперь вы можете использовать hello Далее команда toodeploy hello расширения CustomScript Linux toohello удаленной виртуальной Машины с помощью hello Azure CLI.
+## <a name="deploy-the-extension"></a>Развертывание расширения
+Теперь расширение CustomScript для Linux можно развернуть на удаленной виртуальной машине с помощью интерфейса командной строки Azure.
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScript Microsoft.Azure.Extensions 2.0
 
-Предыдущая команда Hello загружает и запускает hello *install_lamp.sh* скриптов на ВМ называется hello *lamp ВМ*.
+Предыдущая команда скачивает и выполняет сценарий *install_lamp.sh* на виртуальной машине с именем *lamp-vm*.
 
-Поскольку приложение hello включает веб-сервера, помните, порт прослушивания tooopen HTTP на hello удаленной виртуальной Машины с помощью следующей команды hello.
+Так как приложение включает в себя веб-сервер, не забудьте открыть порт прослушивания HTTP на удаленной виртуальной машине с помощью следующей команды:
 
     azure vm endpoint create -n Apache -o tcp lamp-vm 80 80
 
 ## <a name="monitoring-and-troubleshooting"></a>Мониторинг и устранение неполадок
-Можно проверить на насколько хорошо выполняется hello пользовательского скрипта, просмотрев файл журнала hello hello удаленной виртуальной Машины. SSH слишком*lamp ВМ* и файл hello по заключительного фрагмента журнала с помощью следующей команды hello.
+Можно проверить правильность выполнения пользовательского скрипта, просмотрите файл журнала на удаленной виртуальной машине. Добавьте SSH в *lamp-vm* и добавьте в файл журнала заключительный фрагмент с помощью следующей команды:
 
     cd /var/log/azure/customscript
     tail -f handler.log
 
-После запуска hello расширение CustomScript можно просматривать сведения созданная страница toohello PHP. Страница приветствия PHP hello в этой статье приведен *http://lamp-vm.cloudapp.net/phpinfo.php*.
+После запуска расширения CustomScript вы сможете перейти к созданной PHP-странице и проверить данные. PHP-страница для примера в этой статье — *http://lamp-vm.cloudapp.net/phpinfo.php*.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-Можно использовать hello же toodeploy основные шаги более сложных приложений. В этом примере сценария установки hello была сохранена как общедоступный BLOB-объект в хранилище Azure. Более безопасный вариант будет сценарий установки hello toostore как безопасный большой двоичный объект с [подписи безопасного доступа](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS).
+С помощью описанных выше действий можно выполнять развертывание и более сложных приложений. В приведенном примере сценарий установки был сохранен в службе хранилища Azure как общедоступный большой двоичный объект. Чтобы обеспечить больший уровень защиты, сценарий установки можно сохранить как защищенный большой двоичный объект, для доступа к которому будет использоваться [подписанный URL-адрес](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS).
 
-Далее перечислены дополнительные ресурсы для Azure CLI, Linux и hello расширение CustomScript.
+Дополнительную информацию об интерфейсе командной строки Azure, Linux и расширении CustomScript см. в следующих статьях.
 
 [Автоматизация задач настройки виртуальных машин под управлением Linux с помощью расширения CustomScript](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 

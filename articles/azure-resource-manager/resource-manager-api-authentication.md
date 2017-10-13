@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory проверки подлинности и диспетчер ресурсов | Документы Microsoft"
-description: "Для разработчиков руководство по tooauthentication hello API диспетчера ресурсов Azure и Azure Active Directory для интеграции приложения с помощью подписок Azure."
+title: "Проверка подлинности Azure Active Directory и Resource Manager | Документы Майкрософт"
+description: "Руководство разработчика по проверке подлинности с помощью API Azure Resource Manager и Azure Active Directory для интеграции приложения с другими подписками Azure."
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
-ms.openlocfilehash: 757e45fdb28488b45de70647746461888bf35a56
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7830dc4774652f4d108e98660dce3bcea7b32d05
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-resource-manager-authentication-api-tooaccess-subscriptions"></a>Использовать подписки tooaccess проверки подлинности API диспетчера ресурсов
+# <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Использование API аутентификации Resource Manager для доступа к подпискам
 ## <a name="introduction"></a>Введение
-Если разработчик программного обеспечения, которому нужен toocreate приложение, которое управляет ресурсами Azure клиента, в этом разделе показано, как tooauthenticate с hello API диспетчера ресурсов Azure и получать tooresources доступ в другие подписки.
+Если вы разрабатываете программное обеспечение и хотите создать приложение для управления ресурсами Azure клиента, это руководство предназначено для вас. Здесь вы узнаете, как выполнить проверку подлинности с помощью интерфейсов API Azure Resource Manager и получить доступ к ресурсам в другой подписке.
 
-Приложения могут обращаться к hello API диспетчера ресурсов в двумя способами:
+Приложение может получить доступ к интерфейсам API Azure Resource Manager двумя способами:
 
 1. **Доступ от имени пользователя.**Используйте этот метод для приложений, осуществляющих доступ к ресурсам от имени выполнившего вход пользователя. Этот метод подходит для приложений, например веб-приложений и программ командной строки, которые осуществляют только интерактивное управление ресурсами Azure.
-2. **Доступ только для приложений.**Используйте этот метод для приложений, на которых запущены службы управляющих программ и запланированные задания. удостоверение приложения Hello предоставляется toohello прямой доступ к ресурсам. Этот способ подходит для приложений, которым необходим долгосрочной tooAzure автономного доступа (автоматический режим).
+2. **Доступ только для приложений.**Используйте этот метод для приложений, на которых запущены службы управляющих программ и запланированные задания. Удостоверение приложения предоставляет непосредственный доступ к ресурсам. Этот метод подходит для приложений, требующих долгосрочного автономного (автоматического) доступа Azure.
 
-Этот раздел содержит пошаговые инструкции toocreate приложение, которое использует оба эти метода авторизации. В нем показано, как tooperform каждый шаг с помощью API-интерфейса REST или C#. Hello приложения ASP.NET MVC доступна на [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+В этой статье содержатся пошаговые инструкции по созданию приложения, поддерживающего оба эти метода авторизации. Здесь показано, как выполнить каждое действие, используя REST API или C#. Полное приложение ASP.NET MVC можно получить на странице [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
-## <a name="what-hello-web-app-does"></a>Какое приложение hello web не
-Hello веб-приложения:
+## <a name="what-the-web-app-does"></a>Возможности веб-приложения
+Веб-приложение обеспечивает следующие возможности:
 
 1. Вход пользователя Azure в систему.
-2. Запрашивает доступ пользователя toogrant hello web app tooResource диспетчера.
+2. Отправка запроса к пользователю на предоставление веб-приложению доступа к Resource Manager.
 3. Получение маркера доступа от имени пользователя для доступа к Resource Manager.
-4. Использует toocall токена (из шага 3) диспетчера ресурсов и роль участника tooa приложение hello назначение службы в hello подписки, которая предоставляет подписки toohello долгосрочной доступа приложения hello.
+4. Вызов Resource Manager с помощью маркера (полученного на шаге 3) и назначение субъекту-службе приложения роли в подписке, в результате чего приложение получает долгосрочный доступ к подписке.
 5. Получение маркера доступа только для приложений.
-6. Использует ресурсы toomanage токена (из шага 5) в подписке hello через диспетчер ресурсов.
+6. Управление ресурсами в подписке через Resource Manager с помощью маркера (полученного на шаге 5).
 
-Ниже приведена последовательность конца в конец hello hello веб-приложения.
+Ниже приведены все процедуры, выполняемые веб-приложением.
 
 ![Поток проверки подлинности Resource Manager](./media/resource-manager-api-authentication/Auth-Swim-Lane.png)
 
-Как пользователь, укажите идентификатор подписки hello hello подписки нужно toouse:
+Укажите идентификатор используемой подписки от имени пользователя.
 
 ![предоставление идентификатора подписки](./media/resource-manager-api-authentication/sample-ux-1.png)
 
-Выберите toouse hello учетной записи для входа.
+Выберите учетную запись для входа в систему.
 
 ![выбор учетной записи](./media/resource-manager-api-authentication/sample-ux-2.png)
 
@@ -57,7 +57,7 @@ Hello веб-приложения:
 
 ![предоставление учетных данных](./media/resource-manager-api-authentication/sample-ux-3.png)
 
-Предоставьте tooyour доступ приложения hello подписок Azure:
+Предоставьте приложению доступ к своим подпискам Azure.
 
 ![Предоставление доступа](./media/resource-manager-api-authentication/sample-ux-4.png)
 
@@ -66,79 +66,79 @@ Hello веб-приложения:
 ![Подключение подписки](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>Регистрация приложения
-Прежде чем приступить к программированию, сначала нужно зарегистрировать веб-приложение в Azure Active Directory (AD). Регистрация приложения Hello создает центра удостоверение для приложения в Azure AD. Она содержит основные сведения о приложении, такие как идентификатор клиента OAuth, URL-адреса ответа и учетные данные, приложение использует tooauthenticate и доступа к API диспетчера ресурсов Azure. Регистрация приложения Hello также записывает hello, различными делегированы разрешения, необходимые приложению при доступе к API-интерфейсы Microsoft от имени пользователя hello.
+Прежде чем приступить к программированию, сначала нужно зарегистрировать веб-приложение в Azure Active Directory (AD). При регистрации приложения для него создается центральное удостоверение в Azure AD. Оно содержит основные сведения о приложении, например идентификатор клиента OAuth, URL-адреса ответа и учетные данные, используемые приложением для проверки подлинности и доступа к интерфейсам API Azure Resource Manager. Кроме того, при регистрации приложения записываются различные делегированные разрешения, необходимые при получении доступа к интерфейсам API корпорации Майкрософт от имени пользователя.
 
-Так как приложение получает доступ к другой подписке, его необходимо настроить как мультитенантное. Проверка toopass, укажите домен, связанный с Azure Active Directory. toosee hello домены, связанные с Azure Active Directory, вход toohello [классический портал](https://manage.windowsazure.com). Выберите свою службу Azure Active Directory и щелкните **Домены**.
+Так как приложение получает доступ к другой подписке, его необходимо настроить как мультитенантное. Чтобы пройти проверку, укажите домен, связанный с Azure Active Directory. Сведения о домене, связанном с Azure Active Directory, можно просмотреть на [классическом портале](https://manage.windowsazure.com). Выберите свою службу Azure Active Directory и щелкните **Домены**.
 
-Привет, в следующем примере показано, как tooregister hello приложения с помощью Azure PowerShell. Необходимо иметь hello последнюю версию (августа 2016 г.) Azure PowerShell для этой команды toowork.
+В приведенном ниже примере показано, как зарегистрировать приложение с помощью Azure PowerShell. Эта команда поддерживается только в Azure PowerShell последней версии (обновление от августа 2016 г.).
 
     $app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 
-toolog в качестве hello приложения AD, понадобится идентификатор приложения hello и пароль. toosee код приложения hello, возвращенный предыдущей командой hello, используйте:
+Для входа в систему в качестве приложения AD необходимо указать идентификатор приложения и пароль. Чтобы просмотреть идентификатор приложения, который возвращается в результате выполнения предыдущей команды, используйте следующую команду:
 
     $app.ApplicationId
 
-Привет, в следующем примере показано, как tooregister hello приложения с помощью Azure CLI.
+В приведенном ниже примере показано, как зарегистрировать приложение с помощью Azure CLI.
 
     azure ad app create --name {app name} --home-page https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available true
 
-Hello результатов включать hello AppId, который требуется при проверке подлинности, как приложение hello.
+Выходные данные содержат идентификатор приложения, необходимый для проверки подлинности в качестве приложения.
 
 ### <a name="optional-configuration---certificate-credential"></a>Дополнительная настройка. Учетные данные сертификата
-Azure AD также поддерживает учетные данные сертификата для приложений: создать самозаверяющий сертификат, hello закрытый ключ должен оставаться и добавить регистрацию приложения hello открытого ключа tooyour Azure AD. Для проверки подлинности приложение отправляет tooAzure небольшой полезных данных, AD, подписывается с помощью закрытого ключа и Azure AD проверяет подпись hello, с помощью открытого ключа hello, которое вы зарегистрировали.
+Azure AD также поддерживает учетные данные сертификата для приложения. При этом вам нужно создать самозаверяющий сертификат, сохранить закрытый ключ и добавить открытый ключ для регистрации приложения Azure AD. Для проверки подлинности приложение отправляет в Azure AD небольшой объем полезных данных, подписанных с помощью закрытого ключа, а Azure AD проверяет подпись, используя зарегистрированный открытый ключ.
 
-Сведения о создании приложения AD с помощью сертификата см. в разделе [toocreate использование Azure PowerShell участника службы ресурсы tooaccess](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) или [toocreate использования Azure CLI участника службы ресурсы tooaccess](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate).
+Дополнительные сведения о создании приложения AD с использованием сертификата см. в статье [Использование Azure PowerShell для создания субъекта-службы и доступа к ресурса](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) или [Использование интерфейса командной строки Azure для создания субъекта-службы и доступа к ресурсам](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate).
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Получение идентификатора клиента из идентификатора подписки
-toorequest маркер, который может быть toocall используется диспетчер ресурсов приложению tooknow hello идентификатор клиента hello Azure AD, на котором размещена hello подписки Azure. Скорее всего, пользователи знают идентификаторы подписок, но идентификаторы клиентов Azure Active Directory знает не каждый. tooget hello идентификатор клиента пользователя, попросите пользователя hello для подписки с идентификатором hello. Укажите, идентификатор подписки, при отправке запроса о подписке hello:
+Чтобы получить маркер, используемый для вызова Resource Manager, в приложении необходимо указать идентификатор клиента Azure AD, в котором находится подписка Azure. Скорее всего, пользователи знают идентификаторы подписок, но идентификаторы клиентов Azure Active Directory знает не каждый. Чтобы получить идентификатор клиента, необходимо знать идентификатор подписки пользователя. Укажите этот идентификатор подписки при отправке запроса о подписке.
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 
-Hello запроса происходит сбой, так как hello пользователь не вошел еще, hello идентификатор клиента можно получить из ответа hello. В это исключение получить идентификатор клиента hello из hello значение заголовка ответа для **WWW-Authenticate**. Вы видите этой реализации hello [GetDirectoryForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L20) метод.
+Запрос завершится сбоем, так как пользователь еще не вошел в систему, но идентификатор клиента можно получить из ответа. В этом исключении идентификатор клиента указан в заголовке ответа **WWW-Authenticate**. Эта реализация используется в методе [GetDirectoryForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L20) .
 
 ## <a name="get-user--app-access-token"></a>Получение маркера доступа от имени пользователя
-Приложение перенаправляет пользователя hello tooAzure AD с помощью OAuth 2.0 авторизовать запрос — tooauthenticate hello учетные данные пользователя и вернуть код авторизации. Приложение использует tooget код авторизации hello маркер доступа для диспетчера ресурсов. Hello [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) метод создает запрос на авторизацию hello.
+Приложение перенаправляет пользователя в Azure AD с помощью запроса на авторизацию OAuth 2.0, применяемого для проверки подлинности учетных данных пользователя и возвращения кода авторизации. Приложение использует код авторизации, чтобы получить маркер доступа для Resource Manager. Метод [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) создает запрос на авторизацию.
 
-В этом разделе показано hello REST API запросов tooauthenticate hello пользователя. Также можно использовать вспомогательные библиотеки tooperform аутентификации в коде. Дополнительные сведения об этих библиотеках см. в статье [Библиотеки проверки подлинности Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Рекомендации по интеграции функции управления удостоверениями в приложение см. в статье [Руководство разработчика по Azure Active Directory](../active-directory/active-directory-developers-guide.md).
+Здесь приводятся примеры запросов REST API, используемых для проверки подлинности пользователя. Чтобы реализовать проверку подлинности в коде, можно также использовать вспомогательные библиотеки. Дополнительные сведения об этих библиотеках см. в статье [Библиотеки проверки подлинности Azure Active Directory](../active-directory/active-directory-authentication-libraries.md). Рекомендации по интеграции функции управления удостоверениями в приложение см. в статье [Руководство разработчика по Azure Active Directory](../active-directory/active-directory-developers-guide.md).
 
 ### <a name="auth-request-oauth-20"></a>Запрос проверки подлинности (OAuth 2.0)
-Выполните открыть подключение и OAuth2.0 авторизации запросов идентификатора конечной точки Authorize toohello Azure AD:
+Выполните запрос на авторизацию Open ID Connect или OAuth 2.0 к конечной точке авторизации Azure AD:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-Параметры строки запроса Hello, доступные для этого запроса описаны в hello [запрос кода авторизации](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) раздела.
+Параметры строки запроса, доступные для этого запроса, описаны в разделе [Запрос кода авторизации](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code).
 
-Следующий пример показывает как Hello toorequest OAuth2.0 авторизации:
+В следующем примере показано, как запросить авторизацию OAuth 2.0:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize?client_id=a0448380-c346-4f9f-b897-c18733de9394&response_mode=query&response_type=code&redirect_uri=http%3a%2f%2fwww.vipswapper.com%2fcloudsense%2fAccount%2fSignIn&resource=https%3a%2f%2fgraph.windows.net%2f&domain_hint=live.com
 
-Azure AD проверяет подлинность пользователя hello и при необходимости запрашивает приложение hello пользователя toogrant разрешение toohello. Он возвращает toohello кода hello авторизации URL-адрес ответа приложения. В зависимости от hello response_mode Azure AD, либо отправляет обратно hello данных в строке запроса или как отправленные данные по запросу.
+Служба Azure AD проверяет подлинность пользователя и при необходимости запрашивает у пользователя разрешение на доступ к приложению. Она возвращает код авторизации на URL-адрес ответа приложения. В зависимости от запрошенного параметра response_mode Azure AD отправляет данные в строке запроса или в качестве данных POST.
 
     code=AAABAAAAiL****FDMZBUwZ8eCAA&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="auth-request-open-id-connect"></a>Запрос проверки подлинности (Open ID Connect)
-Если вы не только обратиться tooaccess диспетчера ресурсов Azure от имени пользователя hello, но также позволяют toosign hello пользователя в приложении tooyour, с помощью учетной записи Azure AD, отправить откройте идентификатор подключения авторизовать запрос. Откройте подключение идентификатор приложения также получают id_token из Azure AD, что приложения могут использовать toosign hello пользователя.
+Если требуется не только получить доступ к Azure Resource Manager от имени пользователя, но и разрешить пользователю входить в ваше приложение с помощью его учетной записи Azure AD, отправьте запрос на авторизацию Open ID Connect. С помощью Open ID Connect приложение также получит маркер id_token из Azure AD, используемый приложением для выполнения входа пользователя.
 
-Параметры строки запроса Hello, доступные для этого запроса описаны в hello [запрос входа hello отправки](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) раздела.
+Параметры строки запроса, доступные для этого запроса, описаны в разделе [Отправка запроса на вход](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request).
 
 Пример запроса Open ID Connect:
 
      https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize?client_id=a0448380-c346-4f9f-b897-c18733de9394&response_mode=form_post&response_type=code+id_token&redirect_uri=http%3a%2f%2fwww.vipswapper.com%2fcloudsense%2fAccount%2fSignIn&resource=https%3a%2f%2fgraph.windows.net%2f&scope=openid+profile&nonce=63567Dc4MDAw&domain_hint=live.com&state=M_12tMyKaM8
 
-Azure AD проверяет подлинность пользователя hello и при необходимости запрашивает приложение hello пользователя toogrant разрешение toohello. Он возвращает toohello кода hello авторизации URL-адрес ответа приложения. В зависимости от hello response_mode Azure AD, либо отправляет обратно hello данных в строке запроса или как отправленные данные по запросу.
+Служба Azure AD проверяет подлинность пользователя и при необходимости запрашивает у пользователя разрешение на доступ к приложению. Она возвращает код авторизации на URL-адрес ответа приложения. В зависимости от запрошенного параметра response_mode Azure AD отправляет данные в строке запроса или в качестве данных POST.
 
 Пример ответа Open ID Connect:
 
     code=AAABAAAAiL*****I4rDWd7zXsH6WUjlkIEQxIAA&id_token=eyJ0eXAiOiJKV1Q*****T3GrzzSFxg&state=M_12tMyKaM8&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="token-request-oauth20-code-grant-flow"></a>Запрос токена (предоставление кода OAuth 2.0)
-Теперь, когда приложение получило hello код авторизации из Azure AD, это маркер доступа hello tooget времени для диспетчера ресурсов Azure.  Учет маркеров запрос OAuth2.0 кода Grant toohello токена Azure AD конечной точки:
+Теперь, когда приложение получило код авторизации из Azure AD, необходимо получить маркер доступа для Azure Resource Manager.  Выполните запрос на токен предоставления кода OAuth 2.0 к конечной точке токена Azure AD с помощью метода POST:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Параметры строки запроса Hello, доступные для этого запроса описаны в hello [используйте код авторизации hello](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) раздела.
+Параметры строки запроса, доступные для этого запроса, описаны в разделе [Использование кода авторизации для запроса маркера доступа](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).
 
-Hello в следующем примере показан запрос для маркера предоставление кода с помощью учетных данных пароля.
+В следующем примере показан запрос на токен предоставления кода с использованием пароля:
 
     POST https://login.microsoftonline.com/7fe877e6-a150-4992-bbfe-f517e304dfa0/oauth2/token HTTP/1.1
 
@@ -147,11 +147,11 @@ Hello в следующем примере показан запрос для м
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-При работе с учетными данными сертификата, создайте JSON Web Token (JWT) и знак (RSA-SHA256) с помощью закрытого ключа учетных данных сертификата приложения hello. Hello утверждение для маркера hello отображаются типы в [утверждения маркера JWT](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Справочную информацию см. в разделе hello [кода библиотеки проверки подлинности Active Directory (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) toosign маркеры JWT утверждение клиента.
+При работе с учетными данными сертификата создайте веб-токен JSON (JWT) и подпишите его (RSA-SHA256) с помощью закрытого ключа сертификата приложения. Типы утверждений для маркера содержатся в разделе [Утверждения JWT](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Справочную информацию по подписыванию маркеров JWT утверждений клиента см. на странице с [кодом библиотеки аутентификации Active Directory (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs).
 
-В разделе hello [спецификации Open ID подключения](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) подробные сведения о проверке подлинности клиента.
+Дополнительные сведения об аутентификации клиента см. на странице [характеристик Open ID Connect](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication).
 
-Hello в следующем примере показан запрос для кода маркера предоставление учетных данных сертификата.
+В следующем примере показан запрос на токен предоставления кода с использованием учетных данных сертификата:
 
     POST https://login.microsoftonline.com/7fe877e6-a150-4992-bbfe-f517e304dfa0/oauth2/token HTTP/1.1
 
@@ -167,13 +167,13 @@ Hello в следующем примере показан запрос для к
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039858","not_before":"1432035958","resource":"https://management.core.windows.net/","access_token":"eyJ0eXAiOiJKV1Q****M7Cw6JWtfY2lGc5A","refresh_token":"AAABAAAAiL9Kn2Z****55j-sjnyYgAA","scope":"user_impersonation","id_token":"eyJ0eXAiOiJKV*****-drP1J3P-HnHi9Rr46kGZnukEBH4dsg"}
 
 #### <a name="handle-code-grant-token-response"></a>Обработка ответа токена предоставления кода
-Успешный ответ маркера содержит маркер доступа hello (пользователя и приложения) для диспетчера ресурсов Azure. Приложение использует этот доступ маркера tooaccess диспетчера ресурсов от имени пользователя hello. время жизни Hello маркеров доступа, выданный Azure AD — один час. Маловероятно, что веб-приложения требуется маркер доступа toorenew hello (пользователя и приложения). Если требуется маркер доступа toorenew hello, используйте токен обновления hello, получаемых приложением в ответ на токен hello. Учет маркеров запроса OAuth2.0 toohello токена Azure AD конечной точки:
+Успешный ответ будет содержать маркер доступа (при доступе от имени пользователя) для Azure Resource Manager. Приложение использует этот маркер для доступа к Resource Manager от имени пользователя. Срок действия маркеров доступа, выданных Azure AD, составляет один час. Маловероятно, что веб-приложению понадобится обновить маркер доступа (при доступе от имени пользователя). Однако если обновление потребуется, можно воспользоваться маркером обновления, который приложение получает в ответе маркера. Выполните запрос токена OAuth 2.0 к конечной точке токена Azure AD с помощью метода POST:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Hello toouse параметры с запросом hello обновления описаны в разделе [обновление токена доступа hello](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens).
+Параметры для запроса обновления описаны в разделе [Обновление маркеров доступа](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens).
 
-Hello следующем примере показано, как токен обновления toouse hello:
+В следующем примере показано, как использовать токен обновления:
 
     POST https://login.microsoftonline.com/7fe877e6-a150-4992-bbfe-f517e304dfa0/oauth2/token HTTP/1.1
 
@@ -182,53 +182,53 @@ Hello следующем примере показано, как токен об
 
     grant_type=refresh_token&refresh_token=AAABAAAAiL9Kn2Z****55j-sjnyYgAA&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Токены обновления могут быть используется tooget новых токенов доступа для диспетчера ресурсов Azure, но они не подходит для автономного доступа для приложения. время жизни маркеров обновления Hello ограничен и токены обновления являются toohello связанного пользователя. Если hello пользователь оставляет hello организации, с помощью токена обновления hello приложения hello теряет доступ. Этот способ не подходит для приложений, используемых командами toomanage свои ресурсы Azure.
+Хотя с помощью маркеров обновления и можно получать новые маркеры доступа для Azure Resource Manager, они не подходят для автономного доступа приложения. Срок действия токенов обновления ограничен, и они привязаны к пользователю. Если пользователь покидает организацию, приложение, использующее маркер обновления, теряет доступ. Этот способ не подходит для приложений, используемых группами для управления ресурсами Azure.
 
-## <a name="check-if-user-can-assign-access-toosubscription"></a>Проверьте, если пользователь может назначать toosubscription доступа
-Приложение теперь имеет токен tooaccess диспетчера ресурсов Azure от имени пользователя hello. Hello следующим шагом является tooconnect подписки toohello приложения. После подключения, приложения могут управлять эти подписки даже в том случае, если пользователь hello не существуют (долгосрочной автономного доступа).
+## <a name="check-if-user-can-assign-access-to-subscription"></a>Проверка назначения пользователем доступа к подписке
+Теперь у приложения есть маркер доступа к Azure Resource Manager от имени пользователя. Далее нужно подключить приложение к подписке, чтобы оно могло управлять подписками, даже если пользователь отсутствует (долгосрочный автономный доступ).
 
-Для каждой подписки tooconnect, вызовите hello [разрешения списка диспетчера ресурсов](https://docs.microsoft.com/rest/api/authorization/permissions) API toodetermine ли hello пользователь имеет права управления доступом для hello подписки.
+Для подключения каждой подписки необходимо вызвать API [разрешений списка Resource Manager](https://docs.microsoft.com/rest/api/authorization/permissions) , чтобы определить, есть ли у пользователя права управления доступом для подписки.
 
-Hello [UserCanManagerAccessForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L44) этот вызов реализует метод hello пример приложения ASP.NET MVC.
+Этот вызов осуществляет метод [UserCanManagerAccessForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L44) примера приложения ASP.NET MVC.
 
-Следующий пример показывает как Hello toorequest разрешения пользователя для подписки. 83cfe939-2402-4581-b761-4f59b0a041e4 — идентификатор hello hello подписки.
+В следующем примере показано, как запросить разрешения пользователя для подписки. 83cfe939-2402-4581-b761-4f59b0a041e4 — это идентификатор подписки.
 
     GET https://management.azure.com/subscriptions/83cfe939-2402-4581-b761-4f59b0a041e4/providers/microsoft.authorization/permissions?api-version=2015-07-01 HTTP/1.1
 
     Authorization: Bearer eyJ0eXAiOiJKV1QiLC***lwO1mM7Cw6JWtfY2lGc5A
 
-Примером разрешения пользователя tooget hello ответа на подписки является:
+Пример ответа на получение разрешений пользователя на подписку:
 
     HTTP/1.1 200 OK
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-разрешения Hello API возвращает несколько разрешений. Каждое разрешение состоит из разрешенных действий (actions) и запрещенных действий (notActions). Если действие, которое присутствует в hello допускается любое разрешение список действий и не присутствует в списке notactions hello этого разрешения, пользователь hello допускается tooperform это действие. **Microsoft.Authorization/roleassignments/Write** — действие hello, который предоставляет доступ management rights. Приложение необходимо выделить toolook результат hello разрешения для сопоставления регулярных выражений в строку этого действия в действиях hello и notactions всех разрешений.
+API разрешений возвращает несколько разрешений. Каждое разрешение состоит из разрешенных действий (actions) и запрещенных действий (notActions). Если действие есть в списке разрешенных действий любого разрешения и отсутствует в списке запрещенных действий этого же разрешения, пользователь может его выполнять. **microsoft.authorization/roleassignments/write** — действие, предоставляющее права на управление доступом. Приложение должно проанализировать результат разрешений, чтобы найти соответствующее регулярное выражение в этой строке действия в разрешенных и запрещенных действиях всех разрешений.
 
 ## <a name="get-app-only-access-token"></a>Получение маркера доступа только для приложений
-Теперь вы знаете, если hello пользователя можно назначить доступ toohello подписки Azure. следующие действия Hello таковы.
+Теперь вы знаете, что пользователь может назначить доступ к подписке Azure. Теперь нужно сделать следующее:
 
-1. Назначьте hello соответствующие RBAC роли tooyour удостоверение приложения в подписке hello.
-2. Проверьте назначение доступа hello путем запроса разрешений приложения hello в подписке hello, или обратившись токен только приложения с помощью диспетчера ресурсов.
-3. Соединение записей hello в структуре данных приложения «подключенных подписками» — сохранение hello идентификатор подписки hello.
+1. Назначить удостоверению приложения в подписке соответствующую роль RBAC.
+2. Проверить назначение доступа, запрашивая разрешение приложения для подписки или получив доступ к Resource Manager с помощью маркера только для приложений.
+3. Записать подключение в структуре данных подключенных подписок приложения, сохраняя идентификатор подписки.
 
-Давайте взглянем на первом шаге hello ближе. tooassign hello соответствующие RBAC роли toohello удостоверения приложения, необходимо определить:
+Давайте рассмотрим первый шаг. Чтобы назначить соответствующую роль RBAC удостоверению приложения, необходимо определить следующее:
 
-* Идентификатор объекта Hello удостоверение приложения в hello пользователя Azure Active Directory
-* Идентификатор роли RBAC hello, приложению в подписке hello Hello
+* Идентификатор объекта для удостоверения приложения в каталоге Azure Active Directory пользователя.
+* Идентификатор роли RBAC, требуемой приложению для подписки.
 
-Когда приложение впервые проверяет подлинность пользователя из Azure AD, в этом экземпляре Azure AD создается объект субъекта-службы для приложения. Azure позволяет toobe роли RBAC назначены участникам tooservice toogrant прямой доступ toocorresponding приложения в ресурсах Azure. Это действие именно то, что мы желаем toodo. Идентификатор запроса hello Azure AD Graph API toodetermine hello hello субъекта-службы приложения в hello выполнившего вход пользователя в Azure AD.
+Когда приложение впервые проверяет подлинность пользователя из Azure AD, в этом экземпляре Azure AD создается объект субъекта-службы для приложения. Azure позволяет назначать роли RBAC субъектам-службам, чтобы предоставить прямой доступ к соответствующим приложениям для ресурсов Azure. Нам нужно сделать именно это. Отправьте запрос к API Graph Azure AD, чтобы определить идентификатор объекта субъекта-службы приложения в подключенном экземпляре Azure AD пользователя.
 
-Имеется только маркер доступа для диспетчера ресурсов Azure — нужно новый hello toocall токена доступа к API Azure AD Graph. Каждое приложение в Azure AD имеет разрешение tooquery свой собственный объект участника службы, поэтому достаточно маркер доступа только для приложений.
+У вас есть только маркер доступа для Azure Resource Manager. Поэтому вам понадобится новый маркер доступа для вызова API Graph Azure AD. У каждого приложения в Azure AD есть разрешение на запрос собственного объекта субъекта-службы. Поэтому нам достаточно маркера доступа только для приложений.
 
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Получение маркера доступа только для приложений для API Graph Azure AD
-tooauthenticate приложения и получить токен tooAzure AD Graph API, выдавать OAuth2.0 предоставление учетных данных клиента потока запроса маркера tooAzure AD маркера конечной точки (**https://login.microsoftonline.com/ {directory_domain_name} / OAuth2/токен**).
+Чтобы аутентифицировать приложение и получить маркер для API Graph Azure AD, выполните запрос маркера для предоставления учетных данных клиента OAuth 2.0 к конечной точке токена Azure AD (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
-Hello [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) метод hello пример приложения ASP.net MVC получает доступ только для приложений маркера для Graph API с помощью hello библиотеку аутентификации Active Directory для .NET.
+Метод [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) примера приложения ASP.NET MVC получает маркер доступа только для приложений для API Graph с использованием библиотеки проверки подлинности Active Directory для .NET.
 
-Параметры строки запроса Hello, доступные для этого запроса описаны в hello [запроса на токен доступа](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) раздела.
+Параметры строки запроса, доступные для этого запроса, описаны в разделе [Запрос маркера доступа](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token).
 
 Пример запроса на токен предоставления учетных данных клиента:
 
@@ -244,55 +244,55 @@ Hello [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantg
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039862","not_before":"1432035962","resource":"https://graph.windows.net/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRv****G5gUTV-kKorR-pg"}
 
 ### <a name="get-objectid-of-application-service-principal-in-user-azure-ad"></a>Получение идентификатора объекта субъекта-службы приложения в Azure AD пользователя
-Теперь воспользуйтесь hello tooquery токена доступа только для приложения hello [субъекты-службы Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) hello toodetermine API идентификатор объекта участника-службы приложения hello в каталоге hello.
+Теперь используйте маркер доступа только для приложений для запроса API [субъектов-служб Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) , чтобы определить идентификатор объекта субъекта-службы приложения в каталоге.
 
-Hello [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#) этот вызов реализует метод hello пример приложения ASP.net MVC.
+Этот вызов осуществляет метод [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#) примера приложения ASP.NET MVC.
 
-Следующий пример показывает как Hello toorequest участника-службы приложения. a0448380-c346-4f9f-b897-c18733de9394 — hello идентификатор клиента приложения hello.
+В следующем примере показано, как запросить субъект-службу приложения. a0448380-c346-4f9f-b897-c18733de9394 — это идентификатор клиента приложения.
 
     GET https://graph.windows.net/62e173e9-301e-423e-bcd4-29121ec1aa24/servicePrincipals?api-version=1.5&$filter=appId%20eq%20'a0448380-c346-4f9f-b897-c18733de9394' HTTP/1.1
 
     Authorization: Bearer eyJ0eXAiOiJK*****-kKorR-pg
 
-Hello примере показан запрос toohello ответа для приложения службы субъекта
+В следующем примере показан ответ на запрос субъекта-службы приложения.
 
     HTTP/1.1 200 OK
 
-    {"odata.metadata":"https://graph.windows.net/62e173e9-301e-423e-bcd4-29121ec1aa24/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal","value":[{"odata.type":"Microsoft.DirectoryServices.ServicePrincipal","objectType":"ServicePrincipal","objectId":"9b5018d4-6951-42ed-8a92-f11ec283ccec","deletionTimestamp":null,"accountEnabled":true,"appDisplayName":"CloudSense","appId":"a0448380-c346-4f9f-b897-c18733de9394","appOwnerTenantId":"62e173e9-301e-423e-bcd4-29121ec1aa24","appRoleAssignmentRequired":false,"appRoles":[],"displayName":"CloudSense","errorUrl":null,"homepage":"http://www.vipswapper.com/cloudsense","keyCredentials":[],"logoutUrl":null,"oauth2Permissions":[{"adminConsentDescription":"Allow hello application tooaccess CloudSense on behalf of hello signed-in user.","adminConsentDisplayName":"Access CloudSense","id":"b7b7338e-683a-4796-b95e-60c10380de1c","isEnabled":true,"type":"User","userConsentDescription":"Allow hello application tooaccess CloudSense on your behalf.","userConsentDisplayName":"Access CloudSense","value":"user_impersonation"}],"passwordCredentials":[],"preferredTokenSigningKeyThumbprint":null,"publisherName":"vipswapper"quot;,"replyUrls":["http://www.vipswapper.com/cloudsense","http://www.vipswapper.com","http://vipswapper.com","http://vipswapper.azurewebsites.net","http://localhost:62080"],"samlMetadataUrl":null,"servicePrincipalNames":["http://www.vipswapper.com/cloudsense","a0448380-c346-4f9f-b897-c18733de9394"],"tags":["WindowsAzureActiveDirectoryIntegratedApp"]}]}
+    {"odata.metadata":"https://graph.windows.net/62e173e9-301e-423e-bcd4-29121ec1aa24/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal","value":[{"odata.type":"Microsoft.DirectoryServices.ServicePrincipal","objectType":"ServicePrincipal","objectId":"9b5018d4-6951-42ed-8a92-f11ec283ccec","deletionTimestamp":null,"accountEnabled":true,"appDisplayName":"CloudSense","appId":"a0448380-c346-4f9f-b897-c18733de9394","appOwnerTenantId":"62e173e9-301e-423e-bcd4-29121ec1aa24","appRoleAssignmentRequired":false,"appRoles":[],"displayName":"CloudSense","errorUrl":null,"homepage":"http://www.vipswapper.com/cloudsense","keyCredentials":[],"logoutUrl":null,"oauth2Permissions":[{"adminConsentDescription":"Allow the application to access CloudSense on behalf of the signed-in user.","adminConsentDisplayName":"Access CloudSense","id":"b7b7338e-683a-4796-b95e-60c10380de1c","isEnabled":true,"type":"User","userConsentDescription":"Allow the application to access CloudSense on your behalf.","userConsentDisplayName":"Access CloudSense","value":"user_impersonation"}],"passwordCredentials":[],"preferredTokenSigningKeyThumbprint":null,"publisherName":"vipswapper"quot;,"replyUrls":["http://www.vipswapper.com/cloudsense","http://www.vipswapper.com","http://vipswapper.com","http://vipswapper.azurewebsites.net","http://localhost:62080"],"samlMetadataUrl":null,"servicePrincipalNames":["http://www.vipswapper.com/cloudsense","a0448380-c346-4f9f-b897-c18733de9394"],"tags":["WindowsAzureActiveDirectoryIntegratedApp"]}]}
 
 ### <a name="get-azure-rbac-role-identifier"></a>Получение идентификатора роли RBAC Azure
-tooassign hello соответствующие RBAC роли tooyour субъекта-службы, необходимо определить идентификатор hello роли Azure RBAC hello.
+Чтобы назначить соответствующую роль RBAC для субъекта-службы, необходимо определить идентификатор роли RBAC Azure.
 
-Hello справа роль RBAC для приложения:
+Выбор роли RBAC для приложения:
 
-* Если приложение наблюдает только за подписку hello без внесения изменений, требуются только разрешения чтения на hello подписки. Назначить hello **чтения** роли.
-* Если приложение управляет подписки Azure hello, создание или изменение или удаление сущностей, он требует наличия разрешения участника hello.
-  * toomanage определенного типа ресурсов, назначение ролей для конкретного ресурса участника hello (участника виртуальной машины, виртуальные сети участника, участник учетной записи хранилища, и т. д.)
-  * toomanage какой-либо тип ресурса, назначьте hello **участника** роли.
+* Если приложение только выполняет мониторинг подписки и не вносит никаких изменений, ему требуются разрешения только на чтение для подписки. Назначьте роль **Читатель** .
+* Если приложение управляет подпиской Azure, а также создает, изменяет или удаляет сущности, ему понадобится разрешение участника.
+  * Для управления определенным типом ресурсов назначьте роли участников для конкретных ресурсов (участник виртуальных машин, участник виртуальных сетей, участник учетных записей хранения и т. д.).
+  * Для управления ресурсами любого типа назначьте роль **Участник** .
 
-Hello назначение ролей для приложения является видимым toousers, поэтому выберите hello наименьших необходимых прав доступа.
+Роль, назначенная для приложения, видна пользователям, поэтому выбирайте наименее востребованные привилегии.
 
-Вызовите hello [определение роли диспетчера ресурсов API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) toolist все роли Azure RBAC и поиска затем перебора hello результат toofind hello требуемого определения роли по имени.
+Вызовите [API определения ролей Resource Manager](https://docs.microsoft.com/rest/api/authorization/roledefinitions), чтобы получить список всех ролей RBAC Azure и перебрать результаты. Это нужно, чтобы найти определение требуемой роли по имени.
 
-Hello [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) этот вызов реализует метод hello пример приложения ASP.net MVC.
+Этот вызов осуществляет метод [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) примера приложения ASP.NET MVC.
 
-Hello следующий запрос в примере как идентификатор роли tooget Azure RBAC. 09cbd307-aa71-4aca-b346-5f253e6e3ebb — идентификатор hello hello подписки.
+В следующем примере запроса показано, как получить идентификатор роли RBAC Azure. 09cbd307-aa71-4aca-b346-5f253e6e3ebb — это идентификатор подписки.
 
     GET https://management.azure.com/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01 HTTP/1.1
 
     Authorization: Bearer eyJ0eXAiOiJKV*****fY2lGc5
 
-Hello ответа имеет hello следующий формат:
+Запрос имеет следующий формат:
 
     HTTP/1.1 200 OK
 
-    {"value":[{"properties":{"roleName":"API Management Service Contributor","type":"BuiltInRole","description":"Lets you manage API Management services, but not access toothem.","scope":"/","permissions":[{"actions":["Microsoft.ApiManagement/Services/*","Microsoft.Authorization/*/read","Microsoft.Resources/subscriptions/resources/read","Microsoft.Resources/subscriptions/resourceGroups/read","Microsoft.Resources/subscriptions/resourceGroups/resources/read","Microsoft.Resources/subscriptions/resourceGroups/deployments/*","Microsoft.Insights/alertRules/*","Microsoft.Support/*"],"notActions":[]}]},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/312a565d-c81f-4fd8-895a-4e21e48d571c","type":"Microsoft.Authorization/roleDefinitions","name":"312a565d-c81f-4fd8-895a-4e21e48d571c"},{"properties":{"roleName":"Application Insights Component Contributor","type":"BuiltInRole","description":"Lets you manage Application Insights components, but not access toothem.","scope":"/","permissions":[{"actions":["Microsoft.Insights/components/*","Microsoft.Insights/webtests/*","Microsoft.Authorization/*/read","Microsoft.Resources/subscriptions/resources/read","Microsoft.Resources/subscriptions/resourceGroups/read","Microsoft.Resources/subscriptions/resourceGroups/resources/read","Microsoft.Resources/subscriptions/resourceGroups/deployments/*","Microsoft.Insights/alertRules/*","Microsoft.Support/*"],"notActions":[]}]},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/ae349356-3a1b-4a5e-921d-050484c6347e","type":"Microsoft.Authorization/roleDefinitions","name":"ae349356-3a1b-4a5e-921d-050484c6347e"}]}
+    {"value":[{"properties":{"roleName":"API Management Service Contributor","type":"BuiltInRole","description":"Lets you manage API Management services, but not access to them.","scope":"/","permissions":[{"actions":["Microsoft.ApiManagement/Services/*","Microsoft.Authorization/*/read","Microsoft.Resources/subscriptions/resources/read","Microsoft.Resources/subscriptions/resourceGroups/read","Microsoft.Resources/subscriptions/resourceGroups/resources/read","Microsoft.Resources/subscriptions/resourceGroups/deployments/*","Microsoft.Insights/alertRules/*","Microsoft.Support/*"],"notActions":[]}]},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/312a565d-c81f-4fd8-895a-4e21e48d571c","type":"Microsoft.Authorization/roleDefinitions","name":"312a565d-c81f-4fd8-895a-4e21e48d571c"},{"properties":{"roleName":"Application Insights Component Contributor","type":"BuiltInRole","description":"Lets you manage Application Insights components, but not access to them.","scope":"/","permissions":[{"actions":["Microsoft.Insights/components/*","Microsoft.Insights/webtests/*","Microsoft.Authorization/*/read","Microsoft.Resources/subscriptions/resources/read","Microsoft.Resources/subscriptions/resourceGroups/read","Microsoft.Resources/subscriptions/resourceGroups/resources/read","Microsoft.Resources/subscriptions/resourceGroups/deployments/*","Microsoft.Insights/alertRules/*","Microsoft.Support/*"],"notActions":[]}]},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/ae349356-3a1b-4a5e-921d-050484c6347e","type":"Microsoft.Authorization/roleDefinitions","name":"ae349356-3a1b-4a5e-921d-050484c6347e"}]}
 
-Необязательно toocall этот API на постоянной основе. После определения Здравствуйте хорошо известный идентификатор GUID hello определения роли, можно сконструировать идентификатор определения роли hello как:
+Этот API не нужно вызывать постоянно. Определив известный GUID определения роли, можно создать идентификатор определения роли следующего вида:
 
     /subscriptions/{subscription_id}/providers/Microsoft.Authorization/roleDefinitions/{well-known-role-guid}
 
-Ниже приведены hello хорошо известные идентификаторы GUID часто используемых встроенных ролей.
+Ниже представлены известные идентификаторы GUID часто используемых встроенных ролей:
 
 | Роль | Guid |
 | --- | --- |
@@ -306,12 +306,12 @@ Hello ответа имеет hello следующий формат:
 | Участник SQL Server |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 | Участник БД SQL |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
-### <a name="assign-rbac-role-tooapplication"></a>Назначьте роль tooapplication RBAC
-У вас есть все необходимое tooassign hello соответствующие RBAC роли tooyour участника-службы с помощью hello [диспетчера ресурсов создать назначение ролей](https://docs.microsoft.com/rest/api/authorization/roleassignments) API.
+### <a name="assign-rbac-role-to-application"></a>Назначение роли RBAC для приложения
+Теперь все готово, чтобы назначить соответствующую роль RBAC субъекту-службе с помощью API [создания назначения роли Resource Manager](https://docs.microsoft.com/rest/api/authorization/roleassignments) .
 
-Hello [GrantRoleToServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L170) этот вызов реализует метод hello пример приложения ASP.net MVC.
+Этот вызов осуществляет метод [GrantRoleToServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L170) примера приложения ASP.NET MVC.
 
-Пример запроса tooassign RBAC роли tooapplication:
+Пример запроса на назначение роли RBAC для приложения:
 
     PUT https://management.azure.com/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/microsoft.authorization/roleassignments/4f87261d-2816-465d-8311-70a27558df4c?api-version=2015-07-01 HTTP/1.1
 
@@ -321,43 +321,43 @@ Hello [GrantRoleToServicePrincipalOnSubscription](https://github.com/dushyantgil
 
     {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
 
-В запросе hello используются hello следующие значения:
+В запросе используются следующие значения:
 
 | Guid | Описание |
 | --- | --- |
-| 09cbd307-aa71-4aca-b346-5f253e6e3ebb |Идентификатор Hello hello подписки |
-| c3097b31-7309-4c59-b4e3-770f8406bad2 |Идентификатор объекта Hello hello участника-службы приложения hello |
-| acdd72a7-3385-48ef-bd42-f606fba81ae7 |Идентификатор роли модуля чтения hello Hello |
-| 4f87261d-2816-465d-8311-70a27558df4c |новый идентификатор guid, созданный для hello создать назначение ролей |
+| 09cbd307-aa71-4aca-b346-5f253e6e3ebb |Идентификатор подписки |
+| c3097b31-7309-4c59-b4e3-770f8406bad2 |Идентификатор объекта субъекта-службы приложения |
+| acdd72a7-3385-48ef-bd42-f606fba81ae7 |Идентификатор роли "Читатель" |
+| 4f87261d-2816-465d-8311-70a27558df4c |Новый GUID, созданный для нового назначения роли |
 
-Hello ответа имеет hello следующий формат:
+Запрос имеет следующий формат:
 
     HTTP/1.1 201 Created
 
     {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
 
 ### <a name="get-app-only-access-token-for-azure-resource-manager"></a>Получение маркера доступа только для приложений для Azure Resource Manager
-toovalidate приложение имеет доступ hello требуемого hello подписки, выполните задачу теста на hello подписки с помощью маркера только для приложений.
+Чтобы проверить, есть ли у приложения требуемый доступ для подписки, выполните тестовое задание для подписки, используя маркер только для приложений.
 
-tooget маркер доступа только для приложений, следуйте инструкциям из раздела [получить маркер доступа только для приложений для Azure AD Graph API](#app-azure-ad-graph), с другим значением параметра hello ресурсов:
+Маркер доступа только для приложений можно получить, следуя инструкциям в разделе [Получение маркера доступа только для приложений для API Graph Azure AD](#app-azure-ad-graph). Но используйте другое значение для параметра ресурсов.
 
     https://management.core.windows.net/
 
-Hello [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) метод hello пример приложения ASP.NET MVC получает доступ только для приложений для диспетчера ресурсов Azure с помощью токена hello библиотеку аутентификации Active Directory для .net.
+Метод [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) примера приложения ASP.NET MVC получает маркер доступа только для приложений для Azure Resource Manager с использованием библиотеки проверки подлинности Active Directory для .NET.
 
 #### <a name="get-applications-permissions-on-subscription"></a>Получение разрешений приложения для подписки
-toocheck, ваше приложение имеет hello требуемого доступ на подписку Azure, может также вызвать hello [разрешения диспетчера ресурсов](https://docs.microsoft.com/rest/api/authorization/permissions) API. Этот подход является аналогичные toohow определить, имеет ли пользователь hello права управления доступом для hello подписки. Однако на этот раз вызовите hello разрешения API с маркером доступа только для приложения hello, полученный в предыдущем шаге hello.
+Чтобы проверить, есть ли у приложения необходимый доступ к подписке Azure, можно также вызвать API [разрешений Resource Manager](https://docs.microsoft.com/rest/api/authorization/permissions). Этот метод аналогичен методу определения наличия у пользователя права на управление доступом для подписки. Однако на этот раз вызовите API разрешений с помощью маркера доступа только для приложений, полученного на предыдущем шаге.
 
-Hello [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) этот вызов реализует метод hello пример приложения ASP.NET MVC.
+Этот вызов осуществляет метод [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) примера приложения ASP.NET MVC.
 
 ## <a name="manage-connected-subscriptions"></a>Управление подключенными подписками
-При соответствующей роли RBAC hello назначен субъект-служба приложения tooyour в подписке hello, приложения можно сохранить мониторинг и управление его с помощью маркера доступа только для приложений для диспетчера ресурсов Azure.
+После назначения соответствующей роли RBAC субъекту-службе приложения для подписки приложение может и дальше выполнять мониторинг и управление с помощью маркеров доступа только для приложений для Azure Resource Manager.
 
-Если владелец подписки удаляет назначение роли приложения с помощью классического портала hello или средства командной строки, приложение будет tooaccess больше не будет этой подписки. В этом случае необходимо hello пользователь уведомляется о том, что hello соединение с подпиской hello было разорвано из внешнего приложения hello и дать им параметр слишком «восстановить» hello соединения. «Восстановить» повторно просто создать назначение ролей hello, был удален в автономном режиме.
+Если владелец подписки удаляет назначение роли приложения, используя классический портал или программы командной строки, приложение больше не сможет получить доступ к этой подписке. В этом случае следует уведомить пользователей, что подключение к подписке прервано вне приложения, и предоставить им возможность восстановить его. При восстановлении назначение роли, удаленное в автономном режиме, будет создано заново.
 
-Так же, как вы включили hello пользователя tooconnect подписки tooyour приложения, необходимо разрешить слишком подписки toodisconnect hello пользователя. С access management точки зрения отключите означает удаление назначения ролей hello с субъектом-службой приложения hello в подписке hello. При необходимости состояние приложения hello для hello подписки может быть удалена слишком.
-Только пользователи с разрешением доступа управления в подписке hello, может toodisconnect hello подписки.
+Помимо предоставления возможности подключения подписок к вашему приложению, пользователю также необходимо разрешить отключать подписки. С точки зрения управления доступом при отключении удаляется назначение роли субъекта-службы приложения для подписки. Кроме того, любое состояние в приложении для подписки может быть удалено.
+Отключить подписку могут только пользователи с разрешением на управление доступом для этой подписки.
 
-Hello [RevokeRoleFromServicePrincipalOnSubscription метод](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) пример приложения hello ASP.net MVC реализует этот вызов.
+Этот вызов осуществляет метод [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) примера приложения ASP.NET MVC.
 
 Теперь пользователи могут легко подключать подписки Azure к приложениям и управлять ими с помощью этих подписок.

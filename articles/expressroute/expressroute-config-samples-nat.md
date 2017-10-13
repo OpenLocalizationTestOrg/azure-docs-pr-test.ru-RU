@@ -1,5 +1,5 @@
 ---
-title: "Примеры конфигурации маршрутизатора клиента aaaExpressRoute | Документы Microsoft"
+title: "Примеры конфигурации маршрутизатора клиента ExpressRoute | Документация Майкрософт"
 description: "Эта страница содержит примеры конфигурации для маршрутизаторов серий Cisco ASA и Juniper MX."
 documentationcenter: na
 services: expressroute
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-ms.openlocfilehash: b5faca0666bda6173e54abb0b6560d5f8bf8bfc2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="router-configuration-samples-tooset-up-and-manage-nat"></a>Конфигурация маршрутизатора образцы tooset вверх и управлять NAT
-Эта страница содержит примеры конфигурации NAT для маршрутизаторов серий Cisco ASA и Juniper SRX. Эти примеры предполагаемого toobe только рекомендации и не должны использоваться как есть. Можно работать с вашего поставщика toocome с соответствующие настройки для вашей сети. 
+# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Примеры конфигурации маршрутизатора для настройки и управления NAT
+Эта страница содержит примеры конфигурации NAT для маршрутизаторов серий Cisco ASA и Juniper SRX. Эти примеры имеют только справочный характер и не должны использоваться как есть. Подходящие конфигурации для своей сети можно выработать совместно с поставщиком. 
 
 > [!IMPORTANT]
-> Образцы на этой странице, предполагаемой toobe исключительно для рекомендации. Необходимо работать с у поставщика продаж / технической группы и вашей сети team toocome вверх с toomeet соответствующие настройки вашим потребностям. Корпорация Майкрософт не будет поддерживать проблемы связанные tooconfigurations, перечисленные на этой странице. Для получения поддержки вам необходимо обратиться к поставщику устройства.
+> Примеры на этой странице имеют исключительно справочный характер. Для получения подходящей конфигурации, которая удовлетворяет вашим потребностям, необходимо провести совместную работу со специалистами по продажам или техническими специалистами поставщика и вашими сетевыми специалистами. Корпорация Майкрософт не предоставляет поддержки по вопросам, связанным с конфигурациями, перечисленными на этой странице. Для получения поддержки вам необходимо обратиться к поставщику устройства.
 > 
 > 
 
-* Ниже примеров конфигурации маршрутизатора применяются tooAzure пиринги Public и Майкрософт. Вы не должны настраивать NAT для частного пиринга Azure. Для получения дополнительных сведений обратитесь к статьям [Сеансы пиринга ExpressRoute](expressroute-circuit-peerings.md) и [Требования ExpressRoute к NAT](expressroute-nat.md).
+* Примеры конфигурации маршрутизатора относятся к пирингам Azure Public и Microsoft. Вы не должны настраивать NAT для частного пиринга Azure. Для получения дополнительных сведений обратитесь к статьям [Сеансы пиринга ExpressRoute](expressroute-circuit-peerings.md) и [Требования ExpressRoute к NAT](expressroute-nat.md).
 
-* НЕОБХОДИМО использовать отдельные пулы NAT IP для toohello подключения к Интернету и ExpressRoute. С помощью hello пул же NAT IP между hello Интернета и приведет к ExpressRoute асимметричного маршрутизации и потери связи.
+* Для подключений к Интернету и ExpressRoute ДОЛЖНЫ использоваться отдельные пулы IP-адресов NAT. Использование одного пула IP-адресов NAT для подключения к Интернету и ExpressRoute приведет к асимметричной маршрутизации и потере подключения.
 
 
 ## <a name="cisco-asa-firewalls"></a>Брандмауэры Cisco ASA
-### <a name="pat-configuration-for-traffic-from-customer-network-toomicrosoft"></a>МАРИЯ конфигурации для входящего трафика с tooMicrosoft сети клиента
+### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a>Конфигурация NAT для трафика от сети клиента в Майкрософт
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -54,12 +54,12 @@ ms.lasthandoff: 10/06/2017
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-toocustomer-network"></a>МАРИЯ конфигурации для трафика сети toocustomer Microsoft
+### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a>Конфигурация PAT для трафика из Майкрософт в клиентскую сеть
 
 **Интерфейсы и направление:**
 
-    Source Interface (where hello traffic enters hello ASA): inside
-    Destination Interface (where hello traffic exits hello ASA): outside
+    Source Interface (where the traffic enters the ASA): inside
+    Destination Interface (where the traffic exits the ASA): outside
 
 **Конфигурация:**
 
@@ -87,10 +87,10 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="juniper-srx-series-routers"></a>Маршрутизаторы серии Juniper SRX
-### <a name="1-create-redundant-ethernet-interfaces-for-hello-cluster"></a>1. Создание избыточных интерфейсов Ethernet для кластера hello
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. Создайте избыточные интерфейсы Ethernet для кластера.
     interfaces {
         reth0 {
-            description "tooInternal Network";
+            description "To Internal Network";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 1;
@@ -103,13 +103,13 @@ ms.lasthandoff: 10/06/2017
             }
         }
         reth1 {
-            description "tooMicrosoft via Edge Router";
+            description "To Microsoft via Edge Router";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 2;
             }
             unit 100 {
-                description "tooMicrosoft via Edge Router";
+                description "To Microsoft via Edge Router";
                 vlan-id 100;
                 family inet {
                     address <IP-Address/Subnet-mask>;
@@ -121,8 +121,8 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="2-create-two-security-zones"></a>2. Создайте две зоны безопасности.
 * Доверенная зона предназначена для внутренней сети, а недоверенная зона — для внешней сети, направленной на граничные маршрутизаторы.
-* Назначьте соответствующие интерфейсы toohello зоны
-* Разрешить службам в интерфейсах hello
+* Назначьте соответствующие интерфейсы зонам.
+* Включите службы для интерфейсов.
 
     security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
@@ -159,8 +159,8 @@ ms.lasthandoff: 10/06/2017
 
 
 ### <a name="4-configure-nat-policies"></a>4. Настройте политики NAT.
-* Создайте два пула NAT. Один будет tooMicrosoft исходящего трафика используется tooNAT и других toohello клиентов Microsoft.
-* Создание правил трафика соответствующих tooNAT hello
+* Создайте два пула NAT. Один будет использоваться для исходящего трафика NAT в Майкрософт, а второй — для трафика от Майкрософт клиенту.
+* Создайте правила для преобразования сетевых адресов соответствующего трафика.
   
        security {
            nat {
@@ -183,7 +183,7 @@ ms.lasthandoff: 10/06/2017
                    }
                    rule-set Outbound_NAT {
                        from routing-instance Internal;
-                       toorouting-instance External-ExpressRoute;
+                       to routing-instance External-ExpressRoute;
                        rule SNAT-Out {
                            match {
                                source-address 0.0.0.0/0;
@@ -199,7 +199,7 @@ ms.lasthandoff: 10/06/2017
                    }
                    rule-set Inbound-NAT {
                        from routing-instance External-ExpressRoute;
-                       toorouting-instance Internal;
+                       to routing-instance Internal;
                        rule SNAT-In {
                            match {
                                source-address 0.0.0.0/0;
@@ -217,8 +217,8 @@ ms.lasthandoff: 10/06/2017
            }
        }
 
-### <a name="5-configure-bgp-tooadvertise-selective-prefixes-in-each-direction"></a>5. Настройка BGP tooadvertise Выборочный префиксы в каждом направлении
-Ссылки toosamples в [образцы настройки маршрутизации ](expressroute-config-samples-routing.md) страницы.
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. Настройки BGP для использования выборочных префиксов в каждом направлении
+Обратитесь к примерам на странице [Примеры настройки маршрутизации ](expressroute-config-samples-routing.md) .
 
 ### <a name="6-create-policies"></a>6. Создайте политики.
     routing-options {
@@ -316,5 +316,5 @@ ms.lasthandoff: 10/06/2017
     }
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В разделе hello [часто задаваемые вопросы о ExpressRoute](expressroute-faqs.md) для получения дополнительных сведений.
+Дополнительные сведения см. в разделе [Вопросы и ответы по ExpressRoute](expressroute-faqs.md).
 

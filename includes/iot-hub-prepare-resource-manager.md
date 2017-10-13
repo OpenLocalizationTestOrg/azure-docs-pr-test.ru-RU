@@ -1,23 +1,23 @@
-## <a name="prepare-tooauthenticate-azure-resource-manager-requests"></a>Подготовка tooauthenticate запросов диспетчера ресурсов Azure
-Вы должны пройти проверку подлинности всех hello операций, выполняемых с ресурсами с помощью hello [диспетчера ресурсов Azure] [ lnk-authenticate-arm] с Azure Active Directory (AD). Здравствуйте, наиболее простым способом tooconfigure toouse PowerShell или Azure CLI.
+## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Подготовка к проверке подлинности запросов Azure Resource Manager
+Необходимо выполнять проверку подлинности всех операций, выполняемых с ресурсами с помощью [Azure Resource Manager][lnk-authenticate-arm], используя Azure Active Directory. Для такой настройки проще всего использовать PowerShell или интерфейс командной строки Azure.
 
-Установка hello [командлетов Azure PowerShell] [ lnk-powershell-install] перед продолжением.
+Прежде чем продолжать, установите [командлеты Azure PowerShell][lnk-powershell-install].
 
-Здравствуйте, следующие шаги Показать как tooset проверку подлинности пароль для приложения AD с помощью PowerShell. Эти команды можно выполнять в обычном сеансе PowerShell.
+Ниже показано, как настроить проверку пароля для приложения AD с помощью PowerShell. Эти команды можно выполнять в обычном сеансе PowerShell.
 
-1. Вход tooyour подписку Azure с помощью hello следующую команду:
+1. Выполните следующую команду для входа в подписку Azure:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Если у вас несколько подписок Azure, предоставляет доступ tooall вход tooAzure hello подписок Azure, связанных с учетными данными. Используйте следующую команду, toolist hello подписки Azure доступны для вас toouse hello.
+1. Если у вас есть несколько подписок Azure, то при входе в Azure вы получите доступ ко всем подпискам Azure, связанным с вашими учетными данными. Используйте следующую команду, чтобы просмотреть подписки Azure, доступные для использования:
 
     ```powershell
     Get-AzureRMSubscription
     ```
 
-    Используется следующая команда tooselect подписки требуется toouse toorun hello команды toomanage концентратор IoT hello. Можно использовать имя подписки hello или идентификатор из hello выходные данные предыдущей команды hello:
+    Используйте следующую команду, чтобы выбрать подписку, с помощью которой будут выполняться команды для управления Центром Интернета вещей. Вы можете использовать имя подписки или идентификатор из выходных данных предыдущей команды:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -25,29 +25,29 @@
     ```
 
 2. Обратите внимание на **TenantId** и **SubscriptionId**. Они потребуются вам позднее.
-3. Создайте новое приложение Azure Active Directory с помощью hello следующую команду, заменив заполнителями hello:
+3. Воспользуйтесь следующей командой для создания нового приложения Azure Active Directory, заменив в ней заполнители:
    
    * **{Display name}:** отображаемое имя вашего приложения, например **MySampleApp**.
-   * **{URL-адрес домашней страницы}:** hello URL-адрес домашней страницы приложения hello, таких как **http://mysampleapp/home**. Этот URL-адрес не обязательно toopoint tooa реальному приложению.
-   * **{Application identifier}:** уникальный идентификатор, например **http://mysampleapp**. Этот URL-адрес не обязательно toopoint tooa реальному приложению.
-   * **{Password}:** пароль, использовать tooauthenticate вместе с приложением.
+   * **{Home page URL}:** URL-адрес домашней страницы вашего приложения, например **http://mysampleapp/home**. Этот URL-адрес необязательно должен указывать на реальное приложение.
+   * **{Application identifier}:** уникальный идентификатор, например **http://mysampleapp**. Этот URL-адрес необязательно должен указывать на реальное приложение.
+   * **{Password}:** пароль, который используется для проверки подлинности в вашем приложении.
      
      ```powershell
      New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
      ```
-4. Запишите hello **ApplicationId** приложения hello, вы создали. Этот идентификатор потребуется позднее.
-5. Создание нового субъекта-службы с помощью hello следующую команду, заменив **{MyApplicationId}** с hello **ApplicationId** из предыдущего шага hello:
+4. Запишите значение **ApplicationId** для созданного приложения. Этот идентификатор потребуется позднее.
+5. Создайте новую субъект-службу с помощью следующей команды, заменив **{MyApplicationId}** на значением **ApplicationId** из предыдущего шага.
    
     ```powershell
     New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. Настройка назначения роли с помощью hello следующую команду, заменив **{MyApplicationId}** с вашей **ApplicationId**.
+6. Настройте назначение роли с помощью следующей команды, заменив **{MyApplicationId}** своим значением **ApplicationId**.
    
     ```powershell
     New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
-Создание приложения hello Azure AD, позволяющая tooauthenticate из вашего приложения C# завершена. Необходимы следующие значения в этом руководстве позднее hello.
+Вы завершили создание приложения Azure AD, которое позволит вам осуществлять проверку подлинности из своего пользовательского приложения C#. Позднее в рамках изучения данного руководства вам потребуются следующие значения:
 
 * TenantId
 * SubscriptionId

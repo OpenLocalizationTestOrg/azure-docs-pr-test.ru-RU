@@ -1,6 +1,6 @@
 ---
-title: "эскизы toogenerate aaaHow с помощью Media Encoder стандартный в .NET Framework"
-description: "В этом разделе показано, как tooencode .NET toouse актива и создания эскизов на hello одновременно с помощью стандартных кодировщика мультимедиа."
+title: "Создание эскизов с помощью Media Encoder Standard c использованием .NET"
+description: "В данной статье рассказывается, как использовать .NET для кодирования ресурсов и одновременно с этим создавать эскизы с помощью Media Encoder Standard."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -12,25 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 09/08/2017
 ms.author: juliako
-ms.openlocfilehash: 23d3e4d9bf64a688d45499c045f19d2792167990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toogenerate-thumbnails-using-media-encoder-standard-with-net"></a>Как toogenerate эскизы с помощью Media Encoder стандартный в .NET Framework
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Создание эскизов с помощью Media Encoder Standard c использованием .NET
 
-Стандартный кодировщик мультимедиа toogenerate можно использовать один или несколько эскизов из введенных видео в [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), или [BMP](https://en.wikipedia.org/wiki/BMP_file_format) форматам файлов. Вы можете отправлять задачи, которые создают только изображения, или объединить создание эскизов с кодированием. В этой статье представлены несколько примеров предустановок эскизов XML и JSON для таких сценариев. В конце раздела hello hello — [пример кода](#code_sample) , показано, как tooaccomplish Media Services .NET SDK hello toouse hello задачу кодирования.
+Media Encoder Standard можно использовать для создания одного или нескольких эскизов из входящего видео в форматах файлов изображений [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) или [BMP](https://en.wikipedia.org/wiki/BMP_file_format). Вы можете отправлять задачи, которые создают только изображения, или объединить создание эскизов с кодированием. В этой статье представлены несколько примеров предустановок эскизов XML и JSON для таких сценариев. В конце этого раздела приведен [пример кода](#code_sample), показывающий, как с помощью пакета SDK для .NET для служб мультимедиа выполнить задачу кодирования.
 
-Дополнительные сведения о hello элементы, используемые в образце предустановок Изучите [Media Encoder стандартной схеме](media-services-mes-schema.md).
+Дополнительные сведения об элементах, используемых в примерах предустановок см. в статье [Схема Media Encoder Standard](media-services-mes-schema.md).
 
-Убедитесь, что hello tooreview [вопросы](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) раздела.
+Обязательно изучите раздел [Рекомендации](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .
+    
+## <a name="example-of-a-single-png-file-preset"></a>Пример предустановки "один файл PNG"
 
-## <a name="example--single-png-file"></a>Пример. Один файл PNG
-
-Hello следующий JSON и XML-Предустановка может быть используется tooproduce один выходной PNG файл из hello несколько секунд, входное видео hello, где кодировщика hello предпринимает все усилия на поиск кадр с «Город». Обратите внимание, что размеры изображения: hello выходные данные были установлены too100%, это означает, что эти данные будут совпадать hello размеры hello входное видео. Обратите внимание, как параметр «Формат» hello в окне «Выходные данные» требуется использование hello toomatch «PngLayers» в разделе «Кодеки» hello. 
+Предустановки JSON и XML ниже можно использовать для создания одного выходного файла PNG на основе первых секунд входного видео, где кодировщик выполняет поиск "интересного" кадра. Обратите внимание, что для размера выходных изображений выбрано значение 100 %, то есть они будут совпадать с размером входного видео. При этом параметр Format в разделе Outputs должен соответствовать использованию PngLayers в разделе Codecs. 
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -80,9 +80,9 @@ Hello следующий JSON и XML-Предустановка может бы�
       </Outputs>
     </Preset>
 
-## <a name="example--a-series-of-jpeg-images"></a>Пример. Несколько изображений JPEG
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Пример предустановки "несколько изображений JPEG"
 
-Здравствуйте следующий JSON и XML-Предустановка может быть используется tooproduce набор 10 изображений на отметки времени 5% 15%,..., 95% hello входной временной шкалы, где hello составляет указанного toobe один квартал, hello ввода видео.
+Следующую предустановку JSON и XML можно использовать для создания 10 изображений на метках времени 5 %, 15 %, ..., 95 % входной временной шкалы, где размер изображения установлен как одна четвертая от размера входного видео.
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -99,8 +99,8 @@ Hello следующий JSON и XML-Предустановка может бы�
             }
           ],
           "Start": "5%",
-          "Step": "1",
-          "Range": "1",
+          "Step": "10%",
+          "Range": "96%",
           "Type": "JpgImage"
         }
       ],
@@ -136,9 +136,9 @@ Hello следующий JSON и XML-Предустановка может бы�
       </Outputs>
     </Preset>
 
-## <a name="example--one-image-at-a-specific-timestamp"></a>Пример. Одно изображение на определенной метке времени
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Пример предустановки "одно изображение на определенной метке времени"
 
-Привет, следующая Предустановка JSON и XML может быть используется tooproduce одного изображения JPEG в hello 30-секундная отметка hello входного видео. Данная конфигурация ожидает ввода toobe hello более 30 секунд в поле длительности (else hello задание будет завершаться с ошибкой).
+Следующую предустановку JSON и XML можно использовать для создания одного изображения JPEG на 30-секундной отметке времени входного видео. При использовании этой предустановки предполагается, что входное видео будет длиться более 30 секунд (иначе задание завершится ошибкой).
 
 ### <a name="json-preset"></a>Предустановка JSON
 
@@ -175,7 +175,7 @@ Hello следующий JSON и XML-Предустановка может бы�
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
-        <JpgImage Start="00:00:30" Step="00:00:02" Range="00:00:01">
+        <JpgImage Start="00:00:30" Step="00:00:01" Range="00:00:01">
           <JpgLayers>
             <JpgLayer>
               <Width>25%</Width>
@@ -191,142 +191,82 @@ Hello следующий JSON и XML-Предустановка может бы�
         </Output>
       </Outputs>
     </Preset>
+    
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Пример предустановки "эскизы с разными разрешениями"
 
-## <a id="code_sample"></a> Пример. Кодирование видео и создание эскиза
+Эту предустановку можно использовать для создания эскизов с разными разрешениями в одной задаче. В примере в позициях входной временной шкалы 5 %, 15 %, …, 95 % кодировщик будет создавать два изображения — один с использованием 100 % входного разрешения видео, а другой с использованием 50 %.
 
-Следующий пример кода Hello использует hello tooperform Media Services .NET SDK следующие задачи:
+Обратите внимание на использование макроса {Resolution} в FileName. Он указывает кодировщику использовать ширину и высоту, заданные в разделе Encoding предустановки при создании имени файла выходных изображений. Кроме того, он позволяет легко различать разные изображения.
 
-* Создание задания кодирования.
-* Получите кодировщик Media Encoder Стандартная toohello ссылки.
-* Предустановка hello нагрузки [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , содержащие hello кодирования предустановку также сведения, необходимые toogenerate эскизы. Можно сохранить это [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) в файл и используйте hello, следующие файл hello tooload кода.
-  
-        // Load hello XML (or JSON) from hello local file.
-        string configuration = File.ReadAllText(fileName);  
-* Добавьте одно задание toohello задач кодирования. 
-* Укажите входной hello toobe активов кодировке.
-* Создание выходного актива, который будет содержать активов hello в кодировке.
-* Добавьте событие обработчика toocheck hello ход выполнения задания.
-* Отправка задания hello.
+### <a name="json-preset"></a>Предустановка JSON
 
-В разделе hello [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md) разделе инструкции о том, как tooset настроить среду разработки.
-
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
-
-        namespace EncodeAndGenerateThumbnails
+    {
+      "Version": 1.0,
+      "Codecs": [
         {
-        class Program
+          "JpgLayers": [
         {
-            // Read values from hello App.config file.
-            private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
-
-            private static CloudMediaContext _context = null;
-
-            private static readonly string _mediaFiles =
-            Path.GetFullPath(@"../..\Media");
-
-            private static readonly string _singleMP4File =
-            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-
-            static void Main(string[] args)
-            {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
-            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
-            // Get an uploaded asset.
-            var asset = _context.Assets.FirstOrDefault();
-
-            // Encode and generate hello thumbnails.
-            EncodeToAdaptiveBitrateMP4Set(asset);
-
-            Console.ReadLine();
-            }
-
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
-            // Declare a new job.
-            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
-            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-            // Load hello XML (or JSON) from hello local file.
-            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
-
-            // Create a task
-            ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                processor,
-                configuration,
-                TaskOptions.None);
-
-            // Specify hello input asset toobe encoded.
-            task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
-            // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
-            task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
-
-            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-            job.Submit();
-            job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-            return job.OutputMediaAssets[0];
-            }
-
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
-            Console.WriteLine("Job state changed event:");
-            Console.WriteLine("  Previous state: " + e.PreviousState);
-            Console.WriteLine("  Current state: " + e.CurrentState);
-            switch (e.CurrentState)
-            {
-                case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-                case JobState.Canceling:
-                case JobState.Queued:
-                case JobState.Scheduled:
-                case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-                case JobState.Canceled:
-                case JobState.Error:
-
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
-
-                // Display or log error details as needed.
-                break;
-                default:
-                break;
-            }
-            }
-
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
-            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-            if (processor == null)
-                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-            return processor;
-            }
-        }
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "100%",
+          "Height": "100%"
+        },
+        {
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "50%",
+          "Height": "50%"
         }
 
-## <a id="json"></a>Предопределенный эскиз JSON
+          ],
+          "Start": "5%",
+          "Step": "10%",
+          "Range": "96%",
+          "Type": "JpgImage"
+        }
+      ],
+      "Outputs": [
+        {
+          "FileName": "{Basename}_{Resolution}_{Index}{Extension}",
+          "Format": {
+        "Type": "JpgFormat"
+          }
+        }
+      ]
+    }
+
+### <a name="xml-preset"></a>Предустановка XML
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Encoding>
+    <JpgImage Start="5%" Step="10%" Range="96%"><JpgImage Start="00:00:01" Step="00:00:15">
+      <JpgLayers>
+       <JpgLayer>
+        <Width>100%</Width>
+        <Height>100%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+       <JpgLayer>
+        <Width>50%</Width>
+        <Height>50%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+      </JpgLayers>
+    </JpgImage>
+    </Encoding>
+    <Outputs>
+      <Output FileName="{Basename}_{Resolution}_{Index}{Extension}">
+        <JpgFormat/>
+      </Output>
+    </Outputs>
+    </Preset>
+    
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Пример создания эскиза во время кодирования
+
+Во всех примерах выше рассматривались способы отправки задачи кодирования для создания изображений. Но также можно объединить кодирование видео и аудио с созданием эскизов. Предустановки JSON и XML ниже указывают **стандартному кодировщику служб мультимедиа** создавать эскиз во время кодирования.
+
+### <a id="json"></a>Предустановка JSON
 Сведения о схеме см. [здесь](https://msdn.microsoft.com/library/mt269962.aspx).
 
     {
@@ -389,7 +329,7 @@ Hello следующий JSON и XML-Предустановка может бы�
       ]
     }
 
-## <a id="xml"></a>Предопределенный эскиз XML
+### <a id="xml"></a>Предустановка XML
 Сведения о схеме см. [здесь](https://msdn.microsoft.com/library/mt269962.aspx).
     
     <?xml version="1.0" encoding="utf-16"?>
@@ -440,27 +380,161 @@ Hello следующий JSON и XML-Предустановка может бы�
           <JpgFormat />
         </Output>
       </Outputs>
-    </Preset>
+    </Preset>   
+
+## <a id="code_sample"></a>Кодирование видео и создание эскиза при помощи .NET
+
+В следующем примере кода пакет SDK служб мультимедиа используется для выполнения следующих задач.
+
+* Создание задания кодирования.
+* Получение ссылки на стандартный кодировщик мультимедиа.
+* Загрузка предопределенного кода [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json), содержащего предопределенную кодировку, а также сведения, необходимые для создания эскизов. Вы можете сохранить этот [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml)- или [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)-код в файл и использовать указанный ниже код для загрузки файла.
+  
+        // Load the XML (or JSON) from the local file.
+        string configuration = File.ReadAllText(fileName);  
+* Добавление одной задачи кодирования в задание. 
+* Указание входного ресурса-контейнера для кодирования.
+* Создание выходного ресурса-контейнера, который будет содержать закодированный ресурс-контейнер.
+* Добавление обработчика событий для проверки хода выполнения задания.
+* Отправка задания.
+
+Дополнительные сведения о настройке среды разработки см. в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).
+
+        using System;
+        using System.Configuration;
+        using System.IO;
+        using System.Linq;
+        using Microsoft.WindowsAzure.MediaServices.Client;
+        using System.Threading;
+
+        namespace EncodeAndGenerateThumbnails
+        {
+        class Program
+        {
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+            ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+            private static CloudMediaContext _context = null;
+
+            private static readonly string _mediaFiles =
+            Path.GetFullPath(@"../..\Media");
+
+            private static readonly string _singleMP4File =
+            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+
+            static void Main(string[] args)
+            {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            // Get an uploaded asset.
+            var asset = _context.Assets.FirstOrDefault();
+
+            // Encode and generate the thumbnails.
+            EncodeToAdaptiveBitrateMP4Set(asset);
+
+            Console.ReadLine();
+            }
+
+            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+            {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Thumbnail Job");
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Load the XML (or JSON) from the local file.
+            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
+
+            // Create a task
+            ITask task = job.Tasks.AddNew("Media Encoder Standard Thumbnail task",
+                processor,
+                configuration,
+                TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+                AssetCreationOptions.None);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+            }
+
+            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+            {
+            Console.WriteLine("Job state changed event:");
+            Console.WriteLine("  Previous state: " + e.PreviousState);
+            Console.WriteLine("  Current state: " + e.CurrentState);
+            switch (e.CurrentState)
+            {
+                case JobState.Finished:
+                Console.WriteLine();
+                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                Console.WriteLine("Please wait...\n");
+                break;
+                case JobState.Canceled:
+                case JobState.Error:
+
+                // Cast sender as a job.
+                IJob job = (IJob)sender;
+
+                // Display or log error details as needed.
+                break;
+                default:
+                break;
+            }
+            }
+
+            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+            {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+            if (processor == null)
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+            }
+        }
+
 
 ## <a name="considerations"></a>Рекомендации
-применить Hello следующие вопросы:
+Действительны следующие условия.
 
-* Использование Hello явные отметки времени для начала/шаг или Range предполагается, что этот источник входных hello — менее 1 минуты long.
+* Использование явных меток времени для элементов Start, Step или Range предполагает, что входные данные составляют не менее одной минуты.
 * Элементы Jpg, Png и BmpImage обладают атрибутами Start, Step и Range, которые можно интерпретировать следующим образом.
   
   * Номер кадра, если эти атрибуты выражены неотрицательными целыми числами, например, "Start": "120",
-  * Если выразить в виде добавляется суффикс %, например относительный toosource длительность. "Start": "15%", ИЛИ
+  * Отношение к длительности источника, если атрибуты выражены как %-суффикс, например, "Start": "15%", ИЛИ
   * Отметка времени, если атрибуты имеют формат ЧЧ:ММ:СС... Например, "Start" : "00:01:00"
     
     При желании условные обозначения можно комбинировать.
     
-    Кроме того, также поддерживает запуск специального макроса: {наилучшим образом}, который осуществляет toodetermine hello первый «Город» кадр hello содержимого Примечание: (шаг и диапазон игнорируются при начале задано слишком {наиболее})
+    Кроме того, атрибут Start поддерживает также специальный макрос {Best}, который пытается определить первый "интересный" кадр содержимого NOTE: (если атрибут Start имеет значение {Best}, атрибуты Step и Range игнорируются)
   * По умолчанию Start:{Best}
-* Формат вывода должно явно предоставляться для каждого формата изображения toobe: Jpg, Png или BmpFormat. При наличии MES будет соответствовать JpgVideo tooJpgFormat и т. д. Выходнойформат появился новый указанного макроса кодек изображений: {индекс}, требующие toobe присутствует (один раз и только один раз) для форматов вывода изображения.
+* Для атрибута Image должен быть указан формат выходных данных: Jpg/Png/BmpFormat. MES, если он присутствует, соответствует JpgVideo для JpgFormat и т. д. OutputFormat представляет новый макрос, связанный с кодеком изображений: {Index}, который необходимо указывать для форматов вывода изображений (один и только один раз).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы можете проверить hello [задание выполняется](media-services-check-job-progress.md) при hello отложенные задания кодирования.
+Вы можете проверить [ход выполнения задания](media-services-check-job-progress.md), пока задание кодировки находится в ожидании.
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

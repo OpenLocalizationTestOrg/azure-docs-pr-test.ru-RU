@@ -1,6 +1,6 @@
 ---
-title: "aaaGet запуска многофакторной проверки Подлинности Azure в облаке hello | Документы Microsoft"
-description: "Это hello страница Microsoft Azure, многофакторной проверки подлинности, описывающий, как tooget работу с Azure MFA в облаке hello."
+title: "Приступая к работе с Azure MFA в облаке | Документация Майкрософт"
+description: "Эта страница посвящена службе \"Многофакторная идентификация Microsoft Azure\". Она содержит сведения по началу работы с Azure MFA в облаке."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: kgremban
-ms.openlocfilehash: a4aaf44bf08d96f2baad155072fdd6e0e727ce8e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 19f3228b874fc4e37bf83388dae4341428226482
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="getting-started-with-azure-multi-factor-authentication-in-hello-cloud"></a>Приступая к работе с многофакторной проверкой подлинности в Azure в облаке hello
-В этой статье рассматриваются как tooget запущена с помощью многофакторной проверки подлинности Azure в облаке hello.
+# <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>Приступая к работе со службой "Многофакторная идентификация Microsoft Azure" в облаке
+В этой статье вы узнаете, как приступить к работе со службой "Многофакторная идентификация Microsoft Azure" в облаке.
 
 > [!NOTE]
-> Hello следующих разделах содержатся сведения о как hello tooenable пользователей с помощью **классический портал Azure**. Если вам нужны дополнительные сведения о том, как tooset копирование Azure Multi-factor Authentication для пользователей Office 365 в разделе [настроить многофакторную проверку подлинности для Office 365.](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)
+> Здесь рассматривается использование **классического портала Azure**. Сведения о настройке многофакторной проверки подлинности в Azure для пользователей Office 365 см. в статье [Настройка многофакторной проверки подлинности для Office 365](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US).
 
-![Многофакторной проверки Подлинности в облаке hello](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
+![MFA в облаке](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
 ## <a name="prerequisite"></a>Предварительные требования
-[Зарегистрируйтесь для получения подписки Azure](https://azure.microsoft.com/pricing/free-trial/) — Если у вас еще нет подписки Azure, необходимо toosign вверх по одной. Если вы только начинаете работать со службой "Многофакторная идентификация Microsoft Azure" (MFA), используйте пробную подписку.
+[Зарегистрируйтесь, чтобы оформить подписку Azure](https://azure.microsoft.com/pricing/free-trial/). Если у вас еще нет подписки Azure, вам необходимо зарегистрироваться для ее оформления. Если вы только начинаете работать со службой "Многофакторная идентификация Microsoft Azure" (MFA), используйте пробную подписку.
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Включение многофакторной проверки подлинности в Azure
-При условии, что у пользователей есть лицензии, которые включают многофакторной проверки подлинности Azure, нет элементов, которые требуются tooturn toodo на многофакторной проверки Подлинности Azure. Для отдельных пользователей можно включить двухфакторную проверку подлинности. Ниже перечислены Hello лицензий, включение многофакторной проверки Подлинности Azure
+При наличии у пользователей лицензий, которые предусматривают использование многофакторной проверки подлинности в Azure, вам не нужно включать Azure MFA. Для отдельных пользователей можно включить двухфакторную проверку подлинности. Лицензии, которые предусматривают использование Azure MFA:
 - Многофакторная идентификация Microsoft Azure;
 - Azure Active Directory Premium;
 - Enterprise Mobility + Security.
 
-Если у вас нет этих трех лицензий, или у вас нет toocover достаточное количество лицензий всех пользователей, которые ОК. Достаточно toodo выполнить дополнительное действие и [создания поставщика многофакторной проверки подлинности](multi-factor-authentication-get-started-auth-provider.md) в вашем каталоге.
+У вас могут отсутствовать эти лицензии или может не хватать их числа, чтобы охватить всех пользователей. Ничего страшного. Вам просто нужно выполнить дополнительное действие, чтобы [создать поставщика Многофакторной идентификации](multi-factor-authentication-get-started-auth-provider.md) в своем каталоге.
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Включение двухфакторной проверки подлинности для пользователей
 
-Используйте одну из процедур hello, перечисленных в [как toorequire двухшаговую проверку для пользователя или группы](multi-factor-authentication-get-started-user-states.md) toostart с помощью многофакторной проверки Подлинности Azure. Вы можете tooenforce двухшаговую проверку для всех входов или проверки двухэтапный toorequire политики условного доступа можно создать только в том случае, если он имеет значение tooyou.
+Используйте одну из процедур, перечисленных в статье [Состояние пользователей в службе "Многофакторная идентификация Microsoft Azure"](multi-factor-authentication-get-started-user-states.md), для начала работы с Azure MFA. Вы можете применять двухфакторную проверку подлинности для всех входов или создать политики условного доступа, чтобы требовать ее только там, где нужно.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы настроили многофакторной проверки подлинности Azure в облаке hello, можно настроить и настройку развертывания. Дополнительные сведения см. в статье [Настройка службы "Многофакторная идентификация Microsoft Azure"](multi-factor-authentication-whats-next.md).
+Теперь, когда служба "Многофакторная идентификация Microsoft Azure" в облаке настроена, можно настроить и выполнить развертывание. Дополнительные сведения см. в статье [Настройка службы "Многофакторная идентификация Microsoft Azure"](multi-factor-authentication-whats-next.md).
 

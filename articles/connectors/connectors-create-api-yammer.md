@@ -1,6 +1,6 @@
 ---
-title: "hello aaaAdd Yammer соединителя в свои приложения логики Azure | Документы Microsoft"
-description: "Общие сведения о hello Yammer соединителя с параметрами REST API"
+title: "Добавление соединителя Yammer в Azure Logic Apps | Документация Майкрософт"
+description: "Обзор соединителя Yammer с параметрами API REST"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: be75df770a8062d839926dff8c0195d2647f78d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-yammer-connector"></a>Начало работы с соединителем Yammer hello
-Подключите tooYammer tooaccess диалоги в сети предприятия. С помощью Yammer вы можете:
+# <a name="get-started-with-the-yammer-connector"></a>Начало работы с соединителем Yammer
+Вы можете подключаться к Yammer для доступа к беседам в корпоративной сети. С помощью Yammer вы можете:
 
-* Создать поток вашего бизнеса, на основе hello данных, получаемых из Yammer. 
+* формировать бизнес-процессы на основе данных, получаемых из Yammer; 
 * использовать триггеры при поступлении нового сообщения в группе или веб-канале, на который вы подписаны;
-* Используйте действия toopost сообщение, получение всех сообщений и многое другое. Эти действия получить ответ и внесите hello выходные данные для других действий. Например, при появлении нового сообщения вы можете отправлять сообщения электронной почты с помощью Office 365.
+* использовать действия для публикации сообщений, получения всех сообщений и т. д. Эти действия получают ответ и делают выходные данные доступными для использования другими действиями. Например, при появлении нового сообщения вы можете отправлять сообщения электронной почты с помощью Office 365.
 
 Для начала создайте приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-tooyammer"></a>Создание tooYammer подключения
-Соединитель Yammer toouse hello, сначала создать **подключения** затем укажите подробности hello для этих свойств: 
+## <a name="create-a-connection-to-yammer"></a>Создание подключения к Yammer
+Чтобы использовать соединитель Yammer, сначала нужно создать **подключение**, а затем указать данные для приведенных ниже свойств. 
 
 | Свойство | Обязательно | Description (Описание) |
 | --- | --- | --- |
 | Маркер |Да |Указание учетных данных Yammer |
 
-> [!INCLUDE [Steps toocreate a connection tooYammer](../../includes/connectors-create-api-yammer.md)]
+> [!INCLUDE [Steps to create a connection to Yammer](../../includes/connectors-create-api-yammer.md)]
 > 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/yammer/).
+Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/yammer/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
+Вы можете вернуться к [списку интерфейсов API](apis-list.md).

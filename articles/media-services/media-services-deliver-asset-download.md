@@ -1,6 +1,6 @@
 ---
-title: "компьютер tooyour активы служб мультимедиа aaaDownload - Azure | Документы Microsoft"
-description: "Дополнительные сведения о компьютере tooyour toodownload активы. Примеры кода на языке C# и используйте hello пакета SDK служб мультимедиа для .NET."
+title: "Скачивание ресурсов служб мультимедиа на компьютер в Azure | Документация Майкрософт"
+description: "Инструкции по загрузке ресурсов на компьютер. Примеры кода написаны на языке C# и используют пакет SDK служб мультимедиа для .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 6c6e764720caa59d8371178a2682700345f7bc57
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Доставка актива путем загрузки
-В этом разделе обсуждаются параметры для доставки мультимедиа отправлен tooMedia служб. Для доставки контента служб мультимедиа можно использовать различные сценарии. Можно загрузить мультимедийные активы или получить к ним доступ с помощью указателя. Можно отправить приложение tooanother содержимого мультимедиа или tooanother поставщика содержимого. Для повышения производительности и масштабируемости можно также доставлять контент с помощью сети доставки содержимого (CDN).
+В этом разделе обсуждаются возможности доставки файлов мультимедиа, переданных в службы мультимедиа. Для доставки контента служб мультимедиа можно использовать различные сценарии. Можно загрузить мультимедийные активы или получить к ним доступ с помощью указателя. Можно отправить мультимедийный контент в другое приложение или другой поставщик контента. Для повышения производительности и масштабируемости можно также доставлять контент с помощью сети доставки содержимого (CDN).
 
-В этом примере показано, как toodownload активы мультимедиа из службы мультимедиа tooyour локального компьютера. Hello запросы кода hello заданий, связанных с учетной записью служб мультимедиа hello по Идентификатору задания и обращается к его **OutputMediaAssets** коллекции (то есть набор hello один или несколько мультимедийным активам, полученный в результате выполнения задания). Этот пример показывает, как носитель вывода toodownload ресурсам с помощью задания, но могут применяться hello же подход toodownload других средств.
+В этом примере показано, как загрузить мультимедийные активы из служб мультимедиа на локальный компьютер. Код запрашивает задания, связанные с учетной записью служб мультимедиа, по идентификатору задания и обращается к соответствующей коллекции **OutputMediaAssets** (которая представляет собой набор из одного или нескольких выходных мультимедийных активов, являющихся результатом выполнения задания). В этом примере показано, как скачать выходные мультимедийные ресурсы из задания, но этот же метод можно использовать для скачивания и других ресурсов.
 
 >[!NOTE]
->Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
+>Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
 
-    // Download hello output asset of hello specified job tooa local folder.
+    // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
     {
-        // This method illustrates how toodownload a single asset. 
-        // However, you can iterate through hello OutputAssets
+        // This method illustrates how to download a single asset. 
+        // However, you can iterate through the OutputAssets
         // collection, and download all assets if there are many. 
 
-        // Get a reference toohello job. 
+        // Get a reference to the job. 
         IJob job = GetJob(jobId);
 
-        // Get a reference toohello first output asset. If there were multiple 
+        // Get a reference to the first output asset. If there were multiple 
         // output media assets you could iterate and handle each one.
         IAsset outputAsset = job.OutputMediaAssets[0];
 
-        // Create a SAS locator toodownload hello asset
+        // Create a SAS locator to download the asset
         IAccessPolicy accessPolicy = _context.AccessPolicies.Create("File Download Policy", TimeSpan.FromDays(30), AccessPermissions.Read);
         ILocator locator = _context.Locators.CreateLocator(LocatorType.Sas, outputAsset, accessPolicy);
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/06/2017
         var downloadTasks = new List<Task>();
         foreach (IAssetFile outputFile in outputAsset.AssetFiles)
         {
-            // Use hello following event handler toocheck download progress.
+            // Use the following event handler to check download progress.
             outputFile.DownloadProgressChanged += DownloadProgress;
 
             string localDownloadPath = Path.Combine(outputFolder, outputFile.Name);

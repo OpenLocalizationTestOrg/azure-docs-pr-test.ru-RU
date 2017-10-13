@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария CLI - копии (перемещения) снимок toosame управляемого диска или другой подписке с CLI aaaAzure | Документы Microsoft"
-description: "Пример сценария Azure CLI - копии (перемещения) снимок toosame управляемого диска или другой подписке с CLI"
+title: "Пример сценария Azure CLI. Копирование (перемещение) моментального снимка управляемого диска в ту же или другую подписку с помощью CLI | Документы Майкрософт"
+description: "Пример сценария Azure CLI. Копирование (перемещение) моментального снимка управляемого диска в ту же или другую подписку с помощью CLI"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: f214ab1fc1cb2cb42479d82e455f20a8cc55c83d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 7c301a314ee946bb9199650bb7f674b8dce7c141
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="copy-snapshot-of-a-managed-disk-toosame-or-different-subscription-with-cli"></a>Скопировать моментальный снимок toosame управляемого диска или другой подписке с CLI
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Копирование моментального снимка управляемого диска в ту же или другую подписку с помощью интерфейса командной строки
 
-Этот скрипт копирует моментальный снимок toosame управляемого диска или другую подписку. Используйте этот скрипт toomove toodifferent подписки на моментальные снимки в hello же регионе, что hello родительского снимка.
+Этот сценарий копирует моментальный снимок управляемого диска в ту же или другую подписку. Этот сценарий можно использовать для перемещения моментального снимка в другую подписку в том же регионе, что и родительский снимок.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -37,17 +38,17 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующую toocreate команд моментального снимка в hello целевой подписки с помощью hello идентификатор моментального снимка источника hello. Каждая команда в таблице hello связывает toocommand документацию.
+Этот сценарий использует приведенные ниже команды для создания моментального снимка в целевой подписке с помощью идентификатора исходного моментального снимка. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Возвращает все свойства hello моментального снимка с использованием имени hello и свойства группы ресурсов hello моментального снимка. Идентификатор свойства — это используемые toocopy hello моментального снимка toodifferent подписка.  |
-| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#create) | Здравствуйте моментального снимка путем создания моментального снимка в другую подписку, используя идентификатор и имя копии hello родительского снимка.  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Получает все свойства моментального снимка, используя имя и свойства группы ресурсов моментального снимка. Свойство идентификатора используется для копирования моментального снимка в другую подписку.  |
+| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_create) | Копирует моментальный снимок путем создания моментального снимка в другой подписке с помощью идентификатора и имени родительского снимка.  |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 [Создание виртуальной машины на основе моментального снимка](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Установить дополнительную виртуальную машину и управляемых дисков CLI образцы скриптов можно найти в hello [документации виртуальной Машине Linux Azure](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Дополнительные примеры сценариев интерфейса командной строки для виртуальных машин и управляемых дисков см. в [документации по виртуальным машинам Azure под управлением Linux](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

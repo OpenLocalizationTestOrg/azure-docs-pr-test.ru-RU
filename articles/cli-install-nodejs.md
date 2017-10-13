@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall hello Azure CLI 1.0 | Документы Microsoft"
-description: "Установка hello Azure CLI 1.0 для toostart Mac, Linux и Windows с помощью служб Azure"
+title: "Установка Azure CLI 1.0 | Документация Майкрософт"
+description: "Установка Azure CLI 1.0 на компьютерах Mac OS, Linux и Windows и начало работы со службами Azure."
 editor: 
 manager: timlt
 documentationcenter: 
@@ -15,96 +15,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: a8cd4e38fde6e4b17a768a7caecd280cd91a70f2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63b35ed25b809a16b61b685fd35aa67474b0a369
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="install-hello-azure-cli-10"></a>Установка hello Azure CLI 1.0
+# <a name="install-the-azure-cli-10"></a>Установка Azure CLI 1.0
 > [!div class="op_single_selector"]
 > * [PowerShell](/powershell/azure/overview)
 > * [Azure CLI 1.0](cli-install-nodejs.md)
 > * [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 > [!IMPORTANT]
-> Описывается, как вызовы tooinstall hello Azure CLI 1.0, которая основана на nodeJs и поддерживает все API классического развертывания и большое количество действий развертывания диспетчера ресурсов. Следует использовать hello [Azure CLI 2.0](/cli/azure/overview) нового и перспективных CLI развертывания и управления.
+> В этом разделе описывается, как установить Azure CLI 1.0, который основан на NodeJS и поддерживает все вызовы API классического развертывания, а также множество действий развертывания Resource Manager. Следует использовать [Azure CLI 2.0](/cli/azure/overview) для развертывания новых и перспективных служб и управления ими.
 
-Быстро установите интерфейс командной строки Azure (Azure CLI 1.0) hello toouse набор команд командной строки открытым исходным кодом, для создания и управления ресурсами в Microsoft Azure. У вас есть несколько вариантов tooinstall эти средства кросс платформенных на вашем компьютере:
+Вы можете выполнить быструю установку интерфейса командной строки Azure (Azure CLI 1.0), чтобы использовать набор консольных команд с открытым кодом для управления ресурсами в среде Microsoft Azure. Существует несколько вариантов установки этих кроссплатформенных инструментов на компьютер.
 
-* **пакет npm** — выполнения npm (hello диспетчер пакетов для JavaScript) tooinstall hello последнюю версию Azure CLI 1.0 пакета в дистрибутив Linux или ОС. На компьютере должны быть установлены node.js и npm.
+* **Пакет npm**. Запустите npm (диспетчер пакетов для JavaScript), чтобы установить последнюю версию пакета для Azure CLI 1.0 в дистрибутиве или ОС Linux. На компьютере должны быть установлены node.js и npm.
 * **Установщик**. Скачайте установщик, чтобы легко установить эти инструменты на компьютеры Mac или Windows.
-* **Контейнер docker** — начать использование hello последнюю CLI в контейнер Docker готов к запуску. На компьютере требуется наличие узла Docker.
+* **Контейнер Docker**. Приступите к использованию последней версии интерфейса командной строки из готового контейнера Docker. На компьютере требуется наличие узла Docker.
 
-Дополнительные параметры и фона, см. репозиторий проекта hello [GitHub](https://github.com/azure/azure-xplat-cli).
+Дополнительные сведения и варианты установки см. в репозитории проектов на сайте [GitHub](https://github.com/azure/azure-xplat-cli).
 
-После установки hello Azure CLI 1.0 [подключить к подписке Azure](xplat-cli-connect.md) и выполнения hello **azure** команды из интерфейса командной строки (Bash, терминалов, командной строки и т. д.) toowork с ресурсы Azure.
+После установки Azure CLI 1.0 вы сможете [подключить его к своей подписке Azure](xplat-cli-connect.md) и работать с ресурсами Azure c помощью команд **azure** из интерфейса командной строки (Bash, терминала, командной строки и т. д.).
 
 ## <a name="option-1-install-an-npm-package"></a>Вариант 1. Установка пакета npm
-hello tooinstall CLI из пакета npm убедитесь, вы загрузили и установили hello [последние Node.js и npm](https://nodejs.org/en/download/package-manager/). Затем запустите **установки npm** tooinstall hello azure cli пакета:
+Для установки интерфейса командной строки из пакета NPM в системе должна быть установлена [последняя версия Node.js и npm](https://nodejs.org/en/download/package-manager/). Затем запустите **npm install** для установки пакета azure-cli:
 
 ```bash
 npm install -g azure-cli
 ```
 
-На дистрибутивов Linux, может потребоваться toouse **sudo** toosuccessfully запуска hello **npm** команды, как показано ниже:
+В системах Linux для выполнения команды **npm** может потребоваться команда **sudo**:
 
 ```bash
 sudo npm install -g azure-cli
 ```
 
 > [!NOTE]
-> При необходимости tooinstall или обновлении Node.js и npm в дистрибутив Linux или операционной системы, рекомендуется установить последнюю версию Node.js LTS hello (4.x). Если вы используете более раннюю версию, возможны ошибки при установке.
+> Если необходимо установить или обновить Node.js и npm в дистрибутиве или ОС Linux, рекомендуется установить последнюю версию Node.js LTS (4.x). Если вы используете более раннюю версию, возможны ошибки при установке.
 
-Если вы предпочитаете загрузить hello последнюю Linux [tar-файл] [ linux-installer] hello npm пакета локально. Установите hello загруженный npm следующим образом (в ОС Linux могут потребоваться toouse **sudo**):
+Если хотите, скачайте последнюю версию [TAR-файла][linux-installer] пакета npm для Linux на локальный компьютер. Затем установите скачанный пакет npm, как описано ниже (для дистрибутивов Linux может потребоваться использовать **sudo**).
 
 ```bash
-npm install -g <path toodownloaded tar file>
+npm install -g <path to downloaded tar file>
 ```
 
 ## <a name="option-2-use-an-installer"></a>Вариант 2. Использование установщика
-Если вы используете компьютер Mac и Windows, следующие установщики CLI hello доступны для загрузки:
+При использовании компьютера Windows или Mac можно скачать следующие установщики интерфейса командной строки:
 
 * [Установщик Mac OS X][mac-installer]
 * [MSI-файл Windows][windows-installer]
 
 > [!TIP]
-> В Windows можно также загрузить hello [Web Platform Installer](https://go.microsoft.com/?linkid=9828653) tooinstall hello CLI. Это дает установщика hello параметр tooinstall дополнительных Azure SDK и средства командной строки после установки hello CLI.
+> В Windows для установки интерфейса командной строки можно также скачать [установщик веб-платформы](https://go.microsoft.com/?linkid=9828653) . Этот установщик дает возможность установить дополнительный пакет SDK для Azure и программы командной строки после установки интерфейса командной строки.
 
 ## <a name="option-3-use-a-docker-container"></a>Вариант 3. Использование контейнера Docker
-Если вы настроили компьютер как [Docker](https://docs.docker.com/engine/understanding-docker/) узла, можно запустить hello последнюю Azure CLI 1.0 в контейнер Docker. Выполнения hello следующую команду (в ОС Linux могут потребоваться toouse **sudo**):
+Если вы настроили компьютер в качестве узла [Docker](https://docs.docker.com/engine/understanding-docker/), то можете запустить последнюю версию Azure CLI 1.0 в контейнере Docker. Выполните следующую команду (в системах Linux для выполнения команды npm может потребоваться команда **sudo**):
 
 ```bash
 docker run -it microsoft/azure-cli
 ```
 
 ## <a name="run-azure-cli-10-commands"></a>Выполнение команд Azure CLI 1.0
-После установки hello Azure CLI 1.0 запустите hello **azure** команду из командной строки пользовательского интерфейса (Bash, терминалов, командной строки и т. д.). Например, команду help toorun hello, введите ниже hello:
+После установки Azure CLI 1.0 команду **azure** можно выполнить в любом пользовательском интерфейсе командной строки (Bash, терминале, командной строке и т. д.). Например, чтобы выполнить команду справки, введите следующее:
 
 ```azurecli
 azure help
 ```
 
 > [!NOTE]
-> На некоторых дистрибутивов Linux, может появиться сообщение об ошибке слишком`/usr/bin/env: ‘node’: No such file or directory`. Это связано с тем, что новые установки Node.js размещаются в папке /usr/bin/nodejs. toofix, создайте символьную ссылку слишком/usr/bin/узла, выполните следующую команду:
+> Для некоторых дистрибутивов Linux может появиться сообщение об ошибке `/usr/bin/env: ‘node’: No such file or directory`. Это связано с тем, что новые установки Node.js размещаются в папке /usr/bin/nodejs. Для устранения этой ошибки создайте символьную ссылку /usr/bin/node, выполнив следующую команду:
 
 ```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-версия hello toosee hello Azure CLI 1.0 установлена, тип hello следующие:
+Чтобы просмотреть версию установленного интерфейса Azure CLI 1.0, введите следующую команду.
 
 ```azurecli
 azure --version
 ```
 
-Теперь все готово к работе. все tooaccess hello toowork команд CLI с вашими ресурсами, [подключение tooyour подписки Azure из hello Azure CLI](xplat-cli-connect.md).
+Теперь все готово к работе. Чтобы получить доступ ко всем командам интерфейса командной строки для работы с ресурсами, [подключитесь к подписке Azure из интерфейса командной строки Azure](xplat-cli-connect.md).
 
 > [!NOTE]
-> Во время первого использования Azure CLI, появится сообщение с вопросом, следует ли tooallow сведения об использовании Microsoft toocollect. Участие является добровольным. При выборе tooparticipate можно остановить в любой момент, выполнив `azure telemetry --disable`. tooenable участие в любое время выполнить `azure telemetry --enable`.
+> При первом использовании Azure CLI появится сообщение с вопросом, следует ли разрешить корпорации Майкрософт собирать сведения об использовании. Участие является добровольным. Если вы согласились участвовать в этой программе, сбор сведений можно остановить в любой момент, выполнив команду `azure telemetry --disable`. Чтобы включить участие в любой момент, выполните команду `azure telemetry --enable`.
 
-## <a name="update-hello-cli"></a>Обновление hello CLI
-Корпорация Майкрософт выпускает часто обновленные версии hello Azure CLI. Переустановите hello CLI с помощью установщика hello для вашей операционной системы, или выполните последнюю контейнера Docker hello. Или если имеют hello последние Node.js и npm установлен, обновления, введя следующее hello (в ОС Linux могут потребоваться toouse **sudo**).
+## <a name="update-the-cli"></a>Обновление интерфейса командной строки
+Корпорация Майкрософт часто выпускает обновленные версии Azure CLI. Переустановите интерфейс командной строки с помощью установщика для соответствующей операционной системы или запустите актуальную версию контейнера Docker. Если вы установили последние версии Node.js и NPM, введите следующую команду (в системах Linux может потребоваться использовать режим **sudo**).
 
 ```bash
 npm update -g azure-cli
@@ -113,13 +113,13 @@ npm update -g azure-cli
 ## <a name="enable-tab-completion"></a>Включение выполнения нажатием клавиши TAB
 Выполнение команд интерфейса командной строки нажатием клавиши TAB поддерживается на компьютерах MAC и Linux.
 
-tooenable в zsh, выполните:
+Чтобы включить эту функцию в zsh, выполните следующую команду:
 
 ```bash
 echo '. <(azure --completion)' >> .zshrc
 ```
 
-tooenable его в bash, выполните:
+Чтобы включить эту функцию в bash, выполните следующую команду:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
@@ -128,9 +128,9 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Подключение из tooyour CLI hello подписки Azure](xplat-cli-connect.md) toocreate и управления ресурсами Azure.
-* toolearn Дополнительные сведения о hello Azure CLI Загрузка исходного кода, сообщения о проблемах, или передавать toohello проекта см. hello [репозиторий GitHub для hello Azure CLI](https://github.com/azure/azure-xplat-cli).
-* Если у вас есть вопросы по использованию hello Azure CLI или Azure, посетите hello [форумы Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
+* [Подключитесь к подписке Azure из интерфейса командной строки](xplat-cli-connect.md) для создания ресурсов Azure и управления ими.
+* Для того чтобы получить дополнительные сведения об интерфейсе командной строки Azure, скачать исходный код, сообщить о проблемах или принять участие в проекте, зайдите в [репозиторий GitHub для интерфейса командной строки Azure](https://github.com/azure/azure-xplat-cli).
+* Если у вас возникли вопросы об использовании интерфейса командной строки Azure или платформы Azure, посетите [форумы Azure](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
 
 
 [mac-installer]: http://aka.ms/mac-azure-cli

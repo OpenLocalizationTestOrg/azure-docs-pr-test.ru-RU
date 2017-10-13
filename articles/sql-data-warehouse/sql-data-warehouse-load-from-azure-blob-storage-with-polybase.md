@@ -1,6 +1,6 @@
 ---
-title: "aaaLoad из хранилища данных BLOB-объектов Azure tooAzure | Документы Microsoft"
-description: "Узнайте, как данные tooload toouse PolyBase из Azure хранилище больших двоичных объектов в хранилище данных SQL. Загрузить несколько таблиц из открытых данных в схему хранилища данных Contoso Retail hello."
+title: "Загрузка данных из большого двоичного объекта Azure в хранилище данных Azure | Документация Майкрософт"
+description: "Сведения об использовании технологии PolyBase для загрузки данных из хранилища больших двоичных объектов Azure в хранилище данных SQL. Описание загрузки нескольких таблиц из общедоступных данных в схему хранилища данных Contoso Retail."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 4b4978ccefa4d55ff5c89fba84c5e705422ddbb7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2859c1144f72fd685af89f83024df1409902ab0c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Загрузка данных из хранилища BLOB-объектов Azure в хранилище данных SQL (PolyBase)
 > [!div class="op_single_selector"]
@@ -28,37 +28,37 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Используйте T-SQL и PolyBase команды tooload данных из хранилища BLOB-объектов Azure в хранилище данных SQL Azure. 
+Загрузка данных из хранилища больших двоичных объектов Azure в хранилище данных SQL Azure с помощью команд PolyBase и T-SQL. 
 
-tookeep простой, этот учебник загружает две таблицы из открытых больших двоичных объектов Azure хранилища в схему хранилища данных Contoso Retail hello. tooload hello полный набор данных, выполнить пример hello [нагрузки hello полный хранилища данных Contoso Retail] [ Load hello full Contoso Retail Data Warehouse] из репозитория hello образцы Microsoft SQL Server.
+Для простоты в этом учебнике выполняется загрузка двух таблиц из общедоступного хранилища BLOB-объектов Azure в схему хранилища данных Contoso Retail. Чтобы загрузить полный набор данных, запустите пример [загрузки полного хранилища данных Contoso Retail][Load the full Contoso Retail Data Warehouse] из репозитория примеров Microsoft SQL Server.
 
 Изучив данный учебник, вы научитесь:
 
-1. Настройка PolyBase tooload из хранилища BLOB-объектов Azure
+1. настраивать PolyBase для загрузки данных из хранилища BLOB-объектов Azure;
 2. загружать общедоступные данные в базу данных;
-3. После завершения загрузки hello, выполните оптимизацию.
+3. выполнять оптимизацию после завершения загрузки.
 
 ## <a name="before-you-begin"></a>Перед началом работы
-toorun этого учебника требуется учетная запись Azure уже есть база данных хранилища данных SQL. Если у вас ее нет, ознакомьтесь с разделом [Создание хранилища данных SQL][Create a SQL Data Warehouse].
+Для использования этого учебника необходима учетная запись Azure, в которой уже имеется база данных хранилища данных SQL. Если у вас ее нет, ознакомьтесь с разделом [Создание хранилища данных SQL][Create a SQL Data Warehouse].
 
-## <a name="1-configure-hello-data-source"></a>1. Настройка источника данных hello
-PolyBase использует расположение hello toodefine внешние объекты T-SQL и атрибутов hello внешних данных. определения внешних объектов Hello хранятся в хранилище данных SQL. сами данные Hello сохраняется во внешнем файле.
+## <a name="1-configure-the-data-source"></a>1. Настройка источника данных
+PolyBase использует внешние объекты T-SQL для определения расположения и атрибутов внешних данных. Определения внешних объектов хранятся в хранилище данных SQL. Сами данные хранятся во внешней системе.
 
 ### <a name="11-create-a-credential"></a>1.1. Создание учетных данных
-**Пропустите этот шаг** при загрузке hello Contoso общих данных. Так как оно уже доступен tooanyone общие данные о toohello безопасный доступ не требуется.
+**Пропустите этот шаг** , если вы загружаете общедоступные данные Contoso. Вам не требуется безопасный доступ к общедоступным данным, так как они доступны любому пользователю.
 
-**Не пропускайте этот шаг** , если вы используете этот учебник как шаблон для загрузки собственных данных. tooaccess данных с помощью учетных данных, используйте hello после сценариев toocreate уровня базы данных учетных данных и затем использовать его при определении hello расположение источника данных hello.
+**Не пропускайте этот шаг** , если вы используете этот учебник как шаблон для загрузки собственных данных. Для доступа к данным через учетные данные используйте следующий сценарий, чтобы создать учетные данные для базы данных и затем использовать их при определении расположения источника данных.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required tooencrypt hello credential secret in hello next step.
+-- Required to encrypt the credential secret in the next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
+-- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -70,9 +70,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide hello credential created in hello previous step.
+-- CREDENTIAL: Provide the credential created in the previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -82,10 +82,10 @@ WITH (
 );
 ```
 
-Пропустите toostep 2.
+Перейдите к шагу 2.
 
-### <a name="12-create-hello-external-data-source"></a>1.2. Создайте hello внешний источник данных
-Этот метод следует использовать [CREATE EXTERNAL DATA SOURCE] [ CREATE EXTERNAL DATA SOURCE] команды toostore hello расположение данных hello и hello тип данных. 
+### <a name="12-create-the-external-data-source"></a>1.2. Создание внешнего источника данных
+Используйте команду [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE], чтобы сохранить расположение и тип данных. 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -97,12 +97,12 @@ WITH
 ```
 
 > [!IMPORTANT]
-> При выборе toomake общедоступные контейнеры хранилища BLOB-объектов azure, помните, что владельцем данных hello вы будет взиматься плата за данных расходов на исходящие данные, когда данные покидают hello центра обработки данных. 
+> Если вы решили сделать контейнеры хранилища BLOB-объектов Azure общедоступными, помните, что с вас как с владельца данных будет взиматься плата за передачу данных из центра обработки данных. 
 > 
 > 
 
-## <a name="2-configure-data-format"></a>2. Настройка формата данных
-Hello данные хранятся в текстовые файлы в хранилище больших двоичных объектов, и каждое поле отделяется с разделителем. Выполните этот [CREATE EXTERNAL FILE FORMAT] [ CREATE EXTERNAL FILE FORMAT] команда toospecify hello формат данных hello в текстовых файлах hello. несжатый Hello данных Contoso и с разделителями канала.
+## <a name="2-configure-data-format"></a>2) Настройка формата данных
+В хранилище BLOB-объектов Azure данные хранятся в текстовых файлах, где каждое поле отделяется разделителем. Выполните команду [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT], чтобы указать формат данных в текстовых файлах. Для примера Contoso используются данные без сжатия с разделением вертикальной чертой.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -116,21 +116,21 @@ WITH
 );
 ``` 
 
-## <a name="3-create-hello-external-tables"></a>3. Создание внешних таблиц hello
-Теперь, были выбраны hello данных источника и формат файла все готово toocreate hello внешних таблиц. 
+## <a name="3-create-the-external-tables"></a>3. Создание внешних таблиц
+Указав источник данных и формат файла, можно перейти к созданию внешних таблиц. 
 
-### <a name="31-create-a-schema-for-hello-data"></a>3.1. Создайте схему для данных hello.
-toocreate hello toostore месте Contoso данных в базе данных, создать схему.
+### <a name="31-create-a-schema-for-the-data"></a>3.1. Создание схемы для данных.
+Чтобы создать расположение для хранения данных Contoso в вашей базе данных, создайте схему.
 
 ```sql
 CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-hello-external-tables"></a>3.2. Создание внешних таблиц hello.
-Запустите этот скрипт toocreate hello DimProduct и FactOnlineSales внешних таблиц. Все, что мы здесь делаем определения имен столбцов и типов данных и привязывая их toohello расположение и формат файлов хранилища BLOB-объектов Azure hello. Определение Hello хранится в хранилище данных SQL и hello данных по-прежнему hello BLOB-объекта хранилища Azure.
+### <a name="32-create-the-external-tables"></a>3.2. Создание внешних таблиц
+Выполните этот сценарий, чтобы создать внешние таблицы DimProduct и FactOnlineSales. Таким образом мы определяем имена столбцов и типы данных и привязываем их к расположению и формату файлов в хранилище BLOB-объектов Azure. Определение хранится в хранилище данных SQL, а данные по-прежнему размещаются в хранилище BLOB-объектов Azure.
 
-Hello **РАСПОЛОЖЕНИЕ** параметр является hello папку в корневой папке hello в hello BLOB-объекта хранилища Azure. Все таблицы находятся в разных папках.
+Параметр **LOCATION** представляет папку в корневой папке в хранилище BLOB-объектов Azure. Все таблицы находятся в разных папках.
 
 ```sql
 
@@ -215,23 +215,23 @@ WITH
 ;
 ```
 
-## <a name="4-load-hello-data"></a>4. Загрузка данных hello
-Нет внешних данных tooaccess различными способами.  Можно запрашивать данные непосредственно из внешней таблицы hello, загрузка данных hello в новые таблицы базы данных или добавлять таблицы tooexisting внешних данных.  
+## <a name="4-load-the-data"></a>4. Загрузка данных
+Есть различные способы получения доступа к внешним данным.  Можно запрашивать данные непосредственно из внешней таблицы, загружать данные в новые таблицы базы данных или добавлять внешние данные в существующие таблицы базы данных.  
 
 ### <a name="41-create-a-new-schema"></a>4.1. Создание схемы
-Компонент CTAS создает новую таблицу с данными.  Во-первых создайте схему для данных contoso hello.
+Компонент CTAS создает новую таблицу с данными.  Прежде всего необходимо создать схему для данных Contoso.
 
 ```sql
 CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-hello-data-into-new-tables"></a>4.2. Загрузка данных hello в новые таблицы
-хранилище больших двоичных объектов и сохраните его в таблице внутри базы данных, используйте hello tooload данные из Azure [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] инструкции. Загрузка с CTAS использует hello со строго типизированными внешних таблиц, у вас есть только created.tooload hello данных в новые таблицы, используйте один [CTAS] [ CTAS] инструкции на таблицу. 
+### <a name="42-load-the-data-into-new-tables"></a>4.2. Загрузка данных в новые таблицы
+Чтобы загрузить данные из хранилища BLOB-объектов Azure и сохранить их в таблице в базе данных, используйте инструкцию [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT (Transact-SQL)] (Transact-SQL). При загрузке с помощью CTAS используются строго типизированные внешние таблицы, которые вы только что создали. Чтобы загрузить данные в новые таблицы, используйте одну инструкцию [CTAS][CTAS] на таблицу. 
  
-CTAS создает новую таблицу и заполняет ее hello результаты инструкции select. CTAS определяет новые таблицы toohave hello hello же столбцы и типы данных, как инструкция select hello результаты hello. При выборе всех столбцов hello из внешней таблицы hello новая таблица будет реплики hello столбцов и типов данных в hello внешней таблицы.
+Компонент CTAS создает новую таблицу и заполняет ее результатам инструкции Select. CTAS определяет новую таблицу так, чтобы в ней содержались те же столбцы и типы данных, которые были выведены инструкцией Select. Если выбрать все столбцы из внешней таблицы, новая таблица будет репликой столбцов и типов данных такой внешней таблицы.
 
-В этом примере создайте hello измерения и таблицы фактов hello качестве хэш-таблицы, распределенные. 
+В этом примере мы создаем таблицу измерения и таблицу фактов в виде таблицы с распределенным хэшем. 
 
 ```sql
 SELECT GETDATE();
@@ -241,20 +241,20 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-hello-load-progress"></a>4.3 отслеживания хода выполнения загрузки hello
-Вы можете отслеживать ход выполнения hello нагрузки с помощью динамических административных представлений (DMV). 
+### <a name="43-track-the-load-progress"></a>4.3. Отслеживание хода загрузки
+Ход выполнения загрузки можно отслеживать с помощью динамических административных представлений. 
 
 ```sql
--- toosee all requests
+-- To see all requests
 SELECT * FROM sys.dm_pdw_exec_requests;
 
--- toosee a particular request identified by its label
+-- To see a particular request identified by its label
 SELECT * FROM sys.dm_pdw_exec_requests as r
 WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
       OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
 
--- tootrack bytes and files
+-- To track bytes and files
 SELECT
     r.command,
     s.request_id,
@@ -278,9 +278,9 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5. Оптимизация сжатия columnstore
-По умолчанию хранилище данных SQL хранит hello таблицы как кластеризованного индекса columnstore. После завершения загрузки, некоторые из строк данных hello может не сжаты в hello columnstore.  Это может происходить по ряду причин. toolearn более, в разделе [Управление индексами columnstore][manage columnstore indexes].
+По умолчанию в хранилище данных SQL таблицы хранятся в виде кластеризованных индексов columnstore. После завершения загрузки для некоторых строк данных может не выполняться сжатие в индекс columnstore.  Это может происходить по ряду причин. Чтобы узнать больше, ознакомьтесь с [управлением индексами columnstore][manage columnstore indexes].
 
-toooptimize производительность запросов и сжатие columnstore после загрузки, перестройте индекс hello таблицы tooforce hello columnstore toocompress все строки hello. 
+Чтобы оптимизировать производительность запросов и сжатие columnstore после загрузки, перестройте таблицу, чтобы настроить принудительное сжатие всех строк таблиц индексом columnstore. 
 
 ```sql
 SELECT GETDATE();
@@ -290,14 +290,14 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-Дополнительные сведения о поддержании индексов columnstore см. в разделе hello [Управление индексами columnstore] [ manage columnstore indexes] статьи.
+Дополнительные сведения об обслуживании индексов columnstore см. в статье, посвященной [управлению индексами columnstore][manage columnstore indexes].
 
 ## <a name="6-optimize-statistics"></a>6. Оптимизация статистики
-Это наиболее статистику по отдельным столбцам toocreate сразу после загрузки. Существует несколько вариантов статистики. Например при создании статистики по отдельным столбцам в каждом столбце может занять toorebuild долго вся статистика hello. Если известно, что некоторые столбцы не будут toobe в предикатах запросов, можно пропустить создание статистики для этих столбцов.
+Одностолбцовую статистику рекомендуется создавать сразу после загрузки. Существует несколько вариантов статистики. Например, при создании одностолбцовой статистики для каждого столбца перестройка всех статистических данных может занять длительное время. Если вам известно, что некоторые столбцы не будут входить в предикаты запросов, можно пропустить создание статистики для этих столбцов.
 
-Если вы решите toocreate статистику по отдельным столбцам для каждого столбца в каждой таблице, можно использовать образец кода хранимой процедуры hello `prc_sqldw_create_stats` в hello [статистики] [ statistics] статьи.
+Если вам потребуется создать одностолбцовую статистику для каждого столбца в каждой таблице, можно использовать пример кода хранимой процедуры `prc_sqldw_create_stats` из статьи, посвященной [статистике][statistics].
 
-Привет, следующий пример является хорошей отправной точкой для создания статистики. Статистика по отдельным столбцам создается для каждого столбца в таблице измерения hello и на каждом соединяющийся столбец в таблицах фактов hello. Всегда столбцами таблицы фактов для одного или нескольких столбцов статистики tooother можно добавить позднее.
+Следующий пример кода — хорошая отправная точка для создания статистики. Он создает одностолбцовую статистику для каждого столбца в таблице измерения и для каждого соответствующего столбца в таблицах фактов. Одно- или многостолбцовую статистику в другие столбцы таблицы фактов можно добавить позже.
 
 ```sql
 CREATE STATISTICS [stat_cso_DimProduct_AvailableForSaleDate] ON [cso].[DimProduct]([AvailableForSaleDate]);
@@ -344,7 +344,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ## <a name="achievement-unlocked"></a>Победа!
 Общедоступные данные успешно загружены в хранилище данных SQL Azure. Отличная работа!
 
-Теперь вы можете запустить запрос hello таблиц с помощью запросов hello следующим образом:
+Теперь вы можете получать данные из таблиц с помощью следующих запросов:
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -355,7 +355,7 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-tooload hello полные хранилища данных Contoso Retail данные, используйте сценарий hello в дополнительные советы по разработке см. в разделе [Общие сведения о разработке хранилище данных SQL][SQL Data Warehouse development overview].
+Чтобы загрузить полный набор данных хранилища данных Contoso Retail, используйте сценарий из раздела "Рекомендации по разработке и методики программирования" статьи [Проектные решения и методики программирования для хранилища данных SQL][SQL Data Warehouse development overview].
 
 <!--Image references-->
 
@@ -377,4 +377,4 @@ tooload hello полные хранилища данных Contoso Retail дан
 
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load hello full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
+[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

@@ -1,5 +1,5 @@
 ---
-title: "Учебник контейнера службы aaaAzure - управление DC/OS | Документы Microsoft"
+title: "Учебник по службе контейнеров Azure — управление DC/OS | Документы Майкрософт"
 description: "Учебник по службе контейнеров Azure — управление DC/OS"
 services: container-service
 documentationcenter: 
@@ -17,41 +17,41 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91c433bfd7e48ec405cc62be1486d9d4662839d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e93f782c26c32f97749e817ec59ee3c2ecb7e119
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Учебник по службе контейнеров Azure — управление DC/OS
 
-DC/OS предоставляет распределенную платформу для запуска современных и контейнерных приложений. Служба контейнеров Azure упрощает и убыстряет подготовку кластера DC/OS для использования в рабочей среде. Основные шаги этого краткого сведения требуется toodeploy кластера DC/OS и выполнения основных рабочей нагрузки.
+DC/OS предоставляет распределенную платформу для запуска современных и контейнерных приложений. Служба контейнеров Azure упрощает и убыстряет подготовку кластера DC/OS для использования в рабочей среде. В этом кратком руководстве по началу работы описываются базовые шаги, необходимые для развертывания кластера DC/OS и запуска основной рабочей нагрузки.
 
 > [!div class="checklist"]
 > * Создание кластера DC/OS ACS
-> * Подключите кластер toohello
-> * Установка контроллера домена/OS CLI hello
-> * Развертывание кластера toohello приложения
-> * Масштабирование приложения на кластере hello
-> * Масштабирование узлов кластера hello DC/OS
+> * Подключение к кластеру
+> * Установка интерфейса командной строки DC/OS
+> * Развертывание приложения в кластере
+> * Масштабирование приложения в кластере
+> * Масштабирование узлов кластера DC/OS
 > * Базовое управление DC/OS
-> * Удалить кластер DC/OS hello
+> * Удаление кластера DC/OS
 
-Упражнений этого учебника требуется hello Azure CLI версия 2.0.4 или более поздней версии. Запустите `az --version` версии toofind hello. Получить tooupgrade [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
+Для этого руководства требуется Azure CLI версии 2.0.4 или более поздней. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-dcos-cluster"></a>Создание кластера DC/OS
 
-Во-первых, создайте группу ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
+Сначала создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *westeurope* расположение.
+В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *westeurope*.
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Создайте кластер DC/OS с hello [создать acs az](/cli/azure/acs#create) команды.
+Затем создайте кластер DC/OS с помощью команды [az acs create](/cli/azure/acs#create).
 
-Hello следующий пример создает кластер с именем контроллера домена/OS *myDCOSCluster* и создает ключи SSH, если они еще не существует. toouse конкретный набор ключей, используйте hello `--ssh-key-value` параметр.  
+В следующем примере создается кластер DC/OS с именем *myDCOSCluster* и ключи SSH, если они еще не существуют. Чтобы использовать определенный набор ключей, используйте параметр `--ssh-key-value`.  
 
 ```azurecli
 az acs create \
@@ -61,17 +61,17 @@ az acs create \
   --generate-ssh-keys
 ```
 
-Через несколько минут hello команда завершается и возвращает сведения о развертывании hello.
+Через несколько минут выполнение команды завершается, и отображаются сведения о развертывании.
 
-## <a name="connect-toodcos-cluster"></a>Подключите кластер tooDC/OS
+## <a name="connect-to-dcos-cluster"></a>Подключение к кластеру DC/OS
 
-После создания кластера DC/OS доступ к нему возможен через туннель SSH. Выполните следующие команды tooreturn hello общедоступный IP-адрес основного контроллера домена/OS hello hello. Этот IP-адрес хранится в переменной и используется в следующем шаге hello.
+После создания кластера DC/OS доступ к нему возможен через туннель SSH. Выполните следующую команду, чтобы получить общедоступный IP-адрес главного кластера DC/OS. Этот IP-адрес сохраняется в переменной и будет использоваться на следующем шаге.
 
 ```azurecli
 ip=$(az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-master')].[ipAddress]" -o tsv)
 ```
 
-toocreate hello туннель SSH, запустите следующую команду hello и выполните hello на экране инструкциям. Если уже используется порт 80, hello команда завершается ошибкой. Обновление hello проводном tooone порта не заняты, такие как `85:localhost:80`. 
+Чтобы создать туннель SSH, выполните следующую команду и следуйте инструкциям на экране. Если порт 80 уже используется, команда завершится с ошибкой. Измените туннелированный порт на тот, который не используется, например на `85:localhost:80`. 
 
 ```azurecli
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
@@ -79,13 +79,13 @@ sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 
 ## <a name="install-dcos-cli"></a>Установка интерфейса командной строки DC/OS
 
-Для установки контроллера домена/OS cli hello, с помощью hello [az acs dcos install-cli](/azure/acs/dcos#install-cli) команды. При использовании Azure CloudShell hello CLI DC/OS уже установлена. Если вы используете hello Azure CLI на macOS или Linux, может потребоваться toorun hello командой sudo.
+Установите интерфейс командной строки DC/OS с помощью команды [az acs dcos install-cli](/azure/acs/dcos#install-cli). Если вы используете Azure CloudShell, то интерфейс командной строки DC/OS уже установлен. При запуске интерфейса командной строки Azure в macOS или Linux может потребоваться выполнить эту команду с sudo.
 
 ```azurecli
 az acs dcos install-cli
 ```
 
-Перед hello CLI можно использовать с кластером hello он должен быть туннеля SSH настроенных toouse hello. Таким образом, toodo запустите hello следующую команду, настройки порта hello, при необходимости.
+Прежде чем можно будет использовать интерфейс командной строки в кластере, необходимо настроить в нем туннель SSH. Для этого выполните следующую команду, при необходимости изменив порт.
 
 ```azurecli
 dcos config set core.dcos_url http://localhost
@@ -93,7 +93,7 @@ dcos config set core.dcos_url http://localhost
 
 ## <a name="run-an-application"></a>Запуск приложения
 
-по умолчанию Hello, механизм для кластера служб ACS DC/OS планирования — Marathon. Marathon — это приложение используется toostart и управления состоянием приложения hello в кластере DC/OS hello hello. tooschedule приложение через Marathon, создайте файл с именем **marathon app.json**, и hello копировать содержимое в него. 
+Механизм планирования по умолчанию для кластера DC/OS ACS — Marathon. Marathon используется для запуска приложения и управления состоянием приложения в кластере DC/OS. Чтобы планировать приложение с помощью Marathon, создайте файл с именем **marathon app.json** и скопируйте в него следующее. 
 
 ```json
 {
@@ -121,19 +121,19 @@ dcos config set core.dcos_url http://localhost
 }
 ```
 
-Запустите следующие toorun приложения hello tooschedule команды на кластере DC/OS hello hello.
+Выполните следующую команду для планирования работы приложения в кластере DC/OS.
 
 ```azurecli
 dcos marathon app add marathon-app.json
 ```
 
-toosee hello состояние развертывания для приложения hello, запустите следующую команду hello.
+Чтобы просмотреть состояние развертывания для приложения, выполните следующую команду.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Здравствуйте, когда **ЗАДАЧИ** значение столбца переходит от *0 и 1* слишком*1/1*, развертывание приложения завершено.
+Когда значение столбца **TASKS** изменится с *0/1* на *1/1*, развертывание приложения завершено.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -142,7 +142,7 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 ## <a name="scale-marathon-application"></a>Масштабирование приложения Marathon
 
-Приложение одного экземпляра был создан в предыдущем примере hello. Это развертывание, чтобы были доступны, тремя экземплярами приложения hello открываются hello tooupdate **marathon app.json** файл и обновить свойство too3 hello экземпляра.
+В предыдущем примере был создан один экземпляр приложения. Чтобы обновить это развертывание и создать три доступных экземпляра приложения, откройте файл **marathon-app.json** и измените значение свойства instance на 3.
 
 ```json
 {
@@ -170,19 +170,19 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 }
 ```
 
-Обновление приложения hello, с помощью hello `dcos marathon app update` команды.
+Обновите приложение с помощью команды `dcos marathon app update`.
 
 ```azurecli
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
-toosee hello состояние развертывания для приложения hello, запустите следующую команду hello.
+Чтобы просмотреть состояние развертывания для приложения, выполните следующую команду.
 
 ```azurecli
 dcos marathon app list
 ```
 
-Здравствуйте, когда **ЗАДАЧИ** значение столбца переходит от *1/3* слишком*3/1*, развертывание приложения завершено.
+Когда значение столбца **TASKS** изменится с *1/3* на *3/1*, развертывание приложения завершено.
 
 ```azurecli
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
@@ -191,11 +191,11 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 ## <a name="run-internet-accessible-app"></a>Запуск приложения, доступного через Интернет
 
-Hello ACS DC/OS кластер состоит из двух наборов узлов, один общий доступный на hello Интернета и одно частное, который недоступен на hello Интернета. набор по умолчанию Hello — hello закрытый узлов, который использовался в последний пример hello.
+Кластер DC/OS ACS состоит из двух наборов узлов, один из которых открытый и доступен в Интернете, а другой закрытый и недоступен в Интернете. По умолчанию установлен набор закрытых узлов, который использовался в последнем примере.
 
-toomake приложения доступны на Здравствуйте Интернета, развертывать их toohello набор общих узлов. toodo таким образом, предоставить hello `acceptedResourceRoles` значение из объекта `slave_public`.
+Чтобы сделать приложение доступным в Интернете, разверните его в наборе общедоступных узлов. Для этого присвойте объекту `acceptedResourceRoles` значение `slave_public`.
 
-Создайте файл с именем **nginx public.json** и hello копировать содержимое в него.
+Создайте файл с именем **nginx-public.json** и скопируйте в него следующее.
 
 ```json
 {
@@ -227,33 +227,33 @@ toomake приложения доступны на Здравствуйте Ин
 }
 ```
 
-Запустите следующие toorun приложения hello tooschedule команды на кластере DC/OS hello hello.
+Выполните следующую команду для планирования работы приложения в кластере DC/OS.
 
 ```azurecli 
 dcos marathon app add nginx-public.json
 ```
 
-Получите общедоступный IP-адрес hello hello DC/OS открытый кластера агентов.
+Получите общедоступный IP-адрес общедоступных агентов кластера DC/OS.
 
 ```azurecli 
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
-Просмотр адреса toothis возвращает узел NGINX по умолчанию hello.
+При переходе на этот адрес возвращается сайт NGINX по умолчанию.
 
 ![NGINX](./media/container-service-dcos-manage-tutorial/nginx.png)
 
 ## <a name="scale-dcos-cluster"></a>Масштабирование кластера DC/OS
 
-В предыдущих примерах hello приложения было масштабированный toomultiple экземпляра. Инфраструктура DC/OS Hello также может быть масштабированный tooprovide больше или меньше вычислительной мощности. Это делается с hello [масштабировать acs az]() команды. 
+В предыдущих примерах приложение масштабировалось до нескольких экземпляров. Инфраструктуру DC/OS также можно масштабировать для обеспечения большей или меньшей вычислительной мощности. Это делается с помощью команды [az acs scale](). 
 
-использовать toosee hello текущее количество агентов DC/OS hello [Показать acs az](/cli/azure/acs#show) команды.
+Чтобы просмотреть текущее число агентов DC/OS, используйте команду [az acs show](/cli/azure/acs#show).
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-tooincrease hello too5 число, используйте hello [масштабировать acs az](/cli/azure/acs#scale) команды. 
+Чтобы увеличить число до 5, используйте команду [az acs scale](/cli/azure/acs#scale). 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -261,7 +261,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>Удаление кластера DC/OS
 
-Если больше не нужны, можно использовать hello [удаление группы az](/cli/azure/group#delete) команд группы ресурсов tooremove hello, кластер DC/OS и все связанные ресурсы.
+Вы можете удалить ставшие ненужными группу ресурсов, кластер DC/OS и все связанные с ним ресурсы, выполнив команду [az group delete](/cli/azure/group#delete).
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait
@@ -269,18 +269,18 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом учебнике вы изучили базовые задачи управления DC/OS, включая следующие hello. 
+В этом учебнике изучались базовые задачи управления DC/OS, включая следующие. 
 
 > [!div class="checklist"]
 > * Создание кластера DC/OS ACS
-> * Подключите кластер toohello
-> * Установка контроллера домена/OS CLI hello
-> * Развертывание кластера toohello приложения
-> * Масштабирование приложения на кластере hello
-> * Масштабирование узлов кластера hello DC/OS
-> * Удалить кластер DC/OS hello
+> * Подключение к кластеру
+> * Установка интерфейса командной строки DC/OS
+> * Развертывание приложения в кластере
+> * Масштабирование приложения в кластере
+> * Масштабирование узлов кластера DC/OS
+> * Удаление кластера DC/OS
 
-Предварительное toohello Далее учебника toolearn о загрузить балансировки приложение в контроллер домена или ОС на платформе Azure. 
+Перейдите к следующему учебнику, чтобы узнать о приложении балансировки нагрузки в DC/OS на платформе Azure. 
 
 > [!div class="nextstepaction"]
 > [Приложения балансировки нагрузки](container-service-load-balancing.md)

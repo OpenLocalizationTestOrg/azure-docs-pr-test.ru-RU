@@ -1,234 +1,234 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с KnowBe4 Security Awareness Training | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и KnowBe4 безопасности курса обучения."
+description: "Узнайте, как настраивать единый вход между Azure Active Directory и KnowBe4 Security Awareness Training."
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 907fa814b82c9ffb2376f73470b746a37104c66e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2a81495c54cfe293700aa0ef0d82f13933dcc4aa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Руководство по интеграции Azure Active Directory с KnowBe4 Security Awareness Training
 
-В этом учебнике вы узнаете, как toointegrate KnowBe4 безопасности курса обучения в Azure Active Directory (Azure AD).
+В этом руководстве вы узнаете, как интегрировать KnowBe4 Security Awareness Training с Azure Active Directory (Azure AD).
 
-Интеграция KnowBe4 безопасности курса обучения с Azure AD предоставляет hello следующие преимущества:
+Интеграция KnowBe4 Security Awareness Training с Azure AD предоставляет следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ к tooKnowBe4 безопасности курса обучения
-- Это позволит пользователям получить tooautomatically вошедшего tooKnowBe4 безопасности курса обучения (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
+- С помощью Azure AD вы можете контролировать доступ к KnowBe4 Security Awareness Training.
+- Вы можете позволить пользователям автоматически входить в KnowBe4 Security Awareness Training (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с KnowBe4 безопасности курса обучения необходимо hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с KnowBe4 Security Awareness Training, вам потребуется:
 
 - подписка Azure AD;
 - подписка KnowBe4 Security Awareness Training с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
-- Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
+- Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление KnowBe4 безопасности курса обучения из галереи hello
+1. Добавление KnowBe4 Security Awareness Training из коллекции.
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-knowbe4-security-awareness-training-from-hello-gallery"></a>Добавление KnowBe4 безопасности курса обучения из галереи hello
-tooconfigure hello интеграции KnowBe4 безопасности курса обучения в Azure AD, вы должны tooadd KnowBe4 безопасности курса обучения из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-knowbe4-security-awareness-training-from-the-gallery"></a>Добавление KnowBe4 Security Awareness Training из коллекции
+Для настройки интеграции KnowBe4 Security Awareness Training с Azure AD необходимо добавить KnowBe4 Security Awareness Training из коллекции в список управляемых приложений SaaS.
 
-**tooadd KnowBe4 безопасности курса обучения из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить KnowBe4 Security Awareness Training из коллекции, выполните следующие действия:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Приложения][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Приложения][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **KnowBe4 безопасности курса обучения**.
+4. В поле поиска введите **KnowBe4 Security Awareness Training**, на панели результатов выберите **KnowBe4 Security Awareness Training** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_search.png)
+    ![KnowBe4 Security Awareness Training в списке результатов](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_addfromgallery.png)
 
-5. В панели результатов hello выберите **KnowBe4 безопасности курса обучения**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в KnowBe4 Security Awareness Training с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в KnowBe4 безопасности курса обучения является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в KnowBe4 безопасности курса обучения должен установить toobe.
+Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь KnowBe4 Security Awareness Training соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в KnowBe4 Security Awareness Training.
 
-При обучении осведомленности KnowBe4 безопасности, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в KnowBe4 Security Awareness Training.
 
-tooconfigure и теста Azure AD единого входа с KnowBe4 безопасности курса обучения, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в KnowBe4 Security Awareness Training, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя курса обучения безопасности KnowBe4](#creating-a-knowbe4-security-awareness-training-test-user)**  -toohave аналог Саймон Britta в KnowBe4 безопасности курса обучения, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя KnowBe4 Security Awareness Training](#create-a-knowbe4-security-awareness-training-test-user)** требуется для создания пользователя Britta Simon в KnowBe4 Security Awareness Training, связанного с представлением этого же пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении KnowBe4 безопасности курса обучения.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении KnowBe4 Security Awareness Training.
 
-**tooconfigure Azure AD единого входа с KnowBe4 безопасности курса обучения, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в KnowBe4 Security Awareness Training, выполните следующие действия:**
 
-1. В hello в hello портала Azure **KnowBe4 безопасности курса обучения** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **KnowBe4 Security Awareness Training** щелкните **Единый вход**.
 
-    ![Настройка единого входа][4]
+    ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_samlbase.png)
+    ![Диалоговое окно "Единый вход"](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_samlbase.png)
 
-3. На hello **осведомленности обучения KnowBe4 безопасности домена и URL-адреса** выполните следующие шаги hello:
+3. В разделе **KnowBe4 Security Awareness Training** выполните следующие действия:
 
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_url.png)
+    ![Сведения о домене и URL-адресах единого входа для приложения KnowBe4 Security Awareness Training](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_url.png)
 
-    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
+    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`
 
     > [!NOTE] 
-    > значение Hello не является вещественным числом. Значение hello обновления с hello фактический URL-адрес входа. Обратитесь к [группа поддержки осведомленности обучения KnowBe4 безопасности клиента](mailto:support@KnowBe4.com) tooget значение hello. 
- 
+    > Значение URL-адреса входа приведено для примера. Вместо него необходимо указать фактический URL-адрес входа. Обратитесь в [службу поддержки клиентов KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com), чтобы получить это значение. 
 
-4. На hello **сертификат подписи SAML** щелкните **сертификата (Raw)** и затем сохраните файл сертификата hello на вашем компьютере.
+    b. В текстовом поле **Идентификатор** введите строковое значение `KnowBe4`.
 
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_certificate.png) 
+    > [!NOTE]
+    >Это значение следует вводить с учетом регистра.
+
+4. В разделе **Сертификат подписи SAML** щелкните **Certificate (Raw)** (Сертификат (необработанный)), а затем сохраните файл сертификата на компьютере.
+
+    ![Ссылка для скачивания сертификата](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_400.png)
+    ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-knowbe4-tutorial/tutorial_general_400.png)
 
-6. На hello **KnowBe4 безопасности осведомленности обучения конфигурации** щелкните **курса обучения настройки безопасности KnowBe4** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
+6. В разделе **Настройка KnowBe4 Security Awareness Training** щелкните **Настроить KnowBe4 Security Awareness Training**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
 
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_configure.png) 
+    ![Настройка KnowBe4 Security Awareness Training](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_configure.png) 
 
-7. tooconfigure единого входа на **KnowBe4 безопасности курса обучения** стороны, необходимо загрузить hello toosend **сертификата (Raw)**, **URL-адрес выхода, идентификатор сущности SAML и SAML Single Sign-On URL-адрес службы** слишком[группа поддержки осведомленности обучения KnowBe4 безопасности клиента](mailto:support@KnowBe4.com).
+7. Чтобы настроить единый вход на стороне **KnowBe4 Security Awareness Training**, необходимо отправить скачанный **необработанный файл сертификата**, **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа** в [службу поддержки KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com).
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-![Создание пользователя Azure AD][100]
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+   ![Создание тестового пользователя Azure AD][100]
 
-1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/create_aaduser_01.png) 
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
-    
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/create_aaduser_02.png) 
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_01.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_02.png)
+
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+
+    ![Кнопка "Добавить"](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_03.png)
+
+4. В диалоговом окне **Пользователь** сделайте следующее.
+
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-knowbe4-tutorial/create_aaduser_04.png)
+
+    а. В поле **Имя** введите **BrittaSimon**.
+
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+
+    г) Щелкните **Создать**.
  
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/create_aaduser_03.png) 
+### <a name="create-a-knowbe4-security-awareness-training-test-user"></a>Создание тестового пользователя KnowBe4 Security Awareness Training
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
- 
-    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-KnowBe4-tutorial/create_aaduser_04.png) 
+В этом разделе описано, как создать пользователя с именем Britta Simon в приложении KnowBe4 Security Awareness Training. Приложение KnowBe4 Security Awareness Training поддерживает JIT-подготовку, включенную по умолчанию.
 
-    а. В hello **имя** введите **BrittaSimon**.
-
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
-
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
-
-    d. Щелкните **Создать**.
- 
-### <a name="creating-a-knowbe4-security-awareness-training-test-user"></a>Создание тестового пользователя KnowBe4 Security Awareness Training
-
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в KnowBe4 безопасности курса обучения. Приложение KnowBe4 Security Awareness Training поддерживает JIT-подготовку, включенную по умолчанию.
-
-В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь создается во время попытки tooaccess KnowBe4 безопасности курса обучения, если он еще не существует. 
+В этом разделе никакие действия с вашей стороны не требуются. Новый пользователь будет создан при попытке получить доступ к приложению KnowBe4 Security Awareness Training (если он еще не создан). 
 
 >[!NOTE]
->Если требуется toocreate пользователя вручную, необходимо toocontact hello [KnowBe4 безопасности курса обучения поддержки](mailto:support@KnowBe4.com).
-> 
+>Если необходимо создать пользователя вручную, свяжитесь со [службой поддержки KnowBe4 Security Awareness Training](mailto:support@KnowBe4.com).
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите Саймон Britta toouse Azure единого входа путем предоставления доступа к tooKnowBe4 безопасности курса обучения.
+В этом разделе описано, как предоставить пользователю Britta Simon доступ к KnowBe4 Security Awareness Training, чтобы он мог использовать единый вход Azure.
 
-![Назначение пользователя][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign Britta Simon tooKnowBe4 безопасности курса обучения выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в KnowBe4 Security Awareness Training, выполните следующие действия:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **KnowBe4 безопасности курса обучения**.
+2. В списке приложений выберите **KnowBe4 Security Awareness Training**.
 
-    ![Настройка единого входа](./media/active-directory-saas-KnowBe4-tutorial/tutorial_knowbe4sat_app.png) 
+    ![Ссылка на KnowBe4 Security Awareness Training в списке приложений](./media/active-directory-saas-knowbe4-tutorial/tutorial_knowbe4_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Назначение пользователя][202] 
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Назначение пользователя][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
 7. В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.
     
-### <a name="testing-single-sign-on"></a>Проверка единого входа
+### <a name="test-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".
+Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
   
-Если щелкнуть плитку KnowBe4 безопасности курса обучения hello в hello панели доступа, следует получать автоматически вошедшего tooyour курса обучения KnowBe4 безопасности приложения.
+Щелкнув панель KnowBe4 Security Awareness Training на панели доступа, вы автоматически войдете в приложение KnowBe4 Security Awareness Training. 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_04.png
+[1]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_04.png
 
-[100]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_201.png
-[202]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_202.png
-[203]: ./media/active-directory-saas-KnowBe4-tutorial/tutorial_general_203.png
+[200]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_203.png
 

@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с FirmPlay — Employee Advocacy for Recruiting | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и FirmPlay - представительство найму сотрудников."
+description: "Узнайте, как настроить единый вход Azure Active Directory в FirmPlay — Employee Advocacy for Recruiting."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: f143e0bb8f2a42de880d77e5f033694ce3f09cdb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3cddd5b9508159089bf344dbb3882d462799747c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Руководство. Интеграция Azure Active Directory с FirmPlay — Employee Advocacy for Recruiting
 
-В этом учебнике вы узнаете, как toointegrate FirmPlay - сотрудник представительство найму с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать Azure Active Directory (Azure AD) с приложением FirmPlay — Employee Advocacy for Recruiting.
 
-Интеграция FirmPlay - сотрудник представительство найму с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением FirmPlay обеспечивает следующие преимущества.
 
-- Можно управлять в Azure AD, имеющего доступ tooFirmPlay - сотрудник представительство найму
-- Ваш пользователей tooautomatically get вошедшего tooFirmPlay - сотрудник представительство найму (Single Sign-On) можно включить с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
+- Вы можете управлять доступом к FirmPlay — Employee Advocacy for Recruiting с помощью Azure AD.
+- Вы можете включить автоматический вход пользователей в FirmPlay — Employee Advocacy for Recruiting (единый вход) с использованием учетных записей Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал управления Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Интеграция Azure AD с FirmPlay - сотрудник представительство найму, tooconfigure требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с FirmPlay — Employee Advocacy for Recruiting, вам потребуются следующие компоненты:
 
 - подписка Azure AD;
 - подписка на FirmPlay — Employee Advocacy for Recruiting с поддержкой единого входа.
 
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление FirmPlay - сотрудник представительство найму из галереи hello
+1. Добавление FirmPlay — Employee Advocacy for Recruiting из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
 
-## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-hello-gallery"></a>Добавление FirmPlay - сотрудник представительство найму из галереи hello
-Интеграция hello tooconfigure FirmPlay - сотрудник представительство найму в Azure AD необходимо tooadd FirmPlay - сотрудник представительство найму из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>Добавление FirmPlay — Employee Advocacy for Recruiting из коллекции
+Чтобы настроить интеграцию FirmPlay — Employee Advocacy for Recruiting с Azure AD, необходимо добавить приложение FirmPlay из коллекции в список управляемых приложений SaaS.
 
-**tooadd FirmPlay - сотрудник представительство найму из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить FirmPlay — Employee Advocacy for Recruiting из коллекции, выполните следующие действия.**
 
-1. В hello ** [портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **FirmPlay - сотрудник представительство найму**.
+4. В поле поиска введите **FirmPlay — Employee Advocacy for Recruiting**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_001.png)
 
-5. В панели результатов hello выберите **FirmPlay - сотрудник представительство найму**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **FirmPlay — Employee Advocacy for Recruiting** и нажмите кнопку **Добавить**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_0001.png)
 
@@ -85,104 +85,104 @@ tootest hello шаги в этом учебнике, необходимо сле
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в FirmPlay — Employee Advocacy for Recruiting с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в FirmPlay - сотрудник представительство найму является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в FirmPlay - сотрудник представительство найму должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в FirmPlay — Employee Advocacy for Recruiting соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в FirmPlay — Employee Advocacy for Recruiting.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **имя пользователя** в FirmPlay - представительство найму сотрудников.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в FirmPlay — Employee Advocacy for Recruiting.
 
-tooconfigure и теста Azure AD единого входа с FirmPlay - сотрудник представительство найму, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в FirmPlay, выполните следующие действия.
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on) ** -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user) ** -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание сотрудника представительство найму тестового пользователя FirmPlay -](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user) ** -toohave аналог Саймон Britta в FirmPlay: операции Employee для сотрудников, то есть связанные представление ей toohello Azure AD.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on) ** -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя FirmPlay — Employee Advocacy for Recruiting](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** требуется для дублирования пользователя Britta Simon в FirmPlay, который связан с представлением этого пользователя в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в вашей FirmPlay - приложение по найму представительство сотрудника.
+В этом разделе описано, как включить единый вход Azure AD на портале управления Azure и настроить его в приложении FirmPlay — Employee Advocacy for Recruiting.
 
-**tooconfigure Azure AD единого входа с FirmPlay - сотрудник представительство найму, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в FirmPlay — Employee Advocacy for Recruiting, выполните следующие действия:**
 
-1. На портале управления Azure hello на hello **FirmPlay - сотрудник представительство найму** странице интеграции приложения щелкните **единого входа**.
+1. На портале управления Azure на странице интеграции с приложением **FirmPlay — Employee Advocacy for Recruiting** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. На hello **FirmPlay - представительство сотрудников о приеме на работу домена и URL-адреса** раздела hello **на URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<your-subdomain>.firmplay.com/`
+3. В текстовом поле **URL-адрес для входа** раздела **Домены и URL-адреса приложения FirmPlay — Employee Advocacy for Recruiting** введите URL-адрес в следующем формате: `https://<your-subdomain>.firmplay.com/`
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
 
     > [!NOTE] 
-    > Обратите внимание на то, что это не Вещественное значение hello. У вас есть tooupdate это значение с hello фактический URL-адрес входа. Обратитесь к [FirmPlay - сотрудник представительство группа поддержки по найму](mailto:engineering@firmplay.com) tooget это значение. 
+    > Обратите внимание, что это значение используется только в качестве примера. Вместо него необходимо указать фактический URL-адрес для входа. Чтобы получить это значение, обратитесь в [службу поддержки FirmPlay — Employee Advocacy for Recruiting](mailto:engineering@firmplay.com). 
 
-4. На hello **сертификат подписи SAML** щелкните **Создание нового сертификата**.
+4. В разделе **Сертификат подписи SAML** щелкните **Создание нового сертификата**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
 
-5. На hello **создать новый сертификат** диалоговое окно, щелкните значок календаря hello и выберите **даты истечения срока действия**. Затем нажмите кнопку **Сохранить**.
+5. В диалоговом окне **Создание нового сертификата** щелкните значок календаря и выберите **дату окончания срока действия**. Затем нажмите кнопку **Сохранить**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_general_300.png)
 
-6. На hello **сертификат подписи SAML** выберите **активировать новый сертификат** и нажмите кнопку **Сохранить** кнопки.
+6. В разделе **Сертификат подписи SAML** выберите **Make new certificate active** (Сделать новый сертификат активным) и нажмите кнопку **Сохранить**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_04.png)
 
-7. На всплывающее окно hello **сертификат продолжения** окно, нажмите кнопку **ОК**.
+7. Во всплывающем окне **Rollover certificate** (Сертификат восстановления) нажмите кнопку **ОК**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_general_400.png)
 
-8. На hello **сертификат подписи SAML** щелкните **сертификата (base64)** и затем сохраните файл сертификата hello на вашем компьютере. 
+8. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере. 
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_05.png) 
 
-9. На hello **FirmPlay - представительство конфигурации о приеме на работу сотрудника** щелкните **FirmPlay Настройка - сотрудник представительство найму** tooopen **Настройкавхода**диалогового окна.
+9. В разделе **конфигурации FirmPlay — Employee Advocacy for Recruiting** щелкните **Настроить FirmPlay — Employee Advocacy for Recruiting**, чтобы открыть диалоговое окно **Настройка входа**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_06.png) 
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_07.png)
 
-10. tooget SSO настроен для вашего приложения, обратитесь в службу [FirmPlay - сотрудник представительство группа поддержки по найму](mailto:engineering@firmplay.com) и предоставить им hello следующее: 
+10. Для настройки единого входа для своего приложения обратитесь в [службу поддержки FirmPlay — Employee Advocacy for Recruiting](mailto:engineering@firmplay.com) и укажите следующие сведения: 
 
-    • hello загружены **файл сертификата**
+    • скачанный **файл сертификата**;
 
-    • hello **SAML единого входа URL-адрес службы**
+    • **URL-адрес службы единого входа SAML**;
 
-    • hello **SAML идентификатор сущности**
+    • **идентификатор сущности SAML**;
 
-    • hello **URL-адрес выхода**
+    • **URL-адрес выхода**.
   
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
+Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-firmplay-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**. 
 
@@ -190,26 +190,26 @@ tooconfigure и теста Azure AD единого входа с FirmPlay - со
 
 ### <a name="creating-a-firmplay---employee-advocacy-for-recruiting-test-user"></a>Создание тестового пользователя FirmPlay — Employee Advocacy for Recruiting
 
-В этом разделе вы создадите тестового пользователя FirmPlay — Employee Advocacy for Recruiting с именем Britta Simon. Обратитесь [FirmPlay - сотрудник представительство группа поддержки по найму](mailto:engineering@firmplay.com) tooadd пользователей hello в hello FirmPlay - сотрудник представительство найму платформы.
+В этом разделе вы создадите тестового пользователя FirmPlay — Employee Advocacy for Recruiting с именем Britta Simon. Обратитесь в [службу поддержки FirmPlay — Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), чтобы добавить пользователей в платформу FirmPlay — Employee Advocacy for Recruiting.
 
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе Включить toouse Britta Simon Azure единого входа, предоставляя свой доступ tooFirmPlay - представительство найму сотрудников.
+В этом разделе объясняется, как позволить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к FirmPlay — Employee Advocacy for Recruiting.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooFirmPlay Britta Simon - сотрудник представительство найму, выполните hello следующие шаги.**
+**Чтобы назначить пользователя Britta Simon приложению FirmPlay — Employee Advocacy for Recruiting, выполните следующие действия.**
 
-1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **FirmPlay - сотрудник представительство найму**.
+2. В списке приложений выберите **FirmPlay — Employee Advocacy for Recruiting**.
 
     ![Настройка единого входа](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_50.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -217,7 +217,7 @@ tooconfigure и теста Azure AD единого входа с FirmPlay - со
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -227,14 +227,14 @@ tooconfigure и теста Azure AD единого входа с FirmPlay - со
 
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello FirmPlay - сотрудник представительство найму плитки в панели доступа hello следует получать автоматически вошедшего tooyour FirmPlay - приложение по найму представительство сотрудника.
+Если вы щелкнете плитку FirmPlay — Employee Advocacy for Recruiting на панели доступа, вы автоматически войдете в приложение FirmPlay — Employee Advocacy for Recruiting.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

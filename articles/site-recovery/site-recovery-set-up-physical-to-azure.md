@@ -1,6 +1,6 @@
 ---
-title: "Настройка среды источника hello (tooAzure физических серверов) | Документы Microsoft"
-description: "В этой статье описывается как tooset копирование toostart вашей локальной среде, репликация физических серверов под управлением Windows или Linux в Azure."
+title: "Настройка исходной среды (репликация физических серверов в Azure) | Документация Майкрософт"
+description: "В этой статье приведены сведения о настройке локальной среды для запуска репликации физических серверов под управлением Windows или Linux в Azure."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: d4702265bf36910015685d2bba99d6e577531bd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="set-up-hello-source-environment-physical-server-tooazure"></a>Настройка среды источника hello (физический сервер tooAzure)
+# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Настройка исходной среды (репликация физических серверов в Azure)
 > [!div class="op_single_selector"]
-> * [VMware tooAzure](./site-recovery-set-up-vmware-to-azure.md)
-> * [Физический tooAzure](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware в VMware](./site-recovery-set-up-vmware-to-azure.md)
+> * [Из физического расположения в Azure](./site-recovery-set-up-physical-to-azure.md)
 
-В этой статье описывается как tooset копирование toostart вашей локальной среде, репликация физических серверов под управлением Windows или Linux в Azure.
+В этой статье приведены сведения о настройке локальной среды для запуска репликации физических серверов под управлением Windows или Linux в Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Hello статьи предполагается, что уже:
-1. Хранилище служб восстановления в hello [портал Azure](http://portal.azure.com "портал Azure").
-3. Физический компьютер сервера, на котором tooinstall hello конфигурации.
+В этой статье предполагается, что у вас уже имеется:
+1. Хранилище служб восстановления на [портале Azure](http://portal.azure.com "портал Azure").
+3. Физический компьютер для установки сервера конфигурации.
 
 ### <a name="configuration-server-minimum-requirements"></a>Минимальные требования к серверу конфигурации
-Привет, в следующей таблице перечислены hello минимумом оборудования, программного обеспечения и требования к сети для сервера конфигурации.
+В следующей таблице перечислены минимальные требования к оборудованию, программному обеспечению и сети сервера конфигурации.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
-> На основе HTTPS прокси-серверы не поддерживаются сервером конфигурации hello.
+> Сервер конфигурации не поддерживает прокси-серверы на основе HTTPS.
 
 ## <a name="choose-your-protection-goals"></a>Выбор целевых объектов для защиты
 
-1. В hello портал Azure, перейдите toohello **службы восстановления** хранилищ колонки и выберите вашего хранилища.
-2. В hello **ресурсов** хранилища hello, выберите пункт **Приступая к работе** > **Site Recovery** > **шаг 1: Подготовка Инфраструктура** > **цель защиты**.
+1. На портале Azure откройте колонку **Хранилища служб восстановления** и выберите свое хранилище.
+2. В меню **Ресурс** хранилища выберите **Приступая к работе** > **Site Recovery** > **Шаг 1. Подготовка инфраструктуры** > **Цель защиты**.
 
     ![Выбор цели](./media/site-recovery-set-up-physical-to-azure/choose-goals.png)
-3. В **цель защиты**выберите **tooAzure** и **не виртуализированных, другие**, а затем нажмите кнопку **ОК**.
+3. На странице **Цель защиты** выберите **To Azure** (В Azure), а затем — **Без виртуализации или иное**. Нажмите кнопку **ОК**.
 
     ![Выбор цели](./media/site-recovery-set-up-physical-to-azure/physical-protection-goal.PNG)
 
-## <a name="set-up-hello-source-environment"></a>Настройка среды источника hello
+## <a name="set-up-the-source-environment"></a>Настройка исходной среды
 
-1. В **Подготовка источника**, если у вас нет сервера конфигурации, щелкните **+ сервер конфигурации** tooadd один.
+1. Если у вас нет сервера конфигурации, в окне **Prepare source** (Подготовка источника) щелкните **+Configuration server** (+Сервер конфигурации).
 
   ![Настройка источника](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
-2. В hello **добавить сервер** колонки, убедитесь, что **сервер конфигурации** отображается в **тип сервера**.
-4. Загрузите файл установки hello установка единой Site Recovery.
-5. Загрузите ключ регистрации в хранилище hello. При запуске программы установки единой необходим ключ регистрации hello. Hello ключ действителен в течение пяти дней после его создания.
+2. В колонке **Добавление сервера** в поле **Тип сервера** должно быть указано **Сервер конфигурации**.
+4. Скачайте файл единой установки Site Recovery.
+5. Скачайте ключ регистрации хранилища. При запуске программы единой установки вам потребуется ключ регистрации. Ключ действителен в течение пяти дней после создания.
 
     ![Настройка источника](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
-6. На компьютере hello используется в качестве сервера конфигурации hello выполните **Установка Azure Site Recovery единой** tooinstall hello конфигурации сервера, сервера обработки hello и образец hello целевого сервера.
+6. На компьютере, используемом в качестве сервера конфигурации, запустите **программу единой установки Azure Site Recovery**, чтобы установить сервер конфигурации, сервер обработки и главный целевой сервер.
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>Выполнение единой установки Azure Site Recovery
 
 > [!TIP]
-> Регистрация сервера конфигурации не выполняется, если время hello на системные часы компьютера — более пяти минут от местного времени. Синхронизацию системных часов с [сервер времени](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) перед началом установки hello.
+> Если системное время на компьютере отличается от местного более чем на 5 минут, то регистрация сервера конфигурации завершится сбоем. Перед началом установки синхронизируйте системное время с [сервером времени](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service).
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Сервер конфигурации Hello могут устанавливаться через командную строку. Изучите дополнительные сведения об [установке сервера конфигурации с помощью программ командной строки](http://aka.ms/installconfigsrv).
+> Сервер конфигурации можно установить с помощью командной строки. Изучите дополнительные сведения об [установке сервера конфигурации с помощью программ командной строки](http://aka.ms/installconfigsrv).
 
 
 ## <a name="common-issues"></a>Распространенные проблемы

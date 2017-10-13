@@ -1,7 +1,7 @@
 ---
-title: "окна оболочки облако Azure (Предварительная версия) hello aaaUsing | Документы Microsoft"
-description: "Окно оболочки облако Azure hello пошагового руководства."
-services: 
+title: "Использование окна Azure Cloud Shell (предварительная версия) | Документация Майкрософт"
+description: "Общие сведения о том, как использовать окно Azure Cloud Shell."
+services: azure
 documentationcenter: 
 author: jluk
 manager: timlt
@@ -12,47 +12,56 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 571db3c8e177799a9e05f38a7cf8d2a4d5f8c8de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fb242abfbea79bc8c242a7a89b3d775cf74a0617
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-hello-azure-cloud-shell-window"></a>С помощью окна оболочки облако Azure hello
+# <a name="using-the-azure-cloud-shell-window"></a>Использование окна Azure Cloud Shell
 
-В этом документе объясняется, как toouse hello окна оболочки облака.
+В этом документе содержатся сведения о том, как использовать окно Cloud Shell.
 
-## <a name="concurrent-sessions"></a>Параллельные сеансы
-Облако оболочки предоставляет несколько одновременных сеансов между вкладки браузера, позволяя tooexist каждого сеанса как отдельный процесс Bash.
-Если выход из сеанса, убедитесь, что tooexit из каждого окна сеанса как каждый процесс выполняется независимо, несмотря на то, что они запущены на hello же машине.
+## <a name="swap-between-bash-and-powershell-environments"></a>Переключение между средами Bash и PowerShell
+![](media/using-the-shell-window/env-selector.png)
+
+Для переключения между средами Bash и PowerShell используйте селектора сред на панели инструментов Cloud Shell.
 
 ## <a name="restart-cloud-shell"></a>Перезапуск Cloud Shell
-![](media/recycle.png)
+![](media/using-the-shell-window/restart.png)
 > [!WARNING]
 > Перезапуск Cloud Shell сбросит состояние машины, и все файлы, не сохраненные в общей папке, будут утеряны.
 
-* Щелкните значок перезапуска hello tooreceive инструментов hello новой оболочки облачной среды.
+* Щелкните значок перезапуска на панели инструментов Cloud Shell, чтобы сбросить состояние компьютера.
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Свертывание и развертывание окна Cloud Shell
-![](media/minmax.png)
-* Нажмите кнопку hello свести к минимуму значок hello верхнем правом углу окна toohide hello его. Снова щелкните hello значок облака оболочки toounhide.
-* Нажмите кнопку hello максимальной высоты toomax значок tooset окна. окно tooprevious toorestore размер, нажмите "Восстановить".
+![](media/using-the-shell-window/minmax.png)
+* Щелкните значок "Свернуть" в верхнем правом углу окна, чтобы скрыть окно. Для его отображения повторно щелкните значок Cloud Shell.
+* Щелкните значок "Развернуть", чтобы установить максимальную высоту окна. Чтобы восстановить окно до предыдущего размера, щелкните "Восстановить".
+
+## <a name="concurrent-sessions"></a>Параллельные сеансы
+Cloud Shell допускает выполнение нескольких параллельных сеансов на вкладках браузера. Таким образом каждый сеанс может существовать как отдельный процесс Bash.
+При выходе из сеанса необходимо выйти из всех окон, так как каждый процесс выполняется независимо, несмотря на то что они выполняются на одной машине.
 
 ## <a name="copy-and-paste"></a>Копирование и вставка
-* Windows: `Ctrl-insert` toocopy и `Shift-insert` toopaste. Чтобы включить копирование и вставку, также можно щелкнуть правой кнопкой мыши раскрывающийся список.
-  * Браузеры FireFox и IE могут не поддерживать разрешения буфера обмена корректно.
-* Mac OS: `Cmd-c` toocopy и `Cmd-v` toopaste. Чтобы включить копирование и вставку, также можно щелкнуть правой кнопкой мыши раскрывающийся список.
+[!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
 ## <a name="resize-cloud-shell-window"></a>Изменение размера окна Cloud Shell
-* Щелкните и перетащите hello верхнего края панели инструментов hello вверх или вниз окна оболочки облака tooresize hello.
+* Щелкните верхний край панели и растяните или сожмите окно Cloud Shell, чтобы изменить его размер.
 
 ## <a name="scrolling-text-display"></a>Прокрутка текста
-* Прокрутка с текстом терминалов toomove мышь или панель.
+* Прокручивайте текст с помощью мыши или сенсорной панели.
+
+## <a name="changing-the-text-size"></a>Изменение размера текста
+![](media/using-the-shell-window/text-size.png)
+* Щелкните значок "Параметры" в верхнем левом углу окна, а затем наведите указатель мыши на параметр "Размер текста" и выберите нужный размер текста.
 
 ## <a name="exit-command"></a>Команда выхода
-Под управлением `exit` завершает hello активного сеанса. Это происходит по умолчанию после 20 минут простоя.
+Команда `exit` позволяет завершить активный сеанс. Это происходит по умолчанию, если взаимодействия нет более 10 минут.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Краткое руководство по Cloud Shell](quickstart.md)
+
+[Краткое руководство по Bash в Cloud Shell](quickstart.md)
+[Краткое руководство по PowerShell в Cloud Shell](quickstart-powershell.md)

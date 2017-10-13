@@ -1,5 +1,5 @@
 ---
-title: "aaaScheduler Справочник по командлетам PowerShell"
+title: "Справочник по командлетам PowerShell планировщика"
 description: "Справочник по командлетам PowerShell планировщика"
 services: scheduler
 documentationcenter: .NET
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: a2b23bcd3e4493ffba1dbf21fbb87818be7c01e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Справочник по командлетам PowerShell планировщика
-Hello в следующей таблице описаны и ссылки на справочной странице toohello каждого из основных командлетов hello в планировщике Azure.
+В следующей таблице приведено описание и ссылки на справочную страницу для каждого из основных командлетов в планировщике Azure.
 
-tooinstall Azure PowerShell и связать ее с подпиской Azure см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview). 
+Чтобы установить решение Azure PowerShell и связать его с подпиской Azure, см. статью [Установка и настройка Azure PowerShell](/powershell/azure/overview). 
 
 Дополнительные сведения о [командлетах Azure Resource Manager](/powershell/azure/overview) см. в статье [Использование Azure PowerShell с Azure Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -47,7 +47,7 @@ tooinstall Azure PowerShell и связать ее с подпиской Azure �
 | [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Изменяет задание раздела служебной шины. |
 | [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Изменяет задание очереди хранилища. |
 
-Для получения дополнительных сведений запустите любой hello следующие командлеты: 
+Для получения более подробных сведений можно выполнить следующие командлеты: 
 
 ```
 Get-Help <cmdlet name> -Detailed
@@ -64,7 +64,7 @@ Get-Help <cmdlet name> -Full
 
  [Основные понятия, терминология и иерархия сущностей планировщика Azure](scheduler-concepts-terms.md)
 
- [Начало работы с планировщиком в hello портал Azure](scheduler-get-started-portal.md)
+ [Приступая к работе с планировщиком Azure на портале Azure](scheduler-get-started-portal.md)
 
  [Планы и выставление счетов в планировщике Azure](scheduler-plans-billing.md)
 

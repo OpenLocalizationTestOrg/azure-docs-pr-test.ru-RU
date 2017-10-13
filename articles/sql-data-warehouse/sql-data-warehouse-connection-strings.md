@@ -1,5 +1,5 @@
 ---
-title: "aaaDrivers для хранилища данных SQL | Документы Microsoft"
+title: "Драйверы для хранилища данных SQL Azure | Документация Майкрософт"
 description: "Строки подключения и драйверы для хранилища данных SQL."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: a808839a8cfc49c2d7b16038c88ffb39a9f97825
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e71ea1d23f68ed41c03bbce88b08863d2831c1bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="drivers-for-azure-sql-data-warehouse"></a>Драйверы для хранилища данных SQL Azure
-Такие как подключения tooSQL хранилища данных с нескольких протоколов другое приложение [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] и [JDBC][JDBC]. Ниже приведены некоторые примеры строк подключения для каждого протокола.  Можно также использовать hello Azure портала toobuild строки подключения.  toobuild строку соединения с помощью hello портал Azure перейдите tooyour колонке базы данных, в разделе *Essentials* щелкните *Показать строки подключения базы данных*.
+К хранилищу данных SQL можно подключиться с помощью различных протоколов, таких как [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] и [JDBC][JDBC]. Ниже приведены некоторые примеры строк подключения для каждого протокола.  Кроме того, для формирования строки подключения можно использовать портал Azure.  Чтобы создать строку подключения с помощью портала Azure, перейдите к колонке своей базы данных и в разделе *Основное* щелкните *Показать строки подключения к базам данных*.
 
 ## <a name="sample-adonet-connection-string"></a>Пример строки подключения по протоколу ADO.NET
 ```C#
@@ -36,7 +36,7 @@ Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows
 
 ## <a name="sample-php-connection-string"></a>Пример строки подключения по протоколу PHP
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting tooSQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
 ## <a name="sample-jdbc-connection-string"></a>Пример строки подключения по протоколу JDBC
@@ -45,12 +45,12 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Рассмотрим параметр hello подключения too300 ожидания в порядке tooallow hello подключения toosurvive небольшие периоды недоступности.
+> Попробуйте установить время ожидания подключения в 300 секунд, чтобы короткие периоды недоступности были допустимы.
 > 
 > 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-toostart запросов хранилищ данных в Visual Studio и других приложений, в разделе [запроса с помощью Visual Studio][Query with Visual Studio].
+Чтобы приступить к отправке запросов к хранилищу данных с помощью Visual Studio и других приложений, см. статью [Подключение к хранилищу данных SQL с помощью Visual Studio и SSDT][Query with Visual Studio].
 
 <!--Image references-->
 

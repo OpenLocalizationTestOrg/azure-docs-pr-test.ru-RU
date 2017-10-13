@@ -1,5 +1,5 @@
 ---
-title: "пропускная способность контейнера CLI сценария масштабирования Azure Cosmos DB aaaAzure | Документы Microsoft"
+title: "Скрипт Azure CLI. Масштабирование пропускной способности контейнера базы данных Azure Cosmos DB | Документация Майкрософт"
 description: "Пример скрипта Azure CLI. Масштабирование пропускной способности контейнера базы данных Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,19 +16,19 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: b1a60feaf43f555a9f6ba20e5e0617f73521c0a6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4edd3c49d620df6b335bc7ceb1bf1921e3b279a0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-hello-azure-cli"></a>Масштаб пропускной способности контейнера Azure Cosmos DB с помощью hello Azure CLI
+# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Масштабирование пропускной способности контейнера базы данных Azure Cosmos DB с помощью Azure CLI
 
 Этот пример масштабирует пропускную способность для любого типа контейнера базы данных Azure Cosmos DB.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
+Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Пример скрипта
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания
 
-После выполнения сценария образец hello hello, следующая команда может быть группы ресурсов используется tooremove hello и все ресурсы, связанные с ним.
+После выполнения примера сценария можно удалить группу ресурсов и все связанные с ней ресурсы, выполнив следующую команду.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -44,16 +44,16 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует hello, следующие команды. Каждая команда в таблице hello связывает toocommand документацию.
+Этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
 | [az group create](/cli/azure/group#create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#update) | Обновляет учетную запись базы данных Azure Cosmos DB. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | Удаляет группу ресурсов со всеми вложенными ресурсами. |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | Обновляет учетную запись базы данных Azure Cosmos DB. |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Удаляет группу ресурсов со всеми вложенными ресурсами. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев, использующих DB Cosmos Azure CLI можно найти в hello [документации Azure Cosmos DB CLI](../cli-samples.md).
+Дополнительные примеры скриптов CLI для базы данных Azure Cosmos DB см. в [документации по интерфейсу командной строки базы данных Azure Cosmos DB](../cli-samples.md).

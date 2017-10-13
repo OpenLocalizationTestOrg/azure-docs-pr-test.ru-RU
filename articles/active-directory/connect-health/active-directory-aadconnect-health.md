@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor облака в локальную инфраструктуру удостоверений, в hello."
-description: "Это страница hello Azure AD Connect Health, описывающее, что это такое и зачем использовать его."
+title: "Мониторинг локальной инфраструктуры идентификации в облаке."
+description: "В этой статье описаны принципы работы и предназначение службы Azure AD Connect Health."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -14,107 +14,107 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 84d0b00ec800ba98094343731aa4e7317dfb0c61
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-hello-cloud"></a>Мониторинг вашей локальной инфраструктуры и синхронизации службы удостоверений в облаке hello
-Azure Active Directory (Azure AD) Connect Health помогает отслеживать и анализировать вашей личности в локальной инфраструктуре и hello служб синхронизации. Он позволяет toomaintain tooOffice надежное подключение 365 и Microsoft Online Services, предоставляя возможности мониторинга для вашего ключа удостоверения компоненты, такие как серверы служб федерации Active Directory (AD FS), серверы Azure AD Connect (также известен как подсистема синхронизации) контроллеры домена Active Directory и т. д. Кроме того, hello ключевых точек данных об этих компонентах легкодоступными, чтобы узнать об использовании и других важных toomake аналитики обоснованных решений.
+# <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>Мониторинг локальной инфраструктуры идентификации и служб синхронизации в облаке.
+Служба Azure Active Directory (Azure AD) Connect Health помогает отслеживать локальную инфраструктуру идентификации и службы синхронизации. Она обеспечивает надежное подключение к службам Office 365 и Microsoft Online Services и предоставляет возможности мониторинга ключевых компонентов идентификации, таких как серверы служб федерации Active Directory (AD FS), серверы Azure AD Connect (также называемые модулями синхронизации), контроллеры домена Active Directory и т. п. С помощью этой службы пользователи могут с легкостью получить доступ к общим сведениям о компонентах, в частности к информации об использовании и другим важным данным, необходимым для принятия обоснованных решений.
 
-Hello сведения представлены в hello [портала Azure AD Connect Health](https://aka.ms/aadconnecthealth). На портале Azure AD Connect Health hello можно просмотреть предупреждения, наблюдение за производительностью, аналитические данные об использовании и другие сведения. Azure AD Connect Health позволяет hello следить за состоянием работоспособности для компонентов ключа удостоверения в одном месте.
+Эти сведения можно найти на портале [Azure AD Connect Health](https://aka.ms/aadconnecthealth). На портале Azure AD Connect Health можно просматривать оповещения, отслеживать производительность, аналитику использования и другие сведения. Служба Azure AD Connect Health позволяет следить за состоянием работоспособности ключевых компонентов идентификации из одного места.
 
 ![Что такое Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
-При увеличении количества функций hello в Azure AD Connect Health, hello портал предоставляет одну панель мониторинга через линзы hello удостоверения. Вы опытных еще более надежной, работоспособности и интегрированной среды для вашего tooincrease пользователей их возможности tooget программистов.
+Так как возможности службы Azure AD Connect Health расширяются, на портале предоставлена одна панель мониторинга для просмотра идентификации, предоставляющая вам еще более надежную, работоспособную и интегрированную среду. Ее могут использовать ваши пользователи для повышения собственной продуктивности.
 
 ## <a name="why-use-azure-ad-connect-health"></a>Зачем использовать Azure AD Connect Health?
-При интеграции каталогов в локальной среде с Azure AD, пользователям будет повысить производительность из-за общего удостоверения tooaccess cloud и локальным ресурсам. Однако такая интеграция создает hello проблемой обеспечения работоспособности этой среды, чтобы пользователи могут надежно доступ к ресурсам на локальном компьютере и в hello облако с любого устройства. Azure AD Connect Health помогает отслеживать и анализировать инфраструктуры удостоверений в локальной, используемые tooaccess Office 365 или другие приложения Azure AD. Использовать службу так же просто, как установить агент на локальных серверах удостоверений.
+Интеграция локальных каталогов с Azure AD помогает повысить продуктивность ваших пользователей, предоставляя им единую идентификацию для доступа к облачным и локальным ресурсам. Однако такая интеграция требует обеспечения работоспособности среды для надежного доступа пользователей к локальным и облачным ресурсам с любого устройства. Azure AD Connect Health позволяет выполнять мониторинг и получать четкое представление о локальной инфраструктуре идентификации, которая используется для доступа к Office 365 и другим приложениям Azure AD. Использовать службу так же просто, как установить агент на локальных серверах удостоверений.
 
 ## <a name="azure-ad-connect-health-for-ad-fsactive-directory-aadconnect-health-adfsmd"></a>[Azure AD Connect Health для AD FS](active-directory-aadconnect-health-adfs.md)
-Azure AD Connect Health для AD FS поддерживает AD FS 2.0 в Windows Server 2008 R2, Windows Server 2012 и Windows Server 2012 R2. Оно также поддерживает прокси-сервера для мониторинга hello AD FS или прокси серверов веб-приложений, которые обеспечивают проверку подлинности поддерживает для доступа через экстрасеть. С помощью простой и недорогой копии hello агент работоспособности Azure AD Connect Health для AD FS предоставляет следующие ключевые функции hello:
+Azure AD Connect Health для AD FS поддерживает AD FS 2.0 в Windows Server 2008 R2, Windows Server 2012 и Windows Server 2012 R2. Поддерживается также мониторинг прокси-серверов AD FS и веб-приложений, которые обеспечивают проверку подлинности для доступа к экстрасети. Azure AD Connect Health для AD FS предоставляет следующий набор основных возможностей:
 
-* Мониторинг с помощью tooknow предупреждения, когда прокси-сервера AD FS и AD FS не находятся в работоспособном состоянии
+* мониторинг и отправка оповещений о проблемах работоспособности AD FS и прокси-серверов AD FS;
 * уведомления по электронной почте для критических оповещений;
 * анализ тенденций в данных производительности, что удобно для планирования ресурсов AD FS;
-* Аналитика использования для службы федерации Active Directory входа в систему с помощью аспектов (приложений, пользователи, сетевого расположения и т.д.), которые являются полезным toounderstand начало используется как AD FS
+* аналитика по входам в систему AD FS с предоставлением сводных данных (о приложениях, пользователях, сетевом расположении и т. д.), которые позволяют понять, как используется AD FS;
 * создание отчетов AD FS, например о 50 пользователях, выполнивших наибольшее количество неудачных попыток входа с последнего IP-адреса с указанием неправильного имени пользователя или пароля.
 
-Hello следующие видеоматериалы содержат общие сведения о Azure AD Connect Health для AD FS.
+В следующем видео представлен обзор Azure AD Connect Health для AD FS.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[Azure AD Connect Health для синхронизации](active-directory-aadconnect-health-sync.md)
-Azure AD Connect Health для синхронизации отслеживает и предоставляет сведения о синхронизации hello, возникающих между вашей локальной Active Directory и Azure AD. Azure AD Connect Health для синхронизации предоставляет следующие ключевые функции hello.
+Azure AD Connect Health для синхронизации отслеживает и предоставляет сведения о синхронизациях, которые выполняются между вашей локальной службой Active Directory и Azure AD. Azure AD Connect Health для синхронизации предоставляет следующие возможности:
 
-* Мониторинг с помощью tooknow предупреждения, когда сервер Azure AD Connect, также известные как hello подсистема синхронизации находится в неработоспособном состоянии
+* мониторинг и отправка оповещений о проблемах работоспособности серверов Azure AD Connect (также называемых модулями синхронизации);
 * уведомления по электронной почте для критических оповещений;
 * оперативная аналитика синхронизации, включая диаграммы задержки для операций синхронизации и тренды различных операций, таких как добавление, обновление и удаление;
-* Краткий обзор сведения о синхронизации свойства и последнего успешного экспорта tooAzure AD
+* предоставление общей информации о свойствах синхронизации и последнем успешном экспорте в Azure AD.
 * Для получения отчетов об ошибках синхронизации на уровне объекта \((не требуется Azure AD Premium)\).
 
-Hello следующие видеоматериалы содержат общие сведения о Azure AD Connect Health для синхронизации.
+В следующем видео представлен обзор Azure AD Connect Health для синхронизации.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Health-Monitoring-the-sync-engine/player]
 >
 >
 
 ## <a name="azure-ad-connect-health-for-ad-dsactive-directory-aadconnect-health-addsmd"></a>[Azure AD Connect Health для AD DS](active-directory-aadconnect-health-adds.md)
-Azure AD Connect Health для доменных служб Active Directory (AD DS) обеспечивает мониторинг контроллеров домена, установленных в Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 и Windows Server 2016. Установка агента работоспособности Hello позволяет вы toomonitor в локальной среде AD DS из облака hello. Azure AD Connect Health для AD DS предоставляет следующие ключевые функции hello.
+Azure AD Connect Health для доменных служб Active Directory (AD DS) обеспечивает мониторинг контроллеров домена, установленных в Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 и Windows Server 2016. Установка агента работоспособности позволит отслеживать локальную среду AD DS из облака. Azure AD Connect Health для AD DS предоставляет следующий набор основных возможностей.
 
-* Отслеживание toodetect предупреждения, когда контроллеры домена находятся в неработоспособном состоянии и уведомления для критических оповещений по электронной почте
-* панель мониторинга Hello контроллеры домена, которая предоставляет быстрый обзор работоспособности hello и рабочее состояние контроллеров домена
-* Состояние репликации Hello панель мониторинга, которая содержит последние сведения о репликации hello и связывает tootroubleshooting руководства при обнаружении ошибок
-* Быстрый доступ из любой точки tooperformance графы данных счетчиков производительности популярных, необходимых для целей наблюдения и устранения неполадок
+* Отслеживание оповещений для обнаружения неработоспособных контроллеров домена, а также уведомления по электронной почте о критических оповещениях.
+* Панель мониторинга контроллеров домена, на которой можно быстро просмотреть состояние работоспособности и рабочее состояние контроллеров домена.
+* Панель мониторинга состояния репликации с последними сведениями о репликации, а также ссылки на руководства по устранению неполадок при обнаружении ошибок.
+* Быстрый доступ из любого расположения к графикам данных производительности популярных счетчиков производительности, необходимых для наблюдения и устранения неполадок.
 
-Hello следующие видеоматериалы содержат общие сведения о Azure AD Connect Health для AD DS.
+В следующем видео представлен обзор Azure AD Connect Health для AD DS.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health-monitors-on-premises-AD-Domain-Services/player]
 >
 >
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Приступая к работе с Azure AD Connect Health
-tooget работы с Azure AD Connect Health, hello используйте следующие шаги:
+Чтобы начать работу с Azure AD Connect Health, сделайте следующее:
 
 1. [Приобретите Azure AD Premium](../active-directory-get-started-premium.md) или [получите пробную версию](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Скачайте и установите агенты Azure AD Connect Health](#download-and-install-azure-ad-connect-health-agent) на серверах удостоверений.
-3. Представление hello Azure AD Connect Health и панели мониторинга в [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
+3. Просмотрите панель мониторинга Azure AD Connect Health на странице [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth).
 
 > [!NOTE]
-> Помните, что прежде чем просматривать данные в панель мониторинга Azure AD Connect Health, необходимо tooinstall hello агенты Azure AD Connect Health на целевых серверах.
+> Помните, чтобы на панели мониторинга Azure AD Connect Health отображались какие-либо данные, потребуется установить агенты Azure AD Connect Health на целевых серверах.
 >
 >
 
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Скачивание и установка агента Azure AD Connect Health
-* Убедитесь, что вы [удовлетворять требованиям hello](active-directory-aadconnect-health-agent-install.md#requirements) для Azure AD Connect Health.
+* Обязательно [выполните требования](active-directory-aadconnect-health-agent-install.md#requirements) для Azure AD Connect Health.
 * Приступая к работе с Azure AD Connect Health для AD FS
     * [Скачайте агент Azure AD Connect Health для AD FS.](http://go.microsoft.com/fwlink/?LinkID=518973)
-    * [См. инструкции по установке hello](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Ознакомьтесь с инструкциями по установке.](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 * Приступая к работе с Azure AD Connect Health для синхронизации
-    * [Загрузите и установите последнюю версию Azure AD Connect hello](http://go.microsoft.com/fwlink/?linkid=615771). Hello агент работоспособности для синхронизации будет установлен как часть установки hello Azure AD Connect (версии 1.0.9125.0 или более поздней версии).
+    * [Скачайте и установите последнюю версию Azure AD Connect.](http://go.microsoft.com/fwlink/?linkid=615771) Агент Azure AD Connect Health для синхронизации будет установлен вместе с Azure AD Connect (версии 1.0.9125.0 или более поздней).
 * Приступая к работе с Azure AD Connect Health для AD DS
     * [Скачайте агент Azure AD Connect Health для AD FS.](http://go.microsoft.com/fwlink/?LinkID=820540)
-    * [См. инструкции по установке hello](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Ознакомьтесь с инструкциями по установке.](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)
 
 ## <a name="azure-ad-connect-health-portal"></a>Портал Azure AD Connect Health
-портал Azure AD Connect Health Hello отображаются представления предупреждений, наблюдения за производительностью и аналитику использования. Hello https://aka.ms/aadconnecthealth URL-адрес появится toohello главной колонке Azure AD Connect Health. Ее можно считать окном. В главной колонке hello видеть **быстрый запуск**, службы в Azure AD Connect Health, а также дополнительные параметры конфигурации. В разделе hello следующий снимок экрана и краткое описание, следующие за экрана приветствия. После развертывания агентов hello hello служба работоспособности автоматически определяет hello службы, мониторинг работоспособности подключения Azure AD.
+На портале Azure AD Connect Health можно просматривать оповещения, отслеживать производительность и аналитику использования. URL-адрес https://aka.ms/aadconnecthealth перенаправит вас в главную колонку Azure AD Connect Health. Ее можно считать окном. В главной колонке отображается элемент **быстрого запуска**, раздел со службами Azure AD Connect Health и дополнительные параметры конфигурации. Просмотрите снимок экрана колонки ниже и ознакомьтесь с кратким описанием содержащихся в ней элементов. После развертывания агентов служба работоспособности автоматически определит службы, отслеживаемые в Azure AD Connect Health.
 
 > [!NOTE]
-> Сведения о лицензировании см. в разделе hello [Azure AD подключения часто задаваемые вопросы о](active-directory-aadconnect-health-faq.md) или hello [странице цен Azure AD](https://aka.ms/aadpricing).
+> Сведения о лицензировании см. в статье [Часто задаваемые вопросы об Azure AD Connect Health](active-directory-aadconnect-health-faq.md) или [на странице цен на Azure AD](https://aka.ms/aadpricing).
     
 ![Azure AD Connect Health](./media/active-directory-aadconnect-health/portal4.png)
 
-* **Быстрый запуск**: при выборе этого параметра hello **быстрый запуск** открывает колонку. Можно загрузить агент Azure AD Connect Health hello, выбрав **получить средства**. Кроме того, вы также можете получить доступ к документации и оставить отзыв.
-* **Службы федерации Active Directory**: этот режим показывает все службы AD FS hello, в настоящий момент отслеживает Azure AD Connect Health. При выборе экземпляра hello колонки, которая открывает отображаются сведения о этого экземпляра службы. Сюда входит обзор, свойства, оповещения, мониторинг и аналитика по использованию. Дополнительные сведения о возможностях hello см. в [с помощью Azure AD Connect Health с AD FS](active-directory-aadconnect-health-adfs.md).
-* **Azure Active Directory Connect (Sync).** В этом разделе отображаются серверы Azure AD Connect, которые в настоящее время отслеживает служба Azure AD Connect Health. При выборе записи hello hello колонки, которая открывает отображаются сведения о серверах Azure AD Connect. Дополнительные сведения о возможностях hello см. в [с помощью Azure AD Connect Health для синхронизации](active-directory-aadconnect-health-sync.md).
-* **Доменные службы Active Directory**: этот режим показывает всех лесов AD DS hello, в настоящий момент отслеживает Azure AD Connect Health. При выборе леса hello колонки, которая открывает отображаются сведения о этого леса. Эти сведения включают Обзор важную информацию, панель мониторинга hello контроллеры домена, мониторинга состояния репликации hello, оповещениям и мониторингу. Дополнительные сведения о возможностях hello см. в [с помощью Azure AD Connect Health в AD DS](active-directory-aadconnect-health-adds.md).
-* **Настройка**: в этом разделе содержатся параметры tooturn hello или выключить следующие:
+* **Быстрый запуск.** При выборе этого элемента откроется колонка **быстрого запуска**. Вы можете скачать агент Azure AD Connect Health, выбрав **Получить средства**. Кроме того, вы также можете получить доступ к документации и оставить отзыв.
+* **Службы федерации Active Directory.** Этот раздел позволяет просмотреть все службы AD FS, которые в настоящее время отслеживает служба Azure AD Connect Health. Если выбрать экземпляр, откроется колонка со сведениями об этом экземпляре службы. Сюда входит обзор, свойства, оповещения, мониторинг и аналитика по использованию. Дополнительные сведения о возможностях см. в статье [Использование Azure AD Connect Health для синхронизации](active-directory-aadconnect-health-adfs.md).
+* **Azure Active Directory Connect (Sync).** В этом разделе отображаются серверы Azure AD Connect, которые в настоящее время отслеживает служба Azure AD Connect Health. Когда вы выберете запись, откроется колонка с информацией о серверах Azure AD Connect. Дополнительные сведения о возможностях см. в статье [Использование Azure AD Connect Health для синхронизации](active-directory-aadconnect-health-sync.md).
+* **Доменные службы Active Directory.** В этом разделе представлены все леса AD DS, которые в настоящее время отслеживает служба Azure AD Connect Health. Если выбрать лес, откроется колонка со сведениями об этом лесе. Эти сведения включают обзор основной информации, панель мониторинга контроллеров домена, панель мониторинга состояния репликации, оповещения и мониторинг. Дополнительные сведения о возможностях см. в статье [Использование Azure AD Connect Health с AD DS](active-directory-aadconnect-health-adds.md).
+* **Настройка.** В этом разделе можно включить или отключить следующие функции.
 
-  - Автоматическое обновление tooautomatically hello Azure AD Connect Health версия агента обновления toohello последнюю: будет автоматически обновляются toohello последние версии hello Azure AD Connect Health Agent по мере появления. Эта функция включена по умолчанию.
-  - Разрешить передачу данных Microsoft access tooyour Azure AD directory работоспособности только в целях устранения неполадок: Если эта функция включена, можно увидеть Microsoft hello и те же данные, что вы видите. Эта информация может помочь при устранении неполадок и различных проблем. Эта функция отключена по умолчанию.
+  - Автоматическое обновление агента Azure AD Connect Health до последней версии. Агент Azure AD Connect Health будет обновлен до последней версии, когда она станет доступна. Эта функция включена по умолчанию.
+  - Предоставление корпорации Майкрософт доступа к данным работоспособности каталога Azure AD только в целях устранения неполадок. Если эта функция включена, корпорации Майкрософт будут доступны те же данные, что видите вы. Эта информация может помочь при устранении неполадок и различных проблем. Эта функция отключена по умолчанию.
 
 ## <a name="related-links"></a>Связанные ссылки
 * [Установка агента Azure AD Connect Health](active-directory-aadconnect-health-agent-install.md)

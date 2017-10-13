@@ -1,6 +1,6 @@
 ---
-title: "Краткое руководство aaaAzure оболочки облака (Предварительная версия) | Документы Microsoft"
-description: "Краткое руководство по hello оболочки облако Azure"
+title: "Краткое руководство по Bash в Azure Cloud Shell (предварительная версия) | Документация Майкрософт"
+description: "Краткое руководство по Bash в Cloud Shell"
 services: 
 documentationcenter: 
 author: jluk
@@ -12,26 +12,34 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: e60700b92c10c331910dd8bb3c627fe1a024091c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="quickstart-for-using-hello-azure-cloud-shell"></a>Краткое руководство по использованию hello оболочки облако Azure
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Краткое руководство по Bash в Azure Cloud Shell
 
-В этом документе описаны как toouse hello Azure облачной оболочки в hello [портал Azure](https://ms.portal.azure.com/).
+В этом документе объясняется, как использовать Bash в Azure Cloud Shell на [портале Azure](https://ms.portal.azure.com/).
+
+> [!NOTE]
+> Также вы можете ознакомиться с кратким руководством по использованию [PowerShell в Azure Cloud Shell](quickstart-powershell.md).
 
 ## <a name="start-cloud-shell"></a>Запуск Cloud Shell
-1. Запустите **оболочки облака** hello верхней панели навигации hello портал Azure <br>
-![](media/shell-icon.png)
-2. Выберите подписку toocreate учетной записи хранилища и Azure общей папки
+1. Запустите **Cloud Shell** в верхней панели навигации портала Azure. <br>
+![](media/quickstart/shell-icon.png)
+2. Выберите подписку для создания учетной записи хранения и общей папки Azure.
 3. Нажмите кнопку "Создать хранилище".
 
 > [!TIP]
 > Вы автоматически проходите проверку подлинности для Azure CLI 2.0 в каждом сеансе.
+
+### <a name="select-the-bash-environment"></a>Выбор среды Bash
+1. Щелкните раскрывающийся список среды в левой части окна оболочки. <br>
+![](media/quickstart/env-selector.png)
+2. Выберите Bash.
 
 ### <a name="set-your-subscription"></a>Настройка подписки
 1. Выведите список подписок, к которым у вас есть доступ: <br>
@@ -47,28 +55,28 @@ ms.lasthandoff: 10/06/2017
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>Создание виртуальной машины Linux
-Создайте виртуальную машину Ubuntu в новой группе ресурсов. Hello Azure CLI 2.0 создаются ключи SSH и hello установки виртуальной Машины с ними. <br>
+Создайте виртуальную машину Ubuntu в новой группе ресурсов. Azure CLI 2.0 создаст ключи SSH и настроит с их помощью виртуальную машину. <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> Здравствуйте, открытый и закрытый ключи, используемые tooauthenticate ВМ, помещаются в `/User/.ssh/id_rsa` и `/User/.ssh/id_rsa.pub` Azure CLI 2.0 по умолчанию. Папка в формате SSH сохраняется в образе размером 5 ГБ, размещенном в подключенной общей папке Azure.
+> Открытый и закрытый ключи, используемые для проверки подлинности виртуальной машины, помещаются в `/User/.ssh/id_rsa` и `/User/.ssh/id_rsa.pub` с помощью Azure CLI 2.0 по умолчанию. Папка в формате SSH сохраняется в образе размером 5 ГБ, размещенном в подключенной общей папке Azure.
 
 Имя пользователя на этой виртуальной машине будет использоваться в Cloud Shell ($User@Azure:).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-подключение к виртуальной машине Linux
-1. Поиск по имени виртуальной Машины в строке поиска Azure портала hello
+1. Найдите имя виртуальной машины на панели поиска портала Azure.
 2. Щелкните "Подключить" и выполните `ssh username@ipaddress`.
 
-![](media/sshcmd-copy.png)
+![](media/quickstart/sshcmd-copy.png)
 
-После установки подключения SSH hello, вы должны увидеть hello Ubuntu приветствия приглашения.
-![](media/ubuntu-welcome.png)
+После установки SSH-подключения отобразится строка приветствия Ubuntu. <br>
+![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Очистка. 
 Удалите группу ресурсов и все ее ресурсы. <br>
 Запустите `az group delete -n MyRG`
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Сохранение файлов в Azure Cloud Shell](persisting-shell-storage.md) <br>
+[Дополнительные сведения о сохранении файлов для Bash в Cloud Shell.](persisting-shell-storage.md) <br>
 [Справочник команд Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [Знакомство с хранилищем файлов Azure](../storage/files/storage-files-introduction.md) <br>

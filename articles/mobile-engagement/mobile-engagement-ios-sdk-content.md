@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure iOS Mobile Engagement SDK содержимого"
+title: "Содержимое SDK для рекламных кампаний в iOS для Служб мобильного взаимодействия Azure"
 description: "Последние обновления и указания для пакета SDK для iOS для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,19 +14,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9f735226b98431cf0a68d0cbe8f9112f4c8df019
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bdc96cd47ece6054184d167192ebec4cd4bd081c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sdk-content"></a>Содержимое пакета SDK
-В этом документе перечислены и описаны hello содержимое архива SDK hello.
+В этом документе указано и описано содержимое архива SDK.
 
 ## <a name="engagement-sdk"></a>Пакет SDK для службы Engagement
 `EngagementSDK`
 
-> Здравствуйте, содержащего заголовки core Engagement SDK, библиотеки и одного дополнительного указано как код источника tooenable или отключить коллекцию IDFA.
+> Базовый пакет SDK для службы Engagement, содержащий заголовки, библиотеку и дополнительный класс, предоставляемый в качестве исходного кода для подключения и отключения коллекции IDFA.
 > 
 > 
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/06/2017
 
 `src` 
 
-> Engagement Просмотр контроллеров и SDK связаться с исходным кодом (для опытных пользователей, желающих tooadapt Engagement классы tootheir потребностей).
+> Контроллеры представлений службы Engagement и исходный код пакета SDK для рекламных кампаний (для опытных пользователей, которым нужно адаптировать классы Engagement для своих потребностей).
 > 
 > 
 

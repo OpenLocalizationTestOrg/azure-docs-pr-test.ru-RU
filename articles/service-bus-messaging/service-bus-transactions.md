@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview операции обработки в Azure Service Bus | Документы Microsoft"
+title: "Обзор обработки транзакций в служебной шине Azure | Документация Майкрософт"
 description: "Общие сведения об атомарных транзакциях служебной шины Azure"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/17/2017
 ms.author: clemensv;sethm
-ms.openlocfilehash: 5ed4d1fd3a089b8ebcd69a568f4ac863e753aecd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a88f2d81ab43e38c9363a67aaefc178b47bfb259
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Обзор обработки транзакций в служебной шине
-В этой статье рассматриваются возможности транзакций hello Azure Service Bus. Большая часть hello-обсуждений показана hello [атомарные транзакции с примером служебной шины](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions). В этой статье приведен обзор ограниченного tooan обработка транзакций и hello *отправки по* функции в Service Bus, образец hello атомарной транзакции большими во время области.
+Эта статья описывает возможности служебной шины Azure по работе с транзакциями. Основную часть излагаемого материала иллюстрирует [пример выполнения атомарных транзакций с помощью служебной шины](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions). Эта статья рассматривает лишь обработку транзакций и функцию *отправить через* в служебной шине, но пример атомарных транзакций образец гораздо масштабнее и сложнее.
 
 ## <a name="transactions-in-service-bus"></a>Транзакции в служебной шине
-[Транзакция](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions) объединяет две или более операций в *область выполнения*. По своей природе такая транзакция необходимо убедиться, что все операции, принадлежащий tooa группы операций завершится успехом или сбоем совместно. В этом отношении транзакции воздействуют как одно целое, который часто ссылка tooas *атомарность*. 
+[Транзакция](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions) объединяет две или более операций в *область выполнения*. По своей природе такая транзакция должна обеспечивать либо успешное, либо неудачное выполнение всех относящихся к данной группе операций. В этом отношении транзакция выступает в качестве единого целого, что часто называется *атомарностью*. 
 
-Служебная шина является брокером для транзакционных сообщений и гарантирует целостность всех внутренних операций в соответствии с хранилищами сообщений. Все передачи сообщения внутри Service Bus, такие как перемещение сообщений tooa [очереди недоставленных сообщений](service-bus-dead-letter-queues.md) или [автоматическая переадресация](service-bus-auto-forwarding.md) сообщений между сущностями являются транзакционными. Таким образом, когда служебная шина принимает сообщение, оно уже сохранено и помечено порядковым номером. После этого для любой передачу сообщений в Service Bus являются операциями согласованных между сущностями, и ни один приведет tooloss (источник завершается успешно и целевой завершается с ошибкой) или tooduplication (сбой источника и цели успешного) сообщения hello.
+Служебная шина является брокером для транзакционных сообщений и гарантирует целостность всех внутренних операций в соответствии с хранилищами сообщений. Все передачи сообщений внутри служебной шины, например перемещение сообщений в [очередь недоставленных сообщений](service-bus-dead-letter-queues.md) или [автоматическая пересылка](service-bus-auto-forwarding.md) сообщений между сущностями, являются транзакционными. Таким образом, когда служебная шина принимает сообщение, оно уже сохранено и помечено порядковым номером. Начиная с этого момента любые передачи сообщений в служебной шине, являются скоординированными операциями между сущностями и не приведут ни к потере (успех исходной части, сбой целевой части), ни к дублированию (сбой исходной части, успех целевой части) сообщения.
 
-Service Bus поддерживает операции группирования от одной сущности обмена сообщениями (очередь, раздел, подписка) в пределах области hello транзакции. Например можно отправить несколько сообщений очереди tooone из в области транзакции и сообщений hello будет только зафиксированных toohello очереди журнала при успешном выполнении транзакции hello.
+Служебная шина поддерживает операции группирования относительно одной сущности обмена сообщениями (очереди, раздела, подписки) в области транзакции. Например, можно отправить несколько сообщений в одну очередь из области транзакций, и сообщение будет зафиксировано в журнале очереди только после успешного завершения транзакции.
 
 ## <a name="operations-within-a-transaction-scope"></a>Операции в области транзакций
-Ниже приведены Hello операций, которые могут выполняться в области транзакции.
+Далее приведены операции, которые могут выполняться в области транзакций.
 
 * **[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), [MessageSender](/dotnet/api/microsoft.servicebus.messaging.messagesender), [TopicClient](/dotnet/api/microsoft.servicebus.messaging.topicclient)**: Send, SendAsync, SendBatch, SendBatchAsync 
 * **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
 
-Получение операций не включаются, так как предполагается, что приложение hello получает сообщения с помощью hello [ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) режиме внутри некоторых цикл получения или с [OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) обратного вызова, и только затем открывается транзакции области видимости для обработки сообщения hello.
+Операции получения не указаны, так как предполагается, что приложение получает сообщения с помощью режима [ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode), внутри некоторого цикла получения или с помощью с обратного вызова [OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__Microsoft_ServiceBus_Messaging_OnMessageOptions_) и только затем открывает область транзакций для обработки сообщения.
 
-Hello метода обработки сообщения hello (полное, отложить прерывания недоставленных сообщений), то возникает внутри области hello и в зависимости от, hello общий результат транзакции hello.
+Обработка сообщения (выполнено, прервано, отложено, не доставлено) происходит в пределах области и зависит от общего результата транзакции.
 
 ## <a name="transfers-and-send-via"></a>Передачи и функция "отправить через"
-tooenable транзакций передача в эксплуатацию данных из очереди tooa процессора, а затем tooanother очереди, Service Bus поддерживает *передачи*. В операции передачи отправитель сначала отправляет tooa сообщение «очередь передачи» и очередь передачи hello немедленно перемещает toohello сообщение hello предназначен конечной очереди, используя же надежной передачи реализацию, которая использует возможность автоматическую пересылку hello hello в. приветственное сообщение никогда не будет зафиксирована toohello передачи очереди журнала таким образом, что он станет видимым для потребителей очередь передачи hello.
+Чтобы обеспечить транзакционное перемещение в данных из очереди в обработчик, а затем в другую очередь, служебная шина поддерживает *передачи*. В операции передачи отправитель сначала отправляет сообщение в "очередь передачи", которая сразу же перемещает его в очередь пункта назначения, используя ту же надежную реализацию передачи, на которую полагается функция автоматической пересылки. Сообщение никогда не фиксируется в журнале очереди передачи так, чтобы стать видимым для получателей очереди передачи.
 
-Hello power этой возможности транзакций становится очевидным, когда очередь передачи hello сам является источником hello входящих сообщений hello отправителя. Другими словами, Service Bus можно перенести очередь назначения toohello сообщение hello «via» hello очереди передачи, при выполнении полной (или отложить, или недоставленных писем) операция на входящее сообщение hello в одной атомарной операции. 
+Эффективность этой возможности становится очевидной, когда сама очередь передачи является источником для входных сообщений отправителя. Другими словами, служебная шина может передавать сообщения в очередь назначения "через" очередь передачи, при этом делая входное сообщение завершенным (либо отложенным или недоставленным) в рамках одной атомарной операции. 
 
 ### <a name="see-it-in-code"></a>Пример кода
-tooset копирование подобная передача создать отправителя сообщения, предназначенного для очереди назначения hello через очередь передачи hello. Также имеется получатель, который извлекает сообщения из той же очереди. Например:
+Для настройки таких передач вы создаете отправитель сообщений, сориентированный на очередь назначения через очередь передачи. Также имеется получатель, который извлекает сообщения из той же очереди. Например:
 
 ```csharp
 var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
 var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
 ```
 
-Простой транзакции затем использует эти элементы, как следующий пример hello:
+Тогда простая транзакция использует эти элементы, как показано в следующем примере.
 
 ```csharp
 var msg = receiver.Receive();
@@ -62,22 +62,22 @@ using (scope = new TransactionScope())
 {
     // Do whatever work is required 
 
-    var newmsg = ... // package hello result 
+    var newmsg = ... // package the result 
 
-    msg.Complete(); // mark hello message as done
-    sender.Send(newmsg); // forward hello result
+    msg.Complete(); // mark the message as done
+    sender.Send(newmsg); // forward the result
 
-    scope.Complete(); // declare hello transaction done
+    scope.Complete(); // declare the transaction done
 } 
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-См. следующие дополнительные сведения об очередях Service Bus hello.
+Дополнительные сведения об очередях служебной шины см. в следующих статьях:
 
 * [Объединение в цепочки сущностей служебной шины с помощью автоматической переадресации](service-bus-auto-forwarding.md)
 * [Пример автоматической пересылки](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Пример выполнения атомарных транзакций с помощью служебной шины](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [Сравнение службы очередей Azure и службы очередей служебной шины](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-* [Как toouse очереди шины обслуживания](service-bus-dotnet-get-started-with-queues.md)
+* [Как использовать очереди служебной шины](service-bus-dotnet-get-started-with-queues.md)
 

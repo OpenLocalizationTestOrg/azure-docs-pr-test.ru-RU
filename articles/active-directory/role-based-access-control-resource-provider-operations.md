@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure операций поставщика для диспетчера ресурсов | Документы Microsoft"
-description: "Сведения о hello операций, доступных в hello поставщиков ресурсов Microsoft Azure Resource Manager"
+title: "Операции поставщиков Azure Resource Manager | Документация Майкрософт"
+description: "Описание операций, доступных в поставщиках ресурсов Microsoft Azure Resource Manager."
 services: active-directory
 documentationcenter: 
 author: jboeshart
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 2d2f912ecbade335667d68fdc42ce03a2930a0eb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Операции поставщиков ресурсов Azure Resource Manager
 
-В этом документе перечислены операции hello, доступные для каждого поставщика ресурсов Microsoft Azure Resource Manager. Их можно использовать в tooresources разрешения пользовательскими ролями tooprovide детального контроля доступа на основе ролей (RBAC) в Azure. Обратите внимание на то, что это не полный список, и операции могут добавляться или удаляться по мере обновления поставщиков. Формат hello выполните операцию строки `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Полный список текущего использования `Get-AzureRmProviderOperation` (в PowerShell) или `azure provider operations show` (в Azure CLI) toolist операций поставщиков ресурсов Azure.
+В этом документе перечислены операции, доступные в каждом поставщике ресурсов Microsoft Azure Resource Manager. Они могут использоваться в настраиваемых ролях, чтобы обеспечить детальные разрешения управления доступом на основе ролей (RBAC) для ресурсов в Azure. Обратите внимание на то, что это не полный список, и операции могут добавляться или удаляться по мере обновления поставщиков. Строки операций используют формат `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Чтобы получить полный актуальный список, используйте командлет `Get-AzureRmProviderOperation` (в PowerShell) или команду `azure provider operations show` (в Azure CLI).
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 | Операция | Описание |
 |---|---|
 |/configuration/action|Обновляет конфигурацию клиента.|
-|/services/action|Обновляет экземпляр службы в клиенте hello.|
+|/services/action|Обновляет экземпляр службы в клиенте.|
 |/configuration/write|Создает конфигурацию клиента.|
-|/configuration/read|Считывает hello настройки конфигурации клиента.|
-|/services/write|Создает экземпляр службы в клиенте hello.|
-|/services/read|Считывает hello экземпляров службы в клиенте hello.|
-|/services/delete|Удаляет экземпляр службы в клиенте hello.|
-|/services/servicemembers/action|Создает экземпляр элемента службы в службе hello.|
-|/services/servicemembers/read|Считывает hello экземпляр элемента службы в службе hello.|
-|/services/servicemembers/delete|Удаляет член экземпляра службы в службе hello.|
-|/services/servicemembers/alerts/read|Считывает hello оповещения для участника службы.|
-|/services/alerts/read|Считывает hello оповещения для службы.|
-|/services/alerts/read|Считывает hello оповещения для службы.|
+|/configuration/read|Считывает конфигурацию клиента.|
+|/services/write|Создает экземпляр службы в клиенте.|
+|/services/read|Считывает экземпляры службы в клиенте.|
+|/services/delete|Удаляет экземпляр службы из клиента.|
+|/services/servicemembers/action|Создает экземпляр члена службы в клиенте.|
+|/services/servicemembers/read|Считывает экземпляр члена службы в клиенте.|
+|/services/servicemembers/delete|Удаляет экземпляр члена службы из клиента.|
+|/services/servicemembers/alerts/read|Считывает оповещения для члена службы.|
+|/services/alerts/read|Считывает оповещения для службы.|
+|/services/alerts/read|Считывает оповещения для службы.|
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/06/2017
 |---|---|
 |/generateRecommendations/action|Создает рекомендации.|
 |/suppressions/action|Создает или обновляет подавления.|
-|/register/action|Регистрирует hello подписки для hello Microsoft Advisor|
+|/register/action|Регистрирует подписку для Microsoft Advisor.|
 |/generateRecommendations/read|Возвращает состояние создания рекомендаций.|
 |/recommendations/read|Считывает рекомендации.|
 |/suppressions/read|Возвращает подавления.|
@@ -56,11 +56,11 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/servers/read|Получает сведения о hello объекта hello указан сервер анализа данных.|
-|/servers/write|Создает или обновляет hello указан сервер анализа данных.|
-|/servers/delete|Удаляет hello сервера анализа данных.|
-|/servers/suspend/action|Приостанавливает hello сервера анализа данных.|
-|/servers/resume/action|Резюме hello сервера анализа данных.|
+|/servers/read|Извлекает информацию об указанном сервере анализа данных.|
+|/servers/write|Создает или обновляет указанный сервер анализа данных.|
+|/servers/delete|Удаляет сервер анализа данных.|
+|/servers/suspend/action|Приостанавливает сервер анализа данных.|
+|/servers/resume/action|Возобновляет работу сервера анализа данных.|
 |/servers/checkNameAvailability<br>/action|Проверяет, является ли данное имя сервера анализа данных допустимым и неиспользуемым.|
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
@@ -75,30 +75,30 @@ ms.lasthandoff: 10/06/2017
 |/service/delete|Удаляет экземпляр службы управления API.|
 |/service/updatehostname/action|Позволяет настроить, обновить или удалить имена личных доменов для службы управления API.|
 |/service/uploadcertificate/action|Передает SSL-сертификата для службы управления API.|
-|/service/backup/action|Резервной копии службы управления API toohello контейнера, заданного в пользователя предоставлен учетной записи хранилища|
-|/service/restore/action|Восстановление службы управления API из указанного контейнера hello в пользователя, предоставленных учетной записи хранилища|
+|/service/backup/action|Архивирует службу управления API в указанный контейнер в предоставленной пользователем учетной записи хранения.|
+|/service/restore/action|Восстанавливает службу управления API из указанного контейнера в предоставленной пользователем учетной записи хранения.|
 |/service/managedeployments/action|Позволяет изменить номер SKU или единицы, а также добавить или удалить региональные развертывания службы управления API.|
-|/service/getssotoken/action|Получает токен единого входа, который можно использовать toologin портал прежних версий службы управления API от имени администратора|
-|/service/applynetworkconfigurationupdates/action|Ресурсов Microsoft.ApiManagement hello обновлений, выполняемых в виртуальной сети toopick обновить параметры сети.|
+|/service/getssotoken/action|Возвращает маркер единого входа, который может использоваться для входа на портал прежней версии службы управления API от имени администратора.|
+|/service/applynetworkconfigurationupdates/action|Обновляет ресурсы Microsoft.ApiManagement, работающие в виртуальной сети, для применения обновленных параметров сети.|
 |/service/operationresults/read|Возвращает текущее состояние длительной операции.|
-|/service/networkStatus/read|Возвращает состояние доступа hello сетевых ресурсов.|
+|/service/networkStatus/read|Возвращает состояние сетевого доступа для ресурсов.|
 |/service/loggers/read|Возвращает список средств ведения журнала или сведения о средстве ведения журнала.|
 |/service/loggers/write|Добавляет новое средство ведения журнала или обновляет существующее.|
 |/service/loggers/delete|Удаляет существующее средство ведения журнала.|
 |/service/users/read|Возвращает список зарегистрированных пользователей или сведения об учетной записи пользователя.|
 |/service/users/write|Регистрирует нового пользователя или обновляет данные учетной записи существующего пользователя.|
 |/service/users/delete|Удаляет учетную запись пользователя.|
-|/service/users/generateSsoUrl/action|Создает URL-адрес единого входа. Hello URL-адрес может быть tooaccess используется портал администрирования|
+|/service/users/generateSsoUrl/action|Создает URL-адрес единого входа. URL-адрес, который можно использовать для доступа к порталу администрирования.|
 |/service/users/subscriptions/read|Возвращает список подписок пользователя.|
 |/service/users/keys/read|Возвращает список ключей пользователя.|
 |/service/users/groups/read|Возвращает список групп пользователя.|
 |/service/tenant/operationResults/read|Возвращает список результатов операций или результат определенной операции.|
-|/service/tenant/policy/read|Получить конфигурацию политики для клиента hello|
-|/service/tenant/policy/write|Задать конфигурацию политики для клиента hello|
-|/service/tenant/policy/delete|Удалить конфигурацию политики для клиента hello|
-|/service/tenant/configuration/save/action|Создает фиксации с конфигурации моментального снимка toohello указанную ветвь в репозитории hello|
-|/service/tenant/configuration/deploy/action|Запускает задачу развертывания tooapply изменения из конфигурации toohello ветви git указанного hello в базе данных.|
-|/service/tenant/configuration/validate/action|Проверяет изменений из ветви git указанного hello|
+|/service/tenant/policy/read|Возвращает конфигурацию политики для клиента.|
+|/service/tenant/policy/write|Задает конфигурацию политики для клиента.|
+|/service/tenant/policy/delete|Удаляет конфигурацию политики для клиента.|
+|/service/tenant/configuration/save/action|Создает фиксацию с использованием моментального снимка конфигурации для указанной ветви в репозитории.|
+|/service/tenant/configuration/deploy/action|Выполняет задачу развертывания для применения изменений из указанной ветви Git к конфигурации в базе данных.|
+|/service/tenant/configuration/validate/action|Проверяет изменения из указанной ветви Git.|
 |/service/tenant/configuration/operationResults/read|Возвращает список результатов операций или результат определенной операции.|
 |/service/tenant/configuration/syncState/read|Возвращает состояние последней синхронизации с Git.|
 |/service/tenant/access/read|Возвращает сведения о доступе клиента.|
@@ -109,8 +109,8 @@ ms.lasthandoff: 10/06/2017
 |/service/identityProviders/write|Создает новый поставщик удостоверений или обновляет данные существующего.|
 |/service/identityProviders/delete|Удаляет существующий поставщик удостоверений.|
 |/service/subscriptions/read|Возвращает список подписок на продукт или сведения о подписке на продукт.|
-|/service/subscriptions/write|Подписка существующего пользователя tooan существующий продукт или обновить существующие сведения о подписке. Эта операция может быть используется toorenew подписки|
-|/service/subscriptions/delete|Удаляет подписку. Эта операция может быть используется toodelete подписки|
+|/service/subscriptions/write|Подписывает существующего пользователя на имеющийся продукт или обновляет данные существующей подписки. С помощью этой операции можно обновить подписку.|
+|/service/subscriptions/delete|Удаляет подписку. С помощью этой операции можно удалить подписку.|
 |/service/subscriptions/regeneratePrimaryKey/action|Повторно создает первичный ключ подписки.|
 |/service/subscriptions/regenerateSecondaryKey/action|Повторно создает вторичный ключ подписки.|
 |/service/backends/read|Возвращает список серверных частей или сведения о серверной части.|
@@ -132,8 +132,8 @@ ms.lasthandoff: 10/06/2017
 |/service/products/write|Создает новый продукт или обновляет данные существующего.|
 |/service/products/delete|Удаляет существующий продукт.|
 |/service/products/subscriptions/read|Возвращает список подписок на продукт.|
-|/service/products/apis/read|Получение списка интерфейсов API добавлены tooexisting продукта|
-|/service/products/apis/write|Добавить существующий товар tooexisting API|
+|/service/products/apis/read|Возвращает список интерфейсов API, добавленных в существующий продукт.|
+|/service/products/apis/write|Добавляет API в существующий продукт.|
 |/service/products/apis/delete|Удаляет API из существующего продукта.|
 |/service/products/policy/read|Возвращает конфигурацию политики существующего продукта.|
 |/service/products/policy/write|Задает конфигурацию политики существующего продукта.|
@@ -154,7 +154,7 @@ ms.lasthandoff: 10/06/2017
 |/service/groups/write|Создает новую группу или обновляет данные существующей.|
 |/service/groups/delete|Удаляет существующую группу.|
 |/service/groups/users/read|Возвращает список пользователей группы.|
-|/service/groups/users/write|Добавить существующую группу tooexisting пользователя|
+|/service/groups/users/write|Добавляет существующего пользователя в существующий продукт.|
 |/service/groups/users/delete|Удаляет пользователя из существующей группы.|
 |/service/authorizationServers/read|Возвращает список серверов авторизации или сведения о сервере авторизации.|
 |/service/authorizationServers/write|Создает новый сервер авторизации или обновляет данные существующего.|
@@ -172,21 +172,21 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/appidentities/Read|Возвращает hello ресурс (веб-узел), зарегистрированный hello шлюза.|
+|/appidentities/Read|Возвращает ресурс (веб-узел), зарегистрированный в шлюзе.|
 |/appidentities/Write|Создает удостоверение приложения.|
 |/appidentities/Delete|Удаляет существующее удостоверение приложения.|
-|/deploymenttemplates/listMetadata/Action|Перечисляются метаданные пользовательского интерфейса, связанный с hello пакет приложения API.|
-|/deploymenttemplates/generate/Action|Возвращает шаблон развертывания tooprovision экземпляры приложения API.|
-|/gateways/Read|Экземпляр шлюза возвращает hello.|
+|/deploymenttemplates/listMetadata/Action|Отображает метаданные пользовательского интерфейса, связанные с пакетом приложения API.|
+|/deploymenttemplates/generate/Action|Возвращает шаблон развертывания для подготовки экземпляров приложения API.|
+|/gateways/Read|Возвращает экземпляр шлюза.|
 |/gateways/Write|Создает новый шлюз или обновляет существующий.|
 |/gateways/Delete|Удаляет существующий экземпляр шлюза.|
 |/gateways/listLoginUris/Action|Заполняет хранилище маркеров и возвращает универсальные коды ресурса (URI) имени для входа OAuth.|
 |/gateways/listKeys/Action|Возвращает секреты шлюза.|
-|/gateways/tokens/Write|Создает новый маркер Zumo с заданным именем hello.|
-|/gateways/registrations/Read|Возвращает hello ресурс (веб-узел), зарегистрированный hello шлюза.|
-|/gateways/registrations/Write|Регистрирует hello шлюза ресурсов (веб-сайт).|
-|/gateways/registrations/Delete|Отменяет регистрацию ресурс (веб-сайт) из hello шлюза.|
-|/apiapps/Read|Возвращает hello экземпляр приложения API.|
+|/gateways/tokens/Write|Создает маркер Zumo с заданным именем.|
+|/gateways/registrations/Read|Возвращает ресурс (веб-узел), зарегистрированный в шлюзе.|
+|/gateways/registrations/Write|Регистрирует ресурс (веб-сайт) в шлюзе.|
+|/gateways/registrations/Delete|Отменяет регистрацию ресурса (веб-сайт) в шлюзе.|
+|/apiapps/Read|Возвращает экземпляр приложения API.|
 |/apiapps/Write|Создает новое приложение API или обновляет существующее.|
 |/apiapps/Delete|Удаляет существующий экземпляр приложения API.|
 |/apiapps/listStatus/Action|Возвращает состояние приложения API.|
@@ -197,27 +197,27 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/elevateAccess/action|Предоставляет hello вызывающий объект доступа администратор доступа пользователя в области приветствия клиента|
-|/classicAdministrators/read|Считывает hello администраторов для подписки hello.|
-|/classicAdministrators/write|Добавление или изменение подписки tooa администратора.|
-|/classicAdministrators/delete|Здравствуйте, администратор удаляет из подписки hello.|
-|/locks/read|Получает блокировки на hello указана область.|
-|/locks/write|Добавление блокировок в указанный hello области.|
-|/locks/delete|Удаление блокировок в hello указана область.|
+|/elevateAccess/action|Предоставляет вызывающему доступ с правами администратора для области действия клиента.|
+|/classicAdministrators/read|Считывает администраторов для подписки.|
+|/classicAdministrators/write|Добавляет или изменяет администратора подписки.|
+|/classicAdministrators/delete|Удаляет учетные данные администратора из подписки.|
+|/locks/read|Возвращает блокировки в указанной области.|
+|/locks/write|Добавляет блокировки в указанной области.|
+|/locks/delete|Удаляет блокировки в указанной области.|
 |/policyAssignments/read|Возвращает сведения о назначении политики.|
-|/policyAssignments/write|Создать политику назначения на hello указан области.|
-|/policyAssignments/delete|Удаление назначения политики в hello указана область.|
-|/permissions/read|Список всех разрешений hello, которые у вызывающего объекта hello в заданной области.|
+|/policyAssignments/write|Создает назначение политики в указанной области.|
+|/policyAssignments/delete|Удаляет назначение политики в указанной области.|
+|/permissions/read|Выводит список всех разрешений, которые есть у вызывающего в заданной области.|
 |/roleDefinitions/read|Возвращает сведения об определении роли.|
 |/roleDefinitions/write|Создает или обновляет определение настраиваемой роли с помощью указанных разрешений и назначаемых областей.|
-|/roleDefinitions/delete|Удалить hello указанного определения пользовательской роли.|
+|/roleDefinitions/delete|Удаляет указанное определение настраиваемой роли.|
 |/providerOperations/read|Возвращает операции для всех поставщиков ресурсов, которые могут быть использованы в определениях ролей.|
 |/policyDefinitions/read|Возвращает сведения об определении политики.|
 |/policyDefinitions/write|Создает определение настраиваемой политики.|
 |/policyDefinitions/delete|Удаляет определение политики.|
 |/roleAssignments/read|Возвращает сведения о назначении роли.|
-|/roleAssignments/write|Создание роли назначения на hello указан области.|
-|/roleAssignments/delete|Удалить назначение роли в hello указана область.|
+|/roleAssignments/write|Создает назначение роли в указанной области.|
+|/roleAssignments/delete|Здесь описывается удаление назначения роли в указанной области.|
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -252,8 +252,8 @@ ms.lasthandoff: 10/06/2017
 |/automationAccounts/jobs/stop/action|Останавливает задание службы автоматизации Azure.|
 |/automationAccounts/jobs/suspend/action|Приостанавливает задание службы автоматизации Azure.|
 |/automationAccounts/jobs/resume/action|Возобновляет выполнение задания службы автоматизации Azure.|
-|/automationAccounts/jobs/runbookContent/action|Получает содержимое runbook службы автоматизации Azure hello hello во время выполнения задания hello hello|
-|/automationAccounts/jobs/output/action|Получает выходные данные задания hello|
+|/automationAccounts/jobs/runbookContent/action|Возвращает содержимое runbook службы автоматизации Azure во время выполнения задания.|
+|/automationAccounts/jobs/output/action|Возвращает выходные данные задания.|
 |/automationAccounts/jobs/read|Возвращает задание службы автоматизации Azure.|
 |/automationAccounts/jobs/write|Создает задание службы автоматизации Azure.|
 |/automationAccounts/jobs/stop/action|Останавливает задание службы автоматизации Azure.|
@@ -266,15 +266,15 @@ ms.lasthandoff: 10/06/2017
 |/automationAccounts/variables/read|Считывает ресурс переменной службы автоматизации Azure.|
 |/automationAccounts/variables/write|Создает или обновляет ресурс переменной службы автоматизации Azure.|
 |/automationAccounts/variables/delete|Удаляет ресурс переменной службы автоматизации Azure.|
-|/automationAccounts/runbooks/readContent/action|Получает содержимое runbook службы автоматизации Azure hello|
+|/automationAccounts/runbooks/readContent/action|Возвращает содержимое runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/read|Возвращает runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/write|Создает или обновляет runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/delete|Удаляет runbook службы автоматизации Azure.|
-|/automationAccounts/runbooks/draft/readContent/action|Получает hello содержимое черновика runbook службы автоматизации Azure|
-|/automationAccounts/runbooks/draft/writeContent/action|Создает hello содержимое черновика runbook службы автоматизации Azure|
+|/automationAccounts/runbooks/draft/readContent/action|Возвращает содержимое черновика runbook службы автоматизации Azure.|
+|/automationAccounts/runbooks/draft/writeContent/action|Создает содержимое черновика runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/draft/read|Возвращает черновик runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/draft/publish/action|Публикует черновик runbook службы автоматизации Azure.|
-|/automationAccounts/runbooks/draft/undoEdit/action|Отменить черновик runbook службы автоматизации Azure tooan изменения|
+|/automationAccounts/runbooks/draft/undoEdit/action|Отменяет правки в черновике runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/draft/testJob/read|Возвращает тестовое задание черновика runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/draft/testJob/write|Создает тестовое задание черновика runbook службы автоматизации Azure.|
 |/automationAccounts/runbooks/draft/testJob/stop/action|Останавливает тестовое задание черновика runbook службы автоматизации Azure.|
@@ -293,21 +293,21 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписки для hello поставщика ресурсов пакета и обеспечивает создание учетных записей пакетного hello|
+|/register/action|Регистрирует подписку для поставщика ресурсов пакетной службы и позволяет создавать учетные записи пакетной службы.|
 |/batchAccounts/write|Создает новую учетную запись пакетной службы или обновляет существующую.|
-|/batchAccounts/read|Перечисляет учетные записи пакетного или получает свойства hello пакетной учетной записи|
+|/batchAccounts/read|Выводит список учетных записей пакетной службы или возвращает свойства учетной записи пакетной службы.|
 |/batchAccounts/delete|Удаляет учетную запись пакетной службы.|
 |/batchAccounts/listkeys/action|Отображает ключи доступа для учетной записи пакетной службы.|
 |/batchAccounts/regeneratekeys/action|Повторно создает ключи доступа для учетной записи пакетной службы.|
-|/batchAccounts/syncAutoStorageKeys/action|Синхронизирует ключи доступа для hello автоматического хранения данных учетной записи, настроенной для пакетной учетной записи|
-|/batchAccounts/applications/read|Получает свойства приложения hello или список приложений|
+|/batchAccounts/syncAutoStorageKeys/action|Синхронизирует ключи доступа для автоматической учетной записи хранения, настроенной для учетной записи пакетной службы.|
+|/batchAccounts/applications/read|Выводит список приложений или возвращает свойства приложения.|
 |/batchAccounts/applications/write|Создает новое приложение или обновляет существующее.|
 |/batchAccounts/applications/delete|Удаляет приложение.|
-|/batchAccounts/applications/versions/read|Возвращает свойства hello для пакета приложения|
+|/batchAccounts/applications/versions/read|Возвращает свойства пакета приложения.|
 |/batchAccounts/applications/versions/write|Создает новый пакет приложения или обновляет существующий.|
 |/batchAccounts/applications/versions/activate/action|Активирует пакет приложения.|
 |/batchAccounts/applications/versions/delete|Удаляет пакет приложения.|
-|/locations/quotas/read|Возвращает квоты пакета hello указан подписки в указанном регионе Azure hello|
+|/locations/quotas/read|Возвращает квоты пакетной службы для указанной подписки в заданном регионе Azure.|
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -322,39 +322,39 @@ ms.lasthandoff: 10/06/2017
 |/mapApis/Read|Операция чтения.|
 |/mapApis/Write|Операции записи.|
 |/mapApis/Delete|Операция удаления.|
-|/mapApis/regenerateKey/action|Повторно создает ключ hello|
-|/mapApis/listSecrets/action|Hello список секретов|
-|/mapApis/listSingleSignOnToken/action|Hello чтения единого входа на авторизации маркеров для ресурсов|
-|/Operations/read|Описание операции hello.|
+|/mapApis/regenerateKey/action|Повторно создает ключ.|
+|/mapApis/listSecrets/action|Отображает секреты.|
+|/mapApis/listSingleSignOnToken/action|Считывает маркер авторизации единого входа для ресурса.|
+|/Operations/read|Описание операции.|
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 | Операция | Описание |
 |---|---|
 |/checknameavailability/action|Проверяет, доступно ли имя для нового кэша Redis.|
-|/register/action|Регистрирует поставщика ресурсов «Microsoft.Cache» hello с подпиской|
-|/unregister/action|Отменяет регистрацию поставщика ресурсов «Microsoft.Cache» hello с подпиской|
-|/redis/write|Изменение hello параметры и конфигурации кэша Redis на портале управления hello|
-|/redis/read|Просмотр hello параметры и конфигурации кэша Redis на портале управления hello|
-|/redis/delete|Удаление hello весь кэш Redis|
-|/redis/listKeys/action|Представление hello значение ключей доступа к кэшу Redis на портале управления hello|
-|/redis/regenerateKey/action|Измените значение hello ключи доступа кэша Redis на портале управления hello|
+|/register/action|Регистрирует поставщик ресурсов Microsoft.Cache для подписки.|
+|/unregister/action|Отменяет регистрацию поставщика ресурсов Microsoft.Cache для подписки.|
+|/redis/write|Изменяет параметры и конфигурацию кэша Redis на портале управления.|
+|/redis/read|Отображает параметры и конфигурацию кэша Redis на портале управления.|
+|/redis/delete|Удаляет весь кэш Redis.|
+|/redis/listKeys/action|Отображает значения ключей доступа к кэшу Redis на портале управления.|
+|/redis/regenerateKey/action|Изменяет значения ключей доступа к кэшу Redis на портале управления.|
 |/redis/import/action|Импортирует в Redis данные в указанном формате из нескольких больших двоичных объектов.|
-|/redis/export/action|Экспорт Redis данных tooprefixed хранилища больших двоичных объектов в указанном формате|
+|/redis/export/action|Экспортирует данные Redis в большие двоичные объекты с префиксом в службе хранилища в указанном формате.|
 |/redis/forceReboot/action|Принудительно перезапускает экземпляр кэша. При этом возможна потеря данных.|
 |/redis/stop/action|Останавливает экземпляр кэша.|
 |/redis/start/action|Запускает экземпляр кэша.|
-|/redis/metricDefinitions/read|Возвращает hello доступные метрики для кэша Redis|
-|/redis/firewallRules/read|Получить правила брандмауэра IP hello кэша Redis|
-|/redis/firewallRules/write|Изменение правил брандмауэра IP hello кэша Redis|
+|/redis/metricDefinitions/read|Возвращает доступные метрики для кэша Redis.|
+|/redis/firewallRules/read|Возвращает правила IP-адресов брандмауэра для кэша Redis.|
+|/redis/firewallRules/write|Изменяет правила IP-адресов брандмауэра для кэша Redis.|
 |/redis/firewallRules/delete|Удаляет правила IP-адресов брандмауэра для кэша Redis.|
-|/redis/listUpgradeNotifications/read|Список hello последние обновления уведомления для кэша клиента hello.|
+|/redis/listUpgradeNotifications/read|Выводит список последних уведомлений об обновлениях для клиента кэша.|
 |/redis/linkedservers/read|Возвращает связанные серверы для кэша Redis.|
-|/redis/linkedservers/write|Добавление связанного сервера tooa кэша Redis|
+|/redis/linkedservers/write|Добавляет связанный сервер для кэша Redis.|
 |/redis/linkedservers/delete|Удаляет связанный сервер из кэша Redis.|
-|/redis/patchSchedules/read|Возвращает hello исправления расписание кэша Redis|
-|/redis/patchSchedules/write|Изменение hello исправления расписание кэша Redis|
-|/redis/patchSchedules/delete|Удаление расписания обновления hello кэша Redis|
+|/redis/patchSchedules/read|Возвращает расписание исправления для кэша Redis.|
+|/redis/patchSchedules/write|Изменяет расписание исправления для кэша Redis.|
+|/redis/patchSchedules/delete|Удаляет расписание исправления для кэша Redis.|
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -362,192 +362,192 @@ ms.lasthandoff: 10/06/2017
 |---|---|
 |/provisionGlobalAppServicePrincipalInUserTenant/Action|Подготавливает субъект-службу для субъекта приложения-службы.|
 |/validateCertificateRegistrationInformation/Action|Проверяет объект покупки сертификата без его отправки.|
-|/register/action|Регистрация поставщика ресурсов hello сертификатов Майкрософт для подписки hello|
+|/register/action|Регистрирует поставщик сертификатов Майкрософт для подписки.|
 |/certificateOrders/Write|Добавляет новый заказ сертификата или обновляет существующий.|
 |/certificateOrders/Delete|Удаляет существующий сертификат службы приложений.|
-|/certificateOrders/Read|Получить список hello CertificateOrders|
+|/certificateOrders/Read|Возвращает список заказов сертификатов.|
 |/certificateOrders/reissue/Action|Повторно отправляет существующий заказ сертификата.|
 |/certificateOrders/renew/Action|Обновляет существующий заказ сертификата.|
-|/certificateOrders/retrieveCertificateActions/Action|Получить список hello действия сертификата|
+|/certificateOrders/retrieveCertificateActions/Action|Извлекает список действий сертификата.|
 |/certificateOrders/retrieveEmailHistory/Action|Извлекает журнал электронных сообщений для сертификата.|
 |/certificateOrders/resendEmail/Action|Повторно отправляет сообщение сертификата.|
 |/certificateOrders/verifyDomainOwnership/Action|проверка принадлежности домена;|
-|/certificateOrders/resendRequestEmails/Action|Запрос на повторную отправку tooanother адрес электронной почты, отправляется сообщение электронной почты|
+|/certificateOrders/resendRequestEmails/Action|Повторно отправляет сообщения запроса на другой электронный адрес.|
 |/certificateOrders/resendRequestEmails/Action|Извлекает печать сайта для выданного сертификата службы приложений.|
 |/certificateOrders/certificates/Write|Добавляет новый сертификат или обновляет существующий.|
 |/certificateOrders/certificates/Delete|Удаляет существующий сертификат.|
-|/certificateOrders/certificates/Read|Получить список сертификатов hello|
+|/certificateOrders/certificates/Read|Возвращает список сертификатов.|
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 | Операция | Описание |
 |---|---|
-|/register/action|Зарегистрировать tooClassic вычислений|
-|/checkDomainNameAvailability/action|Проверяет доступность заданного доменного имени hello.|
-|/moveSubscriptionResources/action|Перемещение всех классических ресурсов tooa другую подписку.|
-|/validateSubscriptionMoveAvailability/action|Проверьте доступность hello подписки для операции перемещения классический.|
-|/operatingSystemFamilies/read|Перечисляет семейства гостевой операционной системы hello в Microsoft Azure, а также hello версии операционной системы для каждого f
-|/capabilities/read|Показывает возможности hello|
-|/operatingSystems/read|Список версий hello hello гостевой операционной системы, доступных в Microsoft Azure.|
-|/resourceTypes/skus/read|Получает список hello Sku для поддерживаемых типов ресурсов.|
-|/domainNames/read|Возвращать hello доменных имен для ресурсов.|
-|/domainNames/write|Добавление или изменение hello доменных имен для ресурсов.|
-|/domainNames/delete|Удалите hello доменных имен для ресурсов.|
-|/domainNames/swap/action|Меняет местами hello промежуточного слота toohello производственный слот.|
-|/domainNames/serviceCertificates/read|Возвращает hello использованных сертификатов службы.|
-|/domainNames/serviceCertificates/write|Добавление или изменение использованных сертификатов службы hello.|
-|/domainNames/serviceCertificates/delete|Удаление использованных сертификатов службы hello.|
-|/domainNames/serviceCertificates/operationStatuses/read|Читает состояние операции hello для сертификатов службы hello доменных имен.|
-|/domainNames/capabilities/read|Показывает возможности имя домена hello|
-|/domainNames/extensions/read|Возвращает hello расширения доменных имен.|
-|/domainNames/extensions/write|Добавление расширения доменных имен hello.|
-|/domainNames/extensions/delete|Удалите hello расширения доменных имен.|
-|/domainNames/extensions/operationStatuses/read|Читает состояние операции hello для hello доменные имена расширения.|
-|/domainNames/active/write|Задает имя активного домена hello.|
-|/domainNames/slots/read|Отображает hello слотов развертывания.|
-|/domainNames/slots/write|Создает или обновляет развертывание hello.|
+|/register/action|Выполняет регистрацию в классической вычислительной среде.|
+|/checkDomainNameAvailability/action|Проверяет доступность заданного доменного имени.|
+|/moveSubscriptionResources/action|Перемещает все классические ресурсы в другую подписку.|
+|/validateSubscriptionMoveAvailability/action|Проверяет доступность классической операции перемещения для подписки.|
+|/operatingSystemFamilies/read|Выводит список семейств гостевых операционных систем, доступных в Microsoft Azure, а также список версий операционной системы, доступных для каждого семейства.
+|/capabilities/read|Отображает возможности.|
+|/operatingSystems/read|Выводит список версий гостевой операционной системы, доступных в Microsoft Azure.|
+|/resourceTypes/skus/read|Возвращает список номеров SKU для поддерживаемых типов ресурсов.|
+|/domainNames/read|Возвращает доменные имена для ресурсов.|
+|/domainNames/write|Добавляет или изменяет доменные имена для ресурсов.|
+|/domainNames/delete|Удаляет доменные имена для ресурсов.|
+|/domainNames/swap/action|Переключает промежуточный слот на рабочий слот.|
+|/domainNames/serviceCertificates/read|Возвращает используемые сертификаты службы.|
+|/domainNames/serviceCertificates/write|Добавляет или изменяет используемые сертификаты службы.|
+|/domainNames/serviceCertificates/delete|Удаляет используемые сертификаты службы.|
+|/domainNames/serviceCertificates/operationStatuses/read|Считывает состояние операции сертификатов службы доменных имен.|
+|/domainNames/capabilities/read|Отображает возможности доменного имени.|
+|/domainNames/extensions/read|Возвращает расширения доменных имен.|
+|/domainNames/extensions/write|Добавляет расширения доменных имен.|
+|/domainNames/extensions/delete|Удаляет расширения доменных имен.|
+|/domainNames/extensions/operationStatuses/read|Считывает состояние операции расширений доменных имен.|
+|/domainNames/active/write|Задает активное доменное имя.|
+|/domainNames/slots/read|Отображает слоты развертывания.|
+|/domainNames/slots/write|Создает или обновляет развертывание.|
 |/domainNames/slots/delete|Удаляет заданный слот развертывания.|
 |/domainNames/slots/start/action|Запускает слот развертывания.|
-|/domainNames/slots/stop/action|Приостанавливает hello слот развертывания.|
-|/domainNames/slots/operationStatuses/read|Читает состояние операции hello для слотов имена домена hello.|
-|/domainNames/slots/roles/read|Получение hello роли для слота развертывания hello.|
-|/domainNames/slots/roles/extensionReferences/read|Возвращает hello ссылки на расширение для роли слота развертывания hello.|
-|/domainNames/slots/roles/extensionReferences/write|Добавление или изменение hello ссылки на расширение для роли слота развертывания hello.|
-|/domainNames/slots/roles/extensionReferences/delete|Удалите ссылку hello расширение для роли слота развертывания hello.|
-|/domainNames/slots/roles/extensionReferences/operationStatuses/read|Читает состояние операции hello для ссылок на расширение ролей слотов в имена домена hello.|
-|/domainNames/slots/roles/roleInstances/read|Получение экземпляра роли hello.|
+|/domainNames/slots/stop/action|Приостанавливает слот развертывания.|
+|/domainNames/slots/operationStatuses/read|Считывает состояние операции слотов доменных имен.|
+|/domainNames/slots/roles/read|Возвращает роль для слота развертывания.|
+|/domainNames/slots/roles/extensionReferences/read|Возвращает ссылку на расширение для роли слота развертывания.|
+|/domainNames/slots/roles/extensionReferences/write|Добавляет или изменяет ссылку на расширение для роли слота развертывания.|
+|/domainNames/slots/roles/extensionReferences/delete|Удаляет ссылку на расширение для роли слота развертывания.|
+|/domainNames/slots/roles/extensionReferences/operationStatuses/read|Считывает состояние операции ссылок на расширение ролей слотов доменных имен.|
+|/domainNames/slots/roles/roleInstances/read|Возвращает экземпляр роли.|
 |/domainNames/slots/roles/roleInstances/restart/action|Перезапускает экземпляры роли.|
-|/domainNames/slots/roles/roleInstances/reimage/action|Экземпляр роли reimages hello.|
-|/domainNames/slots/roles/roleInstances/operationStatuses/read|Читает состояние операции hello для экземпляров роли ролей слотов имена hello домена.|
-|/domainNames/slots/state/start/write|Изменения hello toostopped состояние слота развертывания.|
-|/domainNames/slots/state/stop/write|Изменения hello toostarted состояние слота развертывания.|
-|/domainNames/slots/upgradeDomain/write|Показывает, как домен обновления hello.|
-|/domainNames/internalLoadBalancers/read|Возвращает hello внутренних подсистем балансировки нагрузки.|
+|/domainNames/slots/roles/roleInstances/reimage/action|Пересоздает образ экземпляра роли.|
+|/domainNames/slots/roles/roleInstances/operationStatuses/read|Считывает состояние операции экземпляров роли для ролей слотов доменных имен.|
+|/domainNames/slots/state/start/write|Задает состояние остановки для слота развертывания.|
+|/domainNames/slots/state/stop/write|Задает состояние запуска для слота развертывания.|
+|/domainNames/slots/upgradeDomain/write|Обновляет домен.|
+|/domainNames/internalLoadBalancers/read|Возвращает внутренние подсистемы балансировки нагрузки.|
 |/domainNames/internalLoadBalancers/write|Создает внутреннюю подсистему балансировки нагрузки.|
 |/domainNames/internalLoadBalancers/delete|Удаляет внутреннюю подсистему балансировки нагрузки.|
-|/domainNames/internalLoadBalancers/operationStatuses/read|Читает состояние операции hello для внутренних подсистем балансировки нагрузки имен доменов hello.|
-|/domainNames/loadBalancedEndpointSets/read|Показывает наборы конечных точек с балансировкой нагрузки hello|
-|/domainNames/loadBalancedEndpointSets/operationStatuses/read|Читает состояние операции hello для hello доменных имен наборы конечных точек с балансировкой нагрузки.|
-|/domainNames/availabilitySets/read|Показать hello набор доступности для ресурса hello.|
-|/quotas/read|Получите hello квоты для подписки hello.|
+|/domainNames/internalLoadBalancers/operationStatuses/read|Считывает состояние операции внутренних подсистем балансировки нагрузки доменных имен.|
+|/domainNames/loadBalancedEndpointSets/read|Отображает наборы конечных точек с балансировкой нагрузки.|
+|/domainNames/loadBalancedEndpointSets/operationStatuses/read|Считывает состояние операции наборов конечных точек с балансировкой нагрузки доменных имен.|
+|/domainNames/availabilitySets/read|Отображает группу доступности для ресурса.|
+|/quotas/read|Возвращает квоту для подписки.|
 |/virtualMachines/read|Извлекает список виртуальных машин.|
 |/virtualMachines/write|Добавляет или изменяет виртуальные машины.|
 |/virtualMachines/delete|Удаляет виртуальные машины.|
-|/virtualMachines/start/action|Запустите виртуальную машину hello.|
-|/virtualMachines/redeploy/action|Повторно развертывает hello виртуальной машины.|
+|/virtualMachines/start/action|Запустите виртуальную машину.|
+|/virtualMachines/redeploy/action|Повторно развертывает виртуальную машину.|
 |/virtualMachines/restart/action|Перезапускает виртуальные машины.|
-|/virtualMachines/stop/action|Останавливает hello виртуальной машины.|
-|/virtualMachines/shutdown/action|Завершить работу виртуальной машины hello.|
-|/virtualMachines/attachDisk/action|Присоединяет виртуальная машина tooa диска данных.|
+|/virtualMachines/stop/action|Останавливает виртуальную машину.|
+|/virtualMachines/shutdown/action|Завершает работу виртуальной машины.|
+|/virtualMachines/attachDisk/action|Подключает диск данных к виртуальной машине.|
 |/virtualMachines/detachDisk/action|Отключает диск данных от виртуальной машины.|
-|/virtualMachines/downloadRemoteDesktopConnectionFile/action|Загружает hello RDP-файл для виртуальной машины.|
-|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/read|Получение группы безопасности сети hello, связанный с сетевым интерфейсом hello.|
-|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанный с сетевым интерфейсом hello.|
-|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети hello, связанный с сетевым интерфейсом hello.|
-|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/operationStatuses/read|Читает состояние операции hello для виртуальных машин hello групп безопасности связанной сети.|
-|/virtualMachines/providers/Microsoft.Insights/metricDefinitions/read|Возвращает определения показателей hello.|
-|/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/read|Получение параметров диагностики hello.|
+|/virtualMachines/downloadRemoteDesktopConnectionFile/action|Скачивает RDP-файл для виртуальной машины.|
+|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/read|Возвращает группу безопасности сети, связанную с сетевым интерфейсом.|
+|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанную с сетевым интерфейсом.|
+|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети, связанную с сетевым интерфейсом.|
+|/virtualMachines/networkInterfaces/<br>associatedNetworkSecurityGroups/operationStatuses/read|Считывает состояние операции групп безопасности сети, связанных с виртуальными машинами.|
+|/virtualMachines/providers/Microsoft.Insights/metricDefinitions/read|Возвращает определения метрик.|
+|/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/read|Возвращает параметры диагностики.|
 |/virtualMachines/providers/Microsoft.Insights/diagnosticSettings/write|Добавляет или изменяет параметры диагностики.|
-|/virtualMachines/metrics/read|Возвращает метрику hello.|
-|/virtualMachines/operationStatuses/read|Читает состояние операции hello hello виртуальных машин.|
-|/virtualMachines/extensions/read|Получает расширение виртуальной машины hello.|
-|/virtualMachines/extensions/write|Помещает hello расширение виртуальной машины.|
-|/virtualMachines/extensions/operationStatuses/read|Читает состояние операции hello для hello расширений виртуальных машин.|
-|/virtualMachines/asyncOperations/read|Получает возможные асинхронные операции hello|
+|/virtualMachines/metrics/read|Возвращает метрики.|
+|/virtualMachines/operationStatuses/read|Считывает состояние операции виртуальных машин.|
+|/virtualMachines/extensions/read|Возвращает расширение виртуальной машины.|
+|/virtualMachines/extensions/write|Размещает расширение виртуальной машины.|
+|/virtualMachines/extensions/operationStatuses/read|Считывает состояние операции расширений виртуальной машины.|
+|/virtualMachines/asyncOperations/read|Возвращает возможные асинхронные операции.|
 |/virtualMachines/disks/read|Извлекает список дисков данных.|
-|/virtualMachines/associatedNetworkSecurityGroups/read|Получение группы безопасности сети hello, связанных с виртуальной машиной hello.|
-|/virtualMachines/associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанной с виртуальной машиной hello.|
-|/virtualMachines/associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети hello, связанных с виртуальной машиной hello.|
-|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/read|Читает состояние операции hello для виртуальных машин hello групп безопасности связанной сети.|
+|/virtualMachines/associatedNetworkSecurityGroups/read|Возвращает группу безопасности сети, связанную с виртуальной машиной.|
+|/virtualMachines/associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанную с виртуальной машиной.|
+|/virtualMachines/associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети, связанную с виртуальной машиной.|
+|/virtualMachines/associatedNetworkSecurityGroups/operationStatuses/read|Считывает состояние операции групп безопасности сети, связанных с виртуальными машинами.|
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 | Операция | Описание |
 |---|---|
-|/register/action|Зарегистрировать tooClassic сети|
-|/gatewaySupportedDevices/read|Возвращает список поддерживаемых устройств hello.|
-|/reservedIps/read|Возвращает hello зарезервированных IP-адресов|
+|/register/action|Выполняет регистрацию в классической сети.|
+|/gatewaySupportedDevices/read|Извлекает список поддерживаемых устройств.|
+|/reservedIps/read|Возвращает зарезервированные IP-адреса.|
 |/reservedIps/write|Добавляет новый зарезервированный IP-адрес.|
 |/reservedIps/delete|Удаляет зарезервированный IP-адрес.|
 |/reservedIps/link/action|Привязывает зарезервированный IP-адрес.|
 |/reservedIps/join/action|Присоединяет зарезервированный IP-адрес.|
-|/reservedIps/operationStatuses/read|Читает состояние операции hello hello зарезервированных IP-адресов.|
-|/virtualNetworks/read|Получение hello виртуальной сети.|
+|/reservedIps/operationStatuses/read|Считывает состояние операции для зарезервированных IP-адресов.|
+|/virtualNetworks/read|Возвращает виртуальную сеть.|
 |/virtualNetworks/write|Добавляет новую виртуальную сеть.|
-|/virtualNetworks/delete|Удаляет hello виртуальной сети.|
+|/virtualNetworks/delete|Удаляет виртуальную сеть.|
 |/virtualNetworks/peer/action|Создает пиринг между виртуальными сетями.|
-|/virtualNetworks/join/action|Присоединяет hello виртуальной сети.|
-|/virtualNetworks/checkIPAddressAvailability/action|Проверяет доступность hello данного IP-адреса в виртуальной сети.|
-|/virtualNetworks/capabilities/read|Показывает возможности hello|
-|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/read|Возвращает hello сетевой группы безопасности, связанный с подсетью hello.|
-|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанный с подсетью hello.|
-|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети hello, связанный с подсетью hello.|
-|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/operationStatuses/read|Читает состояние операции hello для группы безопасности связанной сети hello виртуальной сети подсети.|
-|/virtualNetworks/operationStatuses/read|Читает состояние операции hello hello виртуальных сетей.|
-|/virtualNetworks/gateways/read|Получает шлюзы виртуальной сети hello.|
+|/virtualNetworks/join/action|Подключает виртуальную сеть.|
+|/virtualNetworks/checkIPAddressAvailability/action|Проверяет доступность заданного IP-адреса в виртуальной сети.|
+|/virtualNetworks/capabilities/read|Отображает возможности.|
+|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/read|Возвращает группу безопасности сети, связанную с подсетью.|
+|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/write|Добавляет группу безопасности сети, связанную с подсетью.|
+|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/delete|Удаляет группу безопасности сети, связанную с подсетью.|
+|/virtualNetworks/subnets/<br>associatedNetworkSecurityGroups/operationStatuses/read|Считывает состояние операции группы безопасности сети, связанной с подсетью виртуальной сети.|
+|/virtualNetworks/operationStatuses/read|Считывает состояние операции виртуальных сетей.|
+|/virtualNetworks/gateways/read|Возвращает шлюзы виртуальной сети.|
 |/virtualNetworks/gateways/write|Добавляет шлюз виртуальной сети.|
-|/virtualNetworks/gateways/delete|Удаление шлюза виртуальной сети hello.|
-|/virtualNetworks/gateways/startDiagnostics/action|Запускает диагностику шлюза виртуальной сети hello.|
-|/virtualNetworks/gateways/stopDiagnostics/action|Останавливает hello диагностику шлюза виртуальной сети hello.|
-|/virtualNetworks/gateways/downloadDiagnostics/action|Загружает hello диагностику шлюза.|
-|/virtualNetworks/gateways/listCircuitServiceKey/action|Извлекает ключ службы канала hello.|
-|/virtualNetworks/gateways/downloadDeviceConfigurationScript/action|Загрузка скрипта конфигурации устройства hello.|
-|/virtualNetworks/gateways/listPackage/action|Список hello пакет шлюза виртуальной сети.|
-|/virtualNetworks/gateways/operationStatuses/read|Читает состояние операции hello для шлюзов виртуальных сетей hello.|
-|/virtualNetworks/gateways/packages/read|Получает пакет шлюза виртуальной сети hello.|
-|/virtualNetworks/gateways/connections/read|Извлекает список подключений hello.|
-|/virtualNetworks/gateways/connections/connect/action|Подключает соединение toosite шлюза сайта.|
-|/virtualNetworks/gateways/connections/disconnect/action|Отключает соединение toosite шлюза сайта.|
-|/virtualNetworks/gateways/connections/test/action|Проверяет подключение к шлюзу toosite сайта.|
-|/virtualNetworks/gateways/clientRevokedCertificates/read|Hello чтение отозванных сертификатов клиента.|
+|/virtualNetworks/gateways/delete|Удаляет шлюз виртуальной сети.|
+|/virtualNetworks/gateways/startDiagnostics/action|Запускает диагностику шлюза виртуальной сети.|
+|/virtualNetworks/gateways/stopDiagnostics/action|Останавливает диагностику шлюза виртуальной сети.|
+|/virtualNetworks/gateways/downloadDiagnostics/action|Скачивает данные диагностики шлюза.|
+|/virtualNetworks/gateways/listCircuitServiceKey/action|Извлекает ключ службы канала.|
+|/virtualNetworks/gateways/downloadDeviceConfigurationScript/action|Скачивает сценарий конфигурации устройства.|
+|/virtualNetworks/gateways/listPackage/action|Отображает пакет шлюза виртуальной сети.|
+|/virtualNetworks/gateways/operationStatuses/read|Считывает состояние операции шлюзов виртуальной сети.|
+|/virtualNetworks/gateways/packages/read|Возвращает пакет шлюза виртуальной сети.|
+|/virtualNetworks/gateways/connections/read|Извлекает список подключений.|
+|/virtualNetworks/gateways/connections/connect/action|Устанавливает подключение шлюза типа "сеть — сеть".|
+|/virtualNetworks/gateways/connections/disconnect/action|Отключает подключение шлюза типа "сеть — сеть".|
+|/virtualNetworks/gateways/connections/test/action|Тестирует подключение шлюза типа "сеть — сеть".|
+|/virtualNetworks/gateways/clientRevokedCertificates/read|Считывает отозванные сертификаты клиента.|
 |/virtualNetworks/gateways/clientRevokedCertificates/write|Отменяет сертификат клиента.|
 |/virtualNetworks/gateways/clientRevokedCertificates/delete|Отменяет отмену сертификата клиента.|
-|/virtualNetworks/gateways/clientRootCertificates/read|Найти hello клиентских корневых сертификатов.|
+|/virtualNetworks/gateways/clientRootCertificates/read|Выполняет поиск корневых сертификатов клиента.|
 |/virtualNetworks/gateways/clientRootCertificates/write|Передает новый корневой сертификат клиента.|
-|/virtualNetworks/gateways/clientRootCertificates/delete|Удаляет сертификат клиента шлюза виртуальной сети hello.|
+|/virtualNetworks/gateways/clientRootCertificates/delete|Удаляет сертификат клиента шлюза виртуальной сети.|
 |/virtualNetworks/gateways/clientRootCertificates/download/action|Скачивает сертификат по отпечатку.|
-|/virtualNetworks/gateways/clientRootCertificates/listPackage/action|Перечисляет пакеты сертификатов шлюза виртуальной сети hello.|
-|/networkSecurityGroups/read|Получение группы безопасности сети hello.|
+|/virtualNetworks/gateways/clientRootCertificates/listPackage/action|Отображает пакет сертификата шлюза виртуальной сети.|
+|/networkSecurityGroups/read|Возвращает группу безопасности сети.|
 |/networkSecurityGroups/write|Добавляет новую группу безопасности сети.|
-|/networkSecurityGroups/delete|Удаляет группу безопасности сети hello.|
-|/networkSecurityGroups/operationStatuses/read|Читает состояние операции hello для hello сетевой группы безопасности.|
-|/networkSecurityGroups/securityRules/read|Получает правила безопасности hello.|
+|/networkSecurityGroups/delete|Удаляет группу безопасности сети.|
+|/networkSecurityGroups/operationStatuses/read|Считывает состояние операции группы безопасности сети.|
+|/networkSecurityGroups/securityRules/read|Возвращает правило безопасности.|
 |/networkSecurityGroups/securityRules/write|Добавляет или обновляет правило безопасности.|
-|/networkSecurityGroups/securityRules/delete|Удаляет правило безопасности hello.|
-|/networkSecurityGroups/securityRules/operationStatuses/read|Читает состояние операции hello для правил безопасности группы безопасности сети hello.|
-|/quotas/read|Получите hello квоты для подписки hello.|
+|/networkSecurityGroups/securityRules/delete|Удаляет правило безопасности.|
+|/networkSecurityGroups/securityRules/operationStatuses/read|Считывает состояние операции правил безопасности группы безопасности сети.|
+|/quotas/read|Возвращает квоту для подписки.|
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 | Операция | Описание |
 |---|---|
-|/register/action|Зарегистрировать tooClassic хранилища|
-|/checkStorageAccountAvailability/action|Проверка доступности hello учетной записи хранения.|
-|/capabilities/read|Показывает возможности hello|
-|/publicImages/read|Возвращает hello открытого образа виртуальной машины.|
-|/images/read|Возвращает изображение hello.|
-|/storageAccounts/read|Возвращать hello учетной записи хранилища с hello, учитывая учетной записи.|
+|/register/action|Выполняет регистрацию в классической службе хранилища.|
+|/checkStorageAccountAvailability/action|Проверяет доступность учетной записи хранения.|
+|/capabilities/read|Отображает возможности.|
+|/publicImages/read|Возвращает общедоступный образ виртуальной машины.|
+|/images/read|Возвращает образ.|
+|/storageAccounts/read|Возвращает учетную запись хранения для заданной учетной записи.|
 |/storageAccounts/write|Добавляет новую учетную запись хранения.|
-|/storageAccounts/delete|Удалите учетную запись хранения hello.|
-|/storageAccounts/listKeys/action|Список hello клавиши доступа для учетных записей хранения hello.|
-|/storageAccounts/regenerateKey/action|Повторно создает hello ключи доступа для учетной записи хранилища hello.|
-|/storageAccounts/operationStatuses/read|Читает состояние операции hello для ресурса hello.|
-|/storageAccounts/images/read|Возвращает hello образ учетной записи хранения.|
+|/storageAccounts/delete|Удаляет учетную запись хранения.|
+|/storageAccounts/listKeys/action|Отображает ключи доступа для учетных записей хранения.|
+|/storageAccounts/regenerateKey/action|Повторно создает существующие ключи доступа для учетной записи хранения.|
+|/storageAccounts/operationStatuses/read|Считывает состояние операции ресурса.|
+|/storageAccounts/images/read|Возвращает образ в учетной записи хранения.|
 |/storageAccounts/images/delete|Удаляет заданный образ из учетной записи хранения.|
-|/storageAccounts/disks/read|Возвращает hello диска учетной записи хранилища.|
+|/storageAccounts/disks/read|Возвращает диск в учетной записи хранения.|
 |/storageAccounts/disks/write|Добавляет диск учетной записи хранения.|
 |/storageAccounts/disks/delete|Удаляет заданный диск из учетной записи хранения.|
-|/storageAccounts/disks/operationStatuses/read|Читает состояние операции hello для ресурса hello.|
-|/storageAccounts/osImages/read|Возвращает hello образ операционной системы учетной записи хранения.|
+|/storageAccounts/disks/operationStatuses/read|Считывает состояние операции ресурса.|
+|/storageAccounts/osImages/read|Возвращает заданный образ операционной системы в учетной записи хранения.|
 |/storageAccounts/osImages/delete|Удаляет заданный образ операционной системы из учетной записи хранения.|
-|/storageAccounts/services/read|Получение доступных служб hello.|
-|/storageAccounts/services/metricDefinitions/read|Возвращает определения показателей hello.|
-|/storageAccounts/services/metrics/read|Возвращает метрику hello.|
-|/storageAccounts/services/diagnosticSettings/read|Получение параметров диагностики hello.|
+|/storageAccounts/services/read|Возвращает доступные службы.|
+|/storageAccounts/services/metricDefinitions/read|Возвращает определения метрик.|
+|/storageAccounts/services/metrics/read|Возвращает метрики.|
+|/storageAccounts/services/diagnosticSettings/read|Возвращает параметры диагностики.|
 |/storageAccounts/services/diagnosticSettings/write|Добавляет или изменяет параметры диагностики.|
-|/disks/read|Возвращает hello диска учетной записи хранилища.|
-|/osImages/read|Образ операционной системы возвращает hello.|
-|/quotas/read|Получите hello квоты для подписки hello.|
+|/disks/read|Возвращает диск в учетной записи хранения.|
+|/osImages/read|Возвращает образ операционной системы.|
+|/quotas/read|Возвращает квоту для подписки.|
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -559,103 +559,103 @@ ms.lasthandoff: 10/06/2017
 |/accounts/listKeys/action|Отображает ключи.|
 |/accounts/regenerateKey/action|Повторно создает ключ.|
 |/accounts/skus/read|Считывает доступные номера SKU для существующего ресурса.|
-|/accounts/usages/read|Получение hello использования квоты для существующего ресурса.|
-|/Operations/read|Описание операции hello.|
+|/accounts/usages/read|Возвращает данные об использовании квоты для существующего ресурса.|
+|/Operations/read|Описание операции.|
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
 | Операция | Описание |
 |---|---|
-|/RateCard/read|Возвращает предоставляют данные, индикатор ресурсов и метаданных и скорости для hello указанной подписки.|
-|/UsageAggregates/read|Извлекает данные о потреблении ресурсов Microsoft Azure по подписке. результат Hello содержит статистические выражения данные об использовании, ресурса и подписки, связанные с сведения о определенного интервала времени.|
+|/RateCard/read|Возвращает данные предложения, метаданные ресурсов и единиц измерения и тарифы для заданной подписки.|
+|/UsageAggregates/read|Извлекает данные о потреблении ресурсов Microsoft Azure по подписке. Результат содержит статистические данные об использовании, а также сведения о подписке и ресурсах за определенный диапазон времени.|
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute;
 
 | Операция | Описание |
 |---|---|
 |/register/action|Регистрирует подписку в поставщике ресурсов Microsoft.Compute.|
-|/restorePointCollections/read|Получение свойств hello коллекции точек восстановления|
+|/restorePointCollections/read|Возвращает свойства коллекции точек восстановления.|
 |/restorePointCollections/write|Создает новую коллекцию точек восстановления или обновляет существующую.|
-|/restorePointCollections/delete|Удаляет hello коллекция точек восстановления, а также содержится точки восстановления|
-|/restorePointCollections/restorePoints/read|Получение свойств hello точки восстановления|
+|/restorePointCollections/delete|Удаляет коллекцию точек восстановления и содержащиеся в ней точки восстановления.|
+|/restorePointCollections/restorePoints/read|Возвращает свойства точки восстановления.|
 |/restorePointCollections/restorePoints/write|Создает точку восстановления.|
-|/restorePointCollections/restorePoints/delete|Удаляет точку восстановления hello|
-|/restorePointCollections/restorePoints/retrieveSasUris/action|Получение свойств hello точки восстановления, а также идентификаторы URI SAS blob|
-|/virtualMachineScaleSets/read|Получение свойств hello набора масштабирования виртуальных машин|
+|/restorePointCollections/restorePoints/delete|Удаляет точку восстановления.|
+|/restorePointCollections/restorePoints/retrieveSasUris/action|Возвращает свойства точки восстановления вместе с универсальными кодами ресурсов (URI) SAS больших двоичных объектов.|
+|/virtualMachineScaleSets/read|Возвращает свойства масштабируемого набора виртуальных машин.|
 |/virtualMachineScaleSets/write|Создает новый масштабируемый набор виртуальных машин или обновляет существующий.|
-|/virtualMachineScaleSets/delete|Удаление набора масштабирования виртуальных машин hello|
-|/virtualMachineScaleSets/start/action|Запускает hello экземпляров масштабного набора виртуальных машин hello|
-|/virtualMachineScaleSets/powerOff/action|Отключение питания экземпляров масштабного набора виртуальных машин hello hello|
-|/virtualMachineScaleSets/restart/action|Перезапуск экземпляров масштабного набора виртуальных машин hello hello|
-|/virtualMachineScaleSets/deallocate/action|Отключение питания и освобождает hello вычислительные ресурсы для hello экземпляров масштабного набора виртуальных машин hello |
-|/virtualMachineScaleSets/manualUpgrade/action|Обновляет модель toolatest экземпляров масштабного набора виртуальных машин hello вручную|
+|/virtualMachineScaleSets/delete|Удаляет масштабируемый набор виртуальных машин.|
+|/virtualMachineScaleSets/start/action|Запускает экземпляры масштабируемого набора виртуальных машин.|
+|/virtualMachineScaleSets/powerOff/action|Завершает работу экземпляров масштабируемого набора виртуальных машин.|
+|/virtualMachineScaleSets/restart/action|Перезапускает экземпляры масштабируемого набора виртуальных машин.|
+|/virtualMachineScaleSets/deallocate/action|Завершает работу вычислительных ресурсов и освобождает их для экземпляров виртуальной машины в масштабируемом наборе виртуальных машин. |
+|/virtualMachineScaleSets/manualUpgrade/action|Выполняет ручное обновление экземпляров до последней модели масштабируемого набора виртуальных машин.|
 |/virtualMachineScaleSets/scale/action|Уменьшает или увеличивает количество экземпляров в существующем масштабируемом наборе виртуальных машин.|
-|/virtualMachineScaleSets/instanceView/read|Возвращает представление hello экземпляров масштабного набора виртуальных машин hello|
-|/virtualMachineScaleSets/skus/read|Списки hello действительных номеров SKU для существующего набора масштабирования виртуальной машины|
-|/virtualMachineScaleSets/virtualMachines/read|Извлекает свойства hello виртуальной машины в наборе масштабирования виртуальных Машин|
+|/virtualMachineScaleSets/instanceView/read|Возвращает представление экземпляров масштабируемого набора виртуальных машин.|
+|/virtualMachineScaleSets/skus/read|Отображает допустимые номера SKU для существующего масштабируемого набора виртуальных машин.|
+|/virtualMachineScaleSets/virtualMachines/read|Извлекает свойства виртуальной машины в масштабируемом наборе виртуальных машин.|
 |/virtualMachineScaleSets/virtualMachines/delete|Удаляет конкретную виртуальную машину в масштабируемом наборе виртуальных машин.|
 |/virtualMachineScaleSets/virtualMachines/start/action|Запускает экземпляр виртуальной машины в масштабируемом наборе виртуальных машин.|
 |/virtualMachineScaleSets/virtualMachines/powerOff/action|Завершает работу экземпляра виртуальной машины в масштабируемом наборе виртуальных машин.|
 |/virtualMachineScaleSets/virtualMachines/restart/action|Перезапускает экземпляр виртуальной машины в масштабируемом наборе виртуальных машин.|
-|/virtualMachineScaleSets/virtualMachines/deallocate/action|Отключение питания и освобождает hello вычислительные ресурсы для виртуальной машины в наборе масштабирования виртуальных Машин.|
-|/virtualMachineScaleSets/virtualMachines/instanceView/read|Возвращает представление экземпляра hello виртуальной машины в наборе масштабирования виртуальных Машин.|
-|/images/read|Получение свойств hello hello изображения|
+|/virtualMachineScaleSets/virtualMachines/deallocate/action|Завершает работу вычислительных ресурсов и освобождает их для виртуальной машины в масштабируемом наборе виртуальных машин.|
+|/virtualMachineScaleSets/virtualMachines/instanceView/read|Извлекает представление экземпляров виртуальной машины в масштабируемом наборе виртуальных машин.|
+|/images/read|Возвращает свойства образа.|
 |/images/write|Создает новый образ или обновляет существующий.|
-|/images/delete|Удаляет образ hello|
+|/images/delete|Удаляет кластер.|
 |/operations/read|Выводит список операций, доступных в поставщике ресурсов Microsoft.Compute.|
-|/disks/read|Получение свойств hello диска|
+|/disks/read|Возвращает свойства диска.|
 |/disks/write|Создает новый диск или обновляет существующий.|
-|/disks/delete|Удаляет hello диска|
-|/disks/beginGetAccess/action|Получить универсальный код Ресурса SAS диска hello hello для доступа к BLOB-объект|
-|/disks/endGetAccess/action|Отменить URI SAS диска hello hello|
-|/snapshots/read|Получение свойств hello моментального снимка|
+|/disks/delete|Удаляет диск.|
+|/disks/beginGetAccess/action|Возвращает универсальный код ресурса (URI) SAS диска для доступа к большому двоичному объекту.|
+|/disks/endGetAccess/action|Отменяет универсальный код ресурса (URI) SAS диска.|
+|/snapshots/read|Возвращает свойства моментального снимка.|
 |/snapshots/write|Создает новый моментальный снимок или обновляет существующий.|
 |/snapshots/delete|Удаляет моментальный снимок.|
-|/availabilitySets/read|Получение свойств hello группы доступности|
+|/availabilitySets/read|Возвращает свойства группы доступности.|
 |/availabilitySets/write|Создает новую группу доступности или обновляет существующую.|
-|/availabilitySets/delete|Удаляет группу доступности hello|
-|/availabilitySets/vmSizes/read|Список доступных размеров для создания или обновления виртуальной машины в наборе доступности hello|
-|/virtualMachines/read|Получение свойств hello виртуальной машины.|
+|/availabilitySets/delete|Удаляет группу доступности.|
+|/availabilitySets/vmSizes/read|Выводит список доступных размеров для создания или обновления виртуальной машины в группе доступности.|
+|/virtualMachines/read|Возвращает свойства виртуальной машины.|
 |/virtualMachines/write|Создает новую виртуальную машину или обновляет существующую.|
-|/virtualMachines/delete|Удаляет виртуальную машину hello|
-|/virtualMachines/start/action|Запускает hello виртуальной машины|
-|/virtualMachines/powerOff/action|Отключение питания виртуальной машины hello. Обратите внимание, что hello виртуальной машины по-прежнему toobe выставлен счет.|
+|/virtualMachines/delete|Удаляет виртуальную машину.|
+|/virtualMachines/start/action|Запускает виртуальную машину.|
+|/virtualMachines/powerOff/action|Завершает работу виртуальной машины. Обратите внимание, что плата за виртуальную машину по-прежнему будет взиматься.|
 |/virtualMachines/redeploy/action|Повторно развертывает виртуальную машину.|
-|/virtualMachines/restart/action|Перезапускает виртуальную машину hello|
-|/virtualMachines/deallocate/action|Отключение питания hello виртуальной машины и освобождение hello вычислительных ресурсов|
-|/virtualMachines/generalize/action|Задает состояние tooGeneralized hello виртуальной машины и подготавливает hello виртуальной машины для записи|
-|/virtualMachines/capture/action|Захватывает hello виртуальной машины путем копирования виртуальных жестких дисков и создание шаблона, который может быть используется toocreate подобных виртуальных машин|
-|/virtualMachines/convertToManagedDisks/action|Преобразует hello BLOB-объектов на основе дисков, дисков toomanaged hello виртуальной машины|
-|/virtualMachines/vmSizes/read|Получение списка доступных размеров hello виртуальной машины можно произвести обновление до|
-|/virtualMachines/instanceView/read|Возвращает hello подробного состояния среды выполнения виртуальной машины hello и его ресурсы|
-|/virtualMachines/extensions/read|Получение свойств hello расширения виртуальной машины|
+|/virtualMachines/restart/action|Перезапускает виртуальную машину.|
+|/virtualMachines/deallocate/action|Завершает работу виртуальной машины и освобождает ее вычислительные ресурсы.|
+|/virtualMachines/generalize/action|Задает состояние "Универсальная" для виртуальной машины и подготавливает ее для записи.|
+|/virtualMachines/capture/action|Записывает виртуальную машину, копируя ее виртуальных жесткие диски, и создает шаблон, который может использоваться для создания идентичных виртуальных машин.|
+|/virtualMachines/convertToManagedDisks/action|Преобразует диски на основе больших двоичных объектов виртуальной машины в управляемые диски.|
+|/virtualMachines/vmSizes/read|Выводит список доступных размеров для обновления виртуальной машины.|
+|/virtualMachines/instanceView/read|Возвращает состояние выполнения виртуальной машины и ее ресурсов.|
+|/virtualMachines/extensions/read|Возвращает свойства расширения виртуальной машины.|
 |/virtualMachines/extensions/write|Создает новое расширение виртуальной машины или обновляет существующее.|
-|/virtualMachines/extensions/delete|Удаляет расширение виртуальной машины hello|
+|/virtualMachines/extensions/delete|Удаляет расширение виртуальной машины.|
 |/locations/vmSizes/read|Выводит список доступных размеров виртуальных машин в расположении.|
-|/locations/usages/read|Получает ограничения служб и текущих показателях использования для вычислительных ресурсов hello подписки в расположении|
-|/locations/operations/read|Возвращает состояние hello асинхронной операции|
+|/locations/usages/read|Возвращает ограничения службы и текущее количество использованных вычислительных ресурсов подписки в расположении.|
+|/locations/operations/read|Возвращает состояние асинхронной операции.|
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует подписку hello для поставщика ресурсов реестра контейнера hello и обеспечивает создание контейнера реестры hello.|
+|/register/action|Регистрирует подписку для поставщика ресурсов реестра контейнеров и позволяет создавать реестры контейнеров.|
 |/checknameavailability/read|Проверяет, является ли имя реестра допустимым и неиспользуемым.|
-|/registries/read|Возвращает список контейнера реестры Здравствуйте, или возвращает hello свойства для указанного контейнера реестра hello.|
-|/registries/write|Создает в реестре контейнеров с hello заданным параметрам или обновить свойства hello или теги для указанного контейнера реестра hello.|
+|/registries/read|Возвращает список реестров контейнеров или свойства указанного реестра контейнеров.|
+|/registries/write|Создает реестр контейнеров с указанными параметрами либо обновляет свойства или теги указанного реестра контейнеров.|
 |/registries/delete|Удаляет существующий реестр контейнеров.|
-|/registries/listCredentials/action|Список hello учетные данные входа для указанного контейнера реестра hello.|
-|/registries/regenerateCredential/action|Повторно создает hello учетные данные входа для указанного контейнера реестра hello.|
+|/registries/listCredentials/action|Выводит список учетных данных входа для указанного реестра контейнеров.|
+|/registries/regenerateCredential/action|Повторно создает учетные данные входа для указанного реестра контейнеров.|
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 | Операция | Описание |
 |---|---|
-|/containerServices/subscriptions/read|Get hello указанных служб контейнеров на основе подписки|
-|/containerServices/resourceGroups/read|Get hello указанных служб контейнеров на основе группы ресурсов|
-|/containerServices/resourceGroups/ContainerServiceName/read|Hello возвращает указанный контейнер службы|
-|/containerServices/resourceGroups/ContainerServiceName/write|Помещает или обновления hello указаны службы контейнеров|
-|/containerServices/resourceGroups/ContainerServiceName/delete|Hello Удаляет указанный контейнер службы|
+|/containerServices/subscriptions/read|Возвращает указанные службы контейнеров по подписке.|
+|/containerServices/resourceGroups/read|Возвращает указанные службы контейнеров по группе ресурсов.|
+|/containerServices/resourceGroups/ContainerServiceName/read|Возвращает указанную службу контейнеров.|
+|/containerServices/resourceGroups/ContainerServiceName/write|Размещает или обновляет указанную службу контейнеров.|
+|/containerServices/resourceGroups/ContainerServiceName/delete|Удаляет указанную службу контейнеров.|
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -678,10 +678,10 @@ ms.lasthandoff: 10/06/2017
 |/hubs/read|Считывает концентратор Azure Customer Insights.|
 |/hubs/write|Создает или обновляет концентратор Azure Customer Insights.|
 |/hubs/delete|Удаляет концентратор Azure Customer Insights.|
-|/hubs/providers/Microsoft.Insights/metricDefinitions/read|Получает доступные метрики hello для ресурсов|
-|/hubs/providers/Microsoft.Insights/diagnosticSettings/read|Возвращает приветствия диагностики для ресурса hello|
-|/hubs/providers/Microsoft.Insights/diagnosticSettings/write|Создает или обновляет приветствия диагностики для ресурса hello|
-|/hubs/providers/Microsoft.Insights/logDefinitions/read|Получает доступные журналы hello для ресурсов|
+|/hubs/providers/Microsoft.Insights/metricDefinitions/read|Возвращает доступные метрики для ресурса.|
+|/hubs/providers/Microsoft.Insights/diagnosticSettings/read|Возвращает параметр диагностики для ресурса.|
+|/hubs/providers/Microsoft.Insights/diagnosticSettings/write|Создает или обновляет параметр диагностики для ресурса.|
+|/hubs/providers/Microsoft.Insights/logDefinitions/read|Возвращает доступные журналы для ресурса.|
 |/hubs/authorizationPolicies/read|Считывает политику подписанного URL-адреса Azure Customer Insights.|
 |/hubs/authorizationPolicies/write|Создает или обновляет политику подписанного URL-адреса Azure Customer Insights.|
 |/hubs/authorizationPolicies/delete|Удаляет политику подписанного URL-адреса Azure Customer Insights.|
@@ -713,8 +713,8 @@ ms.lasthandoff: 10/06/2017
 |---|---|
 |/checkNameAvailability/action|Проверяет доступность имени каталога для клиента.|
 |/catalogs/read|Возвращает свойства каталога или каталогов в подписке или группе ресурсов.|
-|/catalogs/write|Создает каталог или обновления hello теги и свойства каталога hello.|
-|/catalogs/delete|Удаляет каталог hello.|
+|/catalogs/write|Создает каталог или обновляет теги и свойства каталога.|
+|/catalogs/delete|Удаляет каталог.|
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -740,20 +740,20 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/accounts/read|Получение сведений об учетной записи DataLakeAnalytics hello.|
-|/accounts/write|Создать или обновить учетную запись DataLakeAnalytics hello.|
-|/accounts/delete|Удаление учетной записи DataLakeAnalytics hello.|
+|/accounts/read|Возвращает сведения об учетной записи Data Lake Analytics|
+|/accounts/write|Создает или обновляет учетную запись Data Lake Analytics.|
+|/accounts/delete|Удаляет учетную запись Data Lake Analytics.|
 |/accounts/firewallRules/read|Возвращает сведения о правиле брандмауэра.|
 |/accounts/firewallRules/write|Создает или обновляет правило брандмауэра.|
 |/accounts/firewallRules/delete|Удаляет правило брандмауэра.|
-|/accounts/storageAccounts/read|Получение связанной учетной записи хранилища для hello DataLakeAnalytics учетной записи.|
-|/accounts/storageAccounts/write|Свяжите toohello учетной записи хранилища DataLakeAnalytics учетной записи.|
-|/accounts/storageAccounts/delete|Отменить привязку учетной записи хранения из hello DataLakeAnalytics учетной записи.|
-|/accounts/storageAccounts/Containers/read|Получить контейнеры в учетной записи хранилища hello|
-|/accounts/storageAccounts/Containers/listSasTokens/action|Список токенов SAS для контейнера хранилища hello|
-|/accounts/dataLakeStoreAccounts/read|Получение связанной учетной записи DataLakeStore для hello DataLakeAnalytics учетной записи.|
-|/accounts/dataLakeStoreAccounts/write|Свяжите toohello учетной записи DataLakeStore DataLakeAnalytics учетной записи.|
-|/accounts/dataLakeStoreAccounts/delete|Удалить связь с учетной записью DataLakeStore из hello DataLakeAnalytics учетной записи.|
+|/accounts/storageAccounts/read|Возвращает связанную учетную запись хранения для учетной записи Data Lake Analytics.|
+|/accounts/storageAccounts/write|Связывает учетную запись хранения с учетной записью Data Lake Analytics.|
+|/accounts/storageAccounts/delete|Удаляет связь учетной записи хранения с учетной записью Data Lake Analytics.|
+|/accounts/storageAccounts/Containers/read|Возвращает контейнеры в учетной записи хранения.|
+|/accounts/storageAccounts/Containers/listSasTokens/action|Выводит список маркеров SAS для контейнера службы хранилища.|
+|/accounts/dataLakeStoreAccounts/read|Возвращает связанную учетную запись Data Lake Store для учетной записи Data Lake Analytics.|
+|/accounts/dataLakeStoreAccounts/write|Связывает учетную запись Data Lake Store с учетной записью Data Lake Analytics.|
+|/accounts/dataLakeStoreAccounts/delete|Удаляет связь учетной записи Data Lake Store с учетной записью Data Lake Analytics.|
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
@@ -773,18 +773,18 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Зарегистрировать подписку hello для hello центром IOT поставщика и позволяет hello создания ресурса ресурсов центром IOT|
+|/register/action|Регистрирует подписку в поставщике ресурсов Центра Интернета вещей и позволяет создавать ресурсы Центра Интернета вещей.|
 |/checkNameAvailability/Action|Проверяет, доступно ли имя Центра Интернета вещей.|
 |/usages/Read|Возвращает данные об использовании подписки для данного поставщика.|
 |/operations/Read|Возвращает все операции поставщика ресурсов.|
-|/iotHubs/Read|Возвращает ресурсы hello центром IOT|
+|/iotHubs/Read|Возвращает ресурсы Центра Интернета вещей.|
 |/iotHubs/Write|Создает или обновляет ресурс Центра Интернета вещей.|
 |/iotHubs/Delete|Удаляет ресурс Центра Интернета вещей.|
 |/iotHubs/listkeys/Action|Возвращает все ключи Центра Интернета вещей.|
 |/iotHubs/exportDevices/Action|Экспортирует устройства.|
 |/iotHubs/importDevices/Action|Импортирует устройства.|
-|/IotHubs/metricDefinitions/read|Получает доступные метрики hello для hello службы центром IOT|
-|/iotHubs/iotHubKeys/listkeys/Action|Получить ключ с центром IOT для указанного имени hello|
+|/IotHubs/metricDefinitions/read|Возвращает доступные метрики для службы Центра Интернета вещей.|
+|/iotHubs/iotHubKeys/listkeys/Action|Возвращает ключ Центра Интернета вещей для указанного имени.|
 |/iotHubs/iotHubStats/Read|Возвращает статистику Центра Интернета вещей.|
 |/iotHubs/quotaMetrics/Read|Возвращает метрики квоты.|
 |/iotHubs/eventHubEndpoints/consumerGroups/Write|Создает группу потребителей концентратора событий.|
@@ -792,25 +792,25 @@ ms.lasthandoff: 10/06/2017
 |/iotHubs/eventHubEndpoints/consumerGroups/Delete|Удаляет группу потребителей концентратора событий.|
 |/iotHubs/routing/routes/$testall/Action|Тестирует сообщение с помощью всех существующих маршрутов.|
 |/iotHubs/routing/routes/$testnew/Action|Тестирует сообщение с помощью предоставленного тестового маршрута.|
-|/IotHubs/diagnosticSettings/read|Возвращает приветствия диагностики для ресурса hello|
-|/IotHubs/diagnosticSettings/write|Создает или обновляет приветствия диагностики для ресурса hello|
+|/IotHubs/diagnosticSettings/read|Возвращает параметр диагностики для ресурса.|
+|/IotHubs/diagnosticSettings/write|Создает или обновляет параметр диагностики для ресурса.|
 |/iotHubs/skus/Read|Возвращает допустимые номера SKU Центра Интернета вещей.|
 |/iotHubs/jobs/Read|Возвращает сведения о заданиях, отправленных в заданный Центр Интернета вещей.|
-|/iotHubs/routingEndpointsHealth/Read|Возвращает hello работоспособности всех конечных точек маршрутизации для центром IOT|
+|/iotHubs/routingEndpointsHealth/Read|Возвращает сведения о работоспособности всех конечных точек маршрутизации для Центра Интернета вещей.|
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 | Операция | Описание |
 |---|---|
-|/Subscription/register/action|Регистрирует подписку hello|
+|/Subscription/register/action|Регистрирует подписку.|
 |/labs/delete|Удаляет лаборатории.|
 |/labs/read|Считывает лаборатории.|
 |/labs/write|Добавляет или изменяет лаборатории.|
 |/labs/ListVhds/action|Выводит список образов дисков, доступных для создания пользовательского образа.|
-|/labs/GenerateUploadUri/action|Создайте URI для отправки пользовательского диска изображения tooa лаборатории.|
+|/labs/GenerateUploadUri/action|Создает универсальный код ресурса (URI) для передачи настраиваемых образов дисков в лабораторию.|
 |/labs/CreateEnvironment/action|Создает виртуальные машины в лаборатории.|
-|/labs/ClaimAnyVm/action|Утверждения случайных claimable виртуальной машине в лаборатории hello.|
-|/labs/ExportResourceUsage/action|Экспорты hello использование ресурсов лаборатории в учетную запись хранилища|
+|/labs/ClaimAnyVm/action|Отправляет заявку на доступ к случайной запрашиваемой виртуальной машине в лаборатории.|
+|/labs/ExportResourceUsage/action|Экспортирует данные об использовании ресурсов лаборатории в учетную запись хранения.|
 |/labs/users/delete|Удаляет профили пользователей.|
 |/labs/users/read|Считывает профили пользователей.|
 |/labs/users/write|Добавляет или изменяет профили пользователей.|
@@ -823,8 +823,8 @@ ms.lasthandoff: 10/06/2017
 |/labs/users/disks/delete|Удаляет диски.|
 |/labs/users/disks/read|Считывает диски.|
 |/labs/users/disks/write|Добавляет или изменяет диски.|
-|/labs/users/disks/Attach/action|Присоединить и создать аренды hello hello диск toohello виртуальной машины.|
-|/labs/users/disks/Detach/action|Присоединение и отсоединение аренды hello разрыв диска hello присоединенного toohello виртуальной машины.|
+|/labs/users/disks/Attach/action|Подключает диск к виртуальной машине и создает аренду для него.|
+|/labs/users/disks/Detach/action|Отключает диск от виртуальной машины и прерывает его аренду.|
 |/labs/customImages/delete|Удаляет пользовательские образы.|
 |/labs/customImages/read|Считывает пользовательские образы.|
 |/labs/customImages/write|Добавляет или изменяет пользовательские образы.|
@@ -835,7 +835,7 @@ ms.lasthandoff: 10/06/2017
 |/labs/artifactSources/read|Считывает источники артефактов.|
 |/labs/artifactSources/write|Добавляет или изменяет источники артефактов.|
 |/labs/artifactSources/artifacts/read|Считывает артефакты.|
-|/labs/artifactSources/artifacts/GenerateArmTemplate/action|Создает шаблон ARM для hello, учитывая артефакта, передает учетной записи хранилища hello необходимые файлы tooa и проверяет созданный hello артефакта.|
+|/labs/artifactSources/artifacts/GenerateArmTemplate/action|Создает шаблон ARM для заданного артефакта, передает необходимые файлы в учетную запись хранения и проверяет созданный артефакт.|
 |/labs/artifactSources/armTemplates/read|Считывает шаблоны Azure Resource Manager.|
 |/labs/costs/read|Считывает затраты.|
 |/labs/costs/write|Добавляет или изменяет затраты.|
@@ -860,9 +860,9 @@ ms.lasthandoff: 10/06/2017
 |/labs/virtualMachines/write|Добавляет или изменяет виртуальные машины.|
 |/labs/virtualMachines/Start/action|Запускает виртуальную машину.|
 |/labs/virtualMachines/Stop/action|Остановка виртуальной машины|
-|/labs/virtualMachines/ApplyArtifacts/action|Примените машины toovirtual артефакты.|
-|/labs/virtualMachines/AddDataDisk/action|Присоедините к машине toovirtual диска новых или существующих данных.|
-|/labs/virtualMachines/DetachDataDisk/action|Отсоедините hello указанный диск из виртуальной машины hello.|
+|/labs/virtualMachines/ApplyArtifacts/action|Применяет артефакты к виртуальной машине.|
+|/labs/virtualMachines/AddDataDisk/action|Подключает новый или существующий диск данных к виртуальной машине.|
+|/labs/virtualMachines/DetachDataDisk/action|Отключает указанный диск от виртуальной машины.|
 |/labs/virtualMachines/Claim/action|Присваивает владение существующей виртуальной машиной.|
 |/labs/virtualMachines/ListApplicableSchedules/action|Выводит список всех применимых расписаний.|
 |/labs/virtualMachines/schedules/delete|Удаляет расписания.|
@@ -872,7 +872,7 @@ ms.lasthandoff: 10/06/2017
 |/labs/notificationChannels/delete|Удаляет каналы уведомлений.|
 |/labs/notificationChannels/read|Считывает каналы уведомлений.|
 |/labs/notificationChannels/write|Добавляет или изменяет каналы уведомлений.|
-|/labs/notificationChannels/Notify/action|Отправьте уведомления tooprovided канала.|
+|/labs/notificationChannels/Notify/action|Отправляет уведомление в указанный канал.|
 |/schedules/delete|Удаляет расписания.|
 |/schedules/read|Считывает расписания.|
 |/schedules/write|Добавляет или изменяет расписания.|
@@ -889,20 +889,20 @@ ms.lasthandoff: 10/06/2017
 |/databaseAccounts/write|Обновляет учетные записи базы данных.|
 |/databaseAccounts/listKeys/action|Выводит список ключей учетной записи базы данных.|
 |/databaseAccounts/regenerateKey/action|Выполняет ротацию ключей учетной записи базы данных.|
-|/databaseAccounts/listConnectionStrings/action|Получить hello строки подключения для учетной записи базы данных|
+|/databaseAccounts/listConnectionStrings/action|Возвращает строки подключения для учетной записи базы данных.|
 |/databaseAccounts/changeResourceGroup/action|Изменяет группу ресурсов для учетной записи базы данных.|
-|/databaseAccounts/failoverPriorityChange/action|Изменяет приоритеты отработки отказа для регионов учетной записи базы данных. Это операция перехода на другой ресурс вручную используется tooperform|
-|/databaseAccounts/delete|Удаляет учетные записи hello базы данных.|
-|/databaseAccounts/metricDefinitions/read|Считывает определения метрик hello учетной записи базы данных.|
-|/databaseAccounts/metrics/read|Считывает hello метрики учетной записи базы данных.|
-|/databaseAccounts/usages/read|Считывает использования учетной записи базы данных hello.|
-|/databaseAccounts/databases/collections/metricDefinitions/read|Считывает hello коллекцию определения метрик.|
-|/databaseAccounts/databases/collections/metrics/read|Считывает hello сбора метрик.|
-|/databaseAccounts/databases/collections/usages/read|Считывает hello использования коллекции.|
-|/databaseAccounts/databases/metricDefinitions/read|Выполняет чтение определения показателей hello базы данных|
-|/databaseAccounts/databases/metrics/read|Считывает hello метрики базы данных.|
-|/databaseAccounts/databases/usages/read|Считывает hello использования базы данных.|
-|/databaseAccounts/readonlykeys/read|Считывает учетной записи базы данных hello ключей только для чтения.|
+|/databaseAccounts/failoverPriorityChange/action|Изменяет приоритеты отработки отказа для регионов учетной записи базы данных. Используется для выполнения операции отработки отказа вручную.|
+|/databaseAccounts/delete|Удаляет учетные записи базы данных.|
+|/databaseAccounts/metricDefinitions/read|Считывает определения метрик учетной записи базы данных.|
+|/databaseAccounts/metrics/read|Считывает метрики учетной записи базы данных.|
+|/databaseAccounts/usages/read|Считывает данные об использовании учетной записи базы данных.|
+|/databaseAccounts/databases/collections/metricDefinitions/read|Считывает определения метрик коллекции.|
+|/databaseAccounts/databases/collections/metrics/read|Считывает метрики коллекции.|
+|/databaseAccounts/databases/collections/usages/read|Считывает данные об использовании коллекции.|
+|/databaseAccounts/databases/metricDefinitions/read|Считывает определения метрик базы данных.|
+|/databaseAccounts/databases/metrics/read|Считывает метрики базы данных.|
+|/databaseAccounts/databases/usages/read|Считывает данные об использовании базы данных.|
+|/databaseAccounts/readonlykeys/read|Считывает ключи только для чтения учетной записи базы данных.|
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
@@ -911,9 +911,9 @@ ms.lasthandoff: 10/06/2017
 |/generateSsoRequest/Action|Создает запрос на вход в центр управления доменами.|
 |/validateDomainRegistrationInformation/Action|Проверяет объект покупки домена без его отправки.|
 |/checkDomainAvailability/Action|Проверяет, доступен ли домен для приобретения.|
-|/listDomainRecommendations/Action|Получить hello список домена рекомендации на основе ключевых слов|
-|/register/action|Регистрация поставщика ресурсов доменов Microsoft hello для hello подписки|
-|/domains/Read|Получить список доменов hello|
+|/listDomainRecommendations/Action|Извлекает список рекомендуемых доменов на основе ключевых слов.|
+|/register/action|Регистрирует поставщик ресурсов доменов Майкрософт для подписки.|
+|/domains/Read|Возвращает список доменов.|
 |/domains/Write|Добавляет новый домен или обновляет существующий.|
 |/domains/Delete|Удаляет существующий домен.|
 |/domains/operationresults/Read|Возвращает операцию домена.|
@@ -922,40 +922,40 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/lcsprojects/read|Отобразить проекты службы жизненного цикла Microsoft Dynamics, принадлежащих пользователю tooa|
-|/lcsprojects/write|Создание и обновление проектов службы жизненного цикла Microsoft Dynamics, принадлежащих toohello пользователя. Можно обновить только hello имя и описание свойства. не удается обновить после создания Hello подписке и расположении, связанные с проектом hello|
-|/lcsprojects/delete|Удаление службы жизненного цикла Microsoft Dynamics проектов, принадлежащих пользователю toohello|
-|/lcsprojects/clouddeployments/read|Отображение развертывания Microsoft Dynamics AX 2012 R3 Evaluation в проекте службы жизненного цикла Microsoft Dynamics, принадлежат tooa пользователя|
-|/lcsprojects/clouddeployments/write|Создание развертывания Microsoft Dynamics AX 2012 R3 Evaluation в проекте службы жизненного цикла Microsoft Dynamics, принадлежат tooa пользователя. Развертываниями можно управлять на портале управления Azure.|
-|/lcsprojects/connectors/read|Чтение соединителей, которые принадлежат tooa службы жизненного цикла Microsoft Dynamics проекта|
-|/lcsprojects/connectors/write|Создание и обновление соединителей, которые принадлежат tooa службы жизненного цикла Microsoft Dynamics проекта|
+|/lcsprojects/read|Отображает проекты Microsoft Dynamics Lifecycle Services, принадлежащие пользователю.|
+|/lcsprojects/write|Создает или обновляет проекты Microsoft Dynamics Lifecycle Services, принадлежащие пользователю. Можно обновить только свойства имени и описания. Невозможно обновить подписку и расположение, связанные с проектом, после его создания.|
+|/lcsprojects/delete|Удаляет проекты Microsoft Dynamics Lifecycle Services, принадлежащие пользователю.|
+|/lcsprojects/clouddeployments/read|Отображает развертывания Microsoft Dynamics AX 2012 R3 Evaluation в проекте Microsoft Dynamics Lifecycle Services, принадлежащем пользователю.|
+|/lcsprojects/clouddeployments/write|Создает развертывание Microsoft Dynamics AX 2012 R3 Evaluation в проекте Microsoft Dynamics Lifecycle Services, принадлежащем пользователю. Развертываниями можно управлять на портале управления Azure.|
+|/lcsprojects/connectors/read|Считывает соединители, относящиеся к проекту Microsoft Dynamics Lifecycle Services.|
+|/lcsprojects/connectors/write|Создает или обновляет соединители, относящиеся к проекту Microsoft Dynamics Lifecycle Services.|
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 | Операция | Описание |
 |---|---|
 |/checkNameAvailability/action|Проверяет доступность пространства имен в заданной подписке.|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов EventHub hello и разрешает создание ресурсов EventHub hello|
-|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. Теги и состояние hello пространства имен являются hello свойства, которые могут быть обновлены.|
-|/namespaces/read|Получить hello список описаний ресурса пространства имен|
+|/register/action|Регистрирует подписку для поставщика ресурсов концентратора событий и позволяет создавать ресурсы концентратора событий.|
+|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. К этим свойствам относятся теги и состояние пространства имен.|
+|/namespaces/read|Возвращает список описаний ресурсов пространства имен.|
 |/namespaces/Delete|Удаляет ресурс пространства имен.|
 |/namespaces/metricDefinitions/read|Возвращает список описаний ресурсов метрик пространства имен.|
-|/namespaces/authorizationRules/read|Получите список hello описание правил авторизации пространства имен.|
-|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. не удается удалить правило авторизации пространства имен по умолчанию Hello. |
-|/namespaces/authorizationRules/listkeys/action|Получение строки подключения hello toohello пространство имен|
-|/namespaces/authorizationRules/regenerateKeys/action|Повторное создание hello основных или дополнительных ключей toohello ресурсов|
+|/namespaces/authorizationRules/read|Возвращает список описаний правил авторизации пространства имен.|
+|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. Невозможно удалить правило авторизации пространства имен по умолчанию. |
+|/namespaces/authorizationRules/listkeys/action|Возвращает строку подключения к пространству имен.|
+|/namespaces/authorizationRules/regenerateKeys/action|Повторно создает первичный или вторичный ключ для ресурса.|
 |/namespaces/eventhubs/write|Создает или обновляет свойства концентратора событий.|
 |/namespaces/eventhubs/read|Возвращает список описаний ресурсов концентратора событий.|
-|/namespaces/eventhubs/Delete|Операция toodelete ресурсов EventHub|
+|/namespaces/eventhubs/Delete|Операция удаления ресурса концентратора событий.|
 |/namespaces/eventHubs/consumergroups/write|Создает или обновляет свойства группы потребителей.|
 |/namespaces/eventHubs/consumergroups/read|Возвращает список описаний ресурсов группы потребителей.|
-|/namespaces/eventHubs/consumergroups/Delete|Операция toodelete ConsumerGroup ресурсов|
-|/namespaces/eventhubs/authorizationRules/read| Получить список правил авторизации EventHub hello|
-|/namespaces/eventhubs/authorizationRules/write|Создает правила авторизации концентратора событий и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/eventhubs/authorizationRules/delete|Операция toodelete EventHub правила авторизации|
-|/namespaces/eventhubs/authorizationRules/listkeys/action|Получить строку подключения tooEventHub hello|
-|/namespaces/eventhubs/authorizationRules/regenerateKeys/action|Повторное создание hello основных или дополнительных ключей toohello ресурсов|
+|/namespaces/eventHubs/consumergroups/Delete|Операция удаления ресурса группы потребителей.|
+|/namespaces/eventhubs/authorizationRules/read| Возвращает список правил авторизации концентратора событий.|
+|/namespaces/eventhubs/authorizationRules/write|Создает правила авторизации концентратора событий и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/eventhubs/authorizationRules/delete|Операция удаления правил авторизации концентратора событий.|
+|/namespaces/eventhubs/authorizationRules/listkeys/action|Возвращает строку подключения к концентратору событий.|
+|/namespaces/eventhubs/authorizationRules/regenerateKeys/action|Повторно создает первичный или вторичный ключ для ресурса.|
 |/namespaces/diagnosticSettings/read|Возвращает список описаний параметров диагностики пространства имен.|
 |/namespaces/diagnosticSettings/write|Возвращает список описаний параметров диагностики пространства имен.|
 |/namespaces/logDefinitions/read|Возвращает список описаний ресурсов журналов пространства имен.|
@@ -964,9 +964,9 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/providers/features/read|Возвращает функцию hello подписки в заданном поставщике ресурсов.|
-|/providers/features/register/action|Регистрирует функцию hello для подписки в заданном поставщике ресурсов.|
-|/features/read|Возвращает функции hello подписки.|
+|/providers/features/read|Возвращает функцию подписки в заданном поставщике ресурсов.|
+|/providers/features/register/action|Регистрирует функцию для подписки в заданном поставщике ресурсов.|
+|/features/read|Возвращает функции подписки.|
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -986,19 +986,19 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов импорта и экспорта hello и разрешает hello создание заданий импорта и экспорта.|
-|/jobs/write|Создает задание с hello заданным параметрам или обновить свойства hello или теги для указанного задания hello.|
-|/jobs/read|Возвращает свойства hello для указанного задания hello или возвращает список заданий hello.|
-|/jobs/listBitLockerKeys/action|Возвращает ключи BitLocker hello для указанного задания hello.|
+|/register/action|Регистрирует подписку для поставщика ресурсов импорта и экспорта и позволяет создавать задания импорта и экспорта.|
+|/jobs/write|Создает задание с указанными параметрами либо обновляет свойства или теги указанного задания.|
+|/jobs/read|Возвращает свойства для указанного задания или возвращает список заданий.|
+|/jobs/listBitLockerKeys/action|Возвращает ключи BitLocker для указанного задания.|
 |/jobs/delete|Удаляет существующее задание.|
-|/locations/read|Возвращает свойства hello hello указанного расположения или возвращает hello список расположений.|
+|/locations/read|Возвращает свойства для указанного расположения или возвращает список расположений.|
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
 | Операция | Описание |
 |---|---|
-|/Register/Action|Регистрация поставщика аналитики microsoft hello|
-|/AlertRules/Write|Запись tooan правило оповещения конфигурации|
+|/Register/Action|Регистрирует поставщик Microsoft Insights.|
+|/AlertRules/Write|Выполняет запись в конфигурацию правила генерации оповещений.|
 |/AlertRules/Delete|Удаляет конфигурацию правила генерации оповещений.|
 |/AlertRules/Read|Считывает конфигурацию правила генерации оповещений.|
 |/AlertRules/Activated/Action|Правило генерации оповещений активировано.|
@@ -1009,21 +1009,21 @@ ms.lasthandoff: 10/06/2017
 |/eventtypes/values/Read|Считывает значения типов событий управления.|
 |/eventtypes/digestevents/Read|Считывает дайджест типов событий управления.|
 |/Metrics/Read|Считывает метрики.|
-|/LogProfiles/Write|Записи tooa журнала профиля конфигурации|
+|/LogProfiles/Write|Выполняет запись в конфигурацию профиля журнала.|
 |/LogProfiles/Delete|Удаляет конфигурацию профилей журнала.|
 |/LogProfiles/Read|Считывает профили журналов.|
-|/AutoscaleSettings/Write|Написание tooan конфигурацию параметров автоматического масштабирования|
+|/AutoscaleSettings/Write|Выполняет запись в конфигурацию параметров автомасштабирования.|
 |/AutoscaleSettings/Delete|Удаляет конфигурацию параметров автомасштабирования.|
 |/AutoscaleSettings/Read|Считывает конфигурацию параметров автомасштабирования.|
 |/AutoscaleSettings/Scaleup/Action|Операция автоматического увеличения масштаба.|
 |/AutoscaleSettings/Scaledown/Action|Операция автоматического уменьшения масштаба.|
 |/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read|Считывает определения метрик.|
-|/ActivityLogAlerts/Activated/Action|Предупреждение журналов действий триггера hello|
-|/DiagnosticSettings/Write|Запись toodiagnostic параметры конфигурации|
+|/ActivityLogAlerts/Activated/Action|Активирует оповещение журнала действий.|
+|/DiagnosticSettings/Write|Выполняет запись в конфигурацию параметров диагностики.|
 |/DiagnosticSettings/Delete|Удаляет конфигурацию параметров диагностики.|
 |/DiagnosticSettings/Read|Считывает конфигурацию параметров диагностики.|
 |/LogDefinitions/Read|Считывает определения журналов.|
-|/ExtendedDiagnosticSettings/Write|Запись tooextended диагностические параметры конфигурации|
+|/ExtendedDiagnosticSettings/Write|Выполняет запись в конфигурацию дополнительных параметров диагностики.|
 |/ExtendedDiagnosticSettings/Delete|Удаляет конфигурацию дополнительных параметров диагностики.|
 |/ExtendedDiagnosticSettings/Read|Считывает конфигурацию дополнительных параметров диагностики.|
 
@@ -1033,56 +1033,56 @@ ms.lasthandoff: 10/06/2017
 |---|---|
 |/register/action|Регистрирует подписку.|
 |/checkNameAvailability/read|Проверяет, является ли имя Key Vault допустимым и неиспользуемым.|
-|/vaults/read|Просмотр свойств hello хранилища ключей|
-|/vaults/write|Создание нового ключа хранилища или обновление hello свойства существующего хранилища ключей|
+|/vaults/read|Отображает свойства Key Vault.|
+|/vaults/write|Создает новое хранилище Key Vault или обновить свойства существующего.|
 |/vaults/delete|Удаляет Key Vault.|
-|/vaults/deploy/action|Разрешает доступ toosecrets в хранилище ключей при развертывании ресурсов Azure|
-|/vaults/secrets/read|Просмотр свойств hello секрета, но его значения|
-|/vaults/secrets/write|Создайте новое значение секрет или обновление hello существующих секрета|
-|/vaults/accessPolicies/write|Обновить существующую политику доступа, объединение или замена или добавьте новое хранилище tooa политики доступа.|
-|/deletedVaults/read|Просмотр свойств hello мягкий удаленных хранилищ ключей|
-|/locations/operationResults/read|Проверьте результат hello долго выполнения операции|
-|/locations/deletedVaults/read|Просмотр свойств hello мягкий удалить хранилище ключей|
+|/vaults/deploy/action|Включает доступ к секретам в Key Vault при развертывании ресурсов Azure.|
+|/vaults/secrets/read|Отображает свойства секрета, но не его значение.|
+|/vaults/secrets/write|Создает новый секрет или обновляет значение существующего.|
+|/vaults/accessPolicies/write|Обновляет существующую политику доступа путем объединения, замены или добавления новой политики доступа в хранилище.|
+|/deletedVaults/read|Отображает свойства обратимо удаленных хранилищ Key Vault.|
+|/locations/operationResults/read|Проверяет результат длительной операции.|
+|/locations/deletedVaults/read|Отображает свойства обратимо удаленного Key Vault.|
 |/locations/deletedVaults/purge/action|Очищает обратимо удаленное хранилище Key Vault.|
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 | Операция | Описание |
 |---|---|
-|/workflows/read|Считывает hello рабочего процесса.|
-|/workflows/write|Создает или обновляет рабочий процесс hello.|
-|/workflows/delete|Удаляет hello рабочего процесса.|
-|/workflows/run/action|Запуск выполнения рабочего процесса hello.|
-|/workflows/disable/action|Отключает hello рабочего процесса.|
-|/workflows/enable/action|Позволяет процессу hello.|
-|/workflows/validate/action|Проверяет hello рабочего процесса.|
-|/workflows/move/action|Перемещает рабочего процесса из его существующий идентификатор подписки, группы ресурсов и/или имя tooa другой идентификатор подписки, который группы ресурсов и/или имя.|
-|/workflows/listSwagger/action|Возвращает определения swagger hello рабочего процесса.|
-|/workflows/regenerateAccessKey/action|Выполняется повторное создание ключа секреты hello доступа.|
-|/workflows/listCallbackUrl/action|Возвращает URL-адрес обратного вызова hello рабочего процесса.|
-|/workflows/versions/read|Считывает hello версии рабочего процесса.|
-|/workflows/versions/triggers/listCallbackUrl/action|Получает URL-адрес обратного вызова hello триггера.|
-|/workflows/runs/read|Считывает hello рабочего процесса.|
-|/workflows/runs/cancel/action|Отменяет hello выполнения рабочего процесса.|
-|/workflows/runs/actions/read|Считывает hello рабочего процесса, выполните действие.|
-|/workflows/runs/operations/read|Читает состояние операции выполнения рабочего процесса hello.|
-|/workflows/triggers/read|Считывает hello триггера.|
-|/workflows/triggers/run/action|Выполняет hello триггера.|
-|/workflows/triggers/listCallbackUrl/action|Получает URL-адрес обратного вызова hello триггера.|
-|/workflows/triggers/histories/read|Считывает журналы hello триггера.|
-|/workflows/triggers/histories/resubmit/action|Повторяет отправку hello триггера рабочего процесса.|
-|/workflows/accessKeys/read|Считывает hello ключ доступа.|
-|/workflows/accessKeys/write|Создает или обновляет ключ доступа hello.|
-|/workflows/accessKeys/delete|Удаляет ключ доступа hello.|
-|/workflows/accessKeys/list/action|Список секретов ключа доступа hello.|
-|/workflows/accessKeys/regenerate/action|Выполняется повторное создание ключа секреты hello доступа.|
-|/locations/workflows/validate/action|Проверяет hello рабочего процесса.|
+|/workflows/read|Считывает рабочий процесс.|
+|/workflows/write|Создает или обновляет рабочий процесс.|
+|/workflows/delete|Удаляет рабочий процесс.|
+|/workflows/run/action|Начинает выполнение рабочего процесса.|
+|/workflows/disable/action|Отключает рабочий процесс.|
+|/workflows/enable/action|Включает рабочий процесс.|
+|/workflows/validate/action|Проверяет рабочий процесс.|
+|/workflows/move/action|Назначает рабочему процессу, для которого задан идентификатор существующей подписки, группа ресурсов и (или) имя, другой идентификатор подписки, группу ресурсов и (или) имя.|
+|/workflows/listSwagger/action|Возвращает определения Swagger рабочего процесса.|
+|/workflows/regenerateAccessKey/action|Повторно создает секреты ключей доступа.|
+|/workflows/listCallbackUrl/action|Возвращает URL-адрес обратного вызова для рабочего процесса.|
+|/workflows/versions/read|Считывает версию рабочего процесса.|
+|/workflows/versions/triggers/listCallbackUrl/action|Возвращает URL-адрес обратного вызова для триггера.|
+|/workflows/runs/read|Считывает данные о выполнении рабочего процесса.|
+|/workflows/runs/cancel/action|Отменяет выполнение рабочего процесса.|
+|/workflows/runs/actions/read|Считывает действие выполнения рабочего процесса.|
+|/workflows/runs/operations/read|Считывает состояние операции выполнения рабочего процесса.|
+|/workflows/triggers/read|Считывает триггер.|
+|/workflows/triggers/run/action|Выполняет триггер.|
+|/workflows/triggers/listCallbackUrl/action|Возвращает URL-адрес обратного вызова для триггера.|
+|/workflows/triggers/histories/read|Считывает журналы триггера.|
+|/workflows/triggers/histories/resubmit/action|Повторяет отправку триггера рабочего процесса.|
+|/workflows/accessKeys/read|Считывает ключ доступа.|
+|/workflows/accessKeys/write|Создает или обновляет ключ доступа.|
+|/workflows/accessKeys/delete|Удаляет ключ доступа.|
+|/workflows/accessKeys/list/action|Выводит список секретов ключей доступа.|
+|/workflows/accessKeys/regenerate/action|Повторно создает секреты ключей доступа.|
+|/locations/workflows/validate/action|Проверяет рабочий процесс.|
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписки для hello машинного обучения поставщики ресурсов веб-служб и разрешает создание hello веб-служб.|
+|/register/action|Регистрирует подписку для поставщика ресурсов веб-службы машинного обучения и позволяет создавать веб-службы.|
 |/webServices/action|Создает свойства региональной веб-службы для поддерживаемых регионов.|
 |/commitmentPlans/read|Считывает план предложения машинного обучения.|
 |/commitmentPlans/write|Создает или обновляет план предложения машинного обучения.|
@@ -1122,46 +1122,46 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует подписку hello|
-|/unregister/action|Отменяет регистрацию подписки hello|
-|/checkTrafficManagerNameAvailability/action|Проверяет доступность имени DNS диспетчера трафика относительно hello.|
-|/dnszones/read|Получение зоны DNS hello, в формате JSON. Hello свойства зоны включают теги, etag, numberOfRecordSets и maxNumberOfRecordSets. Обратите внимание, что эта команда не извлекает наборы записей hello, содержащихся в зоне hello.|
-|/dnszones/write|Создает или обновляет зону DNS в группе ресурсов.  Используется tooupdate hello тегов в ресурсе зоны DNS. Обратите внимание, что эта команда не может быть используется toocreate или обновления наборов записей в зоне hello.|
-|/dnszones/delete|Удалите зону DNS hello, в формате JSON. Hello свойства зоны включают теги, etag, numberOfRecordSets и maxNumberOfRecordSets.|
-|/dnszones/MX/read|Получение набора записей hello типа «MX» в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/MX/write|Создает или обновляет набора записей типа MX в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/MX/delete|Удаление набора записей hello с указанным именем и типом «MX» из зоны DNS.|
+|/register/action|Регистрирует подписку.|
+|/unregister/action|Отменяет регистрацию подписки.|
+|/checkTrafficManagerNameAvailability/action|Проверяет доступность относительного DNS-имени диспетчера трафика.|
+|/dnszones/read|Возвращает зону DNS в формате JSON. К свойствам зоны относятся tags, etag, numberOfRecordSets и maxNumberOfRecordSets. Обратите внимание, что эта команда не извлекает наборы записей, содержащиеся в зоне.|
+|/dnszones/write|Создает или обновляет зону DNS в группе ресурсов.  Используется для обновления тегов в ресурсе зоны DNS. Обратите внимание, что эту команду невозможно использовать для создания или обновления наборов записей в зоне.|
+|/dnszones/delete|Удаляет зону DNS в формате JSON. К свойствам зоны относятся tags, etag, numberOfRecordSets и maxNumberOfRecordSets.|
+|/dnszones/MX/read|Возвращает набор записей типа MX в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
+|/dnszones/MX/write|Создает или обновляет набора записей типа MX в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/MX/delete|Удаляет из зоны DNS набор записей типа MX с заданным именем.|
 |/dnszones/NS/read|Возвращает набор записей DNS типа NS.|
 |/dnszones/NS/write|Создает или обновляет набор записей DNS типа NS.|
-|/dnszones/NS/delete|Удаляет hello DNS набора записей типа NS|
-|/dnszones/AAAA/read|Получение набора записей hello типа «AAAA» в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/AAAA/write|Создает или обновляет набора записей типа AAAA в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/AAAA/delete|Удаление набора записей hello с указанным именем и типом «AAAA» из зоны DNS.|
-|/dnszones/CNAME/read|Получение набора записей hello типа «CNAME» в формате JSON. набор записей Hello содержит hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/CNAME/write|Создает или обновляет набора записей типа CNAME в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/CNAME/delete|Удаление набора записей hello с указанным именем и типом «CNAME» из зоны DNS.|
+|/dnszones/NS/delete|Удаляет набор записей DNS типа NS.|
+|/dnszones/AAAA/read|Возвращает набор записей типа AAAA в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
+|/dnszones/AAAA/write|Создает или обновляет набора записей типа AAAA в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/AAAA/delete|Удаляет из зоны DNS набор записей типа AAAA с заданным именем.|
+|/dnszones/CNAME/read|Возвращает набор записей типа CNAME в формате JSON. Набор записей содержит срок жизни, теги и ETag.|
+|/dnszones/CNAME/write|Создает или обновляет набора записей типа CNAME в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/CNAME/delete|Удаляет из зоны DNS набор записей типа CNAME с заданным именем.|
 |/dnszones/SOA/read|Возвращает набор записей DNS типа SOA.|
 |/dnszones/SOA/write|Создает или обновляет набор записей DNS типа SOA.|
-|/dnszones/SRV/read|Получение набора записей hello типа «SRV» в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
+|/dnszones/SRV/read|Возвращает набор записей типа SRV в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
 |/dnszones/SRV/write|Создает или обновляет набор записей типа SRV.|
-|/dnszones/SRV/delete|Удаление набора записей hello с указанным именем и типом «SRV» из зоны DNS.|
-|/dnszones/PTR/read|Получите hello набор записей типа «Указатель», в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/PTR/write|Создает или обновляет набора записей типа PTR в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/PTR/delete|Удаление набора записей hello с указанным именем и типом «PTR» из зоны DNS.|
-|/dnszones/A/read|Получите hello набор записей типа «A» в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/A/write|Создает или обновляет набора записей типа A в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/A/delete|Удаление набора записей hello с указанным именем и типом «A» из зоны DNS.|
-|/dnszones/TXT/read|Получение набора записей hello типа «TXT», в формате JSON. Hello набор записей содержит список записей, а также hello срок ЖИЗНИ, теги и etag.|
-|/dnszones/TXT/write|Создает или обновляет набора записей типа TXT в зоне DNS. Привет, прописанных заменит hello текущие записи в наборе записей hello.|
-|/dnszones/TXT/delete|Удаление набора записей hello с указанным именем и типом «TXT» из зоны DNS.|
+|/dnszones/SRV/delete|Удаляет из зоны DNS набор записей типа SRV с заданным именем.|
+|/dnszones/PTR/read|Возвращает набор записей типа PTR в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
+|/dnszones/PTR/write|Создает или обновляет набора записей типа PTR в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/PTR/delete|Удаляет из зоны DNS набор записей типа PTR с заданным именем.|
+|/dnszones/A/read|Возвращает набор записей типа A в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
+|/dnszones/A/write|Создает или обновляет набора записей типа A в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/A/delete|Удаляет из зоны DNS набор записей типа A с заданным именем.|
+|/dnszones/TXT/read|Возвращает набор записей типа TXT в формате JSON. Набор записей содержит список записей, а также срок жизни, теги и ETag.|
+|/dnszones/TXT/write|Создает или обновляет набора записей типа TXT в зоне DNS. Указанные записи заменят текущие записи в наборе записей.|
+|/dnszones/TXT/delete|Удаляет из зоны DNS набор записей типа TXT с заданным именем.|
 |/dnszones/recordsets/read|Возвращает набор записей DNS разного типа.|
 |/networkInterfaces/read|Возвращает определение сетевого интерфейса. |
 |/networkInterfaces/write|Создает новый сетевой интерфейс или обновляет существующий. |
-|/networkInterfaces/join/action|Присоединяет tooa сетевого интерфейса виртуальной машины|
+|/networkInterfaces/join/action|Подключает виртуальную машину к сетевому интерфейсу.|
 |/networkInterfaces/delete|Удаляет сетевой интерфейс.|
-|/networkInterfaces/effectiveRouteTable/action|Получение таблицы маршрутов, настроенный в сетевом интерфейсе из hello виртуальной машины|
-|/networkInterfaces/effectiveNetworkSecurityGroups/action|Получение группы безопасности сети настроенного на сетевой интерфейс из hello виртуальной машины|
-|/networkInterfaces/loadBalancers/read|Возвращает все подсистемы балансировки нагрузки hello, hello сетевой интерфейс является частью|
+|/networkInterfaces/effectiveRouteTable/action|Возвращает таблицу маршрутов, настроенную для сетевого интерфейса виртуальной машины.|
+|/networkInterfaces/effectiveNetworkSecurityGroups/action|Возвращает группы безопасности сети, настроенные для сетевого интерфейса виртуальной машины.|
+|/networkInterfaces/loadBalancers/read|Возвращает все подсистемы балансировки нагрузки, в которых используется сетевой интерфейс.|
 |/networkInterfaces/ipconfigurations/read|Возвращает определение IP-конфигурации сетевого интерфейса. |
 |/publicIPAddresses/read|Возвращает определение общедоступного IP-адреса.|
 |/publicIPAddresses/write|Создает новый общедоступный IP-адрес или обновляет существующий. |
@@ -1174,26 +1174,26 @@ ms.lasthandoff: 10/06/2017
 |/routeFilters/rules/read|Возвращает определение правила фильтра маршрутов.|
 |/routeFilters/rules/write|Создает новое правило фильтра маршрутов или обновляет существующее.|
 |/routeFilters/rules/delete|Удаляет определение правила фильтра маршрутов.|
-|/networkWatchers/read|Получить определение Наблюдатель сети hello|
+|/networkWatchers/read|Возвращает определение Наблюдателя за сетями.|
 |/networkWatchers/write|Создает новый Наблюдатель за сетями или обновляет существующий.|
 |/networkWatchers/delete|Удаляет Наблюдатель за сетями.|
 |/networkWatchers/configureFlowLog/action|Настраивает ведение журнала потоков для целевого ресурса.|
-|/networkWatchers/ipFlowVerify/action|Возвращает ли пакет приветствия разрешен или запрещен tooor из конкретного места назначения.|
-|/networkWatchers/nextHop/action|Указанный целевой объект и конечный IP-адрес возвращают тип следующего прыжка hello и далее надеемся, что IP-адрес.|
-|/networkWatchers/queryFlowLogStatus/action|Возвращает состояние hello потока, ведение журнала для ресурса.|
-|/networkWatchers/queryTroubleshootResult/action|Возвращает hello, устранение неполадок результат hello ранее не выполнялась или в настоящее время запуска операции устранения неполадок.|
-|/networkWatchers/securityGroupView/action|Просмотр настройки hello и действующие сетевой безопасности группы правил, применяемых на виртуальной Машине.|
+|/networkWatchers/ipFlowVerify/action|Проверяет, разрешена ли передача или прием пакета для определенного места назначения.|
+|/networkWatchers/nextHop/action|Для указанного целевого объекта и конечного IP-адреса возвращает тип следующего прыжка и его IP-адрес.|
+|/networkWatchers/queryFlowLogStatus/action|Возвращает состояние ведения журнала потоков для ресурса.|
+|/networkWatchers/queryTroubleshootResult/action|Возвращает результат устранения неполадок предыдущей или текущей операции по устранению неполадок.|
+|/networkWatchers/securityGroupView/action|Отображает настроенные и действующие правила группы безопасности сети для виртуальной машины.|
 |/networkWatchers/topology/action|Возвращает представление уровня сети для ресурсов и их связей в группе ресурсов.|
 |/networkWatchers/troubleshoot/action|Начинает устранение неполадок сетевого ресурса в Azure.|
 |/networkWatchers/packetCaptures/queryStatus/action|Возвращает сведения о свойствах и состоянии ресурса записи пакетов.|
-|/networkWatchers/packetCaptures/stop/action|Остановите hello для запуска сеанса записи пакета.|
-|/networkWatchers/packetCaptures/read|Получить определение захват пакетов hello|
+|/networkWatchers/packetCaptures/stop/action|Останавливает выполняемый сеанс записи пакетов.|
+|/networkWatchers/packetCaptures/read|Возвращает определение записи пакетов.|
 |/networkWatchers/packetCaptures/write|Создает запись пакетов.|
 |/networkWatchers/packetCaptures/delete|Удаляет запись пакетов.|
 |/loadBalancers/read|Возвращает определение подсистемы балансировки нагрузки.|
 |/loadBalancers/write|Создает новую подсистему балансировки нагрузки или обновляет существующую.|
 |/loadBalancers/delete|Удаляет подсистему балансировки нагрузки.|
-|/loadBalancers/networkInterfaces/read|Возвращает ссылки на tooall hello сетевые интерфейсы в рамках подсистемы балансировки нагрузки|
+|/loadBalancers/networkInterfaces/read|Возвращает ссылки на все сетевые интерфейсы в подсистеме балансировки нагрузки.|
 |/loadBalancers/loadBalancingRules/read|Возвращает определение правила подсистемы балансировки нагрузки.|
 |/loadBalancers/backendAddressPools/read|Возвращает определение внутреннего пула адресов подсистемы балансировки нагрузки.|
 |/loadBalancers/backendAddressPools/join/action|Выполняет присоединение к внутреннему пулу адресов подсистемы балансировки нагрузки.|
@@ -1205,12 +1205,12 @@ ms.lasthandoff: 10/06/2017
 |/loadBalancers/inboundNatRules/join/action|Присоединяет правило NAT для входящего трафика подсистемы балансировки нагрузки.|
 |/loadBalancers/outboundNatRules/read|Возвращает определение правила пула исходящих подключений NAT подсистемы балансировки нагрузки.|
 |/loadBalancers/probes/read|Возвращает пробу подсистемы балансировки нагрузки.|
-|/loadBalancers/virtualMachines/read|Возвращает ссылки на tooall hello виртуальных машин в группе балансировки нагрузки|
+|/loadBalancers/virtualMachines/read|Возвращает ссылки на все виртуальные машины в подсистеме балансировки нагрузки.|
 |/loadBalancers/frontendIPConfigurations/read|Возвращает определение внешней IP-конфигурации подсистемы балансировки нагрузки.|
-|/trafficManagerGeographicHierarchies/read|Возвращает hello иерархии географическая диспетчера трафика, содержащий областей, которые могут быть использованы с hello метод маршрутизации трафика географической|
+|/trafficManagerGeographicHierarchies/read|Возвращает географическую иерархию диспетчера трафика, содержащую регионы, которые могут быть использованы для метода географической маршрутизации трафика.|
 |/bgpServiceCommunities/read|Возвращает сообщества службы BGP.|
 |/applicationGatewayAvailableWafRuleSets/read|Возвращает доступные наборы правил WAF шлюза приложений.|
-|/virtualNetworks/read|Получить определение виртуальной сети hello|
+|/virtualNetworks/read|Возвращает определение виртуальной сети.|
 |/virtualNetworks/write|Создает новую виртуальную сеть или обновляет существующую.|
 |/virtualNetworks/delete|Удаляет виртуальную сеть.|
 |/virtualNetworks/peer/action|Создает пиринг между виртуальными сетями.|
@@ -1221,18 +1221,18 @@ ms.lasthandoff: 10/06/2017
 |/virtualNetworks/subnets/write|Создает новую подсеть пиринг виртуальной сети или обновляет существующую.|
 |/virtualNetworks/subnets/delete|Удаляет подсеть виртуальной сети.|
 |/virtualNetworks/subnets/join/action|Присоединяет виртуальную сеть.|
-|/virtualNetworks/subnets/joinViaServiceTunnel/action|Присоединяет ресурсов, такие как учетная запись хранения или SQL базы данных включено туннелирование службы подсети tooa.|
-|/virtualNetworks/subnets/virtualMachines/read|Возвращает ссылки на tooall hello виртуальные машины в подсети виртуальной сети|
-|/virtualNetworks/checkIpAddressAvailability/read|Проверьте, если IP-адрес находится в указанной виртуальной сети hello|
-|/virtualNetworks/virtualMachines/read|Возвращает ссылки на tooall hello виртуальных машин в виртуальной сети|
+|/virtualNetworks/subnets/joinViaServiceTunnel/action|Присоединяет ресурс, например учетную запись хранения или базу данных SQL, к подсети с поддержкой туннелирования службы.|
+|/virtualNetworks/subnets/virtualMachines/read|Возвращает ссылки на все виртуальные машины в подсети виртуальной сети.|
+|/virtualNetworks/checkIpAddressAvailability/read|Проверяет, доступен ли IP-адрес в указанной виртуальной сети.|
+|/virtualNetworks/virtualMachines/read|Возвращает ссылки на все виртуальные машины в виртуальной сети.|
 |/expressRouteServiceProviders/read|Возвращает поставщики службы ExpressRoute.|
 |/dnsoperationresults/read|Возвращает результаты операции DNS.|
 |/localnetworkgateways/read|Возвращает шлюз локальной сети.|
 |/localnetworkgateways/write|Создает новый шлюз локальной сети или обновляет существующий.|
 |/localnetworkgateways/delete|Удаляет шлюз локальной сети.|
-|/trafficManagerProfiles/read|Получение конфигурации профиля диспетчера трафика hello. Сюда входят параметры DNS, параметры маршрутизации трафика, параметры мониторинга конечной точки и hello список конечных точек, маршрутизируемых этим профилем диспетчера трафика.|
-|/trafficManagerProfiles/write|Создание профиля диспетчера трафика или изменение конфигурации hello существующего профиля диспетчера трафика. Сюда входит включение или отключение профиля и изменение параметров DNS, параметров маршрутизации трафика или параметров мониторинга конечных точек. Конечных точек, маршрутизируемых hello профиля диспетчера трафика можно добавить, удалить, включить или отключить.|
-|/trafficManagerProfiles/delete|Удаление профиля диспетчера трафика hello. Все параметры, связанные с hello профиля диспетчера трафика, будут потеряны и больше не может быть hello профиль используется tooroute трафика.|
+|/trafficManagerProfiles/read|Возвращает конфигурацию профиля диспетчера трафика. Он содержит параметры DNS, параметры маршрутизации трафика, параметры отслеживания конечных точек, а также список конечных точек, маршрутизируемых данным профилем диспетчера трафика.|
+|/trafficManagerProfiles/write|Создает профиль диспетчера трафика или изменяет конфигурацию существующего профиля диспетчера трафика. Сюда входит включение или отключение профиля и изменение параметров DNS, параметров маршрутизации трафика или параметров мониторинга конечных точек. Конечные точки, маршрутизируемые с помощью профиля диспетчера трафика, можно добавлять, удалять, включать и отключать.|
+|/trafficManagerProfiles/delete|Удаляет профиль диспетчера трафика. Будут утрачены все параметры, связанные с профилем диспетчера трафика, и профиль больше не сможет использоваться для маршрутизации трафика.|
 |/dnsoperationstatuses/read|Возвращает состояние операции DNS. |
 |/operations/read|Возвращает доступные операции.|
 |/expressRouteCircuits/read|Возвращает канал ExpressRoute.|
@@ -1277,67 +1277,67 @@ ms.lasthandoff: 10/06/2017
 |/routeTables/routes/write|Создает новый маршрут или обновляет существующий.|
 |/routeTables/routes/delete|Удаляет определение маршрута.|
 |/locations/operationResults/read|Возвращает результат асинхронной операции POST или DELETE.|
-|/locations/checkDnsNameAvailability/read|Проверяет, доступен метка dns на hello определенное место|
-|/locations/usages/read|Возвращает показатели использования ресурсов hello|
+|/locations/checkDnsNameAvailability/read|Проверяет, доступна ли метка DNS в указанном расположении.|
+|/locations/usages/read|Возвращает метрики использования ресурсов.|
 |/locations/operations/read|Возвращает ресурс операции, представляющий состояние асинхронной операции.|
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов NotifciationHubs hello и обеспечивает создание hello и Notificationhub|
-|/CheckNamespaceAvailability/action|Проверяет, доступно ли имя данного ресурса пространства имен в пределах hello концентратора уведомлений службы.|
-|/Namespaces/write|Создает ресурс пространства имен и обновляет его свойства. Теги и состояние hello пространства имен являются hello свойства, которые могут быть обновлены.|
-|/Namespaces/read|Получить hello список описаний ресурса пространства имен|
+|/register/action|Регистрирует подписку для поставщика ресурсов центров уведомлений и позволяет создавать пространства имен и центры уведомлений.|
+|/CheckNamespaceAvailability/action|Проверяет, доступно ли имя заданного ресурса пространства имен в службе центра уведомлений.|
+|/Namespaces/write|Создает ресурс пространства имен и обновляет его свойства. К этим свойствам относятся теги и состояние пространства имен.|
+|/Namespaces/read|Возвращает список описаний ресурсов пространства имен.|
 |/Namespaces/Delete|Удаляет ресурс пространства имен.|
-|/Namespaces/authorizationRules/action|Получите список hello описание правил авторизации пространства имен.|
+|/Namespaces/authorizationRules/action|Возвращает список описаний правил авторизации пространства имен.|
 |/Namespaces/CheckNotificationHubAvailability/action|Проверяет, доступно ли заданное имя центра уведомлений в пространстве имен.|
-|/Namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/Namespaces/authorizationRules/read|Получите список hello описание правил авторизации пространства имен.|
-|/Namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. не удается удалить правило авторизации пространства имен по умолчанию Hello. |
-|/Namespaces/authorizationRules/listkeys/action|Получение строки подключения hello toohello пространство имен|
-|/Namespaces/authorizationRules/regenerateKeys/action|Пространство имен авторизации правило повторно создать первичный и SecondaryKey, hello укажите ключ, который требуется повторно toobe|
+|/Namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/Namespaces/authorizationRules/read|Возвращает список описаний правил авторизации пространства имен.|
+|/Namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. Невозможно удалить правило авторизации пространства имен по умолчанию. |
+|/Namespaces/authorizationRules/listkeys/action|Возвращает строку подключения к пространству имен.|
+|/Namespaces/authorizationRules/regenerateKeys/action|Правило авторизации пространства имен повторно создает первичный или вторичный ключ. Укажите ключ, который должен быть создан повторно.|
 |/Namespaces/NotificationHubs/write|Создает центр уведомлений и обновляет его свойства. К этим свойствам в основном относятся учетные данные PNS. Правила авторизации и срок жизни.|
 |/Namespaces/NotificationHubs/read|Возвращает список описаний ресурсов центра уведомлений.|
 |/Namespaces/NotificationHubs/Delete|Удаляет ресурс центра уведомлений.|
-|/Namespaces/NotificationHubs/authorizationRules/action|Получить список hello правила авторизации концентратора уведомлений|
+|/Namespaces/NotificationHubs/authorizationRules/action|Возвращает список правил авторизации центра уведомлений.|
 |/Namespaces/NotificationHubs/pnsCredentials/action|Возвращает все учетные данные PNS центра уведомлений. Сюда входят учетные данные WNS, MPNS, APNS, GCM и Baidu.|
 |/Namespaces/NotificationHubs/debugSend/action|Отправляет тестовое push-уведомление.|
 |/Namespaces/NotificationHubs/metricDefinitions/read|Возвращает список описаний ресурсов метрик пространства имен.|
-|/Namespaces/NotificationHubs/<br>authorizationRules/write|Создает правила авторизации центра уведомлений и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/Namespaces/NotificationHubs/<br>authorizationRules/read|Получить список hello правила авторизации концентратора уведомлений|
+|/Namespaces/NotificationHubs/<br>authorizationRules/write|Создает правила авторизации центра уведомлений и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/Namespaces/NotificationHubs/<br>authorizationRules/read|Возвращает список правил авторизации центра уведомлений.|
 |/Namespaces/NotificationHubs/<br>authorizationRules/delete|Удаляет правила авторизации центра уведомлений.|
-|/Namespaces/NotificationHubs/<br>authorizationRules/listkeys/action|Получить строку подключения hello toohello концентратора уведомлений|
-|/Namespaces/NotificationHubs/<br>authorizationRules/regenerateKeys/action|Заново уведомлений концентратора авторизации правило повторно создать первичный и SecondaryKey, hello укажите ключ, который должен toobe|
+|/Namespaces/NotificationHubs/<br>authorizationRules/listkeys/action|Возвращает строку подключения к центру уведомлений.|
+|/Namespaces/NotificationHubs/<br>authorizationRules/regenerateKeys/action|Правило авторизации центра уведомлений повторно создает первичный или вторичный ключ. Укажите ключ, который должен быть создан повторно.|
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрация поставщика ресурсов tooa подписки.|
-|/linkTargets/read|Выводит список существующих учетных записей, которые не связаны с подпиской Azure. toolink этой рабочей области tooa подписки Azure, используйте идентификатор клиента возвращаемые этой операцией в свойство идентификатора клиента hello hello операции создать рабочую область.|
-|/workspaces/write|Создает новую рабочую область или существующей рабочей области tooan ссылки, предоставляя идентификатор клиента hello из hello существующую рабочую область.|
+|/register/action|Регистрирует подписку для поставщика ресурсов.|
+|/linkTargets/read|Выводит список существующих учетных записей, которые не связаны с подпиской Azure. Чтобы связать эту подписку Azure с рабочей областью, укажите идентификатор клиента, возвращаемый этой операцией, в свойстве идентификатора клиента в операции создания рабочей области.|
+|/workspaces/write|Создает новую рабочую область или устанавливает связь с существующей рабочей областью с помощью указанного идентификатора клиента, полученного из нее.|
 |/workspaces/read|Возвращает существующую рабочую область.|
-|/workspaces/delete|Удаляет рабочую область. Если был связан hello рабочей tooan существующей рабочей области во время создания затем hello рабочей области, которое было связанного toois не удаляется.|
-|/workspaces/generateregistrationcertificate/action|Приводит к возникновению ошибки регистрации сертификатов для рабочей области hello. Этот сертификат является рабочей toohello tooconnect используется Microsoft System Center Operation Manager.|
-|/workspaces/sharedKeys/action|Извлекает hello общие ключи для hello рабочей области. Эти ключи, используемые tooconnect Microsoft агенты toohello рабочая область оперативной аналитики.|
+|/workspaces/delete|Удаляет рабочую область. Если при создании рабочая область была связана с существующей рабочей областью, то эта связанная рабочая область не удаляется.|
+|/workspaces/generateregistrationcertificate/action|Создает сертификат регистрации для рабочей области. Этот сертификат используется для подключения Microsoft System Center Operations Manager к рабочей области.|
+|/workspaces/sharedKeys/action|Извлекает открытые ключи для рабочей области. Эти ключи используются для подключения агентов Microsoft Operational Insights к рабочей области.|
 |/workspaces/search/action|Выполняет поисковый запрос.|
 |/workspaces/datasources/read|Возвращает источники данных в рабочей области.|
 |/workspaces/datasources/write|Создает или обновляет источники данных в рабочей области.|
 |/workspaces/datasources/delete|Удаляет источники данных в рабочей области.|
-|/workspaces/managementGroups/read|Возвращает имена hello и метаданные для рабочей toothis подключенных групп управления System Center Operations Manager.|
-|/workspaces/schema/read|Возвращает схему поиска hello для hello рабочей области.  Схема поиска включает hello предоставляется полей и их типы.|
-|/workspaces/usages/read|Возвращает данные об использовании для рабочей области, включая hello объем данных, считываемых hello рабочей области.|
-|/workspaces/intelligencepacks/read|Перечислены все пакеты аналитики, которые являются видимыми для заданной worksapce, а также пакет hello включена или отключена для данной рабочей области.|
+|/workspaces/managementGroups/read|Возвращает имена и метаданные для групп управления System Center Operations Manager, подключенных к этой рабочей области.|
+|/workspaces/schema/read|Возвращает схему поиска для рабочей области.  Схема поиска содержит предоставленные поля и их типы.|
+|/workspaces/usages/read|Возвращает данные об использовании для рабочей области, включая объем данных, считываемых рабочей областью.|
+|/workspaces/intelligencepacks/read|Выводит список всех пакетов аналитики, которые являются видимыми для заданной рабочей области, а также сведения о том, включен или отключен пакет для этой рабочей области.|
 |/workspaces/intelligencepacks/enable/action|Включает пакет аналитики для заданной рабочей области.|
 |/workspaces/intelligencepacks/disable/action|Отключает пакет аналитики для заданной рабочей области.|
-|/workspaces/sharedKeys/read|Извлекает hello общие ключи для hello рабочей области. Эти ключи, используемые tooconnect Microsoft агенты toohello рабочая область оперативной аналитики.|
+|/workspaces/sharedKeys/read|Извлекает открытые ключи для рабочей области. Эти ключи используются для подключения агентов Microsoft Operational Insights к рабочей области.|
 |/workspaces/savedSearches/read|Возвращает сохраненный поисковый запрос.|
 |/workspaces/savedSearches/write|Создает сохраненный поисковый запрос.|
 |/workspaces/savedSearches/delete|Удаляет сохраненный поисковый запрос.|
-|/workspaces/storageinsightconfigs/write|Создает конфигурацию учетной записи хранения. Эти конфигурации, используемые toopull данных из расположения в существующую учетную запись хранения.|
+|/workspaces/storageinsightconfigs/write|Создает конфигурацию учетной записи хранения. Эти конфигурации используются для извлечения данных из расположения в существующей учетной записи хранения.|
 |/workspaces/storageinsightconfigs/read|Возвращает конфигурацию хранилища.|
-|/workspaces/storageinsightconfigs/delete|Удаляет конфигурацию хранилища. Это остановит оперативной аналитики Microsoft считывать данные из учетной записи хранения hello.|
+|/workspaces/storageinsightconfigs/delete|Удаляет конфигурацию хранилища. Это остановит чтение данных из учетной записи хранения, выполняемое Microsoft Operational Insights.|
 |/workspaces/configurationScopes/read|Возвращает область конфигурации.|
 |/workspaces/configurationScopes/write|Задает область конфигурации.|
 |/workspaces/configurationScopes/delete|Удаляет область конфигурации.|
@@ -1346,7 +1346,7 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрация поставщика ресурсов tooa подписки.|
+|/register/action|Регистрирует подписку для поставщика ресурсов.|
 |/solutions/write|Создает решение OMS.|
 |/solutions/read|Возвращает существующее решение OMS.|
 |/solutions/delete|Удаляет существующее решение OMS.|
@@ -1357,20 +1357,20 @@ ms.lasthandoff: 10/06/2017
 |---|---|
 |/Vaults/backupJobsExport/action|Экспортирует задания.|
 |/Vaults/write|Создает операцию создания хранилища, которая создает ресурс Azure типа "хранилище".|
-|/Vaults/read|Hello получить хранилище операция возвращает объект, представляющий ресурс Azure типа «vault» hello|
-|/Vaults/delete|Операция удаления Hello удалить хранилище hello указанный ресурс Azure типа «vault»|
-|/Vaults/refreshContainers/read|Обновляет список контейнеров hello|
-|/Vaults/backupJobsExport/operationResults/read|Здравствуйте, возвращает результат экспорта операции задания.|
+|/Vaults/read|Операция получения хранилища возвращает объект, представляющий ресурс Azure типа "хранилище".|
+|/Vaults/delete|Операция удаления хранилища удаляет указанный ресурс Azure типа "хранилище".|
+|/Vaults/refreshContainers/read|Обновляет список контейнеров.|
+|/Vaults/backupJobsExport/operationResults/read|Возвращает результат операции задания экспорта.|
 |/Vaults/backupOperationResults/read|Возвращает результат операции архивации для хранилища служб восстановления.|
-|/Vaults/monitoringAlerts/read|Получает хранилище служб восстановления hello hello предупреждения.|
-|/Vaults/monitoringAlerts/{уникальный_ИД_оповещения}/read|Возвращает сведения о hello hello предупреждения.|
+|/Vaults/monitoringAlerts/read|Возвращает оповещения для хранилища служб восстановления.|
+|/Vaults/monitoringAlerts/{уникальный_ИД_оповещения}/read|Возвращает сведения об оповещении.|
 |/Vaults/backupSecurityPIN/read|Возвращает данные ПИН-кода безопасности для хранилища служб восстановления.|
 |/vaults/replicationEvents/read|Считывает события.|
 |/Vaults/backupProtectableItems/read|Возвращает список всех защищаемых элементов.|
 |/vaults/replicationFabrics/read|Считывает структуры.|
 |/vaults/replicationFabrics/write|Создает или обновляет структуры.|
 |/vaults/replicationFabrics/remove/action|Удаляет структуру.|
-|/vaults/replicationFabrics/checkConsistency/action|Проверяет согласованность hello структуры|
+|/vaults/replicationFabrics/checkConsistency/action|Проверяет согласованность структуры.|
 |/vaults/replicationFabrics/delete|Удаляет структуры.|
 |/vaults/replicationFabrics/renewcertificate/action||
 |/vaults/replicationFabrics/deployProcessServerImage/action|Развертывает образ сервера обработки.|
@@ -1426,27 +1426,27 @@ ms.lasthandoff: 10/06/2017
 |/vaults/replicationRecoveryPlans/testFailoverCleanup/action|Тестирует очистку отработки отказа для плана восстановления.|
 |/vaults/replicationRecoveryPlans/failoverCommit/action|Выполняет отработку отказа с фиксацией для плана восстановления.|
 |/vaults/replicationRecoveryPlans/reProtect/action|Повторно защищает план восстановления.|
-|/Vaults/extendedInformation/read|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
-|/Vaults/extendedInformation/write|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
-|/Vaults/extendedInformation/delete|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
+|/Vaults/extendedInformation/read|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
+|/Vaults/extendedInformation/write|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
+|/Vaults/extendedInformation/delete|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
 |/Vaults/backupManagementMetaData/read|Возвращает метаданные управления архивацией для хранилища служб восстановления.|
-|/Vaults/backupProtectionContainers/read|Возвращает все контейнеры, принадлежащий toohello подписки|
-|/Vaults/backupFabrics/operationResults/read|Возвращает состояние операции hello|
+|/Vaults/backupProtectionContainers/read|Возвращает все контейнеры, принадлежащие подписке.|
+|/Vaults/backupFabrics/operationResults/read|Возвращает состояние операции.|
 |/Vaults/backupFabrics/protectionContainers/read|Возвращает все зарегистрированные контейнеры.|
 |/Vaults/backupFabrics/protectionContainers/<br>operationResults/read|Возвращает результат операции, выполненной с контейнером защиты.|
-|/Vaults/backupFabrics/protectionContainers/<br>protectedItems/read|Возвращает сведения об hello защищенному элементу объекте|
+|/Vaults/backupFabrics/protectionContainers/<br>protectedItems/read|Возвращает сведения об объекте для защищенного элемента.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/write|Создает элемент, защищенный службой архивации.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/delete|Удаляет защищенный элемент.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/backup/action|Архивирует защищенный элемент.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/operationResults/read|Возвращает результат операции, выполненной с защищенными элементами.|
-|/Vaults/backupFabrics/protectionContainers/<br>protectedItems/operationStatus/read|Возвращает состояние hello операции для защищенные элементы.|
+|/Vaults/backupFabrics/protectionContainers/<br>protectedItems/operationStatus/read|Возвращает состояние операции, выполненной с защищенными элементами.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/recoveryPoints/read|Возвращает точки восстановления для защищенных элементов.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/recoveryPoints/<br>restore/action|Восстанавливает точки восстановления для защищенных элементов.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/recoveryPoints/<br>provisionInstantItemRecovery/action|Подготавливает мгновенное восстановление для защищенного элемента.|
 |/Vaults/backupFabrics/protectionContainers/<br>protectedItems/recoveryPoints/<br>revokeInstantItemRecovery/action|Отменяет мгновенное восстановление для защищенного элемента.|
 |/Vaults/usages/read|Возвращает данные об использовании хранилища служб восстановления.|
 |/vaults/usages/read|Считывает данные об использовании хранилищ.|
-|/Vaults/certificates/write|Операция обновления ресурса сертификата Hello обновляет сертификат учетных данных ресурсов или хранилища hello.|
+|/Vaults/certificates/write|Операция обновления сертификата ресурса обновляет сертификат учетных данных для ресурса или хранилища.|
 |/Vaults/tokenInfo/read|Возвращает сведения о маркере для хранилища служб восстановления.|
 |/vaults/replicationAlertSettings/read|Считывает параметры оповещений.|
 |/vaults/replicationAlertSettings/write|Создает или обновляет параметры оповещений.|
@@ -1454,13 +1454,13 @@ ms.lasthandoff: 10/06/2017
 |/Vaults/storageConfig/read|Возвращает конфигурацию службы хранилища для хранилища служб восстановления.|
 |/Vaults/storageConfig/write|Обновляет конфигурацию службы хранилища для хранилища служб восстановления.|
 |/Vaults/backupUsageSummaries/read|Возвращает сводки по защищенным элементам и защищенным серверам для служб восстановления.|
-|/Vaults/backupProtectedItems/read|Возвращает список hello все защищенные элементы.|
+|/Vaults/backupProtectedItems/read|Возвращает список всех защищенных элементов.|
 |/Vaults/backupconfig/vaultconfig/read|Возвращает конфигурацию хранилища служб восстановления.|
 |/Vaults/backupconfig/vaultconfig/write|Обновляет конфигурацию хранилища служб восстановления.|
-|/Vaults/registeredIdentities/write|Hello операции зарегистрировать контейнер службы может быть используется tooregister контейнера в службе восстановления.|
-|/Vaults/registeredIdentities/read|Hello получить контейнеры можно использовать операцию получить контейнеры hello, зарегистрированные для ресурса.|
-|/Vaults/registeredIdentities/delete|Hello операции отмены регистрации контейнера может быть используется toounregister контейнера.|
-|/Vaults/registeredIdentities/operationResults/read|Операция отправки Hello результаты операции получения операции можно использовать для получения состояния операции hello и привести hello асинхронно|
+|/Vaults/registeredIdentities/write|Операцию регистрации контейнера в службе можно использовать для регистрации контейнера в службе восстановления.|
+|/Vaults/registeredIdentities/read|Операцию получения контейнеров можно использовать для получения контейнеров, зарегистрированных для ресурса.|
+|/Vaults/registeredIdentities/delete|Операцию отмены регистрации контейнера можно использовать для отмены регистрации контейнера.|
+|/Vaults/registeredIdentities/operationResults/read|Операцию получения результатов операции можно использовать, чтобы получить состояние и результат асинхронно отправленной операции.|
 |/vaults/replicationJobs/read|Считывает задания.|
 |/vaults/replicationJobs/cancel/action|Отменяет задание.|
 |/vaults/replicationJobs/restart/action|Перезапускает задание.|
@@ -1470,11 +1470,11 @@ ms.lasthandoff: 10/06/2017
 |/Vaults/backupPolicies/delete|Удаляет политику защиты.|
 |/Vaults/backupPolicies/operationResults/read|Возвращает результаты операции политики.|
 |/Vaults/backupPolicies/operationStatus/read|Возвращает состояние операции политики.|
-|/Vaults/vaultTokens/read|Hello токен хранилища операции можно использовать tooget токен хранилища для внутренних операций уровня хранилища.|
-|/Vaults/monitoringConfigurations/notificationConfiguration/read|Получает конфигурацию уведомлений хранилище служб восстановления hello.|
+|/Vaults/vaultTokens/read|Операцию получения маркера хранилища можно использовать, чтобы получить маркер хранилища для операций серверной части уровня хранилища.|
+|/Vaults/monitoringConfigurations/notificationConfiguration/read|Возвращает конфигурацию уведомлений хранилища служб восстановления.|
 |/Vaults/backupJobs/read|Возвращает все объекты заданий.|
-|/Vaults/backupJobs/cancel/action|Отмена задания hello|
-|/Vaults/backupJobs/operationResults/read|Здравствуйте, возвращает результат операции задания.|
+|/Vaults/backupJobs/cancel/action|Отменяет задание.|
+|/Vaults/backupJobs/operationResults/read|Возвращает результат операции задания.|
 |/locations/allocateStamp/action|AllocatedStamp является внутренней операцией, используемой службой.|
 |/locations/allocatedStamp/read|GetAllocatedStamp является внутренней операцией, используемой службой.|
 
@@ -1483,41 +1483,41 @@ ms.lasthandoff: 10/06/2017
 | Операция | Описание |
 |---|---|
 |/checkNamespaceAvailability/action|Проверяет доступность пространства имен в заданной подписке.|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов ретрансляции hello и разрешает создание hello ресурсов ретрансляции|
-|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. Теги и состояние hello пространства имен являются hello свойства, которые могут быть обновлены.|
-|/namespaces/read|Получить hello список описаний ресурса пространства имен|
+|/register/action|Регистрирует подписку для поставщика ресурсов ретранслятора и позволяет создавать ресурсы ретранслятора.|
+|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. К этим свойствам относятся теги и состояние пространства имен.|
+|/namespaces/read|Возвращает список описаний ресурсов пространства имен.|
 |/namespaces/Delete|Удаляет ресурс пространства имен.|
-|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. не удается удалить правило авторизации пространства имен по умолчанию Hello. |
-|/namespaces/authorizationRules/listkeys/action|Получение строки подключения hello toohello пространство имен|
+|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. Невозможно удалить правило авторизации пространства имен по умолчанию. |
+|/namespaces/authorizationRules/listkeys/action|Возвращает строку подключения к пространству имен.|
 |/namespaces/HybridConnections/write|Создает или обновляет свойства гибридного подключения.|
 |/namespaces/HybridConnections/read|Возвращает список описаний ресурсов гибридного подключения.|
-|/namespaces/HybridConnections/Delete|Операция toodelete HybridConnection ресурсов|
-|/namespaces/HybridConnections/authorizationRules/write|Создает правила авторизации гибридного подключения и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/HybridConnections/authorizationRules/delete|Операция toodelete HybridConnection правила авторизации|
-|/namespaces/HybridConnections/authorizationRules/listkeys/action|Получить строку подключения tooHybridConnection hello|
+|/namespaces/HybridConnections/Delete|Операция удаления ресурса гибридного подключения.|
+|/namespaces/HybridConnections/authorizationRules/write|Создает правила авторизации гибридного подключения и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/HybridConnections/authorizationRules/delete|Операция удаления правил авторизации гибридного подключения.|
+|/namespaces/HybridConnections/authorizationRules/listkeys/action|Возвращает строку подключения для гибридного подключения.|
 |/namespaces/WcfRelays/write|Создает или обновляет свойства ретранслятора WCF.|
 |/namespaces/WcfRelays/read|Возвращает список описаний ресурсов ретранслятора WCF.|
-|/namespaces/WcfRelays/Delete|Операция toodelete WcfRelay ресурсов|
-|/namespaces/WcfRelays/authorizationRules/write|Создает правила авторизации ретранслятора WCF и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/WcfRelays/authorizationRules/delete|Операция toodelete WcfRelay правила авторизации|
-|/namespaces/WcfRelays/authorizationRules/listkeys/action|Получить строку подключения tooWcfRelay hello|
+|/namespaces/WcfRelays/Delete|Операция удаления ресурса ретранслятора WCF.|
+|/namespaces/WcfRelays/authorizationRules/write|Создает правила авторизации ретранслятора WCF и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/WcfRelays/authorizationRules/delete|Операция удаления правил авторизации ретранслятора WCF.|
+|/namespaces/WcfRelays/authorizationRules/listkeys/action|Возвращает строку подключения к ретранслятору WCF.|
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 | Операция | Описание |
 |---|---|
-|/AvailabilityStatuses/read|Получает состояния доступности hello для всех ресурсов в hello указан области|
-|/AvailabilityStatuses/current/read|Получает состояние доступности hello для hello указанный ресурс|
+|/AvailabilityStatuses/read|Возвращает состояния доступности для всех ресурсов в указанной области.|
+|/AvailabilityStatuses/current/read|Возвращает состояние доступности для указанного ресурса.|
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 | Операция | Описание |
 |---|---|
-|/checkResourceName/action|Проверьте правильность имени ресурса hello.|
-|/providers/read|Получите список поставщиков hello.|
-|/subscriptions/read|Получает список подписок hello.|
-|/subscriptions/operationresults/read|Получите подписку hello результаты операции.|
+|/checkResourceName/action|Проверяет допустимость имени ресурса.|
+|/providers/read|Возвращает список поставщиков.|
+|/subscriptions/read|Возвращает список подписок.|
+|/subscriptions/operationresults/read|Возвращает результаты операции подписки.|
 |/subscriptions/providers/read|Возвращает поставщики ресурсов или выводит их список.|
 |/subscriptions/tagNames/read|Возвращает теги подписки или выводит их список.|
 |/subscriptions/tagNames/write|Добавляет тег подписки.|
@@ -1529,19 +1529,19 @@ ms.lasthandoff: 10/06/2017
 |/subscriptions/resourceGroups/read|Возвращает группы ресурсов или выводит их список.|
 |/subscriptions/resourceGroups/write|Создает или обновляет группу ресурсов.|
 |/subscriptions/resourceGroups/delete|Удаляет группу ресурсов со всеми ресурсами.|
-|/subscriptions/resourceGroups/moveResources/action|Перемещает ресурсы из группы tooanother один ресурс.|
-|/subscriptions/resourceGroups/validateMoveResources/action|Проверка перемещения ресурсов из группы tooanother один ресурс.|
-|/subscriptions/resourcegroups/resources/read|Получает ресурсы hello hello группы ресурсов.|
+|/subscriptions/resourceGroups/moveResources/action|Перемещает ресурсы из одной группы ресурсов в другую.|
+|/subscriptions/resourceGroups/validateMoveResources/action|Проверяет перемещение ресурсов из одной группы ресурсов в другую.|
+|/subscriptions/resourcegroups/resources/read|Возвращает ресурсы группы ресурсов.|
 |/subscriptions/resourcegroups/deployments/read|Возвращает развернутые службы или выводит их список.|
 |/subscriptions/resourcegroups/deployments/write|Создает или обновляет развертывание.|
 |/subscriptions/resourcegroups/deployments/operationstatuses/read|Возвращает состояния операций развертывания или выводит их список.|
 |/subscriptions/resourcegroups/deployments/operations/read|Возвращает операции развертывания или выводит их список.|
-|/subscriptions/locations/read|Возвращает список поддерживаемых расположений hello.|
+|/subscriptions/locations/read|Возвращает список поддерживаемых расположений.|
 |/links/read|Возвращает ссылки на ресурсы или выводит их список.|
 |/links/write|Создает или обновляет ссылку на ресурс.|
 |/links/delete|Удаляет ссылку на ресурс.|
-|/tenants/read|Возвращает список клиентов hello.|
-|/resources/read|Получите список ресурсов на основе фильтров hello.|
+|/tenants/read|Возвращает список клиентов.|
+|/resources/read|Возвращает список ресурсов на основе фильтров.|
 |/deployments/read|Возвращает развернутые службы или выводит их список.|
 |/deployments/write|Создает или обновляет развертывание.|
 |/deployments/delete|Удаляет развертывание.|
@@ -1569,40 +1569,40 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов поиска hello и обеспечивает создание hello службы поиска.|
-|/checkNameAvailability/action|Проверяет доступность hello имя службы.|
-|/searchServices/write|Создает или обновляет hello службы поиска.|
-|/searchServices/read|Считывает hello службы поиска.|
-|/searchServices/delete|Удаление службы поиска hello.|
-|/searchServices/start/action|Запуск службы поиска hello.|
-|/searchServices/stop/action|Останавливает службу поиска hello.|
-|/searchServices/listAdminKeys/action|Считывает ключи администратора hello.|
-|/searchServices/regenerateAdminKey/action|Повторно создает ключ администратора hello.|
-|/searchServices/createQueryKey/action|Создает ключ запроса hello.|
-|/searchServices/queryKey/read|Считывает ключей запроса hello.|
-|/searchServices/queryKey/delete|Удаляет ключ запроса hello.|
+|/register/action|Регистрирует подписку для поставщика ресурсов службы поиска и позволяет создавать службы поиска.|
+|/checkNameAvailability/action|Проверяет доступность имени службы.|
+|/searchServices/write|Создает или обновляет службу поиска.|
+|/searchServices/read|Считывает службу поиска.|
+|/searchServices/delete|Удаляет службу поиска.|
+|/searchServices/start/action|Запускает службу поиска.|
+|/searchServices/stop/action|Останавливает службу поиска.|
+|/searchServices/listAdminKeys/action|Считывает ключи администратора.|
+|/searchServices/regenerateAdminKey/action|Повторно создает ключ администратора.|
+|/searchServices/createQueryKey/action|Создает ключ запроса.|
+|/searchServices/queryKey/read|Считывает ключи запросов.|
+|/searchServices/queryKey/delete|Удаляет ключ запроса.|
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 | Операция | Описание |
 |---|---|
-|/jitNetworkAccessPolicies/read|Возвращает политик доступа к сети на момент hello|
+|/jitNetworkAccessPolicies/read|Возвращает политики JIT-доступа к сети.|
 |/jitNetworkAccessPolicies/write|Создает новую политику JIT-доступа к сети или обновляет существующую.|
 |/jitNetworkAccessPolicies/initiate/action|Инициирует политику JIT-доступа к сети.|
-|/securitySolutionsReferenceData/read|Возвращает решения по обеспечению безопасности hello ссылочных данных|
-|/securityStatuses/read|Получает параметры защиты hello состояния работоспособности для ресурсов Azure|
-|/webApplicationFirewalls/read|Возвращает брандмауэры приложения hello web|
+|/securitySolutionsReferenceData/read|Возвращает эталонные данные решений безопасности.|
+|/securityStatuses/read|Возвращает состояния работоспособности ресурсов Azure.|
+|/webApplicationFirewalls/read|Возвращает брандмауэры веб-приложения.|
 |/webApplicationFirewalls/write|Создает новый брандмауэр веб-приложения или обновляет существующий.|
 |/webApplicationFirewalls/delete|Удаляет брандмауэр веб-приложения.|
-|/securitySolutions/read|Возвращает hello решения по обеспечению безопасности|
+|/securitySolutions/read|Возвращает решения безопасности.|
 |/securitySolutions/write|Создает новое решение безопасности или обновляет существующее.|
 |/securitySolutions/delete|Удаляет решение безопасности.|
 |/tasks/read|Возвращает все доступные рекомендации по безопасности.|
 |/tasks/dismiss/action|Закрывает рекомендацию по безопасности.|
 |/tasks/activate/action|Активирует рекомендацию по безопасности.|
-|/policies/read|Получает политику безопасности hello|
-|/policies/write|Здравствуйте, обновления политики безопасности|
-|/applicationWhitelistings/read|Возвращает whitelistings приложения hello|
+|/policies/read|Возвращает политику безопасности.|
+|/policies/write|Обновляет политику безопасности.|
+|/applicationWhitelistings/read|Возвращает список разрешений приложения.|
 |/applicationWhitelistings/write|Создает новый список разрешений приложения или обновляет существующий.|
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
@@ -1613,8 +1613,8 @@ ms.lasthandoff: 10/06/2017
 |/gateways/write|Создает или обновляет шлюз.|
 |/gateways/delete|Удаляет шлюз.|
 |/gateways/read|Возвращает шлюз.|
-|/gateways/regenerateprofile/action|Повторно создает профиль шлюза hello|
-|/gateways/upgradetolatest/action|Последнюю версию шлюза hello toohello обновления|
+|/gateways/regenerateprofile/action|Повторно создает профиль шлюза.|
+|/gateways/upgradetolatest/action|Обновляет шлюз до последней версии.|
 |/nodes/write|Создает или обновляет узел.|
 |/nodes/delete|Удаляет узел.|
 |/nodes/read|Возвращает узел.|
@@ -1627,41 +1627,41 @@ ms.lasthandoff: 10/06/2017
 | Операция | Описание |
 |---|---|
 |/checkNameAvailability/action|Проверяет доступность пространства имен в заданной подписке.|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов служебной шины hello и разрешает создание ресурсов служебной шины hello|
-|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. Теги и состояние hello пространства имен являются hello свойства, которые могут быть обновлены.|
-|/namespaces/read|Получить hello список описаний ресурса пространства имен|
+|/register/action|Регистрирует подписку для поставщика ресурсов служебной шины и позволяет создавать ресурсы служебной шины.|
+|/namespaces/write|Создает ресурс пространства имен и обновляет его свойства. К этим свойствам относятся теги и состояние пространства имен.|
+|/namespaces/read|Возвращает список описаний ресурсов пространства имен.|
 |/namespaces/Delete|Удаляет ресурс пространства имен.|
 |/namespaces/metricDefinitions/read|Возвращает список описаний ресурсов метрик пространства имен.|
-|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/authorizationRules/read|Получите список hello описание правил авторизации пространства имен.|
-|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. не удается удалить правило авторизации пространства имен по умолчанию Hello. |
-|/namespaces/authorizationRules/listkeys/action|Получение строки подключения hello toohello пространство имен|
-|/namespaces/authorizationRules/regenerateKeys/action|Повторное создание hello основных или дополнительных ключей toohello ресурсов|
+|/namespaces/authorizationRules/write|Создает правила авторизации уровня пространства имен и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/authorizationRules/read|Возвращает список описаний правил авторизации пространства имен.|
+|/namespaces/authorizationRules/delete|Удаляет правило авторизации для пространства имен. Невозможно удалить правило авторизации пространства имен по умолчанию. |
+|/namespaces/authorizationRules/listkeys/action|Возвращает строку подключения к пространству имен.|
+|/namespaces/authorizationRules/regenerateKeys/action|Повторно создает первичный или вторичный ключ для ресурса.|
 |/namespaces/diagnosticSettings/read|Возвращает список описаний параметров диагностики пространства имен.|
 |/namespaces/diagnosticSettings/write|Возвращает список описаний параметров диагностики пространства имен.|
 |/namespaces/queues/write|Создает или обновляет свойства очереди.|
 |/namespaces/queues/read|Возвращает список описаний ресурсов очереди.|
-|/namespaces/queues/Delete|Операция toodelete ресурса очереди|
-|/namespaces/queues/authorizationRules/write|Создает правила авторизации очереди и обновляет ее свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/queues/authorizationRules/read| Получить список правил авторизации очереди hello|
-|/namespaces/queues/authorizationRules/delete|Операция toodelete правила авторизации в очереди|
-|/namespaces/queues/authorizationRules/listkeys/action|Получить строку подключения tooQueue hello|
-|/namespaces/queues/authorizationRules/regenerateKeys/action|Повторное создание hello основных или дополнительных ключей toohello ресурсов|
+|/namespaces/queues/Delete|Операция удаления ресурса очереди.|
+|/namespaces/queues/authorizationRules/write|Создает правила авторизации очереди и обновляет ее свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/queues/authorizationRules/read| Возвращает список правил авторизации очереди.|
+|/namespaces/queues/authorizationRules/delete|Операция удаления правил авторизации очереди.|
+|/namespaces/queues/authorizationRules/listkeys/action|Возвращает строку подключения к очереди.|
+|/namespaces/queues/authorizationRules/regenerateKeys/action|Повторно создает первичный или вторичный ключ для ресурса.|
 |/namespaces/logDefinitions/read|Возвращает список описаний ресурсов журналов пространства имен.|
 |/namespaces/topics/write|Создает или обновляет свойства раздела.|
 |/namespaces/topics/read|Возвращает список описаний ресурсов раздела.|
-|/namespaces/topics/Delete|Операция toodelete раздел ресурсов|
-|/namespaces/topics/authorizationRules/write|Создает правила авторизации раздела и обновляет его свойства. Права доступа к правилам авторизации Hello, hello основные и вторичные ключи могут обновляться.|
-|/namespaces/topics/authorizationRules/read| Получить список правил авторизации разделе hello|
-|/namespaces/topics/authorizationRules/delete|Операция toodelete разделе правила авторизации|
-|/namespaces/topics/authorizationRules/listkeys/action|Получить строку подключения tooTopic hello|
-|/namespaces/topics/authorizationRules/regenerateKeys/action|Повторное создание hello основных или дополнительных ключей toohello ресурсов|
+|/namespaces/topics/Delete|Операция удаления ресурса раздела.|
+|/namespaces/topics/authorizationRules/write|Создает правила авторизации раздела и обновляет его свойства. Можно обновить права доступа, первичный ключ и вторичный ключ для правил авторизации.|
+|/namespaces/topics/authorizationRules/read| Возвращает список правил авторизации раздела.|
+|/namespaces/topics/authorizationRules/delete|Операция удаления правил авторизации раздела.|
+|/namespaces/topics/authorizationRules/listkeys/action|Возвращает строку подключения к разделу.|
+|/namespaces/topics/authorizationRules/regenerateKeys/action|Повторно создает первичный или вторичный ключ для ресурса.|
 |/namespaces/topics/subscriptions/write|Создает или обновляет свойства подписки на раздел.|
 |/namespaces/topics/subscriptions/read|Возвращает список описаний ресурсов подписки на раздел.|
-|/namespaces/topics/subscriptions/Delete|Операция toodelete TopicSubscription ресурсов|
+|/namespaces/topics/subscriptions/Delete|Операция удаления ресурса подписки на раздел.|
 |/namespaces/topics/subscriptions/rules/write|Создает или обновляет свойства правила.|
 |/namespaces/topics/subscriptions/rules/read|Возвращает список описаний ресурсов правила.|
-|/namespaces/topics/subscriptions/rules/Delete|Операция toodelete ресурс правила|
+|/namespaces/topics/subscriptions/rules/Delete|Операция удаления ресурса правила.|
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
@@ -1670,24 +1670,24 @@ ms.lasthandoff: 10/06/2017
 |/servers/read|Возвращает список серверов в группе ресурсов для подписки.|
 |/servers/write|Создает новый сервер или изменяет свойства существующего сервера в группе ресурсов в подписке.|
 |/servers/delete|Удаляет сервер и все содержащиеся в нем базы данных и эластичные пулы.|
-|/servers/import/action|Создать новую базу данных на сервере hello и развертывание схемы и данных из DacPac-пакет|
-|/servers/upgrade/action|Включение новых функций, доступных на последнюю версию сервера hello и укажите схема преобразования для выпуска базы данных|
+|/servers/import/action|Создает базу данных на сервере и развертывает схему и данные из пакета DACPAC.|
+|/servers/upgrade/action|Включает новые функциональные возможности, доступные в последней версии сервера, и задает сопоставление преобразования выпусков базы данных.|
 |/servers/VulnerabilityAssessmentScans/action|Выполняет поиск уязвимостей сервера.|
-|/servers/operationResults/read|Операция используется tootrack ход обновления сервера из нижнего toohigher версии|
+|/servers/operationResults/read|Операция используется для отслеживания хода установки новой версии сервера.|
 |/servers/operationResults/delete|Прерывает выполняемое обновление версии сервера.|
-|/servers/securityAlertPolicies/read|Получить сведения о hello server угроз обнаружения политики настроены на данном сервере|
-|/servers/securityAlertPolicies/write|Изменение обнаружения угроз hello server для данного сервера|
-|/servers/securityAlertPolicies/operationResults/read|Получить результаты hello сервера политики обнаружения угроз операции Set|
+|/servers/securityAlertPolicies/read|Извлекает сведения о политике обнаружения угроз, настроенной на данном сервере.|
+|/servers/securityAlertPolicies/write|Изменяет политику обнаружения угроз для заданного сервера.|
+|/servers/securityAlertPolicies/operationResults/read|Извлекает результаты операции настройки политики обнаружения угроз на сервере.|
 |/servers/administrators/read|Извлекает сведения об администраторе сервера.|
 |/servers/administrators/write|Создает или обновляет учетные данные администратора сервера.|
-|/servers/administrators/delete|Удалить администратора сервера с сервера hello|
-|/servers/recoverableDatabases/read|Эта операция используется для аварийного восстановления, действующей базы данных toorestore базы данных toolast известного хорошо точки резервного копирования. Возвращает сведения о последней удачной резервной hello, но он не восстанавливает фактически hello базы данных.|
+|/servers/administrators/delete|Удаляет с сервера учетные данные администратора сервера.|
+|/servers/recoverableDatabases/read|Эта операция используется для аварийного восстановления динамической базы данных. Она позволяет восстановить базу данных до последней известной корректной точки. Возвращает информацию о последней корректной резервной копии, но не восстанавливает базу данных.|
 |/servers/serviceObjectives/read|Извлекает список целей уровня обслуживания (также известных как уровни производительности), доступных на данном сервере.|
 |/servers/firewallRules/read|Извлекает сведения о правиле брандмауэра для сервера.|
-|/servers/firewallRules/write|Создать или обновить правила брандмауэра для сервера, управляющий допускается tooconnect toohello server диапазон IP-адресов|
-|/servers/firewallRules/delete|Удалить правило брандмауэра с сервера hello|
+|/servers/firewallRules/write|Создает или обновляет правило брандмауэра для сервера, управляющее диапазоном IP-адресов, с которых разрешено подключаться к серверу.|
+|/servers/firewallRules/delete|Удаляет с сервера правило брандмауэра.|
 |/servers/administratorOperationResults/read|Извлекает сведения об операции администратора сервера.|
-|/servers/recommendedElasticPools/read|Получить рекомендации по стоимости tooreduce пулы эластичных баз данных и повышения производительности в зависимости от использования ресурсов historica|
+|/servers/recommendedElasticPools/read|Извлекает рекомендацию для пулов эластичных баз данных, позволяющую снизить затраты или повысить производительность, на основе журнала использования ресурсов.|
 |/servers/recommendedElasticPools/metrics/read|Извлекает метрики для рекомендуемых пулов эластичных баз данных для заданного сервера.|
 |/servers/recommendedElasticPools/databases/read|Извлекает базы данных, которые следует добавить в рекомендуемые пулы эластичных баз данных для заданного сервера.|
 |/servers/elasticPools/read|Извлекает сведения о пуле эластичных баз данных для заданного сервера.|
@@ -1695,239 +1695,239 @@ ms.lasthandoff: 10/06/2017
 |/servers/elasticPools/delete|Удаляет существующий пул эластичных баз данных.|
 |/servers/elasticPools/operationResults/read|Извлекает сведения о заданной операции пула эластичных баз данных.|
 |/servers/elasticPools/providers/Microsoft.Insights/<br>metricDefinitions/read|Возвращает типы метрик, доступных для пулов эластичных баз данных.|
-|/servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/read|Возвращает приветствия диагностики для ресурса hello|
-|/servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/write|Создает или обновляет приветствия диагностики для ресурса hello|
+|/servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/read|Возвращает параметр диагностики для ресурса.|
+|/servers/elasticPools/providers/Microsoft.Insights/<br>diagnosticSettings/write|Создает или обновляет параметр диагностики для ресурса.|
 |/servers/elasticPools/metrics/read|Возвращает метрики использования ресурсов пула эластичных баз данных.|
 |/servers/elasticPools/elasticPoolDatabaseActivity/read|Извлекает действия заданной базы данных, входящей в пул эластичных баз данных, а также сведения о ней.|
-|/servers/elasticPools/advisors/read|Возвращает список помощников, доступные для эластичного пула hello|
+|/servers/elasticPools/advisors/read|Возвращает список доступных помощников для эластичного пула.|
 |/servers/elasticPools/advisors/write|Обновляет состояние автовыполнения Помощника на уровне эластичного пула.|
-|/servers/elasticPools/advisors/recommendedActions/read|Возвращает список рекомендуемые действия для указанного помощника для эластичного пула hello|
-|/servers/elasticPools/advisors/recommendedActions/write|Применить hello Рекомендуемое действие для эластичного пула hello|
+|/servers/elasticPools/advisors/recommendedActions/read|Возвращает список рекомендуемых действий указанного помощника для эластичного пула.|
+|/servers/elasticPools/advisors/recommendedActions/write|Применяет рекомендуемое действие к эластичному пулу.|
 |/servers/elasticPools/elasticPoolActivity/read|Извлекает действия и сведения о заданном пуле эластичных баз данных.|
 |/servers/elasticPools/databases/read|Извлекает список баз данных, которые входят в пул эластичных баз данных на заданном сервере, а также сведения о них.|
-|/servers/auditingPolicies/read|Получить сведения о на данном сервере настроена политика аудита таблицы server по умолчанию hello|
-|/servers/auditingPolicies/write|Изменить таблицу сервера по умолчанию hello, аудит для данного сервера|
+|/servers/auditingPolicies/read|Извлекает сведения о политике аудита таблиц по умолчанию, настроенной на заданном сервере.|
+|/servers/auditingPolicies/write|Изменяет политику аудита таблиц по умолчанию для заданного сервера.|
 |/servers/disasterRecoveryConfiguration/operationResults/read|Возвращает результаты операции настройки аварийного восстановления.|
-|/servers/advisors/read|Возвращает список помощников, доступный для сервера hello|
+|/servers/advisors/read|Возвращает список доступных помощников для сервера.|
 |/servers/advisors/write|Обновляет состояние автовыполнения Помощника на уровне сервера.|
-|/servers/advisors/recommendedActions/read|Возвращает список рекомендуемые действия для указанного помощника по настройке ядра сервера hello|
-|/servers/advisors/recommendedActions/write|Применить hello Рекомендуемое действие на сервере hello|
-|/servers/usages/read|Квота DTU возврата сервера и текущего consuption DTU используется всеми базами данных в пределах сервера hello|
+|/servers/advisors/recommendedActions/read|Возвращает список рекомендуемых действий указанного помощника для сервера.|
+|/servers/advisors/recommendedActions/write|Применяет рекомендуемое действие к серверу.|
+|/servers/usages/read|Возвращает квоту DTU сервера и текущие данные об использовании DTU для всех баз данных на сервере.|
 |/servers/elasticPoolEstimates/read|Возвращает список оценок эластичных пулов, уже созданных на этом сервере.|
 |/servers/elasticPoolEstimates/write|Создает оценку эластичного пула для указанных баз данных.|
-|/servers/auditingSettings/read|Получить сведения о сервере hello большого двоичного объекта, на данном сервере настроена политика аудита|
-|/servers/auditingSettings/write|Изменить параметры сервера hello BLOB-объект аудита для данного сервера|
-|/servers/auditingSettings/operationResults/read|Извлечь результат операции задания политики аудита большого двоичного объекта сервера hello|
-|/servers/backupLongTermRetentionVaults/read|Эта операция является tooget используется хранилище архивации долговременного хранения. Она возвращает сведения о hello хранилище toothis зарегистрированного сервера.|
+|/servers/auditingSettings/read|Извлекает сведения о политике аудита больших двоичных объектов, настроенной на заданном сервере.|
+|/servers/auditingSettings/write|Изменяет политику аудита больших двоичных объектов для заданного сервера.|
+|/servers/auditingSettings/operationResults/read|Извлекает результат операции настройки политики аудита больших двоичных объектов на сервере.|
+|/servers/backupLongTermRetentionVaults/read|С помощью этой операции можно получить хранилище резервных копий долгосрочного хранения. Она возвращает сведения о хранилище, зарегистрированном на данном сервере.|
 |/servers/backupLongTermRetentionVaults/write|Регистрирует хранилище резервных копий долгосрочного хранения.|
 |/servers/restorableDroppedDatabases/read|Извлекает список баз данных, которые были удалены на заданном сервере, но остались в политике хранения. С помощью этой операции можно получить список баз данных и связанные метаданные, например даты удаления.|
 |/servers/databases/read|Возвращает список серверов в группе ресурсов для подписки.|
 |/servers/databases/write|Создает новый сервер или изменяет свойства существующего сервера в группе ресурсов в подписке.|
 |/servers/databases/delete|Удаляет сервер и все содержащиеся в нем базы данных и эластичные пулы.|
-|/servers/databases/export/action|Создать новую базу данных на сервере hello и развертывание схемы и данных из DacPac-пакет|
+|/servers/databases/export/action|Создает базу данных на сервере и развертывает схему и данные из пакета DACPAC.|
 |/servers/databases/VulnerabilityAssessmentScans/action|Выполняет поиск уязвимостей базы данных.|
 |/servers/databases/pause/action|Приостанавливает базу данных выпуска хранилища данных.|
 |/servers/databases/resume/action|Возобновляет работу базы данных выпуска хранилища данных.|
-|/servers/databases/operationResults/read|Операция используется tootrack ход выполнения длительных операций базы данных, например масштаб.|
+|/servers/databases/operationResults/read|Операция используется для отслеживания хода выполнения длительных операций базы данных, таких как масштабирование.|
 |/servers/databases/replicationLinks/read|Возвращает сведения о каналах репликации, установленных для определенной базы данных.|
-|/servers/databases/replicationLinks/delete|Завершение связи репликации hello принудительно и при этом возможна потеря данных|
-|/servers/databases/replicationLinks/unlink/action|Завершение связи репликации hello принудительно или после синхронизации с партнером hello|
-|/servers/databases/replicationLinks/failover/action|Переход на другой ресурс после синхронизации всех изменений из первичной, hello превращение этой базы данных в удаленной первичный отношение репликации hello hello основной и внесения в дополнительный|
-|/servers/databases/replicationLinks/forceFailoverAllowDataLoss/action|Переход на другой ресурс немедленно с возможной потерей данных, делая этой базы данных в отношение репликации hello основной и позволяя hello удаленного основного на дополнительный|
-|/servers/databases/replicationLinks/updateReplicationMode/action|Обновление режима репликации для связи toosynchronous или асинхронном режиме|
+|/servers/databases/replicationLinks/delete|Принудительно удаляет отношение репликации. При этом возможна потеря данных.|
+|/servers/databases/replicationLinks/unlink/action|Удаляет отношение репликации в принудительном порядке или после синхронизации с партнером.|
+|/servers/databases/replicationLinks/failover/action|Выполняет отработку отказа после синхронизации всех изменений из базы данных-источника, превращая заданную базу данных в базу данных-источник для отношения репликации, а удаленную базу данных-источник — в базу данных-приемник.|
+|/servers/databases/replicationLinks/forceFailoverAllowDataLoss/action|Выполняет немедленную отработку отказа с потенциальной потерей данных, превращая заданную базу данных в базу данных-источник для отношения репликации, а удаленную базу данных-источник — в базу данных-приемник.|
+|/servers/databases/replicationLinks/updateReplicationMode/action|Обновляет режим репликации для ссылки на синхронный или асинхронный режим.|
 |/servers/databases/replicationLinks/operationResults/read|Возвращает состояние длительных операций с каналами репликации базы данных.|
-|/servers/databases/dataMaskingPolicies/read|Получить сведения о данных hello маскировки политика, настроенная в данной базе данных|
+|/servers/databases/dataMaskingPolicies/read|Извлекает сведения о политике маскирования данных, настроенной для заданной базы данных.|
 |/servers/databases/dataMaskingPolicies/write|Изменяет политику маскирования данных для заданной базы данных.|
-|/servers/databases/dataMaskingPolicies/rules/read|Получить сведения о данных hello маскировки правила политики, которые настроены в данной базе данных|
+|/servers/databases/dataMaskingPolicies/rules/read|Извлекает сведения о правиле политики маскирования данных, настроенной для заданной базы данных.|
 |/servers/databases/dataMaskingPolicies/rules/write|Изменяет правило политики маскирования данных для заданной базы данных.|
-|/servers/databases/securityAlertPolicies/read|Получить сведения о данной базы данных настроен политика обнаружения угроз hello|
-|/servers/databases/securityAlertPolicies/write|Изменение политики обнаружения hello угроз для базы данных|
+|/servers/databases/securityAlertPolicies/read|Извлекает сведения о политике обнаружения угроз, настроенной для заданной базы данных.|
+|/servers/databases/securityAlertPolicies/write|Изменяет политику обнаружения угроз для заданной базы данных.|
 |/servers/databases/providers/Microsoft.Insights/<br>metricDefinitions/read|Возвращает типы метрик, доступных для баз данных.|
-|/servers/databases/providers/Microsoft.Insights/<br>diagnosticSettings/read|Возвращает приветствия диагностики для ресурса hello|
-|/servers/databases/providers/Microsoft.Insights/<br>diagnosticSettings/write|Создает или обновляет приветствия диагностики для ресурса hello|
-|/servers/databases/providers/Microsoft.Insights/<br>logDefinitions/read|Получает доступные журналы hello для баз данных|
+|/servers/databases/providers/Microsoft.Insights/<br>diagnosticSettings/read|Возвращает параметр диагностики для ресурса.|
+|/servers/databases/providers/Microsoft.Insights/<br>diagnosticSettings/write|Создает или обновляет параметр диагностики для ресурса.|
+|/servers/databases/providers/Microsoft.Insights/<br>logDefinitions/read|Возвращает доступные журналы для баз данных.|
 |/servers/databases/topQueries/read|Возвращает статистические данные среды выполнения для выбранного запроса в указанный временной период.|
-|/servers/databases/topQueries/queryText/read|Возвращает текст hello Transact-SQL для идентификатора выбранного запроса|
+|/servers/databases/topQueries/queryText/read|Возвращает текст Transact-SQL для выбранного идентификатора запроса.|
 |/servers/databases/topQueries/statistics/read|Возвращает статистические данные среды выполнения для выбранного запроса в указанный временной период.|
-|/servers/databases/connectionPolicies/read|Получить сведения о политики подключение hello настроен в данной базе данных|
+|/servers/databases/connectionPolicies/read|Извлекает сведения о политике подключений, настроенной для заданной базы данных.|
 |/servers/databases/connectionPolicies/write|Изменяет политику подключений для заданной базы данных.|
 |/servers/databases/metrics/read|Возвращает метрики использования ресурсов базы данных.|
-|/servers/databases/auditRecords/read|Получить записи аудита hello базы данных больших двоичных объектов|
+|/servers/databases/auditRecords/read|Извлекает записи аудита больших двоичных объектов для базы данных.|
 |/servers/databases/transparentDataEncryption/read|Извлекает состояние и сведения о функции безопасности "прозрачное шифрование данных" для заданной базы данных.|
 |/servers/databases/transparentDataEncryption/write|Включает или отключает прозрачное шифрование данных для заданной базы данных.|
 |/servers/databases/transparentDataEncryption/operationResults/read|Извлекает состояние и сведения о функции безопасности "прозрачное шифрование данных" для заданной базы данных.|
-|/servers/databases/auditingPolicies/read|Получить сведения о политики аудита таблицы hello настроен в данной базе данных|
-|/servers/databases/auditingPolicies/write|Изменение политики аудита hello таблицы для базы данных|
-|/servers/databases/dataWarehouseQueries/read|Возвращает hello хранилища распределения запросов данных для идентификатора выбранного запроса|
-|/servers/databases/dataWarehouseQueries/<br>dataWarehouseQuerySteps/read|Возвращает hello распределенного запроса сведений о шаге запроса хранилища данных для идентификатора выбранного шага|
-|/servers/databases/serviceTierAdvisors/read|Возвращают предложение по поводу масштабирование базы данных, в зависимости от быстродействия tooimprove статистику выполнения запросов или снизить затраты на|
-|/servers/databases/advisors/read|Возвращает список помощников, доступные для hello базы данных|
+|/servers/databases/auditingPolicies/read|Извлекает сведения о политике аудита таблиц, настроенной для заданной базы данных.|
+|/servers/databases/auditingPolicies/write|Изменяет политику аудита таблиц для заданной базы данных.|
+|/servers/databases/dataWarehouseQueries/read|Возвращает данные запроса на распределение к хранилищу данных для выбранного идентификатора запроса.|
+|/servers/databases/dataWarehouseQueries/<br>dataWarehouseQuerySteps/read|Возвращает сведения о шаге распределенного запроса к хранилищу данных для выбранного идентификатора шага.|
+|/servers/databases/serviceTierAdvisors/read|Возвращает предложение по масштабированию базы данных на основе статистики выполнения запросов для повышения производительности или снижения затрат.|
+|/servers/databases/advisors/read|Возвращает список доступных помощников для базы данных.|
 |/servers/databases/advisors/write|Обновляет состояние автовыполнения Помощника на уровне базы данных.|
-|/servers/databases/advisors/recommendedActions/read|Возвращает список рекомендуемые действия для указанного помощника по настройке ядра базы данных hello|
-|/servers/databases/advisors/recommendedActions/write|Применить hello Рекомендуемое действие hello базы данных|
+|/servers/databases/advisors/recommendedActions/read|Возвращает список рекомендуемых действий указанного помощника для базы данных.|
+|/servers/databases/advisors/recommendedActions/write|Применяет рекомендуемое действие к базе данных.|
 |/servers/databases/usages/read|Возвращает максимальный размер базы данных, который может быть достигнут, и текущую емкость, занимаемую данными.|
-|/servers/databases/queryStore/read|Возвращает текущие значения параметров хранилища запросов базы данных hello|
-|/servers/databases/queryStore/write|Обновляет параметр хранилища запросов для базы данных hello|
-|/servers/databases/auditingSettings/read|Получить сведения о hello BLOB-объект аудита политика, настроенная в данной базе данных|
-|/servers/databases/auditingSettings/write|Изменение политики аудита hello большого двоичного объекта для базы данных|
+|/servers/databases/queryStore/read|Возвращает текущие значения параметров хранилища запросов для базы данных.|
+|/servers/databases/queryStore/write|Обновляет параметр хранилища запросов для базы данных.|
+|/servers/databases/auditingSettings/read|Извлекает сведения о политике аудита больших двоичных объектов, настроенной для заданной базы данных.|
+|/servers/databases/auditingSettings/write|Изменяет политику аудита больших двоичных объектов для заданной базы данных.|
 |/servers/databases/schemas/tables/recommendedIndexes/read|Извлекает список рекомендаций по индексам для базы данных.|
 |/servers/databases/schemas/tables/recommendedIndexes/write|Применяет рекомендацию по индексу.|
 |/servers/databases/schemas/tables/columns/read|Извлекает список столбцов таблицы.|
-|/servers/databases/missingindexes/read|Возвращает предложения о toocreate индексов базы данных, изменить или удалить в производительности запросов tooimprove заказа|
+|/servers/databases/missingindexes/read|Возвращает предложения по созданию, изменению или удалению индексов базы данных для повышения производительности запросов.|
 |/servers/databases/missingindexes/write|Применяет рекомендацию по индексу базы данных к определенной базе данных.|
 |/servers/databases/importExportOperationResults/read|Возвращает сведения об операции импорта или экспорта базы данных с использованием пакета DACPAC, расположенного в учетной записи хранения.|
-|/servers/importExportOperationResults/read|Получить список hello со сведениями для операций импорта базы данных из учетной записи хранилища на данном сервере|
+|/servers/importExportOperationResults/read|Возвращает список со сведениями об операциях импорта базы данных из учетной записи хранения на заданном сервере.|
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage;
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует hello подписку для поставщика ресурсов хранилища hello и обеспечивает создание учетных записей хранения hello.|
+|/register/action|Регистрирует подписку для поставщика ресурсов службы хранилища и позволяет создавать учетные записи хранения.|
 |/checknameavailability/read|Проверяет, является ли имя учетной записи допустимым и неиспользуемым.|
-|/storageAccounts/write|Создает учетную запись хранения с hello указанный параметрами или обновляет hello свойства или теги или добавляет пользовательский домен для hello указана учетная запись хранения.|
+|/storageAccounts/write|Создает новую учетную запись хранения с указанными параметрами, обновляет свойства или теги указанной существующей учетной записи хранения или добавляет в нее личный домен.|
 |/storageAccounts/delete|Удаляет существующую учетную запись хранения.|
-|/storageAccounts/listkeys/action|Возвращает ключи доступа hello hello указана учетная запись хранения.|
-|/storageAccounts/regeneratekey/action|Повторно создает ключи доступа hello для hello указана учетная запись хранения.|
-|/storageAccounts/read|Здравствуйте, возвращает список учетных записей хранения или получает свойства hello hello указана учетная запись хранилища.|
-|/storageAccounts/listAccountSas/action|Возвращает маркер SAS для учетной записи hello для hello указана учетная запись хранения.|
+|/storageAccounts/listkeys/action|Возвращает ключи доступа для указанной учетной записи хранения.|
+|/storageAccounts/regeneratekey/action|Повторно создает ключи доступа для указанной учетной записи хранения.|
+|/storageAccounts/read|Возвращает список учетных записей хранения или свойства указанной учетной записи хранения.|
+|/storageAccounts/listAccountSas/action|Возвращает маркер SAS для указанной учетной записи хранения.|
 |/storageAccounts/listServiceSas/action|Маркер SAS службы хранилища.|
 |/storageAccounts/services/diagnosticSettings/write|Создает или обновляет параметры диагностики учетной записи хранения.|
-|/skus/read|Список номеров SKU, поддерживаемые хранилища Майкрософт hello.|
-|/usages/read|Возвращает hello ограничение с указанием hello текущий счетчик использования ресурсов в hello подписки|
-|/operations/read|Опрашивает hello состояние асинхронной операции.|
+|/skus/read|Выводит список номеров SKU, поддерживаемых Microsoft.Storage.|
+|/usages/read|Возвращает предельное и текущее число используемых ресурсов для указанной подписки.|
+|/operations/read|Опрашивает состояние асинхронной операции.|
 |/locations/deleteVirtualNetworkOrSubnets/action|Уведомляет поставщик ресурсов Microsoft.Storage о том, что удаляется виртуальная сеть или подсеть.|
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 | Операция | Описание |
 |---|---|
-|/managers/clearAlerts/action|Отменить все оповещения hello, связанный с диспетчером устройств hello.|
-|/managers/getActivationKey/action|Получите ключ активации для hello диспетчера устройств.|
-|/managers/regenerateActivationKey/action|Повторное создание ключа активации для hello диспетчера устройств.|
-|/managers/regenarateRegistationCertificate/action|Повторно создать сертификат регистрации для диспетчеров hello устройств.|
-|/managers/getEncryptionKey/action|Получение ключа шифрования для hello диспетчера устройств.|
-|/managers/read|Возвращает диспетчеры устройств hello или список|
-|/managers/delete|Удаляет диспетчеры устройств hello|
-|/managers/write|Создать или обновить диспетчеры устройств hello|
+|/managers/clearAlerts/action|Очищает все оповещения, связанные с диспетчером устройств.|
+|/managers/getActivationKey/action|Возвращает ключ активации для диспетчера устройств.|
+|/managers/regenerateActivationKey/action|Повторно создает ключ активации для диспетчера устройств.|
+|/managers/regenarateRegistationCertificate/action|Повторно создает ключ шифрования для диспетчеров устройств.|
+|/managers/getEncryptionKey/action|Возвращает ключ шифрования для диспетчера устройств.|
+|/managers/read|Выводит список диспетчеров устройств или возвращает их.|
+|/managers/delete|Удаляет диспетчеры устройств.|
+|/managers/write|Создает или обновляет диспетчеры устройств.|
 |/managers/configureDevice/action|Настраивает устройство.|
-|/managers/listActivationKey/action|Возвращает ключ активации hello hello устройства StorSimple.|
+|/managers/listActivationKey/action|Возвращает ключ активации диспетчера устройств StorSimple.|
 |/managers/listPublicEncryptionKey/action|Выводит список открытых ключей шифрования для диспетчера устройств StorSimple.|
 |/managers/listPrivateEncryptionKey/action|Возвращает ключ шифрования для диспетчера устройств StorSimple.|
 |/managers/provisionCloudAppliance/action|Создает облачное устройство.|
 |/Managers/write|Создает операцию создания хранилища, которая создает ресурс Azure типа "хранилище".|
-|/Managers/read|Hello получить хранилище операция возвращает объект, представляющий ресурс Azure типа «vault» hello|
-|/Managers/delete|Операция удаления Hello удалить хранилище hello указанный ресурс Azure типа «vault»|
-|/managers/storageAccountCredentials/write|Создать или обновить учетные данные хранилища hello|
-|/managers/storageAccountCredentials/read|Получает учетные данные хранилища hello или список|
-|/managers/storageAccountCredentials/delete|Удаляет учетные данные хранилища hello|
+|/Managers/read|Операция получения хранилища возвращает объект, представляющий ресурс Azure типа "хранилище".|
+|/Managers/delete|Операция удаления хранилища удаляет указанный ресурс Azure типа "хранилище".|
+|/managers/storageAccountCredentials/write|Создает или обновляет данные учетной записи хранения.|
+|/managers/storageAccountCredentials/read|Выводит список данных учетной записи хранения или возвращает их.|
+|/managers/storageAccountCredentials/delete|Удаляет данные учетной записи хранения.|
 |/managers/storageAccountCredentials/listAccessKey/action|Выводит список ключей доступа для данных учетной записи хранения.|
-|/managers/accessControlRecords/read|Возвращает записи управления доступом hello или список|
-|/managers/accessControlRecords/write|Создание и редактирование записи управления доступом hello|
-|/managers/accessControlRecords/delete|Удаляет записи управления доступом hello|
-|/managers/metrics/read|Выводит список или получает hello метрики|
-|/managers/bandwidthSettings/read|Список параметров пропускной способности hello (серии 8000 только)|
+|/managers/accessControlRecords/read|Выводит список записей контроля доступа или возвращает их.|
+|/managers/accessControlRecords/write|Создает или обновляет записи контроля доступа.|
+|/managers/accessControlRecords/delete|Удаляет записи контроля доступа.|
+|/managers/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/bandwidthSettings/read|Выводит список параметров пропускной способности (только для серии 8000).|
 |/managers/bandwidthSettings/write|Создает или обновляет параметры пропускной способности (только для серии 8000).|
 |/managers/bandwidthSettings/delete|Удаляет существующие параметры пропускной способности (только для серии 8000).|
-|/Managers/extendedInformation/read|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
-|/Managers/extendedInformation/write|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
-|/Managers/extendedInformation/delete|Hello получить расширенные сведения операция возвращает расширенные сведения объекта представляющий ресурс Azure типа hello? хранилища?|
-|/managers/alerts/read|Возвращает предупреждения hello или список|
-|/managers/storageDomains/read|Получает домены hello хранилища или список|
-|/managers/storageDomains/write|Создание или обновление доменов хранилища hello|
-|/managers/storageDomains/delete|Удаление доменов хранилища hello|
+|/Managers/extendedInformation/read|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
+|/Managers/extendedInformation/write|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
+|/Managers/extendedInformation/delete|Операция получения расширенных сведений о хранилище возвращает расширенные сведения об объекте, представляющие ресурс Azure типа "хранилище".|
+|/managers/alerts/read|Выводит список оповещений или возвращает их.|
+|/managers/storageDomains/read|Выводит список доменов хранилища или возвращает их.|
+|/managers/storageDomains/write|Создает или обновляет домены хранилища.|
+|/managers/storageDomains/delete|Удаляет домены хранилища.|
 |/managers/devices/scanForUpdates/action|Выполняет поиск обновлений в устройстве.|
 |/managers/devices/download/action|Скачивает обновления для устройства.|
 |/managers/devices/install/action|Устанавливает обновления на устройство.|
-|/managers/devices/read|Выводит список или получает hello устройства|
-|/managers/devices/write|Создание или обновление устройств hello|
-|/managers/devices/delete|Удаляет hello устройства|
+|/managers/devices/read|Выводит список устройств или возвращает их.|
+|/managers/devices/write|Создает или обновляет устройства.|
+|/managers/devices/delete|Удаляет устройства.|
 |/managers/devices/deactivate/action|Деактивирует устройство.|
 |/managers/devices/publishSupportPackage/action|Публикует пакет поддержки устройства для устранения неполадок службой поддержки Майкрософт.|
-|/managers/devices/failover/action|Отработка отказа устройства hello.|
-|/managers/devices/sendTestAlertEmail/action|Отправьте оповещение по электронной почте теста tooconfigured получателей электронной почты.|
-|/managers/devices/installUpdates/action|Устанавливает обновления на устройствах hello|
-|/managers/devices/listFailoverSets/action|Для существующего устройства задает список hello перехода на другой ресурс.|
-|/managers/devices/listFailoverTargets/action|Список целей hello устройств|
-|/managers/devices/publicEncryptionKey/action|Список общедоступный ключ шифрования hello диспетчера устройств|
-|/managers/devices/hardwareComponentGroups/<br>read|Список hello группы компонентов оборудования|
+|/managers/devices/failover/action|Выполняет отработку отказа устройства.|
+|/managers/devices/sendTestAlertEmail/action|Отправляет тестовое сообщение оповещения настроенным получателям электронной почты.|
+|/managers/devices/installUpdates/action|Устанавливает обновления на устройства.|
+|/managers/devices/listFailoverSets/action|Выводит список групп перехода на другой ресурс для существующего устройства.|
+|/managers/devices/listFailoverTargets/action|Выводит список целей отработки отказа для устройств.|
+|/managers/devices/publicEncryptionKey/action|Отображает открытый ключ шифрования для диспетчера устройств.|
+|/managers/devices/hardwareComponentGroups/<br>read|Выводит список групп компонентов оборудования.|
 |/managers/devices/hardwareComponentGroups/<br>changeControllerPowerState/action|Изменяет состояние питания контроллера для групп компонентов оборудования.|
-|/managers/devices/metrics/read|Выводит список или получает hello метрики|
-|/managers/devices/chapSettings/write|Создать или обновить параметры Chap hello|
-|/managers/devices/chapSettings/read|Получает параметры Chap hello или список|
-|/managers/devices/chapSettings/delete|Удаляет параметры Chap hello|
-|/managers/devices/backupScheduleGroups/read|Получает группы расписаний резервного копирования hello или список|
-|/managers/devices/backupScheduleGroups/write|Создание или обновление групп расписаний резервного копирования hello|
-|/managers/devices/backupScheduleGroups/delete|Удаление групп расписаний резервного копирования hello|
-|/managers/devices/updateSummary/read|Получает hello сводки обновлений или список|
+|/managers/devices/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/devices/chapSettings/write|Создает или обновляет параметры CHAP.|
+|/managers/devices/chapSettings/read|Возвращает параметры CHAP или выводит их список.|
+|/managers/devices/chapSettings/delete|Удаляет параметры CHAP.|
+|/managers/devices/backupScheduleGroups/read|Выводит список групп расписаний архивации или возвращает их.|
+|/managers/devices/backupScheduleGroups/write|Создает или обновляет группы расписаний архивации.|
+|/managers/devices/backupScheduleGroups/delete|Удаляет группы расписаний архивации.|
+|/managers/devices/updateSummary/read|Возвращает сводку обновлений или выводит их список.|
 |/managers/devices/migrationSourceConfigurations/<br>import/action|Импортирует конфигурации источников для переноса.|
-|/managers/devices/migrationSourceConfigurations/<br>startMigrationEstimate/action|Запустите задание tooestimate hello длительность процесса миграции hello.|
+|/managers/devices/migrationSourceConfigurations/<br>startMigrationEstimate/action|Запускает задание для оценки длительности процесса переноса.|
 |/managers/devices/migrationSourceConfigurations/<br>startMigration/action|Начинает перенос с использованием конфигураций источников.|
 |/managers/devices/migrationSourceConfigurations/<br>confirmMigration/action|Подтверждает успешный перенос и фиксирует его.|
-|/managers/devices/migrationSourceConfigurations/<br>fetchMigrationEstimate/action|Получить статус hello hello миграции оценки задания.|
-|/managers/devices/migrationSourceConfigurations/<br>fetchMigrationStatus/action|Получить состояние hello для миграции hello.|
-|/managers/devices/migrationSourceConfigurations/<br>fetchConfirmMigrationStatus/action|FETCH hello подтвердить состояние миграции.|
-|/managers/devices/alertSettings/read|Получает параметры оповещений hello или список|
-|/managers/devices/alertSettings/write|Создать или обновить параметры оповещений hello|
-|/managers/devices/networkSettings/read|Получает параметры сети hello или список|
+|/managers/devices/migrationSourceConfigurations/<br>fetchMigrationEstimate/action|Извлекает состояние задания оценки переноса.|
+|/managers/devices/migrationSourceConfigurations/<br>fetchMigrationStatus/action|Извлекает состояние переноса.|
+|/managers/devices/migrationSourceConfigurations/<br>fetchConfirmMigrationStatus/action|Извлекает состояние подтверждения переноса.|
+|/managers/devices/alertSettings/read|Возвращает параметры оповещения или выводит их список.|
+|/managers/devices/alertSettings/write|Создает или обновляет параметры оповещения.|
+|/managers/devices/networkSettings/read|Возвращает параметры сети или выводит их список.|
 |/managers/devices/networkSettings/write|Создает или обновляет параметры сети.|
-|/managers/devices/jobs/read|Выводит список или возвращает задания hello|
+|/managers/devices/jobs/read|Выводит список заданий или возвращает их.|
 |/managers/devices/jobs/cancel/action|Отменяет выполнение задания.|
-|/managers/devices/metricsDefinitions/read|Возвращает определения показателей hello или список|
+|/managers/devices/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
 |/managers/devices/volumeContainers/write|Создает или обновляет контейнеры томов (только для серии 8000).|
-|/managers/devices/volumeContainers/read|Список контейнеров томов hello (серии 8000 только)|
+|/managers/devices/volumeContainers/read|Выводит список контейнеров томов (только для серии 8000).|
 |/managers/devices/volumeContainers/delete|Удаляет существующие контейнеры томов (только для серии 8000).|
 |/managers/devices/volumeContainers/listEncryptionKeys/action|Выводит список ключей шифрования контейнеров томов.|
 |/managers/devices/volumeContainers/rolloverEncryptionKey/action|Переключает ключи шифрования контейнеров томов.|
-|/managers/devices/volumeContainers/metrics/read|Список hello метрики|
-|/managers/devices/volumeContainers/volumes/read|Hello список томов|
+|/managers/devices/volumeContainers/metrics/read|Выводит список метрик.|
+|/managers/devices/volumeContainers/volumes/read|Выводит список томов.|
 |/managers/devices/volumeContainers/volumes/write|Создает или обновляет тома.|
 |/managers/devices/volumeContainers/volumes/delete|Удаляет существующие тома.|
-|/managers/devices/volumeContainers/volumes/metrics/read|Список hello метрики|
-|/managers/devices/volumeContainers/volumes/metricsDefinitions/read|Hello список определений метрик|
-|/managers/devices/volumeContainers/metricsDefinitions/read|Hello список определений метрик|
-|/managers/devices/iscsiservers/read|Получает hello iSCSI серверов или список|
-|/managers/devices/iscsiservers/write|Создать или обновить hello iSCSI серверов|
-|/managers/devices/iscsiservers/delete|Удаляет hello iSCSI серверов|
+|/managers/devices/volumeContainers/volumes/metrics/read|Выводит список метрик.|
+|/managers/devices/volumeContainers/volumes/metricsDefinitions/read|Выводит список определений метрик.|
+|/managers/devices/volumeContainers/metricsDefinitions/read|Выводит список определений метрик.|
+|/managers/devices/iscsiservers/read|Выводит список серверов iSCSI или возвращает их.|
+|/managers/devices/iscsiservers/write|Создает или обновляет серверы iSCSI.|
+|/managers/devices/iscsiservers/delete|Удаляет серверы iSCSI.|
 |/managers/devices/iscsiservers/backup/action|Архивирует сервер iSCSI.|
-|/managers/devices/iscsiservers/metrics/read|Выводит список или получает hello метрики|
-|/managers/devices/iscsiservers/disks/read|Выводит список или возвращает диски hello|
-|/managers/devices/iscsiservers/disks/write|Создать или обновить диски hello|
-|/managers/devices/iscsiservers/disks/delete|Удаление дисков hello|
-|/managers/devices/iscsiservers/disks/metrics/read|Выводит список или получает hello метрики|
-|/managers/devices/iscsiservers/disks/metricsDefinitions/read|Возвращает определения показателей hello или список|
-|/managers/devices/iscsiservers/metricsDefinitions/read|Возвращает определения показателей hello или список|
-|/managers/devices/backups/read|Получает hello резервного набора данных или список|
-|/managers/devices/backups/delete|Удаляет hello резервного набора данных|
-|/managers/devices/backups/restore/action|Восстановление всех томов hello из резервной копии.|
+|/managers/devices/iscsiservers/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/devices/iscsiservers/disks/read|Выводит список дисков или возвращает их.|
+|/managers/devices/iscsiservers/disks/write|Создает или обновляет диски.|
+|/managers/devices/iscsiservers/disks/delete|Удаляет диски.|
+|/managers/devices/iscsiservers/disks/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/devices/iscsiservers/disks/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
+|/managers/devices/iscsiservers/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
+|/managers/devices/backups/read|Возвращает набор архивации или выводит его.|
+|/managers/devices/backups/delete|Удаляет набор архивации.|
+|/managers/devices/backups/restore/action|Восстанавливает все тома из набора архивации.|
 |/managers/devices/backups/elements/clone/action|Клонирует общедоступный ресурс или том с помощью элемента архива.|
 |/managers/devices/backupPolicies/write|Создает или обновляет политики архивации (только для серии 8000).|
-|/managers/devices/backupPolicies/read|Hello список политик резервного копирования (серии 8000 только)|
+|/managers/devices/backupPolicies/read|Выводит список политик архивации (только для серии 8000).|
 |/managers/devices/backupPolicies/delete|Удаляет существующие политики архивации (только для серии 8000).|
-|/managers/devices/backupPolicies/backup/action|Выполнить резервное копирование всех томов hello защищена политикой hello toocreate вручную резервного копирования по запросу.|
+|/managers/devices/backupPolicies/backup/action|Выполняет ручную архивацию всех томов, защищенных с помощью политики архивации, для создания их резервной копии по запросу.|
 |/managers/devices/backupPolicies/schedules/write|Создает или обновляет расписания.|
-|/managers/devices/backupPolicies/schedules/read|Список расписаний hello|
+|/managers/devices/backupPolicies/schedules/read|Выводит список расписаний.|
 |/managers/devices/backupPolicies/schedules/delete|Удаляет существующие расписания.|
-|/managers/devices/securitySettings/update/action|Обновите параметры безопасности hello.|
-|/managers/devices/securitySettings/read|Список hello параметры безопасности|
-|/managers/devices/securitySettings/<br>syncRemoteManagementCertificate/action|Синхронизируйте hello сертификат удаленного управления для устройства.|
+|/managers/devices/securitySettings/update/action|Обновляет параметры безопасности.|
+|/managers/devices/securitySettings/read|Выводит список параметров безопасности.|
+|/managers/devices/securitySettings/<br>syncRemoteManagementCertificate/action|Синхронизирует сертификат удаленного управления для устройства.|
 |/managers/devices/securitySettings/write|Создает или обновляет параметры безопасности.|
-|/managers/devices/fileservers/read|Получает hello файловых серверов или список|
-|/managers/devices/fileservers/write|Создать или обновить hello файловых серверов|
-|/managers/devices/fileservers/delete|Удаляет hello файловых серверов|
+|/managers/devices/fileservers/read|Выводит список файловых серверов или возвращает их.|
+|/managers/devices/fileservers/write|Создает или обновляет файловые серверы.|
+|/managers/devices/fileservers/delete|Удаляет файловые серверы.|
 |/managers/devices/fileservers/backup/action|Архивирует файловый сервер.|
-|/managers/devices/fileservers/metrics/read|Выводит список или получает hello метрики|
-|/managers/devices/fileservers/shares/write|Создать или обновить общие ресурсы hello|
-|/managers/devices/fileservers/shares/read|Получает hello общих папок или список|
-|/managers/devices/fileservers/shares/delete|Удаляет hello общих папок|
-|/managers/devices/fileservers/shares/metrics/read|Выводит список или получает hello метрики|
-|/managers/devices/fileservers/shares/metricsDefinitions/read|Возвращает определения показателей hello или список|
-|/managers/devices/fileservers/metricsDefinitions/read|Возвращает определения показателей hello или список|
-|/managers/devices/timeSettings/read|Возвращает параметры времени hello или список|
+|/managers/devices/fileservers/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/devices/fileservers/shares/write|Создает или обновляет общедоступные ресурсы.|
+|/managers/devices/fileservers/shares/read|Выводит список общедоступных ресурсов или возвращает их.|
+|/managers/devices/fileservers/shares/delete|Удаляет общедоступные ресурсы.|
+|/managers/devices/fileservers/shares/metrics/read|Выводит список метрик или возвращает их.|
+|/managers/devices/fileservers/shares/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
+|/managers/devices/fileservers/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
+|/managers/devices/timeSettings/read|Возвращает параметры времени или выводит их список.|
 |/managers/devices/timeSettings/write|Создает или обновляет параметры времени.|
-|/Managers/certificates/write|Операция обновления ресурса сертификата Hello обновляет сертификат учетных данных ресурсов или хранилища hello.|
-|/managers/cloudApplianceConfigurations/read|Список hello облака Appliance поддерживаемые конфигурации|
-|/managers/metricsDefinitions/read|Возвращает определения показателей hello или список|
-|/managers/encryptionSettings/read|Получает параметры шифрования hello или список|
+|/Managers/certificates/write|Операция обновления сертификата ресурса обновляет сертификат учетных данных для ресурса или хранилища.|
+|/managers/cloudApplianceConfigurations/read|Выводит список конфигураций, поддерживаемых облачным устройством.|
+|/managers/metricsDefinitions/read|Выводит список определений метрик или возвращает их.|
+|/managers/encryptionSettings/read|Возвращает параметры шифрования или выводит их список.|
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
@@ -1938,10 +1938,10 @@ ms.lasthandoff: 10/06/2017
 |/streamingjobs/Read|Считывает задание Stream Analytics.|
 |/streamingjobs/Write|Записывает задание Stream Analytics.|
 |/streamingjobs/Delete|Удаляет задание Stream Analytics.|
-|/streamingjobs/providers/Microsoft.Insights/metricDefinitions/read|Получает доступные метрики hello для streamingjobs|
+|/streamingjobs/providers/Microsoft.Insights/metricDefinitions/read|Возвращает доступные метрики для заданий потоковой передачи.|
 |/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/read|Считывает параметр диагностики.|
 |/streamingjobs/providers/Microsoft.Insights/diagnosticSettings/write|Записывает параметр диагностики.|
-|/streamingjobs/providers/Microsoft.Insights/logDefinitions/read|Получает доступные журналы hello для streamingjobs|
+|/streamingjobs/providers/Microsoft.Insights/logDefinitions/read|Возвращает доступные журналы для заданий потоковой передачи.|
 |/streamingjobs/transformations/Read|Считывает преобразование задания Stream Analytics.|
 |/streamingjobs/transformations/Write|Записывает преобразование задания Stream Analytics.|
 |/streamingjobs/transformations/Delete|Удаляет преобразование задания Stream Analytics.|
@@ -1956,25 +1956,25 @@ ms.lasthandoff: 10/06/2017
 
 | Операция | Описание |
 |---|---|
-|/register/action|Регистрирует поставщика ресурсов tooSupport|
-|/supportTickets/read|Возвращает подробные сведения в службу поддержки (включая состояние, серьезности, контактные сведения и сообщения) или получает список hello запросов в службу поддержки между подписками.|
+|/register/action|Выполняет регистрацию в поставщике ресурсов поддержки.|
+|/supportTickets/read|Возвращает подробные сведения о запросе в службу поддержки (включая состояние, серьезность, контактную информацию и сообщения) или возвращает список запросов в службу поддержки в подписках.|
 |/supportTickets/write|Создает или обновляет запрос в службу поддержки. Можно создавать запросы в службу поддержки по техническим проблемам, а также проблемам, связанным с выставлением счетов, квотами или управлением подписками. Вы можете изменить уровень серьезности, контактную информацию и сообщения для существующих запросов в службу поддержки.|
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 | Операция | Описание |
 |---|---|
-|/unregister/action|Отмена регистрации поставщика ресурсов Microsoft.Web для hello подписки.|
+|/unregister/action|Отменяет регистрацию поставщика ресурсов Microsoft.Web для подписки.|
 |/validate/action|Выполняет проверку.|
-|/register/action|Регистрация поставщика ресурсов Microsoft.Web для hello подписки.|
-|/hostingEnvironments/Read|Получение свойств hello среды службы приложений|
+|/register/action|Регистрирует поставщик ресурсов Microsoft.Web для подписки.|
+|/hostingEnvironments/Read|Возвращает свойства среды службы приложений.|
 |/hostingEnvironments/Write|Создает новую среду службы приложений или обновляет существующую.|
 |/hostingEnvironments/Delete|Удаляет среду службы приложений.|
 |/hostingEnvironments/reboot/Action|Перезагружает все компьютеры в среде службы приложений.|
 |/hostingenvironments/resume/action|Возобновляет работу сред внешнего размещения.|
 |/hostingenvironments/suspend/action|Приостанавливает работу сред внешнего размещения.|
 |/hostingenvironments/metricdefinitions/read|Возвращает определения метрик сред внешнего размещения.|
-|/hostingEnvironments/workerPools/Read|Получение свойств hello пула Worker в среде службы приложений|
+|/hostingEnvironments/workerPools/Read|Возвращает свойства рабочего пула в среде службы приложений.|
 |/hostingEnvironments/workerPools/Write|Создает новый рабочий пул в среде службы приложений или обновляет существующий.|
 |/hostingenvironments/workerpools/metricdefinitions/read|Возвращает определения метрик рабочих пулов в средах внешнего размещения.|
 |/hostingenvironments/workerpools/metrics/read|Возвращает метрики рабочих пулов в средах внешнего размещения.|
@@ -1985,7 +1985,7 @@ ms.lasthandoff: 10/06/2017
 |/hostingenvironments/usages/read|Возвращает данные об использовании сред внешнего размещения.|
 |/hostingenvironments/capacities/read|Возвращает емкости сред внешнего размещения.|
 |/hostingenvironments/operations/read|Возвращает операции сред внешнего размещения.|
-|/hostingEnvironments/multiRolePools/Read|Получение свойств hello пула переднего плана в среде службы приложений|
+|/hostingEnvironments/multiRolePools/Read|Возвращает свойства интерфейсного пула в среде службы приложений.|
 |/hostingEnvironments/multiRolePools/Write|Создает новый интерфейсный пул в среде службы приложений или обновляет существующий.|
 |/hostingenvironments/multirolepools/metricdefinitions/read|Возвращает определения метрик пулов множественных ролей в средах внешнего размещения.|
 |/hostingenvironments/multirolepools/metrics/read|Возвращает метрики пулов множественных ролей в средах внешнего размещения.|
@@ -1995,8 +1995,8 @@ ms.lasthandoff: 10/06/2017
 |/publishingusers/read|Возвращает публикующих пользователей.|
 |/publishingusers/write|Обновляет публикующих пользователей.|
 |/checknameavailability/read|Проверяет, доступно ли имя ресурса.|
-|/geoRegions/Read|Получите список hello географических регионов.|
-|/sites/Read|Получение свойств hello веб-приложения|
+|/geoRegions/Read|Возвращает список географических регионов.|
+|/sites/Read|Возвращает свойства веб-приложения.|
 |/sites/Write|Создает новое веб-приложение или обновляет существующее.|
 |/sites/Delete|Удаление существующего веб-приложения|
 |/sites/backup/Action|Создает резервную копию веб-приложения.|
@@ -2007,7 +2007,7 @@ ms.lasthandoff: 10/06/2017
 |/sites/stop/Action|Останавливает веб-приложение.|
 |/sites/slotsswap/Action|Переключает слоты развертывания веб-приложения.|
 |/sites/slotsdiffs/Action|Возвращает различия конфигураций веб-приложения и слотов.|
-|/sites/applySlotConfig/Action|Применить конфигурацию веб-приложения слот, из целевого слота toohello текущего веб-приложения|
+|/sites/applySlotConfig/Action|Применяет конфигурацию слота веб-приложения из целевого слота к текущему веб-приложению.|
 |/sites/resetSlotConfig/Action|Сбрасывает конфигурацию веб-приложения.|
 |/sites/functions/action|Выполняет функции веб-приложений.|
 |/sites/listsyncfunctiontriggerstatus/action|Отображает состояние триггера функции синхронизации для веб-приложений.|
@@ -2054,9 +2054,9 @@ ms.lasthandoff: 10/06/2017
 |/sites/slots/stop/Action|Останавливает слот веб-приложения.|
 |/sites/slots/slotsswap/Action|Переключает слоты развертывания веб-приложения.|
 |/sites/slots/slotsdiffs/Action|Возвращает различия конфигураций веб-приложения и слотов.|
-|/sites/slots/applySlotConfig/Action|Примените конфигурацию веб-приложения слот, из целевой слот toohello текущей области.|
+|/sites/slots/applySlotConfig/Action|Применяет конфигурацию слота веб-приложения из целевого слота к текущему слоту.|
 |/sites/slots/resetSlotConfig/Action|Сбрасывает конфигурацию слота веб-приложения.|
-|/sites/slots/Read|Получение свойств hello слота развертывания веб-приложения|
+|/sites/slots/Read|Возвращает свойства слота развертывания веб-приложения.|
 |/sites/slots/newpassword/action|Задает новый пароль для слотов веб-приложений.|
 |/sites/slots/sync/action|Синхронизирует слоты веб-приложений.|
 |/sites/slots/operationresults/read|Возвращает результаты операций слотов веб-приложений.|
@@ -2098,7 +2098,7 @@ ms.lasthandoff: 10/06/2017
 |/sites/slots/sourcecontrols/Delete|Удаляет параметры конфигурации системы управления версиями для слота веб-приложения.|
 |/sites/slots/restore/read|Возвращает данные о восстановлении слотов веб-приложений.|
 |/sites/slots/analyzecustomhostname/read|Возвращает результаты анализа пользовательского имени узла для слотов веб-приложений.|
-|/sites/slots/backups/Read|Получение свойств hello резервного копирования слоты веб-приложения|
+|/sites/slots/backups/Read|Возвращает свойства резервной копии слотов веб-приложения.|
 |/sites/slots/backups/list/action|Выводит список резервных копий слотов веб-приложений.|
 |/sites/slots/backups/restore/action|Восстанавливает резервные копии слотов веб-приложений.|
 |/sites/slots/deployments/delete|Удаляет развертывания слотов веб-приложений.|
@@ -2109,7 +2109,7 @@ ms.lasthandoff: 10/06/2017
 |/sites/hybridconnection/read|Возвращает гибридное подключение для веб-приложений.|
 |/sites/hybridconnection/write|Обновляет гибридное подключение для веб-приложений.|
 |/sites/recommendationhistory/read|Возвращает журнал рекомендаций для веб-приложения.|
-|/sites/recommendations/Read|Получите список hello рекомендаций для веб-приложения.|
+|/sites/recommendations/Read|Возвращает список рекомендаций для веб-приложения.|
 |/sites/recommendations/disable/action|Отключает рекомендации для веб-приложений.|
 |/sites/config/Read|Возвращает параметры конфигурации веб-приложения.|
 |/sites/config/list/Action|Отображает влияющие на безопасность параметры веб-приложения, такие как учетные данные для публикации, параметры приложения и строки подключения.|
@@ -2124,7 +2124,7 @@ ms.lasthandoff: 10/06/2017
 |/sites/sourcecontrols/Delete|Удаляет параметры конфигурации системы управления версиями веб-приложения.|
 |/sites/restore/read|Возвращает данные о восстановлении веб-приложений.|
 |/sites/analyzecustomhostname/read|Анализирует пользовательское имя узла.|
-|/sites/backups/Read|Получение свойств hello резервного копирования веб-приложения|
+|/sites/backups/Read|Возвращает свойства резервной копии веб-приложения.|
 |/sites/backups/list/action|Выводит список резервных копий веб-приложений.|
 |/sites/backups/restore/action|Восстанавливает резервные копии веб-приложений.|
 |/sites/snapshots/read|Возвращает моментальные снимки веб-приложений.|
@@ -2145,10 +2145,10 @@ ms.lasthandoff: 10/06/2017
 |/sites/diagnostics/frebanalysis/read|Возвращает данные диагностики об анализе FREB для веб-приложений.|
 |/availablestacks/read|Возвращает доступные стеки.|
 |/isusernameavailable/read|Проверяет, доступно ли имя пользователя.|
-|/Microsoft.Web/apiManagementAccounts/<br>apis/Read|Получите список hello API.|
+|/Microsoft.Web/apiManagementAccounts/<br>apis/Read|Возвращает список интерфейсов API.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/Write|Добавляет новый API или обновляет существующий.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/Delete|Удаляет существующий API.|
-|/Microsoft.Web/apiManagementAccounts/<br>apis/connections/Read|Получите список соединений hello.|
+|/Microsoft.Web/apiManagementAccounts/<br>apis/connections/Read|Возвращает список подключений.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/connections/Write|Сохраняет новое подключение или обновляет существующее.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/connections/Delete|Удаляет существующее подключение.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/connections/connectionAcls/Read|Считывает списки управления доступом подключения.|
@@ -2158,7 +2158,7 @@ ms.lasthandoff: 10/06/2017
 |/Microsoft.Web/apiManagementAccounts/<br>apis/apiAcls/Read|Считывает списки управления доступом подключения.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/apiAcls/Write|Создает или обновляет списки управления доступом API.|
 |/Microsoft.Web/apiManagementAccounts/<br>apis/apiAcls/Delete|Удаляет списки управления доступом API.|
-|/serverfarms/Read|Получение свойств hello на план служб приложений|
+|/serverfarms/Read|Возвращает свойства плана службы приложений.|
 |/serverfarms/Write|Создает новый план службы приложений или обновляет существующий.|
 |/serverfarms/Delete|Удаление существующего плана службы приложений|
 |/serverfarms/restartSites/Action|Перезапустите все веб-приложения в плане службы приложений.|
@@ -2182,24 +2182,24 @@ ms.lasthandoff: 10/06/2017
 |/serverfarms/usages/read|Возвращает данные об использовании для планов службы приложений.|
 |/serverfarms/hybridconnectionnamespaces/relays/sites/read|Возвращает веб-приложения ретрансляторов в пространствах имен гибридных подключений для плана службы приложений.|
 |/ishostnameavailable/read|Проверяет, доступно ли имя узла.|
-|/connectionGateways/Read|Получите список соединений шлюзы hello.|
+|/connectionGateways/Read|Возвращает список шлюзов подключений.|
 |/connectionGateways/Write|Создает или обновляет шлюз для подключения.|
 |/connectionGateways/Delete|Удаляет шлюз подключения.|
 |/connectionGateways/Join/Action|Присоединяет шлюз подключения.|
 |/classicmobileservices/read|Возвращает классические мобильные службы.|
 |/skus/read|Возвращает номера SKU.|
-|/certificates/Read|Получите список сертификатов hello.|
+|/certificates/Read|Возвращает список сертификатов.|
 |/certificates/Write|Добавляет новый сертификат или обновляет существующий.|
 |/certificates/Delete|Удаляет существующий сертификат.|
 |/operations/read|Возвращает операции.|
-|/recommendations/Read|Получите список hello рекомендаций для подписок.|
+|/recommendations/Read|Возвращает список рекомендаций для подписок.|
 |/ishostingenvironmentnameavailable/read|Проверяет, доступно ли имя среды внешнего размещения.|
-|/apiManagementAccounts/Read|Получите список ApiManagementAccounts hello.|
+|/apiManagementAccounts/Read|Возвращает список учетных записей управления API.|
 |/apiManagementAccounts/Write|Добавляет новую учетную запись управления API или обновляет существующую.|
 |/apiManagementAccounts/Delete|Удаляет существующую учетную запись управления API.|
-|/apiManagementAccounts/connectionAcls/Read|Получите список hello списков управления доступом для подключения.|
+|/apiManagementAccounts/connectionAcls/Read|Возвращает перечень списков управления доступом для подключений.|
 |/apiManagementAccounts/apiAcls/Read|Считывает списки управления доступом подключения.|
-|/connections/Read|Получите список соединений hello.|
+|/connections/Read|Возвращает список подключений.|
 |/connections/Write|Создает или обновляет подключение.|
 |/connections/Delete|Удаляет подключение.|
 |/connections/Join/Action|Присоединяет подключение.|
@@ -2214,12 +2214,12 @@ ms.lasthandoff: 10/06/2017
 |/locations/managedapis/read|Возвращает расположения управляемых интерфейсов API.|
 |/locations/apioperations/read|Возвращает операции API расположений.|
 |/locations/connectiongatewayinstallations/read|Возвращает данные об установленных шлюзах подключений в расположениях.|
-|/listSitesAssignedToHostName/Read|Получите имена узлов, назначенных toohostname.|
+|/listSitesAssignedToHostName/Read|Возвращает имена сайтов, назначенные имени узла.|
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Узнайте, каким образом слишком[создайте пользовательскую роль](role-based-access-control-custom-roles.md).
+- Узнайте, как [создать настраиваемую роль](role-based-access-control-custom-roles.md).
 
-- Просмотрите hello [встроенные роли RBAC](role-based-access-built-in-roles.md).
+- Ознакомьтесь со [встроенными ролями RBAC](role-based-access-built-in-roles.md).
 
-- Узнайте, как toomanage доступ к назначения [пользователем](role-based-access-control-manage-assignments.md) или [по ресурсам](role-based-access-control-configure.md) 
+- Узнайте, как управлять назначением доступа [по пользователям](role-based-access-control-manage-assignments.md) или [по ресурсам](role-based-access-control-configure.md). 

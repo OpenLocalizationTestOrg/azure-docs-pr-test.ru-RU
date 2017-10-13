@@ -1,6 +1,6 @@
 ---
-title: "aaaNotification концентраторов критические новостей учебника - операций ввода-вывода"
-description: "Узнайте, как toosend концентраторы уведомлений Azure Service Bus toouse критические новостей уведомления tooiOS устройств."
+title: "Учебник по передаче экстренных новостей в центрах уведомлений: iOS"
+description: "Узнайте, как использовать центры уведомлений Azure Service Bus для отправки уведомлений об экстренных новостях на устройства iOS."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,38 +14,38 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 763b80b5ffed238b351d95bd3d6a96cb914f53cd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-notification-hubs-toosend-breaking-news"></a>Использование концентраторов уведомлений toosend новости
+# <a name="use-notification-hubs-to-send-breaking-news"></a>Использование концентраторов уведомлений для передачи экстренных новостей
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Обзор
-В этом разделе показано, как toouse концентраторов уведомлений Azure toobroadcast критические новостей уведомления tooan приложения iOS. После завершения будет быть может tooregister переноса категории новостей нужных вам и получения только push-уведомлений для этих категорий. Этот сценарий представлен общий шаблон для многих приложений, где уведомления состоят из отправленных toobe toogroups пользователей, которым был объявлен ранее интересующих их, например, средство чтения RSS, приложений для вентиляторов музыку и т. д.
+В этом разделе показано, как использовать концентраторы уведомлений Azure для рассылки уведомлений об экстренных новостях в приложение iOS. По завершении вы сможете зарегистрироваться в интересующих вас категориях экстренных новостей и получать push-уведомления только для этих категорий. Данный сценарий является общеупотребимым шаблоном для многих приложений, где требуется отправлять уведомления группам пользователей, ранее проявивших к ним интерес, например, программы чтения RSS, приложений для музыкальных фанатов и т. д.
 
-Широковещательный сценарии реализуются путем включения одного или нескольких *теги* при создании регистрации в концентраторе уведомлений hello. Отправке уведомлений tooa тегов, все устройства, которые зарегистрированы для тега hello получат уведомление hello. Так как теги являются просто строками, у которых нет toobe заранее подготовлены. Дополнительные сведения о тегах см. в разделе слишком[маршрутизации концентраторов уведомлений и выражения с тегами](notification-hubs-tags-segment-push-message.md).
+Широковещательные сценарии реализуются путем включения одного или нескольких *тегов* при создании регистрации в концентраторе уведомлений. Если уведомления отправляются на тег, их получают все устройства, зарегистрированные для данного тега. Поскольку теги представляют собой обычные строки, их не нужно подготавливать заранее. Дополнительные сведения о тегах см. в статье [Маршрутизация и выражения тегов](notification-hubs-tags-segment-push-message.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-В этом разделе основан на приложение hello, созданный в [приступить к работе с концентраторами уведомлений][get-started]. Перед началом работы с данным руководством необходимо выполнить задания руководства по [началу работы с центрами уведомлений][get-started].
+Материал данной статьи основан на приложении, созданном в разделе по [началу работы с центрами уведомлений][get-started]. Перед началом работы с данным руководством необходимо выполнить задания руководства по [началу работы с центрами уведомлений][get-started].
 
-## <a name="add-category-selection-toohello-app"></a>Добавить приложение toohello Выбор категории
-Hello первым шагом является tooadd hello пользовательского интерфейса элементов tooyour существующей раскадровки, позволяющие tooregister категории tooselect пользователя hello. выбранные пользователем категории Hello хранятся на устройстве hello. При запуске приложение hello регистрацию устройств создается в концентратор уведомлений с категориями hello выбран как теги.
+## <a name="add-category-selection-to-the-app"></a>Добавление возможности выбора категорий в приложение
+Прежде всего, необходимо добавить элементы пользовательского интерфейса для имеющейся раскадровки, позволяющие пользователю выбирать категории для регистрации. Выбранные пользователем категории хранятся на устройстве. При запуске приложения в центре уведомлений создается регистрация устройства с выбранными категориями, представленными в форме тегов.
 
-1. Добавьте в ваш MainStoryboard_iPhone.storyboard hello следующие компоненты из библиотеки hello объекта.
+1. В вашем MainStoryboard_iPhone.storyboard добавьте следующие компоненты из библиотеки объектов:
    
    * метка с текстом "Экстренные новости";
    * метки с текстами категории "Мир", "Политика", "Бизнес", "Технология", "Наука", "Спорт";
-   * Шесть переключателя, по одному на каждую категорию, задать для каждого ключа **состояние** toobe **Off** по умолчанию.
+   * Шесть переключателей, по одному в каждой категории. Задайте для каждого переключателя **Состояние** по умолчанию **Off** (Откл.).
    * Одна кнопка с надписью «Подписка».
      
      Раскадровка должна выглядеть следующим образом:
      
      ![][3]
-2. В редакторе помощника hello создания выходов для всех коммутаторов hello и вызывать их «WorldSwitch», «PoliticsSwitch», «BusinessSwitch», «TechnologySwitch», «ScienceSwitch», «SportsSwitch»
-3. Создайте действие для кнопки с названием "Подписка". Ваш ViewController.h должна содержать hello следующее:
+2. В редакторе помощника создайте выходы для всех переключателей и назовите их WorldSwitch, PoliticsSwitch, BusinessSwitch, TechnologySwitch, ScienceSwitch, SportsSwitch.
+3. Создайте действие для кнопки с названием "Подписка". Файл BreakingNewsViewController.h должен содержать следующее:
    
         @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *PoliticsSwitch;
@@ -55,7 +55,7 @@ Hello первым шагом является tooadd hello пользовате
         @property (weak, nonatomic) IBOutlet UISwitch *SportsSwitch;
    
         - (IBAction)subscribe:(id)sender;
-4. Создайте класс **Cocoa Touch Class** с именем `Notifications`. Скопируйте следующий код в разделе интерфейса hello hello файла Notifications.h hello:
+4. Создайте класс **Cocoa Touch Class** с именем `Notifications`. Скопируйте следующий код в интерфейсную часть файла Notifications.h:
    
         @property NSData* deviceToken;
    
@@ -67,10 +67,10 @@ Hello первым шагом является tooadd hello пользовате
         - (NSSet*)retrieveCategories;
    
         - (void)subscribeWithCategories:(NSSet*)categories completion:(void (^)(NSError *))completion;
-5. Добавьте следующие директивы tooNotifications.m импорта hello:
+5. Добавьте следующую директиву импорта в Notifications.m:
    
         #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
-6. Скопируйте следующий код в разделе реализации hello hello файла Notifications.m hello.
+6. Скопируйте следующий код в раздел файла Notifications.m, в котором запрограммирована реализация.
    
         SBNotificationHub* hub;
    
@@ -111,34 +111,34 @@ Hello первым шагом является tooadd hello пользовате
 
 
 
-    Этот класс использует локальное хранилище toostore и получить hello категории новостей, который получит это устройство. Кроме того, он содержит метод tooregister для следующих категорий с помощью [шаблона](notification-hubs-templates-cross-platform-push-messages.md) регистрации.
+    Этот класс использует локальное хранилище для хранения и извлечения категорий новостей, которые данное устройство должно получать. Он также содержит метод регистрации этих категорий с помощью [шаблонной](notification-hubs-templates-cross-platform-push-messages.md) регистрации.
 
-1. В файле AppDelegate.h hello добавьте инструкцию импорта для Notifications.h и добавьте свойство для экземпляра класса уведомлений hello:
+1. В файле AppDelegate.h добавьте оператор импорта для Notifications.h и добавьте свойство для экземпляра класса уведомлений:
    
         #import "Notifications.h"
    
         @property (nonatomic) Notifications* notifications;
-2. В hello **didFinishLaunchingWithOptions** метод в AppDelegate.m, добавить hello кода tooinitialize hello уведомления экземпляр в начале hello метод hello.  
+2. В методе **didFinishLaunchingWithOptions** в файле AppDelegate.m добавьте в начало метода код для инициализации экземпляра уведомления.  
    
-    `HUBNAME`и `HUBLISTENACCESS` (определенная в hubinfo.h) уже должна содержать hello `<hub name>` и `<connection string with listen access>` заменой заполнителей уведомления имя и hello строку подключения к концентратору для *DefaultListenSharedAccessSignature*, полученный ранее
+    В `HUBNAME` и `HUBLISTENACCESS` (определены в hubinfo.h) заполнители `<hub name>` и `<connection string with listen access>` уже должны быть заменены именем центра уведомлений и строкой подключения для *DefaultListenSharedAccessSignature*, полученными ранее.
    
         self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
    
    > [!NOTE]
-   > Так как учетные данные, которые распространяются с помощью клиентского приложения, обычно не безопасны, hello ключ для прослушивания доступа следует распространять только с помощью клиентского приложения. Прослушивать доступа включает tooregister вашего приложения для уведомлений, но существующие регистрации нельзя изменить, и не может отправлять уведомления. Полный доступ Hello используется в защищенной серверной службе для отправки уведомлений и изменять существующие регистрации.
+   > Так как учетные данные, которые распространяются с помощью клиентского приложения, обычно небезопасны, с помощью вашего клиентского приложения следует распространять только ключ для доступа к прослушиванию. Доступ к прослушиванию позволяет приложению регистрироваться для использования уведомлений, однако при этом нельзя изменять имеющиеся регистрации и отправлять уведомления. Полный ключ доступа используется в защищенной серверной службе для отправки уведомлений и смены существующих регистраций.
    > 
    > 
-3. В hello **didRegisterForRemoteNotificationsWithDeviceToken** метод в AppDelegate.m, замените hello код в метод hello hello после уведомления класс маркера toohello устройства кода toopass hello. класс уведомления Hello выполнит hello регистрации уведомлений с категориями hello. При изменении выбора категории hello пользователя мы называем hello `subscribeWithCategories` метода в ответ toohello **подписаться** кнопку tooupdate их.
+3. В методе **didRegisterForRemoteNotificationsWithDeviceToken** в файле AppDelegate.m замените код метода на указанный ниже код, чтобы переместить маркер устройства в класс уведомлений. Класс уведомлений выполнит регистрацию получения уведомлений с категориями. Если пользователь меняет выбранные категории, для их обновления будет вызван метод `subscribeWithCategories` в ответ на действие кнопки **подписка** .
    
    > [!NOTE]
-   > Так как в любое время можно вероятность hello токен устройства, назначаемые hello Apple Push Notification Service (APNS), необходимо зарегистрировать для уведомлений часто tooavoid сбоев уведомлений. В этом примере регистрируется для уведомления каждый раз при запуске этого приложения hello. Для приложений, которые часто выполняются более чем один раз в день, возможно, если можно пропустить пропускной способности toopreserve регистрации менее чем за день прошел с момента предыдущей регистрации hello.
+   > Поскольку маркер устройства, назначенный службой push-уведомлений Apple (APNS), может измениться в любое время, следует регулярно производить регистрацию для использования уведомлений, чтобы предотвратить сбои уведомлений. В этом примере регистрация для использования уведомлений осуществляется при каждом запуске приложения. Для тех приложений, которые запускаются часто, более одного раза в день, возможно, лучше пропустить регистрацию, чтобы сэкономить трафик, если с момента прошлой регистрации прошло меньше суток.
    > 
    > 
    
         self.notifications.deviceToken = deviceToken;
    
-        // Retrieves hello categories from local storage and requests a registration for these categories
-        // each time hello app starts and performs a registration.
+        // Retrieves the categories from local storage and requests a registration for these categories
+        // each time the app starts and performs a registration.
    
         NSSet* categories = [self.notifications retrieveCategories];
         [self.notifications subscribeWithCategories:categories completion:^(NSError* error) {
@@ -147,9 +147,9 @@ Hello первым шагом является tooadd hello пользовате
             }
         }];
 
-    Обратите внимание, что на этом этапе следует никакой другой код в hello **didRegisterForRemoteNotificationsWithDeviceToken** метод.
+    Обратите внимание, что на данном этапе не должно быть никакого другого кода в методе **didRegisterForRemoteNotificationsWithDeviceToken** .
 
-1. Hello следующие методы должны уже присутствовать в AppDelegate.m завершению hello [приступить к работе с концентраторами уведомлений] [ get-started] учебника.  В противном случае добавьте их.
+1. Следующие методы должны уже присутствовать в AppDelegate.m завершению [приступить к работе с концентраторами уведомлений] [ get-started] учебника.  В противном случае добавьте их.
    
     -(void) {messageText:(NSString *) сообщение MessageBox:(NSString *) заголовка
    
@@ -160,8 +160,8 @@ Hello первым шагом является tooadd hello пользовате
    
    * didReceiveRemoteNotification приложения:(UIApplication *) (void) приложения: (NSDictionary *) userInfo {NSLog (@"% @", сведений о пользователях);   [самостоятельной MessageBox:@"Notification» сообщение: [valueForKey:@"alert [userInfo objectForKey:@"aps»]»]]; }
    
-   Этот метод отвечает за уведомлений, полученных выполняющейся приложение hello, отображая простой **UIAlert**.
-2. В ViewController.m, добавьте оператор импорта для hello AppDelegate.h и скопируйте следующий код в hello создан XCode **подписаться** метод. Этот код обновит hello уведомления регистрации toouse hello новой категории теги hello пользователь выбрал в пользовательском интерфейсе hello.
+   Этот метод обрабатывает уведомления, полученные при запуске приложения, отображая простой **UIAlert**.
+2. В файле ViewController.m добавьте оператор импорта для AppDelegate.h и скопируйте предложенный код в созданный с помощью XCode метод **подписки** . Этот код обновляет регистрацию уведомлений для использования тегов новой категории, которые пользователь выбрал в пользовательском интерфейсе.
    
        ```
        #import "Notifications.h"
@@ -186,10 +186,10 @@ Hello первым шагом является tooadd hello пользовате
            }
        }];
    
-   Этот метод создает **NSMutableArray** из категории и использует hello **уведомления** список hello toostore классов в hello локального хранилища и регистры hello соответствующие теги в концентраторе уведомлений. При изменении категории регистрации hello воссоздается при hello новые категории.
-3. В ViewController.m, добавьте следующий код в hello hello **viewDidLoad** метод tooset hello пользовательский интерфейс на основе ранее сохраненные hello категорий.
+   Этот метод создает список категорий **NSMutableArray** и использует класс **Notifications** для хранения списка в локальном хранилище и регистрации соответствующих тегов в центре уведомлений. При изменении категорий регистрация создается заново с новыми категориями.
+3. В файле ViewController.m в метод **viewDidLoad** добавьте предложенный код, чтобы задать пользовательский интерфейс на основе ранее сохраненных категорий.
 
-        // This updates hello UI on startup based on hello status of previously saved categories.
+        // This updates the UI on startup based on the status of previously saved categories.
 
         Notifications* notifications = [(AppDelegate*)[[UIApplication sharedApplication]delegate] notifications];
 
@@ -204,17 +204,17 @@ Hello первым шагом является tooadd hello пользовате
 
 
 
-При запуске приложение hello приложение Hello можно хранить набор категорий в hello tooregister локального хранилища используется устройством с концентратором уведомлений hello.  Hello пользователя можно изменить выбор hello категорий во время выполнения и нажмите кнопку hello **подписаться** метод tooupdate hello регистрации для устройства hello. Далее потребуется обновить hello toosend приложения hello, критические уведомления новостей непосредственно в само приложение hello.
+Теперь приложение может сохранять набор категорий в локальном хранилище устройства и использовать его для регистрации в концентраторе уведомлений всякий раз при запуске приложения.  Пользователь может изменить выбранные категории во время выполнения и щелкнуть метод **подписки** для обновления регистрации устройства. Далее вы сможете обновить приложение для отправки уведомлений об экстренных новостях непосредственно в состав самого приложения.
 
 ## <a name="optional-sending-tagged-notifications"></a>(Необязательно.) Отправка уведомлений с тегами
-Если у вас нет доступа к tooVisual Studio, можно пропустить следующий раздел toohello и отправки уведомления из самого приложения hello. Также можно отправлять уведомление правильный шаблон hello из hello [классический портал Azure] используя вкладку hello отладки для центра уведомлений. 
+Если у вас нет доступа к Visual Studio, можно перейти к следующему разделу и отправлять уведомления из самого приложения. Вы также можете отправлять правильные шаблонные уведомления с [классического портала Azure] с помощью вкладки «Отладка» для центра уведомлений. 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="optional-send-notifications-from-hello-device"></a>(необязательно) Отправлять уведомления с устройства hello
-Обычно уведомления будут отправляться с помощью серверной службы, но вы можете отправлять уведомлений с последними новостями непосредственно из приложения hello. toodo это корпорация Майкрософт будет обновлять hello `SendNotificationRESTAPI` метод, определенный в hello [приступить к работе с концентраторами уведомлений] [ get-started] учебника.
+## <a name="optional-send-notifications-from-the-device"></a>(Необязательно.) Отправка уведомлений с устройства
+Как правило, уведомления отправляются серверной службой, но вы можете отправлять уведомления об экстренных новостях непосредственно из приложения. Для этого корпорация Майкрософт будет обновлять `SendNotificationRESTAPI` метод, определенный в [приступить к работе с концентраторами уведомлений] [ get-started] учебника.
 
-1. В обновление hello ViewController.m `SendNotificationRESTAPI` как следует, что принимает в качестве параметра для тега категории hello и отправляет соответствующие hello [шаблона](notification-hubs-templates-cross-platform-push-messages.md) уведомления.
+1. В файле ViewController.m обновите метод `SendNotificationRESTAPI` , как показано ниже, чтобы он принимал параметр для тега категории и отправлял правильное [шаблонное](notification-hubs-templates-cross-platform-push-messages.md) уведомление.
    
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
@@ -223,18 +223,18 @@ Hello первым шагом является tooadd hello пользовате
    
             NSString *json;
    
-            // Construct hello messages REST endpoint
+            // Construct the messages REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                HUBNAME, API_VERSION]];
    
-            // Generated hello token toobe used in hello authorization header.
+            // Generated the token to be used in the authorization header.
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
    
-            //Create hello request tooadd hello template notification message toohello hub
+            //Create the request to add the template notification message to the hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
    
-            // Add hello category as a tag
+            // Add the category as a tag
             [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
    
             // Template notification
@@ -247,13 +247,13 @@ Hello первым шагом является tooadd hello пользовате
             // JSON Content-Type
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
    
-            //Authenticate hello notification message POST request with hello SaS token
+            //Authenticate the notification message POST request with the SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
    
-            //Add hello notification message body
+            //Add the notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
    
-            // Send hello REST request
+            // Send the REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                {
@@ -272,7 +272,7 @@ Hello первым шагом является tooadd hello пользовате
    
             [dataTask resume];
         }
-2. В обновление hello ViewController.m **отправить уведомление** действие, как показано в далее кода hello. Чтобы он будет отправлять уведомления hello по отдельности с помощью каждого тега и отправить toomultiple платформы.
+2. В файле ViewController.m обновите действие **Отправить уведомление** , как показано в предложенном коде. Таким образом, он будет отправлять уведомления, используя отдельно каждый тег, и отправлять их на несколько платформ.
 
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -281,7 +281,7 @@ Hello первым шагом является tooadd hello пользовате
             NSArray* categories = [NSArray arrayWithObjects: @"World", @"Politics", @"Business",
                                     @"Technology", @"Science", @"Sports", nil];
 
-            // Lets send hello message as breaking news for each category tooWNS, GCM, and APNS
+            // Lets send the message as breaking news for each category to WNS, GCM, and APNS
             // using a template.
             for(NSString* category in categories)
             {
@@ -293,23 +293,23 @@ Hello первым шагом является tooadd hello пользовате
 
 1. Повторно создайте проект и убедитесь, что у вас не возникли ошибки сборки.
 
-## <a name="run-hello-app-and-generate-notifications"></a>Запустите приложение hello и создавать уведомления
-1. Нажмите клавишу hello запустите кнопка toobuild hello проект и запустить приложение hello. Выберите некоторые tooand toosubscribe критические параметры новостей, а затем клавишу hello **Subscribe** кнопки. Вы увидите соответствующее диалоговое окно приветствия, которые были подписаны уведомления.
+## <a name="run-the-app-and-generate-notifications"></a>Запуск приложения и создание уведомлений
+1. Нажмите кнопку Запуск для построения проекта, после чего запустите приложение. Чтобы подписаться на некоторые экстренные новости, нажмите кнопку **Подписаться** . В появившемся диалоговом окне отобразятся те уведомления, на которые была настроена подписка.
    
     ![][1]
    
-    При выборе **Subscribe**, hello hello выбранных категорий приложений преобразует в теги и запрашивает новую регистрацию устройств для hello выбранных тегов из концентратора уведомлений hello.
-2. Введите сообщение toobe, передаются как новости нажмите клавишу hello **отправить уведомление** кнопки. Также можно запустить hello .NET консольного приложения toogenerate уведомления.
+    Если выбрано **Подписка**, приложение преобразует выбранные категории в теги и запрашивает у концентратора уведомлений новую регистрацию устройств для выбранных тегов.
+2. Введите сообщение, отправляемое в качестве экстренных новостей, и нажмите кнопку **Отправить уведомление** . Можно также запустить консольное приложение .NET для создания уведомлений.
    
     ![][2]
-3. Новости toobreaking каждого устройства подписка получит hello уведомлений с последними новостями который только что отправлен.
+3. Каждое устройство с подпиской на экстренные новости будет получать отправленные вами уведомления об экстренных новостях.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом учебнике мы узнали, каким образом toobroadcast новости по категориям. Рассмотрим, выполнив одну из hello следующие учебники, выделите других расширенных сценариях концентраторов уведомлений.
+В этом учебнике мы рассмотрели, как производить рассылку экстренных новостей по категориям. Далее вам рекомендуется изучить один из следующих учебников, в которых рассматриваются более сложные сценарии использования концентраторов уведомлений:
 
-* **[Использовать локализованные toobroadcast новости концентраторы уведомлений]**
+* **[Использование Центров уведомлений для вещания локализованных экстренных новостей на устройства iOS]**
   
-    Узнайте, как критические отправки tooenable новостей приложения hello tooexpand локализованные уведомления.
+    Как расширить возможности приложения экстренных новостей для отправки локализованных уведомлений.
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
@@ -325,10 +325,10 @@ Hello первым шагом является tooadd hello пользовате
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[Использовать локализованные toobroadcast новости концентраторы уведомлений]: notification-hubs-ios-xplat-localized-apns-push-notification.md
+[Использование Центров уведомлений для вещания локализованных экстренных новостей на устройства iOS]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
-[классический портал Azure]: https://manage.windowsazure.com
+[классического портала Azure]: https://manage.windowsazure.com

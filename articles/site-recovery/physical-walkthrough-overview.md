@@ -1,6 +1,6 @@
 ---
-title: "aaaReplicate физической локальной tooAzure серверов с Azure Site Recovery | Документы Microsoft"
-description: "Общие шаги hello репликации рабочих нагрузок на локальных tooAzure физических серверов Windows и Linux с hello службы Azure Site Recovery."
+title: "Репликация локальных физических серверов в Azure с помощью службы Azure Site Recovery | Документация Майкрософт"
+description: "В этой статье описаны действия, необходимые для репликации рабочих нагрузок, выполняющихся на локальных физических серверах Windows или Linux, в Azure с помощью службы Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,86 +14,86 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: f801b9544072d4029ec06cc1abfd4ff370e852e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0a09b35e98dc0b2f5283c2a707a3a2b8ac9a39f2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="replicate-physical-servers-tooazure-with-site-recovery"></a>Репликация физических серверов tooAzure с Site Recovery
+# <a name="replicate-physical-servers-to-azure-with-site-recovery"></a>Репликация физических серверов в Azure с помощью Site Recovery
 
-В этой статье содержится обзор hello действия требуется tooreplicate в локальной среде Windows и Linux физических серверов tooAzure, с помощью hello [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
+В этой статье описаны действия для репликации локальных физических серверов Windows или Linux в Azure с помощью службы [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
 
 
 ## <a name="step-1-review-architecture-and-prerequisites"></a>Шаг 1. Проверка архитектуры и предварительных требований
 
-Прежде чем начать развертывание, просмотрите hello архитектура сценария и убедитесь, что вы понимаете все компоненты hello необходим tooset hello развертывания.
+Перед началом развертывания ознакомьтесь с архитектурой сценария и убедитесь, что вам знакомы все компоненты, которые необходимы для настройки развертывания.
 
-Go слишком[шаг 1: обзор архитектуры hello](physical-walkthrough-architecture.md)
+Перейдите к статье [Шаг 1. Обзор архитектуры репликации физического сервера в Azure](physical-walkthrough-architecture.md).
 
 
 ## <a name="step-2-review-prerequisites"></a>Шаг 2. Проверка предварительных требований
 
-Убедитесь, что установлены необходимые компоненты hello на месте для каждого компонента развертывания:
+Убедитесь, что предварительные требования выполняются для каждого компонента развертывания.
 
 - **Предварительные требования Azure**: учетная запись Microsoft Azure, сети Azure и учетные записи хранения.
 - **Локальные компоненты Site Recovery**: компьютер, на котором запущены локальные компоненты Site Recovery.
-- **Реплицировать машины**: серверы, требуется tooreplicate должны toocomply с локальной и требования к Azure.
+- **Реплицируемые компьютеры**: реплицируемые серверы, соответствующие требованиям локальных компонентов и Azure.
 
-Go слишком[шаг 2: Проверьте предварительные условия и ограничения](physical-walkthrough-prerequisites.md)
+Перейдите к статье [Шаг 2. Просмотр предварительных требований для репликации физического сервера в Azure](physical-walkthrough-prerequisites.md).
 
 ## <a name="step-3-plan-capacity"></a>Шаг 3. Планирование ресурсов
 
-При выполнении полного развертывания необходимо toofigure какие ресурсы репликации необходимо. Если вы выполняете быстро настроить среду tootest hello, этот шаг можно пропустить.
+При выполнении полного развертывания необходимо выяснить, какие ресурсы требуются для репликации. Если выполняется быстрая настройка для тестирования среды, то этот шаг можно пропустить.
 
-Go слишком[Step 3: Планирование емкости](physical-walkthrough-capacity.md)
+Перейдите к статье [Шаг 3. Планирование ресурсов и масштабирования для репликации физического сервера в Azure](physical-walkthrough-capacity.md).
 
 ## <a name="step-4-plan-networking"></a>Шаг 4. Планирование сетей
 
-Необходимо toodo какой-либо сети, планирование tooensure виртуальных машинах Azure, подключенной toonetworks после отработки отказа, и что у hello правой IP-адресов.
+Необходимо выполнить определенное планирование сетей, чтобы обеспечить подключение виртуальных машин Azure к сетям после отработки отказа и правильность их IP-адресов.
 
-Go слишком[шаг 4: Планирование сети](physical-walkthrough-network.md)
+Перейдите к статье [Шаг 4. Планирование сетей для репликации физического сервера в Azure](physical-walkthrough-network.md).
 
 ##  <a name="step-5-prepare-azure-resources"></a>Шаг 5. Подготовка ресурсов Azure
 
 Прежде чем начать, настройте сети и хранилище Azure. 
 
-Go слишком[шаг 5: Подготовка Azure](physical-walkthrough-prepare-azure.md)
+Перейдите к статье [Шаг 5. Подготовка ресурсов Azure для репликации Hyper-V в Azure](physical-walkthrough-prepare-azure.md).
 
 
 ## <a name="step-6-set-up-a-vault"></a>Шаг 6. Настройка хранилища
 
-Настройка tooorchestrate хранилище служб восстановления и управление репликацией. При настройке хранилища hello, укажите, что должно tooreplicate, и когда необходимо tooreplicate его.
+Для координации процесса репликации и управления им необходимо настроить хранилище Recovery Services. При настройке хранилища укажите целевые объекты и место для репликации.
 
-Go слишком[шаг 6: Настройка хранилища](physical-walkthrough-create-vault.md)
+Перейдите к статье [Step 6: Set up a vault for physical server replication to Azure](physical-walkthrough-create-vault.md) (Шаг 6. Настройка хранилища для репликации физического сервера в Azure).
 
 ## <a name="step-7-configure-source-and-target-settings"></a>Шаг 7. Настройка параметров исходной и целевой среды
 
-Настройте параметры для hello исходный и конечный сайт (Azure). Параметры источника включает в себя под управлением tooinstall единой установки hello локальных компонентов Site Recovery.
+Настройте параметры исходного и целевого (Azure) сайта. Настройка параметров исходного сайта включает в себя выполнение единой установки для локальных компонентов Site Recovery.
 
-Go слишком[шаг 7: Настройка hello исходной и целевой](physical-walkthrough-source-target.md)
+Перейдите к статье [Шаг 7. Настройка исходной и целевой среды для репликации физического сервера в Azure](physical-walkthrough-source-target.md).
 
 ## <a name="step-8-set-up-a-replication-policy"></a>Шаг 8. Настройка политики репликации
 
-Настройки toospecify политики физических серверов должны быть реплицированы.
+Настройте политику, чтобы указать параметры репликации физических серверов.
 
-Go слишком[Step 8: настроить политику репликации](physical-walkthrough-replication.md)
+Перейдите к разделу [Шаг 8. Настройка политики репликации для репликации физического сервера в Azure](physical-walkthrough-replication.md).
 
-## <a name="step-9-install-hello-mobility-service"></a>Шаг 9: Установка службы Mobility hello
+## <a name="step-9-install-the-mobility-service"></a>Шаг 9. Установка службы Mobility Service
 
-Hello службы Mobility service необходимо установить на каждом сервере требуется tooreplicate. Существует несколько способов tooset hello службы, с установкой Принудительная или по запросу.
+Служба Mobility Service должна быть установлена на каждом сервере, который нужно реплицировать. Существует несколько способов настройки этой службы с помощью принудительной установки или установки по запросу.
 
-Go слишком[шаг 9: Установка службы Mobility hello](physical-walkthrough-install-mobility.md)
+Перейдите к разделу [Step 9: Install the Mobility service](physical-walkthrough-install-mobility.md) (Шаг 9. Установка службы Mobility Service).
 
 ## <a name="step-10-enable-replication"></a>Шаг 10. Включение репликации
 
-После запуска hello службы Mobility service на сервере, можно включить для него репликацию. После включения, происходит начальной репликации hello виртуальной Машины.
+После запуска службы Mobility Service на сервере можно включить для нее репликацию. После включения выполняется начальная репликация виртуальной машины.
 
-Go слишком[шаг 10: включение репликации](physical-walkthrough-enable-replication.md)
+Перейдите к статье [Шаг 10. Включение репликации для физических серверов в Azure](physical-walkthrough-enable-replication.md).
 
 ## <a name="step-11-run-a-test-failover"></a>Шаг 11. Запуск тестовой отработки отказа
 
-После завершения начальной репликации и разностная репликация выполняется, можно запустить тест отработки отказа toomake, убедиться, что все работает правильно.
+После завершения начальной репликации и запуска репликации разностных изменений можно выполнить тестовую отработку отказа, чтобы убедиться, что все работает правильно.
 
-Go слишком[шаг 11: запустите тестовую отработку отказа](physical-walkthrough-test-failover.md)
+Перейдите к статье [Шаг 11: Запуск тестовой отработки отказа физических серверов в Azure](physical-walkthrough-test-failover.md).
 

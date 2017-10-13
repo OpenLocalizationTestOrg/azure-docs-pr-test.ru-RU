@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Synergi | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Synergi."
+description: "Узнайте, как настроить единый вход Azure Active Directory в Synergi."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,185 +14,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d4a9a596db2a60dda5bcac2c86b88b460a2e2cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dedbe96fbb26bc34c4d7e213892b318f0e6fef12
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>Руководство. Интеграция Azure Active Directory с Synergi
 
-В этом учебнике вы узнаете, как toointegrate Synergi с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать Synergi с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD Synergi предоставляет hello следующие преимущества:
+Интеграция Azure AD с Synergi обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooSynergi.
-- Можно включить на пользователей tooautomatically get вошедшего tooSynergi (Single Sign-On) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
+- С помощью Azure AD можно контролировать доступ к Synergi.
+- Вы можете включить автоматический вход пользователей в Synergi (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с Synergi требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Synergi, вам потребуется:
 
 - подписка Azure AD;
 - подписка на Synergi с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление Synergi из галереи hello
+1. Добавление Synergi из коллекции.
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-synergi-from-hello-gallery"></a>Добавление Synergi из галереи hello
-tooconfigure hello интеграции Synergi в Azure AD, вы должны tooadd Synergi из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-synergi-from-the-gallery"></a>Добавление Synergi из коллекции.
+Чтобы настроить интеграцию Synergi с Azure AD, необходимо добавить это приложение из коллекции в список управляемых приложений SaaS.
 
-**tooadd Synergi из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить Synergi из коллекции, сделайте следующее:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **Synergi**выберите **Synergi** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
+4. В поле поиска введите **Synergi**, выберите **Synergi** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![Synergi в списке результатов hello](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_addfromgallery.png)
+    ![Synergi в списке результатов](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в Synergi с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Synergi является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Synergi должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в Synergi соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Synergi.
 
-В Synergi, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Synergi.
 
-tooconfigure и теста Azure AD единого входа с Synergi, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в Synergi, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя Synergi](#create-a-synergi-test-user)**  -toohave аналог Саймон Britta в Synergi, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя Synergi](#create-a-synergi-test-user)** требуется для создания пользователя Britta Simon в Synergi, связанного с соответствующим пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Synergi.
+В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Synergi.
 
-**tooconfigure Azure AD единого входа с Synergi, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в Synergi, сделайте следующее:**
 
-1. В hello в hello портала Azure **Synergi** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **Synergi** щелкните **Единый вход**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_samlbase.png)
 
-3. На hello **URL-адреса и домена Synergi** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения Synergi** выполните следующие действия:
 
     ![Сведения о домене и URL-адресах единого входа приложения Synergi](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_url.png)
 
-    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.irmsecurity.com`
+    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<company name>.irmsecurity.com`
 
-    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.irmsecurity.com/sso/<organization id>`
+    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<company name>.irmsecurity.com/sso/<organization id>`.
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновите эти значения с hello фактический идентификатор и ответ URL-адрес. Обратитесь к [Synergi поддержки](https://www.irmsecurity.com/contact/) tooget эти значения.
+    > Эти значения приведены в качестве примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить эти значения, обратитесь в [службу поддержки Synergi](https://www.irmsecurity.com/contact/).
 
-4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
-    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_certificate.png) 
+    ![Ссылка для скачивания сертификата](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-synergi-tutorial/tutorial_general_400.png)
 
-6. На hello **конфигурации Synergi** щелкните **Настройка Synergi** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и идентификатор сущности SAML** из hello **краткий справочник.**
+6. В разделе **Настройка Synergi** щелкните **Настроить Synergi**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и идентификатор сущности SAM** из раздела **Краткий справочник**.
 
     ![Настройка Synergi](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_configure.png) 
 
-7. tooconfigure единого входа на **Synergi** стороны, необходимо загрузить hello toosend **Certificate(Base64), URL-адрес выхода и идентификатор сущности SAML** слишком[Synergi поддержки](https://www.irmsecurity.com/contact/).
+7. Чтобы настроить единый вход на стороне **Synergi**, необходимо отправить загруженный **сертификат (Base64), а также URL-адрес выхода и идентификатор сущности SAML** в [службу поддержки Synergi](https://www.irmsecurity.com/contact/).
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-synergi-tutorial/create_aaduser_01.png)
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-synergi-tutorial/create_aaduser_01.png)
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
 
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-synergi-tutorial/create_aaduser_02.png)
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-synergi-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
 
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-synergi-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-synergi-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-synergi-tutorial/create_aaduser_04.png)
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-synergi-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
   
 ### <a name="create-a-synergi-test-user"></a>Создание тестового пользователя Synergi
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении Synergi. Работать с [Synergi поддержки](https://www.irmsecurity.com/contact/) для добавления пользователей hello в платформе Synergi hello. Перед использованием единого входа необходимо создать и активировать пользователей.
+В этом разделе описано, как создать пользователя Britta Simon в приложении Synergi. Обратитесь в [службу поддержки Synergi](https://www.irmsecurity.com/contact/), чтобы добавить пользователей на платформу Synergi. Перед использованием единого входа необходимо создать и активировать пользователей.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooSynergi доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Synergi.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign tooSynergi Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в Synergi, сделайте следующее:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **Synergi**.
+2. В списке приложений выберите **Synergi**.
 
-    ![ссылка Synergi Hello в списке приложений hello](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_app.png)  
+    ![Ссылка на Synergi в списке "Приложения"](./media/active-directory-saas-synergi-tutorial/tutorial_synergi_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202]
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -200,14 +200,14 @@ tooconfigure и теста Azure AD единого входа с Synergi, тре
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello Synergi плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Synergi приложения.
-Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
+Щелкнув плитку Synergi на панели доступа, вы автоматически войдете в приложение Synergi.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

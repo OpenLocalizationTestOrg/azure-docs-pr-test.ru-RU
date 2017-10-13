@@ -1,9 +1,9 @@
 ---
-title: "aaaSecure API-интерфейсов с помощью проверки подлинности сертификата клиента в службе управления API - интерфейса API управления Azure | Документы Microsoft"
-description: "Узнайте, как toosecure доступ к tooAPIs, с помощью сертификатов клиентов"
+title: "Защита API-интерфейсов с помощью аутентификации на основе сертификата клиента в службе управления API Azure | Документация Майкрософт"
+description: "Узнайте, как обеспечить безопасный доступ к API-интерфейсам с помощью сертификатов клиентов"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.service: api-management
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: 6ff78bda3d429829da79d0dc4d652f19669cc919
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 10cc1daf89212635243cbfe8f7b598a567d0f7c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toosecure-apis-using-client-certificate-authentication-in-api-management"></a>Toosecure API-интерфейсы, с помощью клиентского сертификата проверки подлинности в службе управления API
+# <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Защита API-интерфейсов с помощью аутентификации на основе сертификата клиента в службе управления API Azure
 
-Управление API предоставляет hello возможность toosecure доступа tooAPIs (т. е. клиент tooAPI управления) с помощью сертификатов клиента. В настоящее время вы можете проверить hello отпечаток сертификата клиента для требуемого значения. Можно также проверить, что отпечаток hello с существующие сертификаты отправлен tooAPI управления.  
+Служба управления API помогает защитить доступ к API-интерфейсам (например, осуществляемый клиентом к службе управления API) с помощью сертификатов клиента. Сейчас можно проверить отпечаток сертификата клиента для сопоставления с требуемым значением. Можно также сопоставить отпечаток с существующими сертификатами, отправленными в службу управления API.  
 
-Сведения о защите доступа toohello внутренней службой API-интерфейса с помощью клиентских сертификатов (т. е. API управления tooback-end) см. в разделе [как toosecure серверными службами с помощью клиента сертификат проверки подлинности](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
+Сведения о защите серверных служб API с помощью сертификата клиента (например, управления API для серверной части) см. в статье [Защита фоновых служб посредством проверки подлинности с помощью сертификата клиента в службе Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates).
 
-## <a name="checking-hello-expiration-date"></a>Дата окончания срока действия проверки hello
+## <a name="checking-the-expiration-date"></a>Проверка даты окончания срока действия
 
-Ниже политик может быть настроенный toocheck, если истек срок действия сертификата hello:
+Следующие политики можно настроить для проверки даты окончания срока действия сертификата:
 
 ```
 <choose>
@@ -39,9 +39,9 @@ ms.lasthandoff: 10/06/2017
 </choose>
 ```
 
-## <a name="checking-hello-issuer-and-subject"></a>Проверка издателя hello и темы
+## <a name="checking-the-issuer-and-subject"></a>Проверка издателя и субъекта
 
-Ниже политик может быть настроенный toocheck hello издатель и субъект сертификата клиента:
+Следующие политики можно настроить для проверки издателя и субъекта сертификата клиента:
 
 ```
 <choose>
@@ -53,9 +53,9 @@ ms.lasthandoff: 10/06/2017
 </choose>
 ```
 
-## <a name="checking-hello-thumbprint"></a>Проверка отпечаток hello
+## <a name="checking-the-thumbprint"></a>Проверка отпечатка
 
-Ниже политик может быть настроенный toocheck hello отпечаток сертификата клиента:
+Следующие политики можно настроить для проверки отпечатка сертификата клиента:
 
 ```
 <choose>
@@ -67,9 +67,9 @@ ms.lasthandoff: 10/06/2017
 </choose>
 ```
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-tooapi-management"></a>Проверка отпечаток от сертификатов отправлен tooAPI управления
+## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Проверка отпечатка на соответствие сертификатам, переданным в службу управления API
 
-Hello следующем примере показано, как toocheck hello отпечаток сертификата клиента от сертификатов отправлен tooAPI управления: 
+В примере ниже показано, как проверить отпечаток сертификата клиента на соответствие сертификатам, переданным в службу управления API. 
 
 ```
 <choose>
@@ -84,6 +84,6 @@ Hello следующем примере показано, как toocheck hello 
 
 ## <a name="next-step"></a>Дальнейшие действия
 
-*  [Как toosecure серверными службами с помощью клиента сертификат проверки подлинности](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
-*  [Как сертификаты tooupload](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
+*  [Как защитить серверные службы с помощью аутентификации на основе сертификата клиента](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates)
+*  [Как передавать сертификаты](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure наблюдения за производительностью службы структуры | Документы Microsoft"
+title: "Мониторинг производительности Azure Service Fabric | Документация Майкрософт"
 description: "Узнайте о счетчиках производительности для мониторинга и диагностики кластеров Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.openlocfilehash: 54d4c62b7250a1f70b0898ba07ae5a37716f4cf4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-metrics"></a>Метрики производительности
 
-Метрики должно быть производительности hello собранных toounderstand кластера, а также в нем приложения hello. Для кластеров Service Fabric рекомендуется сбор hello следующие счетчики производительности.
+Метрики следует собирать для анализа производительности кластера, а также приложений, выполняющихся в нем. Для кластеров Service Fabric рекомендуется собирать данные следующих счетчиков производительности.
 
 ## <a name="nodes"></a>Nodes
 
-Для машин hello в кластере рассмотрите возможность сбора hello следующие счетчики производительности, toobetter понять hello нагрузки на каждом компьютере и внесите соответствующие кластера масштабирования решения.
+Для компьютеров в кластере рассмотрите возможность сбора приведенных ниже счетчиков производительности, чтобы лучше понимать нагрузку на каждом компьютере и принимать соответствующие решения о масштабировании кластера.
 
 | Категория счетчика | Имя счетчика |
 | --- | --- |
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="net-applications-and-services"></a>Приложения и службы .NET
 
-Собирать следующие счетчики при развертывании кластера tooyour .NET services hello. 
+Собирайте приведенные ниже счетчики, если вы развертываете службы .NET в кластере. 
 
 | Категория счетчика | Имя счетчика |
 | --- | --- |
@@ -66,16 +66,16 @@ ms.lasthandoff: 10/06/2017
 
 ### <a name="service-fabrics-custom-performance-counters"></a>Настраиваемые счетчики производительности Service Fabric
 
-Service Fabric создает достаточное число настраиваемых счетчиков производительности. Если пакет SDK для hello, вы увидите hello полный список на компьютере Windows на монитор производительности приложения (Пуск > системный монитор). 
+Service Fabric создает достаточное число настраиваемых счетчиков производительности. Если у вас установлен пакет SDK, то полный список счетчиков можно просмотреть на компьютере Windows в приложении системного монитора ("Пуск" > "Системный монитор"). 
 
-В приложениях hello развертывании tooyour кластера, при использовании службы Reliable Actor добавьте countes из `Service Fabric Actor` и `Service Fabric Actor Method` категории (см. [диагностики субъекты надежные службы структуры](service-fabric-reliable-actors-diagnostics.md)).
+Если используется Reliable Actors, то для приложений, которые вы развертываете в кластере, добавьте счетчики из категорий `Service Fabric Actor` и `Service Fabric Actor Method` (см. раздел [Диагностика и мониторинг производительности в Reliable Actors](service-fabric-reliable-actors-diagnostics.md)).
 
 Для Reliable Services имеются аналогичные категории счетчиков `Service Fabric Service` и `Service Fabric Service Method`, данные которых следует собирать. 
 
-При использовании надежного коллекций, рекомендуется добавить hello `Avg. Transaction ms/Commit` из hello `Service Fabric Transactional Replicator` задержки фиксации среднее hello toocollect каждой метрики транзакции.
+При использовании Reliable Collections рекомендуется добавить `Avg. Transaction ms/Commit` из `Service Fabric Transactional Replicator` для сбора метрики средней задержки при фиксации транзакции.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения о [созданием события на уровне платформы hello](service-fabric-diagnostics-event-generation-infra.md) в Service Fabric
+* Узнайте больше о [создании событий на уровне платформы](service-fabric-diagnostics-event-generation-infra.md) в Service Fabric.
 * Собирайте метрики производительности с помощью [системы диагностики Azure](service-fabric-diagnostics-event-aggregation-wad.md).

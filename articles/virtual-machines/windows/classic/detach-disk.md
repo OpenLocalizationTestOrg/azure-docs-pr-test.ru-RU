@@ -1,6 +1,6 @@
 ---
-title: "aaaDetach диск от виртуальной Машины Windows | Документы Microsoft"
-description: "Узнайте, toodetach диск из виртуальной машины в Azure с помощью hello классической модели развертывания."
+title: "Отключение диска от виртуальной машины Windows | Документация Майкрософт"
+description: "Узнайте, как отключить диск от виртуальной машины в Azure с использованием классической модели развертывания."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f4fda46b13ec83aed6051dd3c6459a9979de131
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 650c7e10150b95a6ad7cd455746f7c1d77b9b34c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toodetach-a-disk-from-a-windows-virtual-machine"></a>Как toodetach диск от виртуальной машины Windows
+# <a name="how-to-detach-a-disk-from-a-windows-virtual-machine"></a>Отключение диска от виртуальной машины Windows
 > [!IMPORTANT]
-> В Azure предлагаются две разные модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения о как toodetach диска с помощью hello диспетчера ресурсов модели см. в разделе [здесь](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> В Azure предлагаются две разные модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения о том, как отсоединить диск с помощью модели Resource Manager, см. [здесь](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-windows-linux.md)]
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 [О дисках и виртуальных жестких дисках для виртуальных машин](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Как tooattach данных на диске виртуальной машины Windows tooa](attach-disk.md)
+[Подключение диска данных к виртуальной машине Windows](attach-disk.md)

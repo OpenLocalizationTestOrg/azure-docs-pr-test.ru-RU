@@ -1,6 +1,6 @@
 ---
-title: "Аналитика Озера данных Azure, с помощью пакета SDK .NET Azure aaaManage | Документы Microsoft"
-description: "Узнайте, как toomanage аналитики Озера данных заданий, источники данных пользователей. "
+title: "Управление Azure Data Lake Analytics с помощью пакета SDK Azure для .NET | Документация Майкрософт"
+description: "Узнайте, как управлять заданиями аналитики озера данных, источниками данных и пользователями. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 98630ba411823644a8bce1f1b0c1331f689cbb0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0f8a95f96ce4c816dfb9132923faa9a9bf20c205
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Управление Azure Data Lake Analytics с помощью пакета SDK Azure для .NET
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Узнайте, как учетные записи toomanage аналитики Озера данных Azure, источники данных, пользователей и заданий с помощью hello Azure .NET SDK. 
+Узнайте, как управлять учетными записями, источниками данных, пользователями и заданиями Azure Data Lake Analytics с помощью пакета SDK Azure для .NET. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * **Visual Studio 2015, Visual Studio 2013 с обновлением 4 или Visual Studio 2012 с установленным Visual C++**
-* **Microsoft Azure SDK для .NET (версии 2.5 или выше)**.  Установите его с помощью hello [установщика веб-платформы](http://www.microsoft.com/web/downloads/platform.aspx).
+* **Microsoft Azure SDK для .NET (версии 2.5 или выше)**.  Вы можете установить его с помощью [установщика веб-платформы](http://www.microsoft.com/web/downloads/platform.aspx).
 * **Необходимые пакеты Nuget**
 
 ### <a name="install-nuget-packages"></a>Установка пакетов Nuget
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/06/2017
 |[Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|1.6.0-preview|
 |[Microsoft.Azure.Graph.RBAC](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)|3.4.0-preview|
 
-Можно установить эти пакеты через командную строку hello NuGet hello, следующие команды:
+Эти пакеты можно установить в командной строке NuGet с помощью следующих команд:
 
 ```
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
@@ -62,7 +62,7 @@ string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (t
 
 ## <a name="authentication"></a>Аутентификация
 
-У вас есть несколько вариантов для входа в систему tooAzure аналитики Озера данных. Hello следующем фрагменте показан пример проверки подлинности с помощью проверки подлинности интерактивных пользователей с всплывающее окно.
+Существует несколько способов входа в Azure Data Lake Analytics. В приведенном ниже фрагменте кода показан пример проверки подлинности посредством интерактивной проверки подлинности пользователей с помощью всплывающего окна.
 
 ``` csharp
 using System;
@@ -100,10 +100,10 @@ public static Program
 }
 ```
 
-Здравствуйте, исходный код для **GetCreds_User_Popup** и hello кода для других параметров для проверки подлинности описаны в [параметры проверки подлинности .NET аналитика Озера данных](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options)
+Исходный код **GetCreds_User_Popup** и код для других вариантов проверки подлинности можно найти на странице [Способы проверки подлинности .NET в Data Lake Analytics](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options).
 
 
-## <a name="create-hello-client-management-objects"></a>Создания объектов управления приветствия клиента
+## <a name="create-the-client-management-objects"></a>Создание объектов управления клиентами
 
 ``` csharp
 var resourceManagementClient = new ResourceManagementClient(armCreds) { SubscriptionId = subid };
@@ -128,7 +128,7 @@ graphClient.TenantID = domain;
 
 ### <a name="create-an-azure-resource-group"></a>Создание группы ресурсов Azure
 
-Если вы еще не уже создан, необходимо иметь toocreate группы ресурсов Azure компоненты аналитики Озера данных. Потребуются учетные данные для проверки подлинности, идентификатор подписки и сведения о расположении. Здравствуйте, как следующий код показывает toocreate группа ресурсов:
+Создайте группу ресурсов Azure, если она еще не создана, чтобы создать компоненты Data Lake Analytics. Потребуются учетные данные для проверки подлинности, идентификатор подписки и сведения о расположении. Ниже приведен код, создающий группу ресурсов.
 
 ``` csharp
 var resourceGroup = new ResourceGroup { Location = location };
@@ -138,7 +138,7 @@ resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 
 ### <a name="create-a-data-lake-store-account"></a>Создание учетной записи хранения озера данных
 
-Для каждой учетной записи ADLA требуется учетная запись ADLS. Если у вас еще нет одного toouse, можно создать его с hello, следующий код:
+Для каждой учетной записи ADLA требуется учетная запись ADLS. Если у вас ее еще нет, вы можете создать ее с помощью следующего кода:
 
 ``` csharp
 var new_adls_params = new DataLakeStoreAccount(location: _location);
@@ -147,7 +147,7 @@ adlsAccountClient.Account.Create(rg, adls, new_adls_params);
 
 ### <a name="create-a-data-lake-analytics-account"></a>Создание учетной записи аналитики озера данных
 
-Привет, следующий код создает учетную запись ADLS.
+Приведенный ниже код создает учетную запись ADLS.
 
 ``` csharp
 var new_adla_params = new DataLakeAnalyticsAccount()
@@ -205,9 +205,9 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-### <a name="get-hello-default-data-lake-store-account"></a>Получить учетную запись хранилища Озера данных по умолчанию hello
+### <a name="get-the-default-data-lake-store-account"></a>Получение учетной записи Data Lake Store по умолчанию
 
-Для каждой учетной записи Data Lake Analytics необходима учетная запись Data Lake Store по умолчанию. Используйте этот код toodetermine hello по умолчанию хранилище учетную запись для аналитики.
+Для каждой учетной записи Data Lake Analytics необходима учетная запись Data Lake Store по умолчанию. Этот код позволяет определить учетную запись хранения по умолчанию для учетной записи Analytics.
 
 ``` csharp
 if (adlaClient.Account.Exists(rg, adla))
@@ -219,14 +219,14 @@ if (adlaClient.Account.Exists(rg, adla))
 
 ## <a name="manage-data-sources"></a>Управление источниками данных
 
-Аналитика Озера данных в настоящее время поддерживает следующие источники данных hello:
+Аналитика озера данных в настоящее время поддерживает следующие источники данных:
 
 * [Хранилище озера данных Azure](../data-lake-store/data-lake-store-overview.md)
 * [Учетная запись хранения Azure](../storage/common/storage-introduction.md)
 
-### <a name="link-tooan-azure-storage-account"></a>Связать учетную запись хранилища Azure tooan
+### <a name="link-to-an-azure-storage-account"></a>Связывание с учетной записью хранения Azure
 
-Вы можете создавать ссылки tooAzure учетные записи хранения.
+Можно создать ссылки на учетные записи хранения Azure.
 
 ``` csharp
 string storage_key = "xxxxxxxxxxxxxxxxxxxx";
@@ -264,16 +264,16 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>Отправка и загрузка папок и файлов
-Можно использовать хранилище Озера данных hello файл клиента системы управления tooupload объекта и загрузить отдельных файлов или папок с Azure tooyour локального компьютера, с использованием hello следующие методы:
+Объект управления клиентами файловой системы Data Lake Store можно использовать для отправки и загрузки отдельных файлов или папок из Azure на локальный компьютер с помощью следующих методов:
 
 - UploadFolder
 - UploadFile
 - DownloadFolder
 - DownloadFile
 
-Первый параметр Hello для этих методов — имя hello hello учетной записи хранилища Озера данных следуют параметры для hello исходный и конечный путь hello.
+Первый параметр для этих методов переставляет собой имя учетной записи Data Lake Store. За ним следуют параметры для исходного пути и целевого пути.
 
-Hello в следующем примере показано, как toodownload папку в hello хранилища Озера данных.
+В следующем примере показано, как загрузить папку в Data Lake Store.
 
 ``` csharp
 adlsFileSystemClient.FileSystem.DownloadFolder(adls, sourcePath, destinationPath);
@@ -295,7 +295,7 @@ using (var memstream = new MemoryStream())
 ```
 
 ### <a name="verify-azure-storage-account-paths"></a>Проверка путей к учетной записи хранения Azure
-Hello следующий код проверяет учетную запись хранилища Azure (storageAccntName) существует в учетной записи аналитики Озера данных (analyticsAccountName), и если контейнера (containerName) существует в учетной записи хранилища Azure hello.
+Следующий код проверяет наличие учетной записи хранения Azure (storageAccntName) в учетной записи Data Lake Analytics (analyticsAccountName), а также наличие контейнера (containerName) в учетной записи хранения Azure.
 
 ``` csharp
 string storage_account = "mystorageaccount";
@@ -305,10 +305,10 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 ```
 
 ## <a name="manage-catalog-and-jobs"></a>Управление каталогами и заданиями
-Hello объекта DataLakeAnalyticsCatalogManagementClient предоставляет методы для управления hello базы данных SQL для каждой учетной записи аналитики Озера данных Azure. Hello DataLakeAnalyticsJobManagementClient предоставляет toosubmit методов задания и управлять ими для hello базы данных с помощью сценариев U-SQL.
+Объект DataLakeAnalyticsCatalogManagementClient предоставляет методы для управления базой данных SQL, предоставляемой для каждой учетной записи Azure Data Lake Analytics. Объект DataLakeAnalyticsJobManagementClient предоставляет методы для отправки заданий, выполняемых в базе данных с помощью сценариев U-SQL, и управления ими.
 
 ### <a name="list-databases-and-schemas"></a>Получение списка баз данных и схем
-Несколько вещей, которые можно вывести список наиболее распространенных hello hello относятся баз данных и их схемы. Hello следующий код получает коллекцию баз данных и затем перечисляет hello схемы для каждой базы данных.
+Самые распространенные компоненты, список которых можно получить — это базы данных и их схемы. Следующий код получает набор баз данных и перечисляет схемы для каждой из них.
 
 ``` csharp
 var databases = adlaCatalogClient.Catalog.ListDatabases(adla);
@@ -325,7 +325,7 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>Получение списка столбцов таблицы
-Hello следующий код показывает, как tooaccess hello базы данных со столбцами каталога аналитики Озера данных управления клиента toolist hello в указанной таблице.
+Ниже приведен код, получающий доступ к базе данных с помощью клиента управления каталогами Data Lake Analytics для получения списка столбцов в указанной таблице.
 
 ``` csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
@@ -352,7 +352,7 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="list-failed-jobs"></a>Получение списка невыполненных заданий
-Hello следующий код выводит сведения о заданиях, которые не удалось.
+Ниже приведен код, получающий список сведений о невыполненных заданиях.
 
 ``` csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
@@ -364,7 +364,7 @@ foreach (var j in jobs)
 ```
 
 ### <a name="list-pipelines"></a>Получение списка конвейеров
-Hello следующий код содержит информацию о каждой конвейера учетной записи toohello отправленного задания.
+Приведенный ниже код выводит сведения о каждом конвейере заданий, переданном в учетную запись.
 
 ``` csharp
 var pipelines = adlaJobClient.Pipeline.List(adla);
@@ -375,7 +375,7 @@ foreach (var p in pipelines)
 ```
 
 ### <a name="list-recurrences"></a>Получение списка повторений
-Hello следующий код содержит информацию о каждой повторения учетной записи toohello отправленного задания.
+Приведенный ниже код выводит сведения о каждом повторении задания, переданном в учетную запись.
 
 ``` csharp
 var recurrences = adlaJobClient.Recurrence.List(adla);
@@ -387,13 +387,13 @@ foreach (var r in recurrences)
 
 ## <a name="common-graph-scenarios"></a>Общие сценарии, связанные с графами
 
-### <a name="look-up-user-in-hello-aad-directory"></a>Поиск пользователя в каталоге AAD hello
+### <a name="look-up-user-in-the-aad-directory"></a>Поиск пользователя в каталоге AAD
 
 ``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
 ```
 
-### <a name="get-hello-objectid-of-a-user-in-hello-aad-directory"></a>Получить hello ObjectId пользователя в каталоге AAD hello
+### <a name="get-the-objectid-of-a-user-in-the-aad-directory"></a>Получение идентификатора ObjectId пользователя в каталоге AAD
 
 ``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
@@ -401,10 +401,10 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>Управление политиками вычислений
-Hello объекта DataLakeAnalyticsAccountManagementClient предоставляет методы для управления hello вычисления политики для учетной записи аналитики Озера данных.
+Объект DataLakeAnalyticsAccountManagementClient предоставляет методы для управления политиками вычислений для учетной записи Data Lake Analytics.
 
 ### <a name="list-compute-policies"></a>Вывод списка политик вычислений
-Привет, следующий код извлекает список политик вычислений для учетной записи аналитики Озера данных.
+Следующий код извлекает список политик вычислений для учетной записи Data Lake Analytics.
 
 ``` csharp
 var policies = adlaAccountClient.ComputePolicies.ListByAccount(rg, adla);
@@ -415,7 +415,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>Создание новой политики вычислений
-Привет, следующий код создает новую политику вычислений для учетной записи аналитики Озера данных, параметр hello максимальное Сиднейское доступных toohello указан too50 пользователя и too250 приоритет задания минимального hello.
+Следующий код создает новую политику вычислений для учетной записи Data Lake Analytics, задавая максимальное количество AU, доступных для указанного пользователя, равным 50 и минимальный приоритет задания равным 250.
 
 ``` csharp
 var userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde";

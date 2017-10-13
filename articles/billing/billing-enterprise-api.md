@@ -1,9 +1,9 @@
 ---
-title: "Выставление счетов Enterprise API-интерфейсы aaaAzure | Документы Microsoft"
-description: "Дополнительные сведения о hello API отчетов, которые программным образом включить корпоративных клиентов toopull потребления данных Azure."
+title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам | Документация Майкрософт"
+description: "Узнайте, как с помощью интерфейсов API отчетов для корпоративных клиентов Azure извлекать данные о потреблении программным способом."
 services: 
 documentationcenter: 
-author: aedwin
+author: anandedwin
 manager: aedwin
 editor: 
 tags: billing
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 017cecc57ad6bdeb402b5d9d57fc95df9b033a42
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 62a69aeb7499a961f95739fb3836942b670c7320
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Обзор API- интерфейсов отчетов для корпоративных клиентов
-Hello Reporting API позволяют корпоративных клиентов tooprogrammatically запросу подписка Azure и выставления счетов в средства анализа предпочтительным. 
+Интерфейсы API отчетов позволяют корпоративным клиентам Azure извлекать данные о потреблении и выставлении счетов программным способом и передавать их в предпочитаемые средства анализа данных. 
 
-## <a name="enabling-data-access-toohello-api"></a>Включение toohello API-Интерфейс
-* **Создать или получить ключ hello API** - журнал toohello корпоративного портала и выполните hello учебника в разделе справки - API для сбора. Hello первый раздел находится в этой справочной статье объясняется, как toogenerate или получить ключ hello API для hello указанном регистрации.
-* **Передача ключей в hello API** -hello API-ключ должен toobe, переданный для каждого вызова для проверки подлинности и авторизации. Hello следующие свойства должны заголовки toohello HTTP toobe
+## <a name="enabling-data-access-to-the-api"></a>Включение доступа данных к API
+* **Создание или получение ключа API**. Войдите на корпоративный портал и следуйте инструкциям в статье справки, посвященной API-интерфейсам отчетов. В первом разделе этой статьи описывается, как создать или получить ключ API для определенной регистрации.
+* **Передача ключей в API**. Для аутентификации и авторизации необходимо передать ключ API для каждого вызова. В заголовки HTTP необходимо добавить следующее свойство:
 
 |Ключ заголовка запроса | Значение|
 |-|-|
-|Авторизация| Укажите значение hello в следующем формате: **bearer {API_KEY}** <br/> Пример: bearer eyr....09|
+|Авторизация| Укажите значение в следующем формате: **bearer {API_KEY}** <br/> Пример: bearer eyr....09|
 
 ## <a name="consumption-apis"></a>Интерфейсы API потребления
-Доступен конечной точки Swagger [здесь](https://consumption.azure.com/swagger/ui/index) hello интерфейсов API, описанных ниже которого следует включить легко интроспекции hello API и hello возможность toogenerate клиентских SDK с помощью [AutoRest](https://github.com/Azure/AutoRest) или [ Swagger CodeGen](http://swagger.io/swagger-codegen/). С 1 мая 2014 г. данные доступны через этот API. 
+[Здесь](https://consumption.azure.com/swagger/ui/index) вы можете найти конечную точку Swagger для интерфейсов API, описанных ниже. С ее помощью можно упростить самоанализ API и создать клиентские пакеты SDK, используя [AutoRest](https://github.com/Azure/AutoRest) или [Swagger CodeGen](http://swagger.io/swagger-codegen/). С 1 мая 2014 г. данные доступны через этот API. 
 
-* **Сводка и баланс** - hello [баланс и Сводка API](billing-enterprise-api-balance-summary.md) предлагает ежемесячные сводку сведений о сальдо, новый покупок, плата за Azure Marketplace, корректировки и избыточные расходы.
+* **Баланс и сводка**. [Интерфейс API для управления балансом и просмотра сводки](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) предоставляет ежемесячную сводку о состоянии баланса, новых покупках, расходах на службы Azure Marketplace, корректировках и взимании платы за превышение.
 
-* **Сведения об использовании** - hello [API сведений об использовании](billing-enterprise-api-usage-detail.md) предлагает ежедневного декомпозиция обрабатываемом количеств и оценка расходов по регистрации. результат Hello также содержатся сведения о экземпляров, показателей и отделах. можно запрашивать Hello API периода выставления счетов или указанными датами начала и окончания. 
+* **Сведения об использовании**. [Интерфейс API сведений об использовании](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) предоставляет сводку об израсходованных объемах и предполагаемых расходах для каждой регистрации с разбивкой по дням. Результаты также содержат сведения об экземплярах, метриках и отделах. Запрашивать данные в API можно по расчетному периоду или по дате начала и окончания. 
 
-* **Издержки магазина Marketplace** - hello [API платы магазина Marketplace](billing-enterprise-api-marketplace-storecharge.md) возвращает декомпозиции расходов на основе использования marketplace hello за день для указанной hello период выставления счетов или даты начала и окончания (сборов за один раз, не включены) .
+* **Платежи в Marketplace**. [Интерфейс API платежей в Marketplace](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) предоставляет сводку о расходах в Marketplace с разбивкой по дням. Данные основаны на фактическом использовании и отображаются для указанного расчетного периода или дат начала и окончания (однократные сборы не включаются).
 
-* **Прайс-лист** - hello [цена лист API](billing-enterprise-api-pricesheet.md) предоставляет hello применимые скорость для каждого индикатора для регистрации и выставления счетов за период hello. 
+* **Прейскурант**. [API прейскуранта](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) предоставляет соответствующий тариф для каждой метрики в отдельной регистрации и за определенный расчетный период. 
 
 ## <a name="helper-apis"></a>Интерфейсы API вспомогательного приложения
- **Список периодов выставления счетов** - hello [выставления счетов за периоды API](billing-enterprise-api-billing-periods.md) возвращает список периодов, которые имеют данные потребления для регистрации, указанной в обратном хронологическом порядке hello выставления счетов. Для каждого периода содержит свойство, указывающее toohello API маршрута для hello четырех наборов данных - BalanceSummary, UsageDetails, о расходах в Marketplace и прайс-листа.
+ **Список расчетных периодов**. [API расчетных периодов](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) возвращает список расчетных периодов, которые содержат данные о потреблении для определенной регистрации, приведенные в обратном хронологическом порядке. Каждый период содержит свойство, указывающее на маршрут API к четырем наборам данных: BalanceSummary, UsageDetails, Marketplace Charges и Price Sheet.
 
 
 ## <a name="api-response-codes"></a>Коды ответов API  

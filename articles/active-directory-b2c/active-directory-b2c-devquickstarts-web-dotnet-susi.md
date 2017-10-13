@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory B2C | Документы Microsoft"
-description: "Как toobuild веб-приложения с регистрации-повышение или входе в систему профиля, изменение и сбросить с помощью Azure Active Directory B2C пароль."
+title: "Azure Active Directory B2C | Документация Майкрософт"
+description: "Сведения по созданию веб-приложений, позволяющих пользователям выполнять вход, изменять профиль, регистрироваться и сбрасывать пароль с помощью Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: .net
 author: parakhj
@@ -14,25 +14,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 187f99a8dd50d212de4f0517f552cdbbe5a8edf4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3144ced01b524abb035dc1c6f0cdf764bec46804
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Создание веб-приложения ASP.NET с возможностями регистрации, входа, редактирования профиля и сброса пароля Azure Active Directory B2C
 
 В этом учебнике описаны следующие процедуры.
 
 > [!div class="checklist"]
-> * Добавление Azure AD B2C идентификаторов компонентов tooyour веб-приложения
+> * Добавление функций управления удостоверениями Azure AD B2C в веб-приложение
 > * Регистрация веб-приложения в каталоге Azure AD B2C
 > * Создание политики регистрации, входа, изменения профиля и сброса пароля пользователя для веб-приложения
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Вашего клиента B2C tooan учетная запись Azure, необходимо подключиться. Вы можете создать бесплатную учетную запись Azure [здесь](https://azure.microsoft.com/en-us/).
-- Требуется [Microsoft Visual Studio](https://www.visualstudio.com/) или аналогичные программы tooview и измените пример кода hello.
+- Подключите клиент B2C к учетной записи Azure. Вы можете создать бесплатную учетную запись Azure [здесь](https://azure.microsoft.com/en-us/).
+- Вам требуется [Microsoft Visual Studio](https://www.visualstudio.com/) или аналогичная программа для просмотра и изменения примера кода.
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Создание каталога Azure AD B2C
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 10/06/2017
 
 > [!NOTE]
 > 
-> Необходимо tooconnect hello клиента B2C tooyour подписки Azure. После выбора **создать**выберите hello **toomy клиента связь существующего Azure AD B2C подписки Azure** параметр и затем в hello **клиента Azure AD B2C** раскрывающийся список, выберите Вы хотите tooassociate клиента Hello.
+> Необходимо подключить клиент B2C к подписке Azure. Выбрав **Создать**, выберите параметр **Связывание существующего B2C-клиента Azure AD с вашей подпиской Azure**, а затем в раскрывающемся списке **Клиент B2C Azure AD** выберите клиент, которого требуется связать.
 
 ## <a name="create-and-register-an-application"></a>Создание и регистрация приложения
 
-Далее требуется toocreate и зарегистрировать приложение hello в каталоге B2C. Предоставляет сведения, что Azure AD B2C должна toosecurely взаимодействовать с приложением. 
+Затем необходимо создать и зарегистрировать приложение в каталоге B2C. Так вы получаете информацию, необходимую Azure AD B2C для безопасного взаимодействия с вашим приложением. 
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="create-policies-on-your-b2c-tenant"></a>Создание политик в клиенте B2C
 
-В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md). Этот пример кода включает три способа идентификации: **регистрацию и вход в систему**, **изменение профиля**, а также **сброс пароля**.  Требуется одна политика toocreate каждого типа, как описано в hello [статье политики](active-directory-b2c-reference-policies.md). Для каждой политики быть убедиться, что tooselect hello отображаемое имя атрибута или утверждения и toocopy вниз hello имя политики для последующего использования.
+В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md). Этот пример кода включает три способа идентификации: **регистрацию и вход в систему**, **изменение профиля**, а также **сброс пароля**.  Вам нужно создать по одной политике каждого типа, как описано в [справочной статье о политиках](active-directory-b2c-reference-policies.md). Для каждой политики выберите атрибут или утверждение отображаемого имени, а также скопируйте имя политики для последующего использования.
 
 ### <a name="add-your-identity-providers"></a>Добавление поставщиков удостоверений
 
@@ -74,21 +74,21 @@ ms.lasthandoff: 10/06/2017
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-После создания политики вы готовы toobuild приложения.
+После создания политик можно приступать к сборке приложения.
 
-## <a name="download-hello-sample-code"></a>Загрузить пример кода hello
+## <a name="download-the-sample-code"></a>Скачивание примера кода
 
-Hello кода для этого учебника, сохраняется на [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Образец hello можно клонировать, выполнив:
+Код примеров для этого руководства размещен на портале [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Вы можете клонировать пример, выполнив такую команду:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-После загрузки кода образца hello запущен tooget файл .sln Visual Studio откройте hello. Hello файл решения содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp`— hello веб-приложение MVC, hello пользователь взаимодействует с. `TaskService`— приложение hello фоновая веб-API, который хранит список дел каждого пользователя. В этой статье рассматривается hello `TaskWebApp` приложения. toolearn как toobuild `TaskService` с помощью Azure AD B2C, в разделе [наш учебник по api .NET web](active-directory-b2c-devquickstarts-api-dotnet.md).
+Скачав пример кода, откройте SLN-файл Visual Studio, чтобы начать работу. Теперь решение содержит два проекта: `TaskWebApp` и `TaskService`. `TaskWebApp` — это веб-приложение MVC, с которым взаимодействует пользователь. `TaskService` — веб-API серверной части приложения, в котором хранится список дел для каждого пользователя. В этой статье рассматривается только приложение `TaskWebApp`. Сведения о создании `TaskService` с помощью Azure AD B2C см. в [этом руководстве по веб-приложениям .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-toouse-your-tenant-and-policies"></a>Обновить toouse код клиента и политики
+## <a name="update-code-to-use-your-tenant-and-policies"></a>Обновление кода для использования клиента и политик
 
-Выборка — настроенное toouse hello политик и клиент идентификатор нашей демонстрационному клиенту. tooconnect его tooyour собственного клиента, необходимо tooopen `web.config` в hello `TaskWebApp` проекта а hello следующие значения:
+В нашем примере настроено использование политик и идентификатора демонстрационного клиента. Чтобы подключить его к своему клиенту, необходимо открыть файл `web.config` в проекте `TaskWebApp` и заменить следующие значения:
 
 * `ida:Tenant` именем своего клиента;
 * `ida:ClientId` идентификатором клиента для веб-приложения;
@@ -97,36 +97,36 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 * `ida:EditProfilePolicyId` именем политики "Изменение профиля";
 * `ida:ResetPasswordPolicyId` именем политики "Сброс профиля".
 
-## <a name="launch-hello-app"></a>Запустите приложение hello
-Из среды Visual Studio, запустите приложение hello. Перемещение вкладку toohello список дел и hello примечание, URL-адрес: https://login.microsoftonline.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id = *YourclientID*...
+## <a name="launch-the-app"></a>Запуск приложения
+Из среды Visual Studio запустите приложение. Перейдите на вкладку To-Do List (Список задач) и обратите внимание на URL-адрес: https://login.microsoftonline.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*&client_id=*YourclientID*.
 
-Зарегистрируйтесь для приложения hello вашей электронной почты адрес или имя пользователя. Выйдите из системы, затем войти в систему и изменить профиль hello или сбросить пароль hello. Выйдите и зарегистрируйтесь от имени другого пользователя. 
+Зарегистрируйтесь в приложении с использованием адреса электронной почты или имени пользователя. Выйдите из системы, а затем войдите и измените профиль или сбросьте пароль. Выйдите и зарегистрируйтесь от имени другого пользователя. 
 
 ## <a name="add-social-idps"></a>Добавление поставщиков удостоверений социальных сетей
 
-В настоящее время приложение hello поддерживает только пользователь, регистрации и входе в систему с помощью **локальные учетные записи**; учетные записи хранятся в каталоге B2C использовать имя пользователя и пароль. С помощью Azure AD B2C можно добавить поддержку для других **поставщиков удостоверений** (IDP), не изменяя код.
+Сейчас приложение поддерживает регистрацию и вход пользователя с помощью **локальных учетных записей**, которые хранятся в каталоге B2C и используют имя пользователя и пароль. С помощью Azure AD B2C можно добавить поддержку для других **поставщиков удостоверений** (IDP), не изменяя код.
 
-tooadd социальных IDPs tooyour приложение, начните с выполнения следующего hello подробные инструкции в следующих статьях. Для каждого поставщика Удостоверений требуется toosupport, нужно tooregister приложения в этой системе и получение идентификатора клиента.
+Чтобы добавить в приложение поставщиков удостоверений социальных сетей, следуйте подробным инструкциям, приведенным в указанных ниже статьях. Для каждого поставщика удостоверений, поддержку которого нужно добавить, необходимо зарегистрировать приложение в соответствующей системе и получить идентификатор клиента.
 
 * [Настройка Facebook как поставщика удостоверений](active-directory-b2c-setup-fb-app.md)
 * [Настройка Google как поставщика удостоверений](active-directory-b2c-setup-goog-app.md)
 * [Настройка Amazon как поставщика удостоверений](active-directory-b2c-setup-amzn-app.md)
 * [Настройка LinkedIn как поставщика удостоверений](active-directory-b2c-setup-li-app.md)
 
-После добавления tooyour Поставщики удостоверений hello каталоге B2C, редактирования каждого вашей tooinclude три политики hello новый IDPs, как описано в hello [статье политики](active-directory-b2c-reference-policies.md). После сохранения политик, снова запустите приложение hello.  Вы увидите hello, добавления новых IDPs входа и регистрации в качестве параметров каждой своими впечатлениями удостоверения.
+Добавив поставщики удостоверений в каталог B2C, внесите соответствующие изменения в три политики, как описано в [справочной статье о политиках](active-directory-b2c-reference-policies.md). Сохраните политики и перезапустите приложение.  Добавленные поставщики удостоверений должны отобразиться в виде вариантов при входе и регистрации.
 
-Можно поэкспериментировать с политиками и наблюдать за тем hello влияет на примере приложения. например: добавлять или удалять поставщиков удостоверений, управлять утверждениями приложений или изменять атрибуты регистрации, а также наблюдать эффект в примере приложения. Эксперименты помогают увидеть связь между политиками, запросами на проверку подлинности и библиотекой OWIN.
+Вы можете свободно экспериментировать с политиками, например: добавлять или удалять поставщиков удостоверений, управлять утверждениями приложений или изменять атрибуты регистрации, а также наблюдать эффект в примере приложения. Эксперименты помогают увидеть связь между политиками, запросами на проверку подлинности и библиотекой OWIN.
 
 ## <a name="sample-code-walkthrough"></a>Пошаговое руководство по примеру кода
-Hello в следующих разделах показано, как настроить код приложения образец hello. Вы можете использовать это руководство при разработке приложения в будущем.
+В следующих разделах показано, как настроить пример кода приложения. Вы можете использовать это руководство при разработке приложения в будущем.
 
 ### <a name="add-authentication-support"></a>Добавление поддержки проверки подлинности
 
-Теперь можно настроить toouse вашего приложения Azure AD B2C. Приложение взаимодействует с Azure AD B2C, отправляя запросы проверки подлинности по протоколу OpenID Connect. Hello запросов определяют взаимодействие с пользователем hello приложение хочет tooexecute, указав hello политику. Можно использовать эти запросы toosend библиотеки OWIN корпорации Майкрософт, выполнение политик, управление пользовательских сеансов и многое другое.
+Теперь можно настроить приложение для использования Azure AD B2C. Приложение взаимодействует с Azure AD B2C, отправляя запросы проверки подлинности по протоколу OpenID Connect. В запросах задана политика, регулирующая взаимодействие пользователя с приложением. Вы можете использовать библиотеку OWIN от Майкрософт. С ее помощью можно отправлять запросы, выполнять политики, управлять сеансом пользователя и решать другие задачи.
 
 #### <a name="install-owin"></a>Установка OWIN
 
-toobegin, добавить toohello hello OWIN по промежуточного слоя NuGet пакетов проекта с помощью консоли диспетчера пакетов Visual Studio hello.
+Сначала добавьте пакеты NuGet ПО промежуточного слоя OWIN в проект с помощью консоли диспетчера пакетов Visual Studio.
 
 ```Console
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -136,29 +136,29 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 #### <a name="add-an-owin-startup-class"></a>Добавление класса запуска OWIN
 
-Добавление toohello класс запуска OWIN API с именем `Startup.cs`.  Правой кнопкой мыши проект hello, выберите **добавить** и **новый элемент**и выполните поиск OWIN. по промежуточного слоя OWIN Hello будет вызывать hello `Configuration(…)` метод при запуске приложения.
+Добавьте класс запуска OWIN в API с именем `Startup.cs`.  Щелкните проект правой кнопкой мыши и выберите **Добавить** и **Новый элемент**, после чего найдите OWIN. При запуске вашего приложения промежуточный слой OWIN вызовет метод `Configuration(…)` .
 
-В нашем примере мы изменили объявление класса hello слишком`public partial class Startup` и реализации hello hello класса в другой части `App_Start\Startup.Auth.cs`. Внутри hello `Configuration` метод, мы добавили вызов слишком`ConfigureAuth`, которая определена в `Startup.Auth.cs`. После изменения hello `Startup.cs` выглядит как hello следующее:
+В нашем примере мы изменили объявление класса на `public partial class Startup` и реализовали другую часть класса в `App_Start\Startup.Auth.cs`. Внутри метода `Configuration` мы добавили вызов `ConfigureAuth`, определенный в `Startup.Auth.cs`. После внесения изменений `Startup.cs` выглядит следующим образом:
 
 ```CSharp
 // Startup.cs
 
 public partial class Startup
 {
-    // hello OWIN middleware will invoke this method when hello app starts
+    // The OWIN middleware will invoke this method when the app starts
     public void Configuration(IAppBuilder app)
     {
-        // ConfigureAuth defined in other part of hello class
+        // ConfigureAuth defined in other part of the class
         ConfigureAuth(app);
     }
 }
 ```
 
-#### <a name="configure-hello-authentication-middleware"></a>Настройки по промежуточного слоя проверки подлинности hello
+#### <a name="configure-the-authentication-middleware"></a>Настройка ПО промежуточного слоя для проверки подлинности
 
-Привет открыть файл `App_Start\Startup.Auth.cs` и реализовать hello `ConfigureAuth(...)` метод. Здравствуйте, параметры, указываемые в `OpenIdConnectAuthenticationOptions` служат в качестве координат для toocommunicate вашего приложения с Azure AD B2C. Если вы не указываете определенные параметры, он будет использовать значение по умолчанию hello. Например, мы не указать hello `ResponseType` в образце hello, поэтому значение по умолчанию hello `code id_token` используются для каждого исходящего запроса tooAzure AD B2C.
+Откройте файл `App_Start\Startup.Auth.cs` и реализуйте метод `ConfigureAuth(...)`. Параметры, указанные в разделе `OpenIdConnectAuthenticationOptions`, будут служить координатами приложения для взаимодействия с Azure AD B2C. Если не задать определенные параметры, будут использоваться значения по умолчанию. Например, в примере не был указан параметр `ResponseType`, поэтому для каждого исходящего запроса к Azure AD B2C будет использоваться значение по умолчанию `code id_token`.
 
-Необходимо также tooset копирование файла cookie проверки подлинности. Hello OpenID Connect по промежуточного слоя использует файлы cookie toomaintain пользовательских сеансов, среди прочего.
+Также будет необходимо настроить проверку подлинности для файлов Cookie — промежуточный слой OpenID Connect использует файлы cookie для поддержки сеанса пользователя и выполнения других задач.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -167,7 +167,7 @@ public partial class Startup
 {
     // Initialize variables ...
 
-    // Configure hello OWIN middleware
+    // Configure the OWIN middleware
     public void ConfigureAuth(IAppBuilder app)
     {
         app.UseCookieAuthentication(new CookieAuthenticationOptions());
@@ -176,7 +176,7 @@ public partial class Startup
         app.UseOpenIdConnectAuthentication(
             new OpenIdConnectAuthenticationOptions
             {
-                // Generate hello metadata address using hello tenant and policy information
+                // Generate the metadata address using the tenant and policy information
                 MetadataAddress = String.Format(AadInstance, Tenant, DefaultPolicy),
 
                 // These are standard OpenID Connect parameters, with values pulled from web.config
@@ -184,7 +184,7 @@ public partial class Startup
                 RedirectUri = RedirectUri,
                 PostLogoutRedirectUri = RedirectUri,
 
-                // Specify hello callbacks for each type of notifications
+                // Specify the callbacks for each type of notifications
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     RedirectToIdentityProvider = OnRedirectToIdentityProvider,
@@ -192,41 +192,41 @@ public partial class Startup
                     AuthenticationFailed = OnAuthenticationFailed,
                 },
 
-                // Specify hello claims toovalidate
+                // Specify the claims to validate
                 TokenValidationParameters = new TokenValidationParameters
                 {
                     NameClaimType = "name"
                 },
 
-                // Specify hello scope by appending all of hello scopes requested into one string (seperated by a blank space)
+                // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
                 Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
             }
         );
     }
 
-    // Implement hello "Notification" methods...
+    // Implement the "Notification" methods...
 }
 ```
 
-В `OpenIdConnectAuthenticationOptions` выше, мы определяем набор функций обратного вызова для конкретных уведомлений, полученных по промежуточного слоя, OpenID Connect hello. Эти варианты поведения определяются с помощью `OpenIdConnectAuthenticationNotifications` объекта и сохраняются в hello `Notifications` переменной. В нашем примере мы определяем три различных обратных вызовов в зависимости от события hello.
+В приведенном выше разделе `OpenIdConnectAuthenticationOptions` мы определили набор функций обратного вызова для специальных уведомлений, получаемых с помощью ПО промежуточного слоя OpenID Connect. Эти поведения определяются с помощью объекта `OpenIdConnectAuthenticationNotifications` и хранятся в переменной `Notifications`. В этом примере мы определяем три различных обратных вызова в зависимости от события.
 
 ### <a name="using-different-policies"></a>Использование различных политик
 
-Hello `RedirectToIdentityProvider` уведомление будет запускаться при каждом запросе tooAzure AD B2C. В функции обратного вызова hello `OnRedirectToIdentityProvider`, мы проверяем в исходящий вызов, если мы хотим toouse hello другой политике. В порядке toodo пароль сбросить или изменить профиль необходимо toouse hello соответствующая политика такие как политики вместо «Регистрации или входа в систему» политики по умолчанию hello сброса паролей hello.
+При каждом запросе к Azure AD B2C инициируется уведомление `RedirectToIdentityProvider`. Если требуется использовать другую политику, в функции обратного вызова `OnRedirectToIdentityProvider` нужно проверять исходящий вызов. Чтобы сбросить пароль или изменить профиль, необходимо использовать соответствующую политику, например политику сброса паролей, вместо политики регистрации или входа, заданной по умолчанию.
 
-В нашем примере когда пользователь хочет tooreset hello пароль или измените профиль hello мы Добавление политики hello желательно toouse контекст OWIN hello. Что можно сделать, выполнив следующие hello:
+В этом примере, если пользователь хочет сбросить пароль или изменить профиль, мы добавляем политику, которую рекомендуется использовать в контексте OWIN. Для этого необходимо сделать следующее:
 
 ```CSharp
-    // Let hello middleware know you are trying toouse hello edit profile policy
+    // Let the middleware know you are trying to use the edit profile policy
     HttpContext.GetOwinContext().Set("Policy", EditProfilePolicyId);
 ```
 
-Можно применить функцию обратного вызова hello `OnRedirectToIdentityProvider` , выполнив hello ниже:
+Вы можете реализовать функцию обратного вызова `OnRedirectToIdentityProvider`, выполнив следующую команду:
 
 ```CSharp
 /*
-*  On each call tooAzure AD B2C, check if a policy (e.g. hello profile edit or password reset policy) has been specified in hello OWIN context.
-*  If so, use that policy when making hello call. Also, don't request a code (since it won't be needed).
+*  On each call to Azure AD B2C, check if a policy (e.g. the profile edit or password reset policy) has been specified in the OWIN context.
+*  If so, use that policy when making the call. Also, don't request a code (since it won't be needed).
 */
 private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
 {
@@ -245,25 +245,25 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 
 ### <a name="handling-authorization-codes"></a>Обработка кодов авторизации
 
-Hello `AuthorizationCodeReceived` уведомление срабатывает при получении кода авторизации. по промежуточного слоя, OpenID Connect Hello не поддерживает обмен коды для маркера доступа. Можно вручную обмен кода hello hello маркера в функции обратного вызова. Дополнительные сведения см. в hello [документации](active-directory-b2c-devquickstarts-web-api-dotnet.md) объясняется, каким образом.
+При получении кода авторизации инициируется уведомление `AuthorizationCodeReceived`. ПО промежуточного слоя OpenID Connect не поддерживает обмен кодов на маркеры доступа. Вы можете вручную выполнить обмен кода на маркер в функции обратного вызова. Дополнительные сведения см. в [этой документации](active-directory-b2c-devquickstarts-web-api-dotnet.md).
 
 ### <a name="handling-errors"></a>Обработка ошибок
 
-Hello `AuthenticationFailed` уведомление срабатывает при сбое проверки подлинности. В методе обратного вызова можно обрабатывать ошибки hello по своему усмотрению. Тем не менее, следует добавить проверку для кода ошибки hello `AADB2C90118`. Во время выполнения hello hello политики «Регистрации или входа в систему», hello пользователь имеет возможность tooselect hello **забыли пароль?** ссылку. В этом случае Azure AD B2C отправляет приложения код этой ошибке, указывающее, что приложения необходимо выполнить запрос, вместо этого использовать политики сброса паролей hello.
+При сбое проверки подлинности инициируется уведомление `AuthenticationFailed`. С помощью метода обратного вызова можно обрабатывать ошибки по своему усмотрению. Тем не менее необходимо добавить проверку кода ошибки `AADB2C90118`. Во время выполнения политики регистрации и входа пользователь может щелкнуть ссылку **Забыли пароль?**. В этом случае Azure AD B2C отправляет код ошибки, указывающий, что приложение должно выполнить запрос с помощью политики сброса пароля.
 
 ```CSharp
 /*
-* Catch any failures received by hello authentication middleware and handle appropriately
+* Catch any failures received by the authentication middleware and handle appropriately
 */
 private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
 {
     notification.HandleResponse();
 
-    // Handle hello error code that Azure AD B2C throws when trying tooreset a password from hello login page
+    // Handle the error code that Azure AD B2C throws when trying to reset a password from the login page
     // because password reset is not supported by a "sign-up or sign-in policy"
     if (notification.ProtocolMessage.ErrorDescription != null && notification.ProtocolMessage.ErrorDescription.Contains("AADB2C90118"))
     {
-        // If hello user clicked hello reset password link, redirect toohello reset password route
+        // If the user clicked the reset password link, redirect to the reset password route
         notification.Response.Redirect("/Account/ResetPassword");
     }
     else if (notification.Exception.Message == "access_denied")
@@ -279,21 +279,21 @@ private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConne
 }
 ```
 
-### <a name="send-authentication-requests-tooazure-ad"></a>Отправить tooAzure запросы проверки подлинности AD
+### <a name="send-authentication-requests-to-azure-ad"></a>Отправка запросов на проверку подлинности в Azure AD
 
-Приложение теперь будет правильно настроен toocommunicate с Azure AD B2C с помощью протокола проверки подлинности OpenID Connect hello. OWIN управляет данными hello отправляемого сообщения проверки подлинности, проверка токены из Azure AD B2C и поддержания сеанса пользователя. Все, что остается приведена tooinitiate каждого пользователя.
+Теперь приложение настроено на взаимодействие с Azure AD B2C с использованием протокола проверки подлинности OpenID Connect. OWIN берет на себя создание сообщений аутентификации, проверку маркеров из Azure AD B2C и поддержку сеанса пользователя. Осталось инициировать все потоки пользователей.
 
-Когда пользователь выбирает **входа вверх или входа**, **редактирование профиля**, или **сброс пароля** в веб-приложения hello, при вызове hello связанные действия в `Controllers\AccountController.cs`:
+Когда пользователь выбирает **Регистрация или Вход**, **Изменить профиль** или **Сброс пароля** в веб-приложении, в `Controllers\AccountController.cs` вызывается соответствующее действие:
 
 ```CSharp
 // Controllers\AccountController.cs
 
 /*
-*  Called when requesting toosign up or sign in
+*  Called when requesting to sign up or sign in
 */
 public void SignUpSignIn()
 {
-    // Use hello default policy tooprocess hello sign up / sign in flow
+    // Use the default policy to process the sign up / sign in flow
     if (!Request.IsAuthenticated)
     {
         HttpContext.GetOwinContext().Authentication.Challenge();
@@ -304,16 +304,16 @@ public void SignUpSignIn()
 }
 
 /*
-*  Called when requesting tooedit a profile
+*  Called when requesting to edit a profile
 */
 public void EditProfile()
 {
     if (Request.IsAuthenticated)
     {
-        // Let hello middleware know you are trying toouse hello edit profile policy (see OnRedirectToIdentityProvider in Startup.Auth.cs)
+        // Let the middleware know you are trying to use the edit profile policy (see OnRedirectToIdentityProvider in Startup.Auth.cs)
         HttpContext.GetOwinContext().Set("Policy", Startup.EditProfilePolicyId);
 
-        // Set hello page tooredirect tooafter editing hello profile
+        // Set the page to redirect to after editing the profile
         var authenticationProperties = new AuthenticationProperties { RedirectUri = "/" };
         HttpContext.GetOwinContext().Authentication.Challenge(authenticationProperties);
 
@@ -325,14 +325,14 @@ public void EditProfile()
 }
 
 /*
-*  Called when requesting tooreset a password
+*  Called when requesting to reset a password
 */
 public void ResetPassword()
 {
-    // Let hello middleware know you are trying toouse hello reset password policy (see OnRedirectToIdentityProvider in Startup.Auth.cs)
+    // Let the middleware know you are trying to use the reset password policy (see OnRedirectToIdentityProvider in Startup.Auth.cs)
     HttpContext.GetOwinContext().Set("Policy", Startup.ResetPasswordPolicyId);
 
-    // Set hello page tooredirect tooafter changing passwords
+    // Set the page to redirect to after changing passwords
     var authenticationProperties = new AuthenticationProperties { RedirectUri = "/" };
     HttpContext.GetOwinContext().Authentication.Challenge(authenticationProperties);
 
@@ -340,17 +340,17 @@ public void ResetPassword()
 }
 ```
 
-Также можно использовать toosign OWIN выход hello пользователя из приложения hello. В `Controllers\AccountController.cs` у нас есть следующее:
+Для выхода пользователя из приложения также можно использовать OWIN. В `Controllers\AccountController.cs` у нас есть следующее:
 
 ```CSharp
 // Controllers\AccountController.cs
 
 /*
-*  Called when requesting toosign out
+*  Called when requesting to sign out
 */
 public void SignOut()
 {
-    // toosign out hello user, you should issue an OpenIDConnect sign out request.
+    // To sign out the user, you should issue an OpenIDConnect sign out request.
     if (Request.IsAuthenticated)
     {
         IEnumerable<AuthenticationDescription> authTypes = HttpContext.GetOwinContext().Authentication.GetAuthenticationTypes();
@@ -360,12 +360,12 @@ public void SignOut()
 }
 ```
 
-В дополнение tooexplicitly вызов политику, можно использовать `[Authorize]` тег в контроллерах, который выполняет политику, если hello пользователь не выполнил вход. Откройте `Controllers\HomeController.cs` и добавить hello `[Authorize]` toohello тег утверждений контроллера.  OWIN выбирает hello последние политики hello `[Authorize]` попаданий тег.
+Помимо явного вызова политики, можно использовать тег `[Authorize]` в контроллерах, что приведет к выполнению политики, если пользователь не выполнил вход. Откройте файл `Controllers\HomeController.cs` и добавьте тег `[Authorize]` в контроллер утверждений.  OWIN выберет последнюю настроенную политику при вызове тега `[Authorize]`.
 
 ```CSharp
 // Controllers\HomeController.cs
 
-// You can use hello Authorize decorator tooexecute a certain policy if hello user is not already signed into hello app.
+// You can use the Authorize decorator to execute a certain policy if the user is not already signed into the app.
 [Authorize]
 public ActionResult Claims()
 {
@@ -374,9 +374,9 @@ public ActionResult Claims()
 
 ### <a name="display-user-information"></a>Отображение сведений о пользователе
 
-Если для проверки подлинности пользователей с помощью OpenID Connect, Azure AD B2C возвращает идентификатор маркера toohello приложение, которое содержит **утверждений**. Это утверждения о пользователе hello. Toopersonalize утверждения можно использовать приложение.
+При проверке подлинности пользователей с помощью OpenID Connect служба Azure AD B2C возвращает в приложение маркер идентификатора, который содержит **утверждения**. о пользователе. Эти утверждения можно использовать для персонализации приложения.
 
-Откройте hello `Controllers\HomeController.cs` файла. Утверждения пользователей можно использовать в контроллерах через hello `ClaimsPrincipal.Current` объект субъекта безопасности.
+Откройте файл `Controllers\HomeController.cs` . Для доступа к утверждениям о пользователе в своих контроллерах можно использовать объект субъекта безопасности `ClaimsPrincipal.Current` .
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -390,4 +390,4 @@ public ActionResult Claims()
 }
 ```
 
-Можно открыть любые претензии, что приложение получает в hello таким же способом.  Список всех утверждений hello, приложение hello Получает доступные на hello **утверждений** страницы.
+Вы можете открыть любое утверждение, которое ваше приложение получает таким же образом.  Список всех получаемых приложением утверждений можно найти на странице **Утверждения** .

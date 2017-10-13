@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 4bb7ec6ec67d3368a0e36c098f290f582510714a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 81af4536fc223319369aff262d42149cfbf1a1e9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>Устранение неполадок при создании клиентов Azure Active Directory или Azure Active Directory B2C 
 
 ## <a name="create-an-azure-ad-tenant"></a>Создание клиента Azure AD
-Если при первой попытке hello не удается создать клиент Azure Active Directory (Azure AD), повторите попытку. Если hello проблема будет повторяться, обратитесь в службу поддержки Azure.
+Если вам не удается создать клиент Azure Active Directory (Azure AD) с первого раза, попробуйте сделать это еще раз. Если проблема не исчезла, обратитесь в службу поддержки Azure.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Создание клиента Azure AD B2C
-При возникновении проблем при вы [Создание Azure Active Directory B2C клиента (Azure AD B2C)](active-directory-b2c-get-started.md), попробуйте hello следующие параметры:
+При возникновении проблем во время [создания клиента Azure Active Directory B2C](active-directory-b2c-get-started.md) попробуйте сделать следующее.
 
-* Если клиент Azure AD B2C hello не отображается в списке клиентов, повторите попытку toocreate hello клиента.
-* Если вы видите сообщение об ошибке после hello hello Azure AD B2C клиента отображаются в списке клиентов, удалите hello клиента и создайте его заново:
+* Если клиент Azure AD B2C не отображается в списке клиентов, повторите попытку создания клиента.
+* Если клиент Azure AD B2C не отображается в списке клиентов и появляется указанное ниже сообщение об ошибке, удалите клиента и создайте его заново.
 
-    «Не удалось завершить создание клиента B2C hello «contosob2c» hello. Please visit this [link](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) for more guidance." (Не удалось завершить создание клиента B2C contosob2c. Щелкните ссылку, чтобы получить дополнительные рекомендации).
-* Существуют известные проблемы при удалении существующей Azure AD B2C клиента и создать его повторно с помощью hello таким же именем домена. При создании клиента Azure AD B2C необходимо использовать другое доменное имя.
+    "Could not complete the creation of the B2C tenant 'contosob2c'. Please visit this [link](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) for more guidance." (Не удалось завершить создание клиента B2C contosob2c. Щелкните ссылку, чтобы получить дополнительные рекомендации).
+* При удалении существующего клиента Azure AD B2C и его повторном создании с тем же доменным именем могут возникнуть известные проблемы. При создании клиента Azure AD B2C необходимо использовать другое доменное имя.
 * Если ни одно из приведенных решений не помогло, обратитесь в службу поддержки Azure. Дополнительные сведения см. в статье [Azure Active Directory B2C: регистрация запросов в службу поддержки](active-directory-b2c-support.md).
 

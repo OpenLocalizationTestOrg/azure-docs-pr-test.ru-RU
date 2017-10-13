@@ -1,27 +1,27 @@
 
 
-Объект *пользовательские* виртуальная машина просто означает виртуальной машины, которая создается с помощью **основной приложения** из hello **Marketplace** так, как он выполняет основную часть работы hello для вас. Однако можно выполнять вариантов конфигурации, которые включают hello следующих элементов:
+*Пользовательская* виртуальная машина означает просто виртуальную машину, созданную с помощью **рекомендуемого приложения** из **Marketplace**, потому что большую часть работы она выполняет за вас. Кроме того, вы можете выбирать значения параметров, которые включают в себя следующие элементы:
 
-* Подключение hello виртуальной машины tooa виртуальной сети.
-* Установка hello агент виртуальной машины Azure и расширения виртуальных машин Azure, такие как для защиты от вредоносных программ.
-* Добавление hello виртуальной машины tooexisting облачных служб.
-* Добавление hello виртуальной машины tooan существующей учетной записи хранения.
-* Добавление tooan доступность hello виртуальных машин в набор.
+* подключение виртуальной машины к виртуальной сети;
+* установка агента виртуальной машины Azure и расширений виртуальной машины Azure, например для защиты от вредоносных программ;
+* добавление виртуальной машины в существующую облачную службу;
+* добавление виртуальной машины в существующую учетную запись хранения;
+* добавление виртуальной машины в группу доступности.
 
 <!--
 > [!IMPORTANT]
-> If you want your virtual machine toouse a virtual network so you can connect tooit directly by host name or set up cross-premises connections, make sure that you specify hello virtual network when you create hello virtual machine. A virtual machine can be configured toojoin a virtual network only when you create hello virtual machine. For details on virtual networks, see [Azure Virtual Network overview](../articles/virtual-network/virtual-networks-overview.md).
+> If you want your virtual machine to use a virtual network so you can connect to it directly by host name or set up cross-premises connections, make sure that you specify the virtual network when you create the virtual machine. A virtual machine can be configured to join a virtual network only when you create the virtual machine. For details on virtual networks, see [Azure Virtual Network overview](../articles/virtual-network/virtual-networks-overview.md).
 >
 >
  -->
 
 > [!IMPORTANT]
-> Если вы хотите toouse вашей виртуальной машины виртуальной сети, убедитесь, что указан hello виртуальной сети, при создании виртуальной машины hello.
+> Если требуется использовать виртуальную машину в виртуальной сети, то при создании виртуальной машины обязательно укажите виртуальную сеть.
 
-> * Два преимущества использования виртуальной сети подключаются напрямую toohello виртуальной машины и tooset подключений между организациями.
+> * Два преимущества использования виртуальной сети — это возможность напрямую подключаться к виртуальной машине и возможность создания распределенных подключений.
 
-> * Виртуальная машина может быть настроенный toojoin виртуальной сети только при создании виртуальной машины hello. Дополнительные сведения о виртуальных сетях см. в статье [Обзор виртуальных сетей Azure](../articles/virtual-network/virtual-networks-overview.md).
+> * Виртуальную машину можно настроить для подключения к виртуальной сети только при ее создании. Дополнительные сведения о виртуальных сетях см. в статье [Обзор виртуальных сетей Azure](../articles/virtual-network/virtual-networks-overview.md).
 >
 >
 
-## <a name="toocreate-hello-virtual-machine"></a>toocreate hello виртуальной машины
+## <a name="to-create-the-virtual-machine"></a>Создание виртуальной машины

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate контейнер облачной службы с помощью PowerShell | Документы Microsoft"
-description: "В этой статье объясняется, как toocreate облачной службы контейнера с помощью PowerShell. контейнер Hello находится рабочих и веб-ролей."
+title: "Создание контейнера облачной службы с помощью PowerShell | Документация Майкрософт"
+description: "В этой статье объясняется, как создать контейнер облачной службы с помощью PowerShell. В контейнере размещаются веб- и рабочие роли."
 services: cloud-services
 documentationcenter: .net
 author: cawaMS
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 4c47b10b5ba1f9cc39594a45cd869bf04fcaadf6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2023fa7b318f9f76ce1e1ea0a46110297be9a001
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-an-azure-powershell-command-toocreate-an-empty-cloud-service-container"></a>Использование Azure PowerShell команды toocreate контейнер пустой облачной службы
-В этой статье объясняется, как tooquickly создать контейнер облачные службы с помощью командлетов Azure PowerShell. Выполните следующие действия hello:
+# <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Использование команды Azure PowerShell для создания пустого контейнера облачной службы
+В этой статье объясняется, как быстро создать контейнер облачных служб с помощью командлетов Azure PowerShell. Выполните следующие действия.
 
-1. Установка командлетов Microsoft Azure PowerShell hello из hello [Azure PowerShell загружает](http://aka.ms/webpi-azps) страницы.
-2. Откройте командную строку PowerShell hello.
-3. Используйте hello [Add-AzureAccount](https://msdn.microsoft.com/library/dn495128.aspx) toosign в.
+1. Установите командлет Microsoft Azure PowerShell со страницы [Загрузки Azure PowerShell](http://aka.ms/webpi-azps) .
+2. Запустите командную строку PowerShell.
+3. Войдите, используя [Add-AzureAccount](https://msdn.microsoft.com/library/dn495128.aspx) .
 
    > [!NOTE]
-   > Дополнительные инструкции по установке командлет Azure PowerShell hello и подключении tooyour подписки Azure см. в разделе слишком[как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
+   > Инструкции по установке командлета Azure PowerShell и подключению к подписке Azure см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
    >
    >
-4. Используйте hello **New-AzureService** toocreate командлет контейнер пустой Azure облачной службы.
+4. Используйте командлет **New-AzureService** , чтобы создать пустой контейнер облачной службы Azure.
 
     ```
     New-AzureService [-ServiceName] <String> [-AffinityGroup] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
     New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
    ```
-5. Выполните этот командлет пример tooinvoke hello.
+5. Ниже приводится пример вызова командлета:
 
    ```
    New-AzureService -ServiceName "mytestcloudservice" -Location "Central US" -Label "mytestcloudservice"
    ```
 
-Дополнительные сведения о создании hello облачной службы Azure выполните следующую команду:
+Чтобы получить дополнительные сведения о создании облачной службы Azure, выполните следующую команду:
 
 ```
 Get-help New-AzureService
 ```
 
 ### <a name="next-steps"></a>Дальнейшие действия
-* toomanage hello развертывание облачной службы см. в toohello [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx), [Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx), и [AzureService набора](https://msdn.microsoft.com/library/azure/dn495242.aspx) команды. Можно также указать слишком[как tooconfigure облачные службы](cloud-services-how-to-configure.md) для получения дополнительных сведений.
-* toopublish облачной службы проекта tooAzure см. в toohello **PublishCloudService.ps1** образец кода из [непрерывная доставка для облачной службы в Azure](cloud-services-dotnet-continuous-delivery.md).
+* Чтобы управлять развертыванием облачной службы, используйте команды [Get-AzureService](https://msdn.microsoft.com/library/azure/dn495131.aspx), [Remove-AzureService](https://msdn.microsoft.com/library/azure/dn495120.aspx) и [Set-AzureService](https://msdn.microsoft.com/library/azure/dn495242.aspx). Кроме того, дополнительные сведения можно получить в статье [Настройка облачных служб](cloud-services-how-to-configure.md) .
+* Чтобы опубликовать проект облачной службы в Azure, используйте образец кода **PublishCloudService.ps1** из статьи [Непрерывная доставка для облачных служб в Azure](cloud-services-dotnet-continuous-delivery.md).

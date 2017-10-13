@@ -1,6 +1,6 @@
 ---
-title: "aaaManage ссылочных данных для ряда времени Azure Insights среды с помощью C# | Документы Microsoft"
-description: "В этом учебнике описано, как toomanage ссылочные данные для ряда времени Azure Insights среды с помощью C#"
+title: "Управление эталонными данными для среды Azure Time Series Insights с помощью C# | Документация Майкрософт"
+description: "Это руководство содержит сведения об управлении эталонными данными для среды Time Series Insights с помощью C#."
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -8,26 +8,26 @@ author: venkatgct
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: how-to-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 77b85aa7f9a5dc46c132afa56c82df48f41577fd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 528a33cf01b2a0a07880dad62ba6bbaf4a605153
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Управление эталонными данными для среды Azure Time Series Insights с помощью C#
 
-В этом примере C# показано, как toomanage ссылочные данные для ряда времени Azure Insights среды.
-Прежде чем выполнение образца hello убедитесь, что выполняются следующие шаги hello.
+В этом примере C# демонстрируется, как управлять эталонными данными для среды Time Series Insights.
+Перед выполнением примера убедитесь, что были выполнены следующие действия.
 1. Набор эталонных данных создан в соответствии с инструкциями в [этой статье](time-series-insights-add-reference-data-set.md).
-2. токен доступа Hello, используемый при запуске приложения hello можно получить с помощью hello Azure Active Directory API. Этот токен должен передаваться в hello `Authorization` Заголовок каждого запроса API-Интерфейс запросов. Настройке неинтерактивных приложений см. в разделе hello [проверки подлинности и авторизации](time-series-insights-authentication-and-authorization.md) статьи.
-3. Все hello константы, определенные в начале hello образец hello заданы правильно.
+2. Маркер доступа, используемый при выполнении приложения, получен с помощью API Azure Active Directory. Этот маркер должен передаваться в заголовке `Authorization` каждого запроса API запроса. Сведения о настройке приложений с неинтерактивной проверкой подлинности см. в статье [Аутентификация и авторизация](time-series-insights-authentication-and-authorization.md).
+3. Все константы, определенные в начале примера, указаны правильно.
 
 ## <a name="c-sample"></a>Пример на языке C#
 
@@ -46,24 +46,24 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 {
     public static class Program
     {
-        // SET hello environment fqdn.
+        // SET the environment fqdn.
         private static string EnvironmentFqdn = "#DUMMY#.env.timeseries.azure.com";
 
-        // SET hello environment reference data set name used when creating it.
+        // SET the environment reference data set name used when creating it.
         private static string EnvironmentReferenceDataSetName = "#DUMMY#";
 
         // For automated execution under application identity,
         // use application created in Active Directory.
-        // toocreate hello application in AAD, follow hello steps provided here:
+        // To create the application in AAD, follow the steps provided here:
         // https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization
 
-        // SET hello application ID of application registered in your Azure Active Directory
+        // SET the application ID of application registered in your Azure Active Directory
         private static string ApplicationClientId = "#DUMMY#";
 
-        // SET hello application key of hello application registered in your Azure Active Directory
+        // SET the application key of the application registered in your Azure Active Directory
         private static string ApplicationClientSecret = "#DUMMY#";
 
-        // SET hello Azure Active Directory tenant.
+        // SET the Azure Active Directory tenant.
         private static string Tenant = "#DUMMY#.onmicrosoft.com";
 
         private static async Task DemoReferenceDataAsync()
@@ -155,7 +155,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
             if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
             {
                 throw new Exception(
-                    $"Use hello link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} tooupdate hello values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
             }
 
             var authenticationContext = new AuthenticationContext(
@@ -168,7 +168,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
                     clientId: ApplicationClientId,
                     clientSecret: ApplicationClientSecret));
 
-            // Show interactive logon dialog tooacquire token on behalf of hello user.
+            // Show interactive logon dialog to acquire token on behalf of the user.
             // Suitable for native apps, and not on server-side of a web application.
             //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
             //    resource: "https://api.timeseries.azure.com/",
@@ -234,4 +234,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Hello полный Справочник по API, в разделе [Справочник по API-Интерфейс данных](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) документа.
+Полный справочник по API см. [здесь](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api).

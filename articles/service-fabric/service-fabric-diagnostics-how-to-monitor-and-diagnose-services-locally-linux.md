@@ -1,6 +1,6 @@
 ---
-title: "aaaDebug микрослужбами Azure в Linux | Документы Microsoft"
-description: "Узнайте, как toomonitor и диагностики вашей службы, написанные с помощью Microsoft Azure Service Fabric на локальном компьютере разработчика."
+title: "Отладка микрослужб Azure в Linux | Документация Майкрософт"
+description: "Узнайте, как осуществлять мониторинг и диагностику состояния служб с использованием платформы Microsoft Azure Service Fabric на локальном компьютере для разработки."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: bee47bbabcf6b84ff2da14079e026529e36a198b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Мониторинг и диагностика состояния служб в локальной среде разработки
 
@@ -29,16 +29,16 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Мониторинг, обнаружение, диагностика и устранение неполадок позволяют toocontinue служб с минимальными нарушениями toohello пользователями. Мониторинг и диагностика критически важны в фактически развернутой рабочей среде. Внедрение аналогичной модели во время разработки служб гарантирует, что диагностики конвейера hello работает при перемещении tooa рабочей среде. Service Fabric упрощает диагностику tooimplement разработчики службы, можно легко работайте с одним компьютером локальная разработка настройки и настройки кластера реальных рабочих.
+Благодаря возможностям мониторинга состояния, а также выявления, диагностики и устранения неполадок службы могут работать практически без перерывов. Мониторинг и диагностика критически важны в фактически развернутой рабочей среде. Внедрение аналогичной модели при разработке служб гарантирует работу конвейера диагностики при переходе в рабочую среду. Платформа Service Fabric позволяет использовать средства диагностики, которые одинаково хорошо работают как в среде разработки на одном локальном компьютере, так и в условиях реального рабочего кластера.
 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Отладка приложений Java в Service Fabric
 
-Для приложений Java доступно [несколько платформ ведения журналов](http://en.wikipedia.org/wiki/Java_logging_framework) . Поскольку `java.util.logging` является параметром по умолчанию hello с hello JRE также используется для hello [примеров кода в github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Hello следующее обсуждение объясняется, как tooconfigure hello `java.util.logging` framework.
+Для приложений Java доступно [несколько платформ ведения журналов](http://en.wikipedia.org/wiki/Java_logging_framework) . Так как `java.util.logging` является параметром по умолчанию в среде JRE, он также используется для [примеров кода в GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Далее в этой статье описывается настройка платформы `java.util.logging` .
 
-С помощью java.util.logging, вы можете перенаправлять приложения журналы toomemory, выходных потоков, файлов консоли или сокетов. Для каждого из этих параметров существуют обработчики по умолчанию уже содержится в hello framework. Можно создать `app.properties` обработчика файлов tooconfigure hello файла для вашего приложения tooredirect все журналы tooa локального файла.
+С помощью java.util.logging журналы приложения можно перенаправлять в память, потоки вывода, файлы консоли или сокеты. Для каждого из этих вариантов существуют обработчики по умолчанию, входящие в состав платформы. Чтобы настроить обработчик файлов для приложения, который будет перенаправлять все журналы в локальный файл, можно создать файл `app.properties`.
 
-Следующий фрагмент кода Hello содержит пример конфигурации:
+Пример конфигурации приведен в следующем фрагменте кода:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -50,34 +50,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
 ```
 
-hello указывает tooby папку Hello `app.properties` файл должен существовать. После hello `app.properties` создается файл, вы должны tooalso изменить сценарий точки входа, `entrypoint.sh` в hello `<applicationfolder>/<servicePkg>/Code/` свойство hello папки tooset `java.util.logging.config.file` слишком`app.propertes` файла. запись Hello должно иметь вид hello, следующий фрагмент кода:
+Файл `app.properties` должен указывать на существующую папку. Затем, после создания файла `app.properties`, необходимо также изменить сценарий точки входа `entrypoint.sh` в папке `<applicationfolder>/<servicePkg>/Code/`, указав в качестве значения свойства `java.util.logging.config.file` файл `app.propertes`. Запись должна выглядеть примерно так:
 
 ```sh
-java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path tooapp.properties> -jar <service name>.jar
+java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-В результате применения этой конфигурации журналы будут циклически собираться в папку `/tmp/servicefabric/logs/`. файл журнала Hello в этом случае называется mysfapp%u.%g.log где:
-* **%u** — уникальный номер tooresolve конфликтов между параллельных процессов Java.
-* **%g** — toodistinguish номер поколения hello между поворот журналы.
+В результате применения этой конфигурации журналы будут циклически собираться в папку `/tmp/servicefabric/logs/`. В этом случае файл журнала называется mysfapp%u.%g.log, где:
+* **%u** — это уникальный номер для разрешения конфликтов между параллельными процессами Java.
+* **%g** — это номер версии для отличия чередующихся журналов.
 
-По умолчанию, если обработчик не настроена явным образом, регистрируется обработчик консоли hello. Просмотреть журналы hello в системном журнале в разделе /var/log/syslog.
+Если обработчик не настроен явно, по умолчанию регистрируется обработчик консоли. Просмотреть журналы в системном журнале можно в папке /var/log/syslog.
 
-Дополнительные сведения см. в разделе hello [примеров кода в github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Дополнительные сведения см. на странице с [примерами кода на GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Отладка приложений C# в Service Fabric
 
 
-Для трассировки приложений CoreCLR на платформе Linux доступно несколько платформ. Дополнительные сведения см. в разделе о [ведении журналов](http:/github.com/aspnet/logging) на сайте GitHub.  Так как разработчики знакомы tooC # EventSource "в этой статье используется EventSource для трассировки CoreCLR выборок в Linux.
+Для трассировки приложений CoreCLR на платформе Linux доступно несколько платформ. Дополнительные сведения см. в разделе о [ведении журналов](http:/github.com/aspnet/logging) на сайте GitHub.  Так как EventSource знаком разработчикам на языке C#, в этой статье он используется для трассировки в образцах CoreCLR на Linux.
 
-Hello первым делом tooinclude System.Diagnostics.Tracing, чтобы можно было написать вашей toomemory журналы, выходные потоки или файлы консоли.  Для ведения журнала с помощью EventSource, добавьте следующий проект tooyour project.json hello:
+Сначала необходимо добавить System.Diagnostics.Tracing, чтобы иметь возможность записывать журналы в память, выходные потоки или файлы консоли.  Для ведения журналов с помощью EventSource добавьте в project.json следующий проект:
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Можно использовать настраиваемые toolisten EventListener для события службы hello и затем соответствующим образом перенаправит их tootrace файлы. Hello следующий фрагмент кода показывает пример реализации ведения журналов с помощью EventSource и пользовательские EventListener:
+Можно использовать пользовательский EventListener, чтобы прослушивать события службы и соответствующим образом перенаправлять их в файлы трассировки. В следующем фрагменте кода показан пример реализации ведения журналов с помощью EventSource и пользовательского EventListener.
 
 
 ```csharp
@@ -96,7 +96,7 @@ Hello первым делом tooinclude System.Diagnostics.Tracing, чтобы 
             }
         }
 
-        // TBD: Need tooadd method for sample event.
+        // TBD: Need to add method for sample event.
 
 }
 
@@ -130,16 +130,16 @@ Hello первым делом tooinclude System.Diagnostics.Tracing, чтобы 
 ```
 
 
-Hello предыдущем фрагменте выводит файл tooa журналы hello в `/tmp/MyServiceLog.txt`. Это имя файла должно toobe соответствующим образом обновлены. В случае, если требуется, чтобы журналы tooconsole tooredirect hello, используйте следующий фрагмент кода в классе настраиваемого EventListener hello:
+Предыдущий фрагмент кода выводит журналы в файл в `/tmp/MyServiceLog.txt`. Это имя файла должно быть обновлено соответствующим образом. Если вы хотите перенаправить журналы в консоль, используйте следующий фрагмент кода в классе настраиваемого EventListener:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Здравствуйте, образцов [примеры C#](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) использовать EventSource и пользовательский файл tooa события toolog EventListener.
+Образцы на языке C# [в репозитории GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) регистрируют события в файл с помощью EventSource и пользовательского EventListener.
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Здравствуйте добавлены же код трассировки приложения tooyour также работает с hello диагностики приложения на кластере Azure. Извлечение этих статей, которые рассматриваются различные варианты hello hello средств и описаны как tooset их вверх.
-* [Каким образом toocollect ведет журнал диагностики Azure](service-fabric-diagnostics-how-to-setup-lad.md)
+Код трассировки, добавленный в приложение, также можно использовать для диагностики приложения в кластере Azure. Ознакомьтесь с этими статьями, в которых рассматриваются различные варианты инструментов и описывается, как их настроить.
+* [Сбор журналов с помощью системы диагностики Azure](service-fabric-diagnostics-how-to-setup-lad.md)

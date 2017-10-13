@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate Azure с выходом в Интернет загрузить балансировки - PowerShell | Документы Microsoft"
-description: "Узнайте, как в toocreate из Интернета в диспетчере ресурсов подсистемы балансировки нагрузки с помощью PowerShell"
+title: "Создание доступной в Интернете внутренней подсистемы балансировки нагрузки Azure с помощью PowerShell | Документация Майкрософт"
+description: "Узнайте, как создать балансировщик нагрузки для Интернета в Resource Manager с помощью PowerShell."
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 8257f548-7019-417f-b15f-d004a1eec826
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: e4e0e5271bc83c23fc62c0910e784c57d2b30065
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0347e90fa97a083865e8b783c96034d30a859031
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started"></a>Создание балансировщика нагрузки для Интернета в Resource Manager с помощью PowerShell
 
@@ -28,33 +28,35 @@ ms.lasthandoff: 10/06/2017
 > * [Интерфейс командной строки Azure](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Шаблон](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [узнать, как из Интернета toocreate подсистемы балансировки нагрузки с помощью hello классической модели развертывания](load-balancer-get-started-internet-classic-cli.md).
+В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [узнать, как создать балансировщик нагрузки для Интернета с помощью классической модели развертывания](load-balancer-get-started-internet-classic-cli.md).
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploying-hello-solution-by-using-azure-powershell"></a>Развертывание решения hello с помощью Azure PowerShell
+## <a name="deploying-the-solution-by-using-azure-powershell"></a>Развертывание решения с помощью Azure PowerShell
 
-Hello следующих процедур объясняется, как из Интернета toocreate подсистемы балансировки нагрузки с помощью диспетчера ресурсов Azure с помощью PowerShell. С помощью диспетчера ресурсов Azure каждый ресурс создается и настроить отдельно и затем поместить toocreate подсистемы балансировки нагрузки.
+Ниже описана процедура создания балансировщика нагрузки для Интернета с помощью Azure Resource Manager и PowerShell. Azure Resource Manager позволяет по отдельности создавать и настраивать ресурсы, после чего на их основе создается балансировщик нагрузки.
 
-Необходимо создать и настроить hello следующие объекты toodeploy подсистемы балансировки нагрузки:
+Чтобы развернуть балансировщик нагрузки, необходимо создать и настроить следующие объекты.
 
 * Конфигурация внешних IP-адресов. Содержит общедоступные IP-адреса для входящего сетевого трафика.
-* Пул адресов серверной части: содержит сетевых интерфейсов (NIC) для hello виртуальные машины tooreceive сетевой трафик от подсистемы балансировки нагрузки hello.
-* Правила балансировки нагрузки: содержит правила, которые сопоставляют открытый порт на порт tooa подсистемы балансировки нагрузки hello в пул адресов серверной части hello.
-* Правила NAT для входящих подключений: содержит правила, которые сопоставляют открытый порт на порт tooa подсистемы балансировки нагрузки hello для конкретной виртуальной машины в пул адресов серверной части hello.
-* Зонды: содержит доступность toocheck проверки, используемые работоспособности экземпляров виртуальной машины в пул адресов серверной части hello.
+* Пул внутренних адресов. Содержит сетевые интерфейсы (сетевые карты) для получения виртуальными машинами сетевого трафика от балансировщика нагрузки.
+* Правила балансировки нагрузки. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом в пуле внутренних адресов.
+* Правила преобразования сетевых адресов (NAT) для входящего трафика. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом на конкретной виртуальной машине в пуле внутренних адресов.
+* Пробы. Содержат пробы работоспособности, с помощью которых можно проверить доступность экземпляров виртуальных машин в пуле внутренних адресов.
 
 Дополнительные сведения см. в статье [Поддержка диспетчера ресурсов Azure для подсистемы балансировки нагрузки](load-balancer-arm.md).
 
-## <a name="set-up-powershell-toouse-resource-manager"></a>Настройка toouse PowerShell диспетчера ресурсов
+## <a name="set-up-powershell-to-use-resource-manager"></a>Настройка PowerShell для использования Resource Manager
 
-Убедитесь, что у вас есть hello последнюю версию рабочего модуля hello Azure Resource Manager для PowerShell:
+Убедитесь, что вы используете последнюю рабочую версию модуля Azure Resource Manager для PowerShell.
 
-1. Войдите в tooAzure.
+1. Войдите в Azure.
 
     ```powershell
     Login-AzureRmAccount
@@ -62,13 +64,13 @@ Hello следующих процедур объясняется, как из И
 
     При появлении запроса введите свои учетные данные.
 
-2. Проверьте hello подписки для учетной записи hello.
+2. Просмотрите подписки учетной записи.
 
     ```powershell
     Get-AzureRmSubscription
     ```
 
-3. Выберите, какие toouse вашей подписки Azure.
+3. Выберите подписку Azure.
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
@@ -80,7 +82,7 @@ Hello следующих процедур объясняется, как из И
     New-AzureRmResourceGroup -Name NRP-RG -location "West US"
     ```
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-hello-front-end-ip-pool"></a>Создайте виртуальную сеть и общедоступный IP-адрес пула IP-интерфейса hello
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Создание виртуальной сети и общедоступного IP-адреса для пула IP-адресов клиентской части
 
 1. Создайте подсеть и виртуальную сеть.
 
@@ -89,19 +91,19 @@ Hello следующих процедур объясняется, как из И
     New-AzureRmvirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Создание Azure открытый ресурс IP-адреса, с именем **общедоступный IP-адрес**, toobe, используемый пулом IP-интерфейса с именем DNS hello **loadbalancernrp.westus.cloudapp.azure.com**. hello, следующая команда использует hello Тип статического выделения.
+2. Создайте ресурс для общедоступного IP-адреса Azure с именем **PublicIP**, который будет использоваться пулом внешних IP-адресов с DNS-именем **loadbalancernrp.westus.cloudapp.azure.com**. В следующей команде используется статическое выделение.
 
     ```powershell
     $publicIP = New-AzureRmPublicIpAddress -Name PublicIp -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -DomainNameLabel loadbalancernrp
     ```
 
    > [!IMPORTANT]
-   > Подсистема балансировки нагрузки Hello использует метку домена hello hello общедоступный IP-адрес как префикс для его полного доменного ИМЕНИ. Это отличается от hello классической модели развертывания, который использует hello облачной службы как hello балансировки нагрузки полное доменное имя.
-   > В этом примере hello полное доменное имя — **loadbalancernrp.westus.cloudapp.azure.com**.
+   > Балансировщик нагрузки использует метку домена общедоступного IP-адреса в качестве префикса к полному доменному имени (FQDN). В этом заключается отличие от классической модели развертывания, где в качестве полного доменного имени балансировщика нагрузки используется облачная служба.
+   > В этом примере используется полное доменное имя **loadbalancernrp.westus.cloudapp.azure.com**.
 
 ## <a name="create-a-front-end-ip-pool-and-a-back-end-address-pool"></a>Создание пула внешних IP-адресов и пула внутренних адресов
 
-1. Создание интерфейса пула IP-с именем **внешнего интерфейса балансировки Нагрузки** , использующий hello **общедоступный IP-адрес** ресурсов.
+1. Создайте пул внешних IP-адресов с именем **LB-Frontend**, использующий ресурс **PublicIp**.
 
     ```powershell
     $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PublicIpAddress $publicIP
@@ -115,17 +117,17 @@ Hello следующих процедур объясняется, как из И
 
 ## <a name="create-nat-rules-a-load-balancer-rule-a-probe-and-a-load-balancer"></a>Создание правил NAT, правила балансировщика нагрузки, пробы и балансировщика нагрузки
 
-В этом примере создается hello следующих элементов:
+В этом примере создаются следующие элементы:
 
-* Tootranslate правило NAT, все входящего трафика на tooport 3441 порт 3389
-* Tootranslate правило NAT, все входящего трафика на tooport 3442 порт 3389
-* Состояние проверки правила toocheck hello работоспособности на страницу с именем **HealthProbe.aspx**
-* Toobalance правило балансировки нагрузки весь входящий трафик на порт 80 tooport 80 на hello адресов в пуле hello серверной части
+* правило NAT, которое направляет весь входящий трафик с порта 3441 на порт 3389;
+* правило NAT, которое направляет весь входящий трафик с порта 3442 на порт 3389;
+* правило пробы, согласно которому будет проверяться состояние работоспособности на странице **HealthProbe.aspx**
+* правило балансировщика нагрузки, которое балансирует весь входящий трафик на порту 80, перенаправляя трафик на порт 80 других адресов во внутреннем пуле;
 * балансировщик нагрузки, который использует все эти объекты.
 
 Выполните следующие действия.
 
-1. Создание правил NAT hello.
+1. Создайте правила NAT.
 
     ```powershell
     $inboundNATRule1= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP1 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
@@ -133,7 +135,7 @@ Hello следующих процедур объясняется, как из И
     $inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
     ```
 
-2. Создайте пробу работоспособности. Существует два способа tooconfigure зонда.
+2. Создайте пробу работоспособности. Существует два способа настройки пробы:
 
     проба HTTP
 
@@ -153,7 +155,7 @@ Hello следующих процедур объясняется, как из И
     $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
     ```
 
-4. Создайте hello балансировки нагрузки с помощью hello ранее созданных объектов.
+4. Создайте балансировщик нагрузки с помощью ранее созданных объектов.
 
     ```powershell
     $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name NRP-LB -Location 'West US' -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
@@ -161,28 +163,28 @@ Hello следующих процедур объясняется, как из И
 
 ## <a name="create-nics"></a>Создание сетевых адаптеров
 
-Создайте сетевых интерфейсов (или изменить существующие) и связать их tooNAT правила, правила подсистемы балансировки нагрузки и зондов:
+Создайте сетевые интерфейсы (или измените существующие) и свяжите их с правилами NAT, правилами балансировщика нагрузки и пробами.
 
-1. Получение hello виртуальной сети и подсети виртуальной сети, где hello сетевые адаптеры должны toobe создан.
+1. Получите виртуальную сеть и подсеть виртуальной сети, в которых должны быть созданы сетевые карты.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
-2. Создайте сетевую КАРТУ с именем **быть балансировки нагрузки сетевого адаптера 1**и связать его с первого правила NAT hello и пул адресов серверной части первый (и единственный) hello.
+2. Создайте сетевую карту **lb-nic1-be**и сопоставьте ее с первым правилом NAT, а также с первым (и единственным) пулом внутренних адресов.
 
     ```powershell
     $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
     ```
 
-3. Создайте сетевую КАРТУ с именем **балансировки нагрузки nic2 быть**и связать его с hello второе правило NAT и пул адресов серверной части первый (и единственный) hello.
+3. Создайте сетевую карту **lb-nic2-be**и сопоставьте ее со вторым правилом NAT, а также с первым (и единственным) пулом внутренних адресов.
 
     ```powershell
     $backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
     ```
 
-4. Проверьте сетевые адаптеры hello.
+4. Проверьте сетевые адаптеры.
 
         $backendnic1
 
@@ -235,63 +237,63 @@ Hello следующих процедур объясняется, как из И
         NetworkSecurityGroup : null
         Primary              :
 
-5. Используйте hello `Add-AzureRmVMNetworkInterface` командлет tooassign hello сетевых адаптеров toodifferent виртуальных машин.
+5. С помощью командлета `Add-AzureRmVMNetworkInterface` назначьте сетевые карты различным виртуальным машинам.
 
 ## <a name="create-a-virtual-machine"></a>Создание виртуальной машины
 
 Рекомендации по созданию виртуальной машины и назначении сетевой карты см. в статье [Create an Azure VM using PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) (Создание виртуальной машины в Azure с помощью PowerShell).
 
-## <a name="add-hello-network-interface-toohello-load-balancer"></a>Добавление подсистемы балансировки нагрузки toohello hello сетевого интерфейса
+## <a name="add-the-network-interface-to-the-load-balancer"></a>Добавление сетевого интерфейса в балансировщик нагрузки
 
-1. Получить подсистемы балансировки нагрузки hello из Azure.
+1. Извлеките балансировщик нагрузки из Azure.
 
-    Загрузка ресурсов подсистемы балансировки нагрузки hello в переменной (Если вы еще не сделали, еще). переменная приветствия называется **$lb**. Используйте hello такими же именами из ресурса подсистемы балансировки нагрузки hello, созданного ранее.
+    Загрузите ресурс балансировщика нагрузки в переменную (если вы это еще не сделали). Имя переменной — **$lb**. Используйте те же имена из созданного ранее балансировщика нагрузки.
 
     ```powershell
     $lb= get-azurermloadbalancer -name NRP-LB -resourcegroupname NRP-RG
     ```
 
-2. Загрузка hello внутренней tooa переменной конфигурации.
+2. Загрузите в переменную конфигурацию серверной части.
 
     ```powershell
     $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
     ```
 
-3. Загрузка сетевого интерфейса hello уже созданы в переменной. Имя переменной Hello **$nic**. Hello имя сетевого интерфейса является hello один из hello предыдущего примера.
+3. Загрузите в переменную созданный ранее сетевой интерфейс. Имя переменной — **$nic**. Имя сетевого интерфейса совпадает с именем в приведенном выше примере.
 
     ```powershell
     $nic =get-azurermnetworkinterface -name lb-nic1-be -resourcegroupname NRP-RG
     ```
 
-4. Изменить конфигурацию серверной части hello в сетевом интерфейсе hello.
+4. Измените конфигурацию серверной части в сетевом интерфейсе.
 
     ```powershell
     $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
     ```
 
-5. Сохраните объект сетевого интерфейса hello.
+5. Сохраните объект сетевого интерфейса.
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
 
-    После добавления пула внутренней подсистемы балансировки нагрузки toohello сетевого интерфейса, она запускает получения сетевого трафика на основе правил балансировки нагрузки hello для этого ресурса подсистемы балансировки нагрузки.
+    После того как сетевой интерфейс будет добавлен в пул серверной части балансировщика нагрузки, он начнет получать сетевой трафик согласно правилам балансировки нагрузки для соответствующего ресурса балансировщика нагрузки.
 
 ## <a name="update-an-existing-load-balancer"></a>Обновление существующего балансировщика нагрузки
 
-1. С помощью hello загрузить балансировки из Здравствуйте предыдущий пример, присвоить значение переменной toohello объект подсистемы балансировки нагрузки **$slb** с помощью `Get-AzureLoadBalancer`.
+1. Используя балансировщик нагрузки из предыдущего примера, присвойте переменной **$slb** объект балансировщика нагрузки, используя `Get-AzureLoadBalancer`.
 
     ```powershell
     $slb = get-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
     ```
 
-2. В следующем примере hello добавьте во входящем правиле NAT — с помощью порт 81 в пуле переднего плана hello и порт 8181 для пула внутренней hello--tooan существующей подсистемы балансировки нагрузки.
+2. В следующем примере вы, используя порт 81 во внешнем пуле и порт 8181 во внутреннем пуле, добавите правило NAT для входящего трафика, которое будет применяться к существующему балансировщику нагрузки.
 
     ```powershell
     $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol TCP
     ```
 
-3. Сохранение hello новую конфигурацию с помощью `Set-AzureLoadBalancer`.
+3. Сохраните новую конфигурацию с помощью `Set-AzureLoadBalancer`.
 
     ```powershell
     $slb | Set-AzureRmLoadBalancer
@@ -299,14 +301,14 @@ Hello следующих процедур объясняется, как из И
 
 ## <a name="remove-a-load-balancer"></a>Удалите балансировщика нагрузки.
 
-Команда hello `Remove-AzureLoadBalancer` toodelete подсистемы балансировки нагрузки, начатую с именем **балансировки Нагрузки NRP** в группу ресурсов с именем **NRP RG**.
+Воспользуйтесь командой `Remove-AzureLoadBalancer`, чтобы удалить ранее созданный балансировщик нагрузки с именем **NRP-LB** в группе ресурсов **NRP-RG**.
 
 ```powershell
 Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]
-> Можно использовать необязательный ключ hello **-Force** tooavoid hello строки для удаления.
+> Чтобы пропустить подтверждение удаления, можно использовать необязательный переключатель **-Force** .
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

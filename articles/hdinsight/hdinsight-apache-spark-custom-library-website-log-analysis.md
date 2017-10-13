@@ -1,6 +1,6 @@
 ---
-title: "журналы веб-сайт aaaAnalyze с библиотеками Python в Spark - Azure | Документы Microsoft"
-description: "Записной книжки показано, как tooanalyze данных журнала с помощью пользовательская библиотека с Spark на Azure HDInsight."
+title: "Анализ журналов веб-сайтов с помощью библиотек Python в Spark — Azure | Документы Майкрософт"
+description: "Эта записная книжка показывает, как анализировать данные журналов с помощью пользовательской библиотеки с кластером Spark в Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,41 +14,41 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 29e4308b2a359aee6d69494a98307d4da07f7909
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 96d897d4e4eb50abae2b145abd4f794523da6a2b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Анализ журналов веб-сайтов с помощью пользовательской библиотеки Python и кластера Spark в HDInsight
 
-Записной книжки показано, как tooanalyze данных журнала с помощью пользовательская библиотека с Spark в HDInsight. Мы используем пользовательская библиотека Hello является именем библиотеки Python **iislogparser.py**.
+Данная записная книжка показывает, как анализировать данные журналов с помощью настраиваемой библиотеки с кластером Spark в HDInsight. В качестве пользовательской библиотеки используется библиотека Python с именем **iislogparser.py**.
 
 > [!TIP]
-> Кроме того, это руководство доступно в виде записной книжки Jupyter в кластере Spark (на платформе Linux), созданном в HDInsight. взаимодействие с ноутбука Hello позволяет выполнять фрагменты кода Python hello из записной книжки hello сам. Учебник hello tooperform в записной книжке создать кластер Spark, запустить записной книжке Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), и запустите записной книжки hello **анализировать журналы с помощью Spark, с помощью пользовательских library.ipynb** под hello  **PySpark** папки.
+> Кроме того, это руководство доступно в виде записной книжки Jupyter в кластере Spark (на платформе Linux), созданном в HDInsight. Фрагменты кода Python можно выполнять непосредственно в записной книжке. Чтобы выполнить действия в руководстве из записной книжки, создайте кластер Spark, запустите записную книжку Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), а затем записную книжку **Анализ журналов в Spark с помощью настраиваемой библиотеки IPYNB** в папке **PySpark**.
 >
 >
 
 **Предварительные требования:**
 
-Необходимо иметь следующие hello.
+Необходимо следующее:
 
 * Подписка Azure. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Кластер Apache Spark в HDInsight. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## <a name="save-raw-data-as-an-rdd"></a>Сохранение необработанных данных в формате RDD
-В этом разделе мы используем hello [Jupyter](https://jupyter.org) ноутбук, связанные с кластера с Apache Spark в HDInsight toorun задания, которые обрабатывают необработанные образцы данных и сохраните его как таблицу Hive. Образец Hello данных является CSV-файла (hvac.csv) доступен во всех кластерах по умолчанию.
+В этом разделе мы используем записную книжку [Jupyter](https://jupyter.org) , связанную с кластером Apache Spark в HDInsight, для выполнения заданий, которые обрабатывают необработанные демонстрационные данные и сохраняют их как таблицу Hive. В качестве демонстрационных данных выступает CSV-файл (hvac.csv), доступный на всех кластерах по умолчанию.
 
-После сохранения данных как таблицу Hive в следующем разделе hello мы будут подключаться с помощью средств бизнес-Аналитики, таких как Power BI и Tableau таблицу Hive toohello.
+После сохранения данных в виде таблицы Hive можно переходить к следующему разделу и подключится к таблице Hive с помощью средств бизнес-аналитики, таких как Power BI и Tableau.
 
-1. Из hello [портал Azure](https://portal.azure.com/), hello начальной панели, щелкните плитку hello свой кластер Spark (Если вы закрепили toohello начальной панели). Вы также можете переходить tooyour кластера в списке **просмотреть все** > **кластеров HDInsight**.   
-2. Из колонки кластера Spark hello, нажмите кнопку **мониторинга кластера**, а затем нажмите кнопку **книжке Jupyter**. При появлении запроса введите учетные данные администратора hello hello кластера.
+1. На начальной панели [портала Azure](https://portal.azure.com/)щелкните плитку кластера Spark (если она закреплена на начальной панели). Кроме того, вы можете перейти к кластеру, последовательно щелкнув **Просмотреть все** > **Кластеры HDInsight**.   
+2. В колонке кластера Spark щелкните **Панель мониторинга кластера**, а затем выберите **Записная книжка Jupyter**. При появлении запроса введите учетные данные администратора для кластера.
 
    > [!NOTE]
-   > Также может достигать hello книжке Jupyter для кластера, открыв hello следующий URL-адрес в браузере. Замените **CLUSTERNAME** с hello имя кластера:
+   > Также можно открыть Jupyter Notebook для своего кластера, открыв следующий URL-адрес в браузере. Замените **CLUSTERNAME** именем кластера:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
@@ -56,25 +56,25 @@ ms.lasthandoff: 10/06/2017
 3. Создайте новую записную книжку. Щелкните **Создать**, а затем выберите **PySpark**.
 
     ![Создание записной книжки Jupyter](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Создание записной книжки Jupyter")
-4. Создается и открывается с именем hello Untitled.pynb новый блокнот. Щелкните имя записной книжки hello вверху hello и введите понятное имя.
+4. Будет создана и открыта записная книжка с именем Untitled.pynb. Щелкните имя записной книжки в верхней части страницы сверху и введите понятное имя.
 
-    ![Введите имя для ноутбука hello](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "укажите имя для ноутбука hello")
-5. Поскольку вы создали записной книжке с использованием ядра PySpark hello, вы не обязательно toocreate контекстов явным образом. контексты Spark и Hive Hello автоматически создается автоматически при выполнении первой ячейке кода hello. Можно запустить, импортировав hello типы, необходимые для этого сценария. Вставьте следующий фрагмент кода в пустой ячейке hello и нажмите клавишу **SHIFT + ВВОД**.
+    ![Указание имени для записной книжки](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Указание имени для записной книжки")
+5. Так как записная книжка была создана с помощью ядра PySpark, задавать контексты явно необязательно. Контексты Spark и Hive будут созданы автоматически при выполнении первой ячейки кода. Можно начать с импорта различных типов, необходимых для этого сценария. Вставьте следующий фрагмент кода в пустую ячейку и нажмите клавиши **SHIFT + ВВОД**.
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
 
-1. Создайте RDD, используя данные журнала образца hello уже доступны в кластере hello. Доступ к hello в учетной записи хранения по умолчанию hello связанные с кластером hello в **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
+1. Создайте RDD, используя пример данных журнала, уже доступных в кластере. Доступ к данным в связанной с кластером учетной записи хранения по умолчанию можно получить с помощью файла **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**.
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
 
-1. Получить образец tooverify набор журнала, который hello в предыдущем шаге, завершилась успешно.
+1. Извлеките пример набора журналов и убедитесь в том, что описанный выше шаг успешно выполнен.
 
         logs.take(5)
 
-    Вы должны увидеть следующие выходные данные как toohello.
+    Должен отобразиться результат, аналогичный приведенному ниже:
 
         # -----------------
         # THIS IS AN OUTPUT
@@ -87,24 +87,24 @@ ms.lasthandoff: 10/06/2017
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>Анализ данных журнала с помощью пользовательской библиотеки Python
-1. В приведенных выше входных данных hello hello первые несколько строк учитываются сведения заголовков hello и hello схема, описанная в заголовок, соответствующий каждой оставшиеся строки. Анализ таких журналов может быть сложным, поэтому мы используем настраиваемую библиотеку Python (**iislogparser.py**), которая делает эту задачу намного проще. По умолчанию эта библиотека входит в состав кластера Spark в HDInsight и расположена в **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
+1. В приведенном выше примере выходных данных первые несколько строк содержат сведения о заголовке, а все последующие строки соответствуют схеме, описанной в этом заголовке. Анализ таких журналов может быть сложным, поэтому мы используем настраиваемую библиотеку Python (**iislogparser.py**), которая делает эту задачу намного проще. По умолчанию эта библиотека входит в состав кластера Spark в HDInsight и расположена в **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**.
 
-    Однако эта библиотека не является hello `PYTHONPATH` , нельзя использовать с помощью инструкции импорта, как `import iislogparser`. toouse этой библиотеки, нам необходимо распространить tooall hello рабочих узлов. Запустите следующий фрагмент кода hello.
+    Однако в `PYTHONPATH` эта библиотека не входит, поэтому использовать ее с помощью такого оператора импорта, как `import iislogparser`, нельзя. Чтобы использовать эту библиотеку, необходимо распространить ее на все рабочие узлы. Выполните следующий фрагмент кода.
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
-1. `iislogparser`предоставляет функцию `parse_log_line` , возвращающий `None` Если строку журнала представляет собой строку и возвращает экземпляр hello `LogLine` класса при обнаружении строки журнала. Используйте hello `LogLine` tooextract класс только hello строк журнала из hello RDD:
+1. `iislogparser` предоставляет функцию `parse_log_line`, которая возвращает `None`, если строка журнала является строкой заголовка, или экземпляр класса `LogLine` при обнаружении строки журнала. Класс `LogLine` позволяет извлечь только строки журнала из RDD:
 
         def parse_line(l):
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. Получить несколько tooverify извлеченных строк журнала, hello шаге, завершилась успешно.
+2. Выведите на экран несколько извлеченных строк журнала и убедитесь в том, что это действие выполнено успешно.
 
        logLines.take(2)
 
-   Hello выходные данные должны быть примерно toohello следующее:
+   Должен быть получен результат, аналогичный приведенному ниже:
 
        # -----------------
        # THIS IS AN OUTPUT
@@ -112,7 +112,7 @@ ms.lasthandoff: 10/06/2017
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. Hello `LogLine` класс, в свою очередь, имеет некоторые методы, например `is_error()`, который показывает, имеет ли запись в журнал код ошибки. Использовать это число hello toocompute ошибок в строках журнала извлечены hello и войдите все hello ошибки tooa другой файл.
+3. В свою очередь, класс `LogLine` включает несколько полезных методов, например метод `is_error()`, который возвращается, если запись журнала содержит код ошибки. С его помощью вы можете вычислить количество ошибок в извлеченных строках журналов, а затем записать все ошибки в отдельный файл.
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -120,15 +120,15 @@ ms.lasthandoff: 10/06/2017
        print 'There are', numErrors, 'errors and', numLines, 'log entries'
        errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
-   Вы должны увидеть результаты hello следующим образом:
+   Вы должны увидеть подобные выходные данные:
 
        # -----------------
        # THIS IS AN OUTPUT
        # -----------------
 
        There are 30 errors and 646 log entries
-4. Можно также использовать **Matplotlib** tooconstruct визуализации данных hello. Например следует tooisolate причину hello запросы выполняются в течение длительного времени может потребоваться toofind hello файлы hello tooserve большая часть времени в среднем.
-   в приведенном ниже фрагменте Hello извлекает hello top 25 ресурсы, предпринятые большинство tooserve время запроса.
+4. Кроме того, для визуализации данных вы можете использовать **Matplotlib** . Например, если вы хотите установить причину длительного выполнения некоторых запросов, найдите файлы с наибольшим средним временем обработки.
+   Код в представленном ниже фрагменте выдает первые 25 ресурсов с максимальным временем обработки запросов.
 
        def avgTimeTakenByKey(rdd):
            return rdd.combineByKey(lambda line: (line.time_taken, 1),
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/06/2017
 
        avgTimeTakenByKey(logLines.map(lambda p: (p.cs_uri_stem, p))).top(25, lambda x: x[1])
 
-   Вы должны увидеть результаты hello следующим образом:
+   Вы должны увидеть подобные выходные данные:
 
        # -----------------
        # THIS IS AN OUTPUT
@@ -169,7 +169,7 @@ ms.lasthandoff: 10/06/2017
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. Можно также представить эти сведения в виде hello построения. Как первый toocreate шаг построения, сообщите нам сначала создать временную таблицу **AverageTime**. Hello таблицы групп hello регистрирует по toosee времени при наличии каких-либо пиков необычные задержки в определенный момент времени.
+5. Кроме того, эти сведения вы можете представить в виде графика. Чтобы создать диаграмму, для начала создадим временную таблицу **AverageTime**. Таблица группирует журналы по времени и показывает все необычные пики задержек за определенный период времени.
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -177,19 +177,19 @@ ms.lasthandoff: 10/06/2017
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. Можно выполнять hello, следуя tooget запроса SQL все записи hello в hello **AverageTime** таблицы.
+6. После этого можно выполнить следующий запрос SQL, чтобы получить все записи таблицы **AverageTime** .
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   Hello `%%sql` следуют магическое `-o averagetime` гарантирует, что hello выходных данных запроса hello сохраняется локально на сервере Jupyter hello (обычно hello головному узлу кластера hello). Hello выходные данные сохраняются в виде [Pandas](http://pandas.pydata.org/) кадр данных с hello указано имя **averagetime**.
+   Волшебное слово `%%sql`, за которым следует `-o averagetime`, гарантирует, что вывод запроса сохраняется локально на сервере Jupyter (обычно это головной узел кластера). Выходные данные сохраняются в кадре данных [Pandas](http://pandas.pydata.org/) с именем **averagetime**.
 
-   Вы должны увидеть результаты hello следующим образом:
+   Вы должны увидеть подобные выходные данные:
 
    ![Результат SQL-запроса](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "Результат SQL-запроса")
 
-   Дополнительные сведения о hello `%%sql` magic, см. в разделе [поддерживает параметры с hello %% sql magic](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
-7. Теперь вы можете использовать Matplotlib, библиотеку используется tooconstruct визуализации данных, toocreate построение. Так как hello рисунка должны быть созданы из локально hello материализованные **averagetime** кадр данных, фрагмент кода hello должно начинаться с hello `%%local` магическое значение. Это гарантирует, что hello код запускается локально на сервере Jupyter hello.
+   Дополнительные сведения о магической команде `%%sql` см. в разделе [Параметры, поддерживаемые волшебной командой %%sql](hdinsight-apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+7. Теперь можно создать диаграмму с помощью Matplotlib, библиотеки, используемой для визуализации данных. Так как диаграмма должна создаваться из локально сохраненного кадра данных **averagetime**, фрагмент кода должен начинаться с волшебного слова `%%local`. Это гарантирует, что код будет выполняться локально на сервере Jupyter.
 
        %%local
        %matplotlib inline
@@ -199,10 +199,10 @@ ms.lasthandoff: 10/06/2017
        plt.xlabel('Time (min)')
        plt.ylabel('Average time taken for request (ms)')
 
-   Вы должны увидеть результаты hello следующим образом:
+   Вы должны увидеть подобные выходные данные:
 
    ![Выходные данные Matplotlib](./media/hdinsight-apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Выходные данные Matplotlib")
-8. После завершения работы приложения hello, необходимо hello toorelease ресурсы для завершения работы hello ноутбуков. toodo так, hello **файл** меню на ноутбуке hello щелкните **закрыть и остановить**. В этом будет завершена и закрыть hello ноутбука.
+8. Завершив работу с приложением, следует закрыть записную книжку, чтобы освободить ресурсы. Для этого в записной книжке в меню **Файл** выберите пункт **Close and Halt** (Закрыть и остановить). Это завершит работу записной книжки и закроет ее.
 
 ## <a name="seealso"></a>Дополнительные материалы
 * [Обзор: Apache Spark в Azure HDInsight](hdinsight-apache-spark-overview.md)
@@ -210,7 +210,7 @@ ms.lasthandoff: 10/06/2017
 ### <a name="scenarios"></a>Сценарии
 * [Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики](hdinsight-apache-spark-use-bi-tools.md)
 * [Использование Spark с машинным обучением. Использование Spark в HDInsight для анализа температуры в здании на основе данных системы кондиционирования](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени](hdinsight-apache-spark-eventhub-streaming.md)
 
 ### <a name="create-and-run-applications"></a>Создание и запуск приложений
@@ -218,13 +218,13 @@ ms.lasthandoff: 10/06/2017
 * [Удаленный запуск заданий с помощью Livy в кластере Spark](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Средства и расширения
-* [Использование подключаемого модуля средства HDInsight для toocreate ИДЕЯ IntelliJ и отправка Spark Scala приложений](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Удаленно использовать подключаемый модуль средства HDInsight для приложений Spark toodebug ИДЕЯ IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Использование подключаемого модуля средств HDInsight для IntelliJ IDEA для создания и отправки приложений Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Удаленная отладка приложений Spark в кластере HDInsight Spark Linux с помощью подключаемого модуля средств HDInsight для IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Использование внешних пакетов с записными книжками Jupyter](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Установка Jupyter на вашем компьютере и подключение tooan кластера HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Установка записной книжки Jupyter на компьютере и ее подключение к кластеру Apache Spark в Azure HDInsight (предварительная версия)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Отслеживание и отладка заданий в кластере Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-job-debugging.md)

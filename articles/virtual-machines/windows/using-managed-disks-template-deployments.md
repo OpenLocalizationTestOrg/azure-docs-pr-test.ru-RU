@@ -1,6 +1,6 @@
 ---
-title: "aaaUsing управляемых дисков в шаблоны Azure Resource Manager для виртуальных машин Windows | Документы Microsoft"
-description: "Дополнительные сведения об управлении misks в шаблоны Azure Resource Manager для виртуальных машин Windows toouse"
+title: "Использование управляемых дисков в шаблонах Azure Resource Manager для виртуальных машин Windows | Документация Майкрософт"
+description: "Сведения о том, как использовать управляемые диски в шаблонах Azure Resource Manager для виртуальных машин Windows."
 services: virtual-machines-windows
 documentationcenter: 
 author: jboeshart
@@ -12,10 +12,10 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
-ms.openlocfilehash: 5db27b35e07de22c5de8e2f89b5268b8184d243a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 948d7c41f3a43bf7e84f9ab6da27997576d25d68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

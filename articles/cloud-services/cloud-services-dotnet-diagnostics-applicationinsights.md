@@ -1,6 +1,6 @@
 ---
-title: "Облачные службы с помощью Application Insights aaaTroubleshoot | Документы Microsoft"
-description: "Узнайте, как проблемы tootroubleshoot облачной службы с помощью Application Insights tooprocess данных из системы диагностики Azure."
+title: "Устранение неполадок облачных служб с помощью Application Insights | Документация Майкрософт"
+description: "Узнайте, как устранять неполадки облачной службы, используя Application Insights для обработки данных из системы диагностики Azure."
 services: cloud-services
 documentationcenter: .net
 author: sbtron
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2017
 ms.author: saurabh
-ms.openlocfilehash: 972924d9e6d1fe33d5c19b006d482de52ffb0ef7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4001ca908ff00b1a40829d687589080e9b07b18a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-cloud-services-using-application-insights"></a>Устранение неполадок облачных служб с помощью Application Insights
-С [Azure SDK 2.8](https://azure.microsoft.com/downloads/) и расширения службы диагностики Azure 1.5, можно отправить данные системы диагностики Azure для облачной службы напрямую tooApplication аналитики. Здравствуйте, журналы, собранные системой диагностики Azure&mdash;включая журналы приложений, журналы событий Windows, журналы трассировки событий Windows и счетчики производительности&mdash;могут отправляться tooApplication аналитики. Затем можно отобразить эту информацию в пользовательском Интерфейсе портала Application Insights hello. Затем можно использовать hello пакет SDK Application Insights tooget анализировать метрики и журналов, полученные из приложения, а также hello системы и данных на уровне инфраструктуры, поступающие из системы диагностики Azure.
+[Пакет Azure SDK 2.8](https://azure.microsoft.com/downloads/) и расширение диагностики Azure 1.5 позволяют отправлять данные диагностики Azure для облачной службы непосредственно в Application Insights. В Application Insights можно отправлять журналы, собранные системой диагностики Azure, &mdash;включая журналы приложений, журналы событий Windows и счетчики производительности&mdash;. Затем эти сведения можно визуализировать в пользовательском интерфейсе портала Application Insights. Используя пакет SDK Application Insights, вы можете получать данные из метрик и журналов, создаваемых вашим приложением, а также данные на уровне системы и инфраструктуры, поступающие из системы диагностики Azure.
 
-## <a name="configure-azure-diagnostics-toosend-data-tooapplication-insights"></a>Настройка системы диагностики Azure toosend данных tooApplication аналитики
-Выполните эти шаги tooset копирование вашей облачной службы проекта toosend диагностики Azure данные tooApplication аналитики.
+## <a name="configure-azure-diagnostics-to-send-data-to-application-insights"></a>Настройка диагностики Azure для отправки данных в Application Insights
+Чтобы настроить проект облачной службы для отправки данных диагностики Azure в Application Insights, выполните описанные ниже действия.
 
-1. В обозревателе решений Visual Studio, щелкните правой кнопкой мыши роль и выберите **свойства** конструктор ролей tooopen hello.
+1. В обозревателе решений Visual Studio щелкните роль правой кнопкой мыши и выберите **Свойства**, чтобы открыть конструктор ролей.
 
     ![Свойства роли обозревателя решений][1]
 
-2. В hello **диагностики** раздел конструктора ролей hello, выберите hello **отправка данных диагностики tooApplication аналитики** параметр.
+2. В разделе **Диагностика** конструктора ролей выберите параметр **Отправка диагностических данных в Application Insights**.
 
-    ![Конструктор ролей отправке диагностических данных tooapplication аналитики][2]
+    ![Конструктор ролей отправляет данные диагностики в Application Insights][2]
 
-3. В hello диалоговым окном, которое появляется выберите ресурс Application Insights hello, вы хотите toosend hello диагностики Azure данные. диалоговое окно «Hello» позволяет tooselect существующий ресурс Application Insights из подписки или toomanually укажите ключ инструментирования для ресурса Application Insights. Дополнительные сведения о создании ресурса Application Insights см. в статье [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
+3. В появившемся диалоговом окне выберите ресурс Application Insights, в который требуется отправлять данные диагностики Azure. Это диалоговое окно позволяет выбрать имеющийся ресурс Application Insights из подписки или вручную задать ключ инструментирования для такого ресурса. Дополнительные сведения о создании ресурса Application Insights см. в статье [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
 
     ![выберите ресурс application insights][3]
 
-    После добавления ресурса Application Insights hello hello ключ инструментирования этого ресурса сохраняется как параметры конфигурации службы с именем hello **APPINSIGHTS_INSTRUMENTATIONKEY**. Этот параметр конфигурации можно изменить для каждой конфигурации службы или окружения. toodo таким образом, выберите другую конфигурацию из hello **конфигурации службы** списка и укажите новый ключ инструментирования для этой конфигурации.
+    После добавления ресурса Application Insights соответствующий ему ключ инструментирования будет сохранен в качестве параметра конфигурации службы с именем **APPINSIGHTS_INSTRUMENTATIONKEY**. Этот параметр конфигурации можно изменить для каждой конфигурации службы или окружения. Для этого выберите другую конфигурацию в списке **Конфигурация службы** и укажите для нее новый ключ инструментирования.
 
     ![выберите конфигурацию службы][4]
 
-    Hello **APPINSIGHTS_INSTRUMENTATIONKEY** параметр конфигурации используется для расширения Visual Studio tooconfigure hello диагностики соответствующие сведения ресурсов Application Insights hello во время публикации. параметр конфигурации Hello является удобным способом определения различных инструментария ключей для различных конфигураций службы. Visual Studio преобразует эту настройку и вставить его в общедоступной конфигурации hello диагностики расширения во время hello процесса публикации. toosimplify hello процесс настройки расширения системы диагностики hello с помощью PowerShell, hello выходные данные пакета Visual Studio также содержит hello открытый XML-ФАЙЛ конфигурации с hello соответствующий ключ инструментирования Application Insights. файлы общедоступной конфигурации Hello создаются в папку Extensions hello и следовать шаблону hello *PaaSDiagnostics.&lt; RoleName&gt;. PubConfig.xml*. Все развертывания на основе PowerShell можно использовать этот шаблон toomap каждой роли tooa конфигурации.
+    Visual Studio использует параметр конфигурации **APPINSIGHTS_INSTRUMENTATIONKEY** для настройки расширения диагностики с использованием соответствующих данных ресурса Application Insights во время публикации. Параметр конфигурации — это удобный способ определения различных ключей инструментирования для разных конфигураций службы. Visual Studio преобразует этот параметр и вставит его в открытую конфигурацию расширения диагностики при публикации. Выходные данные пакета Visual Studio содержат, среди прочего, общедоступный XML-файл конфигурации с соответствующим ключом инструментирования Application Insights. Это позволяет упростить процесс настройки расширения с помощью PowerShell. Общедоступные файлы конфигураций создаются в папке Extensions с именами в формате *PaaSDiagnostics.&lt;имя_роли&gt;.PubConfig.xml*. Все развертывания с использованием PowerShell могут использовать этот шаблон имени для сопоставления каждой конфигурации с ролью.
 
-4) toosend tooconfigure диагностики Azure, все счетчики производительности и журналы уровня ошибок собранные tooApplication агент Azure diagnostics hello аналитики, включите hello **отправка данных диагностики tooApplication аналитики** параметр. 
+4) Чтобы настроить систему диагностики Azure для отправки всех счетчиков производительности и журналов ошибок, собранных агентом диагностики Azure, в Application Insights, установите флажок **Отправка диагностических данных в Application Insights**. 
 
-    Если требуется, чтобы toofurther настроить, какие данные будут отправлены tooApplication аналитики, необходимо вручную изменить hello *diagnostics.wadcfgx* файл для каждой роли. В разделе [tooApplication данных аналитики для настройки диагностики Azure toosend](#configure-azure-diagnostics-to-send-data-to-application-insights) toolearn Дополнительные сведения о конфигурации hello, обновление вручную.
+    Чтобы указать, какие данные должны отправляться в службу Application Insights, вручную отредактируйте файл *diagnostics.wadcfgx* для каждой роли. Дополнительные сведения об обновлении конфигурации вручную см. в статье [Настройка диагностики Azure для отправки данных в Application Insights](#configure-azure-diagnostics-to-send-data-to-application-insights).
 
-При анализу tooapplication данных диагностики Azure настроенных toosend hello облачной службы можно развернуть его tooAzure как правило, убедившись, что включен hello расширения службы диагностики Azure. Дополнительные сведения см. в статье [Публикация облачной службы с помощью Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
+Настроив облачную службу для отправки диагностических данных Azure в Application Insights, вы можете развернуть ее в Azure, как обычно, включив расширение диагностики Azure. Дополнительные сведения см. в статье [Публикация облачной службы с помощью Visual Studio](../vs-azure-tools-publishing-a-cloud-service.md).  
 
 ## <a name="viewing-azure-diagnostics-data-in-application-insights"></a>Просмотр данных диагностики Azure в Application Insights
-Hello Azure телеметрии диагностики отображается в hello Application Insights ресурс настроен для облачной службы.
+Телеметрия диагностики Azure появляется в ресурсе Application Insights, настроенном для вашей облачной службы.
 
-Типы журналов диагностики Azure сопоставления понятий аналитики tooApplication следующими способами:
+Типы журналов системы диагностики Azure соотносятся с понятиями Application Insights по-разному:
 
 * Счетчики производительности отображаются в Application Insights в виде пользовательских метрик.
 * Журналы событий Windows отображаются в Application Insights в виде трассировок и пользовательских событий.
 * Журналы приложений, журналы ETW и все журналы инфраструктуры диагностики отображаются в Application Insights в виде трассировок.
 
-tooview данные диагностики Azure в Application Insights, выполните одно из следующих hello.
+Чтобы просмотреть данные диагностики Azure в Application Insights, выполните одно из следующих действий:
 
-* Используйте [обозревателя метрик](../application-insights/app-insights-metrics-explorer.md) toovisualize любые пользовательские счетчики производительности, либо количество различных типов событий в журнал событий Windows.
+* Используйте [обозреватель метрик](../application-insights/app-insights-metrics-explorer.md) для визуализации пользовательских счетчиков производительности или других типов счетчиков для событий журналов событий Windows.
 
     ![Пользовательские метрики в обозревателе метрик][5]
 
-* Используйте [поиска](../application-insights/app-insights-diagnostic-search.md) toosearch через журналы трассировки hello, отправленных диагностики Azure. Например, если необработанное исключение вызвало роль toocrash hello и повторный запуск, сведения об исключении hello отображается в hello *приложения* канал *журнал событий Windows*. Можно использовать toolook поиска на ошибки в журнале событий Windows hello и получить hello полную трассировку стека для hello исключение toohelp поиска hello причиной проблемы hello.
+* Используйте функцию [Поиск](../application-insights/app-insights-diagnostic-search.md) для поиска в журналах трассировки, отправляемых системой диагностики Azure. Например, если из-за необработанного исключения произошел сбой и перезапуск роли, соответствующие данные появляются в канале *Приложение* *журнала событий Windows*. Можно воспользоваться поиском, чтобы просмотреть ошибку в журнале событий Windows и получить полную трассировку стека для исключения, что поможет найти причину проблемы.
 
     ![Поиск трассировок][6]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавить hello пакет SDK Application Insights tooyour облачной службы](../application-insights/app-insights-cloudservices.md) toosend данные о запросах, исключения, зависимости и любые пользовательские данные телеметрии из приложения. В сочетании с данными диагностики Azure hello, эти сведения можно получить полное представление о приложения и системы, все в hello того же ресурса Application Insight.  
+* [Добавьте пакет SDK Application Insights в свою облачную службу](../application-insights/app-insights-cloudservices.md) для отправки данных о запросах, исключениях, зависимостях и других данных пользовательской телеметрии из приложения. В сочетании с данными диагностики Azure эта информация позволяет получить полное представление о приложении и системе в одном и том же ресурсе Application Insight.  
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/solution-explorer-properties.png

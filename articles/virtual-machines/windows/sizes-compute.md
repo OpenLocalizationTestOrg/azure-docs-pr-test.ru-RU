@@ -1,6 +1,6 @@
 ---
-title: "размеры виртуальных Машин Windows aaaAzure - вычислений оптимизированного | Документы Microsoft"
-description: "Перечисляет размеры hello различных вычислительных оптимизации, доступные для виртуальных машинах в Azure."
+title: "Размеры виртуальных машин Windows в Azure, оптимизированных для вычислений | Документация Майкрософт"
+description: "Список различных размеров виртуальных машин Windows в Azure, оптимизированных для вычислений."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 8b7776e02c0fbd74305f48041ea3cb141f4d8a35
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 873e9b257a1bcede5015f65fd4b2840e476f8c94
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compute-optimized"></a>Оптимизированные для вычислений
 

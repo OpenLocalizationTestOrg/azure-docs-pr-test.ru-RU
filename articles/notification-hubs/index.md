@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документация для концентраторов уведомлений: учебники, справочник по API | Документы Microsoft"
-description: "Узнайте, как toosend push-уведомления с любой серверной tooany мобильного устройства с помощью концентраторов уведомлений. Руководства, справочники по API и другие документы."
+title: "Документация по Центрам уведомлений Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как отправлять push-уведомления из любого серверного компонента на любое мобильное устройство с помощью центров уведомлений. Руководства, справочники по API и другие документы."
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 050c70c32f50eb495cd53a6bfa5549d6ae189d89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="notification-hubs-documentation"></a>Документация по центрам уведомлений
 
-Узнайте, как toouse концентраторы уведомлений мультиплатформенную, масштабируемую push уведомления подсистемы быстро отправки миллионы сообщений. Учебники, ссылки на API и другой документации показано, как tooset вверх и отправки push-уведомления с любого мобильного устройства tooany серверной части. 
+Узнайте, как использовать центры уведомлений — масштабируемую мультиплатформенную подсистему push-уведомлений, позволяющую быстро отправлять миллионы сообщений. В руководствах, справочниках по API и другой документации показано, как настраивать и отправлять push-уведомления из любого серверного компонента на любое мобильное устройство. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начать отправку уведомлений push tooAndroid (FCM) с концентраторами уведомлений Azure</h3>
+                        <h3>Приступая к отправке push-уведомлений в Android (FCM) с помощью центров уведомлений Azure</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Приступая к работе с Центрами уведомлений с помощью Baidu</h3>
+                        <h3>Начало работы с центрами уведомлений с помощью Baidu</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало работы Отправка push-уведомлений приложения tooChrome с концентраторами уведомлений Azure</h3>
+                        <h3>Приступая к отправке push-уведомлений в приложения Chrome с помощью центров уведомлений Azure</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ ms.lasthandoff: 10/06/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начать отправку push tooiOS уведомлений с концентраторами уведомлений Azure</h3>
+                        <h3>Приступая к отправке push-уведомлений в iOS с помощью центров уведомлений Azure</h3>
                     </div>
                 </div>
             </div>

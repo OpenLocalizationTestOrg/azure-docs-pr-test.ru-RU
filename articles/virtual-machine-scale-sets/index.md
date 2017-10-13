@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure документация наборы масштабирования виртуальной машины: учебники, справочник по API | Документы Microsoft"
-description: "Узнайте, как toocreate toouse наборы масштабирования виртуальных машин, автоматическое масштабирование Windows или виртуальных машин Linux для больших вычислений, большие наборы данных и контейнерах решения."
+title: "Документация по масштабируемым наборам виртуальных машин Azure. Руководства и справочник по API | Документация Майкрософт"
+description: "Узнайте, как использовать масштабируемые наборы виртуальных машин для создания автомасштабируемых ВМ Windows или Linux для больших вычислений, а также обработки больших данных и контейнерных решений."
 services: virtual-machine-scale-sets
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 7f4a4812e2ba44cabfd54bc25fa3b66a04c5bbe8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Документация по масштабируемым наборам виртуальных машин
 
-Дополнительные сведения о том, как масштабировать виртуальной машины toouse задает toodeploy и управление набором идентичных автоматического масштабирования Windows или виртуальных машин Linux. Документации показано, как этого целевой больших вычислений, большие наборы данных и контейнерного решений служб toosupport toouse набора масштабирования.
+Узнайте, как использовать масштабируемые наборы виртуальных машин для развертывания и администрирования набора идентичных автомасштабируемых ВМ Linux или Windows. Документация, в которой показано, как использовать масштабируемые наборы для включения служб, которые выполняют большие вычисления, а также обрабатывают большие данные и контейнерные решения.
 
 <ul class="panelContent cardsFTitle">
     <li>

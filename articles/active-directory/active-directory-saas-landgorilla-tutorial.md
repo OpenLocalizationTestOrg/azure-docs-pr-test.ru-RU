@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Land Gorilla Client | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Gorilla Земли."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и Land Gorilla."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,72 +13,72 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e95a30551e636108fe22a7ab6d1827bc12d7f9a0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Руководство по интеграции Azure Active Directory с Land Gorilla Client
 
-В этом учебнике вы узнаете, как toointegrate клиента Gorilla Земли с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение Land Gorilla Client с Azure Active Directory (Azure AD).
 
-Интеграция клиента Gorilla Земли с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с Land Gorilla Client обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooLand Gorilla клиента
-- Ваш пользователей tooautomatically get вошедшего tooLand Gorilla клиента (Single Sign-On) можно включить с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
+- С помощью Azure AD вы можете контролировать доступ к Land Gorilla Client.
+- Вы можете включить автоматический вход пользователей в Land Gorilla Client (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал управления Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с Земли Gorilla клиента требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с Land Gorilla Client, вам потребуется:
 
 - подписка Azure AD;
 - подписка Land Gorilla Client с поддержкой единого входа.
 
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление клиента Gorilla Земли из галереи hello
+1. Добавление Land Gorilla Client из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
 
-## <a name="adding-land-gorilla-client-from-hello-gallery"></a>Добавление клиента Gorilla Земли из галереи hello
-tooconfigure hello интеграции Земли Gorilla клиента в Azure AD, вы должны tooadd Земли Gorilla клиента из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-land-gorilla-client-from-the-gallery"></a>Добавление Land Gorilla Client из коллекции
+Чтобы настроить интеграцию Land Gorilla Client с Azure AD, необходимо добавить Land Gorilla Client из коллекции в список управляемых приложений SaaS.
 
-**tooadd Земли Gorilla клиента из коллекции hello выполните следующие шаги hello.**
+**Чтобы добавить Land Gorilla Client из коллекции, выполните следующие действия:**
 
-1. В hello  **[портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **Земли Gorilla клиента**.
+4. В поле поиска введите **Land Gorilla Client**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_search.png)
 
-5. В панели результатов hello выберите **клиента Gorilla Земли**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
+5. На панели результатов выберите **Land Gorilla Client** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
 
@@ -86,43 +86,43 @@ tooconfigure hello интеграции Земли Gorilla клиента в Azu
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение Land Gorilla Client с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в клиенте Gorilla Земли является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в клиенте Gorilla Земли должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в Land Gorilla Client соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Land Gorilla Client.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в клиенте Gorilla Земли.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Land Gorilla Client.
 
-tooconfigure и теста Azure AD единого входа с клиента Gorilla земли, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в Land Gorilla Client, вам потребуется выполнить действия в следующих стандартных блоках:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с ограниченной группе.
-3. **[Создание тестового пользователя Gorilla Земли](#creating-a-land-gorilla-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD с ограниченной группой.
+3. **[Создание тестового пользователя Land Gorilla](#creating-a-land-gorilla-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в приложении клиента Gorilla Земли.
+В этом разделе описано, как включить единый вход Azure AD на портале управления Azure и настроить его в приложении Land Gorilla Client.
 
-**tooconfigure Azure AD единого входа с клиента Gorilla земли, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в Land Gorilla Client, выполните следующие действия:**
 
-1. На портале управления Azure hello на hello **клиента Gorilla Земли** странице интеграции приложения щелкните **единого входа**.
+1. На портале управления Azure на странице интеграции с приложением **Land Gorilla Client** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
 
-3. На hello **URL-адреса и домена клиента Gorilla Земли** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения Land Gorilla Client** выполните следующие действия:
 
     ![Настройка единого входа](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_url_02.png)
 
-    а. В hello **идентификатор** текстовое значение hello типа с помощью одного из hello следующий шаблон: 
+    А. В текстовом поле **Идентификатор** введите значение, используя один из следующих форматов: 
     
     `https://<customer domain>.landgorilla.com/` 
     
     `https://www.<customer domain>.landgorilla.com`
 
-    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, с помощью одного из hello следующий шаблон:
+    b. В текстовое поле **URL-адрес ответа** введите URL-адрес, используя один из следующих форматов:
 
     `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
 
@@ -133,9 +133,9 @@ tooconfigure и теста Azure AD единого входа с клиента 
     `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
 
     > [!NOTE] 
-    > Обратите внимание на то, что они не hello реальные значения. У вас tooupdate эти значения с hello фактический идентификатор и ответ URL-адрес. Здесь мы предлагаем вам toouse hello уникальное значение строки в hello идентификатор. Обратитесь к [клиента Gorilla Земли команды](https://www.landgorilla.com/support/) tooget эти значения. 
+    > Обратите внимание, что значения, указанные выше, используются в качестве примера. Необходимо указать фактические значения идентификатора и URL-адреса ответа. Мы рекомендуем использовать уникальное значение строки идентификатора. Чтобы получить эти значения, обратитесь в [службу поддержки Land Gorilla Client](https://www.landgorilla.com/support/). 
 
-4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
+4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
@@ -143,61 +143,61 @@ tooconfigure и теста Azure AD единого входа с клиента 
 
     ![Настройка единого входа](./media/active-directory-saas-landgorilla-tutorial/tutorial_general_400.png) 
 
-6. tooget единого входа: Завершение настройки приложения в конце Gorilla земли, обратитесь к [группа поддержки клиента Gorilla Земли](https://www.landgorilla.com/support/) и предоставить им загружаются hello **«метаданные в формате XML** файла.
+6. Чтобы настроить единый вход для своего приложения на стороне Land Gorilla, обратитесь в [службу поддержки Land Gorilla Client](https://www.landgorilla.com/support/) и предоставьте скачанный **XML-файл метаданных**.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
+Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**. 
 
 ### <a name="creating-a-land-gorilla-test-user"></a>Создание тестового пользователя Land Gorilla
 
-Можно работать с [группа поддержки Gorilla Земли](https://www.landgorilla.com/support/) tooadd hello пользователей на платформе Gorilla Земли hello.
+Обратитесь в [службу поддержки Land Gorilla](https://www.landgorilla.com/support/), чтобы добавить пользователей на платформу Land Gorilla.
     
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа, предоставляя свой доступ tooLand Gorilla клиента.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к Land Gorilla Client.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooLand Britta Simon Gorilla клиента, выполните hello следующие шаги.**
+**Чтобы назначить пользователя Britta Simon в Land Gorilla Client, выполните следующие действия:**
 
-1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **Земли Gorilla клиента**.
+2. В списке приложений выберите **Land Gorilla Client**.
 
     ![Настройка единого входа](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_app.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -205,7 +205,7 @@ tooconfigure и теста Azure AD единого входа с клиента 
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -215,14 +215,14 @@ tooconfigure и теста Azure AD единого входа с клиента 
 
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-Если щелкнуть плитку клиента Gorilla Земли hello в hello панели доступа, вы должны получить tooyour автоматически подписан на землю Gorilla клиентское приложение.
+Щелкнув элемент Land Gorilla Client на панели доступа, вы автоматически войдете в приложение Land Gorilla Client.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

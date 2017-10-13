@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure мобильного охвата - интеграции серверной части"
-description: "Подключение Azure Mobile Engagement с серверной части для SharePoint toocreate кампании из SharePoint"
+title: "Службы мобильного взаимодействия Azure — интеграция с серверной частью"
+description: "Подключите Службы мобильного взаимодействия Azure к серверной части SharePoint для создания кампаний из SharePoint."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,32 +14,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 89e1ef57db607d63c326a760b20260ad439f08b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Службы мобильного взаимодействия Azure — интеграция API
-В автоматизированной системы маркетинга Создание и активация hello маркетинговых кампаний, также происходит автоматически. Поэтому Службы мобильного взаимодействия Azure поддерживают создание автоматических маркетинговых кампаний с помощью API. 
+В автоматизированной системе маркетинга создание и активация маркетинговых кампаний также происходит автоматически. Поэтому Службы мобильного взаимодействия Azure поддерживают создание автоматических маркетинговых кампаний с помощью API. 
 
-Обычно клиенты используют hello мобильного охвата обслуживающего интерфейс toocreate объявления/опросов и т. д как часть их маркетинговых кампаний. Однако как hello маркетинговых кампаний, становятся зрелой, есть ли необходимость tooleverage hello данных заблокирован в серверных системах hello (например, в системе CRM или система управления Содержимым, как SharePoint), чтобы полностью автоматизированное конвейера могут быть созданы в Mobile, которая создает кампании Динамически, основываясь на hello потока данных в систем баз hello обязательств. 
+Как правило, для создания объявлений и опросов в рамках маркетинговых кампаний клиенты используют интерфейсную часть решений. Однако по мере того как маркетинговые кампании становятся более зрелыми, возникает необходимость использовать данные серверной части (например, из CRM или систем управления контентом, таких как SharePoint). Они позволяют полностью автоматизировать динамическое создание кампаний в Службах мобильного взаимодействия на основе данных, поступающих из серверных систем. 
 
 ![][5]
 
-Этот учебник переход через такие сценарии, когда бизнес-пользователь SharePoint заполнение маркетинговые данные списка SharePoint, а автоматизированный процесс принимает элементы из списка hello и подключается с использованием системы hello мобильного охвата hello доступные интерфейсы API REST toocreate маркетинговой кампании на основе данных SharePoint hello. 
+В этом учебнике рассматривается сценарий, в котором бизнес-пользователь SharePoint вносит маркетинговые данные в список SharePoint, а автоматизированный процесс извлекает элементы из списка и, используя интерфейсы API REST, подключается к системе Служб мобильного взаимодействия для создания маркетинговой кампании на основе данных SharePoint. 
 
 > [!IMPORTANT]
-> Как правило можно использовать в этом примере в качестве отправной точки для понимания того, как toocall любой Mobile Engagement API-интерфейса REST, подробно описываются два ключевых аспекта hello вызова hello API-интерфейсов - проверки подлинности и передача параметров. 
+> Вы можете использовать приведенный пример в качестве отправной точки для изучения принципов работы любого интерфейса API REST для Служб мобильного взаимодействия, так как здесь подробно рассматриваются два ключевых аспекта вызова API: проверка подлинности и передача параметров. 
 > 
 > 
 
 ## <a name="sharepoint-integration"></a>Интеграция с SharePoint
-1. Ниже приведен пример какие hello выглядит списка SharePoint. **Заголовок**, **категории**, **NotificationTitle**, **сообщение** и **URL-адрес** используются для создания объявления «hello». Имеется столбец с именем **IsProcessed** используемой процесса автоматизации образец hello в форме hello консольную программу. Вы может выполнять Эта консольная программа как веб-задание Azure таким образом, вы можете запланировать или можно напрямую использовать tooprogram hello SharePoint рабочий процесс создания и активации объявления «hello» при вставке элемента в списке SharePoint hello. В этом примере мы используем hello консольная программа, который переходит по элементам hello hello SharePoint списка и создать объявление в Azure Mobile Engagement для каждого из них и в заключение отмечает hello **IsProcessed** флаг toobe значение true, если Создание объявления успешно.
+1. Вот как выглядит учебный список SharePoint. Для создания объявления используются параметры **Title** (Заголовок), **Category** (Категория), **NotificationTitle** (Заголовок уведомления), **Message** (Сообщение) и **URL** (URL-адрес). Также есть столбец **IsProcessed** (обработано), используемый нашим процессом автоматизации в консольной программе. Можно запустить консольную программу как веб-задание Azure (в этом случае вы сможете планировать ее запуск) или использовать рабочий процесс SharePoint напрямую для программного создания и активации объявлений при вставке элемента в список SharePoint. В этом примере мы используем консольную программу, которая перебирает элементы в списке SharePoint, создает объявление в Службах мобильного взаимодействия Azure для каждого из них, а затем устанавливает флаг **IsProcessed** для подтверждения успешно созданных объявлений.
    
     ![][1]
-2. Мы используем hello кода из образца hello *удаленной проверки подлинности в SharePoint Online с помощью hello клиентской объектной модели* [здесь](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) tooauthenticate со списком SharePoint hello.
-3. Пройдя проверку подлинности, выполнение цикла через hello toofind элементы списка элементов, созданный (который будет иметь **IsProcessed** = false). 
+2. Для проверки подлинности при работе со списком SharePoint мы будем использовать код из примера *Удаленная проверка подлинности в SharePoint Online с помощью модели COM* [этой ссылке](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) .
+3. После проверки подлинности мы зациклим перебор элементов списка, чтобы выявлять вновь добавленные элементы (флаг **IsProcessed** = false). 
    
          static async void CreateCampaignFromSharepoint()
         {
@@ -52,12 +52,12 @@ ms.lasthandoff: 10/06/2017
                 query.ViewXml = "<View/>";
                 ListItemCollection items = list.GetItems(query);
    
-                // Load hello SharePoint list
+                // Load the SharePoint list
                 clientContext.Load(list);
                 clientContext.Load(items);
                 clientContext.ExecuteQuery();
    
-                // Loop through hello list toogo through all hello items which are newly added
+                // Loop through the list to go through all the items which are newly added
                 foreach (ListItem item in items)
                     if (item["IsProcessed"].ToString() != "Yes")
                     {
@@ -67,16 +67,16 @@ ms.lasthandoff: 10/06/2017
                         string category = item["Category"].ToString();
                         string actionURL = ((FieldUrlValue)item["URL"]).Url;
    
-                        // Send an HTTP request toocreate AzME campaign
+                        // Send an HTTP request to create AzME campaign
                         int campaignId = CreateAzMECampaign
                             (name, notificationTitle, notificationMessage, category, actionURL).Result;
    
                         if (campaignId != -1)
                         {
-                            // If creating campaign is successful then set this tootrue
+                            // If creating campaign is successful then set this to true
                             item["IsProcessed"] = "Yes";
    
-                            // Now try tooactivate hello campaign also
+                            // Now try to activate the campaign also
                             await ActivateAzMECampaign(campaignId);
                         }
                         else
@@ -90,8 +90,8 @@ ms.lasthandoff: 10/06/2017
         }
 
 ## <a name="mobile-engagement-integration"></a>Интеграция со Службами мобильного взаимодействия
-1. После мы найти элемент, который требуется обработка — извлечь hello сведения, необходимые toocreate объявления из hello элемент списка и вызвать `CreateAzMECampaign` toocreate его и впоследствии `ActivateAzMECampaign` tooactivate его. Это по сути вызов внутреннего сервера мобильного охвата toohello вызовы REST API. 
-2. Hello API-интерфейс REST Mobile Engagement требуют **заголовок авторизации HTTP схемы Обычная проверка подлинности** состоящему из hello `ApplicationId` и hello `ApiKey` получить из hello портал Azure. Убедитесь, что вы используете hello ключ из hello **ключи api** раздел и *не* из hello **ключи sdk** раздела. 
+1. Когда мы найдем элемент списка, требующий обработки, мы извлечем из него сведения, необходимые для создания объявления, и вызовем `CreateAzMECampaign`, чтобы создать его, а затем `ActivateAzMECampaign` — чтобы активировать. Фактически это вызовы API REST к серверной части Служб мобильного взаимодействия. 
+2. Для интерфейсов REST API для Служб мобильного взаимодействия требуется **HTTP-заголовок авторизации базовой схемы проверки подлинности**, состоящий из компонентов `ApplicationId` и `ApiKey`, которые можно найти на портале Azure. Убедитесь, что вы используете ключ из раздела **api keys** (а *не* из раздела **sdk keys**). 
    
    ![][2]
    
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/06/2017
            string returnValue = System.Convert.ToBase64String(toEncodeAsBytes);
            return returnValue;
        }  
-3. Для создания типа объявления hello Кампания — ссылаться toohello [документации](https://msdn.microsoft.com/library/azure/mt683750.aspx). Необходимо убедиться, что вы указали кампании hello toomake `kind` как *объявления* и hello [полезных данных](https://msdn.microsoft.com/library/azure/mt683751.aspx) и передачи его в качестве FormUrlEncodedContent. 
+3. Сведения о создании кампаний с типом announcement (Объявление) см. в [документации](https://msdn.microsoft.com/library/azure/mt683750.aspx). Убедитесь, что для параметра `kind` кампании вы задаете значение *announcement* и передаете его вместе с [дополнительными параметрами](https://msdn.microsoft.com/library/azure/mt683751.aspx) в виде FormUrlEncodedContent. 
    
         static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
             string notificationMessage, string notificationCategory, string actionURL)
@@ -119,7 +119,7 @@ ms.lasthandoff: 10/06/2017
                 // Add Authorization Header
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", CreateAuthZHeader());
    
-                // Create hello payload toosend hello content
+                // Create the payload to send the content
                 // Reference -> https://msdn.microsoft.com/library/dn913749.aspx
                 string data =
                     @"{""name"":""" + campaignName + @"""," + 
@@ -135,13 +135,13 @@ ms.lasthandoff: 10/06/2017
                     new KeyValuePair<string, string>("data", data),
                 });
    
-                // Send hello POST request
+                // Send the POST request
                 var response = await client.PostAsync(url + createURIFragment, content);
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 int campaignId = -1;
                 if (response.StatusCode.ToString() == "OK")
                 {
-                    // This is hello campaign id
+                    // This is the campaign id
                     campaignId = Convert.ToInt32(responseString);
                     Console.WriteLine("Campaign successfully created with id {0}", campaignId);
                 }
@@ -152,10 +152,10 @@ ms.lasthandoff: 10/06/2017
                 return campaignId;
             }
         }
-4. После создания объявления «hello», вы увидите нечто похожее на портал мобильного охвата hello hello (Обратите внимание, что hello состояние = черновик и Activated = н/д)
+4. После создания объявления вы увидите на портале Служб мобильного взаимодействия примерно следующее (обратите внимание что параметр State (состояние) имеет значение Draft (черновик), а Activated (статус активации) — N/A (недоступно)).
    
     ![][3]
-5. `CreateAzMECampaign`Создает объявление кампании и возвращает вызывающему объекту toohello идентификатор. `ActivateAzMECampaign`требуется этот идентификатор в качестве hello параметр tooactivate hello кампании. 
+5. `CreateAzMECampaign` создает кампанию с типом «Объявление» и возвращает ее идентификатор. `ActivateAzMECampaign` в качестве параметра для активации кампании. 
    
         static async Task<bool> ActivateAzMECampaign(int campaignId)
         {
@@ -171,7 +171,7 @@ ms.lasthandoff: 10/06/2017
                     new KeyValuePair<string, string>("id", campaignId.ToString()),
                 });
    
-                // Send hello POST request
+                // Send the POST request
                 var response = await client.PostAsync(url + activateUriFragment, content);
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 if (response.StatusCode.ToString() == "OK")
@@ -186,13 +186,13 @@ ms.lasthandoff: 10/06/2017
                 }
             }
         }
-6. После активации объявления «hello» на портале мобильного охвата hello появится примерно hello следующим образом:
+6. После активации объявления вы увидите на портале Служб мобильного взаимодействия примерно следующее.
    
     ![][4]
-7. Сразу после активации кампании hello возвращает какие-либо устройства, которые удовлетворяют критерию hello кампании hello начнется видеть уведомления. 
-8. Вы также заметите пометить этот элемент списка hello с IsProcessed = false установил tooTrue после создания кампании объявления hello.  
+7. Сразу после активации кампании все устройства, которые удовлетворяют ее критериям, начнут получать уведомления. 
+8. Вы также заметите, что после создания кампании значение флага IsProcessed рассматриваемого элемента списка изменится на True.  
 
-В этом примере создается простой объявления кампании, указав основном hello необходимые свойства. Этот параметр можно изменить так же, как можно с портала hello, используя сведения о hello [здесь](https://msdn.microsoft.com/library/azure/mt683751.aspx). 
+В этом примере создается простая кампания с типом «Объявление», в которой указываются в основном обязательные свойства. Вы можете изменить ее на портале, используя сведения [с этой страницы](https://msdn.microsoft.com/library/azure/mt683751.aspx). 
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-sample-backend-integration-sharepoint/sharepointlist.png

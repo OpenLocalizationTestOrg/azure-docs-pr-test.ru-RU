@@ -1,6 +1,6 @@
 ---
 title: "Устранение сбоя службы Azure Backup: состояние гостевого агента \"Недоступно\" | Документация Майкрософт"
-description: "Признаки, причины и устранения связанных tooerror сбои резервного копирования Azure: не удалось связаться с агентом ВМ hello"
+description: "Симптомы, причины и способы устранения проблем в работе службы Azure Backup, связанных с агентом, расширением или дисками."
 services: backup
 documentationcenter: 
 author: genlin
@@ -12,118 +12,125 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/17/2017
+ms.topic: troubleshooting
+ms.date: 09/08/2017
 ms.author: genli;markgal;
-ms.openlocfilehash: 724c61ba80d0a9ef91a5f8543ae72bb86968881b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f3195fa83479986a3e605abce618c78bcdb64dac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Устранение неполадок службы Azure Backup: проблемы с агентом и/или расширением
 
-Эта статья содержит tooproblems в связи с агентом ВМ и расширения, связанные с по устранению неполадок toohelp шаги устранения сбоев резервного копирования.
+В этой статье описано, как устранять неполадки службы архивации, связанные с ошибками связи с агентом виртуальной машины и расширением.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-toocommunicate-with-azure-backup"></a>Не удается toocommunicate агент виртуальной Машины в службе архивации Azure
-После регистрации и запланировать виртуальной Машины для службы архивации Azure hello, резервное копирование инициирует задание hello путем взаимодействия с hello tootake агента ВМ моментальный снимок в момент. Любой из следующих условий hello может блокировать hello моментального снимка из запустилась, что в свою очередь, может вызвать сбой tooBackup. Следуйте ниже устранения неполадок в hello, используя порядок и повторите операцию.
-##### <a name="cause-1-hello-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1: [hello виртуальная машина имеет доступ к Интернету отсутствует](#the-vm-has-no-internet-access)
-##### <a name="cause-2-hello-agent-is-installed-in-hello-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 2: [hello агент установлен в hello виртуальной Машины, но не отвечает (для ВМ Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-##### <a name="cause-3-hello-agent-installed-in-hello-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 3: [hello агент, установленный в hello виртуальной Машины является устаревшим (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
-##### <a name="cause-4-hello-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 4: [не удается получить состояние hello моментальных снимков или моментальный снимок не может быть выполнено](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
-##### <a name="cause-5-hello-backup-extension-fails-tooupdate-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 5: [hello расширение резервного копирования завершается с ошибкой tooupdate или нагрузки](#the-backup-extension-fails-to-update-or-load)
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Агенту виртуальной машины не удается установить связь со службой Azure Backup
+После регистрации виртуальной машины в службе Azure Backup и добавления ее в расписание служба архивации инициирует задание, взаимодействуя с агентом виртуальной машины, чтобы создать моментальный снимок. Любое из следующих условий может помешать активации создания моментального снимка, что может привести к сбою службы Backup. Выполните инструкции по устранению неполадок в указанном порядке и повторите операцию.
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1. [У виртуальной машины нет доступа к Интернету](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 2. [Агент установлен на виртуальной машине, но не отвечает (для виртуальных машин Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 3. [Устарел агент, установленный на виртуальной машине (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 4. [Не удалось получить состояние моментального снимка или создать моментальный снимок](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 5. [Не удалось обновить или загрузить расширение резервного копирования](#the-backup-extension-fails-to-update-or-load)
 
-## <a name="snapshot-operation-failed-due-toono-network-connectivity-on-hello-virtual-machine"></a>Сбой операции моментальных снимков из-за toono сетевого подключения на виртуальной машине hello
-После регистрации и запланировать виртуальную Машину для hello службы резервного копирования Azure, резервное копирование инициирует задание hello путем взаимодействия с hello расширение резервного копирования виртуальной Машины tootake на момент времени, моментальный снимок. Любой из следующих условий hello может блокировать hello моментального снимка из запустилась, что в свою очередь, может вызвать сбой tooBackup. Следуйте ниже устранения неполадок в hello, используя порядок и повторите операцию.
-##### <a name="cause-1-hello-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1: [hello виртуальная машина имеет доступ к Интернету отсутствует](#the-vm-has-no-internet-access)
-##### <a name="cause-2-hello-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 2: [не удается получить состояние hello моментальных снимков или моментальный снимок не может быть выполнено](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
-##### <a name="cause-3-hello-backup-extension-fails-tooupdate-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 3: [hello расширение резервного копирования завершается с ошибкой tooupdate или нагрузки](#the-backup-extension-fails-to-update-or-load)
+## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Сбой операции моментального снимка, отсутствует сетевое подключение у виртуальной машины
+После регистрации виртуальной машины в службе архивации Azure и добавления ее в расписание служба архивации инициирует задание, взаимодействуя с расширением виртуальной машины, чтобы создать моментальный снимок. Любое из следующих условий может помешать активации создания моментального снимка, что может привести к сбою службы Backup. Выполните инструкции по устранению неполадок в указанном порядке и повторите операцию.
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1. [У виртуальной машины нет доступа к Интернету](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 2. [Не удалось получить состояние моментального снимка или создать моментальный снимок](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-3-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 3. [Не удалось обновить или загрузить расширение резервного копирования](#the-backup-extension-fails-to-update-or-load)
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>Не удалось выполнить операцию с расширением моментального снимка виртуальной машины
 
-После регистрации и запланировать виртуальную Машину для hello службы резервного копирования Azure, резервное копирование инициирует задание hello путем взаимодействия с hello расширение резервного копирования виртуальной Машины tootake на момент времени, моментальный снимок. Любой из следующих условий hello может блокировать hello моментального снимка из запустилась, что в свою очередь, может вызвать сбой tooBackup. Следуйте ниже устранения неполадок в hello, используя порядок и повторите операцию.
-##### <a name="cause-1-hello-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 1: [не удается получить состояние hello моментальных снимков или моментальный снимок не может быть выполнено](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
-##### <a name="cause-2-hello-backup-extension-fails-tooupdate-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 2: [hello расширение резервного копирования завершается с ошибкой tooupdate или нагрузки](#the-backup-extension-fails-to-update-or-load)
-##### <a name="cause-3-hello-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 3: [hello виртуальная машина имеет доступ к Интернету отсутствует](#the-vm-has-no-internet-access)
-##### <a name="cause-4-hello-agent-is-installed-in-hello-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 4: [hello агент установлен в hello виртуальной Машины, но не отвечает (для ВМ Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-##### <a name="cause-5-hello-agent-installed-in-hello-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 5: [hello агент, установленный в hello виртуальной Машины является устаревшим (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+После регистрации виртуальной машины в службе архивации Azure и добавления ее в расписание служба архивации инициирует задание, взаимодействуя с расширением виртуальной машины, чтобы создать моментальный снимок. Любое из следующих условий может помешать активации создания моментального снимка, что может привести к сбою службы Backup. Выполните инструкции по устранению неполадок в указанном порядке и повторите операцию.
+##### <a name="cause-1-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 1. [Не удалось получить состояние моментального снимка или создать моментальный снимок](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-2-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 2. [Не удалось обновить или загрузить расширение резервного копирования](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-3-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 3. [У виртуальной машины нет доступа к Интернету](#the-vm-has-no-internet-access)
+##### <a name="cause-4-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 4. [Агент установлен на виртуальной машине, но не отвечает (для виртуальных машин Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-5-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 5. [Устарел агент, установленный на виртуальной машине (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 
-## <a name="unable-tooperform-hello-operation-as-hello-vm-agent-is-not-responsive"></a>Не удается tooperform hello операцию, так как hello агент ВМ не отвечает
+## <a name="unable-to-perform-the-operation-as-the-vm-agent-is-not-responsive"></a>Не удалось выполнить операцию, так как агент виртуальной машины не отвечает
 
-После регистрации и запланировать виртуальную Машину для hello службы резервного копирования Azure, резервное копирование инициирует задание hello путем взаимодействия с hello расширение резервного копирования виртуальной Машины tootake на момент времени, моментальный снимок. Любой из следующих условий hello может блокировать hello моментального снимка из запустилась, что в свою очередь, может вызвать сбой tooBackup. Следуйте ниже устранения неполадок в hello, используя порядок и повторите операцию.
-##### <a name="cause-1-hello-agent-is-installed-in-hello-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 1: [hello агент установлен в hello виртуальной Машины, но не отвечает (для ВМ Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-##### <a name="cause-2-hello-agent-installed-in-hello-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 2: [hello агент, установленный в hello виртуальной Машины является устаревшим (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
-##### <a name="cause-3-hello-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 3: [hello виртуальная машина имеет доступ к Интернету отсутствует](#the-vm-has-no-internet-access)
+После регистрации виртуальной машины в службе архивации Azure и добавления ее в расписание служба архивации инициирует задание, взаимодействуя с расширением виртуальной машины, чтобы создать моментальный снимок. Любое из следующих условий может помешать активации создания моментального снимка, что может привести к сбою службы Backup. Выполните инструкции по устранению неполадок в указанном порядке и повторите операцию.
+##### <a name="cause-1-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 1. [Агент установлен на виртуальной машине, но не отвечает (для виртуальных машин Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-2-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 2. [Устарел агент, установленный на виртуальной машине (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-3-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 3. [У виртуальной машины нет доступа к Интернету](#the-vm-has-no-internet-access)
 
-## <a name="backup-failed-with-an-internal-error---please-retry-hello-operation-in-a-few-minutes"></a>Сбой резервного копирования с внутренней ошибкой — и повторите операцию hello через несколько минут
+## <a name="backup-failed-with-an-internal-error---please-retry-the-operation-in-a-few-minutes"></a>Произошла внутренняя ошибка службы Backup. Повторите операцию через несколько минут
 
-После регистрации и запланировать виртуальную Машину для hello службы резервного копирования Azure, резервное копирование инициирует задание hello путем взаимодействия с hello расширение резервного копирования виртуальной Машины tootake на момент времени, моментальный снимок. Любой из следующих условий hello может блокировать hello моментального снимка из запустилась, что в свою очередь, может вызвать сбой tooBackup. Следуйте ниже устранения неполадок в hello, используя порядок и повторите операцию.
-##### <a name="cause-1-hello-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1: [hello виртуальная машина имеет доступ к Интернету отсутствует](#the-vm-has-no-internet-access)
-##### <a name="cause-2-hello-agent-installed-in-hello-vm-but-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 2: [hello агента, установленного hello виртуальной Машины, но не отвечает (для ВМ Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
-##### <a name="cause-3-hello-agent-installed-in-hello-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 3: [hello агент, установленный в hello виртуальной Машины является устаревшим (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
-##### <a name="cause-4-hello-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 4: [не удается получить состояние hello моментальных снимков или моментальный снимок не может быть выполнено](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
-##### <a name="cause-5-hello-backup-extension-fails-tooupdate-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 5: [hello расширение резервного копирования завершается с ошибкой tooupdate или нагрузки](#the-backup-extension-fails-to-update-or-load)
+После регистрации виртуальной машины в службе архивации Azure и добавления ее в расписание служба архивации инициирует задание, взаимодействуя с расширением виртуальной машины, чтобы создать моментальный снимок. Любое из следующих условий может помешать активации создания моментального снимка, что может привести к сбою службы Backup. Выполните инструкции по устранению неполадок в указанном порядке и повторите операцию.
+##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Причина 1. [У виртуальной машины нет доступа к Интернету](#the-vm-has-no-internet-access)
+##### <a name="cause-2-the-agent-installed-in-the-vm-but-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Причина 2. [Агент установлен на виртуальной машине, но не отвечает (для виртуальных машин Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
+##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Причина 3. [Устарел агент, установленный на виртуальной машине (для виртуальных машин Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
+##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Причина 4. [Не удалось получить состояние моментального снимка или создать моментальный снимок](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
+##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Причина 5. [Не удалось обновить или загрузить расширение резервного копирования](#the-backup-extension-fails-to-update-or-load)
 
+## <a name="the-specified-disk-configuration-is-not-supported"></a>Указанная конфигурация диска не поддерживается
+
+Сейчас служба Azure Backup не поддерживает размер диска [больше 1023 ГБ](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm). 
+- При наличии дисков, размер которых больше 1 ТБ, [подключите новые диски](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal), размер которых меньше 1 ТБ. <br>
+- Затем скопируйте данные с диска, размер которого больше 1 ТБ, на недавно созданные диски размером меньше 1 ТБ. <br>
+- Убедитесь, что все данные скопированы, и удалите диски размером больше 1 ТБ.
+- Запустите резервное копирование.
 
 ## <a name="causes-and-solutions"></a>Причины и решения
 
-### <a name="hello-vm-has-no-internet-access"></a>Hello виртуальная машина имеет доступ к Интернету отсутствует
-Каждого требования развертывания hello hello виртуальная машина имеет доступ к Интернету отсутствует или имеет ограничения на месте, запрещающие доступ toohello инфраструктуры Azure.
+### <a name="the-vm-has-no-internet-access"></a>У виртуальной машины нет доступа к Интернету
+Согласно требованиям к развертыванию виртуальная машина не имеет доступа к Интернету или существуют ограничения на доступ к инфраструктуре Azure.
 
-toofunction правильно, требуется расширение резервного копирования hello toohello подключения к Azure открытый IP-адресов. модуль Hello отправляет команды tooan хранилища Azure (URL-адреса HTTP) конечной точки toomanage hello моментальные снимки hello виртуальной Машины. Если расширение hello не toohello доступа к общедоступной сети Интернет, в конечном итоге резервное копирование завершается с ошибкой.
+Для правильной работы расширения службы архивации требуется возможность подключения к общедоступным IP-адресам Azure. Для управления моментальными снимками виртуальной машины это расширение отправляет команды к конечной точке службы хранилища Azure (URL-адрес HTTP). Если расширение не имеет доступа к общедоступному Интернету, архивация завершится сбоем.
 
 ####  <a name="solution"></a>Решение
-tooresolve hello проблему, выполните одно из перечисленных ниже методов hello.
-##### <a name="allow-access-toohello-azure-datacenter-ip-ranges"></a>Разрешить доступ диапазоны IP-адресов центра обработки данных Azure toohello
+Для устранения этой проблемы воспользуйтесь одним из указанных ниже способов.
+##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>Разрешение доступа к диапазонам IP-адресов центра обработки данных Azure
 
-1. Получить hello [список центра обработки данных Azure IP-адреса](https://www.microsoft.com/download/details.aspx?id=41653) tooallow доступ к.
-2. Разблокировать hello IP-адреса, выполнив hello **New-NetRoute** командлета в hello виртуальной Машины Azure в окне PowerShell с повышенными привилегиями. Используйте командлет hello с правами администратора.
-3. toohello доступа tooallow IP-адресов, добавьте правила toohello сетевой группы безопасности, если таковой имеется.
+1. Получите [список IP-адресов центра обработки данных Azure](https://www.microsoft.com/download/details.aspx?id=41653), чтобы разрешить доступ к ним.
+2. Разблокируйте IP-адреса, выполнив командлет **New-NetRoute** на виртуальной машине Azure в окне PowerShell с повышенными привилегиями. Выполните этот командлет с привилегиями администратора.
+3. Чтобы разрешить доступ к этим IP-адресам, добавьте соответствующие правила в группу безопасности сети (если она настроена).
 
-##### <a name="create-a-path-for-http-traffic-tooflow"></a>Создать путь для tooflow трафик HTTP
+##### <a name="create-a-path-for-http-traffic-to-flow"></a>Создание пути для прохождения трафика HTTP
 
-1. При наличии ограничений сетевого на месте (например, группы безопасности сети), разверните HTTP-прокси сервера tooroute hello трафика.
-2. toohello доступа tooallow Интернет из hello прокси-сервер HTTP, добавьте правила toohello сетевой группы безопасности, если таковой имеется.
+1. При наличии каких-либо ограничений сети (например, группы безопасности сети) разверните прокси-сервер HTTP для маршрутизации трафика.
+2. Если вы используете группу безопасности сети, добавьте в нее правила, чтобы разрешить доступ к Интернету с прокси-сервера HTTP.
 
-tooset копирование HTTP-прокси для резервных копий виртуальной Машины, в статье toolearn [подготовки вашей среды tooback копирование виртуальных машин Azure](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+Чтобы узнать, как настроить прокси-сервер HTTP для архивации виртуальных машин, ознакомьтесь с разделом [Подготовка среды для резервного копирования виртуальных машин Azure](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
 
-В случае, если вы используете управляемый диски, может потребоваться дополнительный порт (8443) открывается на брандмауэрах hello.
+В случае если вы используете управляемые диски, может потребоваться открыть в брандмауэрах дополнительный порт (8443).
 
-### <a name="hello-agent-installed-in-hello-vm-but-unresponsive-for-windows-vms"></a>Hello агента, установленного hello виртуальной Машины, но не отвечает (для ВМ Windows)
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Агент установлен на виртуальной машине, но не отвечает (для виртуальных машин Windows)
 
 #### <a name="solution"></a>Решение
-Hello агент ВМ был поврежден или hello службы были остановлены. Повторно Установка агента ВМ hello помогает получить последнюю версию hello и перезапустите hello связи.
+Возможно, агент виртуальной машины может быть поврежден или служба остановлена. Повторная установка агента виртуальной машины поможет получить последнюю версию и возобновить обмен данными.
 
-1. Проверьте hello ли гостевой агент Windows служба, запущенная в служб (services.msc) для виртуальной машины. Попробуйте перезапустить службу Windows гостевой агент hello и инициировать hello резервного копирования<br>
+1. Проверьте, запущена ли служба гостевого агента Windows в службах компьютера (services.msc) на виртуальной машине. Попробуйте перезапустить службу гостевого агента Windows и запустите резервное копирование<br>
 2. Если она не отображается в списке служб, проверьте в разделе "Программы и компоненты", установлена ли служба гостевого агента Windows.
-4. Если вы не можете tooview в hello удаления программы и компоненты Windows гостевого агента.
-5. Загрузите и установите hello [последнюю версию агента MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Требуется установка hello toocomplete права администратора.
-6. Затем следует службам Windows гостевой агент может tooview служб
-7. Попробуйте запустить, нажав кнопку «Создать резервную копию сейчас» hello портала по запросу и нерегламентированном резервном копировании.
+4. Если вы можете просматривать раздел "Программы и компоненты", удалите гостевой агент Windows.
+5. Скачайте и установите [последнюю версию файла MSI агента](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Чтобы выполнить установку, необходимо иметь права администратора.
+6. Затем можно будет просмотреть службу гостевого агента Windows в службах.
+7. Попробуйте выполнить резервное копирование по запросу или нерегламентированное резервное копирование, щелкнув "Моментальная архивация" на портале.
 
-Также проверьте, обладает виртуальной машины  **[.NET 4.5, установленные в системе hello](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**. Это необходимо для hello toocommunicate агента ВМ со службой hello
+Также проверьте, установлен ли на виртуальной машине компонент **[.NET 4.5](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**. Он необходим для взаимодействия агента виртуальной машины со службой.
 
-### <a name="hello-agent-installed-in-hello-vm-is-out-of-date-for-linux-vms"></a>Hello агент, установленный в hello виртуальной Машины является устаревшим (для виртуальных машин Linux)
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Устарел агент, установленный на виртуальной машине (для виртуальных машин Linux)
 
 #### <a name="solution"></a>Решение
-Большая часть неполадок, связанных с агентом или расширением на виртуальных машинах Linux, вызваны проблемами с устаревшим агентом виртуальной машины. tootroubleshoot эту проблему, следуйте следующим рекомендациям:
+Большая часть неполадок, связанных с агентом или расширением на виртуальных машинах Linux, вызваны проблемами с устаревшим агентом виртуальной машины. Чтобы устранить эту проблему, следуйте приведенным ниже общим рекомендациям.
 
-1. Следуйте инструкциям hello [обновление hello агент виртуальной Машины Linux](../virtual-machines/linux/update-agent.md).
+1. Выполните указания по [обновлению агента виртуальной машины Linux ](../virtual-machines/linux/update-agent.md).
 
  >[!NOTE]
- >Мы *настоятельно рекомендуется* обновлении агента hello только с помощью распространения репозитория. Не рекомендуется загрузить код агента hello непосредственно из GitHub и ее обновления. Недоступность hello последнюю версию агента для распространения, обратитесь в службу поддержки распространения инструкции о том, как tooinstall его. toocheck hello последних агента, последовательно выберите toohello [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) страницы в репозитории GitHub hello.
+ >Мы *настоятельно рекомендуем* обновлять агент только посредством репозитория дистрибутивов. Мы не рекомендуем скачивать код агента непосредственно с портала GitHub и обновлять его. Если последняя версия агента для вашего дистрибутива недоступна, обратитесь в службу поддержки дистрибутива, чтобы получить инструкции по установке последней версии агента. Чтобы проверить наличие последней версии агента, перейдите на страницу [агента Linux для Microsoft Azure](https://github.com/Azure/WALinuxAgent/releases) в репозитории GitHub.
 
-2. Убедитесь, что hello Azure агент выполняется на hello виртуальной Машины, выполнив следующую команду hello.`ps -e`
+2. Убедитесь, что на виртуальной машине запущен агент Azure, выполнив команду `ps -e`.
 
- Если hello процесс не запущен, перезапустите его с помощью hello, следующие команды.
+ Если нужный процесс не запущен, используйте следующие команды для его перезапуска.
 
  * Для Ubuntu: `service walinuxagent start`.
  * Для других дистрибутивов: `service waagent start`.
 
-3. [Настройка hello автоматического перезапуска агента](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-4. Снова запустите резервное копирование для проверки. Если hello ошибка продолжает появляться, соберите следующие журналы из виртуальной Машины клиента hello hello:
+3. [Настройте автоматический перезапуск агента](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+4. Снова запустите резервное копирование для проверки. Если ошибка не исчезла, извлеките следующие журналы из виртуальной машины клиента:
 
    * /var/lib/waagent/*.xml
    * /var/log/waagent.log
@@ -131,44 +138,44 @@ Hello агент ВМ был поврежден или hello службы был
 
 Если нам потребуется подробное ведение журнала для waagent, выполните следующие действия.
 
-1. Найдите в файле /etc/waagent.conf hello следующей строкой hello: **включите подробное ведение журнала (y | n)**
-2. Изменение hello **Logs.Verbose** значение из  *n*  слишком*y*.
-3. Сохранить изменение hello, а затем перезапустите waagent следуя hello предыдущие шаги в этом разделе.
+1. В файле /etc/waagent.conf найдите такую строку: **Enable verbose logging (y|n)**.
+2. Для параметра **Logs.Verbose** измените значение с *n* на *y*.
+3. Сохраните изменения и перезапустите waagent, как описано выше в этом разделе.
 
-### <a name="hello-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>не удается получить состояние Hello моментальных снимков или моментальный снимок не может быть выполнено
-резервное копирование виртуальных Машин Hello зависит от того, выдачи моментального снимка команда toohello базовой учетной записи хранилища. Резервное копирование может произойти сбой, у него нет учетной записи хранения toohello доступа или откладывается hello выполнение задачи моментальных снимков hello.
+### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Не удалось получить состояние моментального снимка или создать моментальный снимок
+Архивация виртуальных машин зависит от команды создания моментального снимка в базовой учетной записи хранения. Сбой службы архивации может произойти, если она не имеет доступа к учетной записи хранения или выполнение задачи создания моментального снимка задерживается.
 
 #### <a name="solution"></a>Решение
-Привет, следующие условия могут вызвать сбой задачи моментальных снимков:
+Сбой задачи создания снимка может быть вызван следующими условиями.
 
 | Причина: | Решение |
 | --- | --- |
-| Hello виртуальной Машины имеет настройки резервного копирования SQL Server. | По умолчанию hello ВМ архивация выполняется полное резервное копирование VSS на виртуальных машинах Windows. Если на виртуальной машине запущен сервер на основе SQL Server и настроена архивация SQL Server, то при создании моментального снимка может возникнуть задержка.<br><br>При возникновении сбоя резервного копирования из-за проблем с моментального снимка, задайте hello следующий раздел реестра:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
-| состояние виртуальной Машины Hello возникает неправильно из-за hello виртуальной Машины будет выполнено завершение работы протокола удаленного рабочего СТОЛА. | При выключении hello ВМ в протокол удаленного рабочего стола (RDP), проверьте наличие портала toodetermine hello hello состояние виртуальной Машины указано правильно. Если это не так, завершите работу hello ВМ на портале hello с помощью hello **завершение работы** параметр на панели мониторинга виртуальной Машины hello. |
-| Много виртуальных машин из hello одной облачной службе, настроенной, tooback на hello то же время. | Это наиболее toospread рекомендаций out hello расписания резервного копирования для виртуальных машин из hello же облачной службе. |
-| Hello виртуальная машина работает на высокую загруженность ЦП или памяти. | Если hello виртуальная машина работает на высокая загрузка ЦП (более 90%) или использовании большого объема памяти, задачу hello моментальных снимков в очереди и отложенной и ее время ожидания истекает. В таких ситуациях попробуйте использовать архивацию по запросу. |
-| Hello виртуальной Машины не удается получить hello и структура узла адрес у DHCP-сервера. | DHCP должна быть включена в гостевой системе hello для резервного копирования toowork ВМ IaaS hello.  Если hello виртуальной Машины не может получить hello и структура узла адрес из ответа DHCP 245, не может загружать или выполнения каких-либо расширений. Если вам требуется статический частных IP-адрес, его следует настроить посредством hello. Здравствуйте, DHCP-параметра внутри приветствия следует оставить ВМ включен. Дополнительные сведения см. в статье [Как задать статический внутренний частный IP-адрес с помощью PowerShell (классическая модель)](../virtual-network/virtual-networks-reserved-private-ip.md). |
+| Для виртуальной машины настроена архивация SQL Server. | По умолчанию при архивации виртуальной машины выполняется полная архивация VSS на виртуальных машинах Windows. Если на виртуальной машине запущен сервер на основе SQL Server и настроена архивация SQL Server, то при создании моментального снимка может возникнуть задержка.<br><br>Если у вас возникают ошибки архивации из-за проблемы с моментальными снимками, настройте приведенный ниже ключ реестра.<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
+| Состояние виртуальной машины отображается неправильно из-за того, что работа виртуальной машины была завершена в сеансе удаленного рабочего стола. | Когда вы завершаете работу виртуальной машины в сеансе удаленного рабочего стола (RDP), проверьте, правильно ли отображается состояние виртуальной машины на портале. Если это не так, завершите работу виртуальной машины на портале с помощью операции **Завершение работы** на панели мониторинга виртуальной машины. |
+| Для нескольких виртуальных машин из одной облачной службы резервное копирование выполняется в одно и то же время. | Рекомендуется распределить архивацию виртуальных машин из одной облачной службы так, чтобы она выполнялась в разное время. |
+| Виртуальная машина использует большие ресурсы процессора или памяти. | Если виртуальная машина работает с высоким уровнем загрузки ЦП (более 90 %) или использует большой объем памяти, задача создания моментального снимка помещается в очередь и время ее ожидания истекает. В таких ситуациях попробуйте использовать архивацию по запросу. |
+| Виртуальная машина не может получить адрес узла или структуры по протоколу DHCP. | Чтобы архивация виртуальной машины IaaS работала, в гостевой учетной записи нужно включить протокол DHCP.  Если виртуальная машина не может получить адрес узла или структуры в виде ответа DHCP 245, то она не сможет скачать или запустить какие-либо расширения. Если вам нужен статический частный IP-адрес, следует настроить его через платформу. DHCP для виртуальной машины следует оставить включенным. Дополнительные сведения см. в статье [Как задать статический внутренний частный IP-адрес с помощью PowerShell (классическая модель)](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
-### <a name="hello-backup-extension-fails-tooupdate-or-load"></a>расширение резервного копирования Hello завершается с ошибкой tooupdate или нагрузки
+### <a name="the-backup-extension-fails-to-update-or-load"></a>Не удалось обновить или загрузить расширение резервного копирования
 Если не удается загрузить расширения, получить моментальный снимок состояния невозможно, и архивация завершится сбоем.
 
 #### <a name="solution"></a>Решение
 
-**Для гостевых систем Windows:** убедитесь, что служба iaasvmprovider hello включен и имеет тип запуска *автоматического*. Если служба hello не настроена таким образом, включите toodetermine ли следующая резервная копия hello завершается успешно.
+**Для гостевых систем Windows:** убедитесь, что служба iaasvmprovider включена и для нее установлен *автоматический* тип запуска. Если это не так, включите эту службу и проверьте, будет ли успешно выполнена следующая архивация.
 
-**Для гостевых систем Linux:** проверьте hello последняя версия VMSnapshot для Linux (расширение hello использовался резервной копии) — 1.0.91.0.<br>
+**Для гостевых систем Linux:** убедитесь, что последняя версия Linux VMSnapshot (расширение, используемое службой архивации) — 1.0.91.0.<br>
 
 
-Если расширение резервного копирования hello по-прежнему не tooupdate или нагрузки, можно принудительно hello VMSnapshot расширения toobe перезагружен путем удаления расширения hello. Hello следующей резервной копии попытки перезагрузит hello расширения.
+Если расширение резервной копии по-прежнему не удается обновить или загрузить, попробуйте принудительно перезагрузить расширение VMSnapshot, удалив это расширение. Расширение будет перезагружено при следующей попытке резервного копирования.
 
-toouninstall Здравствуйте расширения, hello следующие:
+Чтобы удаление расширение, выполните следующее.
 
-1. Go toohello [портал Azure](https://portal.azure.com/).
-2. Найдите hello виртуальной Машины с резервного копирования проблемы.
+1. Перейдите на [портал Azure](https://portal.azure.com/).
+2. Найдите виртуальную машину, с архивацией которой возникли проблемы.
 3. Щелкните **Параметры**.
 4. Щелкните **Расширения**.
 5. Щелкните **Vmsnapshot Extension** (Расширение Vmsnapshot).
 6. Нажмите кнопку **Удалить**.
 
-При выполнении этой процедуры повторной установки во время следующего резервного копирования hello toobe расширения hello.
+После этого расширение будет повторно установлено при следующей архивации.
 

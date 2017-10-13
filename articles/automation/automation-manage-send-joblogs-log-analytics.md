@@ -1,9 +1,9 @@
 ---
-title: "aaaForward tooOMS данных задания службы автоматизации Azure Log Analytics | Документы Microsoft"
-description: "В этой статье показано, как toosend задания состояния и runbook задание потоки управления и анализа журналов Operations Management Suite tooMicrosoft toodeliver Дополнительные подробные сведения."
+title: "Пересылка данных задания службы автоматизации Azure в OMS Log Analytics | Документация Майкрософт"
+description: "В этой статье показано, как отправлять состояние задания Runbook и потоки заданий в Log Analytics (Microsoft Operations Management Suite) для получения дополнительных сведений и возможностей управления."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: c12724c6-01a9-4b55-80ae-d8b7b99bd436
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/02/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: e78b6c6677d6502711ce828e2d32b7a91922ae26
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 21923adaa8f8118995799319c1fd496a6e449faa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-toolog-analytics-oms"></a>Пересылать состояние задания и задания потоков из автоматизации tooLog Analytics (OMS)
-Автоматизация может отправлять runbook задания состояние задания потоки tooyour анализа журналов Microsoft Operations Management Suite (OMS) рабочей области и.  Заносит в журнал заданий и потоки задания, отображаются в hello портал Azure, либо с помощью PowerShell, отдельные задания, и позволяет tooperform простой исследования. С помощью Log Analytics теперь можно:
+# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Пересылка состояния задания и потоков заданий из службы автоматизации в Log Analytics (OMS)
+Служба автоматизации может отправлять состояние задания Runbook и потоки заданий в рабочую область Log Analytics в Microsoft Operations Management Suite (OMS).  На портале Azure или с помощью PowerShell можно просмотреть журналы заданий и потоки заданий для отдельных заданий. Это дает возможность выполнять простые исследования. С помощью Log Analytics теперь можно:
 
 * получить информацию о заданиях службы автоматизации;
 * активировать отправку электронного сообщения или оповещения в соответствии с состоянием задания Runbook (например, сбой или приостановка);
@@ -30,29 +30,29 @@ ms.lasthandoff: 10/06/2017
 * визуализировать журнал задания по прошествии времени.     
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Предварительные требования и рекомендации по развертыванию
-toostart автоматической отправки журналов tooLog аналитики, необходимо:
+Чтобы начать отправку журналов службы автоматизации в Log Analytics, необходимо следующее.
 
-1. Здравствуйте, ноябрь 2016 г. или более поздней версии версии [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
+1. Выпуск за ноябрь 2016 года или более поздний выпуск [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (вер. 2.3.0).
 2. Рабочая область Log Analytics. Дополнительные сведения см. в статье [Начало работы с Log Analytics](../log-analytics/log-analytics-get-started.md). 
-3. Hello ResourceId для вашей учетной записи службы автоматизации Azure
+3. ResourceId для учетной записи службы автоматизации Azure
 
-hello toofind ResourceId для вашей учетной записи службы автоматизации Azure и рабочей области аналитики журналов, запустите следующие PowerShell hello:
+Чтобы узнать ResourceId для учетной записи службы автоматизации Azure и рабочей области Log Analytics, выполните следующую команду PowerShell.
 
 ```powershell
-# Find hello ResourceId for hello Automation Account
+# Find the ResourceId for the Automation Account
 Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
 
-# Find hello ResourceId for hello Log Analytics workspace
+# Find the ResourceId for the Log Analytics workspace
 Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
-Если у вас несколько учетных записей автоматизации или рабочие области, в выходные данные команды, предшествующие hello hello найти hello *имя* требуется tooconfigure и скопируйте значение hello для *ResourceId*.
+Если у вас несколько учетных записей службы автоматизации или рабочих областей, в выходных данных предыдущей команды найдите нужное значение *Name* и скопируйте соответствующее значение *ResourceId*.
 
-Если вам требуется toofind hello *имя* учетной записи автоматизации в hello портала Azure выберите учетную запись автоматизации из hello **учетной записи автоматизации** и выберите **все параметры**.  Из hello **все параметры** колонки в разделе **параметры учетной записи** выберите **свойства**.  В hello **свойства** колонки, эти значения можно обратить внимание.<br> ![Свойства учетной записи службы автоматизации](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+Если вам нужно найти значение *Name* для своей учетной записи службы автоматизации, на портале Azure выберите свою учетную запись службы автоматизации в колонке **Учетная запись службы автоматизации** и выберите **Все параметры**.  В колонке **Все параметры** в разделе **Параметры учетной записи** выберите пункт **Свойства**.  В колонке **Свойства** вы увидите нужные значения.<br> ![Свойства учетной записи службы автоматизации](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
 ## <a name="set-up-integration-with-log-analytics"></a>Настройка интеграции с Log Analytics
-1. На компьютере, запустите **Windows PowerShell** из hello **запустить** экрана.  
-2. Скопируйте и вставьте следующий PowerShell hello и измените значение hello для hello `$workspaceId` и `$automationAccountId`.  Для hello `-Environment` параметров, допустимыми значениями являются *облачной* или *AzureUSGovernment* в зависимости от того, вы работаете в среде облака hello.     
+1. На своем компьютере запустите **Windows PowerShell** на **начальном** экране.  
+2. Скопируйте и вставьте приведенную ниже команду PowerShell и измените значение `$workspaceId` и `$automationAccountId`.  Допустимыми значениями параметра `-Environment` являются *AzureCloud* и *AzureUSGovernment*. Его значение зависит от того, в какой облачной среде вы работаете.     
 
 ```powershell
 [cmdletBinding()]
@@ -63,17 +63,17 @@ Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
         [string]$Environment="AzureCloud"
     )
 
-#Check toosee which cloud environment toosign into.
+#Check to see which cloud environment to sign into.
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
        "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
    }
 
-# if you have one Log Analytics workspace you can use hello following command tooget hello resource id of hello workspace
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
 
@@ -81,10 +81,10 @@ Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $work
 
 После запуска этого сценария вы увидите записи в Log Analytics, добавленные в новый элемент JobLogs или JobStreams за 10 минут.
 
-toosee журналы hello, запустите hello в следующем запросе в поиске по журналам анализа журналов:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
+Чтобы просмотреть журналы, выполните следующий запрос в поиске по журналам Log Analytics: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Проверка конфигурации
-tooconfirm отправляет учетной записи автоматизации в журналах рабочей областью аналитики журналов tooyour, проверьте, что диагностики правильно установлены на hello учетной записи автоматизации с помощью следующих PowerShell hello:
+Чтобы убедиться, что ваша учетная запись службы автоматизации отправляет журналы в рабочую область Log Analytics, проверьте правильность настройки диагностики в учетной записи службы автоматизации, используя следующую команду PowerShell.
 
 ```powershell
 [cmdletBinding()]
@@ -95,23 +95,23 @@ tooconfirm отправляет учетной записи автоматиза
         [string]$Environment="AzureCloud"
     )
 
-#Check toosee which cloud environment toosign into.
+#Check to see which cloud environment to sign into.
 Switch ($Environment)
    {
        "AzureCloud" {Login-AzureRmAccount}
        "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
    }
-# if you have one Log Analytics workspace you can use hello following command tooget hello resource id of hello workspace
+# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
 $workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
 
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
-В выходных данных hello убедитесь, что:
-+ В разделе *журналы*, hello значение *включено* — *True*
-+ Здравствуйте, значение *ИД рабочей области* задано toohello ResourceId рабочей области аналитики журналов
+В выходных данных убедитесь в следующем.
++ В разделе *Logs* значение *Enabled* равно *True*.
++ *WorkspaceId* присвоено значение ResourceId рабочей области Log Analytics.
 
 
 ## <a name="log-analytics-records"></a>Записи Log Analytics
@@ -120,21 +120,21 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ### <a name="job-logs"></a>Журналы заданий
 | Свойство | Описание |
 | --- | --- |
-| TimeGenerated |Дата и время выполнения задания runbook hello. |
-| RunbookName_s |Имя hello runbook Hello. |
-| Caller_s |Кто инициировал операцию hello.  Допустимые значения: электронный адрес или system для запланированных заданий. |
-| Tenant_g | Идентификатор GUID, определяющий hello клиента для hello вызывающего объекта. |
-| JobId_g |Идентификатор GUID, — идентификатор задания runbook hello hello. |
-| ResultType |состояние задания runbook hello Hello.  Возможные значения:<br>Started<br>- Остановлена<br>Приостановлено<br>Сбой<br>Завершено |
-| Категория | Классификация данных типа hello.  Для автоматизации используется значение hello JobLogs. |
-| OperationName | Указывает тип операции, выполняемой в Azure hello.  Для автоматизации используется значение hello задания. |
-| Ресурс | Имя учетной записи автоматизации hello |
-| SourceSystem | Как служба аналитики журналов сбора данных hello. Всегда имеет значение *Azure* для системы диагностики Azure. |
-| ResultDescription |Описывает состояние результата задания runbook hello.  Возможные значения:<br>— Job is started;<br>— Job Failed;<br>- Job Completed. |
-| CorrelationId |Идентификатор GUID, который является hello Корреляционный идентификатор задания runbook hello. |
-| ResourceId |Указывает идентификатор ресурса учетной записи автоматизации Azure hello hello модуля Runbook. |
-| SubscriptionId | Здравствуйте, подписки Azure идентификатор (GUID) для учетной записи автоматизации hello. |
-| ResourceGroup | Имя группы ресурсов hello hello учетной записи автоматизации. |
+| TimeGenerated |Дата и время выполнения задания Runbook. |
+| RunbookName_s |Имя Runbook. |
+| Caller_s |Сторона, инициировавшая операцию.  Допустимые значения: электронный адрес или system для запланированных заданий. |
+| Tenant_g | GUID, идентифицирующий клиента для вызывающего объекта. |
+| JobId_g |GUID, представляющий собой идентификатор задания Runbook. |
+| ResultType |Состояние задания Runbook.  Возможные значения:<br>Новое<br>Started<br>- Остановлена<br>Приостановлено<br>Сбой<br>Завершено |
+| Категория | Классификация типа данных.  Для службы автоматизации значением является JobLogs. |
+| OperationName | Указывает тип операции, выполняемой в Azure.  Для службы автоматизации значением является Job. |
+| Ресурс | Имя учетной записи службы автоматизации |
+| SourceSystem | Способ сбора данных в Log Analytics. Всегда имеет значение *Azure* для системы диагностики Azure. |
+| ResultDescription |Описывает состояние результата задания Runbook.  Возможные значения:<br>— Job is started;<br>— Job Failed;<br>- Job Completed. |
+| CorrelationId |GUID, представляющий собой идентификатор корреляции задания Runbook. |
+| ResourceId |Указывает идентификатор ресурса учетной записи службы автоматизации Azure для модуля Runbook. |
+| SubscriptionId | Идентификатор подписки Azure (GUID) для учетной записи службы автоматизации. |
+| ResourceGroup | Имя группы ресурсов для учетной записи службы автоматизации. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
@@ -142,67 +142,67 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ### <a name="job-streams"></a>Потоки заданий
 | Свойство | Описание |
 | --- | --- |
-| TimeGenerated |Дата и время выполнения задания runbook hello. |
-| RunbookName_s |Имя hello runbook Hello. |
-| Caller_s |Кто инициировал операцию hello.  Допустимые значения: электронный адрес или system для запланированных заданий. |
-| StreamType_s |Тип Hello потока задания. Возможные значения:<br>ход выполнения<br>Выходные данные<br>Предупреждение<br>error<br>debug<br>- Verbose. |
-| Tenant_g | Идентификатор GUID, определяющий hello клиента для hello вызывающего объекта. |
-| JobId_g |Идентификатор GUID, — идентификатор задания runbook hello hello. |
-| ResultType |состояние задания runbook hello Hello.  Возможные значения:<br>- In Progress |
-| Категория | Классификация данных типа hello.  Для автоматизации используется значение hello JobStreams. |
-| OperationName | Указывает тип операции, выполняемой в Azure hello.  Для автоматизации используется значение hello задания. |
-| Ресурс | Имя учетной записи автоматизации hello |
-| SourceSystem | Как служба аналитики журналов сбора данных hello. Всегда имеет значение *Azure* для системы диагностики Azure. |
-| ResultDescription |Включает в себя hello выходной поток из модуля runbook hello. |
-| CorrelationId |Идентификатор GUID, который является hello Корреляционный идентификатор задания runbook hello. |
-| ResourceId |Указывает идентификатор ресурса учетной записи автоматизации Azure hello hello модуля Runbook. |
-| SubscriptionId | Здравствуйте, подписки Azure идентификатор (GUID) для учетной записи автоматизации hello. |
-| ResourceGroup | Имя группы ресурсов hello hello учетной записи автоматизации. |
+| TimeGenerated |Дата и время выполнения задания Runbook. |
+| RunbookName_s |Имя Runbook. |
+| Caller_s |Сторона, инициировавшая операцию.  Допустимые значения: электронный адрес или system для запланированных заданий. |
+| StreamType_s |Тип потока задания. Возможные значения:<br>ход выполнения<br>Выходные данные<br>Предупреждение<br>error<br>debug<br>- Verbose. |
+| Tenant_g | GUID, идентифицирующий клиента для вызывающего объекта. |
+| JobId_g |GUID, представляющий собой идентификатор задания Runbook. |
+| ResultType |Состояние задания Runbook.  Возможные значения:<br>- In Progress |
+| Категория | Классификация типа данных.  Для службы автоматизации значением является JobStreams. |
+| OperationName | Указывает тип операции, выполняемой в Azure.  Для службы автоматизации значением является Job. |
+| Ресурс | Имя учетной записи службы автоматизации |
+| SourceSystem | Способ сбора данных в Log Analytics. Всегда имеет значение *Azure* для системы диагностики Azure. |
+| ResultDescription |Включает в себя выходной поток из Runbook. |
+| CorrelationId |GUID, представляющий собой идентификатор корреляции задания Runbook. |
+| ResourceId |Указывает идентификатор ресурса учетной записи службы автоматизации Azure для модуля Runbook. |
+| SubscriptionId | Идентификатор подписки Azure (GUID) для учетной записи службы автоматизации. |
+| ResourceGroup | Имя группы ресурсов для учетной записи службы автоматизации. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Просмотр журналов службы автоматизации в Log Analytics
-Теперь, когда вы начали отправки задания tooLog журналы аналитики вашей автоматизации, давайте посмотрим, можно сделать с помощью этих журналов в службе анализа журналов.
+Теперь, когда вы начали отправку журналов заданий службы автоматизации в Log Analytics, давайте узнаем, что с ними можно сделать в Log Analytics.
 
-журналы hello toosee с запуска приветствия при следующем запросе:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
+Чтобы просмотреть журналы, выполните следующий запрос: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Отправка электронного сообщения при сбое или приостановке задания Runbook
-Одно из нашего главного клиента запрашивает предназначен для hello возможность toosend сообщение электронной почты или текстовый при возникновении неполадок с задания runbook.   
+Один из наших основных клиентов запрашивает возможность отправлять электронное сообщение или текст при возникновении ошибки в работе задания Runbook.   
 
-правило toocreate предупреждение, сначала нужно создать задание записи, которые следует вызвать предупреждение hello поиска журналов для hello runbook.  Нажмите кнопку hello **предупреждение** кнопку toocreate и настроить правила оповещений hello.
+Чтобы создать правило генерации оповещений, начните с создания поиска в журнале записей заданий Runbook, которые должны вызывать оповещение.  Щелкните кнопку **Оповещение**, чтобы создать и настроить правило генерации оповещений.
 
-1. На странице приветствия Обзор аналитики журналов нажмите **поиска журналов**.
-2. Создайте запрос поиска журнала для оповещения, введя hello, выполнив поиск в поле запроса hello: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)` задачи можно группировать по hello RunbookName с помощью:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
+1. На странице обзора Log Analytics щелкните **Поиск по журналу**.
+2. Создайте запрос на поиска оповещения в журнале. Для этого в поле запроса введите следующее условие поиска: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)`. Можно также применить группирование по RunbookName с помощью: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
 
-   Если настраивается журналы из более чем одной автоматизации учетная запись или подписка tooyour рабочей области, можно сгруппировать оповещения, подписки и учетной записи автоматизации.  Имя учетной записи автоматизации могут быть производными от поле ресурса hello в поиске hello объекта JobLogs.  
-3. tooopen hello **добавить правило оповещения** щелкните **предупреждения** вверху hello страницы приветствия. Для получения сведений о tooconfigure hello hello параметры оповещений в разделе [предупреждения в службе анализа журналов](../log-analytics/log-analytics-alerts.md#alert-rules).
+   Если вы настроили для рабочей области журналы из более чем одной учетной записи службы автоматизации или подписки, то можете группировать оповещения по подписке или учетной записи службы автоматизации.  Имя учетной записи службы автоматизации можно получить из поля "Ресурс" для поиска JobLogs.  
+3. Чтобы открыть экран **Добавить правило оповещения**, щелкните **Оповещение** в верхней части страницы. Дополнительные сведения о параметрах для настройки оповещения см. в разделе [Оповещения в Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Поиск всех заданий, завершенных с ошибками
-В дополнение к этому tooalerting об ошибках можно найти после задания runbook устранимую ошибку. В таких случаях PowerShell создает поток сообщений об ошибках, но не вызвать ваш toosuspend задания или ошибкой hello устранимые ошибки.    
+Помимо оповещений о сбоях можно узнать, когда задание Runbook вызывает устранимую ошибку. В этих случаях PowerShell создает поток сообщений об ошибках, но устранимые ошибки не приводят к приостановке или сбою задания.    
 
 1. В рабочей области Log Analytics щелкните **Поиск по журналу**.
-2. Введите в поле запроса hello `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g` и нажмите кнопку **поиска**.
+2. В поле запроса введите `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g` и нажмите кнопку **Поиск**.
 
 ### <a name="view-job-streams-for-a-job"></a>Просмотр потоков заданий для задания
-При отладке задания можно также toolook в потоки задания hello.  Hello следующий запрос отображает все потоки hello для одного задания с GUID 2ebd22ea-e05e-4eb9 - 9d 76-d73cbd4356e0:   
+При отладке задания можно также просмотреть потоки заданий.  Приведенный ниже запрос отображает все потоки для одного задания с GUID 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0.   
 
 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams JobId_g="2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort TimeGenerated | select ResultDescription`
 
 ### <a name="view-historical-job-status"></a>Просмотр хронологии состояния задания
-Наконец вы можете toovisualize историю задания со временем.  Можно использовать этот запрос toosearch hello состояния заданий со временем.
+Наконец, вам может понадобиться визуализировать журнал задания по прошествии времени.  Для поиска для поиска состояния заданий по прошествии времени можно использовать приведенный ниже запрос.
 
 `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
 <br> ![Диаграмма хронологии состояния задания в OMS](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>Сводка
-Отправляя вашей автоматизации задания состояния и поток данных tooLog Analytics, можно получить более глубокое представление о hello состояние автоматизации заданий по:
-+ Настройка оповещений toonotify вы при возникновении проблемы
-+ С помощью настраиваемых представлений и запросов toovisualize поиска вашей результатов runbook, состояние задания runbook и других связанных ключевых показателей или метрики.  
+Отправляя состояние задания службы автоматизации и поток данных в Log Analytics, можно лучше понять, в каком состоянии находятся ваши задания службы автоматизации. Для этого вы можете:
++ настроить оповещения, уведомляющие вас о проблемах;
++ с помощью пользовательских представлений и поисковых запросов визуализировать результаты модуля Runbook, состояние задания Runbook и другие связанные ключевые индикаторы или метрики.  
 
-Служба аналитики журналов предоставляет больше оперативной видимость tooyour автоматизации заданий и могут помочь быстрее инцидентов адрес.  
+Log Analytics предоставляет больший оперативный контроль над заданиями службы автоматизации и позволяет быстрее устранять инциденты.  
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* toolearn Дополнительные сведения о как журналы с помощью аналитики журналов задания tooconstruct различных поисковые запросы и просмотрите hello автоматизации см [входа поиска аналитики журналов](../log-analytics/log-analytics-log-searches.md)
-* toounderstand toocreate и получение выходных данных и сообщения об ошибках из модулей Runbook, в статье [Runbook вывода и сообщений](automation-runbook-output-and-messages.md)
-* Дополнительные сведения о выполнение модуля runbook, как toomonitor заданиях и другие технические сведения см. в разделе toolearn [отследить задание runbook](automation-runbook-execution.md)
-* в разделе toolearn Дополнительные сведения о службе анализа журналов OMS и коллекцию источников данных, [Azure сбор данных из хранилища в обзоре анализа журналов](../log-analytics/log-analytics-azure-storage.md)
+* Чтобы узнать больше о том, как создавать различные поисковые запросы и просматривать журналы заданий службы автоматизации с помощью Log Analytics, ознакомьтесь с разделом [Поиск по журналам в Log Analytics](../log-analytics/log-analytics-log-searches.md)
+* Чтобы понять, как создавать и извлекать выходные данные и сообщения об ошибках из модулей Runbook, ознакомьтесь с разделом [Выходные данные и сообщения Runbook в службе автоматизации Azure](automation-runbook-output-and-messages.md)
+* Чтобы узнать больше о выполнении модулей Runbook, отслеживании заданий Runbook и других технических деталях, ознакомьтесь с [отслеживанием задания Runbook](automation-runbook-execution.md)
+* Чтобы узнать больше о Log Analytics (OMS) и источниках сбора данных, ознакомьтесь с разделом [Подключение службы Azure к Log Analytics](../log-analytics/log-analytics-azure-storage.md)

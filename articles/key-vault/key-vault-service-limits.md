@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure ключ ограничения служб хранилища | Документы Microsoft"
-description: "Дополнительные сведения об ограничениях службы hello для хранилища ключей Azure."
+title: "Ограничения службы для хранилища ключей Azure | Документация Майкрософт"
+description: "Узнайте об ограничениях службы для хранилища ключей Azure."
 documentationcenter: dev-center-name
 services: key-vault
 author: cabailey
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/05/2017
 ms.author: ambapat
-ms.openlocfilehash: ebd78281f2428790486c928e5a6415cf479a6439
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b34c67ecc1bd50157ded790948ac7b88a5807ddb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-key-vault-service-limits"></a>Ограничения службы Azure Key Vault
-Ниже приведены ограничения hello служб для хранилища ключей Azure.
+Ниже представлены ограничения службы для хранилища ключей Azure.
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 

@@ -24,7 +24,7 @@
 
 ## Безопасность
 ### [Мониторинг ресурсов](oms-security-monitoring-resources.md)
-### [Ответ toosecurity оповещения](oms-security-responding-alerts.md)
+### [Реагирование на оповещения системы безопасности](oms-security-responding-alerts.md)
 ### [Оценка базовых показателей](oms-security-baseline.md)
 ### [Оценка вредоносных программ](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Оценка системных обновлений](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

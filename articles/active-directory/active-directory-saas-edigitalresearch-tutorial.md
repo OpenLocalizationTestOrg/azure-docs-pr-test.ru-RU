@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с eDigitalResearch | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и eDigitalResearch."
+description: "Узнайте, как настроить единый вход Azure Active Directory в приложении eDigitalResearch."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,192 +14,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 6dd3cafb25ef8ede3a4c16902ed8da69cb7b715f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f877a1dd844c40c913f3121e5288952653c312cd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Руководство. Интеграция Azure Active Directory с eDigitalResearch
 
-В этом учебнике вы узнаете, как eDigitalResearch toointegrate с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать eDigitalResearch с Azure Active Directory (Azure AD).
 
-Интеграция с Azure AD eDigitalResearch предоставляет hello следующие преимущества:
+Интеграция Azure AD с приложением eDigitalResearch дает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooeDigitalResearch.
-- Можно включить на пользователей tooautomatically get вошедшего tooeDigitalResearch (Single Sign-On) с помощью своих учетных записей Azure AD.
-- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
+- С помощью Azure AD можно контролировать доступ к eDigitalResearch.
+- Можно включить автоматический вход пользователей в eDigitalResearch (единый вход) с учетными записями Azure AD.
+- Вы можете управлять учетными записями централизованно — на портале Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с eDigitalResearch требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с eDigitalResearch, вам потребуется:
 
 - подписка Azure AD;
 - подписка на eDigitalResearch с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление eDigitalResearch из галереи hello
+1. Добавление eDigitalResearch из коллекции.
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-edigitalresearch-from-hello-gallery"></a>Добавление eDigitalResearch из галереи hello
-tooconfigure hello интеграции eDigitalResearch в Azure AD, вы должны eDigitalResearch tooadd из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-edigitalresearch-from-the-gallery"></a>Добавление eDigitalResearch из коллекции.
+Чтобы настроить интеграцию eDigitalResearch с Azure AD, необходимо добавить приложение eDigitalResearch из коллекции в список управляемых приложений SaaS.
 
-**eDigitalResearch tooadd из галереи hello, выполните следующие шаги hello.**
+**Чтобы добавить eDigitalResearch из коллекции, сделайте следующее:**
 
-1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
+3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **eDigitalResearch**выберите **eDigitalResearch** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
+4. В поле поиска введите **eDigitalResearch**, выберите **eDigitalResearch** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![eDigitalResearch в списке результатов hello](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_addfromgallery.png)
+    ![eDigitalResearch в списке результатов](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в eDigitalResearch с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в eDigitalResearch является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в eDigitalResearch должен установить toobe.
+Для работы единого входа в Azure AD необходимо знать, какой пользователь в eDigitalResearch соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в eDigitalResearch.
 
-В eDigitalResearch, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
+Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в eDigitalResearch.
 
-tooconfigure и теста Azure AD единого входа с eDigitalResearch, требуются следующие стандартные блоки hello toocomplete:
+Чтобы настроить и проверить единый вход Azure AD в eDigitalResearch, выполните следующие стандартные действия:
 
-1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя eDigitalResearch](#create-a-edigitalresearch-test-user)**  -toohave аналог Саймон Britta в eDigitalResearch, который представляет связанный toohello Azure AD пользователя.
-4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#test-single-sign-on)**  tooverify ли hello works конфигурации.
+1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя eDigitalResearch](#create-a-edigitalresearch-test-user)** требуется для того, чтобы в eDigitalResearch существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
+4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
+5. **[Проверьте единый вход](#test-single-sign-on)**, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении eDigitalResearch.
+В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении eDigitalResearch.
 
-**tooconfigure Azure AD единого входа с eDigitalResearch, выполните следующие шаги hello.**
+**Чтобы настроить единый вход Azure AD в eDigitalResearch, сделайте следующее:**
 
-1. В hello в hello портала Azure **eDigitalResearch** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **eDigitalResearch** щелкните **Единый вход**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_samlbase.png)
 
-3. На hello **eDigitalResearch URL-адреса и домена** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения eDigitalResearch** сделайте следующее:
 
     ![Сведения о домене и URL-адресах единого входа приложения eDigitalResearch](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company-name>.edigitalresearch.com`
+    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<company-name>.edigitalresearch.com`
 
-    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company-name>.edigitalresearch.com/login/consume`
+    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<company-name>.edigitalresearch.com/login/consume`.
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Обновите эти значения с hello фактический идентификатор и ответ URL-адрес. Обратитесь к [eDigitalResearch поддержки](http://www.maruedr.com/contact) tooget эти значения.
+    > Эти значения приведены в качестве примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить эти значения, обратитесь в [службу поддержки eDigitalResearch](http://www.maruedr.com/contact).
  
 
 
-4. На hello **сертификат подписи SAML** щелкните **Base(64) сертификат** и затем сохраните файл сертификата hello на вашем компьютере.
+4. В разделе **Сертификат для подписи токена SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
 
-    !![ссылку для скачивания сертификата Hello](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_certificate.png) 
+    !![Ссылка для скачивания сертификата](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_400.png)
 
-6. На hello **eDigitalResearch конфигурации** щелкните **Настройка eDigitalResearch** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML** из hello **краткий справочник.**
+6. В разделе **Настройка eDigitalResearch** щелкните **Настроить eDigitalResearch**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и идентификатор сущности SAML** из раздела **Краткий справочник**.
 
     ![Настройка eDigitalResearch](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-7. tooconfigure единого входа на **eDigitalResearch** стороны, необходимо загрузить hello toosend **файл сертификата (Base64)**, **идентификатор сущности SAML**, и  **URL-адрес выхода** слишком[eDigitalResearch поддержки](http://www.maruedr.com/contact). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
+7. Чтобы настроить единый вход на стороне **eDigitalResearch**, нужно отправить скачанный **файл сертификата (Base64)**, **идентификатор сущности SAML** и **URL-адрес выхода** в [службу поддержки eDigitalResearch](http://www.maruedr.com/contact). Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах.
 
 > [!TIP]
-> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
+Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_01.png)
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_01.png)
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
 
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_02.png)
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_02.png)
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
 
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить"](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_03.png)
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
 
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_04.png)
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_04.png)
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
   
 ### <a name="create-a-edigitalresearch-test-user"></a>Создание тестового пользователя eDigitalResearch
 
-Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в eDigitalResearch. 
+Цель этого раздела — создать пользователя с именем Britta Simon в приложении eDigitalResearch. 
 
-Работать с hello [eDigitalResearch поддержки](http://www.maruedr.com/contact) tooget пользователей, созданных.       
+Чтобы создать пользователей, обратитесь в [службу поддержки eDigitalResearch](http://www.maruedr.com/contact).     
     
  > [!NOTE]
- > Владелец учетной записи Azure Active Directory Hello получает сообщение электронной почты и соответствует tooconfirm ссылку свою учетную запись, чтобы она стала активной.
+ > Владелец учетной записи Azure Active Directory получит по электронной почте сообщение со ссылкой для активации учетной записи.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooeDigitalResearch доступа.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив доступ к eDigitalResearch.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-**tooassign tooeDigitalResearch Britta Simon выполните следующие шаги hello.**
+**Чтобы назначить пользователя Britta Simon в eDigitalResearch, сделайте следующее:**
 
-1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **eDigitalResearch**.
+2. В списке приложений выберите **eDigitalResearch**.
 
-    ![ссылка eDigitalResearch Hello в списке приложений hello](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_app.png)  
+    ![Ссылка eDigitalResearch в списке приложений](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_app.png)  
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202]
+    ![Ссылка "Пользователи и группы"][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -207,14 +207,14 @@ tooconfigure и теста Azure AD единого входа с eDigitalResearc
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello eDigitalResearch плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour eDigitalResearch приложения.
-Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
+Щелкнув элемент eDigitalResearch на панели доступа, вы автоматически войдете в приложение eDigitalResearch.
+Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

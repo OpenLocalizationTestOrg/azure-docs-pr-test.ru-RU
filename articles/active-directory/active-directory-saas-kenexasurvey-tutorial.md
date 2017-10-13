@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с IBM Kenexa Survey Enterprise | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и корпоративный опроса Kenexa IBM."
+description: "Узнайте, как настроить единый вход Azure Active Directory в IBM Kenexa Survey Enterprise."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,204 +13,204 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: cf7ed886b4418ac396ca7056827ee10fd7a19ef1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5c276c23288292a1c54dd9d57177d5072b90c9e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Руководство по интеграции Azure Active Directory с IBM Kenexa Survey Enterprise
 
-В этом учебнике вы узнаете, как toointegrate Enterprise опроса Kenexa IBM с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать IBM Kenexa Survey Enterprise с Azure Active Directory (Azure AD).
 
-Интеграция Enterprise опроса Kenexa IBM с Azure AD предоставляет hello следующие преимущества:
+Интеграция IBM Kenexa Survey Enterprise с Azure AD обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooIBM Kenexa опроса предприятия.
-- Tooautomatically пользователей при входе в tooIBM Kenexa опроса Enterprise можно включить с помощью единого входа (SSO) с помощью своих учетных записей Azure AD.
-- Можно управлять учетными записями в одном централизованном месте: hello портал Azure.
+- С помощью Azure AD можно контролировать, кто будет иметь доступ к IBM Kenexa Survey Enterprise.
+- Вы можете включить автоматический вход пользователей в IBM Kenexa Survey Enterprise (единый вход) с учетной записью Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал Azure.
 
-Если требуется tooknow Дополнительные сведения о программное обеспечение как услуга (SaaS) интеграции приложений с Azure AD, см. раздел [доступ к приложению и единый вход в Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Дополнительные сведения об интеграции приложений SaaS с Azure AD см. в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с IBM Kenexa опроса предприятия необходимо hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с IBM Kenexa Survey Enterprise, вам потребуется следующее:
 
 - подписка Azure AD;
 - подписка на IBM Kenexa Survey Enterprise с поддержкой единого входа.
 
 > [!NOTE]
-> При тестировании hello шаги в этом учебнике, рекомендуется не использовать в производственной среде.
+> Мы не рекомендуем использовать рабочую среду для тестирования действий, выполняемых в этом руководстве.
 
-tootest hello шаги в этом учебнике, придерживайтесь следующих рекомендаций:
+При проверке действий в этом руководстве соблюдайте следующие рекомендации:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарии, описанные в учебнике hello состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом руководстве, состоит из двух основных стандартных блоков.
 
-* Добавление IBM Kenexa опроса Enterprise из коллекции hello
+* Добавление IBM Kenexa Survey Enterprise из коллекции.
 * Настройка и проверка единого входа Azure AD.
 
-## <a name="add-ibm-kenexa-survey-enterprise-from-hello-gallery"></a>Добавление IBM Kenexa опроса Enterprise из коллекции hello
-tooconfigure интеграции IBM Kenexa опроса Enterprise hello в Azure AD, добавить IBM Kenexa опроса Enterprise из hello коллекции tooyour список управляемых приложений SaaS.
+## <a name="add-ibm-kenexa-survey-enterprise-from-the-gallery"></a>Добавление IBM Kenexa Survey Enterprise из коллекции
+Чтобы настроить интеграцию IBM Kenexa Survey Enterprise в Azure AD, следует добавить IBM Kenexa Survey Enterprise из коллекции в список управляемых приложений SaaS.
 
-tooadd Enterprise опроса IBM Kenexa из галереи hello hello следующие:
+Чтобы добавить IBM Kenexa Survey Enterprise из коллекции, выполните следующие действия.
 
-1. В hello [портал Azure](https://portal.azure.com)в левой области hello, щелкнув hello **Azure Active Directory** кнопки. 
+1. На [портале Azure](https://portal.azure.com) в левой области нажмите кнопку **Azure Active Directory**. 
 
-    ![Кнопка Hello Azure Active Directory][1]
+    ![Кнопка "Azure Active Directory"][1]
 
 2. Перейдите в колонку **Корпоративные приложения** и выберите **Все приложения**.
 
-    ![Hello корпоративных приложений колонку][2]
+    ![Колонка "Корпоративные приложения"][2]
     
-3. tooadd приложение, нажмите кнопку hello **новое приложение** кнопки.
+3. Чтобы добавить приложение, нажмите кнопку **Новое приложение**.
 
-    ![Кнопка нового приложения Hello][3]
+    ![Кнопка "Новое приложение"][3]
 
-4. Введите в поле поиска hello **Enterprise опроса IBM Kenexa**.
+4. В поле поиска введите **IBM Kenexa Survey Enterprise**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
 
-5. В списке результатов hello выберите **Enterprise опроса IBM Kenexa**и нажмите кнопку hello **добавить** кнопку tooadd приложения hello.
+5. Из списка результатов выберите **IBM Kenexa Survey Enterprise**, а затем нажмите кнопку **Добавить**, чтобы добавить это приложение.
 
-    ![IBM Kenexa опроса Enterprise в списке результатов hello](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
+    ![IBM Kenexa Survey Enterprise в списке результатов](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в IBM Kenexa Survey Enterprise с использованием тестового пользователя Britta Simon.
 
-Для toowork единого входа Azure AD должен tooidentify hello IBM Kenexa опроса Enterprise пользователя аналога в Azure AD. Иными словами, в Azure AD необходимо установить связь между пользователем Azure AD и соответствующим пользователем в IBM Kenexa Survey Enterprise.
+Чтобы единый вход работал, в Azure AD необходимо указать, какой пользователь в IBM Kenexa Survey Enterprise соответствует пользователю в Azure AD. Иными словами, в Azure AD необходимо установить связь между пользователем Azure AD и соответствующим пользователем в IBM Kenexa Survey Enterprise.
 
-tooestablish hello связи, назначить значение hello hello **имя пользователя** IBM Kenexa опроса предприятия в качестве значения hello hello **Username** в Azure AD.
+Чтобы установить эту связь, назначьте **имя пользователя** в IBM Kenexa Survey Enterprise в качестве значения **имени пользователя** в Azure AD.
 
-tooconfigure и тестирования SSO Azure AD с IBM Kenexa опроса Enterprise, полный hello блоки в следующих двух разделах hello.
+Чтобы настроить и проверить единый вход Azure AD в IBM Kenexa Survey Enterprise, выполните действия в следующих двух стандартных блоках.
 
 ### <a name="configure-azure-ad-sso"></a>Настройка единого входа Azure AD
 
-В этом разделе Включить единый вход Azure AD в hello портал Azure и настройки единого входа в вашем приложении Enterprise опроса Kenexa IBM, выполнив hello ниже:
+В этом разделе вы включите единый вход Azure AD на портале Azure и настроите единый вход в приложении IBM Kenexa Survey Enterprise. Для этого выполните следующее.
 
-1. В hello в hello портала Azure **Enterprise опроса IBM Kenexa** странице интеграции приложения щелкните **единого входа**.
+1. На портале Azure на странице интеграции с приложением **IBM Kenexa Survey Enterprise** щелкните **Единый вход**.
 
     ![Ссылка для настройки единого входа для IBM Kenexa Survey Enterprise][4]
 
-2. В hello **единого входа** диалогового окна hello **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** из списка **Режим** выберите значение **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. В hello **URL-адреса и домена предприятия опроса Kenexa IBM** выполните следующие шаги hello:
+3. В разделе **Домены и URL-адреса приложения IBM Kenexa Survey Enterprise** выполните следующие действия.
 
     ![Сведения о домене и URL-адресах IBM Kenexa Survey Enterprise](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    а. В hello **идентификатор** введите URL-адрес с hello следующий шаблон:`https://surveys.kenexa.com/<companycode>`
+    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://surveys.kenexa.com/<companycode>`.
 
-    b. В hello **URL-адрес ответа** введите URL-адрес с hello следующий шаблон:`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`.
 
     > [!NOTE] 
-    > Hello выше значения не являются реальными. Дополнить фактический идентификатор hello и URL-адрес ответа. фактические значения, обратитесь в службу hello hello tooobtain [группа поддержки Enterprise опроса IBM Kenexa](https://www.ibm.com/support/home/?lnk=fcw).
+    > Приведенные выше значения используются только для примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить фактические значения, обратитесь к [группе поддержки IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
 
-4. В разделе **сертификат подписи SAML**, нажмите кнопку **сертификата (Base64)**и сохраните файл tooyour hello сертификат компьютера.
+4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)** и сохраните файл сертификата на компьютере.
 
-    ![ссылку для скачивания сертификата (Base64) Hello](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
+    ![Ссылки для скачивания сертификата в кодировке Base64](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
-    Hello IBM Kenexa опроса корпоративное приложение ожидает утверждения безопасности утверждения Markup Language (SAML) tooreceive hello в определенном формате, поэтому требуется вы tooadd настраиваемого атрибута сопоставления toohello Настройка атрибутов токена SAML. Hello значение утверждения идентификатора пользователя hello в ответ hello должно соответствовать hello идентификатор единого входа, настроенную в системе Kenexa hello. toomap hello идентификатор соответствующего пользователя в вашей организации, как протокол датаграмм SSO Интернета (IDP), работа с hello [группа поддержки Enterprise опроса IBM Kenexa](https://www.ibm.com/support/home/?lnk=fcw). 
+    Приложение IBM Kenexa Survey Enterprise ожидает утверждения SAML (язык разметки заявлений системы безопасности) в определенном формате, поэтому необходимо добавить настраиваемые сопоставления атрибутов в конфигурацию атрибутов токена SAML. Полученное в ответ значение утверждения идентификатора пользователя должно совпадать с идентификатором единого входа, настроенным в системе Kenexa. Чтобы сопоставить соответствующий идентификатор пользователя в организации для применения единого входа на основе протокола IDP, обратитесь к [группе поддержки IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). 
 
-    По умолчанию Azure AD задает идентификатор пользователя hello как значение имени участника (UPN) пользователя hello. Можно изменить это значение на hello **атрибута** вкладки, как показано на следующий снимок экрана приветствия. Интеграция Hello работает только после завершения сопоставления правильно hello.
+    По умолчанию Azure AD в качестве идентификатора пользователя задает значение имени участника-пользователя (UPN). Это значение можно изменить на вкладке **Атрибут**, как показано на следующем снимке экрана. Интеграция заработает только после правильной настройки сопоставления.
     
-    ![Атрибуты пользователя Hello-диалоговое окно](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_attribute.png) 
+    ![Диалоговое окно "Атрибуты пользователя"](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_attribute.png)   
 
 5. Щелкните **Сохранить**.
 
-    ![Настройка Hello единым входом кнопку Сохранить](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_400.png)
+    ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. tooopen hello **Настройка входа** окна в разделе **конфигурация предприятия опроса IBM Kenexa**, нажмите кнопку **настроить корпоративный опроса IBM Kenexa**. 
+6. Чтобы открыть окно **Настройка единого входа**, в разделе **Конфигурация IBM Kenexa Survey Enterprise** щелкните **Настроить IBM Kenexa Survey Enterprise**. 
  
-    ![Настройка корпоративного опроса IBM Kenexa ссылку Hello](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
+    ![Ссылка "Настройка IBM Kenexa Survey Enterprise"](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 
-7. Копировать hello **URL-адрес выхода**, **идентификатор сущности SAML**, и **SAML единого входа URL-адрес службы** значения из hello **краткий справочник** раздела.
+7. Скопируйте значения **URL-адрес выхода**, **SAML Entity ID** (Идентификатор сущности SAML) и **SAML Single Sign-On Service URL** (URL-адрес службы единого входа SAML) из раздела **Краткий справочник**.
 
-8. В hello **Настройка входа** окна в разделе **краткий справочник**, hello копирования **URL-адрес выхода**, **идентификатор сущности SAML**, и  **SAML единого входа URL-адрес службы** значения.
+8. В окне **Настройка единого входа** из раздела **Краткий справочник** скопируйте значения **URL-адрес выхода**, **SAML Entity ID** (Идентификатор сущности SAML) и **SAML single sign-on Service URL** (URL-адрес службы единого входа SAML).
 
-9. tooconfigure единого входа на hello **Enterprise опроса IBM Kenexa** стороны, отправьте загружаются hello **сертификата (Base64)**, **URL-адрес выхода**, **идентификатор сущности SAML**, и **SAML единого входа URL-адрес службы** значения toohello [группа поддержки Enterprise опроса IBM Kenexa](https://www.ibm.com/support/home/?lnk=fcw).
+9. Чтобы настроить единый вход на стороне **IBM Kenexa Survey Enterprise**, отправьте скачанный **сертификат в кодировке Base64**, **URL-адрес выхода**, **идентификатор сущности SAML** и **URL-адрес службы единого входа SAML** [группе поддержки IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
 
 > [!TIP]
-> Можно ссылаться tooa четкими версии этими инструкциями в hello [портал Azure](https://portal.azure.com) при настройке приложения hello. После добавления приложение hello с hello **Active Directory** > **корпоративных приложений** просто щелкните hello **единого входа** вкладку, а затем получить доступ к Hello внедренных документации с помощью hello **конфигурации** раздел в конце hello. toolearn Дополнительные сведения о функции hello внедренные документации, в разделе [Azure AD внедренных документации](https://go.microsoft.com/fwlink/?linkid=845985).
+> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения. После добавления приложения из раздела **Active Directory** > **Корпоративные приложения** просто выберите вкладку **Единый вход** и ознакомьтесь со встроенной документацией, воспользовавшись разделом **Настройка** в нижней части страницы. Чтобы узнать больше, ознакомьтесь со [встроенной документацией Azure AD](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-В этом разделе создайте тестового пользователя Саймон Britta в hello портал Azure, выполнив hello ниже:
+В этом разделе вы создадите на портале Azure тестового пользователя Britta Simon, выполнив следующие действия.
 
 ![Создание тестового пользователя Azure AD][100]
 
-1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
+1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
 
-    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_01.png) 
+    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_01.png) 
 
-2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
+2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
     
-    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_02.png) 
+    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_02.png) 
 
-3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
+3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
  
-    ![Кнопка "Добавить" Hello](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_03.png) 
+    ![Кнопка "Добавить"](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_03.png) 
 
-4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. В диалоговом окне **Пользователь** сделайте следующее.
  
-    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_04.png) 
+    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
+    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
 
-    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
+    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
 
-    d. Щелкните **Создать**.
+    г) Щелкните **Создать**.
  
 ### <a name="create-an-ibm-kenexa-survey-enterprise-test-user"></a>Создание тестового пользователя IBM Kenexa Survey Enterprise
 
 В этом разделе описано, как создать пользователя Britta Simon в приложении IBM Kenexa Survey Enterprise. 
 
-toocreate пользователей в hello IBM Kenexa опроса корпоративной системы и карты hello идентификатор единого входа для них, можно работать с hello [группа поддержки Enterprise опроса IBM Kenexa](https://www.ibm.com/support/home/?lnk=fcw). Это значение идентификатора единого входа также должен быть сопоставлен toohello значение идентификатора пользователя из Azure AD. Можно изменить этот параметр по умолчанию на hello **атрибута** вкладки.
+Чтобы создать пользователей в системе IBM Kenexa Survey Enterprise и сопоставить с ними идентификатор единого входа, вы можете обратиться к [группе поддержки IBM Kenexa Survey Enterprise](https://www.ibm.com/support/home/?lnk=fcw). Это значение идентификатора единого входа необходимо также сопоставить со значением идентификатора пользователя из Azure AD. Эти заданные по умолчанию параметры можно изменить на вкладке **Атрибут**.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
+### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите пользователя toouse Britta Simon единого входа Azure путем предоставления доступа tooIBM Kenexa опроса Enterprise.
+В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к IBM Kenexa Survey Enterprise.
 
-![Назначение пользователям ролей hello][200] 
+![Назначение роли пользователя][200] 
 
-пользователь tooassign Britta Simon tooIBM Kenexa опроса Enterprise, hello следующие:
+Чтобы назначить пользователя Britta Simon в IBM Kenexa Survey Enterprise, выполните следующие действия.
 
-1. В hello портал Azure, откройте hello **приложений** просмотреть, перейдите toohello **каталога** представление, выберите **корпоративных приложений**и нажмите кнопку **все приложения**.
+1. На портале Azure откройте представление **Приложения**, перейдите к представлению **Каталог**, выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
-    ![Здравствуйте, «Корпоративных приложений» и «Всех приложений» ссылки][201] 
+    ![Ссылки "Корпоративные приложения" и "Все приложения"][201] 
 
-2. В hello **приложений** выберите **Enterprise опроса IBM Kenexa**.
+2. Из списка **Приложения** выберите **IBM Kenexa Survey Enterprise**.
 
-    ![ссылка на корпоративный опроса Kenexa IBM Hello в списке приложений hello](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
+    ![Ссылка на IBM Kenexa Survey Enterprise в списке "Приложения"](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
-3. Hello левой панели щелкните **пользователей и групп**.
+3. В области слева выберите **Пользователи и группы**.
 
-    ![Hello ссылку «Пользователи и группы»][202] 
+    ![Ссылка "Пользователи и группы"][202] 
 
-4. Нажмите кнопку hello **добавить** кнопки и затем в hello **добавить назначение** выберите **пользователей и групп**.
+4. Нажмите кнопку **Добавить**, затем в области **Добавление назначения** щелкните **Пользователи и группы**.
 
-    ![область назначения, добавьте Hello][203]
+    ![Область "Добавление назначения"][203]
 
-5. В hello **пользователей и групп** диалогового окна hello **пользователей** выберите **Britta Simon**.
+5. В диалоговом окне **Пользователи и группы** в списке **Пользователи** выберите **Britta Simon**.
 
-6. В hello **пользователей и групп** диалоговое окно, нажмите кнопку hello **выберите** кнопки.
+6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
-7. В hello **добавить назначение** диалоговое окно, нажмите кнопку hello **назначить** кнопки.
+7. В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе можно проверить конфигурацию единого входа Azure AD с помощью панели доступа hello.
+В этом разделе вы с помощью панели доступа выполните проверку конфигурации единого входа Azure AD.
 
-При нажатии кнопки hello **Enterprise опроса Kenexa IBM** плитки в Здравствуйте панели доступа, вы должны автоматически входить в tooyour IBM Kenexa опроса корпоративного приложения.
+Щелкнув элемент **IBM Kenexa Survey Enterprise** на панели доступа, вы автоматически войдете в приложение IBM Kenexa Survey Enterprise.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по toointegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

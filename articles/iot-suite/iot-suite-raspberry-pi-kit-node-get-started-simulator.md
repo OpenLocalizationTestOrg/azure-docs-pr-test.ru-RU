@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure Raspberry Pi IoT Suite с помощью Node.js с имитацию телеметрии | Документы Microsoft"
-description: "Используйте hello Microsoft Azure IoT начального набора для hello Raspberry Pi 3 и Azure IoT Suite. Использовать Node.js tooconnect toohello вашей Raspberry Pi удаленного решением для мониторинга, отправить облака toohello имитацию телеметрии и отвечать toomethods из панели мониторинга hello решения."
+title: "Подключение устройства Raspberry Pi с имитированными данными телеметрии к Azure IoT Suite с помощью Node.js | Документация Майкрософт"
+description: "Используйте начальный набор Microsoft Azure IoT для Raspberry Pi 3, а также Azure IoT Suite. С помощью Node.js вы можете подключать устройства Raspberry Pi к решению для удаленного мониторинга, отправлять имитированные данные телеметрии в облако, а также реагировать на методы, вызываемые на панели мониторинга этого решения."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -14,115 +14,115 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: dobett
-ms.openlocfilehash: f65eeaa6e83fd89cdedae8fa8386a3e9ef8417d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 43fbfe2f2c5fb86e496c4419f9565365cf89830a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-your-raspberry-pi-3-toohello-remote-monitoring-solution-and-send-simulated-telemetry-using-nodejs"></a>Подключения вашей Raspberry Pi 3 toohello удаленного решением для мониторинга и отправки смоделированные данные телеметрии с помощью Node.js
+# <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-send-simulated-telemetry-using-nodejs"></a>Подключение устройства Raspberry Pi 3 к решению для удаленного мониторинга и отправка имитированных данных телеметрии с помощью Node.js
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-selector](../../includes/iot-suite-raspberry-pi-kit-selector.md)]
 
-Этом учебнике показано, как hello toouse Raspberry Pi 3 toosimulate температуры и влажности данных toosend toohello облако. Hello учебнике используется:
+В этом руководстве показано, как использовать Raspberry Pi 3 для моделирования данных температуры и влажности для отправки в облако. В руководстве используются следующие ресурсы:
 
-- ОС Raspbian hello Node.js языка программирования и hello Microsoft Azure IoT SDK для Node.js tooimplement устройства образца.
-- удаленный мониторинг Hello IoT Suite предварительно настроить решение в hello облачной серверной части.
+- Операционная система Raspbian, язык программирования Node.js и пакет SDK Microsoft Azure IoT для Node.js для реализации примера устройства.
+- Предварительно настроенное решение для удаленного мониторинга IoT Suite в качестве облачного сервера.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-overview-simulator](../../includes/iot-suite-raspberry-pi-kit-overview-simulator.md)]
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 > [!WARNING]
-> Hello удаленного мониторинга решения подготавливает набор служб Azure в подписке Azure. Развертывание Hello отражает реальные корпоративной архитектуре. плата tooavoid ненужные использование Azure, удаление экземпляра hello предварительно настроенное решение в azureiotsuite.com после завершения с ним. Если предварительно настроенных решений требуется hello еще раз, то ее можно легко восстановить. Дополнительные сведения о снижения объема используемой при hello удаленное наблюдение выполняется решение в разделе [Настройка Azure IoT Suite предварительно настроенных решений в целях демонстрации][lnk-demo-config].
+> Решение для удаленного мониторинга подготавливает набор служб Azure в подписке Azure. Развертывание отражает реальную корпоративную архитектуру. Чтобы избежать ненужных расходов на использование ресурсов Azure, удалите экземпляр предварительно настроенного решения на сайте azureiotsuite.com после завершения работы с ним. Если предварительно настроенное решение понадобится снова, его можно легко восстановить. Дополнительные сведения о сокращении затрат во время выполнения решения для удаленного мониторинга см. в статье [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Настройка предварительно настроенных решений Azure IoT Suite для демонстрационных целей).
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-solution](../../includes/iot-suite-raspberry-pi-kit-view-solution.md)]
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-prepare-pi-simulator](../../includes/iot-suite-raspberry-pi-kit-prepare-pi-simulator.md)]
 
-## <a name="download-and-configure-hello-sample"></a>Загрузить и настроить образец hello
+## <a name="download-and-configure-the-sample"></a>Скачивание и настройка примера
 
-Теперь можно загрузить и настроить hello удаленного мониторинга клиентского приложения на ваш Raspberry Pi.
+Теперь можно скачать и настроить клиентское приложение для удаленного мониторинга на устройстве Raspberry Pi.
 
 ### <a name="install-nodejs"></a>Установка Node.js
 
-Установите Node.js на устройстве Raspberry Pi, если вы это еще не сделали. Hello IoT пакет SDK для Node.js требует 0.11.5 Node.js или более поздней версии. Hello следующие шаги показывают, как tooinstall v6.10.2 Node.js на ваш Pi Raspberry:
+Установите Node.js на устройстве Raspberry Pi, если вы это еще не сделали. Для пакета SDK IoT для Node.js требуется версия Node.js 0.11.5 или более поздняя. Ниже описывается установка Node.js версии 6.10.2 на устройстве Raspberry Pi.
 
-1. Используйте hello следующая команда tooupdate вашей Pi Raspberry:
+1. Чтобы обновить устройство Raspberry Pi, используйте следующую команду:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Используйте следующие двоичные файлы Node.js tooyour Raspberry Pi команда toodownload hello hello.
+1. Чтобы скачать двоичные файлы Node.js на устройство Raspberry Pi, используйте следующую команду:
 
     ```sh
     wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. Используйте следующие двоичные файлы hello tooinstall команда hello.
+1. Чтобы установить эти двоичные файлы, используйте следующую команду:
 
     ```sh
     sudo tar -C /usr/local --strip-components 1 -xzf node-v6.10.2-linux-armv7l.tar.gz
     ```
 
-1. Используйте hello следующая команда tooverify установки Node.js v6.10.2 успешно:
+1. Чтобы убедиться в успешной установке Node.js версии 6.10.2, используйте следующую команду:
 
     ```sh
     node --version
     ```
 
-### <a name="clone-hello-repositories"></a>Клонирование репозиториев hello
+### <a name="clone-the-repositories"></a>Клонирование репозиториев
 
-Если это еще не сделано, клон hello требуемые hello репозиториев, выполнив следующие команды в конечном на ваш Pi:
+Клонируйте необходимые репозитории (если вы еще не сделали это), выполнив следующие команды в терминале на устройстве Pi:
 
 ```sh
 cd ~
 git clone --recursive https://github.com/Azure-Samples/iot-remote-monitoring-node-raspberrypi-getstartedkit.git
 ```
 
-### <a name="update-hello-device-connection-string"></a>Обновление строки подключения устройства hello
+### <a name="update-the-device-connection-string"></a>Обновление строки подключения устройства
 
-Привет открыть образец исходного файла в hello **nano** редактора с помощью hello следующую команду:
+Откройте исходный файл примера в редакторе **nano**, используя следующую команду:
 
 ```sh
 nano ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js
 ```
 
-Найдите строку hello:
+Найдите следующую строку:
 
 ```javascript
 var connectionString = 'HostName=[Your IoT hub name].azure-devices.net;DeviceId=[Your device id];SharedAccessKey=[Your device key]';
 ```
 
-Замените значения заполнителей hello и информации центр IoT был создан и сохранен в начале этого учебника hello hello устройства. Сохранить изменения (**Ctrl-O**, **ввод**) и редактор hello выхода (**Ctrl-X**).
+Замените значения заполнителей сведениями об устройстве и Центре Интернета вещей, созданными и сохраненными в начале этого руководства. Сохраните изменения (клавиши **CTRL+O**, **ВВОД**) и закройте редактор (клавиши **CTRL+X**).
 
-## <a name="run-hello-sample"></a>Запуск образца hello
+## <a name="run-the-sample"></a>Запуск примера
 
-Выполнения hello следующими командами tooinstall hello пакеты необходимых компонентов для образца hello:
+Чтобы установить пакеты необходимых компонентов для примера, выполните следующие команды:
 
 ```sh
 cd ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator
 npm install
 ```
 
-Теперь можно запустить образец hello программы для hello Raspberry Pi. Введите команду hello:
+Теперь вы можете запустить пример программы на устройстве Raspberry Pi. Введите команду:
 
 ```sh
 sudo node ~/iot-remote-monitoring-node-raspberrypi-getstartedkit/simulator/remote_monitoring.js
 ```
 
-Hello следующий результат приводится пример hello выходные данные, отображаемые на hello Raspberry Pi hello командной строке:
+Следующий пример с выходными данными отобразится в командной строке на устройстве Raspberry Pi:
 
 ![Выходные данные приложения Raspberry Pi][img-raspberry-output]
 
-Нажмите клавишу **Ctrl-C** tooexit программа hello в любое время.
+Вы можете в любое время нажать комбинацию клавиш **CTRL+C**, чтобы выйти из программы.
 
 [!INCLUDE [iot-suite-raspberry-pi-kit-view-telemetry-simulator](../../includes/iot-suite-raspberry-pi-kit-view-telemetry-simulator.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Посетите hello [Центр разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/) Дополнительные примеры и документация по Azure IoT.
+Дополнительные примеры и документацию по Azure IoT можно найти в [Центре разработчиков Azure IoT](https://azure.microsoft.com/develop/iot/).
 
 [img-raspberry-output]: ./media/iot-suite-raspberry-pi-kit-node-get-started-simulator/app-output.png
 

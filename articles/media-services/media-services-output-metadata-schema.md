@@ -1,6 +1,6 @@
 ---
-title: "схем выходных метаданных aaaAzure Media Services | Документы Microsoft"
-description: "Hello разделе приводится обзор схем выходных метаданных служб мультимедиа Azure."
+title: "Схема выходных метаданных служб мультимедиа Azure | Документация Майкрософт"
+description: "Эта статья содержит обзор схемы выходных метаданных служб мультимедиа Azure."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 7f07d6accbe0b171d0408b15d5e1e6b5afd6c367
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="output-metadata"></a>Выходные метаданные
 ## <a name="overview"></a>Обзор
-Задание кодирования связано с входным активом (или активами) для которого необходимо tooperform некоторые задачи кодирования. Например, кодирование MP4 файл tooH.264 MP4 с адаптивной скоростью задает; Создание эскиза; Создание наложений. После выполнения задачи создается выходной ресурс-контейнер.  Hello выходной актив содержит видеофайлы, аудиофайлы, эскизы, т. д. hello выходной актив содержит файл метаданных выходного актива hello. Hello hello метаданных XML-файлу имеет следующий формат hello: &lt;имя_исходного_файла&gt;_manifest.xml (например, BigBuckBunny_manifest.xml).  
+Задание кодирования связано с входным ресурсом-контейнером (или ресурсами-контейнерами), в котором нужно выполнить эти задачи. Например, преобразуйте MP4-файл в набор мультискоростных MP4-файлов в формате H.264. Создайте эскиз и наложения. После выполнения задачи создается выходной ресурс-контейнер.  Он содержит видео- и аудиофайлы, эскизы и т. д. Выходной актив также содержит файл с метаданными выходного актива. Имя XML-файла метаданных имеет следующий формат: &lt;имя_исходного_файла&gt;_manifest.xml (например, BigBuckBunny_manifest.xml).  
 
-Если требуется файл метаданных tooexamine hello, можно создать **SAS** обнаружения и загрузки hello файл tooyour локального компьютера.  
+Если вы хотите просмотреть файл метаданных, создайте указатель **SAS** и скачайте файл на локальный компьютер.  
 
-В этом разделе рассматривается hello элементы и типы XML-схемы hello на какие метаданными вывода hello (&lt;имя_исходного_файла&gt;_manifest.xml) основана. Сведения о файле hello, который содержит метаданные о входном активе hello. в разделе [входных метаданных](media-services-input-metadata-schema.md).  
+В этой статье рассматриваются элементы и типы XML-схемы, на основе которой создаются выходные метаданные (&lt;имя_исходного_файла&gt;_metadata.xml). Сведения о файле, который содержит метаданные входного контейнера-ресурса, см. в статье [Input Metadata](media-services-input-metadata-schema.md) (Входные метаданные).  
 
 > [!NOTE]
-> Можно найти полную схему кода hello и пример XML-файла в конце hello в этом разделе.  
+> В конце этой статьи вы найдете код полной схемы и пример XML-файла.  
 >
 >
 
 ## <a name="AssetFiles "></a> Корневой элемент AssetFiles
-Коллекция записей AssetFile для задания кодирования hello.  
+Коллекция записей AssetFile для задания кодирования.  
 
 ### <a name="child-elements"></a>Дочерние элементы
 | Имя | Описание |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[Элемент AssetFile](media-services-output-metadata-schema.md) , являющийся частью коллекции AssetFiles hello. |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[Элемент AssetFile](media-services-output-metadata-schema.md), который является частью коллекции AssetFiles. |
 
 ## <a name="AssetFile "></a> Элемент AssetFile
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
@@ -47,19 +47,19 @@ ms.lasthandoff: 10/06/2017
 ### <a name="attributes"></a>Атрибуты
 | Имя | Тип | Описание |
 | --- | --- | --- |
-| **Имя**<br/><br/> Обязательно |**xs:string** |Имя файла актива мультимедиа Hello. |
-| **Размер**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:long** |Размер файла актива hello в байтах. |
+| **Имя**<br/><br/> Обязательно |**xs:string** |Имя файла ресурса мультимедиа. |
+| **Размер**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:long** |Размер файла ресурса-контейнера в байтах. |
 | **Duration**<br/><br/> Обязательно |**xs:duration** |Длительность воспроизведения содержимого. |
 
 ### <a name="child-elements"></a>Дочерние элементы
 | Имя | Описание |
 | --- | --- |
-| **Источники** |Коллекция входных/исходных файлов мультимедиа, который был обработан в заказ tooproduce этого AssetFile. Дополнительные сведения см. в разделе [Элемент Source](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Каждый физический файл ресурса-контейнера может содержать ноль или более видеодорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех таких видеодорожек hello. Дополнительные сведения см. в разделе [Элемент VideoTracks](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Каждый физический файл ресурса-контейнера может содержать ноль или более звуковых дорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех таких аудиодорожек hello. Дополнительные сведения см. в разделе [Элемент AudioTracks](media-services-output-metadata-schema.md). |
+| **Источники** |Коллекция входных и исходных файлов мультимедиа, которая обрабатывалась для создания AssetFile. Дополнительные сведения см. в разделе [Элемент Source](media-services-output-metadata-schema.md). |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Каждый физический файл ресурса-контейнера может содержать ноль или более видеодорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех видеодорожек. Дополнительные сведения см. в разделе [Элемент VideoTracks](media-services-output-metadata-schema.md). |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Каждый физический файл ресурса-контейнера может содержать ноль или более звуковых дорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех звуковых дорожек. Дополнительные сведения см. в разделе [Элемент AudioTracks](media-services-output-metadata-schema.md). |
 
 ## <a name="Sources "></a> Элемент Sources
-Коллекция входных/исходных файлов мультимедиа, который был обработан в заказ tooproduce этого AssetFile.  
+Коллекция входных и исходных файлов мультимедиа, которая обрабатывалась для создания AssetFile.  
 
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
 
@@ -79,62 +79,62 @@ ms.lasthandoff: 10/06/2017
 | **Имя**<br/><br/> Обязательно |**xs:string** |Имя входного исходного файла. |
 
 ## <a name="VideoTracks "></a> Элемент VideoTracks
-Каждый физический файл ресурса-контейнера может содержать ноль или более видеодорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех таких видеодорожек hello.  
+Каждый физический файл ресурса-контейнера может содержать ноль или более видеодорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех видеодорожек.  
 
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Дочерние элементы
 | Имя | Описание |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Конкретная Видеодорожка в родительском hello AssetFile. Дополнительные сведения см. в разделе [Элемент VideoTrack](media-services-output-metadata-schema.md#VideoTrack). |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Конкретная видеодорожка в родительском элементе AssetFile. Дополнительные сведения см. в разделе [Элемент VideoTrack](media-services-output-metadata-schema.md#VideoTrack). |
 
 ## <a name="VideoTrack"></a> Элемент VideoTrack
-Конкретная Видеодорожка в родительском hello AssetFile.  
+Конкретная видеодорожка в родительском элементе AssetFile.  
 
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Атрибуты
 | Имя | Тип | Описание |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Отсчитываемый от нуля индекс видеодорожки. **Примечание:** не обязательно hello trackid, который используется в MP4-файле. |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Отсчитываемый от нуля индекс видеодорожки. **Примечание.** MP4-файл необязательно должен содержать идентификатор дорожки. |
 | **FourCC**<br/><br/> Обязательно |**xs:string** |Код FourCC видеокодека. |
-| **Профиль** |**xs:string** |Профиль H264 (только кодека tooH264 применимо). |
-| **Level** |**xs:string** |Уровень H264 (только кодека tooH264 применимо). |
+| **Профиль** |**xs:string** |Профиль H264 (применим только для кодека H264). |
+| **Level** |**xs:string** |Уровень H264 (применим только для кодека H264). |
 | **Width**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Ширина закодированного видео в пикселях. |
 | **Height**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Высота закодированного видео в пикселях. |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:double** |Числитель пропорции отображения видео. |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:double** |Знаменатель пропорции отображения видео. |
 | **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:decimal** |Измеренная частота видеокадров в формате 3F. |
 | **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:decimal** |Предустановленная частота кадров целевого видео в формате 3F. |
-| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Средняя скорость видеопотока в килобитах в секунду, вычисленная из hello AssetFile. Подсчитывает только полезные данные элементарного потока hello и не включает hello затрат на упаковку. |
-| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Целевая Средняя скорость для данной видеодорожки, запрошенная предустановкой кодирования Предустановка hello, в килобитах в секунду. |
+| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Средняя скорость аудиопотока в килобитах в секунду, вычисленная на основе файла ресурса-контейнера. Подсчитываются только полезные данные элементарного потока, издержки на упаковку не включаются. |
+| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Целевая средняя скорость для данной видеодорожки в килобитах в секунду, запрошенная на основе предустановки кодирования. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Максимальная средняя скорость группы изображений (GOP) для данной видеодорожки в килобитах в секунду. |
 
 ## <a name="AudioTracks "></a> Элемент AudioTracks
-Каждый физический файл ресурса-контейнера может содержать ноль или более звуковых дорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех таких аудиодорожек hello.  
+Каждый физический файл ресурса-контейнера может содержать ноль или более звуковых дорожек, чередуемых в соответствующем формате ресурса-контейнера. Это коллекция всех звуковых дорожек.  
 
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Дочерние элементы
 | Имя | Описание |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Конкретная Аудиодорожка в родительском hello AssetFile. Дополнительные сведения см. в разделе [Элемент AudioTrack](media-services-output-metadata-schema.md). |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Конкретная звуковая дорожка в родительском элементе AssetFile. Дополнительные сведения см. в разделе [Элемент AudioTrack](media-services-output-metadata-schema.md). |
 
 ## <a name="AudioTrack "></a> Элемент AudioTrack
-Конкретная Аудиодорожка в родительском hello AssetFile.  
+Конкретная звуковая дорожка в родительском элементе AssetFile.  
 
 Пример XML-файла см. в [соответствующем разделе](media-services-output-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Атрибуты
 | Имя | Тип | Описание |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Отсчитываемый от нуля индекс звуковой дорожки. **Примечание:** не обязательно hello trackid, который используется в MP4-файле. |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Отсчитываемый от нуля индекс звуковой дорожки. **Примечание.** MP4-файл необязательно должен содержать идентификатор дорожки. |
 | **Codec** |**xs:string** |Строка кодека звуковой дорожки. |
 | **EncoderVersion** |**xs:string** |Дополнительная строка версии кодировщика, требуемая для EAC3. |
 | **Channels**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Число аудиоканалов. |
 | **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Частота аудиовыборки: выборок/с или Гц. |
-| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Средняя скорость аудиопотока в битах в секунду, вычисленная из hello AssetFile. Подсчитывает только полезные данные элементарного потока hello и не включает hello затрат на упаковку. |
-| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Введите бит на компонент wFormatTag формата hello. |
+| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Средняя скорость аудиопотока в битах в секунду, вычисленная на основе файла ресурса-контейнера. Подсчитываются только полезные данные элементарного потока, издержки на упаковку не включаются. |
+| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Обязательно |**xs:int** |Битов на выборку для формата wFormatTag. |
 
 ### <a name="child-elements"></a>Дочерние элементы
 | Имя | Описание |
@@ -154,7 +154,7 @@ ms.lasthandoff: 10/06/2017
 | **IntegratedLoudness**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Обязательно |**xs: float** |Интегрированная громкость |
 | **IntegratedLoudnessUnit**<br/><br/> Обязательно |**xs:string** |Единица измерения интегрированной громкости. |
 | **IntegratedLoudnessGatingMethod**<br/><br/> Обязательно |**xs:string** |Идентификатор стробирования |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs: float** |Речи hello программы, в процентах. |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs: float** |Речевое содержимое в программе в процентах. |
 | **SamplePeak**<br/><br/> Обязательно |**xs: float** |Пиковое абсолютное опорное значение в канале после сброса или последней очистки.  Единицы измерения — dBFS. |
 | **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Обязательно |**xs:anySimpleType** |Единица измерения пикового опорного значения. |
 | **TruePeak**<br/><br/> Обязательно |**xs: float** |Наибольшее абсолютное пиковое значение в канале, соответствующее ITU-R BS.1770-2, после сброса или последней очистки. Единицы измерения — dBTP. |
@@ -168,7 +168,7 @@ ms.lasthandoff: 10/06/2017
                elementFormDefault="qualified">  
       <xs:element name="AssetFiles">  
         <xs:annotation>  
-          <xs:documentation>Collection of AssetFile entries for hello encoding job</xs:documentation>  
+          <xs:documentation>Collection of AssetFile entries for the encoding job</xs:documentation>  
         </xs:annotation>  
         <xs:complexType>  
           <xs:sequence>  
@@ -180,7 +180,7 @@ ms.lasthandoff: 10/06/2017
                 <xs:sequence>  
                   <xs:element name="Sources">  
                     <xs:annotation>  
-                      <xs:documentation>Collection of input/source media files, that was processed in order tooproduce this AssetFile</xs:documentation>  
+                      <xs:documentation>Collection of input/source media files, that was processed in order to produce this AssetFile</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
@@ -201,18 +201,18 @@ ms.lasthandoff: 10/06/2017
                   </xs:element>  
                   <xs:element name="VideoTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is hello collection of all those video tracks</xs:documentation>  
+                      <xs:documentation>Each physical AssetFile can contain in it zero or more video tracks interleaved into an appropriate container format. This is the collection of all those video tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
                         <xs:element name="VideoTrack" maxOccurs="unbounded">  
                           <xs:annotation>  
-                            <xs:documentation>A specific video track in hello parent AssetFile</xs:documentation>  
+                            <xs:documentation>A specific video track in the parent AssetFile</xs:documentation>  
                           </xs:annotation>  
                           <xs:complexType>  
                             <xs:attribute name="Id" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>zero-based index of this video track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
+                                <xs:documentation>zero-based index of this video track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -299,7 +299,7 @@ ms.lasthandoff: 10/06/2017
                             </xs:attribute>  
                             <xs:attribute name="Bitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>average video bit rate in kilobits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                                <xs:documentation>average video bit rate in kilobits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -309,7 +309,7 @@ ms.lasthandoff: 10/06/2017
                             </xs:attribute>  
                             <xs:attribute name="TargetBitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>target average bitrate for this video track, as requested via hello encoding preset, in kilobits per second</xs:documentation>  
+                                <xs:documentation>target average bitrate for this video track, as requested via the encoding preset, in kilobits per second</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -334,13 +334,13 @@ ms.lasthandoff: 10/06/2017
                   </xs:element>  
                   <xs:element name="AudioTracks" minOccurs="0">  
                     <xs:annotation>  
-                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is hello collection of all those audio tracks</xs:documentation>  
+                      <xs:documentation>each physical AssetFile can contain in it zero or more audio tracks interleaved into an appropriate container format. This is the collection of all those audio tracks</xs:documentation>  
                     </xs:annotation>  
                     <xs:complexType>  
                       <xs:sequence>  
                         <xs:element name="AudioTrack" maxOccurs="unbounded">  
                           <xs:annotation>  
-                            <xs:documentation>a specific audio track in hello parent AssetFile</xs:documentation>  
+                            <xs:documentation>a specific audio track in the parent AssetFile</xs:documentation>  
                           </xs:annotation>  
                           <xs:complexType>  
                             <xs:sequence>  
@@ -385,7 +385,7 @@ ms.lasthandoff: 10/06/2017
                                   </xs:attribute>  
                                   <xs:attribute name="IntegratedLoudnessSpeechPercentage">  
                                     <xs:annotation>  
-                                      <xs:documentation>Speech content over hello program, as a percentage.</xs:documentation>  
+                                      <xs:documentation>Speech content over the program, as a percentage.</xs:documentation>  
                                     </xs:annotation>  
                                     <xs:simpleType>  
                                       <xs:restriction base="xs:float">  
@@ -413,7 +413,7 @@ ms.lasthandoff: 10/06/2017
                             </xs:sequence>  
                             <xs:attribute name="Id" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>zero-based index of this audio track. Note: this is not necessarily hello TrackID as used in an MP4 file</xs:documentation>  
+                                <xs:documentation>zero-based index of this audio track. Note: this is not necessarily the TrackID as used in an MP4 file</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -453,7 +453,7 @@ ms.lasthandoff: 10/06/2017
                             </xs:attribute>  
                             <xs:attribute name="Bitrate" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>average audio bit rate in bits per second, as calculated from hello AssetFile. Counts only hello elementary stream payload, and does not include hello packaging overhead</xs:documentation>  
+                                <xs:documentation>average audio bit rate in bits per second, as calculated from the AssetFile. Counts only the elementary stream payload, and does not include the packaging overhead</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -463,7 +463,7 @@ ms.lasthandoff: 10/06/2017
                             </xs:attribute>  
                             <xs:attribute name="BitsPerSample" use="required">  
                               <xs:annotation>  
-                                <xs:documentation>Bits per sample for hello wFormatTag format type</xs:documentation>  
+                                <xs:documentation>Bits per sample for the wFormatTag format type</xs:documentation>  
                               </xs:annotation>  
                               <xs:simpleType>  
                                 <xs:restriction base="xs:int">  
@@ -479,7 +479,7 @@ ms.lasthandoff: 10/06/2017
                 </xs:sequence>  
                 <xs:attribute name="Name" type="xs:string" use="required">  
                   <xs:annotation>  
-                    <xs:documentation>hello media asset file name</xs:documentation>  
+                    <xs:documentation>the media asset file name</xs:documentation>  
                   </xs:annotation>  
                 </xs:attribute>  
                 <xs:attribute name="Size" use="required">  
@@ -510,7 +510,7 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="xml"></a> Пример XML-файла
- Hello ниже приведен пример hello выходного файла метаданных.  
+ Ниже приведен пример файла выходных метаданных.  
 
     <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  

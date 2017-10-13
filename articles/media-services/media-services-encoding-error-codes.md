@@ -1,6 +1,6 @@
 ---
-title: "кодирование кодов ошибок служб мультимедиа aaaAzure | Документы Microsoft"
-description: "В этом разделе перечислены коды ошибок, которые могут быть возвращены в случае, если произошла ошибка во время кодировки выполнения задачи hello..."
+title: "Коды ошибок кодирования служб мультимедиа Azure | Документация Майкрософт"
+description: "В этом разделе перечислены коды ошибок, которые могут быть возвращены при возникновении ошибок во время выполнения задачи кодирования."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: b69b6abee797c40c9b8b8f23bf2398273c170e7f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f4fd2212d19f89148dde08c75c5a48cdd322d029
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encoding-error-codes"></a>Коды ошибок кодирования
 
-Hello следующей таблице перечислены коды ошибок, которые могут быть возвращены в случае, если произошла ошибка во время hello кодировки выполнения задачи.  tooget сведения об ошибке в коде .NET, используйте hello [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) класса. использовать tooget сведения об ошибке в коде REST hello [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) API-интерфейса REST.
+В следующей таблице перечислены коды ошибок, которые могут быть возвращены при возникновении ошибок во время выполнения задачи кодирования.  Чтобы получить сведения об ошибке в коде .NET, используйте класс [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) . Чтобы получить сведения об ошибке в коде REST, используйте REST API [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) .
 
 | ErrorDetail.Code | Возможные причины ошибки |
 | --- | --- |
-| Unknown |Неизвестная ошибка при выполнении задачи hello |
+| Unknown |Неизвестная ошибка при выполнении задачи |
 | ErrorDownloadingInputAssetMalformedContent |Категория ошибок, охватывающая ошибки загрузки входного ресурса, такие как некорректное имя файлов, файлы нулевой длины, неправильное форматирование и т. д. |
-| ErrorDownloadingInputAssetServiceFailure |Категория ошибок, рассматриваются проблемы на стороне службы hello - пример сети или хранилища ошибок при загрузке. |
-| ErrorParsingConfiguration |Категория ошибок, где задач <see cref="MediaTask.PrivateData"/> (конфигурация) является недопустимым, например конфигурации hello не является допустимой системы конфигурации, или он содержит недопустимый XML. |
-| ErrorExecutingTaskMalformedContent |Категория ошибок во время выполнения hello задачу hello, где вопросы внутри hello входных файлов мультимедиа к сбою. |
-| ErrorExecutingTaskUnsupportedFormat |Категория ошибок, где обработчик мультимедиа hello не удается обработать предоставленных файлах hello - формата media не поддерживается или не соответствует конфигурации hello. Например при tooproduce только вывод актив, который содержит только видео |
-| ErrorProcessingTask |Во время обработки hello hello задачи, которые связаны toocontent встретится категории других ошибок, которые hello обработчика мультимедиа. |
-| ErrorUploadingOutputAsset |Категория ошибок при передаче hello выходной актив |
-| ErrorCancelingTask |Категория ошибки toocover сбоев при hello toocancel задач |
-| TransientError |Категория ошибки toocover временных проблем (например) (например, временные сетевые проблемы со службой хранилища Azure) |
+| ErrorDownloadingInputAssetServiceFailure |Категория ошибок, охватывающая проблемы на стороне службы, например проблемы с сетью или хранилищем во время загрузки. |
+| ErrorParsingConfiguration |Категория ошибок, в которых задача <see cref="MediaTask.PrivateData"/> (конфигурация) является недопустимой, например: конфигурация не является допустимой конфигурацией системы или содержит недопустимый XML. |
+| ErrorExecutingTaskMalformedContent |Категория ошибок, возникающих во время выполнения задачи, которые могут быть вызваны проблемами во входных файлах мультимедиа. |
+| ErrorExecutingTaskUnsupportedFormat |Категория ошибок, в которой обработчик мультимедиа не может обработать представленные файлы — формат мультимедиа не поддерживается или не соответствует конфигурации. Например, при попытке получить только звук из ресурса, который содержит видео. |
+| ErrorProcessingTask |Категория других ошибок обработчика мультимедиа, возникших во время обработки задачи, которые не связаны с содержимым. |
+| ErrorUploadingOutputAsset |Категория ошибок при отправке выходного ресурса |
+| ErrorCancelingTask |Категория ошибок, охватывающая ошибки, возникающие при попытке отменить задачу |
+| TransientError |Категория ошибок, охватывающая временные проблемы (например, временные сетевые проблемы со службой хранилища Azure) |
 
-Справка tooget из hello **Media Services** команды, откройте [обращение в службу поддержки](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Для получения помощи от команды разработчиков для **служб мультимедиа** создайте [запрос в службу поддержки](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: "виртуальной машине из неуправляемого aaaConvert диски toomanaged - управляемых дисков Azure | Документы Microsoft"
-description: "Как диски tooconvert из toomanaged неуправляемые дисков виртуальной Машины Windows с помощью PowerShell в модели развертывания диспетчера ресурсов hello"
+title: "Управляемые диски Azure. Преобразование виртуальной машины Windows с неуправляемыми дисками для использования управляемых дисков | Документация Майкрософт"
+description: "Переключение виртуальной машины Windows, развернутой в рамках модели Resource Manager, с неуправляемых дисков на управляемые диски с помощью PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
-ms.openlocfilehash: e8ed8694b0e776d22df26261e2fc8340bfe5cafa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7f26f357268d6a3190557b7099ef07c7ef805119
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-toomanaged-disks"></a>Преобразование виртуальной машины Windows с неуправляемой дисков toomanaged дисков
+# <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Переключение виртуальной машины Windows с неуправляемых дисков на управляемые диски
 
-При наличии существующих виртуальных машинах (ВМ), использующих неуправляемые диски можно преобразовать hello дисков toouse управляемых виртуальных машин через hello [управляемых дисков Azure](managed-disks-overview.md) службы. Этот процесс преобразует диска hello операционной системы и все подключенные диски данных.
+При наличии виртуальных машин Windows, использующих неуправляемые диски, их можно преобразовать для использования управляемых дисков с помощью службы [Управляемые диски Azure](managed-disks-overview.md). При этом преобразуются диск операционной системы и все подключенные диски данных.
 
-В этой статье показано, как tooconvert виртуальных машин с помощью Azure PowerShell. Если необходима tooinstall или обновить ее, см. раздел [Установка и настройка Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
+В этой статье показано, как преобразовать виртуальные машины с помощью Azure PowerShell. Если вам необходимо установить или обновить Azure PowerShell, ознакомьтесь со статьей [об установке и настройке Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
 
-* Просмотрите [план миграции hello дисков tooManaged](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Просмотрите раздел [Планирование миграции на управляемые диски](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -38,36 +38,36 @@ ms.lasthandoff: 10/06/2017
 
 
 ## <a name="convert-single-instance-vms"></a>Преобразование одноэкземплярных виртуальных машин
-В этом разделе описывается, как диски toomanaged в tooconvert экземпляра ВМ Azure из неуправляемого. (Если виртуальные машины в наборе доступности, см. следующий раздел hello.) 
+В этом разделе описывается, как преобразовать одноэкземплярные виртуальные машины Azure с неуправляемыми дисками, чтобы они могли использовать Управляемые диски. (Если виртуальные машины находятся в группе доступности, ознакомьтесь со следующим разделом.) 
 
-1. Освободить hello виртуальной Машины с помощью hello [Stop AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) командлета. Hello следующий пример отменяет выделение hello виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`: 
+1. Отмените выделение виртуальной машины с помощью командлета [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm). В следующем примере освобождается виртуальная машина `myVM`, входящая в группу ресурсов `myResourceGroup`. 
 
-  ```powershell
+  ```azurepowershell-interactive
   $rgName = "myResourceGroup"
   $vmName = "myVM"
   Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. Преобразовать диски toomanaged hello ВМ с помощью hello [ConvertTo AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) командлета. После процесса преобразует Hello hello предыдущих виртуальной Машины, включая диск hello ОС и дисков данных:
+2. Преобразуйте виртуальную машину для использования управляемых дисков с помощью командлета [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk). Приведенный ниже процесс преобразовывает виртуальную машину, включая ее диск ОС и все диски данных.
 
-  ```powershell
+  ```azurepowershell-interactive
   ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
-3. Запустите hello виртуальной Машины после hello преобразования toomanaged диски с помощью [AzureRmVM начала](/powershell/module/azurerm.compute/start-azurermvm). Следующий пример перезапускается Hello hello предыдущих виртуальной Машины:
+3. После преобразования запустите виртуальную машину с помощью командлета [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm). Следующий пример перезапустит предыдущую виртуальную машину:
 
-  ```powershell
+  ```azurepowershell-interactive
   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
   ```
 
 
 ## <a name="convert-vms-in-an-availability-set"></a>Преобразование виртуальных машин в группе доступности
 
-Если hello ВМ, которые вы хотите tooconvert toomanaged диски находятся в наборе доступности, необходимо сначала управляемый набор tooa tooconvert hello доступности группы доступности.
+Если виртуальные машины, которые вы хотите преобразовать для использования управляемых дисков, входят в группу доступности, то необходимо сначала преобразовать эту группу доступности в управляемую группу доступности.
 
-1. Преобразовать hello доступности с помощью hello [AzureRmAvailabilitySet обновление](/powershell/module/azurerm.compute/update-azurermavailabilityset) командлета. Следующий пример обновления hello именованный набор доступности Hello `myAvailabilitySet` в группе ресурсов hello с именем `myResourceGroup`:
+1. Преобразуйте группу доступности с помощью командлета [Update-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/update-azurermavailabilityset). В следующем примере преобразовывается группа доступности `myAvailabilitySet` в группе ресурсов `myResourceGroup`.
 
-  ```powershell
+  ```azurepowershell-interactive
   $rgName = 'myResourceGroup'
   $avSetName = 'myAvailabilitySet'
 
@@ -75,16 +75,16 @@ ms.lasthandoff: 10/06/2017
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
   ```
 
-  Если hello регион, где находится в набор доступности содержит только двух доменов сбоя управляемого но hello количество доменов сбоя неуправляемые 3, эта команда отображает ошибку аналогичные слишком «hello указано число доменов сбоя 3 должно попадать в диапазон 1 too2 hello.» tooresolve hello ошибок, too2 домена сбоя hello обновления и обновления `Sku` слишком`Aligned` следующим образом:
+  Если регион, в котором находится группа доступности, имеет только 2 управляемых домена сбоя, но количество неуправляемых доменов сбоя равно 3, отобразится ошибка "Указанное число доменов сбоя 3 должно быть в диапазоне от 1 до 2". Чтобы устранить эту ошибку, необходимо обновить количество доменов сбоя до двух и обновить значение `Sku` к `Aligned` следующим образом:
 
-  ```powershell
+  ```azurepowershell-interactive
   $avSet.PlatformFaultDomainCount = 2
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Выделение и преобразовать hello виртуальных машин в группе доступности hello. Hello следующий скрипт освобождает каждой виртуальной Машины с помощью hello [Stop AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) , преобразует его с помощью [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk)и перезапускает ее с помощью [AzureRmVM начала ](/powershell/module/azurerm.compute/start-azurermvm):
+2. Освободите и преобразуйте виртуальные машины в группе доступности. Следующий сценарий отменяет выделение каждой виртуальной машины с помощью командлета [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm), а затем преобразует ее с помощью командлета [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) и перезапускает с помощью командлета [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm).
 
-  ```powershell
+  ```azurepowershell-interactive
   $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
 
   foreach($vmInfo in $avSet.VirtualMachinesReferences)
@@ -92,19 +92,19 @@ ms.lasthandoff: 10/06/2017
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Если возникает ошибка во время преобразования, или виртуальная машина находится в состоянии сбоя из-за проблем во время предыдущего преобразования, выполнить hello `ConvertTo-AzureRmVMManagedDisk` командлет еще раз. Простой повтора обычно разблокирует hello ситуации.
+Если во время преобразования произойдет ошибка или виртуальная машина находится в состоянии сбоя из-за проблем во время предыдущего преобразования, выполните командлет `ConvertTo-AzureRmVMManagedDisk` еще раз. Простой повтор обычно решает проблему.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Преобразуйте стандартные диски управляемого toopremium](convert-disk-storage.md)
+[Преобразование управляемых дисков уровня "Стандартный" в диски уровня "Премиум"](convert-disk-storage.md)
 
 Создайте копию виртуальной машины, доступную только для чтения, с помощью [моментальных снимков](snapshot-copy-managed-disk.md).
 

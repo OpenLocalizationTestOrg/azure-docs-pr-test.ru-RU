@@ -1,6 +1,6 @@
 ---
-title: "aaaSilent установки сервер резервного копирования Azure v2 | Документы Microsoft"
-description: "Использование сценария PowerShell toosilently установки v2 Azure Backup Server. Этот тип установки также называется \"тихой\" установкой."
+title: "Автоматическая установка Azure Backup Server версии 2 | Документация Майкрософт"
+description: "Использование скрипта PowerShell для автоматической установки Azure Backup Server версии 2. Этот тип установки также называется \"тихой\" установкой."
 services: backup
 documentationcenter: " "
 author: markgalioto
@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/30/2017
 ms.author: markgal;masaran
-ms.openlocfilehash: 6b94b4a278bfcd5f8c5c363cb811bd8eec984243
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Запуск автоматической установки Azure Backup Server версии 2
 
-Узнайте, как toorun автоматической установки v2 Azure Backup Server. 
+Узнайте, как запустить автоматическую установку Azure Backup Server версии 2. 
 
 Эти действия не применяются, если выполняется установка Azure Backup Server версии 1.
 
 ## <a name="install-backup-server-v2"></a>Установка Backup Server версии 2
 
-1. На сервере hello, на котором размещен сервер резервного копирования Azure v2 создайте текстовый файл. (Созданием hello файл в блокноте или другом текстовом редакторе.) Сохранение файла hello MABSSetup.ini. 
+1. Создайте текстовый файл на сервере, на котором размещен Azure Backup Server версии 2. (Файл можно создать в блокноте или в другом текстовом редакторе.) Сохраните файл как MABSSetup.ini. 
 
-2. Вставьте следующий код в файле MABSSetup.ini hello hello. Замените текст hello в скобках hello (\< \>) со значениями из среды. После текста Hello приведен пример:
+2. Вставьте следующий код в файл MABSSetup.ini. Замените текст в скобках (\< \>) значениями из среды. Ниже приведен пример текста.
 
   ```
   [OPTIONS]
@@ -51,22 +51,22 @@ ms.lasthandoff: 10/06/2017
   UseExistingSQL=<1/0 use or do not use existing SQL>
   ```
 
-3. Сохраните файл hello. Затем в командную строку на сервере установки hello, введите следующую команду:
+3. Сохраните файл. Затем в командной строке с повышенными привилегиями на сервере установки введите следующую команду:
 
   ```
   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
   ```
 
-Эти флаги можно использовать для установки hello:</br>
+Для установки можно использовать следующие флаги:</br>
 **/f** — путь к файлу.</br>
 **/l** — путь к журналу.</br>
 **/i** — путь для установки.</br>
 **/x** — путь для удаления.</br>
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После установки сервер резервного копирования, узнайте, как tooprepare сервере или включите защиту рабочей нагрузки.
+После установки Backup Server узнайте, как подготовить сервер или обеспечить защиту рабочей нагрузки.
 
 - [Подготовка к резервному копированию рабочих нагрузок с использованием Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-- [Используйте резервное копирование сервера tooback сервер VMware](backup-azure-backup-server-vmware.md)
-- [Используйте резервное копирование сервера tooback копирование SQL Server](backup-azure-sql-mabs.md)
-- [Добавить tooBackup современных хранилища резервных копий сервера](backup-mabs-add-storage.md)
+- [Резервное копирование сервера VMware в Azure](backup-azure-backup-server-vmware.md)
+- [Архивация баз данных SQL Server в Azure с помощью Azure Backup Server](backup-azure-sql-mabs.md)
+- [Добавление хранилища на Azure Backup Server версии 2](backup-mabs-add-storage.md)

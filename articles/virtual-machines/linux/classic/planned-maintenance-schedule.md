@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooSchedule запланировано обслуживание для виртуальных машин Linux в Azure | Документы Microsoft"
-description: "Узнайте, как tooschedule планового обслуживания на виртуальных машинах Azure."
+title: "Как добавить в расписание плановое обслуживание виртуальных машин Linux в Azure | Документация Майкрософт"
+description: "Узнайте, как запланировать плановое обслуживание на виртуальных машинах Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: igalf
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
-ms.openlocfilehash: f14fab73cb42b577e9f5893874fe68df84e43298
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7709927cbbb00597927b7c6d5eaa14a5c99475c6
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
-# <a name="how-tooschedule-planned-maintenance-on-azure-vms"></a>Как tooSchedule обслуживание запланировано на виртуальных машинах Azure
+# <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>Как запланировать плановое обслуживание на виртуальных машинах Azure
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения о планового обслуживания в модели hello диспетчера ресурсов см. в разделе [здесь](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения о плановом обслуживании в Resource Manager см. [здесь](../planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
  
 [!INCLUDE [virtual-machines-common-planned-maintenance-schedule](../../../../includes/virtual-machines-common-planned-maintenance-schedule.md)]
 

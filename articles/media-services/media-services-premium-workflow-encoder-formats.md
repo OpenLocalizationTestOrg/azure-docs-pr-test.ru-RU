@@ -1,5 +1,5 @@
 ---
-title: "aaaMedia расширенного рабочего процесса кодировщика форматы и кодеки | Документы Microsoft"
+title: "Форматы и кодеки рабочего процесса Media Encoder Premium | Документация Майкрософт"
 description: "В этом разделе содержится обзор форматов и кодеков расширенного рабочего процесса кодировщика мультимедиа."
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: e781384ca8f08926f00c83b6710fd413ce2a3e1c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Форматы и кодеки рабочего процесса Premium Media Encoder
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Этот документ содержит список входных и выходных файлов форматы и кодеки, поддерживаемыми hello общедоступной предварительной версии hello **расширенного рабочего процесса кодировщика мультимедиа** кодировщика.
+Этот документ содержит список форматов входных и выходных файлов, а также список кодеков, которые поддерживает общедоступная предварительная версия **расширенного рабочего процесса кодировщика мультимедиа** .
 
 [Входные форматы и кодеки расширенного рабочего процесса кодировщика мультимедиа](#input_formats)
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/06/2017
 **Расширенный рабочий процесс кодировщика мультимедиа** поддерживает скрытые субтитры, описанные в [этом](#closed_captioning) разделе. 
 
 ## <a id="input_formats"></a>Входные форматы и кодеки расширенного рабочего процесса кодировщика мультимедиа
-Привет, в следующем разделе перечислены hello кодеков и форматов файлов, этот обработчик мультимедиа поддерживает в качестве входных данных.
+В следующем разделе приводится список кодеков и форматов файлов, которые этот кодировщик мультимедиа поддерживает на входе.
 
 ### <a name="input-containerfile-formats"></a>Контейнер ввода/ форматы файлов
 * Adobe® Flash® F4V
@@ -50,11 +50,11 @@ ms.lasthandoff: 10/06/2017
 * AVI (без сжатия 8 бит/10 бит)
 
 ### <a name="input-video-codecs"></a>Входные видеокодеки
-* AVC 8-разрядное/10-битный, копирование too4:2:2, включая AVCIntra
+* AVC 8-разрядный/10-разрядный, до 4:2:2, включая AVCIntra
 * Avid DNxHD (в MXF)
 * DVCPro/DVCProHD (в MXF)
 * JPEG2000
-* MPEG-2 (профиль too422 и высокого уровня, включая варианты, такие как XDCAM, XDCAM HD, XDCAM IMX, CableLabs® и D10)
+* MPEG-2 (до 422 Profile и High Level, включая такие варианты, как XDCAM, XDCAM HD, XDCAM IMX, CableLabs® и D10)
 * MPEG-1
 * Windows Media Video/VC-1
 
@@ -62,14 +62,14 @@ ms.lasthandoff: 10/06/2017
 * AES (SMPTE 331M и 302M, AES3-2003)
 * Dolby® E
 * Dolby® Digital (AC3)
-* AAC (AAC-LC и AAC-HE, AAC HEv2; копирование too5.1)
+* AAC (AAC-LC, AAC-HE и AAC-HEv2; до 5.1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media Audio
 * WAV/PCM
 
 ## <a id="output_format"></a>Выходные форматы и кодеки расширенного рабочего процесса кодировщика мультимедиа
-Hello в подразделе ниже приведены hello кодеки и форматы, поддерживаемые в качестве выходных данных из этого обработчика мультимедиа.
+В следующем разделе приводится список кодеков и форматов файлов, которые этот кодировщик мультимедиа поддерживает на выходе.
 
 ### <a name="output-containerfile-formats"></a>Контейнер вывода/ форматы файлов
 * Adobe® Flash® F4V
@@ -83,10 +83,10 @@ Hello в подразделе ниже приведены hello кодеки и 
 * MPEG-TS 
 
 ### <a name="output-video-codecs"></a>Выходные видеокодеки
-* AVC (H.264; 8-разрядное; Настройка tooHigh профиля, уровень 5.2; Ultra HD 4 КБ; Внутри AVC)
+* AVC (H.264; 8-разрядный; до High Profile, Level 5.2; 4K Ultra HD; AVC Intra)
 * Avid DNxHD (в MXF)
 * DVCPro/DVCProHD (в MXF)
-* MPEG-2 (профиль too422 и высокого уровня, включая варианты, такие как XDCAM, XDCAM HD, XDCAM IMX, CableLabs® и D10)
+* MPEG-2 (до 422 Profile и High Level, включая такие варианты, как XDCAM, XDCAM HD, XDCAM IMX, CableLabs® и D10)
 * MPEG-1
 * Windows Media Video/VC-1
 * Создание эскизов JPEG
@@ -94,14 +94,14 @@ Hello в подразделе ниже приведены hello кодеки и 
 ### <a name="output-audio-codecs"></a>Выходные аудиокодеки
 * AES (SMPTE 331M и 302M, AES3-2003)
 * Dolby® Digital (AC3)
-* Dolby® Digital Plus (E-AC3) вверх too7.1
-* AAC (AAC-LC и AAC-HE, AAC HEv2; копирование too5.1)
+* Dolby® Digital Plus (E-AC3) до 7.1
+* AAC (AAC-LC, AAC-HE и AAC-HEv2; до 5.1)
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media Audio
 
 >[!NOTE]
->Если кодирование tooDolby® Digital (AC3) hello вывода можно записать только в ISO MP4-файл.
+>При кодировании в формат Dolby® Digital (AC3) выходные данные могут записываться только в MP4-файл ISO.
 
 ## <a id="closed_captioning"></a>Поддержка скрытых титров
 При приеме **расширенный рабочий процесс кодировщика мультимедиа** поддерживает:
@@ -111,19 +111,19 @@ Hello в подразделе ниже приведены hello кодеки и 
 3. CEA-608/CEA-708 – переносятся как данные пользователя (сообщения SEI простейших потоков H.264, ATSC/53, SCTE20) или переносятся как вспомогательные данные в файлах MXF/GXF
 4. Файлы субтитров STL
 
-На выходе доступны следующие варианты hello.
+На выходе доступны следующие параметры:
 
-1. Перевод CEA 608 tooCEA 708
+1. Преобразование CEA-608 в CEA-708
 2. Пропуск CEA-608/CEA-708 (встраиваются в сообщения SEI простейших потоков H.264 или переносятся как дополнительные данный в файлах MXF)
 3. SCC
 4. SMPTE Timed Text (из источника CEA-608 через SMPTE RP2052, включая создание файла DFXP)
 5. Файл подзаголовка SRT
 6. Потоки подзаголовка DVB
 
-Примечание: не все hello выше выходных форматов поддерживаются для передачи с помощью потоковой передачи в службах мультимедиа Azure.
+Примечание: доставки через потоковую передачу в службах мультимедиа Azure поддерживаются не все указанные выше форматы.
 
 ## <a name="known-issues"></a>Известные проблемы
-Если входной видео не содержит титров, hello выходной ресурс по-прежнему будет содержать пустой файл TTML. 
+Если входящее видео не содержит скрытых субтитров, выходящий ресурс по-прежнему будет содержать пустой файл TTML. 
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

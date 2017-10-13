@@ -3,7 +3,7 @@ Azure DNS является службой размещения для домен
 
 | Свойство | Описание | Образец значения |
 | --- | --- | --- |
-| **DNSzones** |Домен зоны сведения toohost записи DNS определенного домена |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com" |
+| **DNSzones** |Информация о зоне домена для размещения записей DNS определенного домена. |/subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com" |
 
 ### <a name="dns-record-sets"></a>Наборы записей DNS
 Зоны DNS имеют дочерний объект, называемый набором записей. Наборы записей представляют собой упорядоченную по типу коллекцию записей узла для зоны DNS. Типы записей: A, AAAA, CNAME, MX, NS, SOA, SRV и TXT.
@@ -31,14 +31,14 @@ Azure DNS является службой размещения для домен
         "newZoneName": {
           "type": "String",
           "metadata": {
-              "description": "hello name of hello DNS zone toobe created."
+              "description": "The name of the DNS zone to be created."
           }
         },
         "newRecordName": {
           "type": "String",
           "defaultValue": "www",
           "metadata": {
-              "description": "hello name of hello DNS record toobe created.  hello name is relative toohello zone, not hello FQDN."
+              "description": "The name of the DNS record to be created.  The name is relative to the zone, not the FQDN."
           }
         }
       },
@@ -78,7 +78,7 @@ Azure DNS является службой размещения для домен
     }
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-Чтение hello [документация по REST API для зон DNS ](https://msdn.microsoft.com/library/azure/mt130626.aspx) для получения дополнительной информации.
+Ознакомьтесь с [документацией по REST API для зон DNS ](https://msdn.microsoft.com/library/azure/mt130626.aspx) , чтобы получить дополнительные сведения.
 
-Чтение hello [документации REST API для наборов записей DNS](https://msdn.microsoft.com/library/azure/mt130627.aspx) для получения дополнительной информации.
+Ознакомьтесь с [документацией по REST API для наборов записей DNS](https://msdn.microsoft.com/library/azure/mt130627.aspx) , чтобы получить дополнительные сведения.
 

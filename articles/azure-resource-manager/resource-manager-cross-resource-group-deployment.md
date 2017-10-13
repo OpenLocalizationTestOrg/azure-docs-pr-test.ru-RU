@@ -1,6 +1,6 @@
 ---
-title: "группы ресурсов toomultiple aaaDeploy ресурсы Azure | Документы Microsoft"
-description: "Показывает, как группировать tootarget больше, чем один ресурс Azure во время развертывания."
+title: "Развертывание ресурсов Azure в несколько групп ресурсов | Документация Майкрософт"
+description: "Сведения о развертывании ресурсов в несколько групп ресурсов Azure."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 93a39a26e0ca18dfcb5c6e8de95c38a64186d6de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="deploy-azure-resources-toomore-than-one-resource-group"></a>Развертывание toomore ресурсы Azure, чем одной группы ресурсов
+# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>Развертывание ресурсов Azure в несколько групп ресурсов
 
-Как правило все ресурсы hello развернуть в ваш шаблон tooa единой группы ресурсов. Однако существуют сценарии, где требуется набор ресурсов toodeploy друг с другом, но поместить их в разные группы ресурсов. Например может потребоваться toodeploy hello резервного копирования виртуальной машины для Azure Site Recovery tooa отдельной группе ресурсов и расположение. Диспетчер ресурсов позволяет toouse вложенные шаблоны tootarget разные группы ресурсов чем hello группы ресурсов, используемой для hello родительского шаблона.
+Обычно развертывание всех ресурсов в шаблоне выполняется в отдельную группу ресурсов. Но иногда может потребоваться развернуть ресурсы вместе, но разместить их в разные группы ресурсов. Например, вы захотите развернуть резервную копию виртуальной машины для Azure Site Recovery в отдельную группу ресурсов или расположение. Resource Manager позволяет использовать вложенные шаблоны, с помощью которых ресурсы можно развертывать в разные группы ресурсов, а не только в группу ресурсов родительского шаблона.
 
-Группа ресурсов Hello находится hello жизненный цикл контейнера для приложения hello и его ресурсы. Создать группу ресурсов hello за пределами шаблона hello и укажите tootarget группы ресурсов hello во время развертывания. Введение tooresource группы, в разделе [Обзор диспетчера ресурсов Azure](resource-group-overview.md).
+Группа ресурсов — это контейнер жизненного цикла приложения, в котором содержится коллекция его ресурсов. Создание группы ресурсов выполняется вне шаблона. Затем вы указываете группу ресурсов, которая должна использоваться в процессе развертывания. Дополнительные сведения о группах ресурсов см. в статье [Общие сведения об Azure Resource Manager](resource-group-overview.md).
 
 ## <a name="example-template"></a>Пример шаблона
 
-tootarget другой ресурс, необходимо использовать шаблон вложенной или связанной во время развертывания. Hello `Microsoft.Resources/deployments` обеспечивает `resourceGroup` параметр, который позволяет toospecify другой группе ресурсов для hello вложенные развертывания. Все группы ресурсов hello должен существовать до запуска развертывания hello. Hello примере развертывает две учетные записи хранилища — один в группе ресурсов hello, указанное во время развертывания и по одному в группу ресурсов с именем `crossResourceGroupDeployment`:
+Чтобы подключиться к другому ресурсу, при развертывании используйте вложенный или связанный шаблон. Тип ресурса `Microsoft.Resources/deployments` предоставляет параметр `resourceGroup`, который позволяет указать другую группу ресурсов для вложенного развертывания. Все группы ресурсов необходимо создать до выполнения развертывания. Код в приведенном ниже примере развертывает две учетные записи хранения: одну в группе ресурсов, указанной во время развертывания, и вторую в группе ресурсов `crossResourceGroupDeployment`:
 
 ```json
 {
@@ -83,11 +83,11 @@ tootarget другой ресурс, необходимо использоват
 }
 ```
 
-Если задать `resourceGroup` toohello имя группы ресурсов, который не существует, развертывание hello завершается с ошибкой. Если не указано значение для `resourceGroup`, диспетчер ресурсов использует hello родительской группы ресурсов.  
+Если в качестве значения параметра `resourceGroup` задать имя несуществующей группы ресурсов, развертывание завершится сбоем. Но если не указать значение параметра `resourceGroup`, Resource Manager будет использовать родительскую группу ресурсов.  
 
-## <a name="deploy-hello-template"></a>Развертывание шаблона hello
+## <a name="deploy-the-template"></a>Развертывание шаблона
 
-Пример шаблона toodeploy hello, можно использовать портал hello, Azure PowerShell или Azure CLI. Используйте выпуски этих средств начиная с мая 2017 года. Hello примерах предполагается, сохраненные локально hello шаблон в файл с именем **crossrgdeployment.json**.
+Пример шаблона можно развернуть с помощью портала, Azure PowerShell или Azure CLI. Используйте выпуски этих средств начиная с мая 2017 года. Для работы с этими примерами шаблон необходимо сохранить локально как файл **crossrgdeployment.json**.
 
 При использовании PowerShell выполните следующее:
 
@@ -117,9 +117,9 @@ az group deployment create \
 
 ## <a name="use-resourcegroup-function"></a>Использование функции resourceGroup()
 
-Для кросс-развертывания группы ресурсов, hello [resouceGroup() функция](resource-group-template-functions-resource.md#resourcegroup) разрешает различаются в зависимости от способа задания hello вложенных шаблонов. 
+Для развертывания в нескольких группах ресурсов результат выполнения [функции resouceGroup()](resource-group-template-functions-resource.md#resourcegroup) зависит от способа указания вложенного шаблона. 
 
-При внедрении один шаблон в другой шаблон resouceGroup() в вложенных шаблонов hello устраняет toohello родительской группы ресурсов. Внедренные шаблон использует hello следующий формат:
+При внедрении одного шаблона в другой функция resouceGroup() во вложенном шаблоне разрешается в родительской группе ресурсов. Внедренный шаблон использует следующий формат:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -130,12 +130,12 @@ az group deployment create \
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers tooparent resource group
+        resourceGroup() refers to parent resource group
     }
 }
 ```
 
-При связывании отдельный шаблон tooa resouceGroup() в hello связанного шаблона разрешает toohello группы вложенных ресурсов. Связанный шаблон использует hello следующий формат:
+При связывании отдельного шаблона функция resouceGroup() связывает разрешения шаблона с вложенной группой ресурсов. Связанный шаблон использует следующий формат:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -146,13 +146,13 @@ az group deployment create \
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers toolinked resource group
+        resourceGroup() in linked template refers to linked resource group
     }
 }
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* toodefine параметры в шаблоне, в статье toounderstand [понять структуру hello и синтаксис шаблоны Azure Resource Manager](resource-group-authoring-templates.md).
+* Сведения об определении параметров в шаблоне см. в статье [Описание структуры и синтаксиса шаблонов Azure Resource Manager](resource-group-authoring-templates.md).
 * Советы по устранению распространенных ошибок развертывания см. в разделе [Устранение распространенных ошибок развертывания в Azure с помощью Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-powershell-sas-token.md).

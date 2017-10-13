@@ -1,6 +1,6 @@
 ---
-title: "aaaManage Azure DC/OS кластера с помощью Marathon REST API | Документы Microsoft"
-description: "Развертывание кластера контейнера службы Azure DC/OS tooan контейнеры с помощью API-интерфейса REST Marathon hello."
+title: "Управление кластером DC/OS Azure с помощью REST API Marathon | Документация Майкрософт"
+description: "Развертывание контейнеров в кластере DC/OS Службы контейнеров Azure с помощью интерфейса REST API Marathon."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -17,35 +17,35 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: d926b9b90f5d4eda85a015d9ea0d96fea2c4b566
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 65f8e0170fa7b89162e811a1d5dd58775fd20d7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="dcos-container-management-through-hello-marathon-rest-api"></a>Управление контейнерами DC/OS через API-Интерфейс REST Marathon hello
-Контроллер домена/OS предоставляет среду для развертывания и масштабирования кластерных рабочих нагрузок сталкиваясь аппаратным обеспечением hello. На базе DC/OS работает платформа, которая управляет планированием и выполнением вычислительных рабочих нагрузок. Несмотря на то, что платформы доступны для многих распространенных рабочих нагрузок, в этом документе позволяет начать создание и масштабирование развертывания контейнера с помощью API-интерфейса REST Marathon hello. 
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Управление контейнерами DC/OS с помощью REST API Marathon
+DC/OS — это среда для развертывания и масштабирования кластерных рабочих нагрузок, в которой используемое оборудование рассматривается абстрактно. На базе DC/OS работает платформа, которая управляет планированием и выполнением вычислительных рабочих нагрузок. Хотя доступны платформы для многих популярных рабочих нагрузок, в этом документе описывается, как приступить к созданию и масштабированию развертываний контейнеров с помощью REST API Marathon. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для выполнения этих примеров вам потребуется кластер DC/OS, настроенный в службе контейнеров Azure. Необходимо также кластера toothis toohave возможности удаленного подключения. Дополнительные сведения об этих элементах см. следующие статьи hello:
+Для выполнения этих примеров вам потребуется кластер DC/OS, настроенный в службе контейнеров Azure. Необходимо также удаленное подключение к этому кластеру. Дополнительные сведения об этих компонентах см. в следующих статьях.
 
 * [Развертывание кластера службы контейнеров Azure.](container-service-deployment.md)
-* [Подключение кластера tooan контейнера службы Azure](../container-service-connect.md)
+* [Подключение к кластеру службы контейнеров Azure.](../container-service-connect.md)
 
-## <a name="access-hello-dcos-apis"></a>Доступ к API-интерфейсы DC/OS hello
-После toohello подключенных кластера контейнера службы Azure, доступны hello DC/OS и связанные API REST через порт http://localhost:local. Hello примерах в этом документе предполагается, что туннелирование на порт 80. Например, можно получить конечные точки Marathon hello в URI начиная с версии `http://localhost/marathon/v2/`. 
+## <a name="access-the-dcos-apis"></a>Доступ к API DC/OS
+Подключившись к кластеру службы контейнеров Azure, вы сможете получить доступ к DC/OS и соответствующим интерфейсам REST API по адресу http://localhost:local-port. В этом документе для примера используется туннелирование через порт 80. Например, с конечной точкой Marathon можно связаться по адресу, универсальный код ресурса (URI) которого начинается с `http://localhost/marathon/v2/`. 
 
-Дополнительные сведения о hello различных API-интерфейсов документации hello Mesosphere hello [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) и [Chronos API](https://mesos.github.io/chronos/docs/api.html)и в документации Apache hello [Mesos API планировщика ](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
+Дополнительные сведения о разных доступных API-интерфейсах см. в документации Mesosphere по [API для Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html) и [API для Chronos](https://mesos.github.io/chronos/docs/api.html), а также в документации Apache по [API для планировщика Mesos](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Сбор сведений из DC/OS и Marathon
-Перед развертыванием кластера DC/OS toohello контейнеры получить некоторые сведения о кластере DC/OS hello, такие как имена hello и состояние агентов DC/OS hello. toodo таким образом, запрос hello `master/slaves` конечной точке API REST DC/OS hello. Если все пойдет хорошо hello запрос возвращает список агентов DC/OS и несколько свойств для каждого.
+Прежде чем развертывать контейнеры в кластере DC/OS, соберите информацию об этом кластере, в частности имена агентов DC/OS и сведения об их состоянии. Для этого отправьте запрос к конечной точке `master/slaves` REST API DC/OS. Если все пойдет хорошо, запрос вернет список агентов DC/OS и несколько свойств для каждого из них.
 
 ```bash
 curl http://localhost/mesos/master/slaves
 ```
 
-Теперь воспользуйтесь hello Marathon `/apps` toocheck конечной точки для текущего кластера DC/OS toohello развертывания приложения. Если это новый кластер, вы увидите пустой массив приложений.
+Теперь, используя конечную точку DC/OS `/apps` , проверьте наличие развернутых приложений в кластере DC/OS. Если это новый кластер, вы увидите пустой массив приложений.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -54,7 +54,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Развертывание контейнера формата Docker
-Контейнеры Docker формате через API-Интерфейс REST Marathon hello развертывание с помощью JSON-файл, описывающий hello предназначен развертывания. Hello следующий пример развертывает Nginx контейнера tooa закрытый агент в кластере hello. 
+Контейнеры формата Docker развертываются с помощью REST API Marathon и JSON-файла, описывающего предстоящее развертывание. Приведенный ниже пример развертывает контейнер Nginx на частном агенте в кластере. 
 
 ```json
 {
@@ -75,42 +75,42 @@ curl localhost/marathon/v2/apps
 }
 ```
 
-toodeploy контейнер Docker в формате хранения hello JSON-файла в доступном расположении. Далее, toodeploy hello контейнер, запустите следующую команду hello. Укажите имя hello hello JSON-файла (`marathon.json` в этом примере).
+Чтобы развернуть контейнер формата Docker, сохраните файл JSON в доступном месте. Затем выполните следующую команду, чтобы развернуть контейнер. Укажите имя JSON-файла (в данном примере это `marathon.json`).
 
 ```bash
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
-Hello выходные данные выглядят аналогично toohello следующее:
+Выход аналогичен приведенному ниже:
 
 ```json
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-Теперь при выполнении запроса Marathon для приложений, это новое приложение появляется в выходных данных hello.
+Если теперь отправить в Marathon запрос на получение сведений о приложениях, в выходных данных появятся сведения об этом новом приложении.
 
 ```bash
 curl localhost/marathon/v2/apps
 ```
 
-## <a name="reach-hello-container"></a>Достижения контейнера hello
+## <a name="reach-the-container"></a>Обращение к контейнеру
 
-Вы можете проверить, hello Nginx, запущенного на одном из агентов закрытый hello в кластере hello в контейнере. toofind hello узел и порт, где запущен контейнер hello, запросить Marathon hello запуска задач: 
+Убедитесь, что Nginx выполняется в контейнере на одном из частных агентов в кластере. Чтобы найти узел и порт, на которых работает контейнер, выполните запрос запущенных задач к Marathon. 
 
 ```bash
 curl localhost/marathon/v2/tasks
 ```
 
-Найдите значение hello `host` в выходных данных hello (IP-адресов примерно слишком`10.32.0.x`), а значение hello `ports`.
+Найдите значение `host` в выходных данных (IP-адрес вида `10.32.0.x`), а также значение `ports`.
 
 
-Теперь можно проверить SSH терминалов (туннельного подключения) toohello Управление соединениями полное доменное имя кластера hello. После подключения сделать hello следующий запрос, заменив hello правильные значения `host` и `ports`:
+Теперь установите подключение терминала SSH (но не туннельное подключение) по полному доменному имени службы управления кластером. Подключившись, выполните приведенный ниже запрос, указав правильные значения `host` и `ports`.
 
 ```bash
 curl http://host:ports
 ```
 
-Hello вывод server Nginx — аналогичные toohello следующее:
+Пример выходных данных сервера Nginx приведен ниже.
 
 ![Доступ к Nginx из контейнера](./media/container-service-mesos-marathon-rest/nginx.png)
 
@@ -118,16 +118,16 @@ Hello вывод server Nginx — аналогичные toohello следующ
 
 
 ## <a name="scale-your-containers"></a>Масштабирование контейнеров
-В развертывании приложений можно использовать tooscale Marathon API hello out или масштаб. В предыдущем примере hello развернут один экземпляр приложения. Давайте масштаба toothree экземпляров приложения. Таким образом, toodo создания JSON-файла с помощью hello после текста JSON и сохранить ее в доступном расположении.
+Marathon API может использоваться для увеличения или уменьшения масштаба развертываний приложений. В предыдущем примере мы развернули один экземпляр приложения. Давайте увеличим масштаб до трех экземпляров. Для этого создайте JSON-файл со следующим кодом и сохраните его в доступном расположении.
 
 ```json
 { "instances": 3 }
 ```
 
-Запустите из туннеля, следующая команда tooscale out приложения hello hello.
+Используя туннельное подключение, выполните следующую команду для развертывания приложения.
 
 > [!NOTE]
-> Hello URI является http://localhost/marathon/v2/apps/ следуют идентификатор hello tooscale приложения hello. Если вы используете образец hello Nginx, предоставленная здесь, hello URI будет http://localhost/marathon/v2/apps/nginx.
+> Универсальный код ресурса (URI) будет таким: http://localhost/marathon/v2/apps/ и идентификатор масштабируемого приложения. Если вы используете приведенный здесь пример Nginx, код URI будет таким: http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -135,7 +135,7 @@ Hello вывод server Nginx — аналогичные toohello следующ
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-Наконец запроса конечной точки Marathon hello для приложений. вы увидите, что теперь есть три контейнера Nginx.
+Если теперь отправить в конечную точку Marathon запрос о количестве экземпляров приложения, вы увидите, что теперь есть три контейнера Nginx.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -144,13 +144,13 @@ curl localhost/marathon/v2/apps
 ## <a name="equivalent-powershell-commands"></a>Аналогичные команды PowerShell
 Эти же действия можно выполнить с помощью команд PowerShell в системе Windows.
 
-toogather сведения о кластере DC/OS hello, например имена агентов и состояние агентов, выполните следующую команду hello.
+Чтобы собрать сведения о кластере DC/OS, в частности имена и состояния агентов, выполните следующую команду:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Контейнеры Docker формате через Marathon развертывание с помощью JSON-файл, описывающий hello предназначен развертывания. Hello следующий пример развертывает контейнера Nginx hello, привязки контроллера домена/OS hello агента tooport 80 контейнера hello порт 80.
+Контейнеры формата Docker развертываются с помощью Marathon и файла JSON, описывающего предполагаемое развертывание. Приведенный ниже пример кода развертывает контейнер Nginx и привязывает порт 80 агента DC/OS к порту 80 контейнера.
 
 ```json
 {
@@ -171,22 +171,22 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 }
 ```
 
-toodeploy контейнер Docker в формате хранения hello JSON-файла в доступном расположении. Далее, toodeploy hello контейнер, запустите следующую команду hello. Укажите путь toohello hello JSON-файла (`marathon.json` в этом примере).
+Чтобы развернуть контейнер формата Docker, сохраните файл JSON в доступном месте. Затем выполните следующую команду, чтобы развернуть контейнер. Укажите путь к JSON-файлу (в данном примере это `marathon.json`).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Также можно использовать tooscale Marathon API hello out или масштаб в развертывании приложений. В предыдущем примере hello развернут один экземпляр приложения. Давайте масштаба toothree экземпляров приложения. Таким образом, toodo создания JSON-файла с помощью hello после текста JSON и сохранить ее в доступном расположении.
+Marathon API может также использоваться для увеличения или уменьшения масштаба развертываний приложений. В предыдущем примере мы развернули один экземпляр приложения. Давайте увеличим масштаб до трех экземпляров. Для этого создайте JSON-файл со следующим кодом и сохраните его в доступном расположении.
 
 ```json
 { "instances": 3 }
 ```
 
-Следующая команда tooscale out приложения hello выполнения hello:
+Выполните следующую команду для создания дополнительных экземпляров приложения:
 
 > [!NOTE]
-> Hello URI является http://localhost/marathon/v2/apps/ следуют идентификатор hello tooscale приложения hello. Если вы используете пример hello Nginx, описанный здесь, hello URI будет http://localhost/marathon/v2/apps/nginx.
+> Универсальный код ресурса (URI) будет таким: http://localhost/marathon/v2/apps/ и идентификатор масштабируемого приложения. Если вы используете приведенный здесь пример Nginx, код URI будет таким: http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -195,6 +195,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Дополнительные сведения о конечных точек Mesos HTTP hello](http://mesos.apache.org/documentation/latest/endpoints/)
-* [Дополнительные сведения об API-интерфейса REST Marathon hello](https://mesosphere.github.io/marathon/docs/rest-api.html)
+* [Ознакомьтесь с дополнительными сведениями о конечных HTTP-точках Mesos](http://mesos.apache.org/documentation/latest/endpoints/).
+* [Ознакомьтесь с дополнительными сведениями о REST API Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html).
 

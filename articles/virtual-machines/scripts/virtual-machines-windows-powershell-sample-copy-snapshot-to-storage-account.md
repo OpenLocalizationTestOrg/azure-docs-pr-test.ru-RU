@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария PowerShell - Экспорт копирования моментальных снимков с учетной записью хранения tooa VHD в другом регионе aaaAzure | Документы Microsoft"
-description: "Azure образец скрипта PowerShell - Экспорт копирования моментальных снимков с учетной записью хранения tooa VHD в одном другом регионе"
+title: "Пример сценария Azure PowerShell. Экспорт или копирование моментального снимка в виде VHD в учетную запись хранения в другом регионе | Документация Майкрософт"
+description: "Пример сценария Azure PowerShell для экспорта или копирования моментального снимка в виде VHD в учетную запись хранения в другом регионе."
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: c18ad4fa0bf12033fafe941a807e7b4c8d233a30
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: be21a891121df1d645b430d87b572cde6c945d61
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-tooa-storage-account-in-different-region-with-powershell"></a>Экспорт» или «копировать управляемый снимки с учетной записью хранения tooa VHD в другом регионе с помощью PowerShell
+# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Экспорт или копирование управляемых моментальных снимков в виде VHD в учетную запись хранения в другом регионе с помощью PowerShell
 
-Этот сценарий экспортирует учетную запись хранения tooa управляемого моментального снимка в другом регионе. Сначала генерации hello универсальный код Ресурса SAS hello моментальных снимков и использует его toocopy его tooa учетной записи хранилища в другом регионе. Используйте эту резервную копию toomaintain сценария управляемого диски в другом регионе для аварийного восстановления.  
+Этот сценарий экспортирует управляемый моментальный снимок в учетную запись хранения в другом регионе. Сначала он создает URI SAS для моментального снимка, а затем использует его для копирования в учетную запись хранения в другом регионе. Этот сценарий можно использовать для обеспечения резервной копии управляемых дисков в другом регионе в целях аварийного восстановления.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -36,13 +36,13 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующую toogenerate команды универсальный код Ресурса SAS для управляемых hello моментального снимка и копий моментальных снимков tooa учетной записи хранилища с помощью универсального кода Ресурса SAS. Каждая команда в таблице hello связывает toocommand документацию.
+Этот сценарий выполняет приведенные ниже команды для создания универсального кода ресурса (URI) SAS для управляемого моментального снимка и копирует моментальный снимок в учетную запись хранения, используя созданный универсальный код ресурса (URI) SAS. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
 
 | Команда | Примечания |
 |---|---|
-| [Grant-AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Создает универсальный код Ресурса SAS для снимок, который используется toocopy его tooa учетной записи хранилища. |
-| [New-AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Создает контекст учетной записи хранилища с помощью hello имя учетной записи и ключа. Этот контекст может быть используется tooperform операций чтения и записи на учетную запись хранения hello. |
-| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Здравствуйте, копии базового VHD учетной записи хранения tooa моментальных снимков |
+| [Grant-AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Создает универсальный код ресурса (URI) SAS для моментального снимка, который используется для копирования моментального снимка в учетную запись хранения. |
+| [New-AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Создает контекст учетной записи хранения с помощью имени учетной записи и ключа. Этот контекст можно использовать для выполнения операций чтения и записи с учетной записью хранения. |
+| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Копирует базовый VHD моментального снимка в учетную запись хранения. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
@@ -50,6 +50,6 @@ ms.lasthandoff: 10/06/2017
 
 [Создание виртуальной машины на основе управляемого диска](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
 
-Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate Windows виртуальной Машины из шаблона в Azure | Документы Microsoft"
-description: "Использование шаблона диспетчера ресурсов и PowerShell tooeasily создания новой виртуальной Машины Windows."
+title: "Создание виртуальной машины Windows с помощью шаблона в Azure | Документация Майкрософт"
+description: "Простое создание виртуальной машины Windows с помощью шаблона Resource Manager и PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630111482c7dc046091632e2ed458ac143325d59
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Создание виртуальной машины Windows с использованием шаблона Resource Manager
 
-В этой статье показано, как диспетчер ресурсов Azure toodeploy шаблона с помощью PowerShell. Hello шаблон, который вы создаете развертывает одной виртуальной машины под управлением Windows Server в новую виртуальную сеть с одной подсетью.
+В этой статье описывается развертывание шаблона Azure Resource Manager с помощью PowerShell. Созданный шаблон развертывает одну виртуальную машину под управлением Windows Server в новой виртуальной сети с одной подсетью.
 
-Подробное описание hello ресурса виртуальной машины см. в разделе [виртуальные машины в шаблоне Azure Resource Manager](template-description.md). Дополнительные сведения обо всех ресурсах hello в шаблоне см. в разделе [Пошаговое руководство шаблона Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Подробное описание ресурса виртуальной машины см. в статье [Виртуальные машины в шаблоне Azure Resource Manager](template-description.md). Дополнительные сведения обо всех ресурсах в шаблоне см. в статье [Пошаговое руководство по созданию шаблона Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Занимает около пяти минут, toodo hello шаги в этой статье.
+Процедура, описанная в этой статье, занимает около 5 минут.
 
 ## <a name="install-azure-powershell"></a>Установка Azure PowerShell
 
-В разделе [как tooinstall и настройка Azure PowerShell](../../powershell-install-configure.md) сведения об установке hello последнюю версию Azure PowerShell, выбрав подписку и вход в учетную запись tooyour.
+Сведения об установке последней версии Azure PowerShell, а также о выборе нужной подписки и входе в учетную запись Azure см. в статье [Установка и настройка служб Azure PowerShell](../../powershell-install-configure.md).
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
@@ -44,17 +44,17 @@ ms.lasthandoff: 10/06/2017
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Создание группы ресурсов hello в выбранного расположения hello. Этот пример показывает создание hello группы ресурсов с именем **myResourceGroup** в hello **Запад США** расположение:
+2. Создайте группу ресурсов в выбранном расположении. В этом примере показано, как создать группу ресурсов с именем **myResourceGroup** в расположении **West US**.
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
     ```
 
-## <a name="create-hello-files"></a>Создание файлов hello
+## <a name="create-the-files"></a>Создание файлов
 
-На этом шаге создается файл шаблона, которая развертывает hello ресурсы и файл параметров, который предоставляет шаблон toohello значения параметра. Можно также создать файла авторизации, который является используется tooperform операции диспетчера ресурсов Azure.
+На этом шаге вы создадите файл шаблона, который развертывает ресурсы, и файл параметров, который предоставляет значения для параметров шаблона. Кроме того, вы создадите файл авторизации для выполнения операций Azure Resource Manager.
 
-1. Создайте файл с именем *CreateVMTemplate.json* и добавьте этот tooit код JSON:
+1. Создайте файл с именем *CreateVMTemplate.json* и добавьте в него такой код JSON:
 
     ```json
     {
@@ -159,7 +159,7 @@ ms.lasthandoff: 10/06/2017
     }
     ```
 
-2. Создайте файл с именем *Parameters.json* и добавьте этот tooit код JSON:
+2. Создайте файл с именем *Parameters.json* и добавьте в него такой код JSON:
 
     ```json
     {
@@ -182,18 +182,18 @@ ms.lasthandoff: 10/06/2017
     New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
     ```
 
-4. Отправьте файлы для hello toohello учетной записи хранилища.
+4. Отправьте файлы в учетную запись хранения:
 
     ```powershell
     Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Изменение hello - расположение toohello пути файла, где хранятся файлы hello.
+    Измените пути -File так, чтобы они указывали на расположение ваших файлов.
 
-## <a name="create-hello-resources"></a>Создать ресурсы hello
+## <a name="create-the-resources"></a>Создание ресурсов
 
-Развертывание шаблона hello, используя параметры hello:
+Разверните шаблон с помощью параметров:
 
 ```powershell
 $templatePath = "https://" + $storageName + ".blob.core.windows.net/templates/CreateVMTemplate.json"
@@ -202,10 +202,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> Шаблоны и параметры можно также развернуть из локальных файлов. toolearn более, в разделе [с помощью Azure PowerShell с хранилищем Azure](../../storage/common/storage-powershell-guide-full.md).
+> Шаблоны и параметры можно также развернуть из локальных файлов. Дополнительные сведения см. в статье [Использование Azure PowerShell со службой хранилища Azure](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Если возникли проблемы с развертыванием hello, может потребоваться рассмотреть [Устранение общих ошибок развертывания Azure с помощью диспетчера ресурсов Azure](../../resource-manager-common-deployment-errors.md).
-- Узнайте, как toocreate и управлять ими на виртуальной машине в [Создание и управление виртуальными машинами Windows с помощью модуля Azure PowerShell hello](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Если возникнут проблемы с развертыванием, см. статью [Устранение распространенных ошибок развертывания в Azure с помощью Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Сведения о создании виртуальной машины и управлении ею см. в статье [Создание виртуальных машин Windows и управление ими с помощью модуля Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

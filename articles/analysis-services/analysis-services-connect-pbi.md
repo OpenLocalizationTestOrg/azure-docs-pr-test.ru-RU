@@ -1,6 +1,6 @@
 ---
-title: "aaaConnect tooAzure служб Analysis Services с помощью Power BI | Документы Microsoft"
-description: "Узнайте, как tooconnect tooan Azure служб Analysis Services с помощью Power BI."
+title: "Подключение к Azure Analysis Services с помощью Power BI | Документы Майкрософт"
+description: "Сведения о подключении к серверу Azure Analysis Services с помощью Power BI."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: f6c4cdec6edb92900ad2e552e23a4d9172ba9b84
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3a2af043feddb4a1d6d63f50e838c8a39035449f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-with-power-bi"></a>Подключение с помощью Power BI
 
-После создания сервера в Azure и развернуть tooit табличной модели, пользователи в вашей организации будут готовы tooconnect и приступить к изучению данных. 
+Когда вы создадите Azure сервер и развернете в него табличную модель, пользователи вашей организации смогут подключиться к нему для использования данных. 
 
 > [!TIP]
-> Убедиться, что последняя версия toouse hello объекта [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+> Обязательно используйте последнюю версию [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
 > 
 > 
   
@@ -34,28 +34,28 @@ ms.lasthandoff: 10/06/2017
 
 1. В Power BI Desktop выберите **Получить данные** > **Azure** > **База данных Azure Analysis Services**.
 
-2. В **сервера**, введите имя сервера hello. 
+2. В поле **Сервер** укажите имя сервера. 
     
-    Быть убедиться, что tooinclude hello полный URL-адрес. Например, asazure://westcentralus.asazure.windows.net/advworks.
+    Не забудьте включить полный URL-адрес. Например, asazure://westcentralus.asazure.windows.net/advworks.
 
-3. В **базы данных**, если известно имя hello hello базы данных табличной модели или перспективы требуется tooconnect для, вставьте его здесь. В противном случае вы можете оставить это поле пустым и выбрать базу данных или перспективу позже.
+3. В поле **База данных** вставьте имя базы данных табличной модели или перспективы, к которой нужно подключиться, если вы знаете это имя. В противном случае вы можете оставить это поле пустым и выбрать базу данных или перспективу позже.
 
-4. Оставьте по умолчанию hello **Connect live** параметр, а затем нажмите клавишу **Connect**. 
+4. Оставьте стандартное значение **Подключение в реальном времени**, а затем нажмите **Подключиться**. 
 
 5. При отображении запроса введите свои учетные данные. 
 
-6. В **Навигатор**, разверните сервер hello, а затем выберите hello модель или перспективу, нужно tooconnect для, нажмите кнопку **Connect**. Выберите модели или перспективы tooshow все объекты hello для этого представления.
+6. В разделе **Навигатор** разверните узел сервера и выберите модель или перспективу, к которой вы хотите подключиться, затем нажмите **Подключиться**. Щелкнув модель или перспективу, можно отобразить все объекты для этого представления.
 
-    Hello модели в Power BI Desktop откроется пустой отчет в представлении отчета. Список полей Hello отображает все объекты модели не скрыты. Состояние подключения отображается в правом нижнем углу hello.
+    Модель открывается в Power BI Desktop с пустым отчетом в представлении "Отчет". Список "Поля" содержит все нескрытые объекты модели. Состояние подключения отображается в правом нижнем углу.
 
 ## <a name="connect-in-power-bi-service"></a>Подключение в Power BI (служба)
 
-1. Создайте файл Power BI Desktop, имеет модель tooyour активное подключение на сервере.
+1. Создайте файл Power BI Desktop с возможностью активного подключения к нужной модели на сервере.
 2. В [Power BI](https://powerbi.microsoft.com) последовательно выберите **Получить данные** > **Файлы**. Найдите и выберите созданный файл.
 
 
 
 ## <a name="see-also"></a>См. также
-[Подключение tooAzure Analysis Services](analysis-services-connect.md)   
+[Подключение к службам Azure Analysis Services](analysis-services-connect.md)   
 [Клиентские библиотеки](analysis-services-data-providers.md)
 

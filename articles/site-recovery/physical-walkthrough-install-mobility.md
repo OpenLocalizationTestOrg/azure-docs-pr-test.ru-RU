@@ -1,6 +1,6 @@
 ---
-title: "hello aaaInstall службы Mobility service для физического сервера репликации tooAzure | Документы Microsoft"
-description: "В этой статье описывается, как tooinstall hello агент службы Mobility service на физических серверах репликации tooAzure со службой Azure Site Recovery hello."
+title: "Установка службы Mobility Service для репликации из физических серверов в Azure | Документация Майкрософт"
+description: "В этой статье описано, как с помощью службы Azure Site Recovery установить на физических серверах агент службы Mobility Service для репликации в Azure."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: 48fd2c0ffe67875ed446c8167c2ae7f90d3f537c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d73267d7a64221a3138af19e9a2d5dd15809b927
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="step-9-install-hello-mobility-service"></a>Шаг 9: Установка службы Mobility hello
+# <a name="step-9-install-the-mobility-service"></a>Шаг 9. Установка службы Mobility Service
 
 
-В этой статье описывается, как компонент службы hello Mobility tooinstall при репликации локальной tooAzure физических серверов Windows и Linux, с помощью hello [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
+В этой статье описано, как установить компонент службы Mobility Service при репликации локальных физических серверов Windows или Linux в Azure с помощью службы [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
 
-Hello службы Mobility service записывает записи данных на компьютере и пересылает их toohello сервер обработки. Он должен устанавливаться на каждом сервере, которые должны tooreplicate tooAzure.
+Служба Mobility Service фиксирует операции записи данных на компьютере и перенаправляет их на сервер обработки. Ее необходимо установить на каждом сервере, который будет реплицироваться в Azure.
 
-Можно установить службу Mobility hello вручную или с помощью принудительной установки из hello Site Recovery процесса сервера, если включена репликация, или с помощью средства, такие как System Center Configuration Manager. При использовании принудительной установки службы hello устанавливается на сервере hello при включении репликации.
+Службу Mobility Service можно установить вручную, используя принудительную установку с сервера обработки Site Recovery, когда репликация включена, или с помощью такого средства, как System Center Configuration Manager. При использовании принудительной установки служба устанавливается на сервере после включения репликации.
 
-Учет комментарии и вопросы hello нижней части этой статьи, или на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Комментарии или вопросы можно добавить в конце этой статьи или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="install-manually"></a>Установка вручную
 
-1. Проверьте hello [необходимые компоненты](site-recovery-vmware-to-azure-install-mob-svc.md#prerequisites) для установки вручную.
-2. Выполните [эти инструкции](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui) для установки вручную с помощью портала hello.
-3. При желании tooinstall hello командной строке выполните [эти инструкции](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt).
+1. Проверьте, выполнены ли [предварительные требования](site-recovery-vmware-to-azure-install-mob-svc.md#prerequisites) для установки вручную.
+2. Следуйте [этим инструкциям](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui), чтобы выполнить установку вручную с помощью портала.
+3. Если вам удобнее выполнить установку из командной строки, то следуйте [этим инструкциям](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt).
 
-## <a name="install-from-hello-process-server"></a>Установка с сервера обработки hello
+## <a name="install-from-the-process-server"></a>Установка с сервера обработки
 
-Если требуется hello toopush установки службы Mobility с сервера обработки hello при включении репликации для машины, необходимо учетную запись, которая может использоваться hello процесса tooaccess hello сервере. Hello учетная запись используется только для принудительной установки hello.
+Если требуется принудительно установить службу Mobility Service с сервера обработки при включении репликации компьютера, то необходима учетная запись, которая может использоваться сервером обработки для доступа к компьютеру. Эта учетная запись предназначена только для принудительной установки.
 
 1. Если вы еще не создали учетную запись, придерживайтесь следующих рекомендаций:
 
     - Можно использовать доменную или локальную учетную запись.
-    - Для Windows Если вы не используете учетную запись домена, необходимо toodisable управления удаленного доступа пользователя на локальном компьютере hello. toodo, hello зарегистрировать под **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**, добавьте запись DWORD hello **LocalAccountTokenFilterPolicy**, со значением 1.
-    - Если требуется запись реестра hello tooadd для Windows с CLI, введите:
+    - Для Windows, если учетная запись домена не используется, на локальном компьютере потребуется отключить контроль удаленного доступа пользователей. Для этого в разделе реестра **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** добавьте запись **LocalAccountTokenFilterPolicy** DWORD и задайте для нее значение 1.
+    - Если требуется добавить запись в реестр Windows из командной строки, введите:
 
         ```
         REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.
         ```
 
-    - Для Linux hello учетной записи должно быть корневым расположением на hello исходный сервер Linux.
+    - Для Linux учетная запись должна принадлежать привилегированному пользователю на исходном сервере Linux.
 
-2. Затем выполните [эти инструкции](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery) Если toopush hello Mobility service на виртуальные машины под управлением Windows или Linux.
+2. Затем следуйте [этим инструкциям](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery), чтобы принудительно установить службу Mobility Service на виртуальные машины под управлением Windows или Linux.
 
 ## <a name="other-installation-methods"></a>Другие методы установки
 
-- [Дополнительные сведения о](site-recovery-install-mobility-service-using-sccm.md) Установка службы мобильности hello, с помощью Configuration Manager
+- Сведения об установке службы Mobility Service с помощью Configuration Manager см. [здесь](site-recovery-install-mobility-service-using-sccm.md).
 - Сведения об установке службы Mobility Service с помощью Azure Automation DSC см. [здесь](site-recovery-automate-mobility-service-install.md).
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Go слишком[шаг 10: включение репликации](physical-walkthrough-enable-replication.md)
+Перейдите к статье [Шаг 10. Включение репликации для физических серверов в Azure](physical-walkthrough-enable-replication.md).

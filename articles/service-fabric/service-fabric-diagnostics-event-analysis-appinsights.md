@@ -1,5 +1,5 @@
 ---
-title: "Анализ событий структуры службы с помощью Application Insights aaaAzure | Документы Microsoft"
+title: "Анализ событий Azure Service Fabric с помощью Application Insights | Документы Майкрософт"
 description: "Ознакомьтесь со сведениями о визуализации и анализе событий с использованием Application Insights для мониторинга и диагностики кластеров Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.openlocfilehash: 59bb5a409f2951e5b2034049e782dd0da67f933c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Анализ и визуализация событий с помощью Application Insights
 
-Azure Application Insights — это расширяемая платформа для отслеживания и диагностики приложений. Она включает в себя эффективное средство аналитики и запросов, настраиваемую панель мониторинга, визуализации и дополнительные параметры, включая автоматическое оповещение. Это hello, рекомендуется использовать платформу для наблюдения и диагностики для приложения Service Fabric и службы.
+Azure Application Insights — это расширяемая платформа для отслеживания и диагностики приложений. Она включает в себя эффективное средство аналитики и запросов, настраиваемую панель мониторинга, визуализации и дополнительные параметры, включая автоматическое оповещение. Это рекомендуемая платформа для отслеживания и диагностики приложений и служб Service Fabric.
 
 ## <a name="setting-up-application-insights"></a>Настройка Application Insights
 
 ### <a name="creating-an-ai-resource"></a>Создание ресурса Application Insights
 
-ресурс toocreate AI, головной через toohello Azure Marketplace и выполните поиск «Application Insights». Оно должно отображаться hello первое решение (он находится в категории «Mobile Web +»). Нажмите кнопку **создать** при просмотре ресурса hello (Убедитесь, что путь к соответствует hello изображении ниже).
+Чтобы создать ресурс Application Insights, перейдите в Azure Marketplace и выполните поиск по запросу "Application Insights". Требуемое решение должно быть первым в списке результатов (в категории "Интернет и мобильные устройства"). Нажмите кнопку **Создать** справа (убедитесь в том, что путь соответствует приведенной ниже иллюстрации).
 
 ![Новый ресурс Application Insights](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
 
-Необходимо будет toofill некоторые сведения tooprovision hello ресурс правильно. В hello *тип приложения* поля, используйте «Веб-приложение ASP.NET» при использовании любого из Service Fabric модели программирования или публикации кластера toohello приложений .NET. Выберите значение "Общее", если вы будете развертывать гостевые исполняемые файлы и контейнеры. В общем случае tookeep «Веб-приложение ASP.NET» по умолчанию toousing варианты откройте в будущем hello. Имя Hello работает tooyour предпочтений и группы ресурсов hello и подписки, возможность изменения после развертывания hello ресурса. Мы рекомендуем ресурса AI возможности hello же группе ресурсов кластера. Если вам требуются дополнительные сведения, ознакомьтесь с разделом [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
+Для правильной подготовки ресурсов необходимо указать некоторые сведения. В поле *Тип приложения* выберите значение "Веб-приложение ASP.NET", если вы будете использовать какую-либо из моделей программирования Service Fabric или публиковать приложение .NET в кластере. Выберите значение "Общее", если вы будете развертывать гостевые исполняемые файлы и контейнеры. Как правило, по умолчанию следует использовать значение "Веб-приложение ASP.NET", чтобы параметры оставались доступными в будущем. Имя может быть любым на ваш выбор, а группу ресурсов и подписку можно изменить после развертывания ресурса. Рекомендуется, чтоб ресурс Application Insights входил в ту же группу ресурсов , что и кластер. Если вам требуются дополнительные сведения, ознакомьтесь с разделом [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
 
-Требуется ключ инструментирования AI hello tooconfigure AI со средством статистической обработки событий. После настройки ресурса AI (занимает несколько минут после проверки hello развертывания), перейдите tooit и найти hello **свойства** раздел на панели навигации слева hello. Откроется новая колонка с *ключом инструментирования*. Если требуется toochange hello подписка или группа ресурсов для ресурса hello, это можно сделать здесь также.
+Для настройки Application Insights с помощью средства статистической обработки событий требуется ключ инструментирования Application Insights. После настройки ресурса Application Insights (занимает несколько минут после проверки развертывания) перейдите к нему и найдите раздел **Свойства** на левой панели навигации. Откроется новая колонка с *ключом инструментирования*. Если необходимо изменить подписку или группу ресурсов, это также можно сделать здесь.
 
 ### <a name="configuring-ai-with-wad"></a>Настройка Application Insights с помощью WAD
 
-Существует два основных способа toosend данные из WAD tooAzure AI, что можно сделать, добавив AI приемник toohello конфигурация WAD, как описано в [в этой статье](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Существуют два основных способа отправки данных из WAD в Azure Application Insights, для обеспечения которой необходимо добавить приемник Application Insights в конфигурацию WAD, как описано в [этой статье](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
 
 #### <a name="add-an-ai-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Добавление ключа инструментирования Application Insights при создании кластера на портале Azure
 
 ![Добавление AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-При создании кластера, если Диагностика включен «», tooenter необязательное поле отображается ключ инструментирования аналитики приложений. При вставке здесь вашей IKey AI hello AI приемник будет автоматически настроена для hello шаблона диспетчера ресурсов, используемых toodeploy кластера.
+Если при создании кластера диагностика включена, появляется дополнительное поле для ввода ключа инструментирования Application Insights. Если вставить в него ключ инструментирования Application Insights, приемник Application Insights будет автоматически настроен в шаблоне Resource Manager, используемом для развертывания кластера.
 
-#### <a name="add-hello-ai-sink-toohello-resource-manager-template"></a>Добавить шаблон диспетчера ресурсов toohello приемников AI hello
+#### <a name="add-the-ai-sink-to-the-resource-manager-template"></a>Добавление приемника Application Insights в шаблон Resource Manager
 
-В hello «WadCfg «hello шаблона диспетчера ресурсов Добавьте «Приемник», включая hello, следующие два изменения:
+В разделе WadCfg шаблона Resource Manager добавьте приемник, внеся два указанных ниже изменения.
 
-1. Добавьте конфигурацию приемник hello:
+1. Добавьте конфигурацию приемника.
 
     ```json
     "SinksConfig": {
@@ -64,52 +64,52 @@ Azure Application Insights — это расширяемая платформа
 
     ```
 
-2. Включите hello приемник в hello DiagnosticMonitorConfiguration, добавление hello, следующей строкой в «DiagnosticMonitorConfiguration» hello «WadCfg»:
+2. Включите приемник в DiagnosticMonitorConfiguration, добавив в подраздел DiagnosticMonitorConfiguration раздела WadCfg следующую строку:
 
     ```json
     "sinks": "applicationInsights"
     ```
 
-В обоих фрагментах кода hello выше hello приемник hello используется toodescribe было имя «applicationInsights». Это не является обязательным, и при условии, что имя hello приемника hello включается в «приемники», можно задать строку tooany имени hello.
+В обоих приведенных выше фрагментах кода имя applicationInsights использовалось для указания приемника. Это не является обязательным. Если имя приемника включено в элемент sinks, именем может быть любая строка.
 
-В настоящее время журналов из кластера hello отображаются как трассировки в средстве просмотра журналов в AI. Поскольку большинство hello трассировок, поступающих из платформы hello имеют уровень «Информационный», можно также рассмотреть изменение hello приемник конфигурации tooonly отправки журналов типа «Критическое» или «Ошибка». Это можно сделать путем добавления приемника tooyour «Каналы», как показано в [в этой статье](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+В настоящее время журналы кластера отображаются в средстве просмотра журналов Application Insights как трассировки. Так как большинство трассировок, поступающих с платформы, имеют уровень "Информационный", можно также изменить конфигурацию приемника так, чтобы отправлялись журналы только типа "Критический" или "Ошибка". Для этого в приемник можно добавить каналы, как показано в [этой статье](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
 
 >[!NOTE]
->При использовании неверные IKey AI на портале или в шаблон диспетчера ресурсов, необходимо будет toomanually изменение ключа hello и обновление кластера hello / выполнить его повторное развертывание. 
+>При использовании неправильного ключа инструментирования Application Insights на портале или в шаблоне Resource Manager его необходимо поменять вручную, а затем обновить или повторно развернуть кластер. 
 
 ### <a name="configuring-ai-with-eventflow"></a>Настройка Application Insights с помощью EventFlow
 
-При использовании EventFlow tooaggregate события, убедитесь, что hello tooimport `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`пакет NuGet. Hello следующие имеет состава hello toobe *выводит* раздел hello *eventFlowConfig.json*:
+Если для статистической обработки событий используется EventFlow, импортируйте пакет NuGet `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`. В раздел *outputs* файла *eventFlowConfig.json* необходимо включить следующий код:
 
 ```json
 "outputs": [
     {
         "type": "ApplicationInsights",
-        // (replace hello following value with your AI resource's instrumentation key)
+        // (replace the following value with your AI resource's instrumentation key)
         "instrumentationKey": "00000000-0000-0000-0000-000000000000"
     }
 ]
 ```
 
-Внесите изменения hello требуется убедиться, что toomake фильтрах, а также включать другие входные данные (вместе с соответствующими пакетами NuGet).
+Обязательно внесите необходимые изменения в фильтры, а также включите все остальные входные данные (с соответствующими пакетами NuGet).
 
 ## <a name="aisdk"></a>AI.SDK
 
-Обычно рекомендуется toouse EventFlow и WAD как решения статистической обработки, так как они позволяют более удобным toodiagnostics подход и наблюдения, т. е. Если требуется toochange вашей выходные данные EventFlow, требуется не фактические изменения tooyour инструментирование, просто файл конфигурации tooyour простое изменение. Если, тем не менее, решить tooinvest с помощью Application Insights и не являются скорее всего toochange tooa другой платформы, следует ознакомиться с помощью аналитики Активов в новый пакет SDK для статистической обработки событий и отправки их tooAI. Это означает, что больше не будет tooconfigure EventFlow toosend вашей tooAI данных, но вместо этого будет установить пакет Service Fabric NuGet hello ApplicationInsight. Можно найти сведения о пакете hello [здесь](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
+Как правило, в качестве решений для статистической обработки рекомендуется использовать EventFlow и WAD, так как они обеспечивают более модульный подход к диагностике и мониторингу, то есть если вы хотите изменить выходные данные EventFlow, изменять инструментирование не требуется. Достаточно внести простое изменение в файл конфигурации. Однако если вы решите инвестировать в использование Application Insights и, скорее всего, не будете переходить на другую платформу, рассмотрите возможность применения нового пакета SDK для Application Insights с целью статистической обработки событий и отправки их в Application Insights. Таким образом, вам больше не придется настраивать EventFlow для отправки данных в Application Insights. Вместо этого вы установите пакет NuGet Service Fabric для Application Insights. Подробные сведения о пакете можно найти [здесь](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Поддержка Application Insights Микрослужбами и контейнеры](https://azure.microsoft.com/app-insights-microservices/) показаны некоторые новые функции hello, над которыми ведется работа на (по-прежнему присутствующие в бета-версия), которой позволяют toohave всестороннее out of box параметры мониторинга с помощью аналитики Активов. Эти условия включают отслеживание зависимостей (используется для построения служб и приложений в кластере и hello обмен данными между ними AppMap) и более корреляцию трассировок, поступающих от служб (помогает в более точное проблемы в hello рабочий процесс приложения или службы).
+На странице [Поддержка микрослужб и контейнеров в Application Insights](https://azure.microsoft.com/app-insights-microservices/) описываются некоторые новые возможности, над которыми ведется работа (в настоящее время они доступны в виде бета-версии) и которые расширяют набор встроенных параметров мониторинга в Application Insights. Они включают в себя отслеживание зависимостей (используется при построении карты AppMap для всех служб и приложений в кластере и взаимосвязей между ними), а также улучшенное сопоставление трассировок, поступающих из служб (помогает выявлять проблемы в рабочем процессе приложения или службы).
 
-Если разработка в .NET и, вероятно, с помощью некоторых моделей программирования Service Fabric и являются пойти toouse AI качестве платформы для визуализации и анализа событий и журналов, рекомендуется перейти через hello AI SDK для маршрута наблюдение и рабочий процесс диагностики. Чтение [это](../application-insights/app-insights-asp-net-more.md) и [это](../application-insights/app-insights-asp-net-trace-logs.md) tooget работу с помощью функции AI toocollect и отображения журналов.
+Если вы ведете разработку на .NET, скорее всего, будете использовать какие-либо модели программирования Service Fabric и хотите применять Application Insights в качестве платформы для визуализации и анализа данных событий и журналов, мы рекомендуем схему SDK для Application Insights в качестве рабочего процесса мониторинга и диагностики. Чтобы приступить к использованию Application Insights для сбора и отображения журналов, ознакомьтесь с [этой](../application-insights/app-insights-asp-net-more.md) и [этой](../application-insights/app-insights-asp-net-trace-logs.md) статьями.
 
-## <a name="navigating-hello-ai-resource-in-azure-portal"></a>Перемещение ресурса AI hello на портале Azure
+## <a name="navigating-the-ai-resource-in-azure-portal"></a>Навигация по ресурсу Application Insights на портале Azure
 
-После настройки аналитики Активов в качестве выходных данных для событий и журналов сведения должно быть запущено tooshow в ресурса AI через несколько минут. Перейдите ресурса AI toohello, которая перенаправит вас toohello AI панели мониторинга ресурсов. Нажмите кнопку **поиска** в hello AI задач toosee hello последние трассировки, которые он получил и может toofilter toobe через них.
+После настройки Application Insights для вывода событий и журналов данные должны начать отображаться в ресурсе Application Insights через несколько минут. Перейдите к ресурсу Application Insights. Должна открыться панель мониторинга ресурса Application Insights. На панели задач Application Insights щелкните **Поиск**, чтобы просмотреть последние полученные трассировки и при необходимости отфильтровать их.
 
-*Обозреватель метрик* — это полезное средство для создания пользовательских панелей мониторинга на основе метрик, которые могут предоставляться приложениями, службами и кластером. В разделе [изучение метрики в Application Insights](../application-insights/app-insights-metrics-explorer.md) tooset копирование несколько диаграмм для текущего пользователя на основе hello данных собираются.
+*Обозреватель метрик* — это полезное средство для создания пользовательских панелей мониторинга на основе метрик, которые могут предоставляться приложениями, службами и кластером. Сведения о настройке диаграмм на основе собираемых данных см. в статье [Исследование метрик в Application Insights](../application-insights/app-insights-metrics-explorer.md).
 
-Щелкнув **Analytics** вы перейдете toohello приложения аналитика Analytics портал, где вы можете запрашивать события и трассировки с большей областью и дополнительные возможности. Дополнительные сведения см. в статье [Аналитика в Application Insights](../application-insights/app-insights-analytics.md).
+Если щелкнуть **Аналитика**, откроется портал аналитики Application Insights, на котором доступно больше возможностей по запросу событий и трассировок. Дополнительные сведения см. в статье [Аналитика в Application Insights](../application-insights/app-insights-analytics.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Настройка оповещений в AI](../application-insights/app-insights-alerts.md) toobe уведомления об изменениях в производительности или использования
-* [Смарт-обнаружение в Application Insights](../application-insights/app-insights-proactive-diagnostics.md) выполняет упреждающее анализ телеметрии hello, отправляемых tooAI toowarn о потенциальных проблем с производительностью
+* [Настройте оповещения в Application Insights](../application-insights/app-insights-alerts.md), чтобы узнавать об изменениях в производительности или характере использования.
+* [Интеллектуальное обнаружение в Application Insights](../application-insights/app-insights-proactive-diagnostics.md) осуществляет упреждающий анализ данных телеметрии, отправляемых в Application Insights, и предупреждает о потенциальных проблемах с производительностью.

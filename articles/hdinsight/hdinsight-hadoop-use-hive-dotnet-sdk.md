@@ -1,6 +1,6 @@
 ---
-title: "HDInsight .NET SDK - Azure с помощью запросов Hive aaaRun | Документы Microsoft"
-description: "Узнайте, как toosubmit Hadoop задания tooAzure HDInsight Hadoop с помощью HDInsight .NET SDK."
+title: "Выполнение запросов Hive с помощью пакета SDK HDInsight для .NET — Azure | Документы Майкрософт"
+description: "Узнайте, как отправлять задания Hadoop в Azure HDInsight Hadoop с помощью пакета SDK HDInsight для .NET."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -14,40 +14,42 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 09/15/2017
 ms.author: jgao
-ms.openlocfilehash: 11f07d90405d3e804774610e242813927df59a03
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: eb83a681df1a1836dbf970c4de14937aaea6b2f5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Выполнение запросов Hive с помощью пакета SDK HDInsight для .NET
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Узнайте, как toosubmit Hive запросов с помощью HDInsight .NET SDK. Написать запрос Hive для перечисления таблиц куст toosubmit программы C# и отображение результатов hello.
+Узнайте, как отправлять запросы Hive с помощью пакета SDK HDInsight для .NET. Напишите программу на языке C#, чтобы отправить запрос Hive для перечисления таблиц Hive и отобразить результаты.
 
 > [!NOTE]
-> в этой статье инструкциям Hello должна быть выполнена из клиента Windows. Сведения об использовании Linux, OS X или toowork клиента Unix с Hive с помощью селектора вкладку hello, отображается в верхней части hello hello статьи.
-> 
-> 
+> Действия, описанные в этой статье, необходимо выполнять из клиента Windows. Чтобы получить сведения об использовании клиента Linux, OS X или Unix для работы с Hive, воспользуйтесь выбором вкладок в верхней части статьи.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Прежде чем приступать к этой статье, необходимо иметь hello следующих элементов:
+Перед началом работы с этой статьей необходимо иметь следующее:
 
 * **Кластер Hadoop в HDInsight**. См. статью [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux](./hdinsight-hadoop-linux-tutorial-get-started.md).
+
+    > [!WARNING]
+    > Начиная с 15 сентября 2017 г. пакет SDK для HDInsight .NET поддерживает возвращение результатов запроса Hive только из учетных записей хранения Azure. Если использовать этот пример с кластером HDInsight, который использует Azure Data Lake Store в качестве основного хранилища, вы не сможете получить результаты поиска с помощью пакета SDK для .NET.
+
 * **Visual Studio 2013, Visual Studio 2015, Visual Studio 2017**.
 
 ## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>Отправка запросов Hive с помощью пакета SDK HDInsight для .NET
-Hello HDInsight .NET SDK предоставляет клиентские библиотеки .NET, что делает его проще toowork с кластерами HDInsight из .NET. 
+Пакет SDK для HDInsight .NET содержит клиентские библиотеки .NET, которые упрощают работу с кластерами HDInsight из .NET. 
 
-**tooSubmit заданий**
+**Отправка заданий**
 
 1. Создайте в Visual Studio консольное приложение C#.
-2. В hello консоль диспетчера пакетов Nuget выполните следующую команду hello.
+2. Введите следующую команду в окне консоли диспетчера пакетов NuGet:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Используйте hello, следующий код:
+3. Используйте следующий код:
 
     ```csharp
         using System.Collections.Generic;
@@ -68,21 +70,22 @@ Hello HDInsight .NET SDK предоставляет клиентские биб�
                 private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
-   
+                
+                // Only Azure Storage accounts are supported by the SDK
                 private const string DefaultStorageAccountName = "<Default Storage Account Name>";
                 private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
                 private const string DefaultStorageContainerName = "<Default Blob Container Name>";
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("hello application is running ...");
+                    System.Console.WriteLine("The application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
    
                     SubmitHiveJob();
    
-                    System.Console.WriteLine("Press ENTER toocontinue ...");
+                    System.Console.WriteLine("Press ENTER to continue ...");
                     System.Console.ReadLine();
                 }
    
@@ -97,13 +100,13 @@ Hello HDInsight .NET SDK предоставляет клиентские биб�
                         Arguments = args
                     };
    
-                    System.Console.WriteLine("Submitting hello Hive job toohello cluster...");
+                    System.Console.WriteLine("Submitting the Hive job to the cluster...");
                     var jobResponse = _hdiJobManagementClient.JobManagement.SubmitHiveJob(parameters);
                     var jobId = jobResponse.JobSubmissionJsonResponse.Id;
                     System.Console.WriteLine("Response status code is " + jobResponse.StatusCode);
                     System.Console.WriteLine("JobId is " + jobId);
    
-                    System.Console.WriteLine("Waiting for hello job completion ...");
+                    System.Console.WriteLine("Waiting for the job completion ...");
    
                     // Wait for job completion
                     var jobDetail = _hdiJobManagementClient.JobManagement.GetJob(jobId).JobDetail;
@@ -131,18 +134,18 @@ Hello HDInsight .NET SDK предоставляет клиентские биб�
             }
         }
     ```
-4. Нажмите клавишу **F5** toorun приложения hello.
+4. Нажмите клавишу **F5** для запуска приложения.
 
-выходные данные Hello приложения hello должны выглядеть следующим образом:
+Выходные данные приложения должны иметь следующий вид:
 
 ![Выходные данные задания Hadoop Hive в HDInsight](./media/hdinsight-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этой статье было изучено несколько способов toocreate кластера HDInsight. toolearn более, см. следующие статьи hello.
+В этой статье вы ознакомились с несколькими способами создания кластера HDInsight. Для получения дополнительных сведений ознакомьтесь со следующими статьями:
 
 * [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]
 * [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision]
-* [Управление кластерами Hadoop в HDInsight с помощью портала Azure hello](hdinsight-administer-use-management-portal.md)
+* [Управление кластерами Hadoop в HDInsight с помощью портала Azure](hdinsight-administer-use-management-portal.md)
 * [Справочник по пакетам SDK HDInsight для .NET](https://msdn.microsoft.com/library/mt271028.aspx)
 * [Использование Pig с HDInsight](hdinsight-use-pig.md)
 * [Использование Sqoop с HDInsight](hdinsight-use-sqoop-mac-linux.md)

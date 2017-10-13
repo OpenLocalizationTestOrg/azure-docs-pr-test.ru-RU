@@ -10,27 +10,27 @@ tags: azure-vpn-gateway
 ms.assetid: 
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: delhan
-ms.openlocfilehash: c695d23167ddba11283f6e223769e29b18a5c7ba
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 421d114632e1794a3cd5bd23fdecb0fadd476c6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Предлагаемые сообществом сторонние параметры устройств VPN или брандмауэра для VPN-шлюза Azure
 
 В этой статье описывается несколько предлагаемых решений для сторонних устройств VPN или брандмауэра, используемых с помощью VPN-шлюза Azure.
 
 > [!Note]
-> Техническая поддержка для устройства VPN или брандмауэр сторонних предоставляется производителем устройства hello. 
+> Техническая поддержка сторонних устройств VPN или брандмауэра предоставляется поставщиком устройства. 
 
 ## <a name="more-information"></a>Дополнительные сведения
 
-Привет, в следующей таблице перечислены несколько общих устройств и соответствующих справки.
+В таблице ниже перечисляются несколько общих устройств и руководства по их использованию:
 
 |Продукт    |Справочные материалы                                                |
 |-----------|-----------------------------------------------------------|

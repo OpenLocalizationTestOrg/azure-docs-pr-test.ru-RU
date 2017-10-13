@@ -12,8 +12,8 @@
 ### [Регулирование](biztalk-throttling-thresholds.md)
 ### [Параметры службы и мониторинг](biztalk-dashboard-monitor-scale-tabs.md)
 ## Миграция
-### [Службы tooBizTalk решений EDI в BizTalk Server](biztalk-migrating-to-edi-guide.md)
-## Монитор
+### [Перенос решений EDI сервера BizTalk Server в службы BizTalk](biztalk-migrating-to-edi-guide.md)
+## Мониторинг
 ### [Задачи, которые зависят от состояния службы](biztalk-service-state-chart.md)
 ## Безопасность
 ### [Контроль доступа](biztalk-issuer-name-issuer-key.md)

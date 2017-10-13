@@ -1,6 +1,6 @@
 ---
-title: "aaaNotification концентраторов локализованные критические новостей учебника для iOS"
-description: "Узнайте, как концентраторы уведомлений Azure Service Bus toosend toouse локализованные уведомлений с последними новостями (iOS)."
+title: "Передача локализованных экстренных новостей на устройства iOS с помощью центров уведомлений"
+description: "Узнайте, как использовать центры уведомлений Azure Service Bus для отправки уведомлений о локализованных экстренных новостях (iOS)."
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
@@ -14,13 +14,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 9fe88c0440e93b72d349574160ddcd85a7ba0be0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd2b7d9dfd4f432bbcbaa3ed76f8bec0b9677e17
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-notification-hubs-toosend-localized-breaking-news-tooios-devices"></a>Использование концентраторов уведомлений критические toosend локализованные новостей tooiOS устройств
+# <a name="use-notification-hubs-to-send-localized-breaking-news-to-ios-devices"></a>Использование концентраторов уведомлений для вещания локализованных экстренных новостей на устройства iOS
 > [!div class="op_single_selector"]
 > * [C# в Магазине Windows](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
@@ -28,26 +28,26 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Обзор
-В этом разделе показано, как toouse hello [шаблоны](notification-hubs-templates-cross-platform-push-messages.md) функции концентраторов уведомлений Azure toobroadcast критические уведомления новостей, локализованные языка и устройства. В этом учебнике, начинаться с приложение hello iOS, созданные в [toosend использования концентраторов уведомлений, новости]. После завершения можно будет tooregister для категорий, которые вас интересуют, указать язык в уведомления, которое tooreceive hello и получать только push-уведомлений для hello выбранных категорий на этом языке.
+В этом разделе показано, как использовать функцию [шаблонов](notification-hubs-templates-cross-platform-push-messages.md) центров уведомлений Azure для рассылки уведомлений об экстренных новостях, локализованных для языка и устройства. В этом учебнике вы начнете с приложения iOS, созданного в учебнике [Использование концентраторов уведомлений для передачи экстренных новостей]. По завершении вы сможете регистрировать для категорий, которые вас интересуют, указывать язык уведомлений, и получать push-уведомления только для выбранных категорий на этом языке.
 
-Существует два сценария toothis частей:
+Этот сценарий состоит из двух частей:
 
-* приложение iOS позволяет клиентским устройств toospecify язык и toodifferent toosubscribe критические категории новостей;
-* Hello внутренней осуществляет широковещательную рассылку уведомлений hello, с использованием hello **тега** и **шаблона** поддержки концентраторов уведомлений Azure.
+* приложение iOS позволяет клиентским устройствам указывать язык и подписываться на различные категории экстренных новостей;
+* сервер рассылает уведомления, используя функции **tag** и **template** Центров уведомлений Azure.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Вы должны уже выполнили hello [toosend использования концентраторов уведомлений, новости] учебника и иметь hello кода, так как этот учебник построен непосредственно на этот код.
+Вы должны предварительно выполнить учебник [Использование концентраторов уведомлений для передачи экстренных новостей] , чтобы у вас был нужный код, так как этот учебник построен непосредственно на этом коде.
 
 Наличие Visual Studio 2012 или более поздней версии не обязательно.
 
 ## <a name="template-concepts"></a>Основные сведения о шаблонах
-В [toosend использования концентраторов уведомлений, новости] построении приложения, которое используется **теги** toonotifications toosubscribe новостей разных категорий.
-Однако многие приложения ориентированы на несколько рынков и требуют локализации. Таким образом, содержимое hello hello уведомлений, сами имеют toobe локализованные доставленный toohello правильным набором устройств.
-В этом разделе будет показано, как toouse hello **шаблона** функции концентраторов уведомлений tooeasily доставки локализованное уведомлений с последними новостями.
+В учебнике [Использование концентраторов уведомлений для передачи экстренных новостей] вы создали приложение, которое использовало **теги** для подписки на уведомления для различных категорий новостей.
+Однако многие приложения ориентированы на несколько рынков и требуют локализации. Это означает, что само содержимое уведомлений должно быть локализовано и доставлено в правильный набор устройств.
+В этом разделе будут продемонстрированы способы использования **шаблонов** центров уведомлений, которые позволяют легко доставлять уведомления о локализованных экстренных новостях.
 
-Примечание: один из способов toosend локализованные уведомления является toocreate нескольких версий каждого тега. Для экземпляра toosupport английском, французском и мандаринский, пришлось бы иметь три разные теги Мировые: «world_en», «world_fr» и «world_ch». Мы будет иметь toosend локализованной версии tooeach новостей hello world эти теги. В этом разделе используются шаблоны tooavoid hello увеличением числа теги и требование hello отправка нескольких сообщений.
+Примечание. Один из способов отправки локализованных уведомлений — создание нескольких версий каждого тега. Например, для поддержки английского, французского и китайского нам понадобится три разных тега для мировых новостей: "world_en", "world_fr" и "world_ch". Затем необходимо отправить локализованную версию мировых новостей по каждому из этих тегов. В этом разделе мы используем шаблоны во избежание избыточного количества тегов и необходимости отправки нескольких сообщений.
 
-На высоком уровне шаблоны являются toospecify способом как конкретного устройства следует получать такие уведомления. шаблон Hello указывает формат hello точное полезных данных с помощью ссылки tooproperties, которые являются частью приветственное сообщение, отправленное приложение в серверной части. В нашем случае мы отправим независимое от языка сообщение, которое содержит все поддерживаемые языки:
+В общих чертах, шаблоны представляют собой способ указать, как конкретное устройство должно получать уведомления. Шаблон указывает точный формат полезных данных путем обращения к свойствам, которые являются частью сообщения, отправленного сервером вашего приложение. В нашем случае мы отправим независимое от языка сообщение, которое содержит все поддерживаемые языки:
 
     {
         "News_English": "...",
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/06/2017
         "News_Mandarin": "..."
     }
 
-Затем мы гарантируем, что устройства регистрацию с шаблоном, который ссылается свойство правильный toohello. Для экземпляра приложения iOS, если оно tooregister для французского языка новостей зарегистрирует hello следующее:
+Затем мы убедимся, что устройство зарегистрировано с шаблоном, который ссылается на нужное свойство. Например, приложение iOS, которое требуется зарегистрировать для французских новостей, зарегистрирует следующее:
 
     {
         aps:{
@@ -65,19 +65,19 @@ ms.lasthandoff: 10/06/2017
 
 Шаблоны — это очень мощная функция, о них можно узнать больше в нашей статье [Шаблоны](notification-hubs-templates-cross-platform-push-messages.md) .
 
-## <a name="hello-app-user-interface"></a>пользовательский интерфейс приложения Hello
-Теперь мы изменит приложение hello последние новости, созданный в разделе hello [toosend использования концентраторов уведомлений, новости] toosend локализованные новости, с помощью шаблонов.
+## <a name="the-app-user-interface"></a>Пользовательский интерфейс приложения
+Теперь изменим приложение "Экстренные новости", созданное в разделе [Использование концентраторов уведомлений для передачи экстренных новостей] для отправки локализованных экстренных новостей с помощью шаблонов.
 
-В вашей MainStoryboard_iPhone.storyboard добавьте сегментированных управления с тремя hello языков, которые поддерживаются: английский, французский и китайский.
+В файл MainStoryboard_iPhone.storyboard добавьте Segmented Control для трех поддерживаемых языков: английского, французского и китайского (мандаринский диалект).
 
 ![][13]
 
-Убедитесь в том tooadd IBOutlet в ваш ViewController.h как показано ниже:
+Затем обязательно добавьте IBOutlet в свой файл ViewController.h, как показано ниже:
 
 ![][14]
 
-## <a name="building-hello-ios-app"></a>Построение приложения iOS hello
-1. Добавьте в ваш Notification.h hello *retrieveLocale* метода и изменение хранилища hello и подписываться методы, как показано ниже:
+## <a name="building-the-ios-app"></a>Создание приложения iOS
+1. Добавьте в свой файл Notification.h метод *retrieveLocale* и измените методы хранения и подписки, как показано ниже.
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
    
@@ -87,7 +87,7 @@ ms.lasthandoff: 10/06/2017
    
         - (int) retrieveLocale;
    
-    В вашей Notification.m измените hello *storeCategoriesAndSubscribe* метода, добавив параметр языкового стандарта hello и сохранить их в значения по умолчанию hello пользователя:
+    Измените в файле Notification.m метод *storeCategoriesAndSubscribe* , добавив параметр языка и сохранив его в пользовательских параметрах по умолчанию:
    
         - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/06/2017
             [self subscribeWithLocale: locale categories:categories completion:completion];
         }
    
-    Затем измените hello *подписаться* метод tooinclude hello языка:
+    Затем измените метод *subscribe* , чтобы включить языковой стандарт:
    
         - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -121,9 +121,9 @@ ms.lasthandoff: 10/06/2017
             [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
         }
    
-    Обратите внимание на то, как мы теперь используют метод hello *registerTemplateWithDeviceToken*, а не *registerNativeWithDeviceToken*. При регистрации для шаблона у нас есть tooprovide hello json шаблона, а также имя шаблона hello (как в нашем приложении может возникнуть различные шаблоны tooregister). Внесите убедиться, что tooregister категорий, как теги, мы хотим toomake убедиться, что tooreceive hello notifciations для этих новостей.
+    Обратите внимание на то, что мы теперь используем метод *registerTemplateWithDeviceToken*, а не *registerNativeWithDeviceToken*. При регистрации шаблона необходимо предоставить шаблон json, а также имя шаблона (поскольку для нашего приложения может возникнуть необходимость зарегистрировать различные шаблоны). Убедитесь, что категории регистрируются как теги, поскольку мы хотим получать уведомления об этих новостях.
    
-    Добавьте метод tooretrieve hello языкового из пользовательских параметров по умолчанию hello:
+    Добавьте метод для извлечения языкового стандарта из пользовательских параметров по умолчанию.
    
         - (int) retrieveLocale {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -132,11 +132,11 @@ ms.lasthandoff: 10/06/2017
    
             return locale < 0?0:locale;
         }
-2. Теперь, когда мы внесли изменения в наших класса уведомления, у нас есть toomake убедиться, что наши ViewController делает использование hello новый UISegmentControl. Добавьте следующие строки в hello hello *viewDidLoad* метод toomake убедиться, что tooshow hello языкового стандарта, выбранного в настоящее время:
+2. Теперь, когда мы внесли изменения в наш класс уведомлений, необходимо убедиться в том, что наш ViewController использует новый UISegmentControl. Добавьте следующую строку в метод *viewDidLoad* , чтобы убедиться в том, что отображается языковой стандарт, выбранный в данный момент:
    
         self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
    
-    Затем в вашей *подписаться* метод, изменить ваш вызов toohello *storeCategoriesAndSubscribe* toohello следующее:
+    Затем в методе *subscribe* замените свой вызов *storeCategoriesAndSubscribe* следующим кодом:
    
         [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
             if (!error) {
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/06/2017
                 NSLog(@"Error subscribing: %@", error);
             }
         }];
-3. Наконец, у вас есть tooupdate hello *didRegisterForRemoteNotificationsWithDeviceToken* метод в вашей AppDelegate.m, чтобы правильно, можно обновить регистрацию при запуске приложения. Изменить ваш вызов toohello *подписаться* метод уведомлений hello следующее:
+3. И наконец, необходимо обновить метод *didRegisterForRemoteNotificationsWithDeviceToken* в методе AppDelegate.m, чтобы правильно обновить регистрацию при запуске приложения. Замените вызов метода уведомления *subscribe* следующим кодом:
    
         NSSet* categories = [self.notifications retrieveCategories];
         int locale = [self.notifications retrieveLocale];
@@ -161,8 +161,8 @@ ms.lasthandoff: 10/06/2017
 ## <a name="optional-send-localized-template-notifications-from-net-console-app"></a>(Необязательно.) Отправьте локализованные шаблонные уведомления из консольного приложения .NET.
 [!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
-## <a name="optional-send-localized-template-notifications-from-hello-device"></a>(необязательно) Отправлять уведомления локализованный шаблон с устройства hello
-Если не имеют доступа к tooVisual Studio или toojust теста, отправка уведомлений шаблона hello локализованные непосредственно из приложения hello на устройстве hello.  Вы можете простого добавления toohello параметры шаблона hello локализованные `SendNotificationRESTAPI` метод, определенный в предыдущем учебнике hello.
+## <a name="optional-send-localized-template-notifications-from-the-device"></a>(Необязательно.) Отправка локализованных шаблонных уведомлений с устройства
+Предположим, у вас нет доступа к Visual Studio или вы просто хотите проверить отправку локализованных шаблонных уведомлений непосредственно из приложения на устройстве.  Вы можете просто добавить параметры локализованных шаблонов в метод `SendNotificationRESTAPI` , определенный в предыдущем учебнике.
 
         - (void)SendNotificationRESTAPI:(NSString*)categoryTag
         {
@@ -171,18 +171,18 @@ ms.lasthandoff: 10/06/2017
 
             NSString *json;
 
-            // Construct hello messages REST endpoint
+            // Construct the messages REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                HUBNAME, API_VERSION]];
 
-            // Generated hello token toobe used in hello authorization header.
+            // Generated the token to be used in the authorization header.
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
 
-            //Create hello request tooadd hello template notification message toohello hub
+            //Create the request to add the template notification message to the hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
 
-            // Add hello category as a tag
+            // Add the category as a tag
             [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
             // Template notification
@@ -201,13 +201,13 @@ ms.lasthandoff: 10/06/2017
             // JSON Content-Type
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
-            //Authenticate hello notification message POST request with hello SaS token
+            //Authenticate the notification message POST request with the SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
 
-            //Add hello notification message body
+            //Add the notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
 
-            // Send hello REST request
+            // Send the REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                {
@@ -248,7 +248,7 @@ ms.lasthandoff: 10/06/2017
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[toosend использования концентраторов уведомлений, новости]: /manage/services/notification-hubs/breaking-news-ios
+[Использование концентраторов уведомлений для передачи экстренных новостей]: /manage/services/notification-hubs/breaking-news-ios
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Уведомление пользователей с помощью центров уведомлений: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Уведомление пользователей с помощью центров уведомлений: мобильные службы]: /manage/services/notification-hubs/notify-users
@@ -259,11 +259,11 @@ ms.lasthandoff: 10/06/2017
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-ios
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
-[Push notifications tooapp users]: /develop/mobile/tutorials/push-notifications-to-users-ios
+[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx

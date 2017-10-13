@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с LinkedIn Elevate | Документация Майкрософт"
-description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и может повышать уровень LinkedIn."
+description: "Узнайте, как настроить единый вход между Azure Active Directory и LinkedIn Elevate."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,124 +13,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 189bd72c230be7dc0c0b934f94ea01e84af9ad23
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5336543e06d60be555722a615568b12048c2aa2f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Руководство по интеграции Azure Active Directory с LinkedIn Elevate
 
-В этом учебнике вы узнаете, как повысить уровень LinkedIn toointegrate с Azure Active Directory (Azure AD).
+В этом руководстве описано, как интегрировать приложение LinkedIn Elevate с Azure Active Directory (Azure AD).
 
-Интеграция LinkedIn повышения прав с Azure AD предоставляет hello следующие преимущества:
+Интеграция Azure AD с LinkedIn Elevate обеспечивает следующие преимущества:
 
-- Можно управлять в Azure AD, имеющего доступ tooLinkedIn повышение
-- Можно включить на пользователей tooautomatically get вошедшего tooLinkedIn повышение (Single Sign-On) с помощью своих учетных записей Azure AD
-- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
+- С помощью Azure AD вы можете контролировать, у кого есть доступ к приложению LinkedIn Elevate.
+- Вы можете включить автоматический вход пользователей в LinkedIn Elevate (единый вход) с использованием учетной записи Azure AD.
+- Вы можете управлять учетными записями централизованно — через портал управления Azure.
 
-Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-tooconfigure интеграция Azure AD с повышение LinkedIn требуется hello следующих элементов:
+Чтобы настроить интеграцию Azure AD с LinkedIn Elevate, вам потребуется:
 
 - подписка Azure AD;
 - подписка LinkedIn Elevate с поддержкой единого входа.
 
 > [!NOTE]
-> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
+> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
 
-tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
+При проверке действий в этом учебнике соблюдайте следующие рекомендации:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
 
-1. Добавление LinkedIn повысить уровень из галереи hello
+1. Добавление LinkedIn Elevate из коллекции
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-linkedin-elevate-from-hello-gallery"></a>Добавление LinkedIn повысить уровень из галереи hello
-tooconfigure hello интеграции LinkedIn повышение в Azure AD, вы должны tooadd LinkedIn повысить уровень из списка tooyour коллекции hello управляемых приложений SaaS.
+## <a name="adding-linkedin-elevate-from-the-gallery"></a>Добавление LinkedIn Elevate из коллекции
+Чтобы настроить интеграцию приложения LinkedIn Elevate с Azure AD, вам нужно добавить это приложение из коллекции в свой список управляемых приложений SaaS.
 
-**tooadd LinkedIn повысить уровень из галереи hello выполните hello следующие шаги.**
+**Добавление приложения LinkedIn Elevate из коллекции**
 
-1. В hello  **[портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
+1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
+2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
+3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
 
     ![Приложения][3]
 
-4. Введите в поле поиска hello **повысить LinkedIn**. На панели результатов щелкните **повысить LinkedIn** tooadd приложения hello.
+4. В поле поиска введите **LinkedIn Elevate**. На панели результатов щелкните **LinkedIn Elevate**, чтобы добавить приложение.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_000.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение LinkedIn Elevate с использованием тестового пользователя Britta Simon.
 
-Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в повышение LinkedIn является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в повышение LinkedIn должен установить toobe.
+Для работы единого входа службе Azure AD нужно знать, какой пользователь в LinkedIn Elevate соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в LinkedIn Elevate.
 
-Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в повышение LinkedIn.
+Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в LinkedIn Elevate.
 
-tooconfigure и теста Azure AD единого входа с LinkedIn повышать права, необходимые hello toocomplete следующие стандартные блоки.
+Чтобы настроить и проверить единый вход Azure AD в LinkedIn Elevate, выполните следующие действия:
 
-1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-3. **[Создание тестового пользователя повышение LinkedIn](#creating-a-linkedin-elevate-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
-4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
-5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
+1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+3. **[Создание тестового пользователя LinkedIn Elevate](#creating-a-linkedin-elevate-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
+4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в приложении LinkedIn повышения прав.
+В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении LinkedIn Elevate.
 
-**tooconfigure Azure AD единого входа с LinkedIn повышения прав, выполните следующие шаги hello.**
+**Настройка единого входа Azure AD в LinkedIn Elevate**
 
-1. На портале управления Azure hello на hello **LinkedIn повышение** странице интеграции приложения щелкните **единого входа**.
+1. На портале управления Azure на странице интеграции с приложением **LinkedIn Elevate** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
+2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
 
-3. В другом окне браузера, клиент LinkedIn повышение tooyour входа от имени администратора.
+3. В другом окне веб-браузера войдите в свой клиент LinkedIn Elevate с правами администратора.
 
-4. В **Account Center** (Центр учетных записей) в разделе **Settings** (Параметры) щелкните **Global Settings** (Глобальные параметры). Кроме того, установите **повышение - повышение теста AAD** hello в раскрывающемся списке.
+4. В **Account Center** (Центр учетных записей) в разделе **Settings** (Параметры) щелкните **Global Settings** (Глобальные параметры). Кроме того, выберите **Elevate — Elevate AAD Test** (Проверка Azure AD для Elevate) из раскрывающегося списка.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Щелкните **или щелкните здесь tooload и скопируйте отдельные поля из формы hello** и скопируйте **идентификатор сущности** и **URL-адрес утверждение потребителя доступа (ACS)**
+5. Щелкните **OR Click Here to load and copy individual fields from the form** (Или щелкните здесь, чтобы загрузить и скопировать отдельные поля из формы) и скопируйте значения **Entity Id** (Идентификатор сущности) и **Assertion Consumer Service (ACS) Url** (URL-адрес службы обработчика утверждений (ACS)).
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_03.png)
 
-6. На портале Azure в разделе **URL-адреса и домена повышение LinkedIn**, выполнять hello, выполнив действия, если требуется, чтобы tooconfigure единого входа в **инициированный IdP** режим
+6. Если вы хотите настроить единый вход в режиме, **инициированном поставщиком удостоверений**, то на портале Azure в разделе **Домены и URL-адреса приложения LinkedIn Elevate** выполните следующие действия.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    а. В hello **идентификатор** текстовом поле введите hello **идентификатор сущности** копируются LinkedIn портала 
+    а. В текстовом поле **Идентификатор** введите **идентификатор сущности**, скопированный с портала LinkedIn. 
 
-    b. В hello **URL-адрес ответа** текстовом поле введите hello **утверждение потребителя доступа (ACS) URL-адрес** копируются LinkedIn портала
+    b. В текстовом поле **URL-адрес ответа** введите **URL-адрес службы обработчика утверждений (ACS)**, скопированный с портала LinkedIn.
 
-7. Если требуется, чтобы tooconfigure единого входа в **, инициируемая SP**, затем щелкните URL-адрес Advanced Показать параметр в разделе конфигурации hello и настройка входа hello URL-адрес с hello следующий шаблон:
+7. Если вы хотите настроить единый вход в режиме, **инициированном поставщиком услуг**, то установите флажок "Показать дополнительные параметры URL-адресов" в разделе настроек и настройте URL-адрес входа в таком формате:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` 
     
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
     
-8. Приложение LinkedIn повышение ожидает утверждения SAML hello в определенном формате, требующий вы tooadd настраиваемого атрибута сопоставления tooyour атрибутов токена конфигурация SAML. пример Hello следующий снимок экрана для этого. значение по умолчанию Hello **идентификатор пользователя** — **user.userprincipalname** , но повышение LinkedIn ожидает этот toobe, сопоставленный с адресом электронной почты пользователя hello. Для этого можно использовать **user.mail** атрибут из списка hello, или используйте hello соответствующее значение атрибута на основе конфигурации в организации. 
+8. Приложение LinkedIn Elevate ожидает утверждения SAML в определенном формате, а для этого вам нужно добавить настраиваемые сопоставления атрибутов в конфигурацию атрибутов токена SAML. На следующем снимке экрана приведен пример. По умолчанию **идентификатор пользователя** имеет значение **user.userprincipalname**, но для LinkedIn Elevate требуется сопоставить это значение с адресом электронной почты пользователя. Для этого можно использовать атрибут **user.mail** из списка или соответствующее значение атрибута, основанное на конфигурации организации. 
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
 
-9. В **атрибуты пользователя** щелкните **представление и редактировать все остальные атрибуты пользователя** и задавать атрибуты hello. Требуется tooadd с именем другого утверждения **отдел** и значение hello должен сопоставить слишком toobe**user.department**.
+9. В разделе **Атрибуты пользователя** установите флажок **Просмотреть и изменить все другие атрибуты пользователей** и задайте эти атрибуты. Необходимо также добавить утверждение с именем **department**, значение которого должно быть сопоставлено с **user.department**.
 
     | Имя атрибута | Значение атрибута |
     | --- | --- |    
@@ -138,16 +138,16 @@ tooconfigure и теста Azure AD единого входа с LinkedIn пов
 
       ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
-      а. Щелкните на странице добавить атрибут tooopen hello атрибут сведения о добавить атрибута отдела hello, как показано ниже-
+      а. Щелкните "Добавить атрибут", чтобы открыть страницу сведений об атрибутах. Добавьте атрибут department, как показано ниже.
 
       ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/adduserattribute.png)
 
-      b. Щелкните **ОК** toosave hello атрибута.
+      b. Нажмите кнопку **ОК**, чтобы сохранить атрибут.
 
-      c. Изменение имени hello hello атрибута **emailaddress** слишком**электронной почты**.
+      c. Измените имя атрибута **emailaddress** на **email**.
 
 
-10. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
+10. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
 
@@ -155,68 +155,68 @@ tooconfigure и теста Azure AD единого входа с LinkedIn пов
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_400.png)
 
-12. Go слишком**параметры администрирования LinkedIn** раздела. Отправьте hello XML-файл, только что загруженном из портала Azure hello, щелкнув hello параметр Отправить XML-файл.
+12. Перейдите в раздел **LinkedIn Admin Settings** (Параметры администратора LinkedIn). Передайте XML-файл, скачанный с портала Azure. Для этого нажмите кнопку "Upload XML file" (Передать XML-файл).
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-13. Нажмите кнопку **на** tooenable единого входа. SSO состояние изменится с **не подключены** слишком**подключено**
+13. Нажмите кнопку **On** (Включить), чтобы включить единый вход. Состояние единого входа изменится с **Not Connected** (Не подключено) на **Connected** (Подключено.)
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
+Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
 
 ![Создание пользователя Azure AD][100]
 
-**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
+**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
 
-1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
+1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_01.png) 
 
-2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
+2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_02.png) 
 
-3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
+3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_03.png) 
 
-4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
+4. На странице диалогового окна **Пользователь** выполните следующие действия.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/create_aaduser_04.png) 
 
-    а. В hello **имя** введите **BrittaSimon**.
+    а. В текстовом поле **Имя** введите **BrittaSimon**.
 
-    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
+    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
+    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
 
     d. Щелкните **Создать**. 
 
 ### <a name="creating-a-linkedin-elevate-test-user"></a>Создание тестового пользователя LinkedIn Elevate
 
-Связанное приложение повышение поддерживает только в подготовки пользователей время и после проверки подлинности пользователей в приложении hello автоматически создаются. На странице параметров администрирования hello на коммутаторе портала зеркало hello повышение LinkedIn hello **автоматически назначать лицензии** tooenable tooactive непосредственно в момент подготовки и это также назначить лицензию пользователя toohello.
+Приложение Linked Elevate поддерживает JIT-подготовку пользователей, поэтому после аутентификации пользователи будут созданы в приложении автоматически. На странице параметров администратора на портале LinkedIn Elevate включите параметр **Automatically assign licenses** (Автоматически назначать лицензии), чтобы активировать JIT-подготовку, одновременно с которой пользователю будет сразу назначена лицензия.
 
    ![Создание тестового пользователя Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/LinkedinUserprovswitch.png)
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
+### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
 
-В этом разделе включите toouse Britta Simon Azure единого входа, предоставляя свой доступ tooLinkedIn повышение.
+В этом разделе мы разрешим пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к LinkedIn Elevate.
 
 ![Назначение пользователя][200] 
 
-**tooassign tooLinkedIn Britta Simon повышение, выполните hello следующие шаги.**
+**Назначение пользователя Britta Simon приложению LinkedIn Elevate**
 
-1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
+1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений hello выберите **повысить LinkedIn**.
+2. В списке приложений выберите **LinkedIn Elevate**.
 
     ![Настройка единого входа](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_0001.png) 
 
-3. В меню слева hello hello выберите **пользователей и групп**.
+3. В меню слева выберите **Пользователи и группы**.
 
     ![Назначение пользователя][202] 
 
@@ -224,7 +224,7 @@ tooconfigure и теста Azure AD единого входа с LinkedIn пов
 
     ![Назначение пользователя][203]
 
-5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
+5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -232,14 +232,14 @@ tooconfigure и теста Azure AD единого входа с LinkedIn пов
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
+В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
 
-При нажатии кнопки hello повышение LinkedIn плитки в панели доступа hello, вы должны получить страницу hello Azure входа и на после успешного входа, должно появиться в приложение LinkedIn повышения прав.
+Щелкнув элемент LinkedIn Elevate на панели доступа, вы перейдете на страницу входа Azure. Успешно выполнив вход, вы должны попасть в приложение LinkedIn Elevate.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
 * [Руководство по настройке LinkedIn Elevate для автоматической подготовки пользователей с помощью Azure Active Directory](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
-* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

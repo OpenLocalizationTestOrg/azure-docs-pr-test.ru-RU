@@ -1,9 +1,9 @@
 ---
-title: "aaa \"Шаблоны профиля в службе управления API Azure | Документы Microsoft»"
-description: "Узнайте, как содержимое hello toocustomize hello профиль пользователя страниц hello портал разработчиков в службе управления API Azure."
+title: "Шаблоны профилей пользователей в службе управления API Azure | Документация Майкрософт"
+description: "Узнайте, как настроить содержимое страниц профилей пользователей на портале разработчика в службе управления API Azure."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c8f153b310221164809acf58e4af236928ceb41d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c56cefb3c62787f1bc2561aecec719cdbbc3b1c2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Шаблоны профилей пользователей в службе управления API Azure
-Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого. С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.  
+Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов. С помощью этих шаблонов вы можете гибко настраивать содержимое страниц, используя синтаксис [DotLiquid](http://dotliquidmarkup.org/), любой удобный текстовый редактор, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и предоставленный набор локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления страницы](api-management-page-controls.md).  
   
- шаблоны Hello в этом разделе разрешить доступ к содержимому hello toocustomize hello страниц профиля пользователя на портале разработчиков hello.  
+ С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц профилей пользователей на портале разработчика.  
   
 -   [Профиль](#Profile)  
   
@@ -34,10 +34,10 @@ ms.lasthandoff: 10/06/2017
 -   [Обновление сведений об учетной записи](#UpdateAccountInfo).  
   
 > [!NOTE]
->  Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения. Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов. Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Примеры стандартных шаблонов включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению. Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону. Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="Profile"></a> Профиль  
- Hello **профиль** шаблон позволяет раздела профиля пользователя toocustomize hello hello страницы профиля пользователя на портале разработчиков hello.  
+ Шаблон **профиля** позволяет настроить раздел профиля пользователя на странице профиля пользователя на портале разработчика.  
   
  ![Страница профиля пользователя](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Страница профиля пользователя APIM")  
   
@@ -99,21 +99,21 @@ ms.lasthandoff: 10/06/2017
 ### <a name="data-model"></a>Модель данных  
   
 > [!NOTE]
->  Hello [профиль](#Profile), [приложений](#Applications), и [подписки](#Subscriptions) шаблоны совместно использовать hello и те же данные модели и получения hello и тех же данных шаблона.  
+>  Шаблоны [профиля](#Profile), [приложений](#Applications) и [подписок](#Subscriptions) используют одинаковую модель данных и получают одни и те же данные шаблона.  
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|firstName|string|Имя текущего пользователя hello.|  
-|lastName|string|Фамилия hello текущего пользователя.|  
-|companyName|string|имя компании Hello hello текущего пользователя.|  
-|addresserEmail|string|Адрес электронной почты текущего пользователя hello.|  
-|developersUsageStatisticsLinkk|string|Аналитика tooview относительный URL-адрес для текущего пользователя hello.|  
-|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Hello подписки для текущего пользователя hello.|  
-|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|приложения Hello hello текущего пользователя.|  
-|changePasswordUrl|string|Hello относительный URL-адрес toochange hello текущий пароль пользователя.|  
-|changeNameOrEmailUrl|string|Здравствуйте, относительное имя hello toochange URL-адрес и адрес электронной почты для текущего пользователя hello.|  
-|canChangePassword|Логическое|Является ли текущий пользователь hello может изменить свой пароль.|  
-|isSystemUser|Логическое|Является ли hello текущий пользователь является членом одной из встроенных hello [группы](api-management-key-concepts.md#groups).|  
+|firstName|строка|Имя текущего пользователя.|  
+|lastName|строка|Фамилия текущего пользователя.|  
+|companyName|string|Название компании текущего пользователя.|  
+|addresserEmail|string|Адрес электронной почты текущего пользователя.|  
+|developersUsageStatisticsLinkk|string|Относительный URL-адрес для просмотра аналитики по текущему пользователю.|  
+|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Подписки текущего пользователя.|  
+|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|Приложения текущего пользователя.|  
+|changePasswordUrl|строка|Относительный URL-адрес для изменения пароля текущего пользователя.|  
+|changeNameOrEmailUrl|строка|Относительный URL-адрес для изменения имени и адреса электронной почты текущего пользователя.|  
+|canChangePassword|Логическое|Определяет, может ли текущий пользователь изменять свой пароль.|  
+|isSystemUser|Логическое|Определяет, входит ли текущий пользователь в одну из встроенных [групп](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -130,7 +130,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -182,7 +182,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ##  <a name="Subscriptions"></a>Подписки  
- Hello **подписки** шаблон позволяет toocustomize hello подписок раздела hello страницу профиля пользователя на портале разработчиков hello.  
+ Шаблон **подписок** позволяет настроить раздел подписок на странице профиля пользователя на портале разработчика.  
   
  ![Страница подписки пользователя](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Страница подписки пользователя APIM ")  
   
@@ -313,28 +313,28 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
+ В этом шаблоне могут использоваться следующие [элементы управления страницы](api-management-page-controls.md).  
   
 -   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Модель данных  
   
 > [!NOTE]
->  Hello [профиль](#Profile), [приложений](#Applications), и [подписки](#Subscriptions) шаблоны совместно использовать hello и те же данные модели и получения hello и тех же данных шаблона.  
+>  Шаблоны [профиля](#Profile), [приложений](#Applications) и [подписок](#Subscriptions) используют одинаковую модель данных и получают одни и те же данные шаблона.  
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|firstName|string|Имя текущего пользователя hello.|  
-|lastName|string|Фамилия hello текущего пользователя.|  
-|companyName|string|имя компании Hello hello текущего пользователя.|  
-|addresserEmail|string|Адрес электронной почты текущего пользователя hello.|  
-|developersUsageStatisticsLinkk|string|Аналитика tooview относительный URL-адрес для текущего пользователя hello.|  
-|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Hello подписки для текущего пользователя hello.|  
-|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|приложения Hello hello текущего пользователя.|  
-|changePasswordUrl|string|Hello относительный URL-адрес toochange hello текущий пароль пользователя.|  
-|changeNameOrEmailUrl|string|Здравствуйте, относительное имя hello toochange URL-адрес и адрес электронной почты для текущего пользователя hello.|  
-|canChangePassword|Логическое|Является ли текущий пользователь hello может изменить свой пароль.|  
-|isSystemUser|Логическое|Является ли hello текущий пользователь является членом одной из встроенных hello [группы](api-management-key-concepts.md#groups).|  
+|firstName|строка|Имя текущего пользователя.|  
+|lastName|строка|Фамилия текущего пользователя.|  
+|companyName|string|Название компании текущего пользователя.|  
+|addresserEmail|string|Адрес электронной почты текущего пользователя.|  
+|developersUsageStatisticsLinkk|string|Относительный URL-адрес для просмотра аналитики по текущему пользователю.|  
+|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Подписки текущего пользователя.|  
+|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|Приложения текущего пользователя.|  
+|changePasswordUrl|строка|Относительный URL-адрес для изменения пароля текущего пользователя.|  
+|changeNameOrEmailUrl|строка|Относительный URL-адрес для изменения имени и адреса электронной почты текущего пользователя.|  
+|canChangePassword|Логическое|Определяет, может ли текущий пользователь изменять свой пароль.|  
+|isSystemUser|Логическое|Определяет, входит ли текущий пользователь в одну из встроенных [групп](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -351,7 +351,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -374,7 +374,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -403,7 +403,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ##  <a name="Applications"></a> Приложения  
- Hello **приложений** шаблон позволяет toocustomize hello подписок раздела hello страницу профиля пользователя на портале разработчиков hello.  
+ Шаблон **приложений** позволяет настроить раздел приложений на странице профиля пользователя на портале разработчика.  
   
  ![Страница приложений учетной записи пользователя](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Страница приложений учетной записи пользователя APIM")  
   
@@ -476,28 +476,28 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- Этот шаблон может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
+ В этом шаблоне могут использоваться следующие [элементы управления страницы](api-management-page-controls.md).  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Модель данных  
   
 > [!NOTE]
->  Hello [профиль](#Profile), [приложений](#Applications), и [подписки](#Subscriptions) шаблоны совместно использовать hello и те же данные модели и получения hello и тех же данных шаблона.  
+>  Шаблоны [профиля](#Profile), [приложений](#Applications) и [подписок](#Subscriptions) используют одинаковую модель данных и получают одни и те же данные шаблона.  
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|firstName|string|Имя текущего пользователя hello.|  
-|lastName|string|Фамилия hello текущего пользователя.|  
-|companyName|string|имя компании Hello hello текущего пользователя.|  
-|addresserEmail|string|Адрес электронной почты текущего пользователя hello.|  
-|developersUsageStatisticsLinkk|string|Аналитика tooview относительный URL-адрес для текущего пользователя hello.|  
-|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Hello подписки для текущего пользователя hello.|  
-|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|приложения Hello hello текущего пользователя.|  
-|changePasswordUrl|string|Hello относительный URL-адрес toochange hello текущий пароль пользователя.|  
-|changeNameOrEmailUrl|string|Здравствуйте, относительное имя hello toochange URL-адрес и адрес электронной почты для текущего пользователя hello.|  
-|canChangePassword|Логическое|Является ли текущий пользователь hello может изменить свой пароль.|  
-|isSystemUser|Логическое|Является ли hello текущий пользователь является членом одной из встроенных hello [группы](api-management-key-concepts.md#groups).|  
+|firstName|строка|Имя текущего пользователя.|  
+|lastName|строка|Фамилия текущего пользователя.|  
+|companyName|string|Название компании текущего пользователя.|  
+|addresserEmail|string|Адрес электронной почты текущего пользователя.|  
+|developersUsageStatisticsLinkk|string|Относительный URL-адрес для просмотра аналитики по текущему пользователю.|  
+|subscriptions|Коллекция сущностей [Subscription](api-management-template-data-model-reference.md#Subscription) (Подписка).|Подписки текущего пользователя.|  
+|веб-масштабированием;|Коллекция сущностей [Application](api-management-template-data-model-reference.md#Application) (Приложение).|Приложения текущего пользователя.|  
+|changePasswordUrl|строка|Относительный URL-адрес для изменения пароля текущего пользователя.|  
+|changeNameOrEmailUrl|строка|Относительный URL-адрес для изменения имени и адреса электронной почты текущего пользователя.|  
+|canChangePassword|Логическое|Определяет, может ли текущий пользователь изменять свой пароль.|  
+|isSystemUser|Логическое|Определяет, входит ли текущий пользователь в одну из встроенных [групп](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -514,7 +514,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -537,7 +537,7 @@ ms.lasthandoff: 10/06/2017
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -566,7 +566,7 @@ ms.lasthandoff: 10/06/2017
 ```  
   
 ##  <a name="UpdateAccountInfo"></a> Обновление сведений об учетной записи  
- Hello **сведения учетной записи Uodate** шаблон позволяет toocustomize hello **Обновите информацию учетной записи** страницы на портале разработчиков hello.  
+ Шаблон **обновления сведений об учетной записи** позволяет настраивать страницу **обновления сведений об учетной записи** на портале разработчика.  
   
  ![Шаблоны информации об учетной записи на портале разработчика](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "Шаблоны информации об учетной записи на портале разработчика APIM")  
   
@@ -623,4 +623,4 @@ ms.lasthandoff: 10/06/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).
+Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).

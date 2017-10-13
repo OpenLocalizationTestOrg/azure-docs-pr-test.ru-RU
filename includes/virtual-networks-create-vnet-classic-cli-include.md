@@ -1,8 +1,8 @@
-## <a name="how-toocreate-a-classic-vnet-using-azure-cli"></a>Как toocreate классической виртуальной сети, с помощью Azure CLI
-Можно использовать toomanage hello Azure CLI из командной строки hello с любого компьютера под управлением Windows, Linux или OSX ресурсами Azure. toocreate виртуальной сети с помощью hello Azure CLI, выполните шаги hello.
+## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Создание классической виртуальной сети с помощью интерфейса командной строки Azure
+Интерфейс командной строки Azure можно использовать для управления ресурсами Azure из командной строки с любого компьютера под управлением Windows, Linux или OSX. Чтобы создать виртуальную сеть с помощью интерфейса командной строки Azure, выполните указанные ниже действия.
 
-1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../articles/cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
-2. Запустите hello **Создание виртуальной сети azure сети** команды toocreate виртуальную сеть и подсеть, как показано ниже. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
+1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../articles/cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
+2. Выполните команду **azure network vnet create** , чтобы создать виртуальную сеть и подсеть, как показано ниже. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
    
             azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
    
@@ -14,41 +14,41 @@
             + Setting network configuration
             info:    network vnet create command OK
    
-   * **--vnet**. Имя создания toobe виртуальной сети hello. В данном сценарии это *TestVNet*
+   * **--vnet**. Имя виртуальной сети, которую нужно будет создать. В данном сценарии это *TestVNet*
    * **-e (или --address-space)**. Адресное пространство виртуальной сети. В данном сценарии это *192.168.0.0*
    * **-i (или -cidr)**. Маска подсети в формате CIDR. В данном сценарии это *16*.
-   * **-n (или --subnet-name**). Имя первой подсети hello. В данном сценарии это *FrontEnd*.
+   * **-n (или --subnet-name**). Имя первой подсети. В данном сценарии это *FrontEnd*.
    * **-p (или --subnet-start-ip)**. Начальный IP-адрес для подсети или адресное пространство подсети. В нашем сценарии это *192.168.1.0*.
    * **-r (или --subnet-cidr)**. Маска подсети в формате CIDR для подсети. В данном сценарии это *24*.
-   * **-l (или --location)**. Регион Azure, где будут создаваться hello виртуальной сети. В данном сценарии это *Central US*.
-3. Запустите hello **создать подсеть виртуальной сети azure сети** toocreate команда подсеть, как показано ниже. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
+   * **-l (или --location)**. Регион Azure, в котором будет создана виртуальная сеть. В данном сценарии это *Central US*.
+3. Выполните команду **azure network vnet subnet create** , чтобы создать подсеть, как показано ниже. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
    
-    Вот hello ожидается выходных данных для приведенных выше команд hello.
+    Вот результат, ожидаемый для указанной выше команды:
    
             info:    Executing command network vnet subnet create
             + Looking up network configuration
             + Creating subnet "BackEnd"
             + Setting network configuration
-            + Looking up hello subnet "BackEnd"
+            + Looking up the subnet "BackEnd"
             + Looking up network configuration
             data:    Name                            : BackEnd
             data:    Address prefix                  : 192.168.2.0/24
             info:    network vnet subnet create command OK
    
-   * **-t (или --vnet-name**. Имя виртуальной сети, где будут создаваться подсети hello hello. В данном сценарии это *TestVNet*.
-   * **-n (или --name)**. Имя новой подсети hello. В нашем сценарии это *BackEnd*.
+   * **-t (или --vnet-name**. Имя виртуальной сети, в которой будет создана подсеть. В данном сценарии это *TestVNet*.
+   * **-n (или --name)**. Имя новой подсети. В нашем сценарии это *BackEnd*.
    * **-a (или --address-prefix)**. Блок подсети CIDR. В данном сценарии это *192.168.2.0/24*.
-4. Запустите hello **Показать виртуальной сети azure сети** команды tooview свойства hello hello новой виртуальной сети, как показано ниже.
+4. Выполните команду **azure network vnet show** , как показано ниже, чтобы просмотреть свойства новой виртуальной сети.
    
             azure network vnet show
    
-    Вот hello ожидается выходных данных для приведенных выше команд hello.
+    Вот результат, ожидаемый для указанной выше команды:
    
             info:    Executing command network vnet show
             Virtual network name: TestVNet
-            + Looking up hello virtual network sites
+            + Looking up the virtual network sites
             data:    Name                            : TestVNet
             data:    Location                        : Central US
             data:    State                           : Created

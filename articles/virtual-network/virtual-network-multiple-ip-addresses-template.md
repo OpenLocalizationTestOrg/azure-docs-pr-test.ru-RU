@@ -1,6 +1,6 @@
 ---
-title: "aaaMultiple IP-адресов для виртуальных машин Azure - шаблона | Документы Microsoft"
-description: "Узнайте, как tooassign несколько IP-адресов tooa виртуальной машины с помощью шаблона диспетчера ресурсов Azure."
+title: "Назначение виртуальным машинам Azure нескольких IP-адресов с помощью шаблона | Документация Майкрософт"
+description: "Узнайте, как назначить виртуальной машине несколько IP-адресов с использованием шаблона Azure Resource Manager."
 documentationcenter: 
 author: jimdial
 manager: timlt
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
-ms.openlocfilehash: e7660257b2d5c7da4b8b86771abe51a2c5012fa9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-an-azure-resource-manager-template"></a>Назначение нескольких IP-адресов toovirtual машины с помощью шаблона диспетчера ресурсов Azure
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Назначение виртуальным машинам Azure нескольких IP-адресов с помощью шаблона Azure Resource Manager
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-В этой статье объясняется, как toocreate виртуальной машины (VM) с помощью развертывания диспетчера ресурсов Azure hello модели с помощью шаблона диспетчера ресурсов. Несколько общедоступных и частных IP-адресов нельзя назначить toohello одного сетевого Адаптера при развертывании ВМ с помощью hello классической модели развертывания. Дополнительные сведения о моделях развертывания Azure, чтение hello toolearn [понять модели развертывания](../resource-manager-deployment-model.md) статьи.
+В этой статье описывается создание виртуальной машины с помощью модели развертывания Azure Resource Manager и шаблона Azure Resource Manager. Несколько общедоступных и частных IP-адресов нельзя назначить одной и той же сетевой карте при развертывании виртуальной машины с помощью классической модели развертывания. Дополнительные сведения о моделях развертывания Azure см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../resource-manager-deployment-model.md) (Развертывание с помощью Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов).
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="template-description"></a>Описание шаблона
 
-Развертывание шаблона позволяет tooquickly и постоянно создать ресурсы Azure со значениями другой конфигурации. Чтение hello [Пошаговое руководство диспетчера ресурсов шаблона](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json) статью, если вы не знакомы с использованием шаблонов диспетчера ресурсов Azure. Hello [развертывание виртуальной Машины с несколькими IP-адресами](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) шаблон используется в этой статье.
+Развертывание шаблона позволяет быстро и согласованно создавать ресурсы Azure с использованием разных значений конфигурации. Если вы не работали с шаблонами Azure Resource Manager, ознакомьтесь со статьей [Пошаговое руководство по созданию шаблона Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json). В этой статье используется шаблон [развертывания виртуальной машины с использованием нескольких IP-адресов](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig).
 
-<a name="resources"></a>Развертывание шаблона hello создает hello следующие ресурсы:
+<a name="resources"></a>При развертывании шаблона создаются следующие ресурсы:
 
 |Ресурс|Имя|Описание|
 |---|---|---|
-|Сетевой интерфейс|*myNic1*|Hello три IP-конфигурации, описанной в разделе сценарии hello в этой статье создания и назначения toothis сетевого адаптера.|
-|Ресурс общедоступного IP-адреса|Создаются два имени: *myPublicIP* и *myPublicIP2*|Эти ресурсы назначаются статические общедоступные IP-адреса и назначаются toohello *IPConfig 1* и *IPConfig 2* IP-конфигурации, описанной в сценарии hello.|
+|Сетевой интерфейс|*myNic1*|Три IP-конфигурации (см. раздел этой статьи с описанием сценария) создаются и назначаются этой сетевой карте.|
+|Ресурс общедоступного IP-адреса|Создаются два имени: *myPublicIP* и *myPublicIP2*|Эти ресурсы представлены общедоступными статическими IP-адресами. Они назначаются IP-конфигурациям *IPConfig 1* и *IPConfig 2*, описанным в сценарии.|
 |ВМ|*myVM1*|Виртуальная машина Standard DS3.|
 |Виртуальная сеть|*myVNet1*|Виртуальная сеть с одной подсетью с именем *mySubnet*.|
-|Учетная запись хранения|Уникальный toohello развертывания|Учетная запись хранения.|
+|Учетная запись хранения|Уникальная для развертывания|Учетная запись хранения.|
 
-<a name="parameters"></a>При развертывании шаблона hello, необходимо указать значения для hello следующие параметры:
+<a name="parameters"></a>При развертывании шаблона необходимо указать значения для следующих параметров:
 
 |Имя|Описание|
 |---|---|
-|adminUsername|Имя пользователя администратора. должно соответствовать имени пользователя Hello [требования Azure имени пользователя](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|adminPassword|Пароль hello пароль администратора должен соответствовать [требования к паролю Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-|dnsLabelPrefix|DNS-имя для PublicIPAddressName1. Hello DNS-имя разрешается tooone hello открытый IP-адресов, назначенных toohello виртуальной Машины. Hello имя должно быть уникальным в пределах hello Azure регионом (расположением) создается hello виртуальной Машины в.|
-|dnsLabelPrefix1|DNS-имя для PublicIPAddressName2. Hello DNS-имя разрешается tooone hello открытый IP-адресов, назначенных toohello виртуальной Машины. Hello имя должно быть уникальным в пределах hello Azure регионом (расположением) создается hello виртуальной Машины в.|
-|OSVersion|версия Windows и Linux Hello hello виртуальной Машины. Hello операционной системы — это полностью исправленную образ hello заданной выбранной версии Windows и Linux.|
-|imagePublisher|Hello издателя образа Windows и Linux для hello выбранной виртуальной Машины.|
-|imageOffer|изображение приветствия Windows и Linux для hello выбранной виртуальной Машины.|
+|adminUsername|Имя пользователя администратора. Оно должно удовлетворять [соответствующим требованиям Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|adminPassword|Пароль администратора. Он должен удовлетворять соответствующим [требованиям Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+|dnsLabelPrefix|DNS-имя для PublicIPAddressName1. DNS-имя будет разрешено на один из общедоступных IP-адресов, назначенных виртуальной машине. Имя должно быть уникальным в пределах региона Azure (расположения), в котором создается виртуальная машина.|
+|dnsLabelPrefix1|DNS-имя для PublicIPAddressName2. DNS-имя будет разрешено на один из общедоступных IP-адресов, назначенных виртуальной машине. Имя должно быть уникальным в пределах региона Azure (расположения), в котором создается виртуальная машина.|
+|OSVersion|Версия ОС Windows или Linux для виртуальной машины. Операционная система — это исправленный образ выбранной версии ОС Windows или Linux.|
+|imagePublisher|Издатель образа Windows и Linux для выбранной виртуальной машины.|
+|imageOffer|Образ Windows и Linux для выбранной виртуальной машины.|
 
-Для каждого из ресурсов hello, предоставляемым hello шаблона следует настроить несколько параметров по умолчанию. Можно просмотреть эти параметры, одним из следующих методов hello:
+Каждый из ресурсов, развернутый с помощью шаблона, настраивается с несколькими параметрами по умолчанию. Просмотреть эти параметры можно одним из следующих способов.
 
-- **Просмотр шаблона hello на GitHub:** Если вы знакомы с использованием шаблонов, можно просмотреть параметры hello в hello [шаблона](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json).
-- **Просмотр параметров hello после развертывания:** Если вы не знакомы с использованием шаблонов, можно развернуть шаблон hello, используя действия в одной из следующих разделах hello и просмотрите параметры hello после развертывания.
+- **Просмотрев шаблон на GitHub.** Если вы работали с шаблонами, вы можете просмотреть параметры в самом [шаблоне](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json).
+- **Просмотрев параметры после развертывания.** Если вы не работали с шаблонами, вы можете развернуть шаблон, выполнив действия, описанные в следующих разделах, а затем просмотреть параметры после развертывания.
 
-Можно использовать hello портал Azure, PowerShell или hello Azure командной строки (CLI) toodeploy hello шаблона. Все методы производят hello того же результата. шаблон toodeploy hello, hello завершения действия в одном из следующих разделах hello.
+Чтобы развернуть шаблон, можно использовать портал Azure или интерфейс командной строки Azure. Все методы приводят к одному результату. Выполните действия, описанные в одном из следующих разделов.
 
-## <a name="deploy-using-hello-azure-portal"></a>Развертывание с помощью портала Azure hello
+## <a name="deploy-using-the-azure-portal"></a>Развертывание с помощью портала Azure
 
-шаблон toodeploy hello, используя hello портал Azure завершения hello следующие шаги:
+Чтобы развернуть шаблон с помощью портала Azure, выполните следующие действия.
 
-1. Измените шаблон hello, если требуется. шаблон Hello развертывает hello ресурсы и параметры, перечисленные в hello [ресурсов](#resources) этой статьи. Дополнительные сведения о шаблонах toolearn и как tooauthor их, прочитайте hello [шаблоны разработки Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)статьи.
-2. Развертывание hello шаблона с одним из следующих методов hello:
-    - **Шаблон SELECT hello в портале hello:** hello завершения шагов в hello [развертывания ресурсов на основе пользовательского шаблона](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) статьи. Выберите существующий шаблон hello с именем *101-vm несколько ipconfig*.
-    - **Напрямую:** щелкните следующий шаблон hello tooopen кнопки непосредственно на портале hello hello:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. При желании шаблон можно изменить. Шаблон развертывает ресурсы и параметры, перечисленные в разделе с описанием [ресурсов](#resources). Дополнительные сведения о шаблонах и способах их создания см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Разверните шаблон одним из следующих способов.
+    - **Выбрав шаблон на портале.** Выполните действия описанные в [этом разделе](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template). Выберите существующий шаблон с именем *101-vm-multiple-ipconfig*.
+    - **Непосредственно.** Нажмите эту кнопку, чтобы открыть шаблон прямо на портале: <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-Независимо от метода hello выбран, вам потребуется toosupply значения для hello [параметры](#parameters) описанных ранее в этой статье. После развертывания виртуальной Машины hello подключения toohello ВМ и добавление hello частного IP адресов toohello операционной системы развертывания, выполнив hello шагов в hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи. Не добавляйте hello открытый IP адресов toohello операционной системы.
+Независимо от выбранного варианта вам нужно указать значения для [параметров](#parameters), перечисленных выше в этой статье. Развернув виртуальную машину, подключитесь к ней и добавьте в развернутую операционную систему частные IP-адреса, выполнив действия, описанные в этой статье в разделе [Добавление IP-адреса в операционную систему виртуальной машины](#os-config). Не добавляйте в операционную систему общедоступные IP-адреса.
 
 ## <a name="deploy-using-powershell"></a>Развертывание с помощью PowerShell
 
-шаблон hello toodeploy с помощью PowerShell, полные hello, следующие шаги:
+Чтобы развернуть шаблон с помощью PowerShell, выполните следующие действия.
 
-1. Развертывание шаблона hello, выполнив шаги hello в hello [развертывания шаблона с помощью PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) статьи. Hello статье описывается несколько вариантов развертывания шаблона. Если выбрать с помощью hello toodeploy `-TemplateUri parameter`, hello URI для этого шаблона является *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Если выбрать с помощью hello toodeploy `-TemplateFile` параметра, скопируйте содержимое hello hello [файл шаблона](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) из GitHub в новый файл на компьютере. Измените содержимое шаблона hello, если требуется. шаблон Hello развертывает hello ресурсы и параметры, перечисленные в hello [ресурсов](#resources) этой статьи. Дополнительные сведения о шаблонах toolearn и как tooauthor их, прочитайте hello [шаблоны разработки Azure Resource Manager ](../azure-resource-manager/resource-group-authoring-templates.md)статьи.
+1. Разверните шаблон, выполнив действия, описанные в [этом разделе](../azure-resource-manager/resource-group-template-deploy-cli.md). В статье описывается несколько вариантов развертывания шаблона. Если требуется выполнить развертывание с помощью параметра `-TemplateUri parameter`, URI для этого шаблона будет выглядеть так: *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Если требуется выполнить развертывание с помощью параметра `-TemplateFile`, скопируйте содержимое [файла шаблона](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) из GitHub в новый файл на компьютере. При желании можно изменить содержимое шаблона. Шаблон развертывает ресурсы и параметры, перечисленные в разделе с описанием [ресурсов](#resources). Дополнительные сведения о шаблонах и способах их создания см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-    Независимо от того, hello выбранного варианта toodeploy hello шаблон с необходимо указать значения для hello значения параметров, перечисленных в hello [параметры](#parameters) этой статьи. При выборе параметров toosupply, с помощью файла параметров, скопируйте содержимое hello hello [файл параметров](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) из GitHub в новый файл на компьютере. Измените значения hello в файле hello. Используйте файл hello, созданный в качестве значения hello hello `-TemplateParameterFile` параметра.
+    Независимо от выбранного варианта развертывания шаблона вам нужно указать значения для параметров, перечисленных в разделе с описанием [параметров](#parameters). Если вы хотите указать параметры с помощью [файла параметров](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json), скопируйте его содержимое из GitHub в новый файл на компьютере. Измените значения в файле. Используйте созданный файл в качестве значения для параметра `-TemplateParameterFile`.
 
-    toodetermine допустимые значения для hello OSVersion, ImagePublisher и imageOffer параметров, hello завершения шагов в hello [перейдите и выберите статью образов виртуальной Машины Windows](../virtual-machines/windows/cli-ps-findimage.md) статьи.
+    Чтобы определить допустимые значения для параметров OSVersion, ImagePublisher и imageOffer, выполните шаги, описанные в статье [Просмотр и выбор образов виртуальных машин Windows в Azure с помощью оболочки PowerShell или интерфейса командной строки](../virtual-machines/windows/cli-ps-findimage.md).
 
     >[!TIP]
-    >Если вы не уверены, доступен ли dnslabelprefix, введите hello `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` toofind команду out. Если это возможно, команда hello вернет `True`.
+    >Если вы не знаете, доступен ли параметр dnslabelprefix, введите `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` команду. Если параметр доступен, команда вернет значение `True`.
 
-2. После развертывания виртуальной Машины hello подключения toohello ВМ и добавление hello частного IP адресов toohello операционной системы развертывания, выполнив hello шагов в hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи. Не добавляйте hello открытый IP адресов toohello операционной системы.
+2. Развернув виртуальную машину, подключитесь к ней и добавьте в развернутую операционную систему частные IP-адреса, выполнив действия, описанные в этой статье в разделе [Добавление IP-адреса в операционную систему виртуальной машины](#os-config). Не добавляйте в операционную систему общедоступные IP-адреса.
 
-## <a name="deploy-using-hello-azure-cli"></a>Развертывание с помощью hello Azure CLI
+## <a name="deploy-using-the-azure-cli"></a>Развертывание с помощью интерфейса командной строки Azure
 
-toodeploy hello шаблона с использованием hello Azure CLI 1.0 завершения hello, следующие шаги:
+Чтобы развернуть шаблон с помощью Azure CLI 1.0, выполните следующие действия.
 
-1. Развертывание шаблона hello, выполнив шаги hello в hello [развертывания шаблона с hello Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) статьи. Hello статье описывается несколько вариантов развертывания шаблона hello. Если выбрать с помощью hello toodeploy `--template-uri` (-f), hello URI для этого шаблона является *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Если выбрать с помощью hello toodeploy `--template-file` (-f) параметра, скопируйте содержимое hello hello [файл шаблона](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) из GitHub в новый файл на компьютере. Измените содержимое шаблона hello, если требуется. шаблон Hello развертывает hello ресурсы и параметры, перечисленные в hello [ресурсов](#resources) этой статьи. Дополнительные сведения о шаблонах toolearn и как tooauthor их, прочитайте hello [шаблоны разработки Azure Resource Manager ](../azure-resource-manager/resource-group-authoring-templates.md)статьи.
+1. Разверните шаблон, выполнив действия, описанные в [этом разделе](../azure-resource-manager/resource-group-template-deploy-cli.md). В статье описывается несколько вариантов развертывания шаблона. Если требуется выполнить развертывание с помощью параметра `--template-uri` (-f), URI для этого шаблона будет выглядеть так: *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Если требуется выполнить развертывание с помощью параметра `--template-file` (-f) , скопируйте содержимое [файла шаблона](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) из GitHub в новый файл на компьютере. При желании можно изменить содержимое шаблона. Шаблон развертывает ресурсы и параметры, перечисленные в разделе с описанием [ресурсов](#resources). Дополнительные сведения о шаблонах и способах их создания см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-    Независимо от того, hello выбранного варианта toodeploy hello шаблон с необходимо указать значения для hello значения параметров, перечисленных в hello [параметры](#parameters) этой статьи. При выборе параметров toosupply, с помощью файла параметров, скопируйте содержимое hello hello [файл параметров](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) из GitHub в новый файл на компьютере. Измените значения hello в файле hello. Используйте файл hello, созданный в качестве значения hello hello `--parameters-file` (-e) параметра.
+    Независимо от выбранного варианта развертывания шаблона вам нужно указать значения для параметров, перечисленных в разделе с описанием [параметров](#parameters). Если вы хотите указать параметры с помощью [файла параметров](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json), скопируйте его содержимое из GitHub в новый файл на компьютере. Измените значения в файле. Используйте созданный файл в качестве значения для параметра `--parameters-file` (-e).
 
-    toodetermine допустимые значения для hello OSVersion, ImagePublisher и imageOffer параметров, hello завершения шагов в hello [перейдите и выберите статью образов виртуальной Машины Windows](../virtual-machines/windows/cli-ps-findimage.md) статьи.
+    Чтобы определить допустимые значения для параметров OSVersion, ImagePublisher и imageOffer, выполните шаги, описанные в статье [Просмотр и выбор образов виртуальных машин Windows в Azure с помощью оболочки PowerShell или интерфейса командной строки](../virtual-machines/windows/cli-ps-findimage.md).
 
-2. После развертывания виртуальной Машины hello подключения toohello ВМ и добавление hello частного IP адресов toohello операционной системы развертывания, выполнив hello шагов в hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи. Не добавляйте hello открытый IP адресов toohello операционной системы.
+2. Развернув виртуальную машину, подключитесь к ней и добавьте в развернутую операционную систему частные IP-адреса, выполнив действия, описанные в этой статье в разделе [Добавление IP-адреса в операционную систему виртуальной машины](#os-config). Не добавляйте в операционную систему общедоступные IP-адреса.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
