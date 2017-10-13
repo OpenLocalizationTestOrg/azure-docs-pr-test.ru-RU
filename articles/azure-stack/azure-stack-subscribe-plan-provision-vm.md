@@ -1,6 +1,6 @@
 ---
-title: "предложение tooan aaaSubscribe | Документы Microsoft"
-description: "Клиент Узнайте, как предложить toosubscribe tooan."
+title: "Подписаться на предложение | Документы Microsoft"
+description: "Пользователь Узнайте, как подписаться на предложение."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,33 +14,36 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/03/2017
 ms.author: erikje
-ms.openlocfilehash: b9e340d2030ceeaad0667cb4183aae0a34f3336a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f70815b5e89753a4b0083ffbe10d9920062d1ff0
+ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="subscribe-tooan-offer"></a><span data-ttu-id="c827f-103">Подписаться на предложение tooan</span><span class="sxs-lookup"><span data-stu-id="c827f-103">Subscribe tooan offer</span></span>
-<span data-ttu-id="c827f-104">После запуска [создать предложение](azure-stack-create-offer.md), проверить, что клиенты могут создать подписку.</span><span class="sxs-lookup"><span data-stu-id="c827f-104">Now that you've [created an offer](azure-stack-create-offer.md), test that your tenants can create a subscription.</span></span>
+# <a name="subscribe-to-an-offer"></a><span data-ttu-id="60edf-103">Подписка на предложение</span><span class="sxs-lookup"><span data-stu-id="60edf-103">Subscribe to an offer</span></span>
 
-1. <span data-ttu-id="c827f-105">[Войдите в](azure-stack-connect-azure-stack.md) toohello стека Azure клиента портала (https://portal.local.azurestack.external) и нажмите кнопку **получить подписку**.</span><span class="sxs-lookup"><span data-stu-id="c827f-105">[Sign in](azure-stack-connect-azure-stack.md) toohello Azure Stack tenant portal (https://portal.local.azurestack.external) and click **Get a Subscription**.</span></span>
+<span data-ttu-id="60edf-104">*Применяется к: стек Azure интегрированных систем и пакет средств разработки стек Azure*</span><span class="sxs-lookup"><span data-stu-id="60edf-104">*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*</span></span>
+
+<span data-ttu-id="60edf-105">После запуска [создать предложение](azure-stack-create-offer.md), проверить, что пользователи могут создать подписку.</span><span class="sxs-lookup"><span data-stu-id="60edf-105">Now that you've [created an offer](azure-stack-create-offer.md), test that your users can create a subscription.</span></span>
+
+1. <span data-ttu-id="60edf-106">[Войдите в](azure-stack-connect-azure-stack.md) в пользовательский портал Azure стека (https://portal.local.azurestack.external) и нажмите **получить подписку**.</span><span class="sxs-lookup"><span data-stu-id="60edf-106">[Sign in](azure-stack-connect-azure-stack.md) to the Azure Stack user portal (https://portal.local.azurestack.external) and click **Get a Subscription**.</span></span>
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
-2. <span data-ttu-id="c827f-106">В hello **отображаемое имя** поле введите имя для вашей подписки, щелкните **предлагают**, выберите один из предложения hello в hello **выберите предложение** колонки и нажмите кнопку **Создания**.</span><span class="sxs-lookup"><span data-stu-id="c827f-106">In hello **Display Name** field, type a name for your subscription, click **Offer**, click one of hello offers in hello **Choose an offer** blade, and then click **Create**.</span></span>
+2. <span data-ttu-id="60edf-107">В **отображаемое имя** поле введите имя для вашей подписки, щелкните **предлагают**, выберите один из предложения в **выберите предложение** и, при необходимости нажмите кнопку  **Создание**.</span><span class="sxs-lookup"><span data-stu-id="60edf-107">In the **Display Name** field, type a name for your subscription, click **Offer**, click one of the offers in the **Choose an offer** blade, and then click **Create**.</span></span>
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image02.png)
-3. <span data-ttu-id="c827f-107">созданный tooview hello подписки, нажмите кнопку **дополнительные службы**, нажмите кнопку **подписки**, нажмите кнопку в новую подписку.</span><span class="sxs-lookup"><span data-stu-id="c827f-107">tooview hello subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.</span></span>  
+3. <span data-ttu-id="60edf-108">Чтобы просмотреть созданную подписку, щелкните **дополнительные службы**, нажмите кнопку **подписки**, затем нажмите кнопку в новую подписку.</span><span class="sxs-lookup"><span data-stu-id="60edf-108">To view the subscription you created, click **More services**, click **Subscriptions**, then click your new subscription.</span></span>  
 
-<span data-ttu-id="c827f-108">После оформления подписки tooan предложение обновите hello портала toosee службы, которые являются частью hello новую подписку.</span><span class="sxs-lookup"><span data-stu-id="c827f-108">After you subscribe tooan offer, refresh hello portal toosee which services are part of hello new subscription.</span></span>
+<span data-ttu-id="60edf-109">После оформления подписки на предложение, обновите портал, чтобы узнать, какие службы являются частью новой подписки.</span><span class="sxs-lookup"><span data-stu-id="60edf-109">After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.</span></span>
 
-## <a name="subscribe-tooan-add-on-plan"></a><span data-ttu-id="c827f-109">Подписка tooan надстройки плана</span><span class="sxs-lookup"><span data-stu-id="c827f-109">Subscribe tooan add-on plan</span></span>
-<span data-ttu-id="c827f-110">Если предложение hello план надстройку, клиентам их можно добавить tootheir подписку в любое время.</span><span class="sxs-lookup"><span data-stu-id="c827f-110">If hello offer has an add-on plan, tenants can add them tootheir subscription at any time.</span></span>  
+## <a name="subscribe-to-an-add-on-plan"></a><span data-ttu-id="60edf-110">Подписаться на план надстройку</span><span class="sxs-lookup"><span data-stu-id="60edf-110">Subscribe to an add-on plan</span></span>
+<span data-ttu-id="60edf-111">Если предложение план надстройку, пользователи могут добавлять их в свою подписку в любое время.</span><span class="sxs-lookup"><span data-stu-id="60edf-111">If the offer has an add-on plan, users can add them to their subscription at any time.</span></span>  
 
-1. <span data-ttu-id="c827f-111">На портале клиента hello, выберите **дополнительные службы** > **подписки**.</span><span class="sxs-lookup"><span data-stu-id="c827f-111">In hello tenant portal, select **More services** > **Subscriptions**.</span></span>
+1. <span data-ttu-id="60edf-112">На портале пользователей выберите **дополнительные службы** > **подписки**.</span><span class="sxs-lookup"><span data-stu-id="60edf-112">In the user portal, select **More services** > **Subscriptions**.</span></span>
 
-2. <span data-ttu-id="c827f-112">Щелкните подписку hello > **добавить план** кнопки и выберите hello план надстройку.</span><span class="sxs-lookup"><span data-stu-id="c827f-112">Click on hello subscription > **Add Plan** button, and select hello add-on plan.</span></span>
+2. <span data-ttu-id="60edf-113">Щелкните подписку > **добавить план** и выберите план надстройку.</span><span class="sxs-lookup"><span data-stu-id="60edf-113">Click on the subscription > **Add Plan** button, and select the add-on plan.</span></span>
 
 
 
-## <a name="next-steps"></a><span data-ttu-id="c827f-113">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c827f-113">Next steps</span></span>
-[<span data-ttu-id="c827f-114">Подготовка виртуальной машины</span><span class="sxs-lookup"><span data-stu-id="c827f-114">Provision a virtual machine</span></span>](azure-stack-provision-vm.md)
+## <a name="next-steps"></a><span data-ttu-id="60edf-114">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="60edf-114">Next steps</span></span>
+[<span data-ttu-id="60edf-115">Подготовка виртуальной машины</span><span class="sxs-lookup"><span data-stu-id="60edf-115">Provision a virtual machine</span></span>](azure-stack-provision-vm.md)
