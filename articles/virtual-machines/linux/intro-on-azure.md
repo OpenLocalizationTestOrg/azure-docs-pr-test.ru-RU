@@ -1,0 +1,90 @@
+---
+title: "tooLinux aaaIntroduction в Azure | Документы Microsoft"
+description: "Узнайте о том, как использовать виртуальные машины Linux в Azure."
+services: virtual-machines-linux
+documentationcenter: python
+author: szarkos
+manager: timlt
+editor: 
+tags: azure-resource-manager,azure-service-management
+ms.assetid: b13bf305-87bf-4df3-815e-e8f6337aa6ea
+ms.service: virtual-machines-linux
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-linux
+ms.devlang: na
+ms.topic: article
+ms.date: 06/01/2017
+ms.author: szark
+ms.openlocfilehash: 3a931447ee23ce7000174ca314c3e10abc6b8e74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="introduction-toolinux-on-azure"></a><span data-ttu-id="79ce9-103">TooLinux введение в Azure</span><span class="sxs-lookup"><span data-stu-id="79ce9-103">Introduction tooLinux on Azure</span></span>
+<span data-ttu-id="79ce9-104">Здесь представлен обзор некоторые аспекты использования виртуальных машин Linux в hello облако Azure.</span><span class="sxs-lookup"><span data-stu-id="79ce9-104">This topic provides an overview of some aspects of using Linux virtual machines in hello Azure cloud.</span></span> <span data-ttu-id="79ce9-105">Развертывание виртуальной машины Linux — простой процесс, с помощью образа из коллекции hello.</span><span class="sxs-lookup"><span data-stu-id="79ce9-105">Deploying a Linux virtual machine is a straightforward process using an image from hello gallery.</span></span>
+
+## <a name="authentication-usernames-passwords-and-ssh-keys"></a><span data-ttu-id="79ce9-106">Проверка подлинности: имена пользователей, пароли и ключи SSH</span><span class="sxs-lookup"><span data-stu-id="79ce9-106">Authentication: Usernames, Passwords and SSH Keys</span></span>
+<span data-ttu-id="79ce9-107">При создании виртуальной машины Linux при помощи hello портал Azure, будет предложено tooprovide либо имя пользователя и пароль, или открытый ключ SSH.</span><span class="sxs-lookup"><span data-stu-id="79ce9-107">When creating a Linux virtual machine using hello Azure portal, you are asked tooprovide a either username and password or an SSH public key.</span></span> <span data-ttu-id="79ce9-108">Hello Выбор имени пользователя для развертывания виртуальной машины Linux в Azure является toohello субъекта следующие ограничения: имена системных учетных записей (UID < 100) уже присутствует в hello виртуальной машины не разрешены, «root». пример.</span><span class="sxs-lookup"><span data-stu-id="79ce9-108">hello choice of a username for deploying a Linux virtual machine on Azure is subject toohello following constraint: names of system accounts (UID <100) already present in hello virtual machine are not allowed, 'root' for example.</span></span>
+
+* <span data-ttu-id="79ce9-109">Ознакомьтесь со статьей [Создание виртуальной машины с ОС Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="79ce9-109">See [Create a Virtual Machine Running Linux](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
+* <span data-ttu-id="79ce9-110">В разделе [как tooUse SSH с Linux в Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="79ce9-110">See [How tooUse SSH with Linux on Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
+
+## <a name="obtaining-superuser-privileges-using-sudo"></a><span data-ttu-id="79ce9-111">Получение привилегий суперпользователя с помощью `sudo`</span><span class="sxs-lookup"><span data-stu-id="79ce9-111">Obtaining Superuser Privileges Using `sudo`</span></span>
+<span data-ttu-id="79ce9-112">Hello учетная запись пользователя, который указывается в процессе развертывания экземпляр виртуальной машины в Azure является привилегированной учетной записи.</span><span class="sxs-lookup"><span data-stu-id="79ce9-112">hello user account that is specified during virtual machine instance deployment on Azure is a privileged account.</span></span> <span data-ttu-id="79ce9-113">Эта учетная запись настраивается с hello Azure Linux Agent toobe может tooelevate права tooroot (учетной записи суперпользователя) с помощью hello `sudo` программы.</span><span class="sxs-lookup"><span data-stu-id="79ce9-113">This account is configured by hello Azure Linux Agent toobe able tooelevate privileges tooroot (superuser account) using hello `sudo` utility.</span></span> <span data-ttu-id="79ce9-114">После входа с помощью этой учетной записи пользователя, как корень, используя синтаксис команды hello будет может toorun команды:</span><span class="sxs-lookup"><span data-stu-id="79ce9-114">Once logged in using this user account, you will be able toorun commands as root using hello command syntax:</span></span>
+
+    # sudo <COMMAND>
+
+<span data-ttu-id="79ce9-115">При необходимости можно получить доступ к оболочке root с помощью команды **sudo -s**.</span><span class="sxs-lookup"><span data-stu-id="79ce9-115">You can optionally obtain a root shell using **sudo -s**.</span></span>
+
+* <span data-ttu-id="79ce9-116">Ознакомьтесь со статьей [Использование прав корневой учетной записи на виртуальных машинах Linux в Azure](use-root-privileges.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="79ce9-116">See [Using root privileges on Linux virtual machines in Azure](use-root-privileges.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
+
+## <a name="firewall-configuration"></a><span data-ttu-id="79ce9-117">Настройка брандмауэра</span><span class="sxs-lookup"><span data-stu-id="79ce9-117">Firewall Configuration</span></span>
+<span data-ttu-id="79ce9-118">Azure предоставляет фильтр входящего пакета, который ограничивает tooports подключения, указанные в hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="79ce9-118">Azure provides an inbound packet filter that restricts connectivity tooports specified in hello Azure portal.</span></span> <span data-ttu-id="79ce9-119">По умолчанию, hello только разрешенные используется порт SSH.</span><span class="sxs-lookup"><span data-stu-id="79ce9-119">By default, hello only allowed port is SSH.</span></span> <span data-ttu-id="79ce9-120">Можно открыть порты доступа tooadditional на виртуальной машине Linux путем настройки конечных точек в hello портала Azure:</span><span class="sxs-lookup"><span data-stu-id="79ce9-120">You may open up access tooadditional ports on your Linux virtual machine by configuring endpoints in hello Azure portal:</span></span>
+
+* <span data-ttu-id="79ce9-121">См.: [как tooa tooSet Настройка конечных точек виртуальной машины](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="79ce9-121">See: [How tooSet Up Endpoints tooa Virtual Machine](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)</span></span>
+
+<span data-ttu-id="79ce9-122">образы Linux Hello в коллекции Azure hello не включайте hello *утилита iptables* брандмауэра по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="79ce9-122">hello Linux images in hello Azure Gallery do not enable hello *iptables* firewall by default.</span></span> <span data-ttu-id="79ce9-123">При желании можно настроить брандмауэр hello tooprovide дополнительная фильтрация.</span><span class="sxs-lookup"><span data-stu-id="79ce9-123">If desired, hello firewall may be configured tooprovide additional filtering.</span></span>
+
+## <a name="hostname-changes"></a><span data-ttu-id="79ce9-124">Изменения имени узла</span><span class="sxs-lookup"><span data-stu-id="79ce9-124">Hostname Changes</span></span>
+<span data-ttu-id="79ce9-125">При начальном развертывании экземпляра образа Linux, все необходимые tooprovide имя узла для виртуальной машины hello.</span><span class="sxs-lookup"><span data-stu-id="79ce9-125">When you initially deploy an instance of a Linux image, you are required tooprovide a host name for hello virtual machine.</span></span> <span data-ttu-id="79ce9-126">Hello виртуальная машина запущена, это имя узла после опубликованных toohello платформы DNS-серверы, чтобы несколькими виртуальными машинами, подключенными tooeach другие могли выполнять поиск IP адрес, с использованием имен узлов.</span><span class="sxs-lookup"><span data-stu-id="79ce9-126">Once hello virtual machine is running, this hostname is published toohello platform DNS servers so that multiple virtual machines connected tooeach other can perform IP address lookups using hostnames.</span></span>
+
+<span data-ttu-id="79ce9-127">При необходимости изменения имени узла после развертывания виртуальной машины, используйте команду hello</span><span class="sxs-lookup"><span data-stu-id="79ce9-127">If hostname changes are desired after a virtual machine has been deployed, please use hello command</span></span>
+
+    # sudo hostname <newname>
+
+<span data-ttu-id="79ce9-128">Hello Azure Linux Agent включает функциональные возможности tooautomatically обнаружить изменение имени и соответствующим образом настроить виртуальную машину toopersist hello это изменение и повторно опубликовать это изменение toohello платформы DNS-серверы.</span><span class="sxs-lookup"><span data-stu-id="79ce9-128">hello Azure Linux Agent includes functionality tooautomatically detect this name change and appropriately configure hello virtual machine toopersist this change and publish this change toohello platform DNS servers.</span></span>
+
+* [<span data-ttu-id="79ce9-129">Руководство пользователя агента Linux для Azure</span><span class="sxs-lookup"><span data-stu-id="79ce9-129">Azure Linux Agent User Guide</span></span>](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+### <a name="cloud-init"></a><span data-ttu-id="79ce9-130">Cloud-Init</span><span class="sxs-lookup"><span data-stu-id="79ce9-130">Cloud-Init</span></span>
+<span data-ttu-id="79ce9-131">Образы **Ubuntu** и **CoreOS** используют пакет cloud-init в Azure, предоставляющий дополнительные возможности для начальной загрузки виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="79ce9-131">**Ubuntu** and **CoreOS** images utilize cloud-init on Azure, which provides additional capabilities for bootstrapping a virtual machine.</span></span>
+
+* [<span data-ttu-id="79ce9-132">Как tooInject пользовательские данные</span><span class="sxs-lookup"><span data-stu-id="79ce9-132">How tooInject Custom Data</span></span>](../windows/classic/inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [<span data-ttu-id="79ce9-133">Пользовательские данные и cloud-init в Microsoft Azure</span><span class="sxs-lookup"><span data-stu-id="79ce9-133">Custom Data and Cloud-Init on Microsoft Azure</span></span>](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
+* [<span data-ttu-id="79ce9-134">Создание разделов подкачки Azure с помощью cloud-init</span><span class="sxs-lookup"><span data-stu-id="79ce9-134">Create Azure Swap Partitions Using Cloud-Init</span></span>](https://wiki.ubuntu.com/AzureSwapPartitions)
+* [<span data-ttu-id="79ce9-135">Как tooUse CoreOS в Azure</span><span class="sxs-lookup"><span data-stu-id="79ce9-135">How tooUse CoreOS on Azure</span></span>](https://coreos.com/os/docs/latest/booting-on-azure.html)
+
+## <a name="virtual-machine-image-capture"></a><span data-ttu-id="79ce9-136">Запись образа виртуальной машины</span><span class="sxs-lookup"><span data-stu-id="79ce9-136">Virtual Machine Image Capture</span></span>
+<span data-ttu-id="79ce9-137">Azure предоставляет возможность hello toocapture состоянии hello существующей виртуальной машины в образ, который впоследствии можно использовать toodeploy дополнительные экземпляры виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="79ce9-137">Azure provides hello ability toocapture hello state of an existing virtual machine into an image that can subsequently be used toodeploy additional virtual machine instances.</span></span> <span data-ttu-id="79ce9-138">Hello Azure Linux Agent может быть используется toorollback некоторые hello настройку, выполненную во время процесса инициализации hello.</span><span class="sxs-lookup"><span data-stu-id="79ce9-138">hello Azure Linux Agent may be used toorollback some of hello customization that was performed during hello provisioning process.</span></span> <span data-ttu-id="79ce9-139">Как изображение может следовать за hello описанные ниже toocapture виртуальной машины:</span><span class="sxs-lookup"><span data-stu-id="79ce9-139">You may follow hello steps below toocapture a virtual machine as an image:</span></span>
+
+1. <span data-ttu-id="79ce9-140">Запустите **waagent-deprovision** tooundo подготовки настройки.</span><span class="sxs-lookup"><span data-stu-id="79ce9-140">Run **waagent -deprovision** tooundo provisioning customization.</span></span> <span data-ttu-id="79ce9-141">Или **waagent-deprovision + пользователь** toooptionally удалить hello учетные записи пользователей во время подготовки и все связанные данные.</span><span class="sxs-lookup"><span data-stu-id="79ce9-141">Or **waagent -deprovision+user** toooptionally delete hello user account specified during provisioning and all associated data.</span></span>
+2. <span data-ttu-id="79ce9-142">Завершение списка и отключить виртуальную машину hello.</span><span class="sxs-lookup"><span data-stu-id="79ce9-142">Shut down/power off hello virtual machine.</span></span>
+3. <span data-ttu-id="79ce9-143">Нажмите кнопку **записи** в hello Azure hello портала или используйте PowerShell или интерфейс командной строки средств toocapture hello виртуальной машины как изображение.</span><span class="sxs-lookup"><span data-stu-id="79ce9-143">Click **Capture** in hello Azure portal or use hello PowerShell or CLI tools toocapture hello virtual machine as an image.</span></span>
+   
+   * <span data-ttu-id="79ce9-144">См.: [как tooCapture tooUse виртуальной машины Linux как шаблон](classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)</span><span class="sxs-lookup"><span data-stu-id="79ce9-144">See: [How tooCapture a Linux Virtual Machine tooUse as a Template](classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)</span></span>
+
+## <a name="attaching-disks"></a><span data-ttu-id="79ce9-145">Присоединение дисков</span><span class="sxs-lookup"><span data-stu-id="79ce9-145">Attaching Disks</span></span>
+<span data-ttu-id="79ce9-146">Каждая виртуальная машина также имеет подключенный временный локальный *диск ресурсов* .</span><span class="sxs-lookup"><span data-stu-id="79ce9-146">Each virtual machine has a temporary, local *resource disk* attached.</span></span> <span data-ttu-id="79ce9-147">Поскольку данные на диске ресурсов может быть устойчивыми перезагрузках, часто используется приложениями и процессы, запущенные на виртуальной машине hello для временной и **временные** хранения данных.</span><span class="sxs-lookup"><span data-stu-id="79ce9-147">Because data on a resource disk may not be durable across reboots, it is often used by applications and processes running in hello virtual machine for transient and **temporary** storage of data.</span></span> <span data-ttu-id="79ce9-148">Это также используется toostore hello страница или файлы подкачки для hello операционной системы.</span><span class="sxs-lookup"><span data-stu-id="79ce9-148">It is also used toostore hello page or swap files for hello operating system.</span></span>
+
+<span data-ttu-id="79ce9-149">В Linux, обычно управляется hello Azure Linux Agent и автоматическое подключение слишком диска ресурсов hello**/mnt/resource** (или **/mnt** Ubuntu изображений).</span><span class="sxs-lookup"><span data-stu-id="79ce9-149">On Linux, hello resource disk is typically managed by hello Azure Linux Agent and automatically mounted too**/mnt/resource** (or **/mnt** on Ubuntu images).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="79ce9-150">Обратите внимание, этот диск ресурсов hello **временные** на диске и может быть удаляются и переформатированы при hello перезагрузке ВМ.</span><span class="sxs-lookup"><span data-stu-id="79ce9-150">Note that hello resource disk is a **temporary** disk, and might be deleted and reformatted when hello VM is rebooted.</span></span>
+> 
+> 
+
+<span data-ttu-id="79ce9-151">Диск данных hello в Linux может называться ядре hello как `/dev/sdc`, и пользователи должны будут toopartition, форматирования и подключить этот ресурс.</span><span class="sxs-lookup"><span data-stu-id="79ce9-151">On Linux hello data disk might be named by hello kernel as `/dev/sdc`, and users will need toopartition, format and mount that resource.</span></span> <span data-ttu-id="79ce9-152">Это рассматривается в учебнике hello пошаговые: [как tooAttach tooa диска данных виртуальной машины](../windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="79ce9-152">This is covered step-by-step in hello tutorial: [How tooAttach a Data Disk tooa Virtual Machine](../windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).</span></span>
+
+* <span data-ttu-id="79ce9-153">**См. также**: [Настройка программного RAID-массива в Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & [Настройка диспетчера логических томов на виртуальной машине Linux в Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="79ce9-153">**See also:** [Configure Software RAID on Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) & [Configure LVM on a Linux VM in Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)</span></span>
+

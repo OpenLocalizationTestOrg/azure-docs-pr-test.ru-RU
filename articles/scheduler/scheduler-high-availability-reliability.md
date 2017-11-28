@@ -1,0 +1,81 @@
+---
+title: "aaaScheduler высокого уровня доступности и надежности"
+description: "Высокая доступность и надежность планировщика"
+services: scheduler
+documentationcenter: .NET
+author: derek1ee
+manager: kevinlam1
+editor: 
+ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.service: scheduler
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 08/16/2016
+ms.author: deli
+ms.openlocfilehash: 5c9efb333eb42b393adc5deea657ca99206d425e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="scheduler-high-availability-and-reliability"></a><span data-ttu-id="3079b-103">Высокая доступность и надежность планировщика</span><span class="sxs-lookup"><span data-stu-id="3079b-103">Scheduler High-Availability and Reliability</span></span>
+## <a name="azure-scheduler-high-availability"></a><span data-ttu-id="3079b-104">Высокая доступность планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-104">Azure Scheduler High-Availability</span></span>
+<span data-ttu-id="3079b-105">Будучи основной службой платформы Azure, планировщик Azure отличается высокой доступностью и отличается как географически избыточным развертыванием служб, так и репликацией заданий по географическим регионам.</span><span class="sxs-lookup"><span data-stu-id="3079b-105">As a core Azure platform service, Azure Scheduler is highly available and features both geo-redundant service deployment and geo-regional job replication.</span></span>
+
+### <a name="geo-redundant-service-deployment"></a><span data-ttu-id="3079b-106">Географически избыточное развертывание служб</span><span class="sxs-lookup"><span data-stu-id="3079b-106">Geo-redundant service deployment</span></span>
+<span data-ttu-id="3079b-107">Планировщик Azure доступен через пользовательский Интерфейс в почти во всех географических регионах в Azure сегодня hello.</span><span class="sxs-lookup"><span data-stu-id="3079b-107">Azure Scheduler is available via hello UI in almost every geo region that's in Azure today.</span></span> <span data-ttu-id="3079b-108">Hello список регионов, где доступен планировщик Azure — [перечисленные здесь](https://azure.microsoft.com/regions/#services).</span><span class="sxs-lookup"><span data-stu-id="3079b-108">hello list of regions that Azure Scheduler is available in is [listed here](https://azure.microsoft.com/regions/#services).</span></span> <span data-ttu-id="3079b-109">Если центр обработки данных в охватываемом регионе становится недоступным, функциональные возможности обработки отказа hello планировщика Azure являются таким образом, что служба hello доступна из другой центр обработки данных.</span><span class="sxs-lookup"><span data-stu-id="3079b-109">If a data center in a hosted region is rendered unavailable, hello failover capabilities of Azure Scheduler are such that hello service is available from another data center.</span></span>
+
+### <a name="geo-regional-job-replication"></a><span data-ttu-id="3079b-110">Репликация заданий по географическим регионам</span><span class="sxs-lookup"><span data-stu-id="3079b-110">Geo-regional job replication</span></span>
+<span data-ttu-id="3079b-111">Не только является hello переднего плана для управления запросы, но собственные задания также географически реплицируются планировщика Azure.</span><span class="sxs-lookup"><span data-stu-id="3079b-111">Not only is hello Azure Scheduler front-end available for management requests, but your own job is also geo-replicated.</span></span> <span data-ttu-id="3079b-112">Если происходит сбой в одном регионе, планировщика Azure при сбое и гарантирует, что это задание hello выполняется из другой центр обработки данных в парном географическом регионе hello.</span><span class="sxs-lookup"><span data-stu-id="3079b-112">When there’s an outage in one region, Azure Scheduler fails over and ensures that hello job is run from another data center in hello paired geographic region.</span></span>
+
+<span data-ttu-id="3079b-113">Например, если задание создано в Южно-Центральной части США, планировщик Azure обеспечивает его автоматическую репликацию в Северо-Центральной части США.</span><span class="sxs-lookup"><span data-stu-id="3079b-113">For example, if you’ve created a job in South Central US, Azure Scheduler automatically replicates that job in North Central US.</span></span> <span data-ttu-id="3079b-114">При обнаружении ошибки в центральных штатах юга США, планировщик Azure гарантирует, что hello задание запускается из северо-центральной части США.</span><span class="sxs-lookup"><span data-stu-id="3079b-114">When there’s a failure in South Central US, Azure Scheduler ensures that hello job is run from North Central US.</span></span> 
+
+![][1]
+
+<span data-ttu-id="3079b-115">Поэтому планировщик Azure гарантирует, что данные остаются в пределах hello же расширенном географическом регионе, в случае сбоя.</span><span class="sxs-lookup"><span data-stu-id="3079b-115">As a result, Azure Scheduler ensures that your data stays within hello same broader geographic region in case of an Azure failure.</span></span> <span data-ttu-id="3079b-116">Поэтому не нужно дублировать высокого уровня доступности просто tooadd задания — возможности высокого уровня доступности для заданий автоматически обеспечивается планировщиком Azure.</span><span class="sxs-lookup"><span data-stu-id="3079b-116">As a result, you need not duplicate your job just tooadd high availability – Azure Scheduler automatically provides high-availability capabilities for your jobs.</span></span>
+
+## <a name="azure-scheduler-reliability"></a><span data-ttu-id="3079b-117">Надежность планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-117">Azure Scheduler Reliability</span></span>
+<span data-ttu-id="3079b-118">Планировщик Azure гарантирует собственную высокого уровня доступности и использует другой подход toouser создания задания.</span><span class="sxs-lookup"><span data-stu-id="3079b-118">Azure Scheduler guarantees its own high-availability and takes a different approach toouser-created jobs.</span></span> <span data-ttu-id="3079b-119">Например, предположим, что конечная точка HTTP, вызываемая вашим заданием, недоступна.</span><span class="sxs-lookup"><span data-stu-id="3079b-119">For example, your job may invoke an HTTP endpoint that’s unavailable.</span></span> <span data-ttu-id="3079b-120">Планировщик Azure tooexecute задание успешно, предоставляя альтернативные варианты toodeal со сбоем.</span><span class="sxs-lookup"><span data-stu-id="3079b-120">Azure Scheduler nonetheless tries tooexecute your job successfully, by giving you alternative options toodeal with failure.</span></span> <span data-ttu-id="3079b-121">Ниже описаны два варианта, предлагаемых планировщиком Azure.</span><span class="sxs-lookup"><span data-stu-id="3079b-121">Azure Scheduler does this in two ways:</span></span>
+
+### <a name="configurable-retry-policy-via-retrypolicy"></a><span data-ttu-id="3079b-122">Настройка политики повтора с помощью параметра retryPolicy</span><span class="sxs-lookup"><span data-stu-id="3079b-122">Configurable Retry Policy via “retryPolicy”</span></span>
+<span data-ttu-id="3079b-123">Планировщик Azure позволяет tooconfigure политику повтора.</span><span class="sxs-lookup"><span data-stu-id="3079b-123">Azure Scheduler allows you tooconfigure a retry policy.</span></span> <span data-ttu-id="3079b-124">По умолчанию при сбое задания планировщика предпринимает задания hello еще еще четыре раза, каждые 30 секунд.</span><span class="sxs-lookup"><span data-stu-id="3079b-124">By default, if a job fails, Scheduler tries hello job again four more times, at 30-second intervals.</span></span> <span data-ttu-id="3079b-125">Можно повторно настроить этот повтора политики toobe более сложные (например, 10 раз каждые 30 секунд) или меньшей настойчивости (например, два раза интервалом в сутки.)</span><span class="sxs-lookup"><span data-stu-id="3079b-125">You may re-configure this retry policy toobe more aggressive (for example, ten times, at 30-second intervals) or looser (for example, two times, at daily intervals.)</span></span>
+
+<span data-ttu-id="3079b-126">Рассмотрим преимущество этой возможности на примере: предположим, что созданное пользователем задание выполняется один раз в неделю и включает вызов конечной точки HTTP.</span><span class="sxs-lookup"><span data-stu-id="3079b-126">As an example of when this may help, you may create a job that runs once a week and invokes an HTTP endpoint.</span></span> <span data-ttu-id="3079b-127">Если hello HTTP конечной точки не работает в течение нескольких часов, задание, не можно toowait одна неделя для hello toorun задание еще раз с момента даже политики повтора по умолчанию hello завершится ошибкой.</span><span class="sxs-lookup"><span data-stu-id="3079b-127">If hello HTTP endpoint is down for a few hours when your job runs, you may not want toowait one more week for hello job toorun again since even hello default retry policy will fail.</span></span> <span data-ttu-id="3079b-128">В таких случаях можно изменить hello стандартную политику tooretry каждые три часа (например) вместо каждые 30 секунд.</span><span class="sxs-lookup"><span data-stu-id="3079b-128">In such cases, you may reconfigure hello standard retry policy tooretry every three hours (for example) instead of every 30 seconds.</span></span>
+
+<span data-ttu-id="3079b-129">как tooconfigure политику повтора ссылаться слишком toolearn[retryPolicy](scheduler-concepts-terms.md#retrypolicy).</span><span class="sxs-lookup"><span data-stu-id="3079b-129">toolearn how tooconfigure a retry policy, refer too[retryPolicy](scheduler-concepts-terms.md#retrypolicy).</span></span>
+
+### <a name="alternate-endpoint-configurability-via-erroraction"></a><span data-ttu-id="3079b-130">Возможность настройки альтернативных конечных точек с помощью параметра errorAction</span><span class="sxs-lookup"><span data-stu-id="3079b-130">Alternate Endpoint Configurability via “errorAction”</span></span>
+<span data-ttu-id="3079b-131">Если конечная точка назначения hello для задания планировщика Azure остается недостижимой, планировщика Azure возвращается toohello альтернативной конечной точке обработки ошибок после выполнения политики повтора.</span><span class="sxs-lookup"><span data-stu-id="3079b-131">If hello target endpoint for your Azure Scheduler job remains unreachable, Azure Scheduler falls back toohello alternate error-handling endpoint after following its retry policy.</span></span> <span data-ttu-id="3079b-132">Если для обработки ошибок настроена альтернативная конечная точка, она вызывается из планировщика Azure.</span><span class="sxs-lookup"><span data-stu-id="3079b-132">If an alternate error-handling endpoint is configured, Azure Scheduler invokes it.</span></span> <span data-ttu-id="3079b-133">Альтернативная конечная точка собственные задания высокодоступной шрифтом hello сбоя.</span><span class="sxs-lookup"><span data-stu-id="3079b-133">With an alternate endpoint, your own jobs are highly available in hello face of failure.</span></span>
+
+<span data-ttu-id="3079b-134">Например, в схеме hello ниже планировщика Azure следует его toohit политики повтора Нью-Йорк веб-службы.</span><span class="sxs-lookup"><span data-stu-id="3079b-134">As an example, in hello diagram below, Azure Scheduler follows its retry policy toohit a New York web service.</span></span> <span data-ttu-id="3079b-135">После hello повторит ошибок, проверяет, существует ли альтернативной конечной точки.</span><span class="sxs-lookup"><span data-stu-id="3079b-135">After hello retries fail, it checks if there's an alternate.</span></span> <span data-ttu-id="3079b-136">Затем идет дальше и начинается отправка запросов toohello сменяются hello же политика повторов.</span><span class="sxs-lookup"><span data-stu-id="3079b-136">It then goes ahead and starts making requests toohello alternate with hello same retry policy.</span></span>
+
+![][2]
+
+<span data-ttu-id="3079b-137">Обратите внимание, что hello той же политики повтора применяет исходное действие tooboth hello и hello альтернативного действия при ошибке.</span><span class="sxs-lookup"><span data-stu-id="3079b-137">Note that hello same retry policy applies tooboth hello original action and hello alternate error action.</span></span> <span data-ttu-id="3079b-138">Тип действия его также можно toohave hello альтернативного действия при ошибке может отличаться от основного действия hello тип действия.</span><span class="sxs-lookup"><span data-stu-id="3079b-138">It’s also possible toohave hello alternate error action’s action type be different from hello main action’s action type.</span></span> <span data-ttu-id="3079b-139">Например пока hello основной действие заключается в вызове конечной точки HTTP, hello действие при возникновении ошибки вместо этого может быть хранилища очереди, очереди шины обслуживания или действие раздел шины службы, выполняющий ведения журнала ошибок.</span><span class="sxs-lookup"><span data-stu-id="3079b-139">For example, while hello main action may be invoking an HTTP endpoint, hello error action may instead be a storage queue, service bus queue, or service bus topic action that does error-logging.</span></span>
+
+<span data-ttu-id="3079b-140">как tooconfigure альтернативной конечной точке ссылаться слишком toolearn[errorAction](scheduler-concepts-terms.md#action-and-erroraction).</span><span class="sxs-lookup"><span data-stu-id="3079b-140">toolearn how tooconfigure an alternate endpoint, refer too[errorAction](scheduler-concepts-terms.md#action-and-erroraction).</span></span>
+
+## <a name="see-also"></a><span data-ttu-id="3079b-141">См. также</span><span class="sxs-lookup"><span data-stu-id="3079b-141">See Also</span></span>
+ [<span data-ttu-id="3079b-142">Что такое планировщик?</span><span class="sxs-lookup"><span data-stu-id="3079b-142">What is Scheduler?</span></span>](scheduler-intro.md)
+
+ [<span data-ttu-id="3079b-143">Основные понятия, терминология и иерархия сущностей планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-143">Azure Scheduler concepts, terminology, and entity hierarchy</span></span>](scheduler-concepts-terms.md)
+
+ [<span data-ttu-id="3079b-144">Начало работы с планировщиком в hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-144">Get started using Scheduler in hello Azure portal</span></span>](scheduler-get-started-portal.md)
+
+ [<span data-ttu-id="3079b-145">Планы и выставление счетов в планировщике Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-145">Plans and billing in Azure Scheduler</span></span>](scheduler-plans-billing.md)
+
+ [<span data-ttu-id="3079b-146">Как планирует комплексного toobuild и дополнительно повторения с планировщиком Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-146">How toobuild complex schedules and advanced recurrence with Azure Scheduler</span></span>](scheduler-advanced-complexity.md)
+
+ [<span data-ttu-id="3079b-147">Справочник по API REST планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-147">Azure Scheduler REST API reference</span></span>](https://msdn.microsoft.com/library/mt629143)
+
+ [<span data-ttu-id="3079b-148">Справочник по командлетам PowerShell планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-148">Azure Scheduler PowerShell cmdlets reference</span></span>](scheduler-powershell-reference.md)
+
+ [<span data-ttu-id="3079b-149">Ограничения, значения по умолчанию и коды ошибок планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-149">Azure Scheduler limits, defaults, and error codes</span></span>](scheduler-limits-defaults-errors.md)
+
+ [<span data-ttu-id="3079b-150">Исходящая аутентификация планировщика Azure</span><span class="sxs-lookup"><span data-stu-id="3079b-150">Azure Scheduler outbound authentication</span></span>](scheduler-outbound-authentication.md)
+
+[1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
+
+[2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png

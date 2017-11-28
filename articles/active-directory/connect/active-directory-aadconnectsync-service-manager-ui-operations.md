@@ -1,0 +1,50 @@
+---
+title: "Операции Synchronization Service Manager Azure AD Connect | Документация Майкрософт"
+description: "Выяснить, вкладка \"операции\" hello в hello диспетчер службы синхронизации Azure AD Connect."
+services: active-directory
+documentationcenter: 
+author: andkjell
+manager: femila
+editor: 
+ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/13/2017
+ms.author: billmath
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: decbc53613d456a71cd116c40c5e1fd761efd4af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="using-hello-sync-service-manager-operations-tab"></a><span data-ttu-id="2b402-103">С помощью hello вкладку операции синхронизации Service Manager</span><span class="sxs-lookup"><span data-stu-id="2b402-103">Using hello Sync Service Manager Operations tab</span></span>
+
+![Диспетчер службы синхронизации](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
+
+<span data-ttu-id="2b402-105">Вкладка "операции" Hello показывает результаты hello из самой последней операции hello.</span><span class="sxs-lookup"><span data-stu-id="2b402-105">hello operations tab shows hello results from hello most recent operations.</span></span> <span data-ttu-id="2b402-106">На этой вкладке является ключа toounderstand и устранения неполадок.</span><span class="sxs-lookup"><span data-stu-id="2b402-106">This tab is key toounderstand and troubleshoot issues.</span></span>
+
+## <a name="understand-hello-information-visible-in-hello-operations-tab"></a><span data-ttu-id="2b402-107">Понять сведения hello отображается на вкладке операции hello</span><span class="sxs-lookup"><span data-stu-id="2b402-107">Understand hello information visible in hello operations tab</span></span>
+<span data-ttu-id="2b402-108">верхняя половина Hello показывает все фрагменты в хронологическом порядке.</span><span class="sxs-lookup"><span data-stu-id="2b402-108">hello top half shows all runs in chronological order.</span></span> <span data-ttu-id="2b402-109">По умолчанию hello журнала операций хранит сведения о hello последние семь дней, но этот параметр можно изменить с помощью hello [планировщика](active-directory-aadconnectsync-feature-scheduler.md).</span><span class="sxs-lookup"><span data-stu-id="2b402-109">By default, hello operations log keeps information about hello last seven days, but this setting can be changed with hello [scheduler](active-directory-aadconnectsync-feature-scheduler.md).</span></span> <span data-ttu-id="2b402-110">Требуется toolook любое выполнение, отображают состояние успеха.</span><span class="sxs-lookup"><span data-stu-id="2b402-110">You want toolook for any run that does not show a success status.</span></span> <span data-ttu-id="2b402-111">Вы можете изменить сортировку, щелкая заголовки hello hello.</span><span class="sxs-lookup"><span data-stu-id="2b402-111">You can change hello sorting by clicking hello headers.</span></span>
+
+<span data-ttu-id="2b402-112">Hello **состояние** столбец является наиболее важную информацию о hello и отображает hello наиболее серьезной проблемы для запуска.</span><span class="sxs-lookup"><span data-stu-id="2b402-112">hello **Status** column is hello most important information and shows hello most severe problem for a run.</span></span> <span data-ttu-id="2b402-113">Вот наиболее распространенные состояния hello в порядке приоритета tooinvestigate краткая сводка (где * указания нескольких строк возможна ошибка).</span><span class="sxs-lookup"><span data-stu-id="2b402-113">Here is a quick summary of hello most common statuses in order of priority tooinvestigate (where * indicate several possible error strings).</span></span>
+
+| <span data-ttu-id="2b402-114">Состояние</span><span class="sxs-lookup"><span data-stu-id="2b402-114">Status</span></span> | <span data-ttu-id="2b402-115">Комментарий</span><span class="sxs-lookup"><span data-stu-id="2b402-115">Comment</span></span> |
+| --- | --- |
+| <span data-ttu-id="2b402-116">stopped-*</span><span class="sxs-lookup"><span data-stu-id="2b402-116">stopped-*</span></span> |<span data-ttu-id="2b402-117">не удалось запустить Hello.</span><span class="sxs-lookup"><span data-stu-id="2b402-117">hello run could not complete.</span></span> <span data-ttu-id="2b402-118">Например если hello удаленной системы не работает и не удается связаться с.</span><span class="sxs-lookup"><span data-stu-id="2b402-118">For example, if hello remote system is down and cannot be contacted.</span></span> |
+| <span data-ttu-id="2b402-119">stopped-error-limit</span><span class="sxs-lookup"><span data-stu-id="2b402-119">stopped-error-limit</span></span> |<span data-ttu-id="2b402-120">Обнаружено более 5000 ошибок.</span><span class="sxs-lookup"><span data-stu-id="2b402-120">There are more than 5,000 errors.</span></span> <span data-ttu-id="2b402-121">Запустите Hello автоматически остановлена из-за toohello большое количество ошибок.</span><span class="sxs-lookup"><span data-stu-id="2b402-121">hello run was automatically stopped due toohello large number of errors.</span></span> |
+| <span data-ttu-id="2b402-122">completed-\*-errors</span><span class="sxs-lookup"><span data-stu-id="2b402-122">completed-\*-errors</span></span> |<span data-ttu-id="2b402-123">Hello выполнение завершилось, но имеются ошибки (не более 5000), которые должны быть рассмотрены.</span><span class="sxs-lookup"><span data-stu-id="2b402-123">hello run completed, but there are errors (fewer than 5,000) that should be investigated.</span></span> |
+| <span data-ttu-id="2b402-124">completed-\*-warnings</span><span class="sxs-lookup"><span data-stu-id="2b402-124">completed-\*-warnings</span></span> |<span data-ttu-id="2b402-125">Запустите Hello завершена, но некоторые данные не находится в состоянии ожидается hello.</span><span class="sxs-lookup"><span data-stu-id="2b402-125">hello run completed, but some data is not in hello expected state.</span></span> <span data-ttu-id="2b402-126">Если обнаружены ошибки, такое сообщение обычно является указателем.</span><span class="sxs-lookup"><span data-stu-id="2b402-126">If you have errors, then this message is usually only a symptom.</span></span> <span data-ttu-id="2b402-127">Пока вы не исправили ошибки, не следует рассматривать предупреждения.</span><span class="sxs-lookup"><span data-stu-id="2b402-127">Until you have addressed errors, you should not investigate warnings.</span></span> |
+| <span data-ttu-id="2b402-128">Успешное завершение</span><span class="sxs-lookup"><span data-stu-id="2b402-128">success</span></span> |<span data-ttu-id="2b402-129">Проблемы отсутствуют.</span><span class="sxs-lookup"><span data-stu-id="2b402-129">No issues.</span></span> |
+
+<span data-ttu-id="2b402-130">При выборе строки нижней hello обновляет сведения hello tooshow этого запуска.</span><span class="sxs-lookup"><span data-stu-id="2b402-130">When you select a row, hello bottom updates tooshow hello details of that run.</span></span> <span data-ttu-id="2b402-131">toohello расстояние слева от нижней hello, может возникнуть фраза про список **шаг #**.</span><span class="sxs-lookup"><span data-stu-id="2b402-131">toohello far left of hello bottom, you might have a list saying **Step #**.</span></span> <span data-ttu-id="2b402-132">Он отображается, только если у вас в лесу несколько доменов, где каждый домен представлен шагом.</span><span class="sxs-lookup"><span data-stu-id="2b402-132">This list only appears if you have multiple domains in your forest where each domain is represented by a step.</span></span> <span data-ttu-id="2b402-133">Hello доменное имя можно найти под заголовком hello **секции**.</span><span class="sxs-lookup"><span data-stu-id="2b402-133">hello domain name can be found under hello heading **Partition**.</span></span> <span data-ttu-id="2b402-134">В разделе **статистики синхронизации**, можно найти дополнительные сведения о hello число изменений, которые были обработаны.</span><span class="sxs-lookup"><span data-stu-id="2b402-134">Under **Synchronization Statistics**, you can find more information about hello number of changes that were processed.</span></span> <span data-ttu-id="2b402-135">Можно щелкнуть tooget ссылки hello список объектов hello изменен.</span><span class="sxs-lookup"><span data-stu-id="2b402-135">You can click hello links tooget a list of hello changed objects.</span></span> <span data-ttu-id="2b402-136">Если у вас есть объекты с ошибкой, они отображаются в разделе **Synchronization Errors**(Ошибки синхронизации).</span><span class="sxs-lookup"><span data-stu-id="2b402-136">If you have objects with errors, those errors show up under **Synchronization Errors**.</span></span>
+
+<span data-ttu-id="2b402-137">Дополнительные сведения см. в разделе [Устранение неполадок синхронизации объекта с Azure AD](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).</span><span class="sxs-lookup"><span data-stu-id="2b402-137">For more information, see [troubleshoot an object that is not synchronizing](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="2b402-138">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="2b402-138">Next steps</span></span>
+<span data-ttu-id="2b402-139">Дополнительные сведения о hello [синхронизации Azure AD Connect](active-directory-aadconnectsync-whatis.md) конфигурации.</span><span class="sxs-lookup"><span data-stu-id="2b402-139">Learn more about hello [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.</span></span>
+
+<span data-ttu-id="2b402-140">Узнайте больше об [интеграции локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).</span><span class="sxs-lookup"><span data-stu-id="2b402-140">Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).</span></span>

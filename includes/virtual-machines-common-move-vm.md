@@ -1,0 +1,29 @@
+
+
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a><span data-ttu-id="44a1e-101">Перемещение виртуальной машины в другую подписку с помощью портала</span><span class="sxs-lookup"><span data-stu-id="44a1e-101">Use the portal to move a VM to a different subscription</span></span>
+<span data-ttu-id="44a1e-102">Вы можете переместить виртуальную машину и связанные с ней ресурсы в другую подписку с помощью портала.</span><span class="sxs-lookup"><span data-stu-id="44a1e-102">You can move a VM and it's associated resources to a different subscription using the portal.</span></span>
+
+1. <span data-ttu-id="44a1e-103">Откройте [портал Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="44a1e-103">Open the [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="44a1e-104">Щелкните **Обзор** > **Виртуальные машины** и выберите из списка виртуальную машину, которую нужно переместить.</span><span class="sxs-lookup"><span data-stu-id="44a1e-104">Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.</span></span>
+   
+    ![Снимок экрана раздела "Основные сведения", в котором нужно щелкнуть значок карандаша, чтобы открыть колонку "Перемещение ресурсов".](./media/virtual-machines-common-move-vm/move-button.png)
+3. <span data-ttu-id="44a1e-106">В разделе **Основные сведения** щелкните значок карандаша **Изменение подписки** рядом с именем подписки.</span><span class="sxs-lookup"><span data-stu-id="44a1e-106">In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name.</span></span> <span data-ttu-id="44a1e-107">Откроется колонка **Перемещение ресурсов** .</span><span class="sxs-lookup"><span data-stu-id="44a1e-107">The **Move resources** blade will open.</span></span>
+   
+    ![Снимок экрана колонки "Перемещение ресурсов".](./media/virtual-machines-common-move-vm/move.png)
+4. <span data-ttu-id="44a1e-109">Выберите все ресурсы для перемещения.</span><span class="sxs-lookup"><span data-stu-id="44a1e-109">Select each of the resources to move.</span></span> <span data-ttu-id="44a1e-110">В большинстве случаев следует перемещать все перечисленные дополнительные ресурсы.</span><span class="sxs-lookup"><span data-stu-id="44a1e-110">In most cases, you should move all of the listed optional resources.</span></span>
+5. <span data-ttu-id="44a1e-111">Выберите **подписку** , в которую вы хотите переместить виртуальную машину.</span><span class="sxs-lookup"><span data-stu-id="44a1e-111">Select the **Subscription** where you want the VM to be moved.</span></span>
+6. <span data-ttu-id="44a1e-112">Щелкните существующую **группу ресурсов** или введите имя, чтобы создать новую.</span><span class="sxs-lookup"><span data-stu-id="44a1e-112">Select an existing **Resource group** or type a name to have a new resource group created.</span></span>
+7. <span data-ttu-id="44a1e-113">Выбрав или создав группу ресурсов, подтвердите создание идентификаторов ресурсов и необходимость их использования после перемещения виртуальной машины. Затем нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="44a1e-113">When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.</span></span>
+
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a><span data-ttu-id="44a1e-114">Перемещение виртуальной машины в другую группу ресурсов с помощью портала</span><span class="sxs-lookup"><span data-stu-id="44a1e-114">Use the portal to move a VM to another resource group</span></span>
+<span data-ttu-id="44a1e-115">Вы можете переместить виртуальную машину и связанные с ней ресурсы в другую группу ресурсов с помощью портала.</span><span class="sxs-lookup"><span data-stu-id="44a1e-115">You can move a VM and it's associated resources to another resource group using the portal.</span></span>
+
+1. <span data-ttu-id="44a1e-116">Откройте [портал Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="44a1e-116">Open the [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="44a1e-117">Щелкните **Обзор** > **Группы ресурсов** и выберите группу ресурсов, содержащую виртуальную машину.</span><span class="sxs-lookup"><span data-stu-id="44a1e-117">Click **Browse** > **Resource groups** and select the resource group that contains the VM.</span></span>
+3. <span data-ttu-id="44a1e-118">В колонке **Группа ресурсов** нажмите кнопку меню **Переместить**.</span><span class="sxs-lookup"><span data-stu-id="44a1e-118">In the **Resource group** blade, select **Move** from the menu.</span></span>
+   
+    ![Снимок экрана кнопки "Переместить" в меню группы ресурсов.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. <span data-ttu-id="44a1e-120">В колонке **Перемещение ресурсов** выберите ресурсы для перемещения, а затем введите имя существующей группы ресурсов или создайте новую.</span><span class="sxs-lookup"><span data-stu-id="44a1e-120">In the **Move resources** blade, select the resources to be moved and then either type an existing resource group name or choose to create a new resource group.</span></span> <span data-ttu-id="44a1e-121">Выбрав или создав группу ресурсов, подтвердите создание идентификаторов ресурсов и необходимость их использования после перемещения виртуальной машины. Затем нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="44a1e-121">When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**</span></span>
+   
+    ![Снимок экрана колонки "Перемещение ресурсов".](./media/virtual-machines-common-move-vm/move-rg-list.png)
+

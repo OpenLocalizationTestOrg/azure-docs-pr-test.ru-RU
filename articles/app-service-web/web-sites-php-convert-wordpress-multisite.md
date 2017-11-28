@@ -1,0 +1,142 @@
+---
+title: "aaaConvert tooMultisite WordPress в службе приложений Azure"
+description: "Узнайте, как tootake существующего веб-приложения WordPress создана с помощью коллекции hello в Azure и преобразовать его tooWordPress многосайтового развертывания"
+services: app-service\web
+documentationcenter: php
+author: rmcmurray
+manager: erikre
+editor: 
+ms.assetid: fe52dbf4-179c-42f1-adf9-d6a9af920c39
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: PHP
+ms.topic: article
+ms.date: 04/25/2017
+ms.author: robmcm
+ms.openlocfilehash: 1153f0a8043de875f081704cd0a124776758878c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="convert-wordpress-toomultisite-in-azure-app-service"></a><span data-ttu-id="c4e7d-103">Преобразовать tooMultisite WordPress в службе приложений Azure</span><span class="sxs-lookup"><span data-stu-id="c4e7d-103">Convert WordPress tooMultisite in Azure App Service</span></span>
+## <a name="overview"></a><span data-ttu-id="c4e7d-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="c4e7d-104">Overview</span></span>
+<span data-ttu-id="c4e7d-105">*Автор [Бен Лобо (Ben Lobaugh)][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*</span><span class="sxs-lookup"><span data-stu-id="c4e7d-105">*By [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*</span></span>
+
+<span data-ttu-id="c4e7d-106">В этом учебнике вы узнаете, как tootake существующего веб-приложения WordPress создана с помощью коллекции hello в Azure и установить его в нескольких сайтах WordPress convert.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-106">In this tutorial, you will learn how tootake an existing WordPress web app created through hello gallery in Azure and convert it into a WordPress Multisite install.</span></span> <span data-ttu-id="c4e7d-107">Кроме того вы узнаете, как tooassign tooeach пользовательского домена из hello subsites в текущей установки.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-107">Additionally, you will learn how tooassign a custom domain tooeach of hello subsites within your install.</span></span>
+
+<span data-ttu-id="c4e7d-108">Предполагается наличие существующей установки WordPress.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-108">It is assumed that you have an existing installation of WordPress.</span></span> <span data-ttu-id="c4e7d-109">Если этого не сделать, следуйте инструкциям, hello в [создать веб-сайт WordPress из коллекции hello в Azure][website-from-gallery].</span><span class="sxs-lookup"><span data-stu-id="c4e7d-109">If you do not, please follow hello guidance provided in [Create a WordPress web site from hello gallery in Azure][website-from-gallery].</span></span>
+
+<span data-ttu-id="c4e7d-110">Преобразование существующего WordPress tooMultisite установки одного сайта обычно достаточно проста, и многие hello здесь начального действия берутся непосредственно из hello [создать сеть] [ wordpress-codex-create-a-network] страницы приветствия [WordPress Codex](http://codex.wordpress.org).</span><span class="sxs-lookup"><span data-stu-id="c4e7d-110">Converting an existing WordPress single site install tooMultisite is generally fairly simple, and many of hello initial steps here come straight from hello [Create A Network][wordpress-codex-create-a-network] page on hello [WordPress Codex](http://codex.wordpress.org).</span></span>
+
+<span data-ttu-id="c4e7d-111">Давайте приступим.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-111">Let's get started.</span></span>
+
+## <a name="allow-multisite"></a><span data-ttu-id="c4e7d-112">Включение функциональности мультисайта</span><span class="sxs-lookup"><span data-stu-id="c4e7d-112">Allow Multisite</span></span>
+<span data-ttu-id="c4e7d-113">Необходимо сначала tooenable с несколькими сайтами через hello `wp-config.php` файл с hello **WP\_Разрешить\_МНОГОСАЙТОВОГО** константой.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-113">You first need tooenable Multisite through hello `wp-config.php` file with hello **WP\_ALLOW\_MULTISITE** constant.</span></span> <span data-ttu-id="c4e7d-114">Существует два метода tooedit файлам веб-приложения: hello первого — по протоколу FTP и hello секунду из Git.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-114">There are two methods tooedit your web app files: hello first is through FTP, and hello second through Git.</span></span> <span data-ttu-id="c4e7d-115">Если вы не знакомы с toosetup любой из этих методов можно найти toohello следующие учебники:</span><span class="sxs-lookup"><span data-stu-id="c4e7d-115">If you are unfamiliar with how toosetup either of these methods, please refer toohello following tutorials:</span></span>
+
+* <span data-ttu-id="c4e7d-116">[Веб-сайт PHP с MySQL и FTP][website-w-mysql-and-ftp-ftp-setup]</span><span class="sxs-lookup"><span data-stu-id="c4e7d-116">[PHP web site with MySQL and FTP][website-w-mysql-and-ftp-ftp-setup]</span></span>
+* <span data-ttu-id="c4e7d-117">[Веб-сайт PHP с MySQL и Git][website-w-mysql-and-git-git-setup]</span><span class="sxs-lookup"><span data-stu-id="c4e7d-117">[PHP web site with MySQL and Git][website-w-mysql-and-git-git-setup]</span></span>
+
+<span data-ttu-id="c4e7d-118">Откройте hello `wp-config.php` и добавьте следующее hello выше hello файла с редактором hello по своему выбору `/* That's all, stop editing! Happy blogging. */` строки.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-118">Open hello `wp-config.php` file with hello editor of your choosing and add hello following above hello `/* That's all, stop editing! Happy blogging. */` line.</span></span>
+
+    /* Multisite */
+
+    define( 'WP_ALLOW_MULTISITE', true );
+
+<span data-ttu-id="c4e7d-119">Убедиться, что файл toosave hello и отправьте его назад toohello server!</span><span class="sxs-lookup"><span data-stu-id="c4e7d-119">Be sure toosave hello file and upload it back toohello server!</span></span>
+
+## <a name="network-setup"></a><span data-ttu-id="c4e7d-120">Настройка сети</span><span class="sxs-lookup"><span data-stu-id="c4e7d-120">Network Setup</span></span>
+<span data-ttu-id="c4e7d-121">Войдите в toohello *wp-admin* область веб-приложения и вы должны увидеть новый элемент в списке hello **средства** меню с именем **Настройка сети**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-121">Log in toohello *wp-admin* area of your web app and you should see a new item under hello **Tools** menu called **Network Setup**.</span></span> <span data-ttu-id="c4e7d-122">Нажмите кнопку **Настройка сети** и заполните hello подробные сведения о сети.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-122">Click **Network Setup** and fill in hello details of your network.</span></span>
+
+![Экран настройки сети][wordpress-network-setup]
+
+<span data-ttu-id="c4e7d-124">В этом учебнике используется hello *вложенные каталоги* сайта схемы, так как он всегда должна работать, и мы будет выполняться Настройка пользовательских доменов для каждого дочернего узла далее в учебнике hello.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-124">This tutorial uses hello *Sub-directories* site schema because it should always work, and we will be setting up custom domains for each subsite later in hello tutorial.</span></span> <span data-ttu-id="c4e7d-125">Однако должно быть возможно toosetup установить дочерний домен, если сопоставить домен через hello [портала Azure](https://portal.azure.com) и неправильная настройка подстановки DNS.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-125">However, it should be possible toosetup a subdomain install if you map a domain through hello [Azure Portal](https://portal.azure.com) and setup wildcard DNS properly.</span></span>
+
+<span data-ttu-id="c4e7d-126">Дополнительные сведения на виртуальном сервере поддомене подкаталога настройки разделе hello [типы сети с несколькими сайтами] [ wordpress-codex-types-of-networks] статьи на hello WordPress Codex.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-126">For more information on sub-domain vs sub-directory setups see hello [Types of multisite network][wordpress-codex-types-of-networks] article on hello WordPress Codex.</span></span>
+
+## <a name="enable-hello-network"></a><span data-ttu-id="c4e7d-127">Включить hello сети</span><span class="sxs-lookup"><span data-stu-id="c4e7d-127">Enable hello Network</span></span>
+<span data-ttu-id="c4e7d-128">Hello сети настроены в базе данных hello, но есть один остальные шаг tooenable hello сети функциональные возможности.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-128">hello network is now configured in hello database, but there is one remaining step tooenable hello network functionality.</span></span> <span data-ttu-id="c4e7d-129">Завершение hello `wp-config.php` параметры и убедитесь, `web.config` должным образом направляет каждого сайта.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-129">Finalize hello `wp-config.php` settings and ensure `web.config` properly routes each site.</span></span>
+
+<span data-ttu-id="c4e7d-130">После нажатия кнопки hello **установить** кнопку на hello *Настройка сети* страницы WordPress попытается tooupdate hello `wp-config.php` и `web.config` файлов.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-130">After clicking hello **Install** button on hello *Network Setup* page, WordPress will attempt tooupdate hello `wp-config.php` and `web.config` files.</span></span> <span data-ttu-id="c4e7d-131">Тем не менее следует всегда проверять tooensure hello hello файлы обновления выполнены успешно.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-131">However, you should always check hello files tooensure hello updates were successful.</span></span> <span data-ttu-id="c4e7d-132">В противном случае этот экран появятся hello необходимые обновления.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-132">If not, this screen will present you with hello necessary updates.</span></span> <span data-ttu-id="c4e7d-133">Изменение и сохранение файлов hello.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-133">Edit and save hello files.</span></span>
+
+<span data-ttu-id="c4e7d-134">После внесения этих обновлений, необходимо будет toolog ожидания и журналов назад в панель мониторинга администратора wp hello.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-134">After making these updates you will need toolog out and log back into hello wp-admin dashboard.</span></span>
+
+<span data-ttu-id="c4e7d-135">Теперь следует дополнительное меню на панели администрирования hello с меткой **личных узлов**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-135">There should now be an additional menu on hello admin bar labeled **My Sites**.</span></span> <span data-ttu-id="c4e7d-136">Это меню позволяет toocontrol к новой сети через hello **администратора сети** панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-136">This menu allows you toocontrol your new network through hello **Network Admin** dashboard.</span></span>
+
+## <a name="adding-custom-domains"></a><span data-ttu-id="c4e7d-137">Добавление пользовательских доменов</span><span class="sxs-lookup"><span data-stu-id="c4e7d-137">Adding custom domains</span></span>
+<span data-ttu-id="c4e7d-138">Hello [сопоставления домена MU WordPress] [ wordpress-plugin-wordpress-mu-domain-mapping] подключаемый модуль становится сайтом tooany просто tooadd пользовательских доменов в сети.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-138">hello [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] plugin makes it a breeze tooadd custom domains tooany site in your network.</span></span> <span data-ttu-id="c4e7d-139">Чтобы подключаемый модуль toooperate hello надлежащим образом, необходимо toodo дополнительной настройки на hello портала, а также на сайте регистратора домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-139">In order for hello plugin toooperate properly, you need toodo some additional setup on hello Portal, and also at your domain registrar.</span></span>
+
+## <a name="enable-domain-mapping-toohello-web-app"></a><span data-ttu-id="c4e7d-140">Включение домена сопоставление toohello веб-приложения</span><span class="sxs-lookup"><span data-stu-id="c4e7d-140">Enable domain mapping toohello web app</span></span>
+<span data-ttu-id="c4e7d-141">Hello **Free** [службы приложений](http://go.microsoft.com/fwlink/?LinkId=529714) плана режим не поддерживает добавление tooWeb пользовательских доменов приложений.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-141">hello **Free** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) plan mode does not support adding custom domains tooWeb Apps.</span></span> <span data-ttu-id="c4e7d-142">Вам потребуется tooswitch слишком**Shared** или **Стандартная** режим.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-142">You will need tooswitch too**Shared** or **Standard** mode.</span></span> <span data-ttu-id="c4e7d-143">toodo это:</span><span class="sxs-lookup"><span data-stu-id="c4e7d-143">toodo this:</span></span>
+
+* <span data-ttu-id="c4e7d-144">Войдите в портал Azure toohello и найдите веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-144">Log in toohello Azure Portal and locate your web app.</span></span> 
+* <span data-ttu-id="c4e7d-145">Щелкните hello **масштабировать** вкладке **параметры**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-145">Click on hello **Scale up** tab in **Settings**.</span></span>
+* <span data-ttu-id="c4e7d-146">В разделе **Общие** выберите *Общий* или *Стандартный*.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-146">Under **General**, select either *SHARED* or *STANDARD*</span></span>
+* <span data-ttu-id="c4e7d-147">Нажмите кнопку **Сохранить**</span><span class="sxs-lookup"><span data-stu-id="c4e7d-147">Click **Save**</span></span>
+
+<span data-ttu-id="c4e7d-148">Может получать сообщение, запрашивающее tooverify изменение hello и соглашаюсь веб-приложения теперь может привести к расходам, в зависимости от использования и hello другие конфигурации, заданные.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-148">You may receive a message asking you tooverify hello change and acknowledge your web app may now incur a cost, depending upon usage and hello other configuration you set.</span></span>
+
+<span data-ttu-id="c4e7d-149">Занимает несколько секунд новых параметров tooprocess hello, теперь является toostart подходящий момент, настройка вашего домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-149">It takes a few seconds tooprocess hello new settings, so now is a good time toostart setting up your domain.</span></span>
+
+## <a name="verify-your-domain"></a><span data-ttu-id="c4e7d-150">Проверка домена</span><span class="sxs-lookup"><span data-stu-id="c4e7d-150">Verify your domain</span></span>
+<span data-ttu-id="c4e7d-151">Прежде чем веб-приложения Azure позволяют toomap сайта toohello домена, необходимо сначала tooverify наличие toomap hello hello авторизации домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-151">Before Azure Web Apps will allow you toomap a domain toohello site, you first need tooverify that you have hello authorization toomap hello domain.</span></span> <span data-ttu-id="c4e7d-152">toodo таким образом, необходимо добавить новую запись CNAME tooyour записей DNS.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-152">toodo so, you must add a new CNAME record tooyour DNS entry.</span></span>
+
+* <span data-ttu-id="c4e7d-153">Войдите в диспетчере DNS домена tooyour</span><span class="sxs-lookup"><span data-stu-id="c4e7d-153">Log in tooyour domain's DNS manager</span></span>
+* <span data-ttu-id="c4e7d-154">Создайте новую запись CNAME *awverify*</span><span class="sxs-lookup"><span data-stu-id="c4e7d-154">Create a new CNAME *awverify*</span></span>
+* <span data-ttu-id="c4e7d-155">Точка *awverify* слишком*awverify. YOUR_DOMAIN.azurewebsites.NET*</span><span class="sxs-lookup"><span data-stu-id="c4e7d-155">Point *awverify* too*awverify.YOUR_DOMAIN.azurewebsites.net*</span></span>
+
+<span data-ttu-id="c4e7d-156">Он может занять некоторое время для изменения toogo hello DNS в полную силу, hello следующие шаги не работают немедленно, начинаем cup кофе, а затем вернуться и повторите попытку.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-156">It may take some time for hello DNS changes toogo into full effect, so if hello following steps do not work immediately, go make a cup of coffee, then come back and try again.</span></span>
+
+## <a name="add-hello-domain-toohello-web-app"></a><span data-ttu-id="c4e7d-157">Добавить hello домена toohello веб-приложения</span><span class="sxs-lookup"><span data-stu-id="c4e7d-157">Add hello domain toohello web app</span></span>
+<span data-ttu-id="c4e7d-158">Нажмите кнопку возврата tooyour веб-приложения через портал Azure hello **параметры**, а затем нажмите кнопку **пользовательские домены и SSL**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-158">Return tooyour web app through hello Azure Portal, click **Settings**, and then click **Custom domains and SSL**.</span></span>
+
+<span data-ttu-id="c4e7d-159">Здравствуйте, когда *параметры SSL* , отображается, вы увидите hello поля, где вы будете вводить все домены hello, которых вы хотите tooassign tooyour веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-159">When hello *SSL settings* are displayed, you will see hello fields where you will input all hello domains which you wish tooassign tooyour web app.</span></span> <span data-ttu-id="c4e7d-160">Если домена нет в списке, он будет недоступен для сопоставления внутри WordPress, независимо от того, как настроен hello домена DNS.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-160">If a domain is not listed here, it will not be available for mapping inside WordPress, regardless of how hello domain DNS is setup.</span></span>
+
+![Диалоговое окно "Управление пользовательскими доменами"][wordpress-manage-domains]
+
+<span data-ttu-id="c4e7d-162">После ввода вашего домена в текстовое поле hello, Azure проверит hello запись CNAME, созданную ранее.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-162">After typing your domain into hello text box, Azure will verify hello CNAME record you created previously.</span></span> <span data-ttu-id="c4e7d-163">Если не был полностью распространяются hello DNS, отобразится красный индикатор.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-163">If hello DNS has not fully propagated, a red indicator will show.</span></span> <span data-ttu-id="c4e7d-164">Если все успешно выполнено, появится зеленый флажок.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-164">If it was successful, you will see a green checkmark.</span></span> 
+
+<span data-ttu-id="c4e7d-165">Запишите IP-адрес в списке внизу hello hello диалоговое окно приветствия.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-165">Take note of hello IP Address listed at hello bottom of hello dialog.</span></span> <span data-ttu-id="c4e7d-166">Этот toosetup hello записи потребуются для вашего домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-166">You will need this toosetup hello A record for your domain.</span></span>
+
+## <a name="setup-hello-domain-a-record"></a><span data-ttu-id="c4e7d-167">Настройка записи A hello домена</span><span class="sxs-lookup"><span data-stu-id="c4e7d-167">Setup hello domain A record</span></span>
+<span data-ttu-id="c4e7d-168">Если hello предыдущие шаги выполнены успешно, теперь может назначить hello домена tooyour веб-приложение Azure через запись DNS типа.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-168">If hello other steps were successful, you may now assign hello domain tooyour Azure web app through a DNS A record.</span></span> 
+
+<span data-ttu-id="c4e7d-169">Это важные toonote здесь веб-приложениях Azure принятие CNAME и-записи, однако вы *должен* использовать сопоставление типа записей tooenable соответствующий домен.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-169">It is important toonote here that Azure web apps accept both CNAME and A records, however you *must* use an A record tooenable proper domain mapping.</span></span> <span data-ttu-id="c4e7d-170">Запись CNAME переадресовывать невозможно tooanother CNAME, являющееся автоматически созданные Azure с YOUR_DOMAIN.azurewebsites.net.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-170">A CNAME cannot be forwarded tooanother CNAME, which is what Azure created for you with YOUR_DOMAIN.azurewebsites.net.</span></span>
+
+<span data-ttu-id="c4e7d-171">С помощью hello IP-адрес из предыдущего шага hello, возвращают tooyour диспетчера DNS и установки hello С IP-адресом toothat toopoint записей.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-171">Using hello IP address from hello previous step, return tooyour DNS manager and setup hello A record toopoint toothat IP.</span></span>
+
+## <a name="install-and-setup-hello-plugin"></a><span data-ttu-id="c4e7d-172">Установка и Настройка подключаемого модуля hello</span><span class="sxs-lookup"><span data-stu-id="c4e7d-172">Install and setup hello plugin</span></span>
+<span data-ttu-id="c4e7d-173">WordPress многосайтового развертывания в настоящее время не поддерживает пользовательские домены с toomap встроенный метод.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-173">WordPress Multisite currently does not have a built-in method toomap custom domains.</span></span> <span data-ttu-id="c4e7d-174">Однако есть подключаемый модуль вызывается [сопоставления домена MU WordPress] [ wordpress-plugin-wordpress-mu-domain-mapping] , добавляющий функции hello для вас.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-174">However, there is a plugin called [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] that adds hello functionality for you.</span></span> <span data-ttu-id="c4e7d-175">Войдите в toohello администратора сети часть веб-узла и установить hello **сопоставления домена MU WordPress** подключаемого модуля.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-175">Log in toohello Network Admin portion of your site and install hello **WordPress MU Domain Mapping** plugin.</span></span>
+
+<span data-ttu-id="c4e7d-176">После установки и активации hello подключаемого модуля, посетите **параметры** > **сопоставления домена** подключаемый модуль tooconfigure hello.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-176">After installing and activating hello plugin, visit **Settings** > **Domain Mapping** tooconfigure hello plugin.</span></span> <span data-ttu-id="c4e7d-177">В первом текстовом поле hello *IP-адрес сервера*, входной hello IP-адрес, используемый toosetup hello запись для домена hello.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-177">In hello first textbox, *Server IP Address*, input hello IP Address you used toosetup hello A record for hello domain.</span></span> <span data-ttu-id="c4e7d-178">Задайте *параметры домена* нужен (по умолчанию hello допустимы часто) и нажмите кнопку **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-178">Set any *Domain Options* you desire (hello defaults are often fine) and click **Save**.</span></span>
+
+## <a name="map-hello-domain"></a><span data-ttu-id="c4e7d-179">Сопоставление домена hello</span><span class="sxs-lookup"><span data-stu-id="c4e7d-179">Map hello domain</span></span>
+<span data-ttu-id="c4e7d-180">Посетите hello **мониторинга** hello узла нужно toomap hello домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-180">Visit hello **Dashboard** for hello site you wish toomap hello domain to.</span></span> <span data-ttu-id="c4e7d-181">Щелкните **средства** > **сопоставления домена** и типа hello нового домена в hello текстовое поле и нажмите кнопку **добавить**.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-181">Click on **Tools** > **Domain Mapping** and type hello new domain into hello textbox and click **Add**.</span></span>
+
+<span data-ttu-id="c4e7d-182">По умолчанию hello нового домена будет перезаписанного toohello домена сайта автоматически.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-182">By default, hello new domain will be rewritten toohello autogenerated site domain.</span></span> <span data-ttu-id="c4e7d-183">Toohave все трафик toohello новый домен, установите флажок hello *основной домен для этого блога* поле перед сохранением.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-183">If you want toohave all traffic sent toohello new domain, check hello *Primary domain for this blog* box before saving.</span></span> <span data-ttu-id="c4e7d-184">Можно добавить неограниченное количество доменов tooa узла, но можно использовать только один основной.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-184">You can add an unlimited number of domains tooa site, but  only one can be primary.</span></span>
+
+## <a name="do-it-again"></a><span data-ttu-id="c4e7d-185">Повторение процедуры</span><span class="sxs-lookup"><span data-stu-id="c4e7d-185">Do it again</span></span>
+<span data-ttu-id="c4e7d-186">Azure веб-приложения разрешает tooadd неограниченное количество доменов tooa веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-186">Azure Web Apps allow you tooadd an unlimited number of domains tooa web app.</span></span> <span data-ttu-id="c4e7d-187">tooadd другой домен, необходимо будет tooexecute hello **проверки домена** и **установки записи домен А hello** разделы для каждого домена.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-187">tooadd another domain you will need tooexecute hello **Verify your domain** and **Setup hello domain A record** sections for each domain.</span></span>    
+
+> [!NOTE]
+> <span data-ttu-id="c4e7d-188">Tooget работы в службе приложений Azure перед регистрацией учетную запись Azure, перейдите слишком[повторите служб приложений](https://azure.microsoft.com/try/app-service/), в котором можно немедленно создать кратковременных начальный веб-приложения в службе приложений.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-188">If you want tooget started with Azure App Service before signing up for an Azure account, go too[Try App Service](https://azure.microsoft.com/try/app-service/), where you can immediately create a short-lived starter web app in App Service.</span></span> <span data-ttu-id="c4e7d-189">Никаких кредитных карт и обязательств.</span><span class="sxs-lookup"><span data-stu-id="c4e7d-189">No credit cards required; no commitments.</span></span>
+> 
+> 
+
+## <a name="whats-changed"></a><span data-ttu-id="c4e7d-190">Изменения</span><span class="sxs-lookup"><span data-stu-id="c4e7d-190">What's changed</span></span>
+* <span data-ttu-id="c4e7d-191">Toohello руководство изменений из tooApp веб-сайтов службы. в разделе: [службе приложений Azure и ее влияние на существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714)</span><span class="sxs-lookup"><span data-stu-id="c4e7d-191">For a guide toohello change from Websites tooApp Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
+
+[ben-lobaugh]: http://ben.lobaugh.net
+[ms-open-tech]: http://msopentech.com
+[website-from-gallery]: https://www.windowsazure.com/develop/php/tutorials/website-from-gallery/
+[wordpress-codex-create-a-network]: http://codex.wordpress.org/Create_A_Network
+[website-w-mysql-and-ftp-ftp-setup]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-ftp/#header-0
+[website-w-mysql-and-git-git-setup]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-git/#header-1
+[wordpress-network-setup]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-network-setup.png
+[wordpress-codex-types-of-networks]: http://codex.wordpress.org/Before_You_Create_A_Network#Types_of_multisite_network
+[wordpress-plugin-wordpress-mu-domain-mapping]: http://wordpress.org/extend/plugins/wordpress-mu-domain-mapping/
+
+[wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
+
+

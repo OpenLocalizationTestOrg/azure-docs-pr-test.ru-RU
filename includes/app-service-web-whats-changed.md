@@ -1,0 +1,3 @@
+## <a name="whats-changed"></a><span data-ttu-id="c822d-101">Изменения</span><span class="sxs-lookup"><span data-stu-id="c822d-101">What's changed</span></span>
+* <span data-ttu-id="c822d-102">Руководство по переходу от веб-сайтов к службе приложений см. в статье [Служба приложений Azure и существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714).</span><span class="sxs-lookup"><span data-stu-id="c822d-102">For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
+

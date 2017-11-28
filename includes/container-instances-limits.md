@@ -1,0 +1,3 @@
+| <span data-ttu-id="a7fe2-101">Ресурс</span><span class="sxs-lookup"><span data-stu-id="a7fe2-101">Resource</span></span> | <span data-ttu-id="a7fe2-102">Ограничение по умолчанию</span><span class="sxs-lookup"><span data-stu-id="a7fe2-102">Default Limit</span></span> |
+| --- | --- |
+| <span data-ttu-id="a7fe2-103">Групп контейнеров на [подписку](../articles/billing-buy-sign-up-azure-subscription.md)</span><span class="sxs-lookup"><span data-stu-id="a7fe2-103">Container groups per [subscription](../articles/billing-buy-sign-up-azure-subscription.md)</span></span> | <span data-ttu-id="a7fe2-104">20</span><span class="sxs-lookup"><span data-stu-id="a7fe2-104">20</span></span> |

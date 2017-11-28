@@ -1,0 +1,85 @@
+---
+title: "Подключения Edison Intel (узел) tooAzure IoT — Lesson 2: инструменты Azure (macOS) | Документы Microsoft"
+description: "Установка Python и интерфейса командной строки Azure (Azure CLI) на компьютер под управлением macOS."
+services: iot-hub
+documentationcenter: 
+author: shizn
+manager: timtl
+tags: 
+keywords: "Azure CLI, облачная служба Интернета вещей, облако Arduino"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-node-get-started
+ms.assetid: 8a2a8031-b1a6-4219-b17d-2825550c35e1
+ms.service: iot-hub
+ms.devlang: nodejs
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 3/21/2017
+ms.author: xshi
+ms.openlocfilehash: e33b3c9ee8f06f1c6175457f98a0600dd945cf1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="get-azure-tools-macos-1010"></a><span data-ttu-id="49219-104">Получение инструментов Azure (macOS 10.10)</span><span class="sxs-lookup"><span data-stu-id="49219-104">Get Azure tools (macOS 10.10)</span></span>
+> [!div class="op_single_selector"]
+> * <span data-ttu-id="49219-105">[Windows 7 и более поздние версии][windows]</span><span class="sxs-lookup"><span data-stu-id="49219-105">[Windows 7 and later][windows]</span></span>
+> * <span data-ttu-id="49219-106">[Ubuntu 16.04][ubuntu]</span><span class="sxs-lookup"><span data-stu-id="49219-106">[Ubuntu 16.04][ubuntu]</span></span>
+> * <span data-ttu-id="49219-107">[macOS 10.10][macos]</span><span class="sxs-lookup"><span data-stu-id="49219-107">[macOS 10.10][macos]</span></span>
+
+## <a name="what-you-will-do"></a><span data-ttu-id="49219-108">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="49219-108">What you will do</span></span>
+<span data-ttu-id="49219-109">Установите hello Azure командной строки (CLI Azure).</span><span class="sxs-lookup"><span data-stu-id="49219-109">Install hello Azure command-line interface (Azure CLI).</span></span> <span data-ttu-id="49219-110">Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="49219-110">If you have any problems, look for solutions on hello [troubleshooting page][troubleshooting].</span></span>
+
+## <a name="what-you-will-learn"></a><span data-ttu-id="49219-111">Новые знания</span><span class="sxs-lookup"><span data-stu-id="49219-111">What you will learn</span></span>
+<span data-ttu-id="49219-112">В этой статье вы узнаете следующее:</span><span class="sxs-lookup"><span data-stu-id="49219-112">In this article, you will learn:</span></span>
+* <span data-ttu-id="49219-113">Как tooinstall Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="49219-113">How tooinstall Azure CLI.</span></span>
+* <span data-ttu-id="49219-114">Как tooadd IoT подгруппой hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="49219-114">How tooadd an IoT subgroup of hello Azure CLI.</span></span>
+
+## <a name="what-you-need"></a><span data-ttu-id="49219-115">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="49219-115">What you need</span></span>
+* <span data-ttu-id="49219-116">Компьютер под управлением Mac с подключением к Интернету.</span><span class="sxs-lookup"><span data-stu-id="49219-116">A Mac with an Internet connection.</span></span>
+* <span data-ttu-id="49219-117">Активная подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="49219-117">An active Azure subscription.</span></span> <span data-ttu-id="49219-118">Если у вас нет учетной записи Azure, можно создать [бесплатную учетную запись Azure](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="49219-118">If you don't have an Azure account, you can create a [free Azure trial account](http://azure.microsoft.com/pricing/free-trial/) in just a few minutes.</span></span>
+
+## <a name="install-python"></a><span data-ttu-id="49219-119">Установка Python</span><span class="sxs-lookup"><span data-stu-id="49219-119">Install Python</span></span>
+<span data-ttu-id="49219-120">Несмотря на то, что macOS поставляется с Python 2.7 стандартной hello, рекомендуется установить Python через Homebrew.</span><span class="sxs-lookup"><span data-stu-id="49219-120">Although macOS comes with Python 2.7 out of hello box, we recommend that you install Python through Homebrew.</span></span> <span data-ttu-id="49219-121">См. статью [Installing Python on Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/) (Установка Python на Mac OS X).</span><span class="sxs-lookup"><span data-stu-id="49219-121">See [Installing Python on macOS](http://docs.python-guide.org/en/latest/starting/install/osx/).</span></span>
+
+<span data-ttu-id="49219-122">Установите Python и pip, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="49219-122">Install Python and pip by running hello following command:</span></span>
+
+```bash
+brew install python
+```
+
+## <a name="install-hello-azure-cli"></a><span data-ttu-id="49219-123">Установка hello Azure CLI</span><span class="sxs-lookup"><span data-stu-id="49219-123">Install hello Azure CLI</span></span>
+<span data-ttu-id="49219-124">Hello Azure CLI обеспечивает многоплатформенного командной строки для Azure.</span><span class="sxs-lookup"><span data-stu-id="49219-124">hello Azure CLI provides a multiplatform command-line experience for Azure.</span></span> <span data-ttu-id="49219-125">Работа непосредственно из вашего tooprovision командной строки и управления ресурсами.</span><span class="sxs-lookup"><span data-stu-id="49219-125">You work directly from your command line tooprovision and manage resources.</span></span> 
+
+<span data-ttu-id="49219-126">tooinstall Здравствуйте последнюю Azure CLI, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="49219-126">tooinstall hello latest Azure CLI, follow these steps:</span></span>
+
+1. <span data-ttu-id="49219-127">Выполните следующие команды в окне терминала hello.</span><span class="sxs-lookup"><span data-stu-id="49219-127">Run hello following commands in a terminal window.</span></span> <span data-ttu-id="49219-128">Может потребоваться пять минут tooinstall hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="49219-128">It might take five minutes tooinstall hello Azure CLI.</span></span>
+
+   ```bash
+   pip install --upgrade azure-cli
+   pip install --upgrade azure-cli-iot
+   ```
+2. <span data-ttu-id="49219-129">Проверка установки hello, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="49219-129">Verify hello installation by running hello following command:</span></span>
+
+   ```bash
+   az iot -h
+   ```
+
+<span data-ttu-id="49219-130">Вы увидите следующее hello выходных данных, если hello успешно установлен.</span><span class="sxs-lookup"><span data-stu-id="49219-130">You should see hello following output if hello installation is successful.</span></span>
+
+![Выходные данные, указывающие на успешное выполнение](media/iot-hub-intel-edison-lessons/lesson2/az_iot_help_osx.png)
+
+## <a name="summary"></a><span data-ttu-id="49219-132">Сводка</span><span class="sxs-lookup"><span data-stu-id="49219-132">Summary</span></span>
+<span data-ttu-id="49219-133">После установки hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="49219-133">You've installed hello Azure CLI.</span></span> <span data-ttu-id="49219-134">Следующая задача — toocreate Azure IoT идентификаторов концентратора и устройств с помощью hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="49219-134">Your next task is toocreate your Azure IoT hub and device identity by using hello Azure CLI.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="49219-135">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="49219-135">Next steps</span></span>
+<span data-ttu-id="49219-136">[Создание Центра Интернета вещей и регистрация Intel Edison][create-your-iot-hub-and-register-intel-edison]</span><span class="sxs-lookup"><span data-stu-id="49219-136">[Create your IoT hub and register Intel Edison][create-your-iot-hub-and-register-intel-edison]</span></span>
+<!-- Images and links -->
+
+[troubleshooting]: iot-hub-intel-edison-kit-node-troubleshooting.md
+[create-your-iot-hub-and-register-intel-edison]: iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md
+[windows]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md
+[ubuntu]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md
+[macos]: iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md

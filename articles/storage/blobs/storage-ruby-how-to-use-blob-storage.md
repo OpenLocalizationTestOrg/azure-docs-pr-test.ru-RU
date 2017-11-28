@@ -1,0 +1,159 @@
+---
+title: "Использование хранилища BLOB-объектов (хранилища объектов) из Ruby | Документация Майкрософт"
+description: "Хранение неструктурированных данных в облаке в хранилище BLOB-объектов Azure."
+services: storage
+documentationcenter: ruby
+author: mmacy
+manager: timlt
+editor: tysonn
+ms.assetid: e2fe4c45-27b0-4d15-b3fb-e7eb574db717
+ms.service: storage
+ms.workload: storage
+ms.tgt_pltfrm: na
+ms.devlang: ruby
+ms.topic: article
+ms.date: 12/08/2016
+ms.author: marsma
+ms.openlocfilehash: d27cf1594d6a31a746ca85b5c3184f8a5dbbaa54
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/29/2017
+---
+# <a name="how-to-use-blob-storage-from-ruby"></a><span data-ttu-id="53b31-103">Использование хранилища BLOB-объектов из Ruby</span><span class="sxs-lookup"><span data-stu-id="53b31-103">How to use Blob storage from Ruby</span></span>
+[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
+
+[!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-blobs.md)]
+
+## <a name="overview"></a><span data-ttu-id="53b31-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="53b31-104">Overview</span></span>
+<span data-ttu-id="53b31-105">Хранилище BLOB-объектов Azure — это служба, которая хранит неструктурированные данные в облаке в качестве объектов или больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="53b31-105">Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs.</span></span> <span data-ttu-id="53b31-106">В хранилище BLOB-объектов могут храниться текстовые или двоичные данные любого типа, например документы, файлы мультимедиа или установщики приложений.</span><span class="sxs-lookup"><span data-stu-id="53b31-106">Blob storage can store any type of text or binary data, such as a document, media file, or application installer.</span></span> <span data-ttu-id="53b31-107">Хранилище BLOB-объектов иногда также называют хранилищем объектов.</span><span class="sxs-lookup"><span data-stu-id="53b31-107">Blob storage is also referred to as object storage.</span></span>
+
+<span data-ttu-id="53b31-108">В этом руководстве показано, как реализовать типичные сценарии с использованием хранилища больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="53b31-108">This guide will show you how to perform common scenarios using Blob storage.</span></span> <span data-ttu-id="53b31-109">Примеры написаны с помощью Ruby API.</span><span class="sxs-lookup"><span data-stu-id="53b31-109">The samples are written using the Ruby API.</span></span> <span data-ttu-id="53b31-110">Здесь описаны такие сценарии, как **отправка, перечисление, скачивание** и **удаление** BLOB-объектов.</span><span class="sxs-lookup"><span data-stu-id="53b31-110">The scenarios covered include **uploading, listing, downloading,** and **deleting** blobs.</span></span>
+
+[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+
+[!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
+
+## <a name="create-a-ruby-application"></a><span data-ttu-id="53b31-111">Создание приложения Ruby</span><span class="sxs-lookup"><span data-stu-id="53b31-111">Create a Ruby application</span></span>
+<span data-ttu-id="53b31-112">Создайте приложение Ruby.</span><span class="sxs-lookup"><span data-stu-id="53b31-112">Create a Ruby application.</span></span> <span data-ttu-id="53b31-113">Инструкции см. в статье [Веб-приложение Ruby on Rails на виртуальной машине Azure](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).</span><span class="sxs-lookup"><span data-stu-id="53b31-113">For instructions, see [Ruby on Rails Web application on an Azure VM](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)</span></span>
+
+## <a name="configure-your-application-to-access-storage"></a><span data-ttu-id="53b31-114">Настройка приложения для доступа к хранилищу</span><span class="sxs-lookup"><span data-stu-id="53b31-114">Configure your application to access Storage</span></span>
+<span data-ttu-id="53b31-115">Для использования хранилища Azure необходимо загрузить и использовать пакет Ruby Azure, который содержит набор библиотек, взаимодействующих со службами REST хранилища.</span><span class="sxs-lookup"><span data-stu-id="53b31-115">To use Azure Storage, you need to download and use the Ruby azure package, which includes a set of convenience libraries that communicate with the storage REST services.</span></span>
+
+### <a name="use-rubygems-to-obtain-the-package"></a><span data-ttu-id="53b31-116">Использование RubyGems для получения пакета</span><span class="sxs-lookup"><span data-stu-id="53b31-116">Use RubyGems to obtain the package</span></span>
+1. <span data-ttu-id="53b31-117">Используйте интерфейс командной строки, например **PowerShell** (Windows), **Terminal** (Mac) или **Bash** (Unix).</span><span class="sxs-lookup"><span data-stu-id="53b31-117">Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).</span></span>
+2. <span data-ttu-id="53b31-118">Введите "gem install azure" в окне командной строки, чтобы установить пакеты и зависимости.</span><span class="sxs-lookup"><span data-stu-id="53b31-118">Type "gem install azure" in the command window to install the gem and dependencies.</span></span>
+
+### <a name="import-the-package"></a><span data-ttu-id="53b31-119">Импорт пакета</span><span class="sxs-lookup"><span data-stu-id="53b31-119">Import the package</span></span>
+<span data-ttu-id="53b31-120">Используйте свой любимый текстовый редактор, чтобы добавить следующий код в начало файла Ruby, где планируется использовать хранилище.</span><span class="sxs-lookup"><span data-stu-id="53b31-120">Using your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:</span></span>
+
+```ruby
+require "azure"
+```
+
+## <a name="set-up-an-azure-storage-connection"></a><span data-ttu-id="53b31-121">Настройка подключения к службе хранилища Azure</span><span class="sxs-lookup"><span data-stu-id="53b31-121">Set up an Azure Storage Connection</span></span>
+<span data-ttu-id="53b31-122">Модуль Azure считывает переменные среды **AZURE\_STORAGE\_ACCOUNT** и **AZURE\_STORAGE\_ACCESS_KEY**, чтобы получить информацию, необходимую для подключения к учетной записи хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="53b31-122">The azure module will read the environment variables **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS_KEY** for information required to connect to your Azure storage account.</span></span> <span data-ttu-id="53b31-123">Если эти переменные среды не заданы, необходимо указать сведения об учетной записи перед использованием **Azure::Blob::BlobService** с помощью следующего кода:</span><span class="sxs-lookup"><span data-stu-id="53b31-123">If these environment variables are not set, you must specify the account information before using **Azure::Blob::BlobService** with the following code:</span></span>
+
+```ruby
+Azure.config.storage_account_name = "<your azure storage account>"
+Azure.config.storage_access_key = "<your azure storage access key>"
+```
+
+<span data-ttu-id="53b31-124">Вот как можно получить эти значения из классический учетной записи хранения или учетной записи хранения Resource Manager на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="53b31-124">To obtain these values from a classic or Resource Manager storage account in the Azure portal:</span></span>
+
+1. <span data-ttu-id="53b31-125">Войдите на [портал Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="53b31-125">Log in to the [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="53b31-126">Перейдите к учетной записи хранения, которая будет использоваться.</span><span class="sxs-lookup"><span data-stu-id="53b31-126">Navigate to the storage account you want to use.</span></span>
+3. <span data-ttu-id="53b31-127">В колонке "Параметры" справа щелкните **Ключи доступа**.</span><span class="sxs-lookup"><span data-stu-id="53b31-127">In the Settings blade on the right, click **Access Keys**.</span></span>
+4. <span data-ttu-id="53b31-128">В колонке "Ключи доступа" вы увидите ключи доступа 1 и 2.</span><span class="sxs-lookup"><span data-stu-id="53b31-128">In the Access keys blade that appears, you'll see the access key 1 and access key 2.</span></span> <span data-ttu-id="53b31-129">Можно использовать любой из них.</span><span class="sxs-lookup"><span data-stu-id="53b31-129">You can use either of these.</span></span>
+5. <span data-ttu-id="53b31-130">Щелкните значок копирования, чтобы скопировать ключ в буфер обмена.</span><span class="sxs-lookup"><span data-stu-id="53b31-130">Click the copy icon to copy the key to the clipboard.</span></span>
+
+## <a name="create-a-container"></a><span data-ttu-id="53b31-131">Создание контейнера</span><span class="sxs-lookup"><span data-stu-id="53b31-131">Create a container</span></span>
+[!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
+
+<span data-ttu-id="53b31-132">Объект **Azure::Blob::BlobService** позволяет работать с контейнерами и BLOB-объектами.</span><span class="sxs-lookup"><span data-stu-id="53b31-132">The **Azure::Blob::BlobService** object lets you work with containers and blobs.</span></span> <span data-ttu-id="53b31-133">Чтобы создать контейнер, используйте метод **create\_container()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-133">To create a container, use the **create\_container()** method.</span></span>
+
+<span data-ttu-id="53b31-134">В следующем примере кода создается контейнер или выводится ошибка, если она возникла.</span><span class="sxs-lookup"><span data-stu-id="53b31-134">The following code example creates a container or prints the error if there is any.</span></span>
+
+```ruby
+azure_blob_service = Azure::Blob::BlobService.new
+begin
+    container = azure_blob_service.create_container("test-container")
+rescue
+    puts $!
+end
+```
+
+<span data-ttu-id="53b31-135">Если вы хотите сделать файлы в контейнере общедоступными, можно установить разрешения контейнера.</span><span class="sxs-lookup"><span data-stu-id="53b31-135">If you want to make the files in the container public, you can set the container's permissions.</span></span>
+
+<span data-ttu-id="53b31-136">Вы можете просто изменить вызов <strong>create\_container()</strong> и передать параметр **:public\_access\_level**:</span><span class="sxs-lookup"><span data-stu-id="53b31-136">You can just modify the <strong>create\_container()</strong> call to pass the **:public\_access\_level** option:</span></span>
+
+```ruby
+container = azure_blob_service.create_container("test-container",
+    :public_access_level => "<public access level>")
+```
+
+<span data-ttu-id="53b31-137">Параметр **:public\_access\_level** принимает такие значения:</span><span class="sxs-lookup"><span data-stu-id="53b31-137">Valid values for the **:public\_access\_level** option are:</span></span>
+
+* <span data-ttu-id="53b31-138">**blob** — это общий доступ на чтение для больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="53b31-138">**blob:** Specifies public read access for blobs.</span></span> <span data-ttu-id="53b31-139">Данные BLOB-объектов в этом контейнере можно считать с помощью анонимного запроса, но данные контейнера недоступны.</span><span class="sxs-lookup"><span data-stu-id="53b31-139">Blob data within this container can be read via anonymous request, but container data is not available.</span></span> <span data-ttu-id="53b31-140">Клиенты не могут перечислять BLOB-объекты внутри с помощью анонимного запроса.</span><span class="sxs-lookup"><span data-stu-id="53b31-140">Clients cannot enumerate blobs within the container via anonymous request.</span></span>
+* <span data-ttu-id="53b31-141">**container** — это полный общий доступ на чтение данных контейнера и большого двоичного объекта.</span><span class="sxs-lookup"><span data-stu-id="53b31-141">**container:** Specifies full public read access for container and blob data.</span></span> <span data-ttu-id="53b31-142">Клиенты могут перечислять BLOB-объекты внутри контейнера с помощью анонимного запроса, но не могут перечислять контейнеры в учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="53b31-142">Clients can enumerate blobs within the container via anonymous request, but cannot enumerate containers within the storage account.</span></span>
+
+<span data-ttu-id="53b31-143">Кроме того, можно изменить уровень общего доступа к контейнеру, определив уровень общего доступа в методе **set\_container\_acl()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-143">Alternatively, you can modify the public access level of a container by using **set\_container\_acl()** method to specify the public access level.</span></span>
+
+<span data-ttu-id="53b31-144">В следующем примере кода уровень общего доступа изменяется на **container**:</span><span class="sxs-lookup"><span data-stu-id="53b31-144">The following code example changes the public access level to **container**:</span></span>
+
+```ruby
+azure_blob_service.set_container_acl('test-container', "container")
+```
+
+## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="53b31-145">Отправка BLOB-объекта в контейнер</span><span class="sxs-lookup"><span data-stu-id="53b31-145">Upload a blob into a container</span></span>
+<span data-ttu-id="53b31-146">Чтобы передать содержимое в BLOB-объект, создайте этот объект с помощью метода **create\_block\_blob()**, а в качестве содержимого объекта используйте файл или строку.</span><span class="sxs-lookup"><span data-stu-id="53b31-146">To upload content to a blob, use the **create\_block\_blob()** method to create the blob, use a file or string as the content of the blob.</span></span>
+
+<span data-ttu-id="53b31-147">Следующий код отправляет файл **test.png** как новый большой двоичный объект с именем "image-blob" в контейнер.</span><span class="sxs-lookup"><span data-stu-id="53b31-147">The following code uploads the file **test.png** as a new blob named "image-blob" in the container.</span></span>
+
+```ruby
+content = File.open("test.png", "rb") { |file| file.read }
+blob = azure_blob_service.create_block_blob(container.name,
+    "image-blob", content)
+puts blob.name
+```
+
+## <a name="list-the-blobs-in-a-container"></a><span data-ttu-id="53b31-148">Перечисление BLOB-объектов в контейнере</span><span class="sxs-lookup"><span data-stu-id="53b31-148">List the blobs in a container</span></span>
+<span data-ttu-id="53b31-149">Для перечисления контейнеров используйте метод **list_containers()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-149">To list the containers, use **list_containers()** method.</span></span>
+<span data-ttu-id="53b31-150">Для перечисления BLOB-объектов в контейнере используйте метод **list\_blobs()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-150">To list the blobs within a container, use **list\_blobs()** method.</span></span>
+
+<span data-ttu-id="53b31-151">Этот пример выводит URL-адреса всех BLOB-объектов во всех контейнерах учетной записи.</span><span class="sxs-lookup"><span data-stu-id="53b31-151">This outputs the urls of all the blobs in all the containers for the account.</span></span>
+
+```ruby
+containers = azure_blob_service.list_containers()
+containers.each do |container|
+    blobs = azure_blob_service.list_blobs(container.name)
+    blobs.each do |blob|
+    puts blob.name
+    end
+end
+```
+
+## <a name="download-blobs"></a><span data-ttu-id="53b31-152">Скачивание больших двоичных объектов</span><span class="sxs-lookup"><span data-stu-id="53b31-152">Download blobs</span></span>
+<span data-ttu-id="53b31-153">Для скачивания BLOB-объектов (получения их содержимого) используйте метод **get\_blob()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-153">To download blobs, use the **get\_blob()** method to retrieve the contents.</span></span>
+
+<span data-ttu-id="53b31-154">В следующем примере кода показано, как с помощью метода **get\_blob()** скачать содержимое объекта image-blob и записать его в локальный файл.</span><span class="sxs-lookup"><span data-stu-id="53b31-154">The following code example demonstrates using **get\_blob()** to download the contents of "image-blob" and write it to a local file.</span></span>
+
+```ruby
+blob, content = azure_blob_service.get_blob(container.name,"image-blob")
+File.open("download.png","wb") {|f| f.write(content)}
+```
+
+## <a name="delete-a-blob"></a><span data-ttu-id="53b31-155">Удаление BLOB-объекта</span><span class="sxs-lookup"><span data-stu-id="53b31-155">Delete a Blob</span></span>
+<span data-ttu-id="53b31-156">Для удаления BLOB-объекта используйте метод **delete\_blob()**.</span><span class="sxs-lookup"><span data-stu-id="53b31-156">Finally, to delete a blob, use the **delete\_blob()** method.</span></span> <span data-ttu-id="53b31-157">В следующем примере кода показано, как удалить большой двоичный объект.</span><span class="sxs-lookup"><span data-stu-id="53b31-157">The following code example demonstrates how to delete a blob.</span></span>
+
+```ruby
+azure_blob_service.delete_blob(container.name, "image-blob")
+```
+
+## <a name="next-steps"></a><span data-ttu-id="53b31-158">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="53b31-158">Next steps</span></span>
+<span data-ttu-id="53b31-159">Дополнительную информацию о выполнении более сложных задач хранения см. по указанным ниже ссылкам.</span><span class="sxs-lookup"><span data-stu-id="53b31-159">To learn about more complex storage tasks, follow these links:</span></span>
+
+* [<span data-ttu-id="53b31-160">Блог рабочей группы службы хранилища Azure</span><span class="sxs-lookup"><span data-stu-id="53b31-160">Azure Storage Team Blog</span></span>](http://blogs.msdn.com/b/windowsazurestorage/)
+* <span data-ttu-id="53b31-161">[пакетов SDK Azure для Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) на веб-сайте GitHub</span><span class="sxs-lookup"><span data-stu-id="53b31-161">[Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub</span></span>
+* [<span data-ttu-id="53b31-162">Приступая к работе со служебной программой командной строки AzCopy</span><span class="sxs-lookup"><span data-stu-id="53b31-162">Transfer data with the AzCopy Command-Line Utility</span></span>](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+

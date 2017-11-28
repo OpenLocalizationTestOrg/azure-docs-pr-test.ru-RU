@@ -1,0 +1,10 @@
+
+<!--author=SharS last changed: 11/06/15-->
+
+#### <a name="to-delete-a-storsimple-backup-policy"></a><span data-ttu-id="b7322-101">Удаление политики резервного копирования StorSimple</span><span class="sxs-lookup"><span data-stu-id="b7322-101">To delete a StorSimple backup policy</span></span>
+1. <span data-ttu-id="b7322-102">На странице устройства **Быстрый запуск** перейдите на вкладку **Политики архивации**.</span><span class="sxs-lookup"><span data-stu-id="b7322-102">On the device **Quick Start** page, click the **Backup Policies** tab.</span></span> <span data-ttu-id="b7322-103">В результате откроется страница **Политики резервного копирования** .</span><span class="sxs-lookup"><span data-stu-id="b7322-103">This will take you to the **Backup Policies** page.</span></span>
+2. <span data-ttu-id="b7322-104">Выберите политику, щелкнув любое место в соответствующей строке, но не в первом столбце. Затем внизу страницы щелкните **Удалить**.</span><span class="sxs-lookup"><span data-stu-id="b7322-104">Select the policy by clicking anywhere in the corresponding row except for the first column, and then click **Delete** at the bottom of the page.</span></span>
+3. <span data-ttu-id="b7322-105">После этого введите подтверждение для применения этих исправлений.</span><span class="sxs-lookup"><span data-stu-id="b7322-105">You will be prompted for confirmation.</span></span> <span data-ttu-id="b7322-106">Помните о том, что при удалении политики резервного копирования удаляются и все связанные с ней резервные копии.</span><span class="sxs-lookup"><span data-stu-id="b7322-106">Keep in mind that deleting a backup policy will delete all the associated backups.</span></span> <span data-ttu-id="b7322-107">Щелкните **Да** для удаления.</span><span class="sxs-lookup"><span data-stu-id="b7322-107">Click **Yes** to delete.</span></span>
+
+<span data-ttu-id="b7322-108">Страница **Политики резервного копирования** обновится, и на ней появится новый список политик.</span><span class="sxs-lookup"><span data-stu-id="b7322-108">The **Backup Policies** page will be updated to display the new list of policies.</span></span>
+

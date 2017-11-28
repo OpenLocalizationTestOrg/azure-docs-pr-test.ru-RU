@@ -1,0 +1,37 @@
+---
+title: "aaaConnect виртуальные машины Windows в облачной службе | Документы Microsoft"
+description: "Подключение виртуальных машин Windows, созданных с помощью tooan модели hello классического развертывания Azure облачной службы или виртуальной сети."
+services: virtual-machines-windows
+documentationcenter: 
+author: cynthn
+manager: timlt
+editor: 
+tags: azure-service-management
+ms.assetid: c1cbc802-4352-4d2e-9e49-4ccbd955324b
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 06/06/2017
+ms.author: cynthn
+ms.openlocfilehash: d19dc555694eab8a7e790c970cfb5e6a53aa7a7c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="connect-windows-virtual-machines-created-with-hello-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a><span data-ttu-id="0edbe-103">Подключение виртуальных машин Windows, созданных с помощью hello классической модели развертывания с помощью виртуальной сети или облачные службы</span><span class="sxs-lookup"><span data-stu-id="0edbe-103">Connect Windows virtual machines created with hello classic deployment model with a virtual network or cloud service</span></span>
+> [!IMPORTANT]
+> <span data-ttu-id="0edbe-104">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="0edbe-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="0edbe-105">В этой статье описан с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="0edbe-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="0edbe-106">Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="0edbe-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span>
+
+<span data-ttu-id="0edbe-107">Виртуальные машины Windows, созданных с помощью hello классической модели развертывания они всегда размещаются в облачной службе.</span><span class="sxs-lookup"><span data-stu-id="0edbe-107">Windows virtual machines created with hello classic deployment model are always placed in a cloud service.</span></span> <span data-ttu-id="0edbe-108">Hello облачной службы выступает в роли контейнера и обеспечивает открытый уникальное имя DNS, общедоступный IP-адрес и набор конечных точек tooaccess hello виртуальной машины к hello Интернета.</span><span class="sxs-lookup"><span data-stu-id="0edbe-108">hello cloud service acts as a container and provides a unique public DNS name, a public IP address, and a set of endpoints tooaccess hello virtual machine over hello Internet.</span></span> <span data-ttu-id="0edbe-109">может быть Hello облачной службы в виртуальной сети, но не является обязательным.</span><span class="sxs-lookup"><span data-stu-id="0edbe-109">hello cloud service can be in a virtual network, but that's not a requirement.</span></span> <span data-ttu-id="0edbe-110">Вы также можете [подключить виртуальные машины Linux к виртуальной сети или облачной службе](../../linux/classic/connect-vms.md).</span><span class="sxs-lookup"><span data-stu-id="0edbe-110">You can also [connect Linux virtual machines with a virtual network or cloud service](../../linux/classic/connect-vms.md).</span></span>
+
+<span data-ttu-id="0edbe-111">Если облачная служба не находится в виртуальной сети, она называется *автономной* .</span><span class="sxs-lookup"><span data-stu-id="0edbe-111">If a cloud service isn't in a virtual network, it's called a *standalone* cloud service.</span></span> <span data-ttu-id="0edbe-112">Hello виртуальные машины в облачной службе автономный взаимодействовать с другими виртуальными машинами с помощью hello открытый DNS-имена других виртуальных машин и hello трафик проходит через Интернет hello.</span><span class="sxs-lookup"><span data-stu-id="0edbe-112">hello virtual machines in a standalone cloud service communicate with other virtual machines by using hello other virtual machines’ public DNS names, and hello traffic travels over hello Internet.</span></span> <span data-ttu-id="0edbe-113">Если облачная служба находится в виртуальной сети виртуальных машин hello в том, что облачная служба может взаимодействовать с всех остальных виртуальных машин в виртуальной сети hello без отправки любой трафик по Интернету hello.</span><span class="sxs-lookup"><span data-stu-id="0edbe-113">If a cloud service is in a virtual network, hello virtual machines in that cloud service can communicate with all other virtual machines in hello virtual network without sending any traffic over hello Internet.</span></span>
+
+<span data-ttu-id="0edbe-114">Если поместить виртуальными машинами в hello одной автономной облачной службе, по-прежнему можно использовать балансировку нагрузки и группы доступности.</span><span class="sxs-lookup"><span data-stu-id="0edbe-114">If you place your virtual machines in hello same standalone cloud service, you can still use load balancing and availability sets.</span></span> <span data-ttu-id="0edbe-115">Дополнительные сведения см. в разделе [виртуальные машины с балансировкой нагрузки](../../virtual-machines-windows-load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) и [Управление доступностью виртуальных машин hello](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0edbe-115">For details, see [Load balancing virtual machines](../../virtual-machines-windows-load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) and [Manage hello availability of virtual machines](../../virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span> <span data-ttu-id="0edbe-116">Тем не менее нельзя упорядочивать hello виртуальные машины в подсетях или подключить сеть локальной tooyour автономный облачной службы.</span><span class="sxs-lookup"><span data-stu-id="0edbe-116">However, you can't organize hello virtual machines on subnets or connect a standalone cloud service tooyour on-premises network.</span></span> <span data-ttu-id="0edbe-117">Ниже приведен пример:</span><span class="sxs-lookup"><span data-stu-id="0edbe-117">Here's an example:</span></span>
+
+[!INCLUDE [virtual-machines-common-classic-connect-vms](../../../../includes/virtual-machines-common-classic-connect-vms.md)]
+
+## <a name="next-steps"></a><span data-ttu-id="0edbe-118">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0edbe-118">Next steps</span></span>
+<span data-ttu-id="0edbe-119">После создания виртуальной машины, и он имеет смысл слишком[добавьте диск данных](attach-disk.md) , служб и рабочих нагрузок имеют toostore расположение данных.</span><span class="sxs-lookup"><span data-stu-id="0edbe-119">After you create a virtual machine, it's a good idea too[add a data disk](attach-disk.md) so your services and workloads have a location toostore data.</span></span>

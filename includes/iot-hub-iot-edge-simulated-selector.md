@@ -1,0 +1,78 @@
+> [!div class="op_single_selector"]
+> * [<span data-ttu-id="50a95-101">Linux</span><span class="sxs-lookup"><span data-stu-id="50a95-101">Linux</span></span>](../articles/iot-hub/iot-hub-linux-iot-edge-simulated-device.md)
+> * [<span data-ttu-id="50a95-102">Windows</span><span class="sxs-lookup"><span data-stu-id="50a95-102">Windows</span></span>](../articles/iot-hub/iot-hub-windows-iot-edge-simulated-device.md)
+
+<span data-ttu-id="50a95-103">В пошаговом руководстве с [примером отправки в облако виртуальных устройств] показано, как с помощью [Azure IoT Edge][lnk-sdk] отправлять данные телеметрии, передаваемые с виртуальных устройств в облако, в Центр Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-103">This walkthrough of the [Simulated Device Cloud Upload sample] shows you how to use [Azure IoT Edge][lnk-sdk] to send device-to-cloud telemetry to IoT Hub from simulated devices.</span></span>
+
+<span data-ttu-id="50a95-104">В этом руководстве рассматриваются следующие темы.</span><span class="sxs-lookup"><span data-stu-id="50a95-104">This walkthrough covers:</span></span>
+
+* <span data-ttu-id="50a95-105">**Архитектура**: данные об архитектуре в [примером отправки в облако виртуальных устройств].</span><span class="sxs-lookup"><span data-stu-id="50a95-105">**Architecture**: architectural information about the [Simulated Device Cloud Upload sample].</span></span>
+* <span data-ttu-id="50a95-106">**Сборка и запуск**: шаги, необходимые для сборки и запуска примера.</span><span class="sxs-lookup"><span data-stu-id="50a95-106">**Build and run**: the steps required to build and run the sample.</span></span>
+
+## <a name="architecture"></a><span data-ttu-id="50a95-107">Архитектура</span><span class="sxs-lookup"><span data-stu-id="50a95-107">Architecture</span></span>
+
+<span data-ttu-id="50a95-108">[примером отправки в облако виртуальных устройств] показывает, как создать шлюз, который отправляет данные телеметрии из виртуальных устройств в Центр Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-108">The [Simulated Device Cloud Upload sample] shows how to create a gateway that sends telemetry from simulated devices to an IoT hub.</span></span> <span data-ttu-id="50a95-109">Возможно, устройству не удастся подключиться непосредственно к Центру Интернета вещей, так как устройство:</span><span class="sxs-lookup"><span data-stu-id="50a95-109">A device may not be able to connect directly to IoT Hub because the device:</span></span>
+
+* <span data-ttu-id="50a95-110">не использует протокол связи, поддерживаемый Центром Интернета вещей;</span><span class="sxs-lookup"><span data-stu-id="50a95-110">Does not use a communications protocol understood by IoT Hub.</span></span>
+* <span data-ttu-id="50a95-111">не имеет достаточно возможностей, чтобы запомнить удостоверение, присвоенное ему Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-111">Is not smart enough to remember the identity assigned to it by IoT Hub.</span></span>
+
+<span data-ttu-id="50a95-112">Шлюз IoT Edge позволяет решить эти проблемы одним из указанных ниже способов.</span><span class="sxs-lookup"><span data-stu-id="50a95-112">An IoT Edge gateway can solve these problems in the following ways:</span></span>
+
+* <span data-ttu-id="50a95-113">Шлюз распознает протокол, используемый устройством, получает данные телеметрии, передаваемые с устройства в облако, и пересылает эти сообщения в Центр Интернета вещей по протоколу, поддерживаемому этим центром.</span><span class="sxs-lookup"><span data-stu-id="50a95-113">The gateway understands the protocol used by the device, receives device-to-cloud telemetry from the device, and forwards those messages to IoT Hub using a protocol understood by the IoT hub.</span></span>
+
+* <span data-ttu-id="50a95-114">Шлюз сопоставляет удостоверения Центра Интернета вещей и действует как прокси-сервер, когда устройство отправляет сообщения в Центр Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-114">The gateway maps IoT Hub identities to devices and acts as a proxy when a device sends messages to IoT Hub.</span></span>
+
+<span data-ttu-id="50a95-115">На следующей схеме представлены основные компоненты примера, включая модули Edge Интернета вещей:</span><span class="sxs-lookup"><span data-stu-id="50a95-115">The following diagram shows the main components of the sample, including the IoT Edge modules:</span></span>
+
+![][1]
+
+<span data-ttu-id="50a95-116">Модули не передают сообщения друг другу напрямую.</span><span class="sxs-lookup"><span data-stu-id="50a95-116">The modules do not pass messages directly to each other.</span></span> <span data-ttu-id="50a95-117">Модули публикуют сообщения во внутренний брокер передачи сообщений, который передает их в другие модули с помощью механизма подписки.</span><span class="sxs-lookup"><span data-stu-id="50a95-117">The modules publish messages to an internal broker that delivers the messages to the other modules using a subscription mechanism.</span></span> <span data-ttu-id="50a95-118">Дополнительные сведения см. в статье [Explore Azure IoT Edge architecture on Linux][lnk-gw-getstarted] (Обзор архитектуры Edge Интернета вещей в Linux).</span><span class="sxs-lookup"><span data-stu-id="50a95-118">For more information, see [Get started with Azure IoT Edge][lnk-gw-getstarted].</span></span>
+
+### <a name="protocol-ingestion-module"></a><span data-ttu-id="50a95-119">Модуль получения протокола</span><span class="sxs-lookup"><span data-stu-id="50a95-119">Protocol ingestion module</span></span>
+
+<span data-ttu-id="50a95-120">Этот модуль является отправной точкой для приема данных с устройств через шлюз и их передачи в облако.</span><span class="sxs-lookup"><span data-stu-id="50a95-120">This module is the starting point for receiving data from devices, through the gateway, and into the cloud.</span></span> <span data-ttu-id="50a95-121">В примере модуль:</span><span class="sxs-lookup"><span data-stu-id="50a95-121">In the sample, the module:</span></span>
+
+1. <span data-ttu-id="50a95-122">моделирует данные температуры</span><span class="sxs-lookup"><span data-stu-id="50a95-122">Creates simulated temperature data.</span></span> <span data-ttu-id="50a95-123">(при использовании физических устройств модуль считывает данные с физических устройств);</span><span class="sxs-lookup"><span data-stu-id="50a95-123">If you use physical devices, the module reads data from those physical devices.</span></span>
+1. <span data-ttu-id="50a95-124">создает сообщение;</span><span class="sxs-lookup"><span data-stu-id="50a95-124">Creates a message.</span></span>
+1. <span data-ttu-id="50a95-125">помещает смоделированные данные температуры в содержимое сообщения;</span><span class="sxs-lookup"><span data-stu-id="50a95-125">Places the simulated temperature data into the message content.</span></span>
+1. <span data-ttu-id="50a95-126">добавляет в сообщение свойство с фиктивным MAC-адресом;</span><span class="sxs-lookup"><span data-stu-id="50a95-126">Adds a property with a fake MAC address to the message.</span></span>
+1. <span data-ttu-id="50a95-127">делает сообщение доступными для следующего модуля в цепочке.</span><span class="sxs-lookup"><span data-stu-id="50a95-127">Makes the message available to the next module in the chain.</span></span>
+
+<span data-ttu-id="50a95-128">Модуль с именем **Protocol X ingestion** (Получение протокола X) в предыдущей схеме называется **виртуальным устройством** в исходном коде.</span><span class="sxs-lookup"><span data-stu-id="50a95-128">The module called **Protocol X ingestion** in the previous diagram is called **Simulated device** in the source code.</span></span>
+
+### <a name="mac-lt-gt-iot-hub-id-module"></a><span data-ttu-id="50a95-129">MAC &lt;-&gt; Модуль идентификатора центра Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="50a95-129">MAC &lt;-&gt; IoT Hub ID module</span></span>
+
+<span data-ttu-id="50a95-130">Этот модуль проверяет сообщения, которые содержат свойства MAC-адреса.</span><span class="sxs-lookup"><span data-stu-id="50a95-130">This module scans for messages that have a Mac address property.</span></span> <span data-ttu-id="50a95-131">В этом примере модуль получения протокола добавляет свойство MAC-адреса.</span><span class="sxs-lookup"><span data-stu-id="50a95-131">In the sample, the protocol ingestion module adds the MAC address property.</span></span> <span data-ttu-id="50a95-132">Если модуль обнаруживает такое свойство, он добавляет в сообщение другое свойство с ключом устройства Центра Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-132">If the module finds such a property, it adds another property with an IoT Hub device key to the message.</span></span> <span data-ttu-id="50a95-133">Затем сообщение становится доступными для следующего модуля в цепочке.</span><span class="sxs-lookup"><span data-stu-id="50a95-133">The module then makes the message available to the next module in the chain.</span></span>
+
+<span data-ttu-id="50a95-134">Разработчик устанавливает сопоставление MAC-адресов с удостоверениями Центра Интернета вещей, чтобы связать виртуальные устройства с удостоверениями.</span><span class="sxs-lookup"><span data-stu-id="50a95-134">The developer sets up a mapping between MAC addresses and IoT Hub identities to associate the simulated devices with IoT Hub device identities.</span></span> <span data-ttu-id="50a95-135">Разработчик добавляет сопоставление вручную как часть конфигурации модуля.</span><span class="sxs-lookup"><span data-stu-id="50a95-135">The developer adds the mapping manually as part of the module configuration.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="50a95-136">В этом примере MAC-адрес используется как уникальный идентификатор устройства и сопоставляет его с удостоверением устройства в центре IoT.</span><span class="sxs-lookup"><span data-stu-id="50a95-136">This sample uses a MAC address as a unique device identifier and correlates it with an IoT Hub device identity.</span></span> <span data-ttu-id="50a95-137">В то же время вы можете написать собственный модуль, где будет использоваться другой уникальный идентификатор.</span><span class="sxs-lookup"><span data-stu-id="50a95-137">However, you can write your own module that uses a different unique identifier.</span></span> <span data-ttu-id="50a95-138">Например, устройства могут иметь уникальные серийные номера или данные телеметрии могут содержать уникальное внедренные имена устройств.</span><span class="sxs-lookup"><span data-stu-id="50a95-138">For example, your devices may have unique serial numbers or the telemetry data may include a unique embedded device name.</span></span>
+
+### <a name="iot-hub-communication-module"></a><span data-ttu-id="50a95-139">Модуль связи центра IoT</span><span class="sxs-lookup"><span data-stu-id="50a95-139">IoT Hub communication module</span></span>
+
+<span data-ttu-id="50a95-140">Этот модуль принимает сообщения со свойством ключа Центра Интернета вещей, назначенным предыдущим модулем.</span><span class="sxs-lookup"><span data-stu-id="50a95-140">This module takes messages with an IoT Hub device key property that was assigned by the previous module.</span></span> <span data-ttu-id="50a95-141">Модуль отправляет содержимое сообщения Центра Интернета вещей при помощи протокола HTTP.</span><span class="sxs-lookup"><span data-stu-id="50a95-141">The module sends the message content to IoT Hub using the HTTP protocol.</span></span> <span data-ttu-id="50a95-142">HTTP — один из трех протоколов, понятных для центра IoT.</span><span class="sxs-lookup"><span data-stu-id="50a95-142">HTTP is one of the three protocols understood by IoT Hub.</span></span>
+
+<span data-ttu-id="50a95-143">Вместо установки подключения для каждого виртуального устройства этот модуль устанавливает одиночное подключение HTTP между шлюзом и Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50a95-143">Instead of opening a connection for each simulated device, this module opens a single HTTP connection from the gateway to the IoT hub.</span></span> <span data-ttu-id="50a95-144">Затем через это подключение модуль мультиплексирует подключения всех виртуальных устройств.</span><span class="sxs-lookup"><span data-stu-id="50a95-144">The module then multiplexes connections from all the simulated devices over that connection.</span></span> <span data-ttu-id="50a95-145">Такой подход позволяет подключить множество устройств при помощи одного шлюза.</span><span class="sxs-lookup"><span data-stu-id="50a95-145">This approach enables a single gateway to connect many more devices.</span></span>
+
+## <a name="before-you-get-started"></a><span data-ttu-id="50a95-146">Необходимые условия</span><span class="sxs-lookup"><span data-stu-id="50a95-146">Before you get started</span></span>
+
+<span data-ttu-id="50a95-147">Перед началом работы необходимо выполнить следующие действия:</span><span class="sxs-lookup"><span data-stu-id="50a95-147">Before you get started, you must:</span></span>
+
+* <span data-ttu-id="50a95-148">[Создайте Центр Интернета вещей][lnk-create-hub] в подписке Azure (для выполнения указаний данного пошагового руководства необходимо имя центра).</span><span class="sxs-lookup"><span data-stu-id="50a95-148">[Create an IoT hub][lnk-create-hub] in your Azure subscription, you need the name of your hub to complete this walkthrough.</span></span> <span data-ttu-id="50a95-149">Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="50a95-149">If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.</span></span>
+* <span data-ttu-id="50a95-150">Добавьте в центр IoT два устройства и запишите их идентификаторы и ключи устройств.</span><span class="sxs-lookup"><span data-stu-id="50a95-150">Add two devices to your IoT hub and make a note of their ids and device keys.</span></span> <span data-ttu-id="50a95-151">Для добавления устройств в Центр Интернета вещей, созданный на предыдущем шаге, и получения их ключей, можно использовать такие средства, как [обозреватель устройств][lnk-device-explorer] или [iothub-explorer][lnk-iothub-explorer].</span><span class="sxs-lookup"><span data-stu-id="50a95-151">You can use the [device explorer][lnk-device-explorer] or [iothub-explorer][lnk-iothub-explorer] tool to add your devices to the IoT hub you created in the previous step and retrieve their keys.</span></span>
+
+![][2]
+
+<!-- Images -->
+[1]: media/iot-hub-iot-edge-simulated-selector/image1.png
+[2]: media/iot-hub-iot-edge-simulated-selector/image2.png
+
+<!-- Links -->
+<span data-ttu-id="50a95-152">[примером отправки в облако виртуальных устройств]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md</span><span class="sxs-lookup"><span data-stu-id="50a95-152">[Simulated Device Cloud Upload sample]: https://github.com/Azure/iot-edge/blob/master/samples/simulated_device_cloud_upload/README.md</span></span>
+[lnk-sdk]: https://github.com/Azure/iot-edge
+[lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
+[lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+[lnk-iothub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
+[lnk-create-hub]: ../articles/iot-hub/iot-hub-create-through-portal.md

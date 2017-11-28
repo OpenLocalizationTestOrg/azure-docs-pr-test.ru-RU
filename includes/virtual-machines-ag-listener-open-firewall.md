@@ -1,0 +1,18 @@
+<span data-ttu-id="e7e10-101">На этом шаге создается правило брандмауэра для открытия порта пробы для конечной точки с балансировкой нагрузки (59999, как указано выше) и правило для открытия порта прослушивателя группы доступности.</span><span class="sxs-lookup"><span data-stu-id="e7e10-101">In this step, you create a firewall rule to open the probe port for the load-balanced endpoint (59999, as specified earlier) and another rule to open the availability group listener port.</span></span> <span data-ttu-id="e7e10-102">Так как вы создали конечную точку с балансировкой нагрузки на виртуальных машинах, которые содержат реплики группы доступности, необходимо открыть порт пробы и порт прослушивателя на соответствующих виртуальных машинах.</span><span class="sxs-lookup"><span data-stu-id="e7e10-102">Because you created the load-balanced endpoint on the VMs that contain availability group replicas, you need to open the probe port and the listener port on the respective VMs.</span></span>
+
+1. <span data-ttu-id="e7e10-103">На виртуальных машинах, на которых размещены реплики, запустите **брандмауэр Windows в режиме повышенной безопасности**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-103">On VMs that host replicas, start **Windows Firewall with Advanced Security**.</span></span>
+
+2. <span data-ttu-id="e7e10-104">Щелкните правой кнопкой мыши **Правила для входящего трафика**, а затем — **Создать правило**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-104">Right-click **Inbound Rules**, and then click **New Rule**.</span></span>
+
+3. <span data-ttu-id="e7e10-105">На странице **Тип правила** выберите **Порт** и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-105">On the **Rule Type** page, select **Port**, and then click **Next**.</span></span>
+
+4. <span data-ttu-id="e7e10-106">На странице **Протокол и порты** выберите **TCP** и введите **59999** в поле **Specific local ports** (Определенные локальные порты), а затем щелкните **Далее**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-106">On the **Protocol and Ports** page, select **TCP**, type **59999** in the **Specific local ports** box, and then click **Next**.</span></span>
+
+5. <span data-ttu-id="e7e10-107">На странице **Действие** оставьте установленным флажок **Разрешить подключение** и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-107">On the **Action** page, keep **Allow the connection** selected, and then click **Next**.</span></span>
+
+6. <span data-ttu-id="e7e10-108">На странице **Профиль** примите параметры по умолчанию и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-108">On the **Profile** page, accept the default settings, and then click **Next**.</span></span>
+
+7. <span data-ttu-id="e7e10-109">На странице **Имя** в текстовом поле **Имя** укажите имя правила, например **Порт пробы прослушивателя AlwaysOn**, и щелкните **Готово**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-109">On the **Name** page, in the **Name** text box, specify a rule name, such as **Always On Listener Probe Port**, and then click **Finish**.</span></span>
+
+8. <span data-ttu-id="e7e10-110">Повторите предыдущие действия для порта прослушивателя группы доступности (как указано выше в параметре сценария $EndpointPort), а затем укажите соответствующее имя правила, например **Порт прослушивателя AlwaysOn**.</span><span class="sxs-lookup"><span data-stu-id="e7e10-110">Repeat the preceding steps for the availability group listener port (as specified earlier in the $EndpointPort parameter of the script), and then specify an appropriate rule name, such as **Always On Listener Port**.</span></span>
+

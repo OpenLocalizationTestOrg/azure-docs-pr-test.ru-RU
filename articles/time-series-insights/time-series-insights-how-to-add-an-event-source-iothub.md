@@ -1,0 +1,73 @@
+---
+title: "aaaHow tooadd среде центра IoT tooyour источника событий аналитики ряда времени Azure | Документы Microsoft"
+description: "В этом учебнике описано, как tooadd, то есть источник события подключаться tooan среды аналитики ряда времени tooyour центра IoT"
+keywords: 
+services: time-series-insights
+documentationcenter: 
+author: sandshadow
+manager: almineev
+editor: cgronlun
+ms.assetid: 
+ms.service: time-series-insights
+ms.devlang: na
+ms.topic: how-to-article
+ms.tgt_pltfrm: na
+ms.workload: big-data
+ms.date: 04/19/2017
+ms.author: edett
+ms.openlocfilehash: c626f9653d1c012360120fa9fc3d211d7d5beb5b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="how-tooadd-an-iot-hub-event-source"></a><span data-ttu-id="7b55a-103">Как tooadd источник событий центра IoT</span><span class="sxs-lookup"><span data-stu-id="7b55a-103">How tooadd an IoT Hub event source</span></span>
+
+<span data-ttu-id="7b55a-104">В этом учебнике описано, как toouse hello Azure портала tooadd источник событий, который считывает из среды центра IoT tooyour аналитики ряда времени.</span><span class="sxs-lookup"><span data-stu-id="7b55a-104">This tutorial covers how toouse hello Azure portal tooadd an event source that reads from an IoT Hub tooyour Time Series Insights environment.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="7b55a-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="7b55a-105">Prerequisites</span></span>
+
+<span data-ttu-id="7b55a-106">Создали центр IoT и написании tooit события.</span><span class="sxs-lookup"><span data-stu-id="7b55a-106">You have created an IoT Hub and are writing events tooit.</span></span> <span data-ttu-id="7b55a-107">Дополнительные сведения о Центрах Интернета вещей см. по адресу <https://azure.microsoft.com/services/iot-hub/>.</span><span class="sxs-lookup"><span data-stu-id="7b55a-107">For more information on IoT Hubs, see <https://azure.microsoft.com/services/iot-hub/></span></span>
+
+> <span data-ttu-id="7b55a-108">[Групп потребителей] Каждый источник события времени серии аналитики должен toohave собственную выделенную группу клиентов, не используется совместно с другими потребителей.</span><span class="sxs-lookup"><span data-stu-id="7b55a-108">[Consumer Groups] Each Time Series Insights event source needs toohave its own dedicated consumer group that is not shared with any other consumers.</span></span> <span data-ttu-id="7b55a-109">Если несколько агентов чтения использовать события из hello одной группе потребителей, все читателям toosee вероятность сбоев.</span><span class="sxs-lookup"><span data-stu-id="7b55a-109">If multiple readers consume events from hello same consumer group, all readers are likely toosee failures.</span></span> <span data-ttu-id="7b55a-110">Дополнительные сведения см. в разделе hello [руководстве для разработчиков центра IoT](../iot-hub/iot-hub-devguide.md).</span><span class="sxs-lookup"><span data-stu-id="7b55a-110">For details, see hello [IoT Hub developer guide](../iot-hub/iot-hub-devguide.md).</span></span>
+
+## <a name="choose-an-import-option"></a><span data-ttu-id="7b55a-111">Выбор параметра импорта</span><span class="sxs-lookup"><span data-stu-id="7b55a-111">Choose an Import option</span></span>
+
+<span data-ttu-id="7b55a-112">Hello параметры для источника события hello можно ввести вручную или центр IoT могут быть выбраны из центры IoT hello, доступных tooyou.</span><span class="sxs-lookup"><span data-stu-id="7b55a-112">hello settings for hello event source can be entered manually or an IoT hub can be selected from hello IoT hubs that are available tooyou.</span></span>
+<span data-ttu-id="7b55a-113">В hello **параметр импорта** селектора, выберите один из следующих вариантов hello:</span><span class="sxs-lookup"><span data-stu-id="7b55a-113">In hello **Import Option** selector, choose one of hello following options:</span></span>
+
+* <span data-ttu-id="7b55a-114">Указать параметры Центра Интернета вещей вручную.</span><span class="sxs-lookup"><span data-stu-id="7b55a-114">Provide IoT Hub settings manually</span></span>
+* <span data-ttu-id="7b55a-115">Использовать Центр Интернета вещей из доступных подписок.</span><span class="sxs-lookup"><span data-stu-id="7b55a-115">Use IoT Hub from available subscriptions</span></span>
+
+### <a name="select-an-available-iot-hub"></a><span data-ttu-id="7b55a-116">Выбор доступного Центра Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="7b55a-116">Select an available IoT Hub</span></span>
+
+<span data-ttu-id="7b55a-117">Hello следующей таблице поясняется каждого параметра во вкладке hello новый источник события с ее описанием при выборе доступных центра IoT источник событий.</span><span class="sxs-lookup"><span data-stu-id="7b55a-117">hello following table explains each option in hello New Event Source tab with its description when selecting an available IoT Hub as an event source:</span></span>
+
+| <span data-ttu-id="7b55a-118">Имя свойства</span><span class="sxs-lookup"><span data-stu-id="7b55a-118">PROPERTY NAME</span></span> | <span data-ttu-id="7b55a-119">Описание</span><span class="sxs-lookup"><span data-stu-id="7b55a-119">DESCRIPTION</span></span> |
+| --- | --- |
+| <span data-ttu-id="7b55a-120">Имя источника события</span><span class="sxs-lookup"><span data-stu-id="7b55a-120">Event source name</span></span> | <span data-ttu-id="7b55a-121">Hello имя источника события.</span><span class="sxs-lookup"><span data-stu-id="7b55a-121">hello name of your event source.</span></span> <span data-ttu-id="7b55a-122">Это имя должно быть уникальным в среде Time Series Insights.</span><span class="sxs-lookup"><span data-stu-id="7b55a-122">This name must be unique within your Time Series Insights environment.</span></span>
+| <span data-ttu-id="7b55a-123">Источник</span><span class="sxs-lookup"><span data-stu-id="7b55a-123">Source</span></span> | <span data-ttu-id="7b55a-124">Выберите **центр IoT** toocreate источник событий центра IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-124">Choose **IoT Hub** toocreate an IoT Hub event source.</span></span>
+| <span data-ttu-id="7b55a-125">идентификатор подписки;</span><span class="sxs-lookup"><span data-stu-id="7b55a-125">Subscription Id</span></span> | <span data-ttu-id="7b55a-126">Выберите подписку hello, в котором был создан этот центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-126">Select hello subscription in which this IoT hub was created.</span></span>
+| <span data-ttu-id="7b55a-127">IoT hub name (Имя Центра Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="7b55a-127">IoT hub name</span></span> | <span data-ttu-id="7b55a-128">Выберите имя hello hello центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-128">Select hello name of hello IoT Hub.</span></span>
+| <span data-ttu-id="7b55a-129">IoT hub policy name (Имя политики Центра Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="7b55a-129">IoT hub policy name</span></span> | <span data-ttu-id="7b55a-130">Выберите политику hello общего доступа, которую можно найти на вкладку Параметры центра IoT hello. Каждой политике общего доступа присваивается имя, а также для нее задаются разрешения и ключи доступа.</span><span class="sxs-lookup"><span data-stu-id="7b55a-130">Select hello shared access policy, which can be found on hello IoT Hub settings tab. Each shared access policy has a name, permissions that you set, and access keys.</span></span> <span data-ttu-id="7b55a-131">Hello общей политики доступа для источника события *должен* имеют **подключения службы** разрешения.</span><span class="sxs-lookup"><span data-stu-id="7b55a-131">hello shared access policy for your event source *must* have **service connect** permissions.</span></span>
+| <span data-ttu-id="7b55a-132">Группа потребителей Центра Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="7b55a-132">IoT hub consumer group</span></span> | <span data-ttu-id="7b55a-133">события tooread группы потребителей Hello из hello центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-133">hello Consumer Group tooread events from hello IoT Hub.</span></span> <span data-ttu-id="7b55a-134">Это настоятельно рекомендуется toouse выделенную группу клиентов для источника событий.</span><span class="sxs-lookup"><span data-stu-id="7b55a-134">It is highly recommended toouse a dedicated consumer group for your event source.</span></span>
+
+### <a name="provide-iot-hub-settings-manually"></a><span data-ttu-id="7b55a-135">Указать параметры Центра Интернета вещей вручную.</span><span class="sxs-lookup"><span data-stu-id="7b55a-135">Provide IoT Hub settings manually</span></span>
+
+<span data-ttu-id="7b55a-136">Hello следующей таблице поясняются каждого свойства на вкладке hello новый источник события с ее описанием при вводе параметров вручную:</span><span class="sxs-lookup"><span data-stu-id="7b55a-136">hello following table explains each property in hello New Event Source tab with its description when entering settings manually:</span></span>
+
+| <span data-ttu-id="7b55a-137">Имя свойства</span><span class="sxs-lookup"><span data-stu-id="7b55a-137">PROPERTY NAME</span></span> | <span data-ttu-id="7b55a-138">Описание</span><span class="sxs-lookup"><span data-stu-id="7b55a-138">DESCRIPTION</span></span> |
+| --- | --- |
+| <span data-ttu-id="7b55a-139">Имя источника события</span><span class="sxs-lookup"><span data-stu-id="7b55a-139">Event source name</span></span> | <span data-ttu-id="7b55a-140">Hello имя источника события.</span><span class="sxs-lookup"><span data-stu-id="7b55a-140">hello name of your event source.</span></span> <span data-ttu-id="7b55a-141">Это имя должно быть уникальным в среде Time Series Insights.</span><span class="sxs-lookup"><span data-stu-id="7b55a-141">This name must be unique within your Time Series Insights environment.</span></span>
+| <span data-ttu-id="7b55a-142">Источник</span><span class="sxs-lookup"><span data-stu-id="7b55a-142">Source</span></span> | <span data-ttu-id="7b55a-143">Выберите **центр IoT** toocreate источник событий центра IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-143">Choose **IoT Hub** toocreate an IoT Hub event source.</span></span>
+| <span data-ttu-id="7b55a-144">идентификатор подписки;</span><span class="sxs-lookup"><span data-stu-id="7b55a-144">Subscription Id</span></span> | <span data-ttu-id="7b55a-145">Hello подписка, в которой был создан этот центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-145">hello subscription in which this IoT hub was created.</span></span>
+| <span data-ttu-id="7b55a-146">Группа ресурсов</span><span class="sxs-lookup"><span data-stu-id="7b55a-146">Resource group</span></span> | <span data-ttu-id="7b55a-147">Hello подписка, в которой был создан этот центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-147">hello subscription in which this IoT hub was created.</span></span>
+| <span data-ttu-id="7b55a-148">IoT hub name (Имя Центра Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="7b55a-148">IoT hub name</span></span> | <span data-ttu-id="7b55a-149">имя вашего центра IoT Hello.</span><span class="sxs-lookup"><span data-stu-id="7b55a-149">hello name of your IoT Hub.</span></span> <span data-ttu-id="7b55a-150">При создании вы также дали Центру Интернета вещей определенное имя.</span><span class="sxs-lookup"><span data-stu-id="7b55a-150">When you created your IoT hub, you also gave it a specific name</span></span>
+| <span data-ttu-id="7b55a-151">IoT hub policy name (Имя политики Центра Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="7b55a-151">IoT hub policy name</span></span> | <span data-ttu-id="7b55a-152">политика доступа Hello совместно, которые могут быть созданы на вкладку Параметры центра IoT hello. Каждой политике общего доступа присваивается имя, а также для нее задаются разрешения и ключи доступа.</span><span class="sxs-lookup"><span data-stu-id="7b55a-152">hello shared access policy, which can be created on hello IoT Hub settings tab. Each shared access policy has a name, permissions that you set, and access keys.</span></span> <span data-ttu-id="7b55a-153">Hello общей политики доступа для источника события *должен* имеют **подключения службы** разрешения.</span><span class="sxs-lookup"><span data-stu-id="7b55a-153">hello shared access policy for your event source *must* have **service connect** permissions.</span></span>
+| <span data-ttu-id="7b55a-154">Ключ политики Центра Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="7b55a-154">IoT hub policy key</span></span> | <span data-ttu-id="7b55a-155">пространство имен Service Bus tooauthenticate доступа toohello использовать ключ Hello общего доступа.</span><span class="sxs-lookup"><span data-stu-id="7b55a-155">hello Shared Access key used tooauthenticate access toohello Service Bus namespace.</span></span> <span data-ttu-id="7b55a-156">Тип hello первичный или вторичный ключ здесь.</span><span class="sxs-lookup"><span data-stu-id="7b55a-156">Type hello primary or secondary key here.</span></span>
+| <span data-ttu-id="7b55a-157">Группа потребителей Центра Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="7b55a-157">IoT hub consumer group</span></span> | <span data-ttu-id="7b55a-158">события tooread группы потребителей Hello из hello центр IoT.</span><span class="sxs-lookup"><span data-stu-id="7b55a-158">hello Consumer Group tooread events from hello IoT Hub.</span></span> <span data-ttu-id="7b55a-159">Это настоятельно рекомендуется toouse выделенную группу клиентов для источника событий.</span><span class="sxs-lookup"><span data-stu-id="7b55a-159">It is highly recommended toouse a dedicated consumer group for your event source.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="7b55a-160">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7b55a-160">Next steps</span></span>
+
+1. <span data-ttu-id="7b55a-161">Добавить среду данных политики доступа tooyour [данных определить политики доступа](time-series-insights-data-access.md)</span><span class="sxs-lookup"><span data-stu-id="7b55a-161">Add a data access policy tooyour environment [Define data access policies](time-series-insights-data-access.md)</span></span>
+1. <span data-ttu-id="7b55a-162">Доступ к среде в hello [портала аналитики ряда времени](https://insights.timeseries.azure.com)</span><span class="sxs-lookup"><span data-stu-id="7b55a-162">Access your environment in hello [Time Series Insights Portal](https://insights.timeseries.azure.com)</span></span>

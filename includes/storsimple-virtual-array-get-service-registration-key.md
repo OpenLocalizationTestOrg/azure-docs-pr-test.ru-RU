@@ -1,0 +1,7 @@
+#### <a name="to-get-the-storsimple-service-registration-key"></a><span data-ttu-id="327b7-101">Получение регистрационного ключа службы StorSimple</span><span class="sxs-lookup"><span data-stu-id="327b7-101">To get the StorSimple service registration key</span></span>
+
+1.  <span data-ttu-id="327b7-102">В колонке **Диспетчер устройств StorSimple** щелкните созданную службу.</span><span class="sxs-lookup"><span data-stu-id="327b7-102">On the **StorSimple Device Manager** blade, click the service that you created.</span></span> <span data-ttu-id="327b7-103">Откроется новая колонка справа.</span><span class="sxs-lookup"><span data-stu-id="327b7-103">This opens up a new blade to the right.</span></span>
+
+2.  <span data-ttu-id="327b7-104">В открывшейся колонке щелкните **Управление &gt;**  **Ключи**.</span><span class="sxs-lookup"><span data-stu-id="327b7-104">In the blade that opens up, click **Manage &gt;** **Keys**.</span></span>
+
+3.  <span data-ttu-id="327b7-105">Щелкните значок копирования, чтобы скопировать регистрационный ключ службы и сохранить его для последующего использования.</span><span class="sxs-lookup"><span data-stu-id="327b7-105">Click the copy icon to copy the service registration key and save it for later use.</span></span>

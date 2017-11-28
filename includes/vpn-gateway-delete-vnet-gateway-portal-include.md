@@ -1,0 +1,17 @@
+### <a name="step-1-navigate-to-the-virtual-network-gateway"></a><span data-ttu-id="60ca3-101">Шаг 1. Переход к шлюзу виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="60ca3-101">Step 1: Navigate to the virtual network gateway</span></span>
+
+1. <span data-ttu-id="60ca3-102">На [портале Azure](https://portal.azure.com) выберите **Все ресурсы**.</span><span class="sxs-lookup"><span data-stu-id="60ca3-102">In the [Azure portal](https://portal.azure.com), navigate to **All resources**.</span></span> 
+2. <span data-ttu-id="60ca3-103">Чтобы открыть колонку шлюза виртуальной сети, перейдите к шлюзу виртуальной сети, который требуется удалить, и щелкните его.</span><span class="sxs-lookup"><span data-stu-id="60ca3-103">To open the virtual network gateway blade, navigate to the virtual network gateway that you want to delete and click it.</span></span>
+
+### <a name="step-2-delete-connections"></a><span data-ttu-id="60ca3-104">Шаг 2. Удаление подключений</span><span class="sxs-lookup"><span data-stu-id="60ca3-104">Step 2: Delete connections</span></span>
+
+1. <span data-ttu-id="60ca3-105">В колонке шлюза виртуальной сети щелкните **Подключения**, чтобы просмотреть все подключения к шлюзу.</span><span class="sxs-lookup"><span data-stu-id="60ca3-105">On the blade for your virtual network gateway, click **Connections** to view all connections to the gateway.</span></span>
+2. <span data-ttu-id="60ca3-106">Нажмите кнопку **...**</span><span class="sxs-lookup"><span data-stu-id="60ca3-106">Click the **'...'**</span></span> <span data-ttu-id="60ca3-107">в строке с именем подключения и выберите **Удалить** из раскрывающегося списка.</span><span class="sxs-lookup"><span data-stu-id="60ca3-107">on the row of the name of the connection, then select **Delete** from the dropdown.</span></span>
+3. <span data-ttu-id="60ca3-108">Нажмите кнопку **Да**, чтобы подтвердить удаление подключения.</span><span class="sxs-lookup"><span data-stu-id="60ca3-108">Click **Yes** to confirm that you want to delete the connection.</span></span> <span data-ttu-id="60ca3-109">Если имеется несколько подключений, удалите их все.</span><span class="sxs-lookup"><span data-stu-id="60ca3-109">If you have multiple connections, delete each connection.</span></span>
+
+### <a name="step-3-delete-the-virtual-network-gateway"></a><span data-ttu-id="60ca3-110">Шаг 3. Удаление шлюза виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="60ca3-110">Step 3: Delete the virtual network gateway</span></span>
+
+<span data-ttu-id="60ca3-111">Учтите: если кроме конфигурации типа "сеть — сеть" в этой виртуальной сети есть конфигурация типа "точка — сеть", удаление шлюза виртуальной сети приведет к автоматическому отключению всех клиентов P2S без предупреждения.</span><span class="sxs-lookup"><span data-stu-id="60ca3-111">Be aware that if you have a P2S configuration to this VNet in addition to your S2S configuration, deleting the virtual network gateway will automatically disconnect all P2S clients without warning.</span></span>
+
+1. <span data-ttu-id="60ca3-112">В колонке шлюза виртуальной сети щелкните **Обзор**.</span><span class="sxs-lookup"><span data-stu-id="60ca3-112">On the virtual network gateway blade, click **Overview**.</span></span>
+2. <span data-ttu-id="60ca3-113">В колонке **Обзор** щелкните **Удалить**, чтобы удалить этот шлюз.</span><span class="sxs-lookup"><span data-stu-id="60ca3-113">On the **Overview** blade, click **Delete** to delete the gateway.</span></span>

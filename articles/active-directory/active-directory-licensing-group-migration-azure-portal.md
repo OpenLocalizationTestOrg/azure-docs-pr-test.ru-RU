@@ -1,0 +1,91 @@
+---
+title: "Как перевести отдельных лицензированных пользователей в группу в Azure Active Directory | Документация Майкрософт"
+description: "Как перейти с отдельных пользовательских лицензий на групповое лицензирование с помощью Azure Active Directory"
+services: active-directory
+keywords: "Лицензирование Azure AD"
+documentationcenter: 
+author: curtand
+manager: femila
+editor: 
+ms.assetid: 
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 06/05/2017
+ms.author: curtand
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 6b77dd4e9a6d361a05382397e89b575896fdad84
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/11/2017
+---
+# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a><span data-ttu-id="a8634-104">Как добавить лицензированных пользователей в групповое лицензирование в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a8634-104">How to add licensed users to a group for licensing in Azure Active Directory</span></span>
+
+<span data-ttu-id="a8634-105">Возможно, у вас есть существующие лицензии, развернутые для пользователей в организациях путем "прямого назначения", то есть с помощью сценариев PowerShell или других средств для назначения отдельных пользовательских лицензий.</span><span class="sxs-lookup"><span data-stu-id="a8634-105">You may have existing licenses deployed to users in the organizations via “direct assignment”; that is, using PowerShell scripts or other tools to assign individual user licenses.</span></span> <span data-ttu-id="a8634-106">Если вы хотите начать использовать групповое лицензирование для управления лицензиями в вашей организации, вам потребуется план миграции для беспроблемного перехода от существующих решений лицензирования к групповому лицензированию.</span><span class="sxs-lookup"><span data-stu-id="a8634-106">If you would like to start using group-based licensing to manage licenses in your organization, you will need a migration plan to seamlessly replace existing solutions with group-based licensing.</span></span>
+
+<span data-ttu-id="a8634-107">Крайне важно избегать ситуаций, когда переход на групповое лицензирование приводит к временной потере пользователями их текущих назначенных лицензий.</span><span class="sxs-lookup"><span data-stu-id="a8634-107">The most important thing to keep in mind is that you should avoid a situation where migrating to group-based licensing will result in users temporarily losing their currently assigned licenses.</span></span> <span data-ttu-id="a8634-108">Чтобы исключить риск потери пользователями доступа к службам и собственным данным, следует избегать любых процессов, которые могут привести к удалению лицензий.</span><span class="sxs-lookup"><span data-stu-id="a8634-108">Any process that may result in removal of licenses should be avoided to remove the risk of users losing access to services and their data.</span></span>
+
+## <a name="recommended-migration-process"></a><span data-ttu-id="a8634-109">Рекомендуемый процесс миграции</span><span class="sxs-lookup"><span data-stu-id="a8634-109">Recommended migration process</span></span>
+
+1. <span data-ttu-id="a8634-110">У вас имеется существующая служба автоматизации (например, PowerShell), управляющая назначением и удалением лицензий для пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-110">You have existing automation (for example, PowerShell) managing license assignment and removal for users.</span></span> <span data-ttu-id="a8634-111">Оставьте ее работающей как есть.</span><span class="sxs-lookup"><span data-stu-id="a8634-111">Leave it running as is.</span></span>
+
+2. <span data-ttu-id="a8634-112">Создайте новую группу лицензирования (или выберите одну из существующих) и добавьте в нее всех необходимых пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-112">Create a new licensing group (or decide which existing groups to use) and make sure that all required users are added as members.</span></span>
+
+3. <span data-ttu-id="a8634-113">Назначьте необходимые лицензии этим группам; состояние лицензирования должно быть тем же, которое существующая служба автоматизации (например, PowerShell) применяет в отношении этих пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-113">Assign the required licenses to those groups; your goal should be to reflect the same licensing state your existing automation (for example, PowerShell) is applying to those users.</span></span>
+
+4. <span data-ttu-id="a8634-114">Убедитесь, что лицензии применены ко всем пользователям в этих группах.</span><span class="sxs-lookup"><span data-stu-id="a8634-114">Verify that licenses have been applied to all users in those groups.</span></span> <span data-ttu-id="a8634-115">Это можно сделать, проверив состояние обработки для каждой группы и журналы аудита.</span><span class="sxs-lookup"><span data-stu-id="a8634-115">This can be done by checking the processing state on each group and by checking Audit Logs.</span></span>
+
+  - <span data-ttu-id="a8634-116">Выборочно проверить отдельных пользователей можно, просмотрев сведения об их лицензиях.</span><span class="sxs-lookup"><span data-stu-id="a8634-116">You can spot check individual users by looking at their license details.</span></span> <span data-ttu-id="a8634-117">Вы увидите, что они используют одинаковые лицензии, назначенные "напрямую" и "унаследованные" от групп.</span><span class="sxs-lookup"><span data-stu-id="a8634-117">You will see that they have the same licenses assigned “directly” and “inherited” from groups.</span></span>
+
+  - <span data-ttu-id="a8634-118">[Проверить способ назначения лицензий пользователям](active-directory-licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses) можно с помощью скрипта PowerShell.</span><span class="sxs-lookup"><span data-stu-id="a8634-118">You can run a PowerShell script to [verify how licenses are assigned to users](active-directory-licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).</span></span>
+
+  - <span data-ttu-id="a8634-119">Когда одна и та же лицензия назначается пользователю напрямую и через группу, пользователь использует только одну лицензию.</span><span class="sxs-lookup"><span data-stu-id="a8634-119">When the same product license is assigned to the user both directly and through a group, only one license is consumed by the user.</span></span> <span data-ttu-id="a8634-120">Таким образом, для миграции дополнительные лицензии не требуются.</span><span class="sxs-lookup"><span data-stu-id="a8634-120">Hence no additional licenses are required to perform migration.</span></span>
+
+5. <span data-ttu-id="a8634-121">Убедитесь, что все лицензии назначены успешно, проверив каждую группу на наличие пользователей в состоянии ошибки.</span><span class="sxs-lookup"><span data-stu-id="a8634-121">Verify that no license assignments failed by checking each group for users in error state.</span></span> <span data-ttu-id="a8634-122">Дополнительные сведения см. в разделе [Identifying and resolving license assignment problems when using groups in Azure Active Directory](active-directory-licensing-group-problem-resolution-azure-portal.md) (Поиск и устранение проблем с лицензированием группы в Azure Active Directory).</span><span class="sxs-lookup"><span data-stu-id="a8634-122">For more information, see [Identifying and resolving license problems for a group](active-directory-licensing-group-problem-resolution-azure-portal.md).</span></span>
+
+6. <span data-ttu-id="a8634-123">Рекомендуем удалить исходные прямые назначения. Это рекомендуется сделать постепенно, в несколько этапов, чтобы сначала понаблюдать за результатами на одной подгруппе пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-123">Consider removing the original direct assignments; you may want to do it gradually, in “waves”, to monitor the outcome on a subset of users first.</span></span>
+
+  <span data-ttu-id="a8634-124">Вы можете оставить исходные прямые назначения пользователей, но тогда у пользователей, вышедших из групп лицензирования, сохранятся исходные лицензии, что, возможно, является нежелательным.</span><span class="sxs-lookup"><span data-stu-id="a8634-124">You could leave the original direct assignments on users, but when the users leave their licensed groups they will still retain the original license, which is possibly not want you want.</span></span>
+
+## <a name="an-example"></a><span data-ttu-id="a8634-125">Пример</span><span class="sxs-lookup"><span data-stu-id="a8634-125">An example</span></span>
+
+<span data-ttu-id="a8634-126">Имеется организация с 1000 пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-126">We have an organization with 1,000 users.</span></span> <span data-ttu-id="a8634-127">Всем пользователям требуются лицензии Enterprise Mobility + Security (EMS).</span><span class="sxs-lookup"><span data-stu-id="a8634-127">All users require Enterprise Mobility + Security (EMS) licenses.</span></span> <span data-ttu-id="a8634-128">200 пользователей, работающим в финансовом отделе, нужны лицензии "Office 365 корпоративный E3".</span><span class="sxs-lookup"><span data-stu-id="a8634-128">200 users are in the Finance Department and require Office 365 Enterprise E3 licenses.</span></span> <span data-ttu-id="a8634-129">У нас есть работающий в локальной среде скрипт PowerShell, который добавляет и удаляет лицензии пользователей по мере их появления и выхода.</span><span class="sxs-lookup"><span data-stu-id="a8634-129">We have a PowerShell script running on premises adding and removing licenses from users as they come and go.</span></span> <span data-ttu-id="a8634-130">Мы хотим заменить этот скрипт механизмом группового лицензирования, чтобы лицензиями автоматически управляла служба Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a8634-130">We want to replace the script with group-based licensing so licenses are managed automatically by Azure AD.</span></span>
+
+<span data-ttu-id="a8634-131">Ниже описан процесс миграции.</span><span class="sxs-lookup"><span data-stu-id="a8634-131">Here is what the migration process could look like:</span></span>
+
+1. <span data-ttu-id="a8634-132">С помощью портала Azure назначьте лицензии EMS группе **Все пользователи** в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a8634-132">Using the Azure portal assign the EMS license to the **All users** group in Azure AD.</span></span> <span data-ttu-id="a8634-133">Назначьте лицензию E3 группе **Финансовый отдел**, в которую входят все необходимые пользователи.</span><span class="sxs-lookup"><span data-stu-id="a8634-133">Assign the E3 license to the **Finance department** group that contains all the required users.</span></span>
+
+2. <span data-ttu-id="a8634-134">Для каждой группы подтвердите, что назначение лицензий завершено для всех пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-134">For each group, confirm that license assignment has completed for all users.</span></span> <span data-ttu-id="a8634-135">Перейдите в колонку для каждой группы, выберите **Лицензии**и проверьте состояние обработки в верхней части колонки **Лицензии**.</span><span class="sxs-lookup"><span data-stu-id="a8634-135">Go to the blade for each group, select **Licenses**, and check the processing status at the top of the **Licenses** blade.</span></span>
+
+  - <span data-ttu-id="a8634-136">Найдите текст "Latest license changes have been applied to all users" (Последние изменения лицензии применены ко всем пользователям), подтверждающий, что обработка завершена.</span><span class="sxs-lookup"><span data-stu-id="a8634-136">Look for “Latest license changes have been applied to all users" to confirm processing has completed.</span></span>
+
+  - <span data-ttu-id="a8634-137">Проверьте, нет ли в верхней части экрана уведомления о пользователях, которым не были успешно назначены лицензии.</span><span class="sxs-lookup"><span data-stu-id="a8634-137">Look for a notification on top about any users for whom licenses may have not been successfully assigned.</span></span> <span data-ttu-id="a8634-138">Возможно, для некоторых пользователей не осталось лицензий?</span><span class="sxs-lookup"><span data-stu-id="a8634-138">Did we run out of licenses for some users?</span></span> <span data-ttu-id="a8634-139">Или некоторым пользователям присвоены конфликтующие лицензионные номера SKU, что препятствует наследованию лицензий группы?</span><span class="sxs-lookup"><span data-stu-id="a8634-139">Do some users have conflicting license SKUs that prevent them from inheriting group licenses?</span></span>
+
+3. <span data-ttu-id="a8634-140">Выборочно проверьте нескольких пользователей, чтобы убедиться, что у них есть и лицензии, назначенные им напрямую, и лицензии группы.</span><span class="sxs-lookup"><span data-stu-id="a8634-140">Spot check some users to verify that they have both the direct and group licenses applied.</span></span> <span data-ttu-id="a8634-141">Перейдите в колонку для пользователя, выберите **Лицензии** и проверьте состояние лицензий.</span><span class="sxs-lookup"><span data-stu-id="a8634-141">Go to the blade for a user, select **Licenses**, and examine the state of licenses.</span></span>
+
+  - <span data-ttu-id="a8634-142">Это ожидаемое состояние пользователя во время миграции:</span><span class="sxs-lookup"><span data-stu-id="a8634-142">This is the expected user state during migration:</span></span>
+
+      ![Ожидаемое состояние пользователя](media/active-directory-licensing-group-migration-azure-portal/expected-user-state.png)
+
+  <span data-ttu-id="a8634-144">Это подтверждает, что у пользователя есть как назначенные напрямую, так и унаследованные лицензии.</span><span class="sxs-lookup"><span data-stu-id="a8634-144">This confirms that the user has both direct and inherited licenses.</span></span> <span data-ttu-id="a8634-145">Мы видим, что назначены обе лицензии — **EMS** и **E3**.</span><span class="sxs-lookup"><span data-stu-id="a8634-145">We see that both **EMS** and **E3** are assigned.</span></span>
+
+  - <span data-ttu-id="a8634-146">Выберите каждую из лицензий для отображения сведений о включенных службах.</span><span class="sxs-lookup"><span data-stu-id="a8634-146">Select each license to show details about the enabled services.</span></span> <span data-ttu-id="a8634-147">Таким образом можно проверить, включают ли назначенная напрямую и групповая лицензии идентичные планы обслуживания для пользователя.</span><span class="sxs-lookup"><span data-stu-id="a8634-147">This can be used to check if the direct and group licenses enable exactly the same service plans for the user.</span></span>
+
+      ![Проверка планов обслуживания](media/active-directory-licensing-group-migration-azure-portal/check-service-plans.png)
+
+4. <span data-ttu-id="a8634-149">Убедившись, что назначенная напрямую и групповая лицензии эквивалентны друг другу, можно начать удаление назначенных напрямую лицензий пользователей.</span><span class="sxs-lookup"><span data-stu-id="a8634-149">After confirming that both direct and group licenses are equivalent, you can start removing direct licenses from users.</span></span> <span data-ttu-id="a8634-150">Для проверки можно удалить их у отдельных пользователей на портале, а затем запустить сценарии автоматизации, чтобы удалить лицензии в пакетном режиме.</span><span class="sxs-lookup"><span data-stu-id="a8634-150">You can test this by removing them for individual users in the portal and then run automation scripts to have them removed in bulk.</span></span> <span data-ttu-id="a8634-151">Ниже приведен пример одного и того же пользователя с назначенными напрямую лицензиями, удаленными на портале.</span><span class="sxs-lookup"><span data-stu-id="a8634-151">Here is an example of the same user with the direct licenses removed through the portal.</span></span> <span data-ttu-id="a8634-152">Обратите внимание, что состояние лицензии остается неизменным, но прямые назначения больше не отображаются.</span><span class="sxs-lookup"><span data-stu-id="a8634-152">Notice that the license state remains unchanged, but we no longer see direct assignments.</span></span>
+
+  ![Назначенные напрямую лицензии удалены](media/active-directory-licensing-group-migration-azure-portal/direct-licenses-removed.png)
+
+
+## <a name="next-steps"></a><span data-ttu-id="a8634-154">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="a8634-154">Next steps</span></span>
+
+<span data-ttu-id="a8634-155">Дополнительные сведения о других сценариях управления лицензиями с помощью групп см. по ссылкам ниже.</span><span class="sxs-lookup"><span data-stu-id="a8634-155">To learn more about other scenarios for license management through groups, read</span></span>
+
+* [<span data-ttu-id="a8634-156">Назначение лицензий группе в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a8634-156">Assigning licenses to a group in Azure Active Directory</span></span>](active-directory-licensing-group-assignment-azure-portal.md)
+* <span data-ttu-id="a8634-157">[Group-based licensing basics in Azure Active Directory](active-directory-licensing-whatis-azure-portal.md) (Основы группового лицензирования в Azure Active Directory)</span><span class="sxs-lookup"><span data-stu-id="a8634-157">[What is group-based licensing in Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)</span></span>
+* [<span data-ttu-id="a8634-158">Поиск и устранение проблем лицензирования группы в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a8634-158">Identifying and resolving license problems for a group in Azure Active Directory</span></span>](active-directory-licensing-group-problem-resolution-azure-portal.md)
+* [<span data-ttu-id="a8634-159">Дополнительные сценарии лицензирования на основе группы в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a8634-159">Azure Active Directory group-based licensing additional scenarios</span></span>](active-directory-licensing-group-advanced.md)

@@ -1,0 +1,17 @@
+## <a name="additional-resources"></a><span data-ttu-id="982b7-101">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="982b7-101">Additional Resources</span></span>
+
+<span data-ttu-id="982b7-102">Хотите быть в курсе последних новостей о продукте?</span><span class="sxs-lookup"><span data-stu-id="982b7-102">Want to stay up to date with product news?</span></span> <span data-ttu-id="982b7-103">Читайте наш [блог] или следите за нами в [Twitter] .</span><span class="sxs-lookup"><span data-stu-id="982b7-103">Read our [Blog] or follow us on [Twitter] </span></span></br>
+<span data-ttu-id="982b7-104">Хотите отправить запрос на функцию для хранилища данных SQL?</span><span class="sxs-lookup"><span data-stu-id="982b7-104">Have a feature request for SQL DW?</span></span> <span data-ttu-id="982b7-105">Опубликуйте его на [UserVoice] .</span><span class="sxs-lookup"><span data-stu-id="982b7-105">Please post it on [UserVoice] </span></span></br>
+<span data-ttu-id="982b7-106">У вас есть вопрос по продукту?</span><span class="sxs-lookup"><span data-stu-id="982b7-106">Have a product question?</span></span> <span data-ttu-id="982b7-107">Задайте его на сайте [MSDN] .</span><span class="sxs-lookup"><span data-stu-id="982b7-107">Consider asking it on [MSDN] </span></span></br>
+<span data-ttu-id="982b7-108">Появился технический вопрос?</span><span class="sxs-lookup"><span data-stu-id="982b7-108">Have a technical question?</span></span> <span data-ttu-id="982b7-109">Задайте его на [StackOverflow].</span><span class="sxs-lookup"><span data-stu-id="982b7-109">Ask on [StackOverflow]</span></span></br>
+<span data-ttu-id="982b7-110">Нужна помощь?</span><span class="sxs-lookup"><span data-stu-id="982b7-110">Need Support?</span></span> <span data-ttu-id="982b7-111">Отправьте [запрос в службу поддержки].</span><span class="sxs-lookup"><span data-stu-id="982b7-111">Submit a [Support Ticket]</span></span></br>
+
+<span data-ttu-id="982b7-112">[блог]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/</span><span class="sxs-lookup"><span data-stu-id="982b7-112">[Blog]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/</span></span>
+<span data-ttu-id="982b7-113">[Twitter]: https://twitter.com/AzureSQLDW</span><span class="sxs-lookup"><span data-stu-id="982b7-113">[Twitter]: https://twitter.com/AzureSQLDW</span></span>
+<span data-ttu-id="982b7-114">[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse</span><span class="sxs-lookup"><span data-stu-id="982b7-114">[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse</span></span>
+<span data-ttu-id="982b7-115">[MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse</span><span class="sxs-lookup"><span data-stu-id="982b7-115">[MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse</span></span>
+<span data-ttu-id="982b7-116">[StackOverflow]: http://stackoverflow.com/questions/tagged/azure-sqldw</span><span class="sxs-lookup"><span data-stu-id="982b7-116">[StackOverflow]: http://stackoverflow.com/questions/tagged/azure-sqldw</span></span>
+<span data-ttu-id="982b7-117">[запрос в службу поддержки]: ../articles/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md</span><span class="sxs-lookup"><span data-stu-id="982b7-117">[Support Ticket]: ../articles/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md</span></span>
+
+
+

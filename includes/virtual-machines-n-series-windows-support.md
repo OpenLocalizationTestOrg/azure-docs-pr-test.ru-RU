@@ -1,0 +1,19 @@
+## <a name="supported-operating-systems-and-drivers"></a><span data-ttu-id="9e2cd-101">Поддерживаемые операционные системы и драйверы</span><span class="sxs-lookup"><span data-stu-id="9e2cd-101">Supported operating systems and drivers</span></span>
+
+### <a name="nv-instances---nvidia-grid-drivers"></a><span data-ttu-id="9e2cd-102">Драйверы NVIDIA GRID для экземпляров NV</span><span class="sxs-lookup"><span data-stu-id="9e2cd-102">NV instances - NVIDIA GRID drivers</span></span>
+
+| <span data-ttu-id="9e2cd-103">ОС</span><span class="sxs-lookup"><span data-stu-id="9e2cd-103">OS</span></span> | <span data-ttu-id="9e2cd-104">Драйвер</span><span class="sxs-lookup"><span data-stu-id="9e2cd-104">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="9e2cd-105">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="9e2cd-105">Windows Server 2016</span></span> | <span data-ttu-id="9e2cd-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (EXE-файл)</span><span class="sxs-lookup"><span data-stu-id="9e2cd-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe)</span></span> |
+| <span data-ttu-id="9e2cd-107">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="9e2cd-107">Windows Server 2012 R2</span></span> | <span data-ttu-id="9e2cd-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (EXE-файл)</span><span class="sxs-lookup"><span data-stu-id="9e2cd-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)</span></span>  |
+
+### <a name="nc-instances---nvidia-tesla-drivers"></a><span data-ttu-id="9e2cd-109">Драйверы NVIDIA Tesla для экземпляров NC</span><span class="sxs-lookup"><span data-stu-id="9e2cd-109">NC instances - NVIDIA Tesla drivers</span></span>
+
+| <span data-ttu-id="9e2cd-110">ОС</span><span class="sxs-lookup"><span data-stu-id="9e2cd-110">OS</span></span> | <span data-ttu-id="9e2cd-111">Драйвер</span><span class="sxs-lookup"><span data-stu-id="9e2cd-111">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="9e2cd-112">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="9e2cd-112">Windows Server 2016</span></span> | <span data-ttu-id="9e2cd-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (EXE-файл)</span><span class="sxs-lookup"><span data-stu-id="9e2cd-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe)</span></span> |
+| <span data-ttu-id="9e2cd-114">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="9e2cd-114">Windows Server 2012 R2</span></span> | <span data-ttu-id="9e2cd-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (EXE-файл)</span><span class="sxs-lookup"><span data-stu-id="9e2cd-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe)</span></span> |
+
+> [!NOTE]
+> <span data-ttu-id="9e2cd-116">Ссылки для скачивания драйверов Tesla актуальны на момент публикации.</span><span class="sxs-lookup"><span data-stu-id="9e2cd-116">Tesla driver download links are current at time of publication.</span></span> <span data-ttu-id="9e2cd-117">Последние версии драйверов можно получить на веб-сайте [NVIDIA](http://www.nvidia.com/).</span><span class="sxs-lookup"><span data-stu-id="9e2cd-117">For the latest drivers, visit the [NVIDIA](http://www.nvidia.com/) website.</span></span>
+>

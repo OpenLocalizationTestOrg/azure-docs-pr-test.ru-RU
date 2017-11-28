@@ -1,0 +1,184 @@
+---
+title: "aaaDeploy приложение Azure Service Fabric с непрерывной интеграции (Team Services) | Документы Microsoft"
+description: "Узнайте, как tooset непрерывной интеграции и развертывания для приложения Service Fabric, с помощью Visual Studio Team Services.  Развертывание кластера Service Fabric tooa приложения в Azure."
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 08/09/2017
+ms.author: ryanwi
+ms.openlocfilehash: ba9a632b247b0f467e7b66fbe77b4ad54fb3d9ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="deploy-an-application-with-cicd-tooa-service-fabric-cluster"></a><span data-ttu-id="07789-104">Развертывание приложения, указав кластер Service Fabric tooa CI или компакт-диска</span><span class="sxs-lookup"><span data-stu-id="07789-104">Deploy an application with CI/CD tooa Service Fabric cluster</span></span>
+<span data-ttu-id="07789-105">Этот учебник входит в три ряда и описывает способ tooset непрерывной интеграции и развертывания для приложения Azure Service Fabric с помощью Visual Studio Team Services.</span><span class="sxs-lookup"><span data-stu-id="07789-105">This tutorial is part three of a series and describes how tooset up continuous integration and deployment for an Azure Service Fabric application using Visual Studio Team Services.</span></span>  <span data-ttu-id="07789-106">Приложение Service Fabric требуется, создать приложение hello в [построения приложения .NET](service-fabric-tutorial-create-dotnet-app.md) используется в качестве примера.</span><span class="sxs-lookup"><span data-stu-id="07789-106">An existing Service Fabric application is needed, hello application created in [Build a .NET application](service-fabric-tutorial-create-dotnet-app.md) is used as an example.</span></span>
+
+<span data-ttu-id="07789-107">В третьей части серии hello, вы узнаете, как:</span><span class="sxs-lookup"><span data-stu-id="07789-107">In part three of hello series, you learn how to:</span></span>
+
+> [!div class="checklist"]
+> * <span data-ttu-id="07789-108">Добавление проекта tooyour системы управления версиями</span><span class="sxs-lookup"><span data-stu-id="07789-108">Add source control tooyour project</span></span>
+> * <span data-ttu-id="07789-109">Создание определения сборки в Team Services</span><span class="sxs-lookup"><span data-stu-id="07789-109">Create a build definition in Team Services</span></span>
+> * <span data-ttu-id="07789-110">Создание определения выпуска в Team Services</span><span class="sxs-lookup"><span data-stu-id="07789-110">Create a release definition in Team Services</span></span>
+> * <span data-ttu-id="07789-111">Автоматическое развертывание и обновление приложения</span><span class="sxs-lookup"><span data-stu-id="07789-111">Automatically deploy and upgrade an application</span></span>
+
+<span data-ttu-id="07789-112">Из этого цикла руководств вы узнаете, как выполнять такие задачи:</span><span class="sxs-lookup"><span data-stu-id="07789-112">In this tutorial series you learn how to:</span></span>
+> [!div class="checklist"]
+> * <span data-ttu-id="07789-113">[Создание приложения .NET Service Fabric](service-fabric-tutorial-create-dotnet-app.md).</span><span class="sxs-lookup"><span data-stu-id="07789-113">[Build a .NET Service Fabric application](service-fabric-tutorial-create-dotnet-app.md)</span></span>
+> * [<span data-ttu-id="07789-114">Развертывание кластера удаленного tooa приложения hello</span><span class="sxs-lookup"><span data-stu-id="07789-114">Deploy hello application tooa remote cluster</span></span>](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * <span data-ttu-id="07789-115">Настройка непрерывной интеграции и непрерывного развертывания с помощью Visual Studio Team Services.</span><span class="sxs-lookup"><span data-stu-id="07789-115">Configure CI/CD using Visual Studio Team Services</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="07789-116">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="07789-116">Prerequisites</span></span>
+<span data-ttu-id="07789-117">Перед началом работы с этим руководством выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="07789-117">Before you begin this tutorial:</span></span>
+- <span data-ttu-id="07789-118">Если у вас еще нет подписки Azure, создайте [бесплатную учетную запись](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).</span><span class="sxs-lookup"><span data-stu-id="07789-118">If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)</span></span>
+- <span data-ttu-id="07789-119">[Установка Visual Studio 2017 г](https://www.visualstudio.com/) и установить hello **разработки Azure** и **ASP.NET и веб-разработки** рабочих нагрузок.</span><span class="sxs-lookup"><span data-stu-id="07789-119">[Install Visual Studio 2017](https://www.visualstudio.com/) and install hello **Azure development** and **ASP.NET and web development** workloads.</span></span>
+- [<span data-ttu-id="07789-120">Установите пакет Service Fabric SDK hello</span><span class="sxs-lookup"><span data-stu-id="07789-120">Install hello Service Fabric SDK</span></span>](service-fabric-get-started.md)
+- <span data-ttu-id="07789-121">Создайте приложение Service Fabric, например с помощью [этого руководства](service-fabric-tutorial-create-dotnet-app.md).</span><span class="sxs-lookup"><span data-stu-id="07789-121">Create a Service Fabric application, for example by [following this tutorial](service-fabric-tutorial-create-dotnet-app.md).</span></span> 
+- <span data-ttu-id="07789-122">Создайте кластер Service Fabric с Windows, например с помощью [этого руководства](service-fabric-tutorial-create-cluster-azure-ps.md).</span><span class="sxs-lookup"><span data-stu-id="07789-122">Create a Windows Service Fabric cluster on Azure, for example by [following this tutorial](service-fabric-tutorial-create-cluster-azure-ps.md)</span></span>
+- <span data-ttu-id="07789-123">Создайте [учетную запись Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).</span><span class="sxs-lookup"><span data-stu-id="07789-123">Create a [Team Services account](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).</span></span>
+
+## <a name="download-hello-voting-sample-application"></a><span data-ttu-id="07789-124">Загрузите пример приложения hello голосование</span><span class="sxs-lookup"><span data-stu-id="07789-124">Download hello Voting sample application</span></span>
+<span data-ttu-id="07789-125">Если вы не сборку пример приложения hello голосование в [часть одного из этого учебника ряда](service-fabric-tutorial-create-dotnet-app.md), вы можете загрузить ее.</span><span class="sxs-lookup"><span data-stu-id="07789-125">If you did not build hello Voting sample application in [part one of this tutorial series](service-fabric-tutorial-create-dotnet-app.md), you can download it.</span></span> <span data-ttu-id="07789-126">В окне командной строки запустите hello, следующая команда tooclone hello образец приложения репозитория tooyour локального компьютера.</span><span class="sxs-lookup"><span data-stu-id="07789-126">In a command window, run hello following command tooclone hello sample app repository tooyour local machine.</span></span>
+
+```
+git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
+```
+
+## <a name="prepare-a-publish-profile"></a><span data-ttu-id="07789-127">Подготовка профиля публикации</span><span class="sxs-lookup"><span data-stu-id="07789-127">Prepare a publish profile</span></span>
+<span data-ttu-id="07789-128">После запуска [приложение создано](service-fabric-tutorial-create-dotnet-app.md) и [развертывания tooAzure приложения hello](service-fabric-tutorial-deploy-app-to-party-cluster.md), вы будете готовы tooset непрерывной интеграции.</span><span class="sxs-lookup"><span data-stu-id="07789-128">Now that you've [created an application](service-fabric-tutorial-create-dotnet-app.md) and have [deployed hello application tooAzure](service-fabric-tutorial-deploy-app-to-party-cluster.md), you're ready tooset up continuous integration.</span></span>  <span data-ttu-id="07789-129">Во-первых Подготовьте профиль публикации в приложении для использования процессом развертывания hello, которая выполняется в Team Services.</span><span class="sxs-lookup"><span data-stu-id="07789-129">First, prepare a publish profile within your application for use by hello deployment process that executes within Team Services.</span></span>  <span data-ttu-id="07789-130">Hello профиля публикации должно быть ранее созданный кластер настроенных tootarget hello.</span><span class="sxs-lookup"><span data-stu-id="07789-130">hello publish profile should be configured tootarget hello cluster that you've previously created.</span></span>  <span data-ttu-id="07789-131">Запустите Visual Studio и откройте существующий проект приложения Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="07789-131">Start Visual Studio and open an existing Service Fabric application project.</span></span>  <span data-ttu-id="07789-132">В **обозревателе решений**, щелкните правой кнопкой мыши приложение hello и выберите **публикации...** .</span><span class="sxs-lookup"><span data-stu-id="07789-132">In **Solution Explorer**, right-click hello application and select **Publish...**.</span></span>
+
+<span data-ttu-id="07789-133">Выберите целевой профиль в рамках вашей toouse проект приложения для непрерывной интеграции рабочего процесса, например облако.</span><span class="sxs-lookup"><span data-stu-id="07789-133">Choose a target profile within your application project toouse for your continuous integration workflow, for example Cloud.</span></span>  <span data-ttu-id="07789-134">Укажите конечную точку подключения кластера hello.</span><span class="sxs-lookup"><span data-stu-id="07789-134">Specify hello cluster connection endpoint.</span></span>  <span data-ttu-id="07789-135">Проверьте hello **обновления hello приложения** флажок, чтобы приложение обновляет для всех развертываний в Team Services.</span><span class="sxs-lookup"><span data-stu-id="07789-135">Check hello **Upgrade hello Application** checkbox so that your application upgrades for each deployment in Team Services.</span></span>  <span data-ttu-id="07789-136">Нажмите кнопку hello **Сохранить** hello параметры гиперссылки toosave toohello профиль публикации, а затем нажмите кнопку **отменить** hello tooclose-диалоговое окно.</span><span class="sxs-lookup"><span data-stu-id="07789-136">Click hello **Save** hyperlink toosave hello settings toohello publish profile and then click **Cancel** tooclose hello dialog box.</span></span>  
+
+![Принудительная отправка профиля][publish-app-profile]
+
+## <a name="share-your-visual-studio-solution-tooa-new-team-services-git-repo"></a><span data-ttu-id="07789-138">Совместное использование нового репозитория Team Services Git Visual Studio решение tooa</span><span class="sxs-lookup"><span data-stu-id="07789-138">Share your Visual Studio solution tooa new Team Services Git repo</span></span>
+<span data-ttu-id="07789-139">Совместно использовать исходные файлы приложения tooa командного проекта в Team Services, поэтому можно создавать сборок.</span><span class="sxs-lookup"><span data-stu-id="07789-139">Share your application source files tooa team project in Team Services so you can generate builds.</span></span>  
+
+<span data-ttu-id="07789-140">Создание нового локального репозитория Git для проекта, выбрав **добавить tooSource управления** -> **Git** в строке состояния hello в нижнем правом углу hello Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="07789-140">Create a new local Git repo for your project by selecting **Add tooSource Control** -> **Git** on hello status bar in hello lower right-hand corner of Visual Studio.</span></span> 
+
+<span data-ttu-id="07789-141">В hello **Push** просмотра в **Team Explorer**выберите hello **публикации репозитория Git** под заголовком **Push tooVisual Studio Team Services**.</span><span class="sxs-lookup"><span data-stu-id="07789-141">In hello **Push** view in **Team Explorer**, select hello **Publish Git Repo** button under **Push tooVisual Studio Team Services**.</span></span>
+
+![Принудительная отправка репозитория Git][push-git-repo]
+
+<span data-ttu-id="07789-143">Проверить ваш адрес электронной почты и выберите свою учетную запись в hello **домена Team Services** раскрывающегося списка.</span><span class="sxs-lookup"><span data-stu-id="07789-143">Verify your email and select your account in hello **Team Services Domain** drop-down.</span></span> <span data-ttu-id="07789-144">Введите имя репозитория и выберите **Опубликовать репозиторий**.</span><span class="sxs-lookup"><span data-stu-id="07789-144">Enter your repository name and select **Publish repository**.</span></span>
+
+![Принудительная отправка репозитория Git][publish-code]
+
+<span data-ttu-id="07789-146">Публикация репозитория hello создает новый командный проект в вашей учетной записи с точно такое же имя в качестве локального репозитория hello hello.</span><span class="sxs-lookup"><span data-stu-id="07789-146">Publishing hello repo creates a new team project in your account with hello same name as hello local repo.</span></span> <span data-ttu-id="07789-147">репозиторий toocreate hello в существующий командный проект, нажмите кнопку **Дополнительно** Далее слишком**репозитория** имя и выберите командный проект.</span><span class="sxs-lookup"><span data-stu-id="07789-147">toocreate hello repo in an existing team project, click **Advanced** next too**Repository** name and select a team project.</span></span> <span data-ttu-id="07789-148">Код можно просматривать в Интернете hello, выбрав **его см. на веб-hello**.</span><span class="sxs-lookup"><span data-stu-id="07789-148">You can view your code on hello web by selecting **See it on hello web**.</span></span>
+
+## <a name="configure-continuous-delivery-with-vsts"></a><span data-ttu-id="07789-149">Настройка непрерывной поставки с помощью VSTS</span><span class="sxs-lookup"><span data-stu-id="07789-149">Configure Continuous Delivery with VSTS</span></span>
+<span data-ttu-id="07789-150">Определение сборки Team Services описывает рабочий процесс, состоящий из набора шагов сборки, которые выполняются последовательно.</span><span class="sxs-lookup"><span data-stu-id="07789-150">A Team Services build definition describes a workflow that is composed of a set of build steps that are executed sequentially.</span></span> <span data-ttu-id="07789-151">Создайте определение сборки, который создает пакет приложения Service Fabric и другие артефакты, кластер Service Fabric tooa toodeploy.</span><span class="sxs-lookup"><span data-stu-id="07789-151">Create a build definition that that produces a Service Fabric application package, and other artifacts, toodeploy tooa Service Fabric cluster.</span></span> <span data-ttu-id="07789-152">Дополнительные сведения об [определениях сборок Team Services](https://www.visualstudio.com/docs/build/define/create).</span><span class="sxs-lookup"><span data-stu-id="07789-152">Learn more about [Team Services build definitions](https://www.visualstudio.com/docs/build/define/create).</span></span> 
+
+<span data-ttu-id="07789-153">Определение выпуска Team Services описывает рабочий процесс, который выполняет развертывание кластера tooa пакета приложений.</span><span class="sxs-lookup"><span data-stu-id="07789-153">A Team Services release definition describes a workflow that deploys an application package tooa cluster.</span></span> <span data-ttu-id="07789-154">При совместном использовании hello определение построения и определение выпуска выполнение hello весь рабочий процесс, начиная с источника tooending файлы с запущенным приложением в кластере.</span><span class="sxs-lookup"><span data-stu-id="07789-154">When used together, hello build definition and release definition execute hello entire workflow starting with source files tooending with a running application in your cluster.</span></span> <span data-ttu-id="07789-155">Узнайте больше об [определениях выпуска](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)Team Services.</span><span class="sxs-lookup"><span data-stu-id="07789-155">Learn more about Team Services [release definitions](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).</span></span>
+
+### <a name="create-a-build-definition"></a><span data-ttu-id="07789-156">Создание определения сборки</span><span class="sxs-lookup"><span data-stu-id="07789-156">Create a build definition</span></span>
+<span data-ttu-id="07789-157">Откройте веб-браузер и перейдите tooyour нового командного проекта в: https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting.</span><span class="sxs-lookup"><span data-stu-id="07789-157">Open a web browser and navigate tooyour new team project at: https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting .</span></span> 
+
+<span data-ttu-id="07789-158">Выберите hello **построения и выпуска** вкладку, затем **строит**, затем **+ новое определение**.</span><span class="sxs-lookup"><span data-stu-id="07789-158">Select hello **Build & Release** tab, then **Builds**, then **+ New definition**.</span></span>  <span data-ttu-id="07789-159">В **выберите шаблон**выберите hello **приложение Azure Service Fabric** шаблона и нажмите кнопку **применить**.</span><span class="sxs-lookup"><span data-stu-id="07789-159">In **Select a template**, select hello **Azure Service Fabric Application** template and click **Apply**.</span></span> 
+
+![Выбор шаблона сборки][select-build-template] 
+
+<span data-ttu-id="07789-161">голосование приложения Hello содержит проект .NET Core, поэтому добавьте задачу, которая восстанавливает hello зависимости.</span><span class="sxs-lookup"><span data-stu-id="07789-161">hello voting application contains a .NET Core project, so add a task that restores hello dependencies.</span></span> <span data-ttu-id="07789-162">В hello **задачи** представление, выберите **+ добавить задачу** в левом нижнем hello.</span><span class="sxs-lookup"><span data-stu-id="07789-162">In hello **Tasks** view, select **+ Add Task** in hello bottom left.</span></span> <span data-ttu-id="07789-163">Поиск на задачи командной строки hello toofind «Командная строка», а затем щелкните **добавить**.</span><span class="sxs-lookup"><span data-stu-id="07789-163">Search on "Command Line" toofind hello command-line task, then click **Add**.</span></span> 
+
+![Добавление задачи][add-task] 
+
+<span data-ttu-id="07789-165">В новую задачу hello, введите «Запуск dotnet.exe» **отображаемое имя**, «dotnet.exe» в **средство**и «восстановление» в **аргументы**.</span><span class="sxs-lookup"><span data-stu-id="07789-165">In hello new task, enter "Run dotnet.exe" in **Display name**, "dotnet.exe" in **Tool**, and "restore" in **Arguments**.</span></span> 
+
+![Создание задачи][new-task] 
+
+<span data-ttu-id="07789-167">В hello **триггеры** щелкните hello **включения триггера** переключиться в **непрерывной интеграции**.</span><span class="sxs-lookup"><span data-stu-id="07789-167">In hello **Triggers** view, click hello **Enable this trigger** switch under **Continuous Integration**.</span></span> 
+
+<span data-ttu-id="07789-168">Выберите **сохранить & очередь** и введите «Размещенные VS2017» в качестве hello **очереди агента**.</span><span class="sxs-lookup"><span data-stu-id="07789-168">Select **Save & queue** and enter "Hosted VS2017" as hello **Agent queue**.</span></span> <span data-ttu-id="07789-169">Выберите **очереди** toomanually начать сборку.</span><span class="sxs-lookup"><span data-stu-id="07789-169">Select **Queue** toomanually start a build.</span></span>  <span data-ttu-id="07789-170">Сборки также активируются после принудительного запуска или возврата.</span><span class="sxs-lookup"><span data-stu-id="07789-170">Builds also triggers upon push or check-in.</span></span>
+
+<span data-ttu-id="07789-171">toocheck ход сборки, коммутатор toohello **строит** вкладки.  После проверки успешно выполняется построение hello, определите определения выпуска, которая развертывает приложение tooa кластера.</span><span class="sxs-lookup"><span data-stu-id="07789-171">toocheck your build progress, switch toohello **Builds** tab.  Once you verify that hello build executes successfully, define a release definition that deploys your application tooa cluster.</span></span> 
+
+### <a name="create-a-release-definition"></a><span data-ttu-id="07789-172">Создание определения выпуска</span><span class="sxs-lookup"><span data-stu-id="07789-172">Create a release definition</span></span>  
+
+<span data-ttu-id="07789-173">Выберите hello **построения и выпуска** вкладку, затем **выпуски**, затем **+ новое определение**.</span><span class="sxs-lookup"><span data-stu-id="07789-173">Select hello **Build & Release** tab, then **Releases**, then **+ New definition**.</span></span>  <span data-ttu-id="07789-174">В **создать определение выпуска**выберите hello **развертывание структуры службы Azure** шаблон из списка hello и нажмите кнопку **Далее**.</span><span class="sxs-lookup"><span data-stu-id="07789-174">In **Create release definition**, select hello **Azure Service Fabric Deployment** template from hello list and click **Next**.</span></span>  <span data-ttu-id="07789-175">Выберите hello **построения** источника, проверьте hello **непрерывного развертывания** и нажмите кнопку **создать**.</span><span class="sxs-lookup"><span data-stu-id="07789-175">Select hello **Build** source, check hello **Continuous deployment** box, and click **Create**.</span></span> 
+
+<span data-ttu-id="07789-176">В hello **среды** щелкните **добавить** toohello справа от **подключения кластера**.</span><span class="sxs-lookup"><span data-stu-id="07789-176">In hello **Environments** view, click **Add** toohello right of **Cluster Connection**.</span></span>  <span data-ttu-id="07789-177">Укажите имя подключения «mysftestcluster», конечную точку кластера «tcp://mysftestcluster.westus.cloudapp.azure.com:19000», "и" hello Azure Active Directory "или" учетные данные сертификата для кластера hello.</span><span class="sxs-lookup"><span data-stu-id="07789-177">Specify a connection name of "mysftestcluster", a cluster endpoint of "tcp://mysftestcluster.westus.cloudapp.azure.com:19000", and hello Azure Active Directory or certificate credentials for hello cluster.</span></span> <span data-ttu-id="07789-178">Для учетных данных Azure Active Directory, укажите учетные данные hello, toouse tooconnect toohello кластеру в hello **Username** и **пароль** поля.</span><span class="sxs-lookup"><span data-stu-id="07789-178">For Azure Active Directory credentials, define hello credentials you want toouse tooconnect toohello cluster in hello **Username** and **Password** fields.</span></span> <span data-ttu-id="07789-179">Для проверки подлинности на основе сертификатов, определите кодировку hello Base64 hello файл сертификата клиента в hello **сертификат клиента** поля.</span><span class="sxs-lookup"><span data-stu-id="07789-179">For certificate-based authentication, define hello Base64 encoding of hello client certificate file in hello **Client Certificate** field.</span></span>  <span data-ttu-id="07789-180">См. на этом поле, сведения о том, как всплывающее окно справки hello tooget это значение.</span><span class="sxs-lookup"><span data-stu-id="07789-180">See hello help pop-up on that field for info on how tooget that value.</span></span>  <span data-ttu-id="07789-181">Если сертификат защищен паролем, определить пароль hello в hello **пароль** поля.</span><span class="sxs-lookup"><span data-stu-id="07789-181">If your certificate is password-protected, define hello password in hello **Password** field.</span></span>  <span data-ttu-id="07789-182">Нажмите кнопку **Сохранить** определение выпуска toosave hello.</span><span class="sxs-lookup"><span data-stu-id="07789-182">Click **Save** toosave hello release definition.</span></span>
+
+![Добавление подключения к кластеру][add-cluster-connection] 
+
+<span data-ttu-id="07789-184">Щелкните **Запуск в агенте** и в поле **Очередь развертывания** выберите **Hosted VS2017**.</span><span class="sxs-lookup"><span data-stu-id="07789-184">Click **Run on agent**, then select **Hosted VS2017** for **Deployment queue**.</span></span> <span data-ttu-id="07789-185">Нажмите кнопку **Сохранить** определение выпуска toosave hello.</span><span class="sxs-lookup"><span data-stu-id="07789-185">Click **Save** toosave hello release definition.</span></span>
+
+![Запуск в агенте][run-on-agent]
+
+<span data-ttu-id="07789-187">Выберите **+ выпуска** -> **Создание выпуска** -> **создать** toomanually создать выпуск.</span><span class="sxs-lookup"><span data-stu-id="07789-187">Select **+Release** -> **Create Release** -> **Create** toomanually create a release.</span></span>  <span data-ttu-id="07789-188">Убедитесь, что сообщение hello развертывание завершено успешно, и приложение hello в кластере hello.</span><span class="sxs-lookup"><span data-stu-id="07789-188">Verify that hello deployment succeeded and hello application is running in hello cluster.</span></span>  <span data-ttu-id="07789-189">Откройте веб-браузер и перейдите в слишком[http://mysftestcluster.westus.cloudapp.azure.com:19080/обозреватель/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/).</span><span class="sxs-lookup"><span data-stu-id="07789-189">Open a web browser and navigate too[http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/).</span></span>  <span data-ttu-id="07789-190">Обратите внимание, версия приложения hello, в этом примере это «1.0.0.20170616.3».</span><span class="sxs-lookup"><span data-stu-id="07789-190">Note hello application version, in this example it is "1.0.0.20170616.3".</span></span> 
+
+## <a name="commit-and-push-changes-trigger-a-release"></a><span data-ttu-id="07789-191">Фиксация и отправка изменений, создание выпуска</span><span class="sxs-lookup"><span data-stu-id="07789-191">Commit and push changes, trigger a release</span></span>
+<span data-ttu-id="07789-192">tooverify, hello конвейера непрерывной интеграции работает путем возврата служб tooTeam некоторые изменения в коде.</span><span class="sxs-lookup"><span data-stu-id="07789-192">tooverify that hello continuous integration pipeline is functioning by checking in some code changes tooTeam Services.</span></span>    
+
+<span data-ttu-id="07789-193">При написании кода в Visual Studio изменения отслеживаются автоматически.</span><span class="sxs-lookup"><span data-stu-id="07789-193">As you write your code, your changes are automatically tracked by Visual Studio.</span></span> <span data-ttu-id="07789-194">Зафиксировать изменения tooyour локального репозитория Git, выбрав hello ожидающие изменения значок)</span><span class="sxs-lookup"><span data-stu-id="07789-194">Commit changes tooyour local Git repository by selecting hello pending changes icon (</span></span>![Ожидает][pending]<span data-ttu-id="07789-196">) из строки состояния hello в правой нижней hello.</span><span class="sxs-lookup"><span data-stu-id="07789-196">) from hello status bar in hello bottom right.</span></span>
+
+<span data-ttu-id="07789-197">На hello **изменения** просмотра в Team Explorer, добавить сообщение с описанием обновления и фиксация изменений.</span><span class="sxs-lookup"><span data-stu-id="07789-197">On hello **Changes** view in Team Explorer, add a message describing your update and commit your changes.</span></span>
+
+![Фиксация всех изменений][changes]
+
+<span data-ttu-id="07789-199">Значок панели выберите hello неопубликованные изменения состояния (![отменена публикация изменений][unpublished-changes]) или hello синхронизации представлении в Team Explorer.</span><span class="sxs-lookup"><span data-stu-id="07789-199">Select hello unpublished changes status bar icon (![Unpublished changes][unpublished-changes]) or hello Sync view in Team Explorer.</span></span> <span data-ttu-id="07789-200">Выберите **Push** tooupdate код в Team Services или TFS.</span><span class="sxs-lookup"><span data-stu-id="07789-200">Select **Push** tooupdate your code in Team Services/TFS.</span></span>
+
+![Отправка изменений][push]
+
+<span data-ttu-id="07789-202">Опубликуйте изменения tooTeam hello служб автоматически триггеров построения.</span><span class="sxs-lookup"><span data-stu-id="07789-202">Pushing hello changes tooTeam Services automatically triggers a build.</span></span>  <span data-ttu-id="07789-203">При успешном выполнении hello определения построения выпуска создается автоматически и начинается обновление приложения hello в кластере hello.</span><span class="sxs-lookup"><span data-stu-id="07789-203">When hello build definition successfully completes, a release is automatically created and starts upgrading hello application on hello cluster.</span></span>
+
+<span data-ttu-id="07789-204">toocheck ход сборки, коммутатор toohello **строит** вкладке **Team Explorer** в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="07789-204">toocheck your build progress, switch toohello **Builds** tab in **Team Explorer** in Visual Studio.</span></span>  <span data-ttu-id="07789-205">После проверки успешно выполняется построение hello, определите определения выпуска, которая развертывает приложение tooa кластера.</span><span class="sxs-lookup"><span data-stu-id="07789-205">Once you verify that hello build executes successfully, define a release definition that deploys your application tooa cluster.</span></span>
+
+<span data-ttu-id="07789-206">Убедитесь, что сообщение hello развертывание завершено успешно, и приложение hello в кластере hello.</span><span class="sxs-lookup"><span data-stu-id="07789-206">Verify that hello deployment succeeded and hello application is running in hello cluster.</span></span>  <span data-ttu-id="07789-207">Откройте веб-браузер и перейдите в слишком[http://mysftestcluster.westus.cloudapp.azure.com:19080/обозреватель/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/).</span><span class="sxs-lookup"><span data-stu-id="07789-207">Open a web browser and navigate too[http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/).</span></span>  <span data-ttu-id="07789-208">Обратите внимание, версия приложения hello, в этом примере это «1.0.0.20170815.3».</span><span class="sxs-lookup"><span data-stu-id="07789-208">Note hello application version, in this example it is "1.0.0.20170815.3".</span></span>
+
+![Service Fabric Explorer][sfx1]
+
+## <a name="update-hello-application"></a><span data-ttu-id="07789-210">Обновление приложения hello</span><span class="sxs-lookup"><span data-stu-id="07789-210">Update hello application</span></span>
+<span data-ttu-id="07789-211">Сделать изменения в коде приложения hello.</span><span class="sxs-lookup"><span data-stu-id="07789-211">Make code changes in hello application.</span></span>  <span data-ttu-id="07789-212">Сохраните и фиксации изменений hello, hello предыдущих действий.</span><span class="sxs-lookup"><span data-stu-id="07789-212">Save and commit hello changes, following hello previous steps.</span></span>
+
+<span data-ttu-id="07789-213">Как только обновление hello начинается приложения hello, можно отслеживать ход выполнения обновления hello в обозреватель Service Fabric:</span><span class="sxs-lookup"><span data-stu-id="07789-213">Once hello upgrade of hello application begins, you can watch hello upgrade progress in Service Fabric Explorer:</span></span>
+
+![Service Fabric Explorer][sfx2]
+
+<span data-ttu-id="07789-215">обновление приложения Hello может занять несколько минут.</span><span class="sxs-lookup"><span data-stu-id="07789-215">hello application upgrade may take several minutes.</span></span> <span data-ttu-id="07789-216">После завершения обновления hello hello будет запущено приложение hello следующей версии.</span><span class="sxs-lookup"><span data-stu-id="07789-216">When hello upgrade is complete, hello application will be running hello next version.</span></span>  <span data-ttu-id="07789-217">В этом примере — 1.0.0.20170815.4.</span><span class="sxs-lookup"><span data-stu-id="07789-217">In this example "1.0.0.20170815.4".</span></span>
+
+![Service Fabric Explorer][sfx3]
+
+## <a name="next-steps"></a><span data-ttu-id="07789-219">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="07789-219">Next steps</span></span>
+<span data-ttu-id="07789-220">Из этого руководства вы узнали, как выполнять такие задачи:</span><span class="sxs-lookup"><span data-stu-id="07789-220">In this tutorial, you learned how to:</span></span>
+
+> [!div class="checklist"]
+> * <span data-ttu-id="07789-221">Добавление проекта tooyour системы управления версиями</span><span class="sxs-lookup"><span data-stu-id="07789-221">Add source control tooyour project</span></span>
+> * <span data-ttu-id="07789-222">Создание определения сборки</span><span class="sxs-lookup"><span data-stu-id="07789-222">Create a build definition</span></span>
+> * <span data-ttu-id="07789-223">Создание определения выпуска</span><span class="sxs-lookup"><span data-stu-id="07789-223">Create a release definition</span></span>
+> * <span data-ttu-id="07789-224">Автоматическое развертывание и обновление приложения</span><span class="sxs-lookup"><span data-stu-id="07789-224">Automatically deploy and upgrade an application</span></span>
+
+<span data-ttu-id="07789-225">Теперь, когда развертывания приложения и настроить непрерывную интеграцию, попробуйте hello следующее:</span><span class="sxs-lookup"><span data-stu-id="07789-225">Now that you have deployed an application and configured continuous integration, try hello following:</span></span>
+- [<span data-ttu-id="07789-226">Обновление приложения</span><span class="sxs-lookup"><span data-stu-id="07789-226">Upgrade an app</span></span>](service-fabric-application-upgrade.md)
+- [<span data-ttu-id="07789-227">Тестирование приложения</span><span class="sxs-lookup"><span data-stu-id="07789-227">Test an app</span></span>](service-fabric-testability-overview.md) 
+- [<span data-ttu-id="07789-228">Мониторинг и диагностика</span><span class="sxs-lookup"><span data-stu-id="07789-228">Monitor and diagnose</span></span>](service-fabric-diagnostics-overview.md)
+
+
+<!-- Image References -->
+[publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
+[push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
+[publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
+[add-task]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/AddTask.png
+[new-task]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewTask.png
+[set-continuous-integration]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SetContinuousIntegration.png
+[add-cluster-connection]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/AddClusterConnection.png
+[sfx1]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SFX1.png
+[sfx2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SFX2.png
+[sfx3]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SFX3.png
+[pending]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Pending.png
+[changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Changes.png
+[unpublished-changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/UnpublishedChanges.png
+[push]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Push.png
+[continuous-delivery-with-VSTS]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
+[new-service-endpoint]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpoint.png
+[new-service-endpoint-dialog]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpointDialog.png
+[run-on-agent]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/RunOnAgent.png

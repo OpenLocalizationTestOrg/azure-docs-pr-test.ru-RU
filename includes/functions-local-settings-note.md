@@ -1,0 +1,2 @@
+>[!Note]
+> <span data-ttu-id="89be3-101">При локальном развертывании мы рекомендуем использовать учетную запись хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="89be3-101">We recommend that you use an Azure Storage account when developing locally.</span></span> <span data-ttu-id="89be3-102">Инструменты Функций Azure не поддерживают использование эмулятора службы хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="89be3-102">Use of the Azure Storage Emulator is not supported by Azure Functions tools.</span></span>
