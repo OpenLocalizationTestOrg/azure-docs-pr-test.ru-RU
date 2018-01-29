@@ -4,20 +4,20 @@
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Подключение пустого диска
-1. Откройте Azure CLI 1.0 и [подключения tooyour подписки Azure](../articles/xplat-cli-connect.md). Убедитесь, что вы находитесь в режиме управления службами Azure (`azure config mode asm`).
-2. Введите `azure vm disk attach-new` toocreate и присоединить новый диск, как показано в следующий пример hello. Замените *myVM* с именем hello вашей виртуальной машины Linux и укажите размер hello hello диска в ГБ, что является *100 ГБ* в этом примере:
+1. Откройте Azure CLI 1.0 и [подключитесь к подписке Azure](/cli/azure/authenticate-azure-cli). Убедитесь, что вы находитесь в режиме управления службами Azure (`azure config mode asm`).
+2. Введите `azure vm disk attach-new`, чтобы создать и подключить новый диск, как показано в примере ниже. Замените имя *myVM* именем своей виртуальной машины Linux и укажите размер диска в гигабайтах. В нашем примере это *100 ГБ*.
 
     ```azurecli
     azure vm disk attach-new myVM 100
     ```
 
-3. После создания и присоединенного диска данных hello, это отображается в выходных данных hello `azure vm disk list <virtual-machine-name>` как показано в следующий пример hello:
+3. Созданный и присоединенный диск с данными отображается в выводе команды `azure vm disk list <virtual-machine-name>`, как показано в примере ниже.
    
     ```azurecli
     azure vm disk list TestVM
     ```
 
-    Hello вывода будет примерно toohello следующий пример:
+    Вы должны увидеть результат, аналогичный приведенному ниже.
 
     ```bash
     info:    Executing command vm disk list
@@ -37,14 +37,14 @@
 ## <a name="attach-an-existing-disk"></a>Подключение существующего диска
 Для подключения существующего диска требуется VHD-файл в учетной записи хранения.
 
-1. Откройте Azure CLI 1.0 и [подключения tooyour подписки Azure](../articles/xplat-cli-connect.md). Убедитесь, что вы находитесь в режиме управления службами Azure (`azure config mode asm`).
-2. Проверьте, если hello VHD, вы хотите tooattach уже отправлен tooyour подписки Azure.
+1. Откройте Azure CLI 1.0 и [подключитесь к подписке Azure](/cli/azure/authenticate-azure-cli). Убедитесь, что вы находитесь в режиме управления службами Azure (`azure config mode asm`).
+2. Проверьте, не добавлен ли уже виртуальный жесткий диск, который вы хотите подключить, в подписку Azure.
    
     ```azurecli
     azure vm disk list
     ```
 
-    Hello вывода будет примерно toohello следующий пример:
+    Вы должны увидеть результат, аналогичный приведенному ниже.
 
     ```azurecli
      info:    Executing command vm disk list
@@ -58,13 +58,13 @@
      info:    vm disk list command OK
     ```
 
-3. Если не удается найти диск hello, требуется toouse, локальные подписки tooyour виртуального жесткого диска может быть отправлен с помощью `azure vm disk create` или `azure vm disk upload`. Пример `disk create` бы как hello в следующем примере:
+3. Если в подписке нет нужного диска, вы можете передать локальный виртуальный жесткий диск в подписку с помощью команды `azure vm disk create` или `azure vm disk upload`. Пример использования команды `disk create` показан ниже.
    
     ```azurecli
     azure vm disk create myVhd .\TempDisk\test.VHD -l "East US" -o Linux
     ```
 
-    Hello вывода будет примерно toohello следующий пример:
+    Вы должны увидеть результат, аналогичный приведенному ниже.
 
     ```azurecli
     info:    Executing command vm disk create
@@ -78,23 +78,23 @@
     info:    vm disk create command OK
     ```
    
-   Можно также использовать `azure vm disk upload` tooupload VHD tooa конкретной учетной записи хранения. Прочитать больше о hello команды toomanage диски данных Azure виртуальной машины [здесь](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+   С помощью команды `azure vm disk upload` вы также можете передать виртуальный жесткий диск в конкретную учетную запись хранения. Дополнительные сведения о командах для управления дисками с данными виртуальных машин Azure см. [здесь](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-4. Теперь можно присоединить hello требуемого VHD tooyour виртуальной машины:
+4. Теперь подключите нужный виртуальный жесткий диск к виртуальной машине.
    
     ```azurecli
     azure vm disk attach myVM myVhd
     ```
    
-   Убедитесь, что tooreplace *myVM* с именем hello вашей виртуальной машины и *myVHD* с вашего нужного виртуального жесткого диска.
+   Обязательно замените *myVM* именем своей виртуальной машины, а *myVHD* — именем своего виртуального жесткого диска.
 
-5. Вы можете проверить диск hello вложенного toohello виртуальную машину с `azure vm disk list <virtual-machine-name>`:
+5. Чтобы проверить, подключен ли диск к виртуальной машине, выполните команду `azure vm disk list <virtual-machine-name>`.
    
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hello вывода будет примерно toohello следующий пример:
+    Вы должны увидеть результат, аналогичный приведенному ниже.
 
     ```azurecli
      info:    Executing command vm disk list
@@ -111,7 +111,7 @@
     ```
 
 > [!NOTE]
-> После добавления диска данных и вы перейдете требуется toolog на виртуальной машине toohello инициализировать диск hello hello виртуальная машина может использовать hello диска для хранения данных (см. шаги hello следующие дополнительные сведения на toodo инициализация диска hello).
+> После добавления диска данных необходимо войти в систему на виртуальной машине и инициализировать диск, чтобы виртуальная машина могла использовать его для хранения данных. Сведения об инициализации диска см. в инструкциях ниже.
 > 
 > 
 

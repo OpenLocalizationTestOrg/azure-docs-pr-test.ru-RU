@@ -1,0 +1,57 @@
+---
+title: "Пример скрипта Azure CLI. Создание веб-приложения ASP.NET Core в контейнере Docker из реестра контейнеров Azure | Документация Майкрософт"
+description: "Пример скрипта Azure CLI. Создание веб-приложения ASP.NET Core в контейнере Docker из реестра контейнеров Azure"
+services: appservice
+documentationcenter: appservice
+author: syntaxc4
+manager: erikre
+editor: 
+tags: azure-service-management
+ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
+ms.service: app-service
+ms.devlang: azurecli
+ms.topic: sample
+ms.tgt_pltfrm: na
+ms.workload: web
+ms.date: 12/11/2017
+ms.author: cfowler
+ms.custom: mvc
+ms.openlocfilehash: 9412b7175cc8e6879779bc923aa6b40d01125df7
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 12/12/2017
+---
+# <a name="create-an-aspnet-core-web-app-in-a-docker-container-from-azure-container-registry"></a>Создание веб-приложения ASP.NET Core в контейнере Docker из реестра контейнеров Azure
+
+Этот образец скрипта создает группу ресурсов, план служб приложений Linux и веб-приложения. Затем он развертывает приложения ASP.NET Core с помощью контейнера Docker из реестра контейнера Azure.
+
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+Если вы решили установить и использовать CLI локально, необходимо Azure CLI версии 2.0 или более поздней. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
+
+## <a name="sample-script"></a>Пример скрипта
+
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-linux-acr/deploy-linux-acr.sh?highlight=6-9 "Linux Azure Container Registry")]
+
+[!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
+
+## <a name="script-explanation"></a>Описание скрипта
+
+Для создания группы ресурсов, веб-приложений и всех связанных с ними ресурсов этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+
+| Get-Help | Заметки |
+|---|---|
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Создает группу ресурсов, в которой хранятся все ресурсы. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Создает план службы приложений. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Создает веб-приложение Azure. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) | Настраивает контейнер Docker для веб-приложения Azure. |
+
+## <a name="next-steps"></a>Дальнейшие действия
+
+Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+
+Дополнительные примеры скриптов Azure CLI для службы приложений см. в [документации по службе приложений Azure](../app-service-cli-samples.md).

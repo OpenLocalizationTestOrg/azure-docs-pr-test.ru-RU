@@ -1,0 +1,104 @@
+- name: Обзор возможностей для управления доступом
+  href: manage-access-to-azure-resources.md
+- name: Доступ к ресурсам в Azure
+  href: active-directory-understanding-resource-access.md
+- name: Управление доступа на основе ролей
+  href: role-based-access-control-what-is.md
+  items:
+    - name: Управление назначениями доступа
+      items:
+        - name: В зависимости от пользователя
+          href: role-based-access-control-manage-assignments.md
+        - name: В зависимости от ресурса
+          href: role-based-access-control-configure.md
+    - name: Встроенные роли
+      href: role-based-access-built-in-roles.md
+    - name: Пользовательские роли
+      href: role-based-access-control-custom-roles.md
+    - name: Назначение настраиваемых ролей для внутренних и внешних пользователей
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: Отчеты
+      href: role-based-access-control-access-change-history-report.md
+    - name: Дополнительные способы управления ролями
+      items:
+        - name: С помощью Azure CLI
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: С помощью PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: С помощью REST
+          href: role-based-access-control-manage-access-rest.md
+    - name: Повышение прав доступа администратора клиента
+      href: role-based-access-control-tenant-admin-access.md
+    - name: Устранение неполадок
+      href: role-based-access-control-troubleshooting.md
+    - name: Операции с поставщиками ресурсов
+      href: role-based-access-control-resource-provider-operations.md
+- name: Управление привилегированными пользователями (PIM) для RBAC
+  href: pim-azure-resource.md
+- name: Условный доступ для управления Azure
+  href: conditional-access-azure-management.md
+- name: Удостоверение управляемой службы
+  href: msi-overview.md
+  items:
+    - name: Настройка MSI для виртуальной машины Azure
+      items:
+        - name: Использование портала Azure
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: с использованием PowerShell.
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: Использование Azure CLI
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Использование шаблона Azure Resource Manager
+          href: msi-qs-configure-template-windows-vm.md
+        - name: Использование пакета Azure SDK
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: Предоставление доступа MSI виртуальной машины для Azure Resource Manager
+      items:
+        - name: Использование портала Azure
+          href: msi-howto-assign-access-portal.md
+        - name: с использованием PowerShell.
+          href: msi-howto-assign-access-powershell.md
+        - name: Использование Azure CLI
+          href: msi-howto-assign-access-cli.md
+    - name: Использование удостоверения управляемой службы для виртуальной машины
+      items:
+        - name: Получение маркера доступа
+          href: msi-how-to-use-vm-msi-token.md
+        - name: Вход в PowerShell и Azure CLI
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Использование с пакетами Azure SDK
+          href: msi-how-to-use-vm-msi-sdk.md
+    - name: Использование MSI виртуальной машины для доступа к Azure Data Lake Store
+      items:
+        - name: С помощью виртуальной машины Windows
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: С помощью виртуальной машины Linux
+          href: msi-tutorial-linux-vm-access-datalake.md
+    - name: Использование виртуальной машины MSI для доступа к Azure Resource Manager
+      items:
+        - name: С помощью виртуальной машины Windows
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: С помощью виртуальной машины Linux
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: Использование виртуальной машины MSI для доступа к Azure SQL
+      items:
+        - name: С помощью виртуальной машины Windows
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: Использование виртуальной машины MSI для доступа к хранилищу Azure
+      items:
+        - name: С помощью виртуальной машины Windows и ключа доступа
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: С помощью виртуальной машины Windows и SAS
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: С помощью виртуальной машины Linux и ключа доступа
+          href: msi-tutorial-linux-vm-access-storage.md
+        - name: С помощью виртуальной машины Linux и SAS
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: Использование MSI виртуальной машины для доступа к Azure Key Vault
+      items:
+        - name: С помощью виртуальной машины Windows
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: С помощью виртуальной машины Linux
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: Часто задаваемые вопросы и известные проблемы
+      href: msi-known-issues.md

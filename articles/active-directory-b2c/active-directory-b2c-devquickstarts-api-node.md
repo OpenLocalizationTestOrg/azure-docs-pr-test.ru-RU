@@ -4,7 +4,7 @@ description: "Создание веб-API Node.js, который принима
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 6480be75c314ede1b786e959a79c0385dd2edea8
-ms.sourcegitcommit: 73f159cdbc122ffe42f3e1f7a3de05f77b6a4725
-ms.translationtype: MT
+ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: защита веб-API с помощью Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/28/2017
 Для выполнения этого примера необходимо выполнить следующие действия:
 
 1. зарегистрировать приложение в Azure AD;
-2. настроить приложение для использования подключаемого модуля Passport `azure-ad-passport` ;
+2. настроить приложение для использования подключаемого модуля Passport `passport-azure-ad` ;
 3. настроить клиентское приложение для вызова веб-API с именем to-do list.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Создание каталога Azure AD B2C
@@ -48,8 +48,6 @@ ms.lasthandoff: 11/28/2017
 * Введите `http://localhost/TodoListService` в качестве **URL-адреса ответа**. Это URL-адрес по умолчанию для данного примера кода.
 * Создайте для своего приложения **секрет приложения** и скопируйте его. Эти данные понадобятся позже. Обратите внимание, что перед использованием это значение должно быть [экранировано для XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) .
 * Скопируйте **идентификатор приложения** , назначенный приложению. Эти данные понадобятся позже.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Создание политик
 В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md). Это приложение содержит два действия с удостоверениями: регистрация и вход. Вам нужно создать по одной политике каждого типа, как описано в [справочной статье о политиках](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  При создании трех политик обязательно выполните указанные ниже действия.

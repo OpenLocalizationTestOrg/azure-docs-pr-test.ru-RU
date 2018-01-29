@@ -1,15 +1,15 @@
 
-Создание [приложения API](../articles/app-service-api/app-service-api-apps-why-best-platform.md) в hello `myAppServicePlan` план служб приложений с hello [создать веб-приложение az](/cli/azure/appservice/web#create) команды. 
+Создайте приложение в рамках плана службы приложений `myAppServicePlan` с помощью команды [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). 
 
-веб-приложения Hello место размещения для API и предоставляет URL-адрес tooview hello развертывания приложения.
+Веб-приложение предусматривает пространство для API, а также предоставляет URL-адрес для просмотра развернутого приложения.
 
-В hello следующую команду, замените  *\<имя_приложения >* с уникальным именем. Если `<app_name>` является не уникален, вы получаете сообщение hello «Веб-сайт с данным именем < имя_приложения > уже существует.» Здравствуйте, по умолчанию используется URL-адрес веб-приложения hello `https://<app_name>.azurewebsites.net`. 
+В следующей команде замените *\<имя_приложения>* уникальным именем. Если `<app_name>` не является уникальным, отобразится следующее сообщение об ошибке: "Веб-сайт с указанным именем <имя_приложения> уже существует". URL-адрес приложения по умолчанию: `https://<app_name>.azurewebsites.net`. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-При создании веб-приложения hello hello Azure CLI показано toohello аналогичные сведения, следующий пример:
+После создания веб-приложения в Azure CLI отображаются следующие сведения:
 
 ```json
 {

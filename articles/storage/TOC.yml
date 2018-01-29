@@ -1,0 +1,18 @@
+- name: Документация по службе хранилища Azure
+  href: index.yml
+- name: Обзор
+  items:
+    - name: Введение
+      href: ./common/storage-introduction.md
+    - name: 'Выбор больших двоичных объектов, файлов или дисков'
+      href: ./common/storage-decide-blobs-files-disks.md
+- name: BLOB-объекты
+  href: ./blobs/storage-blobs-introduction.md
+- name: Файлы
+  href: ./files/storage-files-introduction.md
+- name: Очереди
+  href: ./queues/storage-queues-introduction.md
+- name: Таблицы
+  href: ../cosmos-db/table-storage-overview.md
+- name: диски;
+  href: ../virtual-machines/windows/managed-disks-overview.md

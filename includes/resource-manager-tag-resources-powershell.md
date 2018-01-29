@@ -1,24 +1,12 @@
-Версии 3.0 модуль AzureRm.Resources hello включены существенные изменения в том, как работать с тегами. Прежде чем продолжить, проверьте версию:
+Для работы примеров в этой статье требуется Azure PowerShell 3.0 или более поздней версии. Если у вас более старая версия, [обновите ее](/powershell/azureps-cmdlets-docs/) с помощью коллекции PowerShell или установщика веб-платформы.
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
-```
-
-Если результаты показывают версии 3.0 или более поздней версии, hello примеры в этом разделе работать с вашей средой. Если у вас более старая версия, [обновите ее](/powershell/azureps-cmdlets-docs/), используя коллекцию PowerShell или установщик веб-платформы, прежде чем продолжать работу с этой статьей.
-
-```powershell
-Version
--------
-3.5.0
-```
-
-существующие теги для hello toosee *группы ресурсов*, используйте:
+Чтобы просмотреть существующие теги для *группы ресурсов*, используйте этот командлет:
 
 ```powershell
 (Get-AzureRmResourceGroup -Name examplegroup).Tags
 ```
 
-Этот скрипт возвращает hello следующий формат:
+Этот скрипт вернет ответ в следующем формате:
 
 ```powershell
 Name                           Value
@@ -27,39 +15,39 @@ Dept                           IT
 Environment                    Test
 ```
 
-существующие теги для hello toosee *ресурс, который имеет идентификатор указанного ресурса*, использовать:
+Чтобы просмотреть существующие теги для *ресурса с указанным идентификатором ресурса*, используйте:
 
 ```powershell
 (Get-AzureRmResource -ResourceId {resource-id}).Tags
 ```
 
-Или toosee hello существующие теги для *ресурс с указанным имени и группе ресурсов*, используйте:
+Или чтобы просмотреть существующие теги для *ресурса с указанным именем и группой ресурсов*, используйте:
 
 ```powershell
 (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-tooget *групп ресурсов, которые имеют определенный тег*, используйте:
+Чтобы получить *группы ресурсов с определенным тегом*, используйте:
 
 ```powershell
-(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
+(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name
 ```
 
-tooget *ресурсы, имеющие определенный тег*, используйте:
+Чтобы получить *ресурсы с определенным тегом*, используйте:
 
 ```powershell
 (Find-AzureRmResource -TagName Dept -TagValue Finance).Name
 ```
 
-Каждый раз при применении теги tooa ресурс или группу ресурсов, вы перезаписать существующие теги hello на этот ресурс или группа ресурсов. Таким образом необходимо использовать другой подход, в зависимости от того, имеет ли hello ресурс или группа ресурсов существующие теги. 
+Каждый раз, когда вы добавляете теги к ресурсу или группе ресурсов, вы перезаписываете существующие теги в этом ресурсе или группе. Поэтому необходимо использовать другой подход, исходя из того, имеются ли теги в ресурсе или в группе ресурсов.
 
-tooadd теги tooa *группы ресурсов без существующие теги*, используйте:
+Чтобы добавить теги в *группу ресурсов без тегов*, используйте:
 
 ```powershell
 Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
-tooadd теги tooa *группу ресурсов с существующие теги*, получить существующие теги hello, добавьте новый тег hello и заново hello теги:
+Чтобы добавить теги в *группу ресурсов с существующими тегами*, извлеките их, добавьте новый тег и повторно примените теги:
 
 ```powershell
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
@@ -67,57 +55,52 @@ $tags += @{Status="Approved"}
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 ```
 
-tooadd теги tooa *ресурс без существующие теги*, используйте:
+Чтобы добавить теги в *ресурс без тегов*, используйте:
 
 ```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName examplegroup
+$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
 ```
 
-tooadd теги tooa *ресурс с существующие теги*, используйте:
+Чтобы добавить теги в *ресурс с существующими тегами*, используйте:
 
 ```powershell
-$tags = (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName examplevnet -ResourceGroupName examplegroup
+$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$r.tags += @{Status="Approved"}
+Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-tooapply все теги из ресурсов tooits группы ресурсов, и *не сохранять существующие теги ресурсов hello*, используйте следующий сценарий hello:
+Чтобы добавить все теги из группы ресурсов к ресурсам в этой группе, *не сохраняя существующие теги ресурсов*, используйте следующий сценарий.
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
-foreach ($g in $groups) 
+foreach ($g in $groups)
 {
-    Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force } 
+    Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
 }
 ```
 
-tooapply все теги из ресурсов tooits группы ресурсов, и *сохранить существующие теги на ресурсы, которые не являются дубликатами*, используйте следующий сценарий hello:
+Чтобы добавить все теги из группы ресурсов к ресурсам в этой группе, *сохранив существующие теги ресурсов*, используйте приведенный ниже сценарий.
 
 ```powershell
-$groups = Get-AzureRmResourceGroup
-foreach ($g in $groups) 
-{
-    if ($g.Tags -ne $null) {
-        $resources = Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName 
-        foreach ($r in $resources)
+$group = Get-AzureRmResourceGroup "examplegroup"
+if ($group.Tags -ne $null) {
+    $resources = $group | Find-AzureRmResource
+    foreach ($r in $resources)
+    {
+        $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
+        foreach ($key in $group.Tags.Keys)
         {
-            $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
-            foreach ($key in $g.Tags.Keys)
-            {
-                if ($resourcetags.ContainsKey($key)) { $resourcetags.Remove($key) }
-            }
-            $resourcetags += $g.Tags
-            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+            if (($resourcetags) -AND ($resourcetags.ContainsKey($key))) { $resourcetags.Remove($key) }
         }
+        $resourcetags += $group.Tags
+        Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
     }
 }
 ```
 
-tooremove всех тегов, передайте пустые хэш-таблицы:
+Чтобы удалить все теги, передайте пустую хэш-таблицу:
 
 ```powershell
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
-
-
-
