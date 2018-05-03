@@ -1,2 +1,2 @@
-toouse эту функцию и других новых возможностей Azure Зарегистрируйтесь для hello [бесплатным предварительным](https://account.windowsazure.com/PreviewFeatures).
+Чтобы использовать эту возможность, а также другие новые возможности Azure, зарегистрируйтесь для ознакомления с [бесплатной предварительной версией](https://account.windowsazure.com/PreviewFeatures).
 
