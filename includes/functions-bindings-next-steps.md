@@ -1,2 +1,0 @@
-<span data-ttu-id="a1958-101">Сведения о других привязках и триггерах в функциях Azure см. в [справочнике по триггерам и привязкам в функциях Azure для разработчика](../articles/azure-functions/functions-triggers-bindings.md).</span><span class="sxs-lookup"><span data-stu-id="a1958-101">For information about other bindings and triggers for Azure Functions, see [Azure Functions triggers and bindings developer reference](../articles/azure-functions/functions-triggers-bindings.md).</span></span>
-
